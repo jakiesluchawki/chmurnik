@@ -9,6 +9,8 @@ The application includes:
 - a WMO-based encyclopedia with 10 genera, 49 formal taxonomy terms, and one
   ranked search across names, codes, Polish aliases, morphology, diagnostic
   clues, and classification levels;
+- a three-frame diagnostic gallery in every genus monograph, with observation
+  before explanation and complete photograph provenance;
 - an evidence-based field observer with three transparent hypotheses;
 - a differential comparison laboratory for two or three cloud genera;
 - nine full lessons with honest time plans, sourced chapters, worked examples,

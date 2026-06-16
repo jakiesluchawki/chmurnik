@@ -53,7 +53,7 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.equal(manifest.start_url, "/cloud-recognition/");
   assert.equal(manifest.scope, "/cloud-recognition/");
   assert.match(worker, /const BASE = "\/cloud-recognition\/"/);
-  assert.match(worker, /cloud-recognition-v13/);
+  assert.match(worker, /cloud-recognition-v14/);
 });
 
 test("GitHub Pages deployment runs tests before publishing", async () => {
@@ -94,6 +94,26 @@ test("the recognition test is globally available and explains its methodology", 
   assert.match(app, /Każdy rodzaj jest ćwiczony na kilku niezależnych fotografiach/);
   assert.match(app, /Dowód w tym kadrze/);
   assert.match(app, /formatResultCount/);
+});
+
+test("cloud monographs teach visual variation through active recall", async () => {
+  const app = await read("src/App.jsx");
+  const styles = await read("src/styles.css");
+
+  assert.match(app, /function DiagnosticPhotoGallery/);
+  assert.match(app, /Ten sam rodzaj nie zawsze wygląda tak samo/);
+  assert.match(app, /Najpierw obserwacja/);
+  assert.match(app, /Pokaż analizę/);
+  assert.match(app, /Co rozstrzyga/);
+  assert.match(app, /cloud\.images\.map/);
+  assert.match(app, /setRevealed\(false\)/);
+  assert.match(app, /aria-label="Poprzedni kadr"/);
+  assert.match(app, /aria-label="Następny kadr"/);
+  assert.match(app, /aria-pressed=\{index === activeIndex\}/);
+  assert.match(app, /aria-expanded=\{revealed\}/);
+  assert.match(app, /aria-controls=\{`\$\{galleryTitleId\}-analysis`\}/);
+  assert.match(styles, /\.diagnostic-gallery__stage/);
+  assert.match(styles, /\.diagnostic-gallery__thumbs/);
 });
 
 test("lessons expose honest time plans, adaptive practice and keyboard-safe dialogs", async () => {

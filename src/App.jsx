@@ -1939,6 +1939,126 @@ function HardCases({ onCompareClouds, onSources }) {
   );
 }
 
+function DiagnosticPhotoGallery({ cloud }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+  const image = cloud.images[activeIndex];
+  const galleryTitleId = `diagnostic-gallery-${cloud.id}`;
+
+  useEffect(() => {
+    setActiveIndex(0);
+    setRevealed(false);
+  }, [cloud.id]);
+
+  const selectFrame = (index) => {
+    setActiveIndex(index);
+    setRevealed(false);
+  };
+
+  const moveFrame = (offset) => {
+    selectFrame((activeIndex + offset + cloud.images.length) % cloud.images.length);
+  };
+
+  return (
+    <section className="diagnostic-gallery" aria-labelledby={galleryTitleId}>
+      <header className="diagnostic-gallery__heading">
+        <div>
+          <span className="eyebrow">Galeria diagnostyczna · {cloud.images.length} kadry</span>
+          <h3 id={galleryTitleId}>Ten sam rodzaj nie zawsze wygląda tak samo</h3>
+        </div>
+        <p>
+          Zmieniaj perspektywę, światło i stadium rozwoju. Najpierw nazwij
+          dowód widoczny w kadrze, dopiero potem odsłoń komentarz.
+        </p>
+      </header>
+
+      <div className="diagnostic-gallery__stage">
+        <figure>
+          <img
+            src={publicAsset(image.src)}
+            alt={`${cloud.name}, kadr diagnostyczny ${activeIndex + 1} z ${cloud.images.length}`}
+          />
+          <span>{String(activeIndex + 1).padStart(2, "0")} / {String(cloud.images.length).padStart(2, "0")}</span>
+        </figure>
+
+        <div className="diagnostic-gallery__analysis">
+          <div
+            className="diagnostic-gallery__content"
+            id={`${galleryTitleId}-analysis`}
+            aria-live="polite"
+          >
+            {!revealed ? (
+              <>
+                <span className="eyebrow">Najpierw obserwacja</span>
+                <h4>Co w tym kadrze podtrzymuje hipotezę „{cloud.name}”?</h4>
+                <p>
+                  Zatrzymaj się na 15 sekund. Oceń kształt, skalę elementów,
+                  cieniowanie, warstwowość i rozwój pionowy.
+                </p>
+              </>
+            ) : (
+              <>
+                <span className="eyebrow">Co rozstrzyga</span>
+                <h4>{image.diagnostic}</h4>
+                <p>{image.note}</p>
+                <div className="diagnostic-gallery__credit">
+                  <span>Fot. <strong>{image.author}</strong> · {image.license}</span>
+                  <a href={image.page} target="_blank" rel="noreferrer">
+                    Plik i licencja <ArrowSquareOut size={14} />
+                  </a>
+                </div>
+              </>
+            )}
+          </div>
+          <button
+            type="button"
+            className={revealed ? "text-button" : "button button--coral"}
+            onClick={() => setRevealed(!revealed)}
+            aria-expanded={revealed}
+            aria-controls={`${galleryTitleId}-analysis`}
+          >
+            {revealed ? <>Ukryj analizę</> : <>Pokaż analizę <Eye size={17} /></>}
+          </button>
+        </div>
+      </div>
+
+      <div className="diagnostic-gallery__controls" aria-label="Wybierz kadr diagnostyczny">
+        <button
+          type="button"
+          className="diagnostic-gallery__arrow"
+          onClick={() => moveFrame(-1)}
+          aria-label="Poprzedni kadr"
+        >
+          <ArrowLeft size={19} />
+        </button>
+        <div className="diagnostic-gallery__thumbs">
+          {cloud.images.map((candidate, index) => (
+            <button
+              type="button"
+              key={candidate.id}
+              className={index === activeIndex ? "active" : ""}
+              onClick={() => selectFrame(index)}
+              aria-label={`Pokaż kadr ${index + 1} z ${cloud.images.length}: ${candidate.note}`}
+              aria-pressed={index === activeIndex}
+            >
+              <img src={publicAsset(candidate.src)} alt="" loading="lazy" decoding="async" />
+              <span>{String(index + 1).padStart(2, "0")}</span>
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          className="diagnostic-gallery__arrow"
+          onClick={() => moveFrame(1)}
+          aria-label="Następny kadr"
+        >
+          <ArrowRight size={19} />
+        </button>
+      </div>
+    </section>
+  );
+}
+
 function CloudDetail({
   cloud,
   onClose,
@@ -1991,6 +2111,7 @@ function CloudDetail({
               <ArrowRight size={18} />
             </button>
           </div>
+          <DiagnosticPhotoGallery cloud={cloud} />
           <section>
             <h3>Na co patrzeć</h3>
             <ul>{cloud.observe.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
