@@ -2,7 +2,7 @@
 id: "0004"
 title: "Add an evidence-based field observation assistant"
 type: FEATURE
-status: active
+status: completed
 related_adr: []
 related_tasks: ["0001", "0003"]
 tags: ["priority-high", "effort-medium", "learning", "field-use", "release-v2"]
@@ -15,6 +15,13 @@ history:
     note: >
       Created after a product audit identified the gap between the deep
       encyclopedia and the learner's real-time reasoning in the field.
+  - date: "2026-06-16"
+    status: completed
+    who: codex
+    note: >
+      Completed the evidence assistant, differential comparison laboratory,
+      390 px and keyboard QA, five visual artifacts, 36 passing tests, and
+      successful GitHub Pages deployment in run 27603323357.
 ---
 
 # Add an evidence-based field observation assistant
@@ -136,6 +143,9 @@ luminance, continuous evolution, and observing the whole sky.
   transition headings, and a test that protects the Cumulonimbus/Cumulus
   differential.
 - Added mobile and desktop visual evidence under `design/qa/current/`.
+- Published commit `c4bbc2d`; GitHub Pages run `27603323357` completed
+  successfully and the public 390 px flow was verified against bundles
+  `index-O0PoVMrJ.js` and `index-B9PWUHV5.css`.
 
 ## Issues Encountered
 
