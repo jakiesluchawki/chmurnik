@@ -239,7 +239,7 @@ export const pairDiscriminators = {
     "Sprawdź światło: halo i ostra tarcza wspierają Cirrostratus. Tarcza podobna do matowego szkła, bez halo, wspiera Altostratus.",
   "altostratus|nimbostratus":
     "Obserwuj opad i tarczę Słońca. Długotrwały opad przy całkowicie ukrytym Słońcu wspiera Nimbostratus; widoczna rozmyta tarcza częściej Altostratus.",
-  "cirrus|cirrostratus":
+  "cirrostratus|cirrus":
     "Sprawdź pokrycie całego nieba. Oddzielne włókna wspierają Cirrus, a ciągła cienka zasłona z możliwym halo — Cirrostratus.",
   "cumulonimbus|cumulus":
     "Patrz na najwyższy wierzchołek przez kilka minut. Gładzenie, włóknienie lub kowadło oznacza zlodzenie i wspiera Cumulonimbus; ostre kalafiorowe kopuły wspierają Cumulus.",

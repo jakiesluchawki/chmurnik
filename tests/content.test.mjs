@@ -2,12 +2,17 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { clouds } from "../src/data/clouds.js";
 import {
+  comparisonDimensions,
+  comparisonPresets,
+  defaultComparisonIds,
+} from "../src/data/comparison.js";
+import {
   cloudProfiles,
   taxonomyCategories,
   taxonomyTerms,
 } from "../src/data/encyclopedia.js";
-import { fieldQuestions } from "../src/data/field-guide.js";
-import { learningModules } from "../src/data/learning.js";
+import { fieldQuestions, pairDiscriminators } from "../src/data/field-guide.js";
+import { hardCases, learningModules } from "../src/data/learning.js";
 import { sources } from "../src/data/sources.js";
 import { calculatePlacement } from "../src/lib/placement.js";
 import {
@@ -221,6 +226,67 @@ test("the field assistant covers five evidence classes with valid cloud weights"
       for (const cloudId of Object.keys(option.weights)) {
         assert.ok(cloudIds.has(cloudId), `${question.id}.${option.id} references ${cloudId}`);
       }
+    }
+  }
+});
+
+test("the comparison laboratory covers every genus with evidence-led presets", () => {
+  const cloudIds = new Set(clouds.map((cloud) => cloud.id));
+  const covered = new Set();
+  const pairKeys = new Set();
+
+  assert.equal(comparisonDimensions.length, 7);
+
+  for (const preset of comparisonPresets) {
+    assert.equal(preset.cloudIds.length, 2);
+    assert.ok(preset.title.length > 12);
+
+    const key = [...preset.cloudIds].sort().join("|");
+    assert.ok(!pairKeys.has(key), `${preset.id} duplicates ${key}`);
+    assert.ok(pairDiscriminators[key], `${preset.id} needs a specific discriminator`);
+    pairKeys.add(key);
+
+    for (const cloudId of preset.cloudIds) {
+      assert.ok(cloudIds.has(cloudId), `${preset.id} references ${cloudId}`);
+      covered.add(cloudId);
+    }
+  }
+
+  assert.deepEqual([...covered].sort(), [...cloudIds].sort());
+
+  for (const cloud of clouds) {
+    const defaults = defaultComparisonIds(cloud.id);
+    assert.equal(defaults.length, 2);
+    assert.ok(defaults.includes(cloud.id));
+  }
+});
+
+test("comparison dimensions resolve substantive content for every genus", () => {
+  for (const cloud of clouds) {
+    const record = { cloud, profile: cloudProfiles[cloud.id] };
+    for (const dimension of comparisonDimensions) {
+      const values = dimension.value(record);
+      assert.ok(Array.isArray(values));
+      assert.ok(values.length > 0, `${cloud.id}.${dimension.id} needs content`);
+      assert.ok(values.every((value) => value.length >= 15));
+      assert.ok(
+        values.join(" ").length >= 70,
+        `${cloud.id}.${dimension.id} needs substantive comparison content`,
+      );
+    }
+  }
+});
+
+test("hard cases expose more disputed boundaries and valid comparison routes", () => {
+  const cloudIds = new Set(clouds.map((cloud) => cloud.id));
+
+  assert.ok(hardCases.length >= 8);
+  for (const item of hardCases) {
+    assert.ok(item.question.length >= 45);
+    assert.ok(item.answer.length >= 100);
+    assert.ok(Array.isArray(item.cloudIds));
+    for (const cloudId of item.cloudIds) {
+      assert.ok(cloudIds.has(cloudId), `${item.pair} references ${cloudId}`);
     }
   }
 });

@@ -65,7 +65,13 @@ export function nextDiscriminatingObservation(results) {
   const [first, second] = results;
   if (!first || !second) return "";
 
-  const key = [first.cloudId, second.cloudId].sort().join("|");
+  return pairDiscriminator(first.cloudId, second.cloudId);
+}
+
+export function pairDiscriminator(firstCloudId, secondCloudId) {
+  if (!firstCloudId || !secondCloudId) return "";
+
+  const key = [firstCloudId, secondCloudId].sort().join("|");
   return pairDiscriminators[key]
     || "Obserwuj całe niebo przez kolejne 10–15 minut. Porównaj skalę elementów wysoko nad głową, sposób tłumienia Słońca, rodzaj opadu i kierunek przemiany.";
 }

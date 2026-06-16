@@ -6,6 +6,7 @@ import {
   evidenceCoverage,
   nextDiscriminatingObservation,
   observationVerdict,
+  pairDiscriminator,
   scoreFieldObservation,
 } from "../src/lib/field-guide.js";
 
@@ -56,6 +57,8 @@ test("close hypotheses return an explicit discriminator", () => {
     { cloudId: "altocumulus", score: 12 },
     { cloudId: "cirrocumulus", score: 11 },
   ]).level, "close");
+  assert.match(pairDiscriminator("cirrostratus", "altostratus"), /matowego szkła/i);
+  assert.match(pairDiscriminator("cirrus", "cumulus"), /całe niebo/i);
 });
 
 test("field scoring is deterministic when evidence is tied", () => {

@@ -3,10 +3,12 @@
 Polish, source-backed education for learning to identify clouds and understand
 the weather from first observation through advanced aviation interpretation.
 
-The first release includes:
+The application includes:
 
 - adaptive knowledge placement instead of forcing everyone through lesson one;
-- a WMO-based cloud atlas and visual decision key;
+- a WMO-based encyclopedia with 10 genera and 49 formal taxonomy terms;
+- an evidence-based field observer with three transparent hypotheses;
+- a differential comparison laboratory for two or three cloud genera;
 - guided lessons, quizzes, disputed cases, and an observation journal;
 - aviation weather: METAR/TAF, ceilings, icing, turbulence, convection, and
   thunderstorms;
@@ -15,8 +17,8 @@ The first release includes:
 - visible sources and confidence notes throughout the learning experience;
 - a mobile-first installable web app with offline learning support.
 
-Version 1 deliberately does not classify photos automatically and includes no
-voice or audio system.
+The current version deliberately does not classify photos automatically and
+includes no voice or audio system.
 
 ## Development
 

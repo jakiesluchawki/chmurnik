@@ -112,6 +112,19 @@ test("the field observer replaces the shallow binary key with transparent hypoth
   assert.doesNotMatch(app, /function DecisionKey/);
 });
 
+test("the atlas includes a full differential comparison laboratory", async () => {
+  const app = await read("src/App.jsx");
+  const comparison = await read("src/data/comparison.js");
+
+  assert.match(app, /function CloudComparison/);
+  assert.match(app, /Laboratorium różnic/);
+  assert.match(app, /Te same pytania\. Różne chmury\./);
+  assert.match(app, /Mikrofizyka, geneza, ewolucja, pogoda i lotnictwo/);
+  assert.match(app, /routeDetail === "compare"/);
+  assert.match(comparison, /Znaczenie operacyjne i ograniczenia/);
+  assert.match(comparison, /Najważniejsza pułapka/);
+});
+
 test("authoritative source links use verified current destinations", async () => {
   const sources = await read("src/data/sources.js");
 

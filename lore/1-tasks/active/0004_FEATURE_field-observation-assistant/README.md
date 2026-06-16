@@ -57,6 +57,11 @@ luminance, continuous evolution, and observing the whole sky.
 - [x] The former binary key is removed rather than left as a competing method.
 - [x] Automated tests cover scoring, ambiguity, and deterministic ordering.
 - [x] Tests, production build, link audit, and Pages deployment pass.
+- [x] Users can compare two or three genera across the same seven evidence and
+      interpretation dimensions.
+- [x] Every genus appears in a recommended disputed pair with a dedicated
+      discriminating observation.
+- [x] Monographs, field results, and hard cases link directly into comparison.
 
 ## Design Decisions
 
@@ -82,6 +87,12 @@ luminance, continuous evolution, and observing the whole sky.
 4. **Relative install metadata:** Manifest and Apple touch icon links remain
    relative in the HTML so both Vite development and GitHub Pages resolve the
    repository base exactly once.
+5. **Comparison without duplicate science:** The comparison laboratory reads
+   existing genus profiles through seven shared dimensions instead of creating
+   a second, diverging encyclopedia.
+6. **Two-to-three hypothesis limit:** Two columns support direct differential
+   diagnosis; a third supports uncertain field cases without turning the tool
+   into an unreadable ten-column matrix.
 
 ## Implementation Notes
 
@@ -98,6 +109,11 @@ luminance, continuous evolution, and observing the whole sky.
   journal-draft tests.
 - Published commit `c478cd1` through GitHub Pages and verified the public HTML,
   JavaScript bundle, CSS bundle, manifest, and service worker cache v2.
+- Added a full differential comparison laboratory covering all ten genera,
+  eight disputed-pair presets, and seven shared dimensions: appearance,
+  composition, formation, evolution, weather, aviation, and diagnostic trap.
+- Expanded hard cases from three to eight and connected them, monographs, and
+  observer results to the comparison laboratory.
 
 ## Issues Encountered
 
@@ -107,6 +123,9 @@ luminance, continuous evolution, and observing the whole sky.
 - A local HTML check exposed doubled repository prefixes for install metadata.
   Relative manifest and touch-icon paths now resolve correctly in development
   and production builds.
+- Comparison tests exposed a reversed `cirrus|cirrostratus` discriminator key.
+  The engine previously returned generic guidance for that pair; the key now
+  follows the same sorted convention as every lookup.
 
 ## Broken/Modified Tests
 
@@ -116,6 +135,9 @@ luminance, continuous evolution, and observing the whole sky.
   binary key, verify the WMO source, and guard install metadata paths.
 - Added `field-guide.test.mjs` for canonical convection, scale discrimination,
   close-pair guidance, deterministic ties, and journal drafts.
+- Extended content and foundation tests to require all-ten-genus comparison
+  coverage, dedicated pair discriminators, seven substantive dimensions, eight
+  hard cases, and the direct `atlas/compare` route.
 
 ## Future Work
 

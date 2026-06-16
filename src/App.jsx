@@ -30,6 +30,11 @@ import {
 } from "@phosphor-icons/react";
 import { cloudLevels, clouds, getCloud } from "./data/clouds.js";
 import {
+  comparisonDimensions,
+  comparisonPresets,
+  defaultComparisonIds,
+} from "./data/comparison.js";
+import {
   getCloudProfile,
   getTaxonomyTerm,
   taxonomyCategories,
@@ -48,6 +53,7 @@ import {
   evidenceCoverage,
   nextDiscriminatingObservation,
   observationVerdict,
+  pairDiscriminator,
   scoreFieldObservation,
 } from "./lib/field-guide.js";
 import { calculatePlacement } from "./lib/placement.js";
@@ -776,6 +782,7 @@ function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
   const [selectedTerm, setSelectedTerm] = useState(null);
+  const [comparisonIds, setComparisonIds] = useState(comparisonPresets[1].cloudIds);
   const filtered = clouds.filter((cloud) => {
     const matchesLevel = level === "wszystkie" || cloud.level === level;
     const profile = getCloudProfile(cloud.id);
@@ -804,6 +811,14 @@ function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const openComparison = (cloudIds) => {
+    setSelected(null);
+    setSelectedTerm(null);
+    setComparisonIds(cloudIds);
+    setTab("compare");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <main className="page atlas-page">
       <header className="page-heading page-heading--inline">
@@ -819,6 +834,7 @@ function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
         {[
           ["atlas", "Rodzaje · 10"],
           ["observer", "Obserwator terenowy"],
+          ["compare", "Porównaj"],
           ["encyclopedia", "Indeks · 49"],
           ["cases", "Trudne przypadki"],
         ].map(([id, label]) => (
@@ -891,11 +907,19 @@ function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
       {tab === "observer" && (
         <FieldObserver
           onOpenCloud={setSelected}
+          onCompareClouds={openComparison}
           onSaveObservation={onSaveObservation}
           onSources={onSources}
         />
       )}
-      {tab === "cases" && <HardCases onSources={onSources} />}
+      {tab === "compare" && (
+        <CloudComparison
+          initialIds={comparisonIds}
+          onOpenCloud={setSelected}
+          onSources={onSources}
+        />
+      )}
+      {tab === "cases" && <HardCases onCompareClouds={openComparison} onSources={onSources} />}
       {selected && (
         <CloudDetail
           cloud={getCloud(selected)}
@@ -904,6 +928,7 @@ function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
             setSelected(null);
             setSelectedTerm(id);
           }}
+          onOpenComparison={() => openComparison(defaultComparisonIds(selected))}
           onOpenObserver={openObserver}
           onSources={onSources}
         />
@@ -923,7 +948,7 @@ function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
   );
 }
 
-function FieldObserver({ onOpenCloud, onSaveObservation, onSources }) {
+function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSources }) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [resultsOpen, setResultsOpen] = useState(false);
@@ -1061,6 +1086,17 @@ function FieldObserver({ onOpenCloud, onSaveObservation, onSources }) {
               </article>
             ))}
           </div>
+          <button
+            className="comparison-deep-link"
+            onClick={() => onCompareClouds([first.id, second.id])}
+          >
+            <Stack size={19} />
+            <span>
+              <strong>Otwórz pełne porównanie</strong>
+              <small>Mikrofizyka, geneza, ewolucja, pogoda i lotnictwo</small>
+            </span>
+            <ArrowRight size={17} />
+          </button>
         </section>
 
         <div className="field-results-actions">
@@ -1152,6 +1188,164 @@ function FieldObserver({ onOpenCloud, onSaveObservation, onSources }) {
           </button>
         </footer>
       </div>
+    </section>
+  );
+}
+
+function CloudComparison({ initialIds, onOpenCloud, onSources }) {
+  const [selectedIds, setSelectedIds] = useState(initialIds.slice(0, 3));
+  const selectedClouds = selectedIds.map((id) => {
+    const cloud = getCloud(id);
+    return { cloud, profile: getCloudProfile(id) };
+  });
+  const activePreset = comparisonPresets.find(
+    (preset) => preset.cloudIds.length === selectedIds.length
+      && preset.cloudIds.every((id) => selectedIds.includes(id)),
+  );
+  const nextEvidence = selectedIds.length === 2
+    ? pairDiscriminator(selectedIds[0], selectedIds[1])
+    : "Przy trzech hipotezach najpierw odrzuć tę, której poziom, skala elementów albo rodzaj opadu najmniej pasuje. Potem porównaj pozostałą parę przez 10–15 minut.";
+
+  useEffect(() => {
+    setSelectedIds(initialIds.slice(0, 3));
+  }, [initialIds]);
+
+  const toggleCloud = (cloudId) => {
+    const selected = selectedIds.includes(cloudId);
+    if (selected && selectedIds.length > 2) {
+      setSelectedIds(selectedIds.filter((id) => id !== cloudId));
+    } else if (!selected && selectedIds.length < 3) {
+      setSelectedIds([...selectedIds, cloudId]);
+    }
+  };
+
+  return (
+    <section className="cloud-comparison">
+      <header className="comparison-intro">
+        <div>
+          <span className="eyebrow">Laboratorium różnic</span>
+          <h2>Te same pytania. Różne chmury.</h2>
+          <p>
+            Wybierz dwa lub trzy rodzaje. Każdy zostanie opisany w tym samym
+            porządku, dzięki czemu podobieństwo nie przesłoni cechy rozstrzygającej.
+          </p>
+        </div>
+        <aside>
+          <strong>{selectedIds.length} / 3</strong>
+          <span>hipotezy w porównaniu</span>
+          <SourceButton ids={["wmoAtlas", "wmoObservation", "faaWeather"]} onOpen={onSources} />
+        </aside>
+      </header>
+
+      <div className="comparison-presets" aria-label="Najczęściej mylone pary">
+        {comparisonPresets.map((preset) => (
+          <button
+            key={preset.id}
+            className={activePreset?.id === preset.id ? "active" : ""}
+            onClick={() => setSelectedIds(preset.cloudIds)}
+          >
+            <span>{preset.label}</span>
+            <strong>{preset.title}</strong>
+          </button>
+        ))}
+      </div>
+
+      <div className="comparison-picker">
+        <div>
+          <span className="eyebrow">Własny zestaw</span>
+          <p>Minimum dwie, maksimum trzy chmury. Kolejność wyboru ustala kolejność kolumn.</p>
+        </div>
+        <div>
+          {clouds.map((cloud) => {
+            const selected = selectedIds.includes(cloud.id);
+            const disabled = selected
+              ? selectedIds.length <= 2
+              : selectedIds.length >= 3;
+            return (
+              <button
+                key={cloud.id}
+                className={selected ? "selected" : ""}
+                disabled={disabled}
+                aria-pressed={selected}
+                onClick={() => toggleCloud(cloud.id)}
+              >
+                <span>{selected ? <Check size={15} weight="bold" /> : cloud.code}</span>
+                <strong>{cloud.name}</strong>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div
+        className="comparison-cloud-strip"
+        style={{ "--comparison-count": selectedClouds.length }}
+        aria-live="polite"
+      >
+        {selectedClouds.map(({ cloud }) => (
+          <article key={cloud.id}>
+            <div>
+              <img
+                src={publicAsset(cloud.image.src)}
+                alt={`${cloud.name}, ${cloud.polish}`}
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="cloud-code">{cloud.code}</span>
+            </div>
+            <span className="eyebrow">{cloud.level}</span>
+            <h3>{cloud.name}</h3>
+            <p>{cloud.polish}</p>
+            <small>{cloud.altitude}</small>
+            <button className="card-link" onClick={() => onOpenCloud(cloud.id)}>
+              Otwórz monografię <ArrowRight size={16} />
+            </button>
+          </article>
+        ))}
+      </div>
+
+      <section className="comparison-next-evidence">
+        <span className="eyebrow">Najbardziej wartościowy kolejny dowód</span>
+        <p>{nextEvidence}</p>
+      </section>
+
+      <div className="comparison-dimensions">
+        {comparisonDimensions.map((dimension) => (
+          <section className={`comparison-dimension ${dimension.tone ? `is-${dimension.tone}` : ""}`} key={dimension.id}>
+            <header>
+              <span>{dimension.number}</span>
+              <div>
+                <small>{dimension.eyebrow}</small>
+                <h3>{dimension.title}</h3>
+                <p>{dimension.description}</p>
+              </div>
+            </header>
+            <div
+              className="comparison-values"
+              style={{ "--comparison-count": selectedClouds.length }}
+            >
+              {selectedClouds.map((record) => (
+                <article key={record.cloud.id}>
+                  <strong><span>{record.cloud.code}</span>{record.cloud.name}</strong>
+                  <ul>
+                    {dimension.value(record).map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <footer className="comparison-method-note">
+        <Info size={20} />
+        <p>
+          Porównanie porządkuje wiedzę o rodzajach WMO. Nie wyznacza wysokości,
+          intensywności oblodzenia ani bezpieczeństwa operacji z samego wyglądu.
+        </p>
+      </footer>
     </section>
   );
 }
@@ -1282,7 +1476,7 @@ function EncyclopediaIndex({ onSelectTerm, onSelectCloud, onSources }) {
   );
 }
 
-function HardCases({ onSources }) {
+function HardCases({ onCompareClouds, onSources }) {
   const [open, setOpen] = useState(0);
   return (
     <section className="hard-cases">
@@ -1302,7 +1496,14 @@ function HardCases({ onSources }) {
               <div>
                 <p className="case-question">{item.question}</p>
                 <p>{item.answer}</p>
-                <SourceButton ids={item.sourceIds} onOpen={onSources} compact />
+                <div className="case-actions">
+                  <SourceButton ids={item.sourceIds} onOpen={onSources} compact />
+                  {item.cloudIds.length === 2 && (
+                    <button onClick={() => onCompareClouds(item.cloudIds)}>
+                      Porównaj rodzaje <ArrowRight size={15} />
+                    </button>
+                  )}
+                </div>
               </div>
             )}
           </article>
@@ -1312,7 +1513,14 @@ function HardCases({ onSources }) {
   );
 }
 
-function CloudDetail({ cloud, onClose, onOpenTerm, onOpenObserver, onSources }) {
+function CloudDetail({
+  cloud,
+  onClose,
+  onOpenComparison,
+  onOpenTerm,
+  onOpenObserver,
+  onSources,
+}) {
   const profile = getCloudProfile(cloud.id);
 
   return (
@@ -1329,14 +1537,24 @@ function CloudDetail({ cloud, onClose, onOpenTerm, onOpenObserver, onSources }) 
           <p className="detail-polish">{cloud.polish}</p>
           <p className="detail-lead">{cloud.headline}</p>
           <p className="detail-essence">{profile.essence}</p>
-          <button className="detail-observer-action" onClick={onOpenObserver}>
-            <Eye size={20} />
-            <span>
-              <strong>Porównaj z własną obserwacją</strong>
-              <small>Wróć do cech i sprawdź konkurencyjne hipotezy</small>
-            </span>
-            <ArrowRight size={18} />
-          </button>
+          <div className="detail-analysis-actions">
+            <button className="detail-observer-action" onClick={onOpenObserver}>
+              <Eye size={20} />
+              <span>
+                <strong>Porównaj z własną obserwacją</strong>
+                <small>Wróć do cech i sprawdź konkurencyjne hipotezy</small>
+              </span>
+              <ArrowRight size={18} />
+            </button>
+            <button className="detail-observer-action" onClick={onOpenComparison}>
+              <Stack size={20} />
+              <span>
+                <strong>Porównaj z podobną chmurą</strong>
+                <small>Zobacz te same kryteria obok siebie</small>
+              </span>
+              <ArrowRight size={18} />
+            </button>
+          </div>
           <section>
             <h3>Na co patrzeć</h3>
             <ul>{cloud.observe.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
@@ -2021,7 +2239,13 @@ export function App() {
           <AtlasPage
             onSources={setSourceIds}
             onSaveObservation={saveFieldObservation}
-            initialTab={routeDetail === "observer" ? "observer" : "atlas"}
+            initialTab={
+              routeDetail === "observer"
+                ? "observer"
+                : routeDetail === "compare"
+                  ? "compare"
+                  : "atlas"
+            }
           />
         )}
         {validRoute === "layers" && <LayersPage onSources={setSourceIds} />}

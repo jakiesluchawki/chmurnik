@@ -155,6 +155,7 @@ export const hardCases = [
     answer:
       "Nie rozstrzygaj po jednym kłębku. Oceń dominującą wielkość kątową, obecność cieniowania oraz ciągłość z innymi warstwami. Przejście może być rzeczywiste.",
     sourceIds: ["wmoAtlas"],
+    cloudIds: ["cirrocumulus", "altocumulus"],
   },
   {
     pair: "Stratus czy mgła?",
@@ -162,6 +163,7 @@ export const hardCases = [
     answer:
       "Relacja do powierzchni jest lokalna. Dla obserwatora w dolinie może to być Stratus, podczas gdy na zboczu ta sama kropla chmurowa tworzy mgłę.",
     sourceIds: ["wmoAtlas", "faaWeather"],
+    cloudIds: [],
   },
   {
     pair: "Cumulus congestus czy Cumulonimbus calvus?",
@@ -169,6 +171,47 @@ export const hardCases = [
     answer:
       "Wielkość nie wystarcza. Szukaj utraty kalafiorowej ostrości i gładkawego, zlodzonego wierzchołka. Calvus nie wymaga jeszcze incus.",
     sourceIds: ["wmoAtlas", "faaWeather"],
+    cloudIds: ["cumulus", "cumulonimbus"],
+  },
+  {
+    pair: "Cirrostratus czy Altostratus?",
+    question: "Rozległa zasłona tłumi Słońce, ale jej wysokości nie da się ocenić.",
+    answer:
+      "Sprawdź sposób przechodzenia światła. Halo i ostra tarcza wspierają Cirrostratus; tarcza podobna do matowego szkła, bez halo, wspiera Altostratus. Brak halo sam nie rozstrzyga.",
+    sourceIds: ["wmoAtlas", "wmoObservation"],
+    cloudIds: ["cirrostratus", "altostratus"],
+  },
+  {
+    pair: "Altostratus czy Nimbostratus?",
+    question: "Słońce zniknęło, a spod szarej warstwy zaczyna padać.",
+    answer:
+      "Granica opiera się na całym systemie. Rozległy, ciągły opad docierający do powierzchni, całkowicie zasłonięte Słońce i niskie pannus wspierają Nimbostratus. Virga lub początek opadu mogą nadal należeć do Altostratus.",
+    sourceIds: ["wmoAtlas", "faaWeather"],
+    cloudIds: ["altostratus", "nimbostratus"],
+  },
+  {
+    pair: "Altocumulus czy Stratocumulus?",
+    question: "Cieniowane człony są duże, lecz perspektywa przy horyzoncie je spłaszcza.",
+    answer:
+      "Porównuj elementy możliwie wysoko nad głową. Stratocumulus ma zwykle większe wały, niższą podstawę i mocniejszą fakturę; Altocumulus zachowuje mniejszą skalę i częściej występuje jako odrębne ławice średnie.",
+    sourceIds: ["wmoAtlas", "wmoObservation"],
+    cloudIds: ["altocumulus", "stratocumulus"],
+  },
+  {
+    pair: "Stratocumulus czy Stratus?",
+    question: "Niska pokrywa prawie zamknęła całe niebo, ale miejscami widać wały.",
+    answer:
+      "Szukaj dominującej organizacji. Wyraźne duże człony, przerwy i wały wspierają Stratocumulus; prawie jednolita pokrywa bez członów, szczególnie z mżawką, wspiera Stratus.",
+    sourceIds: ["wmoAtlas", "faaWeather"],
+    cloudIds: ["stratocumulus", "stratus"],
+  },
+  {
+    pair: "Cirrus czy Cirrostratus?",
+    question: "Włókna zaczynają łączyć się w mleczną zasłonę na większej części nieba.",
+    answer:
+      "Klasyfikuj dominujący stan i zanotuj przemianę. Oddzielne włókna prowadzą do Cirrus; ciągła cienka zasłona obejmująca znaczną część nieba prowadzi do Cirrostratus. Granica może przesuwać się podczas obserwacji.",
+    sourceIds: ["wmoAtlas", "wmoObservation"],
+    cloudIds: ["cirrus", "cirrostratus"],
   },
 ];
 
