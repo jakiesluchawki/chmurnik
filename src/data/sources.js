@@ -40,6 +40,20 @@ export const sources = {
     checkText: "Principles of cloud classification",
     retrieved: "16 czerwca 2026",
   },
+  wmoObservation: {
+    id: "wmoObservation",
+    organization: "World Meteorological Organization",
+    title: "Identifying clouds",
+    label: "WMO: obserwacja i identyfikacja",
+    url: "https://cloudatlas.wmo.int/en/identifying-clouds.html",
+    kind: "Metodyka obserwacji",
+    trust:
+      "Oficjalne wytyczne WMO dotyczące identyfikacji z powierzchni, obserwowania całego nieba i śledzenia ewolucji chmur.",
+    scope:
+      "Budowa obserwacji terenowej, ciągła obserwacja, pełny horyzont, zmienność wyglądu i wpływ uskoku wiatru.",
+    checkText: "Identifying clouds",
+    retrieved: "16 czerwca 2026 · monitoring automatyczny",
+  },
   wmoUpperAtmosphere: {
     id: "wmoUpperAtmosphere",
     organization: "World Meteorological Organization",

@@ -41,14 +41,25 @@ import {
   placementQuestions,
   quizQuestions,
 } from "./data/learning.js";
+import { fieldPrinciples, fieldQuestions } from "./data/field-guide.js";
 import { getSources, sourceList } from "./data/sources.js";
+import {
+  createObservationDraft,
+  evidenceCoverage,
+  nextDiscriminatingObservation,
+  observationVerdict,
+  scoreFieldObservation,
+} from "./lib/field-guide.js";
 import { calculatePlacement } from "./lib/placement.js";
 import {
+  clearObservationDraft,
   loadJournal,
+  loadObservationDraft,
   loadProfile,
   loadProgress,
   loadRecognitionStats,
   saveJournal,
+  saveObservationDraft,
   saveProfile,
   saveProgress,
   saveRecognitionStats,
@@ -478,9 +489,9 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
         </p>
 
         <div className="feature-strip">
-          <button onClick={() => navigate("atlas")}>
-            <span className="feature-number">10</span>
-            <span><strong>Atlas</strong> rodzajów WMO</span>
+          <button onClick={() => navigate("atlas/observer")}>
+            <Eye size={25} />
+            <span><strong>Obserwator</strong> od cech do hipotez</span>
             <ArrowRight size={18} />
           </button>
           <button onClick={() => navigate("layers")}>
@@ -759,8 +770,8 @@ function QuizModal({ onClose }) {
   );
 }
 
-function AtlasPage({ onSources }) {
-  const [tab, setTab] = useState("atlas");
+function AtlasPage({ onSources, onSaveObservation, initialTab = "atlas" }) {
+  const [tab, setTab] = useState(initialTab);
   const [level, setLevel] = useState("wszystkie");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(null);
@@ -782,6 +793,17 @@ function AtlasPage({ onSources }) {
     return matchesLevel && haystack.includes(query.toLowerCase());
   });
 
+  useEffect(() => {
+    setTab(initialTab);
+  }, [initialTab]);
+
+  const openObserver = () => {
+    setSelected(null);
+    setSelectedTerm(null);
+    setTab("observer");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <main className="page atlas-page">
       <header className="page-heading page-heading--inline">
@@ -796,11 +818,19 @@ function AtlasPage({ onSources }) {
       <div className="segmented-control" role="tablist">
         {[
           ["atlas", "Rodzaje · 10"],
+          ["observer", "Obserwator terenowy"],
           ["encyclopedia", "Indeks · 49"],
-          ["key", "Klucz rozpoznawania"],
           ["cases", "Trudne przypadki"],
         ].map(([id, label]) => (
-          <button key={id} className={tab === id ? "active" : ""} onClick={() => setTab(id)}>{label}</button>
+          <button
+            key={id}
+            role="tab"
+            aria-selected={tab === id}
+            className={tab === id ? "active" : ""}
+            onClick={() => setTab(id)}
+          >
+            {label}
+          </button>
         ))}
       </div>
 
@@ -858,7 +888,13 @@ function AtlasPage({ onSources }) {
           onSources={onSources}
         />
       )}
-      {tab === "key" && <DecisionKey onOpenCloud={setSelected} onSources={onSources} />}
+      {tab === "observer" && (
+        <FieldObserver
+          onOpenCloud={setSelected}
+          onSaveObservation={onSaveObservation}
+          onSources={onSources}
+        />
+      )}
       {tab === "cases" && <HardCases onSources={onSources} />}
       {selected && (
         <CloudDetail
@@ -868,6 +904,7 @@ function AtlasPage({ onSources }) {
             setSelected(null);
             setSelectedTerm(id);
           }}
+          onOpenObserver={openObserver}
           onSources={onSources}
         />
       )}
@@ -883,6 +920,239 @@ function AtlasPage({ onSources }) {
         />
       )}
     </main>
+  );
+}
+
+function FieldObserver({ onOpenCloud, onSaveObservation, onSources }) {
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [resultsOpen, setResultsOpen] = useState(false);
+  const coverage = evidenceCoverage(answers);
+  const question = fieldQuestions[step];
+  const selectedId = answers[question.id];
+  const ranked = useMemo(
+    () => scoreFieldObservation(clouds.map((cloud) => cloud.id), answers),
+    [answers],
+  );
+  const topResults = ranked.slice(0, 3);
+  const verdict = observationVerdict(topResults);
+  const discriminator = nextDiscriminatingObservation(topResults);
+  const leadingScore = Math.max(topResults[0]?.score || 1, 1);
+
+  const choose = (optionId) => {
+    setAnswers((current) => ({ ...current, [question.id]: optionId }));
+  };
+
+  const next = () => {
+    if (!selectedId) return;
+    if (step === fieldQuestions.length - 1) setResultsOpen(true);
+    else setStep((current) => current + 1);
+  };
+
+  const reset = () => {
+    setAnswers({});
+    setStep(0);
+    setResultsOpen(false);
+  };
+
+  if (resultsOpen) {
+    const first = getCloud(topResults[0].cloudId);
+    const second = getCloud(topResults[1].cloudId);
+
+    return (
+      <section className="field-observer field-observer--results">
+        <header className="field-results-heading">
+          <div>
+            <span className="eyebrow">Asystent obserwacji · wynik heurystyczny</span>
+            <h2>Trzy hipotezy, nie jeden werdykt</h2>
+            <p>
+              Ranking pokazuje zgodność z zaznaczonymi cechami. Nie mierzy
+              prawdopodobieństwa i nie zastępuje obserwacji całego nieba.
+            </p>
+          </div>
+          <div className={`field-verdict field-verdict--${verdict.level}`}>
+            <span>{verdict.label}</span>
+            <p>{verdict.explanation}</p>
+          </div>
+        </header>
+
+        <div className="field-answer-summary" aria-label="Zapisane odpowiedzi">
+          {fieldQuestions.map((item, index) => {
+            const option = item.options.find((candidate) => candidate.id === answers[item.id]);
+            return (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setStep(index);
+                  setResultsOpen(false);
+                }}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div><small>{item.prompt}</small><strong>{option?.label}</strong></div>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="field-hypotheses">
+          {topResults.map((result, index) => {
+            const cloud = getCloud(result.cloudId);
+            const matches = [...new Set(result.matches)].slice(0, 4);
+            const conflicts = [...new Set(result.conflicts)].slice(0, 2);
+            return (
+              <article className={index === 0 ? "leading" : ""} key={result.cloudId}>
+                <div className="hypothesis-image">
+                  <img src={publicAsset(cloud.image.src)} alt={`${cloud.name}, ${cloud.polish}`} />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="hypothesis-body">
+                  <span className="eyebrow">{index === 0 ? verdict.label : "Hipoteza alternatywna"}</span>
+                  <h3>{cloud.name}</h3>
+                  <p className="hypothesis-polish">{cloud.polish}</p>
+                  <div className="hypothesis-meter" aria-label={`Wynik zgodności ${result.score}`}>
+                    <span style={{ width: `${Math.max(8, (result.score / leadingScore) * 100)}%` }} />
+                  </div>
+                  <div className="hypothesis-evidence">
+                    <strong>Co pasuje</strong>
+                    <ul>{matches.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul>
+                    {conflicts.length > 0 && (
+                      <>
+                        <strong>Co osłabia</strong>
+                        <ul className="conflicts">{conflicts.map((item) => <li key={item}><X size={15} />{item}</li>)}</ul>
+                      </>
+                    )}
+                  </div>
+                  <button className="card-link" onClick={() => onOpenCloud(cloud.id)}>
+                    Otwórz monografię <ArrowRight size={16} />
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <section className="field-next-observation">
+          <div>
+            <span className="eyebrow">Najbardziej wartościowy kolejny dowód</span>
+            <h3>Jak rozdzielić {first.name} i {second.name}</h3>
+          </div>
+          <p>{discriminator}</p>
+        </section>
+
+        <section className="field-comparison">
+          <div className="field-comparison-heading">
+            <div>
+              <span className="eyebrow">Porównanie prowadzącej pary</span>
+              <h3>Patrz na różnicę, nie na podobieństwo</h3>
+            </div>
+            <SourceButton ids={["wmoObservation", "wmoAtlas"]} onOpen={onSources} />
+          </div>
+          <div className="comparison-grid">
+            {[first, second].map((cloud) => (
+              <article key={cloud.id}>
+                <div>
+                  <span className="cloud-code">{cloud.code}</span>
+                  <img src={publicAsset(cloud.image.src)} alt={`${cloud.name}, ${cloud.polish}`} />
+                </div>
+                <h4>{cloud.name}</h4>
+                <p>{cloud.altitude}</p>
+                <ul>{cloud.observe.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
+                <aside><strong>Uwaga na pułapkę</strong><p>{cloud.trap}</p></aside>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <div className="field-results-actions">
+          <button
+            className="button button--coral"
+            onClick={() => onSaveObservation(
+              createObservationDraft(
+                answers,
+                topResults,
+                (cloudId) => getCloud(cloudId).name,
+              ),
+            )}
+          >
+            <Notebook size={18} /> Zapisz dowody w dzienniku
+          </button>
+          <button className="button button--primary" onClick={() => {
+            setStep(0);
+            setResultsOpen(false);
+          }}>
+            Zmień odpowiedzi
+          </button>
+          <button className="text-button" onClick={reset}>Nowa obserwacja</button>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="field-observer">
+      <aside className="field-method">
+        <span className="eyebrow">Mobilny notes obserwatora</span>
+        <h2>Najpierw dowody</h2>
+        <p>
+          Pięć krótkich kroków porządkuje to, co widzisz. Możesz wracać do
+          odpowiedzi; wynik pozostaje hipotezą do sprawdzenia w atlasie.
+        </p>
+        <div className="field-coverage">
+          <span style={{ width: `${(coverage / fieldQuestions.length) * 100}%` }} />
+        </div>
+        <strong>{coverage} z {fieldQuestions.length} dowodów zapisanych</strong>
+        <ul>
+          {fieldPrinciples.map((item) => <li key={item}><Eye size={17} />{item}</li>)}
+        </ul>
+        <SourceButton ids={["wmoObservation", "wmoAtlas"]} onOpen={onSources} />
+      </aside>
+
+      <div className="field-question-panel">
+        <div className="field-stepper" aria-label={`Krok ${step + 1} z ${fieldQuestions.length}`}>
+          {fieldQuestions.map((item, index) => (
+            <button
+              key={item.id}
+              className={index === step ? "active" : answers[item.id] ? "answered" : ""}
+              onClick={() => setStep(index)}
+              disabled={!answers[item.id] && index > step}
+              aria-current={index === step ? "step" : undefined}
+              aria-label={`Krok ${index + 1}: ${item.prompt}`}
+            >
+              {answers[item.id] ? <Check size={14} /> : index + 1}
+            </button>
+          ))}
+        </div>
+        <span className="eyebrow">{question.eyebrow}</span>
+        <h3>{question.prompt}</h3>
+        <p className="field-question-help">{question.help}</p>
+        <div className="field-options">
+          {question.options.map((option) => (
+            <button
+              key={option.id}
+              className={selectedId === option.id ? "selected" : ""}
+              onClick={() => choose(option.id)}
+              aria-pressed={selectedId === option.id}
+            >
+              <span>{selectedId === option.id ? <Check size={18} weight="bold" /> : null}</span>
+              <div><strong>{option.label}</strong><small>{option.description}</small></div>
+            </button>
+          ))}
+        </div>
+        <footer className="field-question-actions">
+          <button
+            className="text-button"
+            onClick={() => setStep((current) => Math.max(0, current - 1))}
+            disabled={step === 0}
+          >
+            <ArrowLeft size={17} /> Wstecz
+          </button>
+          <button className="button button--coral" onClick={next} disabled={!selectedId}>
+            {step === fieldQuestions.length - 1 ? "Zobacz hipotezy" : "Następny dowód"}
+            <ArrowRight size={17} />
+          </button>
+        </footer>
+      </div>
+    </section>
   );
 }
 
@@ -1012,93 +1282,6 @@ function EncyclopediaIndex({ onSelectTerm, onSelectCloud, onSources }) {
   );
 }
 
-function DecisionKey({ onOpenCloud, onSources }) {
-  const questions = [
-    {
-      prompt: "Czy chmura ma silny rozwój pionowy i wyraźne wieże?",
-      yes: { next: 1 },
-      no: { next: 2 },
-    },
-    {
-      prompt: "Czy wierzchołek jest wygładzony lub włóknisty, a nie kalafiorowy?",
-      yes: { result: ["cumulonimbus"] },
-      no: { result: ["cumulus"] },
-    },
-    {
-      prompt: "Czy obraz jest przede wszystkim jednolitą warstwą lub zasłoną?",
-      yes: { next: 3 },
-      no: { next: 4 },
-    },
-    {
-      prompt: "Czy widzisz halo albo bardzo cienką zasłonę z ostrym Słońcem?",
-      yes: { result: ["cirrostratus"] },
-      no: { result: ["stratus", "altostratus", "nimbostratus"] },
-    },
-    {
-      prompt: "Czy dominują drobne włókna zamiast zaokrąglonych członów?",
-      yes: { result: ["cirrus"] },
-      no: { result: ["cirrocumulus", "altocumulus", "stratocumulus"] },
-    },
-  ];
-  const [index, setIndex] = useState(0);
-  const [history, setHistory] = useState([]);
-  const [result, setResult] = useState(null);
-  const current = questions[index];
-
-  const choose = (choice) => {
-    setHistory([...history, index]);
-    if (choice.result) setResult(choice.result);
-    else setIndex(choice.next);
-  };
-
-  const reset = () => {
-    setIndex(0);
-    setHistory([]);
-    setResult(null);
-  };
-
-  return (
-    <section className="decision-key">
-      <div className="decision-copy">
-        <span className="eyebrow">Klucz obserwacyjny</span>
-        <h2>Odpowiadaj o tym, co naprawdę widzisz</h2>
-        <p>Klucz zawęża wybór, ale nie zastępuje oceny skali, czasu i całego nieba. W przypadkach przejściowych pokaże kilka możliwych rodzajów.</p>
-        <SourceButton ids={["wmoAtlas"]} onOpen={onSources} />
-      </div>
-      <div className="key-panel">
-        {!result ? (
-          <>
-            <span className="key-step">Krok {history.length + 1}</span>
-            <h3>{current.prompt}</h3>
-            <div className="key-actions">
-              <button onClick={() => choose(current.yes)}>Tak</button>
-              <button onClick={() => choose(current.no)}>Nie</button>
-              {history.length > 0 && <button className="text-button" onClick={reset}>Zacznij ponownie</button>}
-            </div>
-          </>
-        ) : (
-          <>
-            <span className="key-step">Najbardziej prawdopodobne</span>
-            <div className="key-results">
-              {result.map((id) => {
-                const cloud = getCloud(id);
-                return (
-                  <button key={id} onClick={() => onOpenCloud(id)}>
-                    <img src={publicAsset(cloud.image.src)} alt="" />
-                    <span><strong>{cloud.name}</strong><small>{cloud.polish}</small></span>
-                    <ArrowRight size={18} />
-                  </button>
-                );
-              })}
-            </div>
-            <button className="text-button" onClick={reset}>Przejdź klucz jeszcze raz</button>
-          </>
-        )}
-      </div>
-    </section>
-  );
-}
-
 function HardCases({ onSources }) {
   const [open, setOpen] = useState(0);
   return (
@@ -1129,7 +1312,7 @@ function HardCases({ onSources }) {
   );
 }
 
-function CloudDetail({ cloud, onClose, onOpenTerm, onSources }) {
+function CloudDetail({ cloud, onClose, onOpenTerm, onOpenObserver, onSources }) {
   const profile = getCloudProfile(cloud.id);
 
   return (
@@ -1146,6 +1329,14 @@ function CloudDetail({ cloud, onClose, onOpenTerm, onSources }) {
           <p className="detail-polish">{cloud.polish}</p>
           <p className="detail-lead">{cloud.headline}</p>
           <p className="detail-essence">{profile.essence}</p>
+          <button className="detail-observer-action" onClick={onOpenObserver}>
+            <Eye size={20} />
+            <span>
+              <strong>Porównaj z własną obserwacją</strong>
+              <small>Wróć do cech i sprawdź konkurencyjne hipotezy</small>
+            </span>
+            <ArrowRight size={18} />
+          </button>
           <section>
             <h3>Na co patrzeć</h3>
             <ul>{cloud.observe.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
@@ -1528,16 +1719,21 @@ function SoundingPanel({ onSources }) {
   );
 }
 
-function JournalPage() {
+function JournalPage({ navigate }) {
   const [entries, setEntries] = useState(loadJournal);
-  const [formOpen, setFormOpen] = useState(entries.length === 0);
+  const [draft] = useState(loadObservationDraft);
+  const [formOpen, setFormOpen] = useState(entries.length === 0 || Boolean(draft));
   const [form, setForm] = useState({
     date: new Date().toISOString().slice(0, 10),
     location: "",
-    cloud: "",
-    confidence: "średnia",
-    evidence: "",
+    cloud: draft?.cloud || "",
+    confidence: draft?.confidence || "średnia",
+    evidence: draft?.evidence || "",
   });
+
+  useEffect(() => {
+    if (draft) clearObservationDraft();
+  }, [draft]);
 
   const submit = (event) => {
     event.preventDefault();
@@ -1565,6 +1761,18 @@ function JournalPage() {
         </div>
         <button className="button button--coral" onClick={() => setFormOpen(!formOpen)}>{formOpen ? <X size={18} /> : <Plus size={18} />} {formOpen ? "Zamknij" : "Nowa obserwacja"}</button>
       </header>
+
+      <section className="journal-observer-invite">
+        <div className="panel-icon"><Eye size={27} /></div>
+        <div>
+          <span className="eyebrow">Zanim zapiszesz nazwę</span>
+          <h2>Uporządkuj dowody w obserwatorze</h2>
+          <p>Pięć kroków pomoże oddzielić widoczne cechy od hipotezy i wskaże, co warto sprawdzić przez kolejne 10–15 minut.</p>
+        </div>
+        <button className="button button--primary" onClick={() => navigate("atlas/observer")}>
+          Otwórz obserwator <ArrowRight size={17} />
+        </button>
+      </section>
 
       {formOpen && (
         <form className="journal-form" onSubmit={submit}>
@@ -1743,9 +1951,10 @@ export function App() {
   const [recognitionOpen, setRecognitionOpen] = useState(false);
   const [recognitionStats, setRecognitionStats] = useState(loadRecognitionStats);
 
+  const [routeName, routeDetail] = route.split("/");
   const validRoute = useMemo(
-    () => [...navItems.map((item) => item.id), "sources"].includes(route) ? route : "home",
-    [route],
+    () => [...navItems.map((item) => item.id), "sources"].includes(routeName) ? routeName : "home",
+    [routeName],
   );
 
   const chooseProfile = (result) => {
@@ -1770,6 +1979,16 @@ export function App() {
   const updateRecognition = (stats) => {
     setRecognitionStats(stats);
     saveRecognitionStats(stats);
+  };
+
+  const saveFieldObservation = (draft) => {
+    const cloud = getCloud(draft.cloudId);
+    saveObservationDraft({
+      cloud: cloud?.name || "Nierozpoznana",
+      confidence: draft.confidence,
+      evidence: draft.evidence,
+    });
+    navigate("journal");
   };
 
   const pageProps = { navigate, onSources: setSourceIds };
@@ -1798,9 +2017,15 @@ export function App() {
             onConsumeInitial={() => setEntryModule(null)}
           />
         )}
-        {validRoute === "atlas" && <AtlasPage onSources={setSourceIds} />}
+        {validRoute === "atlas" && (
+          <AtlasPage
+            onSources={setSourceIds}
+            onSaveObservation={saveFieldObservation}
+            initialTab={routeDetail === "observer" ? "observer" : "atlas"}
+          />
+        )}
         {validRoute === "layers" && <LayersPage onSources={setSourceIds} />}
-        {validRoute === "journal" && <JournalPage />}
+        {validRoute === "journal" && <JournalPage navigate={navigate} />}
         {validRoute === "sources" && <SourcesPage onSources={setSourceIds} />}
       </div>
       <Footer navigate={navigate} />

@@ -3,6 +3,7 @@ const KEYS = {
   progress: "cloud-recognition:progress",
   journal: "cloud-recognition:journal",
   recognition: "cloud-recognition:recognition",
+  observationDraft: "cloud-recognition:observation-draft",
 };
 
 function read(key, fallback) {
@@ -52,4 +53,20 @@ export function loadRecognitionStats() {
 
 export function saveRecognitionStats(stats) {
   write(KEYS.recognition, stats);
+}
+
+export function loadObservationDraft() {
+  return read(KEYS.observationDraft, null);
+}
+
+export function saveObservationDraft(draft) {
+  write(KEYS.observationDraft, draft);
+}
+
+export function clearObservationDraft() {
+  try {
+    window.localStorage.removeItem(KEYS.observationDraft);
+  } catch {
+    // The draft is optional when storage is unavailable.
+  }
 }

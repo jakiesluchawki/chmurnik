@@ -43,9 +43,12 @@ test("the public base path matches the repository", async () => {
 });
 
 test("the installable app and offline shell use the Pages base path", async () => {
+  const index = await read("index.html");
   const manifest = JSON.parse(await read("public/manifest.webmanifest"));
   const worker = await read("public/service-worker.js");
 
+  assert.match(index, /href="\.\/manifest\.webmanifest"/);
+  assert.match(index, /href="\.\/icons\/apple-touch-icon\.png"/);
   assert.equal(manifest.start_url, "/cloud-recognition/");
   assert.equal(manifest.scope, "/cloud-recognition/");
   assert.match(worker, /const BASE = "\/cloud-recognition\/"/);
@@ -97,6 +100,18 @@ test("the encyclopedia exposes formation, differential diagnosis and aviation co
   assert.match(app, /Wiatr z nieba/);
 });
 
+test("the field observer replaces the shallow binary key with transparent hypotheses", async () => {
+  const app = await read("src/App.jsx");
+
+  assert.match(app, /function FieldObserver/);
+  assert.match(app, /Trzy hipotezy, nie jeden werdykt/);
+  assert.match(app, /Co pasuje/);
+  assert.match(app, /Co osłabia/);
+  assert.match(app, /Najbardziej wartościowy kolejny dowód/);
+  assert.match(app, /Porównanie prowadzącej pary/);
+  assert.doesNotMatch(app, /function DecisionKey/);
+});
+
 test("authoritative source links use verified current destinations", async () => {
   const sources = await read("src/data/sources.js");
 
@@ -106,6 +121,7 @@ test("authoritative source links use verified current destinations", async () =>
   );
   assert.doesNotMatch(sources, /regulations_policies|handbooks_manuals/);
   assert.match(sources, /cloudatlas\.wmo\.int\/en\/upper-atmospheric-clouds\.html/);
+  assert.match(sources, /cloudatlas\.wmo\.int\/en\/identifying-clouds\.html/);
   assert.match(sources, /aviationweather\.gov\/help\/data\//);
   assert.match(sources, /community\.windy\.com\/topic\/43145\/cloud-tops-lower-than-cloud-base/);
   assert.match(sources, /community\.windy\.com\/topic\/7102\/is-the-cloud-base-layer-in-agl-or-msl/);

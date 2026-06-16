@@ -6,6 +6,7 @@ import {
   taxonomyCategories,
   taxonomyTerms,
 } from "../src/data/encyclopedia.js";
+import { fieldQuestions } from "../src/data/field-guide.js";
 import { learningModules } from "../src/data/learning.js";
 import { sources } from "../src/data/sources.js";
 import { calculatePlacement } from "../src/lib/placement.js";
@@ -201,4 +202,25 @@ test("placement routes beginners, intermediate learners and experienced users di
   assert.equal(calculatePlacement([0, 0, 0, 0, 0]).moduleId, "obserwacja");
   assert.equal(calculatePlacement([1, 1, 1, 1, 1]).moduleId, "procesy");
   assert.equal(calculatePlacement([2, 2, 2, 2, 2]).moduleId, "lotnictwo");
+});
+
+test("the field assistant covers five evidence classes with valid cloud weights", () => {
+  const cloudIds = new Set(clouds.map((cloud) => cloud.id));
+
+  assert.deepEqual(
+    fieldQuestions.map((question) => question.id),
+    ["shape", "scale", "light", "precipitation", "evolution"],
+  );
+
+  for (const question of fieldQuestions) {
+    assert.ok(question.options.length >= 5, `${question.id} needs meaningful alternatives`);
+    for (const option of question.options) {
+      assert.ok(option.label.length > 5);
+      assert.ok(option.description.length > 20);
+      assert.ok(option.signal.length > 15);
+      for (const cloudId of Object.keys(option.weights)) {
+        assert.ok(cloudIds.has(cloudId), `${question.id}.${option.id} references ${cloudId}`);
+      }
+    }
+  }
 });

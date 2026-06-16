@@ -1,4 +1,4 @@
-const VERSION = "cloud-recognition-v1";
+const VERSION = "cloud-recognition-v2";
 const BASE = "/cloud-recognition/";
 const APP_SHELL = [
   BASE,
