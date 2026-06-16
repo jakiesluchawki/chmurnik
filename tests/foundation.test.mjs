@@ -41,3 +41,10 @@ test("GitHub Pages deployment runs tests before publishing", async () => {
   assert.match(workflow, /npm run build/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
 });
+
+test("npm configuration remains portable across local and CI machines", async () => {
+  const npmrc = await read(".npmrc");
+
+  assert.doesNotMatch(npmrc, /\/Users\//);
+  assert.match(npmrc, /cache=\.npm-cache/);
+});
