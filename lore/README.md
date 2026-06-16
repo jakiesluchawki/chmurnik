@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-06-16 12:05. Do not edit manually.
+> Auto-generated on 2026-06-16 17:32. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,7 +9,7 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 0 | 0 | 1 | 13 | 0 |
+| 0 | 0 | 1 | 16 | 0 |
 
 ## Dependency Graph
 
@@ -29,6 +29,9 @@ flowchart LR
         T0012["0012: Teach within-genus variat..."]
         T0013["0013: Build a validated WMO nom..."]
         T0014["0014: Build an interactive soun..."]
+        T0015["0015: Build the Zgrywa-inspired..."]
+        T0016["0016: Fix atlas card corner cli..."]
+        T0017["0017: Publish CHMURNIK under it..."]
     end
     subgraph Backlog
         T0002["0002: Research automatic cloud ..."]
@@ -53,6 +56,9 @@ flowchart LR
 | 0012 | [Teach within-genus variation with a...](lore/1-tasks/archive/0012_FEATURE_diagnostic-photo-gallery.md) | FEATURE | completed | — | — | — |
 | 0013 | [Build a validated WMO nomenclature ...](lore/1-tasks/archive/0013_FEATURE_wmo-nomenclature-workshop.md) | FEATURE | completed | — | — | — |
 | 0014 | [Build an interactive sounding and S...](lore/1-tasks/archive/0014_FEATURE_interactive-sounding-laboratory.md) | FEATURE | completed | — | — | — |
+| 0015 | [Build the Zgrywa-inspired design la...](lore/1-tasks/archive/0015_FEATURE_zgrywa-inspired-design-language.md) | FEATURE | completed | — | — | — |
+| 0016 | [Fix atlas card corner clipping](lore/1-tasks/archive/0016_BUG_atlas-card-corners.md) | BUG | completed | — | — | — |
+| 0017 | [Publish CHMURNIK under its own Page...](lore/1-tasks/archive/0017_FEATURE_chmurnik-pages-address.md) | FEATURE | completed | — | — | — |
 
 ## Architecture Decision Records
 

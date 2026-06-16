@@ -2,7 +2,7 @@
 id: "0017"
 title: "Publish CHMURNIK under its own Pages address"
 type: FEATURE
-status: active
+status: completed
 related_adr: []
 related_tasks: ["0015", "0016"]
 tags: ["priority-high", "deployment", "github-pages", "pwa"]
@@ -16,6 +16,14 @@ history:
     note: >
       Started after the product owner requested a public CHMURNIK address
       before registering a custom domain.
+  - date: "2026-06-16"
+    status: completed
+    who: codex
+    note: >
+      Published the independent /chmurnik/ Pages installation from commit
+      e1eedf8. GitHub Actions passed the build and deployment, and production
+      verification returned HTTP 200 for the app, Romie, Roobert, wordmark,
+      atmospheric artwork, and namespaced service worker.
 ---
 
 # Publish CHMURNIK under its own Pages address
@@ -33,7 +41,7 @@ Create a separate public repository and GitHub Pages deployment at
 - [x] The repository link and current project documentation point to CHMURNIK.
 - [x] Existing browser learning data remains compatible.
 - [x] Automated tests, lesson audit, link audit, and production build pass.
-- [ ] The public repository and GitHub Pages deployment are available.
+- [x] The public repository and GitHub Pages deployment are available.
 
 ## Implementation Notes
 
