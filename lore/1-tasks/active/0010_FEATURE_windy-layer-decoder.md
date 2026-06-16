@@ -129,6 +129,9 @@ weather application.
 - **SI unit inherited uppercase styling:** The first visual pass rendered
   metres as `M MSL`. Numeric values now opt out of the uppercase annotation
   style and render `m MSL`.
+- **Browser requested a root favicon:** The first public pass was functionally
+  clean but logged `/favicon.ico` as a 404. The document now declares the
+  existing 192 px project icon with a Pages-relative path.
 
 ## Verification
 

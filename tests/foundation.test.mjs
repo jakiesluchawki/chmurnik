@@ -48,6 +48,7 @@ test("the installable app and offline shell use the Pages base path", async () =
   const worker = await read("public/service-worker.js");
 
   assert.match(index, /href="\.\/manifest\.webmanifest"/);
+  assert.match(index, /rel="icon" type="image\/png" href="\.\/icons\/icon-192\.png"/);
   assert.match(index, /href="\.\/icons\/apple-touch-icon\.png"/);
   assert.equal(manifest.start_url, "/cloud-recognition/");
   assert.equal(manifest.scope, "/cloud-recognition/");
