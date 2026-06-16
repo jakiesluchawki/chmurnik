@@ -714,9 +714,12 @@ p {
   background: transparent;
 }
 
-.cloud-card > div:first-child,
-.cloud-card img {
-  border-radius: 24px;
+.cloud-card .cloud-image-wrap {
+  border-radius: 14px;
+}
+
+.cloud-card .cloud-image-wrap img {
+  border-radius: 0;
 }
 
 .cloud-card:hover img {
@@ -1112,9 +1115,8 @@ textarea {
     gap: 32px;
   }
 
-  .cloud-card > div:first-child,
-  .cloud-card img {
-    border-radius: 18px;
+  .cloud-card .cloud-image-wrap {
+    border-radius: 12px;
   }
 
   .app-footer {
