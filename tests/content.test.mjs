@@ -47,6 +47,13 @@ import {
   updateAviationReview,
 } from "../src/lib/metar-training.js";
 import {
+  evaluateNomenclature,
+  getNomenclatureOrigins,
+  nomenclatureOptions,
+  normalizeNomenclatureSelection,
+  specialCloudRules,
+} from "../src/lib/nomenclature.js";
+import {
   normalizeCloudSearch,
   searchCloudAtlas,
   searchTaxonomyTerms,
@@ -261,6 +268,120 @@ test("taxonomy relationships resolve to known terms, genera and sources", () => 
       }
     }
   }
+});
+
+test("the nomenclature workshop only offers terms compatible with the selected genus", () => {
+  const altocumulus = nomenclatureOptions("altocumulus");
+  const cirrus = nomenclatureOptions("cirrus");
+
+  assert.deepEqual(
+    altocumulus.species.map((term) => term.id),
+    clouds.find((cloud) => cloud.id === "altocumulus").species,
+  );
+  assert.ok(altocumulus.varieties.some((term) => term.id === "perlucidus"));
+  assert.ok(!cirrus.varieties.some((term) => term.id === "perlucidus"));
+  assert.ok(
+    getNomenclatureOrigins("cirrus").some(
+      (origin) => origin.id === "mother:genitus:cumulonimbogenitus",
+    ),
+  );
+  assert.ok(
+    getNomenclatureOrigins("stratus").some((origin) => origin.id === "silvagenitus"),
+  );
+});
+
+test("WMO nomenclature distinguishes valid multiple varieties from contradictions", () => {
+  const valid = evaluateNomenclature({
+    cloudId: "altocumulus",
+    speciesId: "stratiformis",
+    varietyIds: ["perlucidus", "translucidus"],
+    featureIds: [],
+    accessoryIds: [],
+  });
+  const conflict = evaluateNomenclature({
+    cloudId: "altocumulus",
+    speciesId: "stratiformis",
+    varietyIds: ["translucidus", "opacus"],
+    featureIds: [],
+    accessoryIds: [],
+  });
+
+  assert.equal(valid.status, "valid");
+  assert.equal(valid.name, "Altocumulus stratiformis perlucidus translucidus");
+  assert.equal(conflict.status, "conflict");
+  assert.match(conflict.conflicts[0], /wzajemnie się wykluczają/);
+});
+
+test("origin suffixes require evidence and the fresh-contrail exception stays strict", () => {
+  const motherCloud = evaluateNomenclature({
+    cloudId: "cirrus",
+    speciesId: "spissatus",
+    varietyIds: [],
+    featureIds: [],
+    accessoryIds: [],
+    originId: "mother:genitus:cumulonimbogenitus",
+    evidenceConfirmed: false,
+  });
+  const supportedMotherCloud = evaluateNomenclature({
+    ...motherCloud.normalized,
+    evidenceConfirmed: true,
+  });
+  const freshContrail = evaluateNomenclature({
+    cloudId: "cirrus",
+    speciesId: null,
+    varietyIds: [],
+    featureIds: [],
+    accessoryIds: [],
+    originId: "contrail",
+    evidenceConfirmed: true,
+  });
+  const invalidContrail = evaluateNomenclature({
+    ...freshContrail.normalized,
+    speciesId: "fibratus",
+  });
+
+  assert.equal(motherCloud.status, "needs-evidence");
+  assert.equal(motherCloud.name, "Cirrus spissatus cumulonimbogenitus");
+  assert.equal(supportedMotherCloud.status, "valid");
+  assert.equal(freshContrail.name, "Cirrus homogenitus");
+  assert.equal(freshContrail.status, "valid");
+  assert.equal(invalidContrail.status, "conflict");
+  assert.match(invalidContrail.conflicts[0], /wyłącznie nazwę Cirrus homogenitus/);
+});
+
+test("special-cloud rules and selection normalization preserve scientific scope", () => {
+  const byId = new Map(specialCloudRules.map((rule) => [rule.id, rule]));
+
+  assert.deepEqual(byId.get("flammagenitus").genera, ["cumulus", "cumulonimbus"]);
+  assert.deepEqual(byId.get("homomutatus").genera, ["cirrus", "cirrocumulus", "cirrostratus"]);
+  assert.deepEqual(byId.get("cataractagenitus").genera, ["cumulus", "stratus"]);
+  assert.deepEqual(byId.get("silvagenitus").genera, ["stratus"]);
+  for (const [id, rule] of byId) {
+    assert.deepEqual(
+      rule.genera,
+      taxonomyTerms.find((term) => term.id === id).genera,
+      `${id} must expose the same genus scope in the index and validator`,
+    );
+  }
+
+  const normalized = normalizeNomenclatureSelection({
+    cloudId: "cirrus",
+    speciesId: "congestus",
+    varietyIds: ["perlucidus", "radiatus"],
+    featureIds: ["incus", "mamma"],
+    accessoryIds: ["pileus"],
+    originId: "silvagenitus",
+  });
+
+  assert.deepEqual(normalized, {
+    cloudId: "cirrus",
+    speciesId: null,
+    varietyIds: ["radiatus"],
+    featureIds: ["mamma"],
+    accessoryIds: [],
+    originId: null,
+    evidenceConfirmed: false,
+  });
 });
 
 test("every genus has a professional reference profile explaining formation", () => {

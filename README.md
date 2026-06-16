@@ -9,6 +9,9 @@ The application includes:
 - a WMO-based encyclopedia with 10 genera, 49 formal taxonomy terms, and one
   ranked search across names, codes, Polish aliases, morphology, diagnostic
   clues, and classification levels;
+- an interactive WMO nomenclature workshop that constructs complete names,
+  catches contradictory varieties, and separates visible morphology from
+  origin claims requiring observation history;
 - a three-frame diagnostic gallery in every genus monograph, with observation
   before explanation and complete photograph provenance;
 - an evidence-based field observer with three transparent hypotheses;

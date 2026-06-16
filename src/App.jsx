@@ -73,6 +73,12 @@ import {
   pairDiscriminator,
   scoreFieldObservation,
 } from "./lib/field-guide.js";
+import {
+  emptyNomenclatureSelection,
+  evaluateNomenclature,
+  nomenclatureOptions,
+  nomenclaturePresets,
+} from "./lib/nomenclature.js";
 import { calculatePlacement } from "./lib/placement.js";
 import {
   clearAviationReview,
@@ -1795,6 +1801,297 @@ function taxonomyTermContext(term) {
   return "Zgodność pełnej nazwy wynika z reguł WMO";
 }
 
+function NomenclatureChoiceGroup({
+  number,
+  label,
+  description,
+  options,
+  selected,
+  onToggle,
+  emptyText,
+}) {
+  return (
+    <fieldset className="nomenclature-step">
+      <legend>
+        <span>{number}</span>
+        <div>
+          <strong>{label}</strong>
+          <small>{description}</small>
+        </div>
+      </legend>
+      {options.length ? (
+        <div className="nomenclature-choices">
+          {options.map((option) => {
+            const isSelected = selected.includes(option.id);
+            return (
+              <button
+                type="button"
+                key={option.id}
+                className={isSelected ? "selected" : ""}
+                onClick={() => onToggle(option.id)}
+                aria-pressed={isSelected}
+              >
+                <strong>{option.name}</strong>
+                <small>{option.polish}</small>
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="nomenclature-empty">{emptyText}</p>
+      )}
+    </fieldset>
+  );
+}
+
+function NomenclatureWorkshop({ onSources }) {
+  const [selection, setSelection] = useState(emptyNomenclatureSelection);
+  const options = nomenclatureOptions(selection.cloudId);
+  const result = evaluateNomenclature(selection);
+  const toggleMany = (field, id) => {
+    setSelection((current) => ({
+      ...current,
+      [field]: current[field].includes(id)
+        ? current[field].filter((item) => item !== id)
+        : [...current[field], id],
+    }));
+  };
+  const chooseCloud = (cloudId) => {
+    setSelection({
+      ...emptyNomenclatureSelection,
+      cloudId,
+    });
+  };
+
+  return (
+    <section className="nomenclature-workshop" aria-labelledby="nomenclature-title">
+      <header className="nomenclature-workshop__header">
+        <div>
+          <span className="eyebrow">Pracownia nazewnictwa WMO</span>
+          <h3 id="nomenclature-title">Zbuduj nazwę. Sprawdź jej granice.</h3>
+          <p>
+            Wybierz to, co rzeczywiście widzisz, a pochodzenie dodaj tylko
+            wtedy, gdy znasz historię rozwoju. Walidator pokazuje zgodność
+            formalną osobno od siły dowodu.
+          </p>
+        </div>
+        <SourceButton ids={result.sourceIds} onOpen={onSources} />
+      </header>
+
+      <div className="nomenclature-presets" aria-label="Przykładowe przypadki">
+        <span>Przypadki do rozebrania</span>
+        <div>
+          {nomenclaturePresets.map((preset) => (
+            <button
+              type="button"
+              key={preset.id}
+              onClick={() => setSelection(preset.selection)}
+            >
+              <strong>{preset.label}</strong>
+              <small>{preset.hint}</small>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="nomenclature-desk">
+        <div className="nomenclature-builder">
+          <fieldset className="nomenclature-step nomenclature-step--genus">
+            <legend>
+              <span>1</span>
+              <div>
+                <strong>Rodzaj</strong>
+                <small>Każda obserwowana chmura należy do jednego rodzaju.</small>
+              </div>
+            </legend>
+            <div className="nomenclature-genera">
+              {clouds.map((cloud) => (
+                <button
+                  type="button"
+                  key={cloud.id}
+                  className={selection.cloudId === cloud.id ? "selected" : ""}
+                  onClick={() => chooseCloud(cloud.id)}
+                  aria-pressed={selection.cloudId === cloud.id}
+                >
+                  <strong>{cloud.code}</strong>
+                  <small>{cloud.name}</small>
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <NomenclatureChoiceGroup
+            number="2"
+            label="Gatunek"
+            description="Opisuje budowę. W pełnej nazwie wybierasz najwyżej jeden."
+            options={options.species}
+            selected={selection.speciesId ? [selection.speciesId] : []}
+            onToggle={(id) => setSelection((current) => ({
+              ...current,
+              speciesId: current.speciesId === id ? null : id,
+            }))}
+            emptyText="Ten rodzaj nie ma formalnie wyróżnianych gatunków."
+          />
+
+          <NomenclatureChoiceGroup
+            number="3"
+            label="Odmiany"
+            description="Możesz wybrać kilka. Sprzeczności pozostają widoczne, żeby dało się je przeanalizować."
+            options={options.varieties}
+            selected={selection.varietyIds}
+            onToggle={(id) => toggleMany("varietyIds", id)}
+            emptyText="Ten rodzaj nie ma formalnie wyróżnianych odmian."
+          />
+
+          <fieldset className="nomenclature-step">
+            <legend>
+              <span>4</span>
+              <div>
+                <strong>Cechy i chmury towarzyszące</strong>
+                <small>Może występować ich kilka jednocześnie.</small>
+              </div>
+            </legend>
+            {!options.features.length && !options.accessory.length ? (
+              <p className="nomenclature-empty">Brak formalnych określeń w tej warstwie.</p>
+            ) : (
+              <>
+                {!!options.features.length && (
+                  <div className="nomenclature-subgroup">
+                    <span>Cechy dodatkowe</span>
+                    <div className="nomenclature-choices">
+                      {options.features.map((option) => (
+                        <button
+                          type="button"
+                          key={option.id}
+                          className={selection.featureIds.includes(option.id) ? "selected" : ""}
+                          onClick={() => toggleMany("featureIds", option.id)}
+                          aria-pressed={selection.featureIds.includes(option.id)}
+                        >
+                          <strong>{option.name}</strong>
+                          <small>{option.polish}</small>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {!!options.accessory.length && (
+                  <div className="nomenclature-subgroup">
+                    <span>Chmury towarzyszące</span>
+                    <div className="nomenclature-choices">
+                      {options.accessory.map((option) => (
+                        <button
+                          type="button"
+                          key={option.id}
+                          className={selection.accessoryIds.includes(option.id) ? "selected" : ""}
+                          onClick={() => toggleMany("accessoryIds", option.id)}
+                          aria-pressed={selection.accessoryIds.includes(option.id)}
+                        >
+                          <strong>{option.name}</strong>
+                          <small>{option.polish}</small>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </fieldset>
+
+          <fieldset className="nomenclature-step nomenclature-step--origin">
+            <legend>
+              <span>5</span>
+              <div>
+                <strong>Pochodzenie</strong>
+                <small>To zapis historii lub przyczyny, nie ozdobny przyrostek.</small>
+              </div>
+            </legend>
+            <label>
+              <span>Wybierz tylko przy znanym kontekście</span>
+              <select
+                value={selection.originId || ""}
+                onChange={(event) => setSelection((current) => ({
+                  ...current,
+                  originId: event.target.value || null,
+                  evidenceConfirmed: false,
+                }))}
+              >
+                <option value="">Bez określenia pochodzenia</option>
+                <optgroup label="Chmura macierzysta">
+                  {options.origins.filter((origin) => origin.type === "mother").map((origin) => (
+                    <option key={origin.id} value={origin.id}>{origin.label}</option>
+                  ))}
+                </optgroup>
+                <optgroup label="Chmura specjalna">
+                  {options.origins.filter((origin) => origin.type === "special").map((origin) => (
+                    <option key={origin.id} value={origin.id}>{origin.label}</option>
+                  ))}
+                  {options.origins.filter((origin) => origin.type === "contrail").map((origin) => (
+                    <option key={origin.id} value={origin.id}>{origin.label}</option>
+                  ))}
+                </optgroup>
+              </select>
+            </label>
+            {result.requiresEvidence && (
+              <label className="nomenclature-evidence">
+                <input
+                  type="checkbox"
+                  checked={selection.evidenceConfirmed}
+                  onChange={(event) => setSelection((current) => ({
+                    ...current,
+                    evidenceConfirmed: event.target.checked,
+                  }))}
+                />
+                <span>
+                  <strong>Mam podstawę do opisania pochodzenia</strong>
+                  <small>Obserwowałem przemianę albo znam wiarygodny kontekst procesu.</small>
+                </span>
+              </label>
+            )}
+          </fieldset>
+        </div>
+
+        <aside className={`nomenclature-result is-${result.status}`} aria-live="polite">
+          <span className="eyebrow">Pełna nazwa robocza</span>
+          <h4>{result.name}</h4>
+          <div className="nomenclature-verdict">
+            {result.status === "valid" && <Check size={22} />}
+            {result.status === "needs-evidence" && <Eye size={22} />}
+            {result.status === "conflict" && <Warning size={22} />}
+            <div>
+              <strong>
+                {result.status === "valid" && "Nazwa spójna"}
+                {result.status === "needs-evidence" && "Potrzebny dowód historii"}
+                {result.status === "conflict" && "Sprzeczność w nazwie"}
+              </strong>
+              <p>{result.explanation}</p>
+            </div>
+          </div>
+          {!!result.conflicts.length && (
+            <ul className="nomenclature-conflicts">
+              {result.conflicts.map((conflict) => <li key={conflict}>{conflict}</li>)}
+            </ul>
+          )}
+          <dl>
+            {result.layers.map((layer) => (
+              <div key={layer.label}>
+                <dt>{layer.label}</dt>
+                <dd>{layer.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <button
+            type="button"
+            className="nomenclature-reset"
+            onClick={() => setSelection(emptyNomenclatureSelection)}
+          >
+            Zacznij od nowa
+          </button>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
 function EncyclopediaIndex({ onSelectTerm, onSelectCloud, onSources }) {
   const [category, setCategory] = useState("all");
   const [query, setQuery] = useState("");
@@ -1824,6 +2121,8 @@ function EncyclopediaIndex({ onSelectTerm, onSelectCloud, onSources }) {
           <small>Nie każda kombinacja jest dopuszczalna. Zgodność wynika z tabel WMO.</small>
         </aside>
       </div>
+
+      <NomenclatureWorkshop onSources={onSources} />
 
       <div className="atlas-tools encyclopedia-tools">
         <label className="search-field">

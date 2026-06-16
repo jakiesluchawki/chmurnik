@@ -40,6 +40,46 @@ export const sources = {
     checkText: "Principles of cloud classification",
     retrieved: "16 czerwca 2026",
   },
+  wmoMotherClouds: {
+    id: "wmoMotherClouds",
+    organization: "World Meteorological Organization",
+    title: "Principles of cloud classification: mother-clouds",
+    label: "WMO: chmury macierzyste",
+    url: "https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html",
+    kind: "Norma klasyfikacyjna",
+    trust:
+      "Oficjalna reguła rozróżniająca genitus, gdy chmura macierzysta pozostaje rozpoznawalna, od mutatus, gdy przeobraża się cała chmura lub jej większa część.",
+    scope: "Pełne nazwy pochodzenia chmur oraz warunek obserwacji ich przemiany.",
+    checkText: "Mother-clouds",
+    retrieved: "16 czerwca 2026 · monitoring automatyczny",
+  },
+  wmoSpecialClouds: {
+    id: "wmoSpecialClouds",
+    organization: "World Meteorological Organization",
+    title: "Principles of cloud classification: special clouds",
+    label: "WMO: chmury specjalne",
+    url: "https://cloudatlas.wmo.int/en/principles-of-cloud-classification-special-clouds.html",
+    kind: "Norma klasyfikacyjna",
+    trust:
+      "Oficjalne zasady nazw związanych z pożarem, działalnością człowieka, wodospadem, lasem oraz przemianą trwałych smug.",
+    scope:
+      "Flammagenitus, homogenitus, homomutatus, cataractagenitus i silvagenitus.",
+    checkText: "Special clouds",
+    retrieved: "16 czerwca 2026 · monitoring automatyczny",
+  },
+  wmoContrails: {
+    id: "wmoContrails",
+    organization: "World Meteorological Organization",
+    title: "Aircraft condensation trails",
+    label: "WMO: smugi kondensacyjne",
+    url: "https://cloudatlas.wmo.int/en/aircraft-condensation-trails.html",
+    kind: "Norma klasyfikacyjna",
+    trust:
+      "Oficjalna reguła dla smug utrzymujących się co najmniej 10 minut oraz wyjątek wykluczający dodatkowe określenia morfologiczne dla świeżej smugi.",
+    scope: "Cirrus homogenitus i przejście do homomutatus.",
+    checkText: "Aircraft condensation trails",
+    retrieved: "16 czerwca 2026 · monitoring automatyczny",
+  },
   wmoObservation: {
     id: "wmoObservation",
     organization: "World Meteorological Organization",

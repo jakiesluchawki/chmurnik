@@ -53,7 +53,7 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.equal(manifest.start_url, "/cloud-recognition/");
   assert.equal(manifest.scope, "/cloud-recognition/");
   assert.match(worker, /const BASE = "\/cloud-recognition\/"/);
-  assert.match(worker, /cloud-recognition-v14/);
+  assert.match(worker, /cloud-recognition-v15/);
 });
 
 test("GitHub Pages deployment runs tests before publishing", async () => {
@@ -171,6 +171,26 @@ test("the encyclopedia exposes formation, differential diagnosis and aviation co
   assert.match(app, /Diagnostyka różnicowa/);
   assert.match(app, /Znaczenie lotnicze/);
   assert.match(app, /Wiatr z nieba/);
+});
+
+test("the encyclopedia teaches complete WMO names with an evidence-aware validator", async () => {
+  const app = await read("src/App.jsx");
+  const rules = await read("src/lib/nomenclature.js");
+  const styles = await read("src/styles.css");
+
+  assert.match(app, /function NomenclatureWorkshop/);
+  assert.match(app, /Zbuduj nazwę\. Sprawdź jej granice\./);
+  assert.match(app, /Przypadki do rozebrania/);
+  assert.match(app, /Potrzebny dowód historii/);
+  assert.match(app, /Mam podstawę do opisania pochodzenia/);
+  assert.match(app, /aria-live="polite"/);
+  assert.match(app, /aria-pressed=\{isSelected\}/);
+  assert.match(rules, /translucidus/);
+  assert.match(rules, /opacus/);
+  assert.match(rules, /Cirrus homogenitus/);
+  assert.match(rules, /mother:genitus:cumulonimbogenitus/);
+  assert.match(styles, /\.nomenclature-workshop\s*\{/);
+  assert.match(styles, /\.nomenclature-result\.is-conflict/);
 });
 
 test("the Layers page exposes a practical, assessed Windy decoder", async () => {

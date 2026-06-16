@@ -566,8 +566,8 @@ export const taxonomyTerms = [
       "Chmura tworzona przez rozbryzg dużego wodospadu, gdy unoszona wilgoć prowadzi do lokalnego nasycenia.",
     diagnostic:
       "Pochodzenie musi być bezpośrednio związane z pyłem wodnym i przepływem przy wodospadzie.",
-    genera: [],
-    sourceIds: ["wmoPrinciples"],
+    genera: ["cumulus", "stratus"],
+    sourceIds: ["wmoSpecialClouds"],
   },
   {
     id: "flammagenitus",
@@ -579,8 +579,8 @@ export const taxonomyTerms = [
     diagnostic:
       "Źródło termiczne jest częścią pełnej nazwy; rozwój może prowadzić do głębokiej, niebezpiecznej konwekcji.",
     searchTerms: ["pożar", "wulkan", "pyrocumulus", "pyrocumulonimbus"],
-    genera: [],
-    sourceIds: ["wmoPrinciples", "faaWeather"],
+    genera: ["cumulus", "cumulonimbus"],
+    sourceIds: ["wmoSpecialClouds", "faaWeather"],
   },
   {
     id: "homogenitus",
@@ -591,8 +591,8 @@ export const taxonomyTerms = [
       "Chmura powstała bezpośrednio wskutek działalności człowieka, najczęściej smuga kondensacyjna rozwijająca się za samolotem.",
     diagnostic:
       "Jeśli chmura później upodobni się do naturalnego rodzaju, jej dalszą historię może opisywać termin homomutatus.",
-    genera: [],
-    sourceIds: ["wmoPrinciples"],
+    genera: ["cirrus", "cirrocumulus", "cirrostratus", "altocumulus", "altostratus", "nimbostratus", "stratocumulus", "stratus", "cumulus", "cumulonimbus"],
+    sourceIds: ["wmoSpecialClouds", "wmoContrails"],
   },
   {
     id: "homomutatus",
@@ -603,8 +603,8 @@ export const taxonomyTerms = [
       "Trwała chmura antropogeniczna, która rozwinęła wygląd jednego z naturalnych rodzajów, na przykład rozległego Cirrus.",
     diagnostic:
       "Termin zachowuje informację o pochodzeniu nawet wtedy, gdy morfologia odpowiada już zwykłej klasyfikacji rodzaju.",
-    genera: [],
-    sourceIds: ["wmoPrinciples"],
+    genera: ["cirrus", "cirrocumulus", "cirrostratus"],
+    sourceIds: ["wmoSpecialClouds"],
   },
   {
     id: "silvagenitus",
@@ -615,8 +615,8 @@ export const taxonomyTerms = [
       "Chmura powstająca lokalnie nad lasem wskutek zwiększonej wilgotności i parowania lub ewapotranspiracji.",
     diagnostic:
       "Związek przestrzenny i proces nad obszarem leśnym są istotniejsze niż sam kłębiasty wygląd.",
-    genera: [],
-    sourceIds: ["wmoPrinciples"],
+    genera: ["stratus"],
+    sourceIds: ["wmoSpecialClouds"],
   },
   {
     id: "nacreous",

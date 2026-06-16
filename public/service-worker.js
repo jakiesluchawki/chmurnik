@@ -1,4 +1,4 @@
-const VERSION = "cloud-recognition-v14";
+const VERSION = "cloud-recognition-v15";
 const BASE = "/cloud-recognition/";
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
