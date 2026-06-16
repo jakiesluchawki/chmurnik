@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Roobert";
-  src: url("/cloud-recognition/fonts/Roobert-Regular.otf") format("opentype");
+  src: url("/chmurnik/fonts/Roobert-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Roobert";
-  src: url("/cloud-recognition/fonts/Roobert-Bold.otf") format("opentype");
+  src: url("/chmurnik/fonts/Roobert-Bold.otf") format("opentype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Roobert";
-  src: url("/cloud-recognition/fonts/Roobert-RegularItalic.otf") format("opentype");
+  src: url("/chmurnik/fonts/Roobert-RegularItalic.otf") format("opentype");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Romie";
-  src: url("/cloud-recognition/fonts/Romie-Regular.otf") format("opentype");
+  src: url("/chmurnik/fonts/Romie-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -153,8 +153,8 @@ p {
   width: 310px;
   height: 58px;
   background: currentColor;
-  -webkit-mask: url("/cloud-recognition/brand/chmurnik-wordmark.png") center / contain no-repeat;
-  mask: url("/cloud-recognition/brand/chmurnik-wordmark.png") center / contain no-repeat;
+  -webkit-mask: url("/chmurnik/brand/chmurnik-wordmark.png") center / contain no-repeat;
+  mask: url("/chmurnik/brand/chmurnik-wordmark.png") center / contain no-repeat;
 }
 
 .brand-descriptor {

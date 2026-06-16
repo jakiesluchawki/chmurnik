@@ -38,8 +38,9 @@ application for learning cloud identification and vertical weather analysis.
 
 ## Public Release
 
-- Application: <https://jakiesluchawki.github.io/cloud-recognition/>
-- Repository: <https://github.com/jakiesluchawki/cloud-recognition>
+- Application: <https://jakiesluchawki.github.io/chmurnik/>
+- Repository: <https://github.com/jakiesluchawki/chmurnik>
+- Legacy application address: <https://jakiesluchawki.github.io/cloud-recognition/>
 - Visual QA: `design-qa.md` with `final result: passed`.
 
 Automatic photograph recognition remains deferred to backlog task 0002.

@@ -1,5 +1,6 @@
-const VERSION = "cloud-recognition-v16";
-const BASE = "/cloud-recognition/";
+const CACHE_PREFIX = "chmurnik-";
+const VERSION = `${CACHE_PREFIX}v1`;
+const BASE = "/chmurnik/";
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
   "altocumulus-mackerel.jpg",
@@ -50,7 +51,11 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== VERSION).map((key) => caches.delete(key)))),
+      .then((keys) => Promise.all(
+        keys
+          .filter((key) => key.startsWith(CACHE_PREFIX) && key !== VERSION)
+          .map((key) => caches.delete(key)),
+      )),
   );
   self.clients.claim();
 });

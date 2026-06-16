@@ -58,6 +58,10 @@ content contract for every new or revised lesson.
 
 The public application is deployed at:
 
+<https://jakiesluchawki.github.io/chmurnik/>
+
+The earlier project address remains available at:
+
 <https://jakiesluchawki.github.io/cloud-recognition/>
 
 The project is tracked with the Lore Framework under `lore/`.

@@ -38,7 +38,7 @@ async function inspectLink(link) {
         signal: controller.signal,
         headers: {
           accept: "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8",
-          "user-agent": "Cloud-Recognition-Link-Monitor/1.0 (+https://github.com/jakiesluchawki/cloud-recognition)",
+          "user-agent": "Chmurnik-Link-Monitor/1.0 (+https://github.com/jakiesluchawki/chmurnik)",
         },
       });
 

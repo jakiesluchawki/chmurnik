@@ -4747,7 +4747,7 @@ function Footer({ navigate }) {
       <p>Polski, bezpłatny atlas i pracownia obserwacji chmur. Bez kont, reklam, śledzenia i dźwięku.</p>
       <div>
         <button onClick={() => navigate("sources")}>Źródła</button>
-        <a href="https://github.com/jakiesluchawki/cloud-recognition" target="_blank" rel="noreferrer">GitHub <ArrowSquareOut size={14} /></a>
+        <a href="https://github.com/jakiesluchawki/chmurnik" target="_blank" rel="noreferrer">GitHub <ArrowSquareOut size={14} /></a>
       </div>
     </footer>
   );

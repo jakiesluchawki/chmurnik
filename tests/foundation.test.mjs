@@ -39,7 +39,7 @@ test("the project records its visual source of truth", async () => {
 test("the public base path matches the repository", async () => {
   const config = await read("vite.config.mjs");
 
-  assert.match(config, /base: "\/cloud-recognition\/"/);
+  assert.match(config, /base: "\/chmurnik\/"/);
 });
 
 test("the installable app and offline shell use the Pages base path", async () => {
@@ -50,10 +50,11 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.match(index, /href="\.\/manifest\.webmanifest"/);
   assert.match(index, /rel="icon" type="image\/png" href="\.\/icons\/icon-192\.png"/);
   assert.match(index, /href="\.\/icons\/apple-touch-icon\.png"/);
-  assert.equal(manifest.start_url, "/cloud-recognition/");
-  assert.equal(manifest.scope, "/cloud-recognition/");
-  assert.match(worker, /const BASE = "\/cloud-recognition\/"/);
-  assert.match(worker, /cloud-recognition-v16/);
+  assert.equal(manifest.start_url, "/chmurnik/");
+  assert.equal(manifest.scope, "/chmurnik/");
+  assert.match(worker, /const BASE = "\/chmurnik\/"/);
+  assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
+  assert.match(worker, /key\.startsWith\(CACHE_PREFIX\)/);
 });
 
 test("GitHub Pages deployment runs tests before publishing", async () => {
