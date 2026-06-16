@@ -22,8 +22,10 @@ test("field observation ranks a deeply convective cloud first", () => {
   });
 
   assert.equal(results[0].cloudId, "cumulonimbus");
+  assert.equal(results[1].cloudId, "cumulus");
   assert.ok(results[0].score > results[1].score);
   assert.ok(results[0].matches.length >= 4);
+  assert.match(nextDiscriminatingObservation(results), /zlodzenie/i);
 });
 
 test("element scale separates Cirrocumulus from Altocumulus", () => {

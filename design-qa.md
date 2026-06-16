@@ -3,12 +3,14 @@
 ## Comparison Target
 
 - Source visual truth: `design/reference/atlas-swiatla-mobile.png`
-- Implementation route:
+- Lesson implementation route:
   `http://127.0.0.1:5174/cloud-recognition/#/learn/lotnictwo`
+- Field implementation route:
+  `http://127.0.0.1:5174/cloud-recognition/#/atlas/observer`
 - Mobile viewport: 390 x 844 CSS px at 2x device scale
-- Desktop viewport: 1440 x 900 CSS px
-- State: full METAR/TAF lesson, chapter navigation, active recall,
-  final check, and global recognition test
+- Desktop viewport: 1440 x 1000 CSS px
+- States: full lesson progression, active recall, global recognition test,
+  field evidence collection, ranked hypotheses, and differential comparison
 
 ## Evidence
 
@@ -30,6 +32,16 @@
   `design/qa/current/lesson-desktop-top.png`
 - Desktop active recall:
   `design/qa/current/lesson-desktop-recall.png`
+- Mobile field start:
+  `design/qa/current/field-observer-mobile-start.png`
+- Mobile field result:
+  `design/qa/current/field-observer-mobile-result.png`
+- Mobile leading hypothesis:
+  `design/qa/current/field-observer-mobile-hypothesis.png`
+- Desktop field start:
+  `design/qa/current/field-observer-desktop-start.png`
+- Desktop field result:
+  `design/qa/current/field-observer-desktop-result.png`
 
 The source visual and lesson are different product states, so the full-view
 comparison evaluates design language rather than identical composition.
@@ -65,6 +77,36 @@ actions, and no prematurely visible recap, final check, or practice.
      active-recall answer. The lesson audit includes those prompts and answers
      in its duration calculation.
 
+6. **P1 fixed — Mobile hypothesis cards expanded to about 972 px**
+   - Before: an inherited minimum height combined with the mobile aspect ratio
+     forced each result card far beyond the 390 px viewport.
+   - Patch: the mobile hypothesis grid now uses a zero-minimum track, cards
+     explicitly shrink to the container, and images reset the inherited
+     minimum height.
+   - Evidence: all three result cards render at 350 px inside a 390 px
+     document with no horizontal overflow.
+
+7. **P2 fixed — The field method delayed the first observation**
+   - Before: the introductory panel occupied about 582 px before the question
+     began.
+   - Patch: mobile spacing and type were tightened without removing the three
+     observation principles or source access. The panel is now about 454 px,
+     and the first question appears in the opening viewport.
+
+8. **P2 fixed — Keyboard progress lost its reading position**
+   - Before: advancing removed the focused button and left focus on the page
+     body.
+   - Patch: each transition moves focus to the new question heading; the final
+     transition moves focus to the result heading. Lettered choices remain
+     native buttons with visible focus and pressed state.
+
+9. **P2 fixed — Deep convection suggested a weaker alternative**
+   - Before: a strongly developing, glaciating tower ranked Stratocumulus
+     above Cumulus as the second hypothesis.
+   - Patch: contradictory tower and glaciation evidence now penalizes
+     Stratocumulus and Altocumulus. The result ranks Cumulonimbus, Cumulus,
+     then Stratocumulus and exposes the dedicated discriminator.
+
 ## Required Fidelity Surfaces
 
 - **Typography:** Newsreader and Manrope remain consistent with Atlas Światła.
@@ -85,7 +127,8 @@ actions, and no prematurely visible recap, final check, or practice.
 - **Interactions and accessibility:** chapter controls have 44 px targets,
   active state and progress are visible, resume state survives reload, recall
   answers expose `aria-expanded`, the global test opens from mobile
-  navigation, and dialogs retain focus trapping and Escape handling.
+  navigation, dialogs retain focus trapping and Escape handling, and the field
+  assistant preserves keyboard focus across all five evidence steps.
 
 ## Residual Risk
 
@@ -94,6 +137,9 @@ actions, and no prematurely visible recap, final check, or practice.
   release criterion.
 - The comparison evaluates shared visual language because the source mock is a
   home screen, not a lesson screen.
+- The field result summary is intentionally horizontally scrollable on mobile
+  so all five answers remain revisable without shrinking them into illegible
+  columns.
 
 ## Final Result
 

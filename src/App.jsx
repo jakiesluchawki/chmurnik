@@ -1159,6 +1159,9 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [resultsOpen, setResultsOpen] = useState(false);
+  const questionHeadingRef = useRef(null);
+  const resultsHeadingRef = useRef(null);
+  const hasNavigatedRef = useRef(false);
   const coverage = evidenceCoverage(answers);
   const question = fieldQuestions[step];
   const selectedId = answers[question.id];
@@ -1171,17 +1174,25 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
   const discriminator = nextDiscriminatingObservation(topResults);
   const leadingScore = Math.max(topResults[0]?.score || 1, 1);
 
+  useEffect(() => {
+    if (!hasNavigatedRef.current) return;
+    if (resultsOpen) resultsHeadingRef.current?.focus();
+    else questionHeadingRef.current?.focus();
+  }, [resultsOpen, step]);
+
   const choose = (optionId) => {
     setAnswers((current) => ({ ...current, [question.id]: optionId }));
   };
 
   const next = () => {
     if (!selectedId) return;
+    hasNavigatedRef.current = true;
     if (step === fieldQuestions.length - 1) setResultsOpen(true);
     else setStep((current) => current + 1);
   };
 
   const reset = () => {
+    hasNavigatedRef.current = false;
     setAnswers({});
     setStep(0);
     setResultsOpen(false);
@@ -1196,7 +1207,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
         <header className="field-results-heading">
           <div>
             <span className="eyebrow">Asystent obserwacji · wynik heurystyczny</span>
-            <h2>Trzy hipotezy, nie jeden werdykt</h2>
+            <h2 ref={resultsHeadingRef} tabIndex="-1">Trzy hipotezy, nie jeden werdykt</h2>
             <p>
               Ranking pokazuje zgodność z zaznaczonymi cechami. Nie mierzy
               prawdopodobieństwa i nie zastępuje obserwacji całego nieba.
@@ -1215,6 +1226,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
               <button
                 key={item.id}
                 onClick={() => {
+                  hasNavigatedRef.current = true;
                   setStep(index);
                   setResultsOpen(false);
                 }}
@@ -1320,6 +1332,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
             <Notebook size={18} /> Zapisz dowody w dzienniku
           </button>
           <button className="button button--primary" onClick={() => {
+            hasNavigatedRef.current = true;
             setStep(0);
             setResultsOpen(false);
           }}>
@@ -1356,7 +1369,10 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
             <button
               key={item.id}
               className={index === step ? "active" : answers[item.id] ? "answered" : ""}
-              onClick={() => setStep(index)}
+              onClick={() => {
+                hasNavigatedRef.current = true;
+                setStep(index);
+              }}
               disabled={!answers[item.id] && index > step}
               aria-current={index === step ? "step" : undefined}
               aria-label={`Krok ${index + 1}: ${item.prompt}`}
@@ -1366,17 +1382,28 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
           ))}
         </div>
         <span className="eyebrow">{question.eyebrow}</span>
-        <h3>{question.prompt}</h3>
-        <p className="field-question-help">{question.help}</p>
-        <div className="field-options">
-          {question.options.map((option) => (
+        <h3 id="field-question-title" ref={questionHeadingRef} tabIndex="-1">
+          {question.prompt}
+        </h3>
+        <p className="field-question-help" id="field-question-help">{question.help}</p>
+        <div
+          className="field-options"
+          role="group"
+          aria-labelledby="field-question-title"
+          aria-describedby="field-question-help"
+        >
+          {question.options.map((option, index) => (
             <button
               key={option.id}
               className={selectedId === option.id ? "selected" : ""}
               onClick={() => choose(option.id)}
               aria-pressed={selectedId === option.id}
             >
-              <span>{selectedId === option.id ? <Check size={18} weight="bold" /> : null}</span>
+              <span>
+                {selectedId === option.id
+                  ? <Check size={18} weight="bold" />
+                  : String.fromCharCode(65 + index)}
+              </span>
               <div><strong>{option.label}</strong><small>{option.description}</small></div>
             </button>
           ))}
@@ -1384,7 +1411,10 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
         <footer className="field-question-actions">
           <button
             className="text-button"
-            onClick={() => setStep((current) => Math.max(0, current - 1))}
+            onClick={() => {
+              hasNavigatedRef.current = true;
+              setStep((current) => Math.max(0, current - 1));
+            }}
             disabled={step === 0}
           >
             <ArrowLeft size={17} /> Wstecz

@@ -53,7 +53,7 @@ luminance, continuous evolution, and observing the whole sky.
 - [x] Close results produce a useful next observation.
 - [x] The two strongest hypotheses can be compared side by side.
 - [x] The method is explicitly educational and cites WMO observation guidance.
-- [ ] The tool works comfortably at 390 px and with keyboard navigation.
+- [x] The tool works comfortably at 390 px and with keyboard navigation.
 - [x] The former binary key is removed rather than left as a competing method.
 - [x] Automated tests cover scoring, ambiguity, and deterministic ordering.
 - [x] Tests, production build, link audit, and Pages deployment pass.
@@ -93,6 +93,15 @@ luminance, continuous evolution, and observing the whole sky.
 6. **Two-to-three hypothesis limit:** Two columns support direct differential
    diagnosis; a third supports uncertain field cases without turning the tool
    into an unreadable ten-column matrix.
+7. **Task-first mobile method:** The method and sources remain visible, but
+   mobile spacing is compressed so the first evidence question appears in the
+   opening viewport.
+8. **Focus follows the reasoning step:** Advancing with keyboard or pointer
+   focuses the next question heading, and the final action focuses the result
+   heading. This prevents a removed button from dropping focus to the body.
+9. **Contradictory morphology affects ranking:** Strong vertical development
+   and glaciation now penalize layered cellular genera, keeping Cumulus as the
+   meaningful alternative to Cumulonimbus.
 
 ## Implementation Notes
 
@@ -118,18 +127,32 @@ luminance, continuous evolution, and observing the whole sky.
   completed successfully.
 - Verified the public JavaScript and CSS bundles, direct comparison route, and
   service worker cache `cloud-recognition-v3`.
+- Audited the complete five-step flow at 390 px through Brave DevTools
+  Protocol, including keyboard activation, focus transitions, result layout,
+  and all three hypothesis cards.
+- Fixed a mobile grid interaction that expanded result cards to about 972 px;
+  verified each card at 350 px with a 390 px document width.
+- Added lettered evidence choices, grouped question semantics, focused
+  transition headings, and a test that protects the Cumulonimbus/Cumulus
+  differential.
+- Added mobile and desktop visual evidence under `design/qa/current/`.
 
 ## Issues Encountered
 
-- The Codex in-app browser had no available browser surface, so screenshot-based
-  visual QA is still pending rather than being inferred from a successful
-  build.
+- The Codex in-app browser had no available browser surface. Visual QA was
+  recovered through an installed Brave headless DevTools target, allowing
+  actual 390 px and desktop rendering, keyboard input, DOM measurement, and
+  screenshots.
 - A local HTML check exposed doubled repository prefixes for install metadata.
   Relative manifest and touch-icon paths now resolve correctly in development
   and production builds.
 - Comparison tests exposed a reversed `cirrus|cirrostratus` discriminator key.
   The engine previously returned generic guidance for that pair; the key now
   follows the same sorted convention as every lookup.
+- Mobile result cards looked superficially clipped while the document itself
+  reported no overflow. The grid track had expanded to the image's aspect-ratio
+  minimum inside an overflow-hidden ancestor; explicit zero-minimum tracks and
+  a mobile `min-height` reset fixed the root cause.
 
 ## Broken/Modified Tests
 
@@ -142,6 +165,9 @@ luminance, continuous evolution, and observing the whole sky.
 - Extended content and foundation tests to require all-ten-genus comparison
   coverage, dedicated pair discriminators, seven substantive dimensions, eight
   hard cases, and the direct `atlas/compare` route.
+- Extended `field-guide.test.mjs` to require Cumulus as the second hypothesis
+  for deep, glaciating convection and to protect the pair-specific next
+  observation.
 
 ## Future Work
 

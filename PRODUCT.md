@@ -40,6 +40,8 @@ The learner should become able to:
    reading, examples, practice, and assessment.
 10. Protect attention on phones with one chapter at a time, visible progress,
     active recall, and a remembered return point without reducing expert depth.
+11. In field tools, move quickly from method to observable evidence, preserve
+    keyboard context, and present ranked hypotheses instead of false certainty.
 
 ## Version 1 Boundaries
 
