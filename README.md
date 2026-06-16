@@ -10,7 +10,8 @@ The application includes:
 - an evidence-based field observer with three transparent hypotheses;
 - a differential comparison laboratory for two or three cloud genera;
 - nine full lessons with honest time plans, sourced chapters, worked examples,
-  module-specific practice, checks, and an adaptive recognition review map;
+  chapter-by-chapter mobile focus, active recall, module-specific practice,
+  checks, and an adaptive recognition review map;
 - aviation weather: METAR/TAF, ceilings, icing, turbulence, convection, and
   thunderstorms;
 - an independent laboratory for AGL, MSL, pressure levels, geopotential

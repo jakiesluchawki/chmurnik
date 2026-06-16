@@ -4,6 +4,7 @@ const KEYS = {
   journal: "cloud-recognition:journal",
   recognition: "cloud-recognition:recognition",
   observationDraft: "cloud-recognition:observation-draft",
+  lessonPositions: "cloud-recognition:lesson-positions",
 };
 
 function read(key, fallback) {
@@ -37,6 +38,16 @@ export function loadProgress() {
 
 export function saveProgress(progress) {
   write(KEYS.progress, progress);
+}
+
+export function loadLessonPosition(lessonId) {
+  const positions = read(KEYS.lessonPositions, {});
+  return Number.isInteger(positions[lessonId]) ? positions[lessonId] : 0;
+}
+
+export function saveLessonPosition(lessonId, chapterIndex) {
+  const positions = read(KEYS.lessonPositions, {});
+  write(KEYS.lessonPositions, { ...positions, [lessonId]: chapterIndex });
 }
 
 export function loadJournal() {

@@ -9,9 +9,9 @@ export const lessons = {
       "wskazać dowód, którego nadal brakuje",
     ],
     timePlan: [
-      { label: "Czytanie", minutes: 4 },
+      { label: "Czytanie i przypomnienia", minutes: 5 },
       { label: "Przykłady", minutes: 2 },
-      { label: "Protokół terenowy", minutes: 5 },
+      { label: "Protokół terenowy", minutes: 4 },
       { label: "Punkt kontrolny", minutes: 1 },
     ],
     chapters: [
@@ -44,7 +44,7 @@ export const lessons = {
       },
       {
         number: "03",
-        minutes: 1,
+        minutes: 2,
         title: "Pięć klas dowodu",
         paragraphs: [
           "Sylwetka mówi, czy dominuje włókno, warstwa, człon czy wieża. Skala pomaga oddzielić drobne elementy wysokie od większych średnich i niskich. Światło ujawnia przejrzystość, cieniowanie, halo i ostrość tarczy Słońca. Opad rozróżnia virga od opadu docierającego do powierzchni. Czas pokazuje wzrost, zlodzenie, rozlewanie i przemianę.",
@@ -88,7 +88,7 @@ export const lessons = {
       "rozpoznawać miejsca, w których nazwa wymaga doprecyzowania",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 5 },
+      { label: "Czytanie i przypomnienia", minutes: 5 },
       { label: "Tabela rodzajów", minutes: 4 },
       { label: "Dekoder nazw", minutes: 7 },
       { label: "Punkt kontrolny", minutes: 2 },
@@ -170,9 +170,9 @@ export const lessons = {
       "rozumieć rolę inwersji, mieszania i fazy wody",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 5 },
+      { label: "Czytanie i przypomnienia", minutes: 6 },
       { label: "Schematy przyczynowe", minutes: 4 },
-      { label: "Mapa mechanizmu", minutes: 9 },
+      { label: "Mapa mechanizmu", minutes: 8 },
       { label: "Punkt kontrolny", minutes: 2 },
     ],
     chapters: [
@@ -230,7 +230,7 @@ export const lessons = {
       },
       {
         number: "05",
-        minutes: 1,
+        minutes: 2,
         title: "Mikrofizyka zmienia wygląd i zagrożenie",
         paragraphs: [
           "Chmura może zawierać krople ciekłe, krople przechłodzone, kryształki lodu albo mieszaninę faz. Wysokie Cirrus są zwykle lodowe, ale wysokość nie jest jedynym kryterium fazy. W silnych prądach wstępujących duże ilości przechłodzonej wody mogą występować znacznie poniżej wierzchołka burzy.",
@@ -258,7 +258,7 @@ export const lessons = {
       "budować scenariusz oraz wskazywać dane, które mogą go obalić",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 5 },
+      { label: "Czytanie i przypomnienia", minutes: 5 },
       { label: "Sekwencje i przypadki", minutes: 5 },
       { label: "Dziennik zmian", minutes: 10 },
       { label: "Punkt kontrolny", minutes: 2 },
@@ -345,7 +345,7 @@ export const lessons = {
       "opisywać wynik jako przybliżenie z poziomem i niepewnością",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 6 },
+      { label: "Czytanie i przypomnienia", minutes: 6 },
       { label: "Przykłady ruchu", minutes: 4 },
       { label: "Pomiar terenowy", minutes: 12 },
       { label: "Punkt kontrolny", minutes: 2 },
@@ -442,7 +442,7 @@ export const lessons = {
       "wskazać ograniczenia raportu punktowego i prognozy lotniskowej",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 7 },
+      { label: "Czytanie i przypomnienia", minutes: 7 },
       { label: "Dekodowanie przykładów", minutes: 5 },
       { label: "Odczyt operacyjny", minutes: 11 },
       { label: "Punkt kontrolny", minutes: 3 },
@@ -557,7 +557,7 @@ export const lessons = {
       "czytać warstwy Windy bez mieszania podstawy, wierzchołków i całkowitego zachmurzenia",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 6 },
+      { label: "Czytanie i przypomnienia", minutes: 6 },
       { label: "Przykłady pionowe", minutes: 6 },
       { label: "Rachunek AGL", minutes: 13 },
       { label: "Punkt kontrolny", minutes: 3 },
@@ -644,7 +644,7 @@ export const lessons = {
       "czytać chmury jako wskazówki, nie zezwolenie operacyjne",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 7 },
+      { label: "Czytanie i przypomnienia", minutes: 7 },
       { label: "Przypadki zagrożeń", minutes: 6 },
       { label: "Macierz danych", minutes: 16 },
       { label: "Punkt kontrolny", minutes: 3 },
@@ -747,7 +747,7 @@ export const lessons = {
       "rozumieć, dlaczego dwie klasyfikacje mogą opisywać różne chwile procesu",
     ],
     timePlan: [
-      { label: "Czytanie i notatki", minutes: 7 },
+      { label: "Czytanie i przypomnienia", minutes: 7 },
       { label: "Praca z indeksem", minutes: 8 },
       { label: "Budowa nazwy", minutes: 17 },
       { label: "Punkt kontrolny", minutes: 3 },
@@ -841,6 +841,297 @@ export const lessons = {
     ],
   },
 };
+
+const chapterCheckpoints = {
+  obserwacja: [
+    {
+      prompt: "Co należy zapisać, zanim po raz pierwszy użyjesz nazwy chmury?",
+      answer:
+        "Najpierw zapisz obserwowalne cechy: sylwetkę, skalę, cieniowanie, opad, zasięg i zmianę w czasie. Nazwa jest dopiero hipotezą zbudowaną na tym opisie.",
+    },
+    {
+      prompt: "Dlaczego jeden efektowny fragment nieba może prowadzić do błędnej klasyfikacji?",
+      answer:
+        "Perspektywa i światło zmieniają wygląd elementów, a na niebie często współistnieje kilka poziomów. Pełny obrót pomaga oddzielić warstwy i ocenić zasięg struktury.",
+    },
+    {
+      prompt: "Dlaczego zgodność kilku klas dowodu jest silniejsza niż jedna charakterystyczna cecha?",
+      answer:
+        "Pojedyncza cecha może występować w różnych rodzajach albo zostać zniekształcona przez perspektywę. Niezależne sygnały ograniczają liczbę wiarygodnych hipotez.",
+    },
+    {
+      prompt: "Kiedy poprawnym wynikiem obserwacji jest brak rozstrzygnięcia?",
+      answer:
+        "Gdy nie widać cechy, która odróżnia prowadzące hipotezy. Wtedy zapisujesz obie możliwości oraz dowód potrzebny do ich rozdzielenia, zamiast udawać pewność.",
+    },
+  ],
+  rodziny: [
+    {
+      prompt: "Dlaczego poziomy wysokie, średnie i niskie nie zastępują rodzaju chmury?",
+      answer:
+        "Granice pięter zmieniają się z szerokością geograficzną i sytuacją, a część rodzajów rozwija się przez kilka poziomów. Rodzaj opisuje formalną klasę obserwowanej budowy.",
+    },
+    {
+      prompt: "Czy człon alto- oznacza najwyższe chmury? Uzasadnij odpowiedź.",
+      answer:
+        "Nie. Alto- prowadzi do poziomu średniego, natomiast cirro- do wysokiego. Drugi człon nazwy nadal musi opisać, czy obserwujesz warstwę, czy człony.",
+    },
+    {
+      prompt: "Co mówi drugi człon nazwy w Cirrostratus i Altocumulus?",
+      answer:
+        "W Cirrostratus człon stratus wskazuje zasłonową organizację, a w Altocumulus człon cumulus wskazuje budowę członowaną. Pierwszy człon porządkuje poziom.",
+    },
+    {
+      prompt: "Dlaczego sam deszcz nie wystarcza do rozpoznania Nimbostratus lub Cumulonimbus?",
+      answer:
+        "Opad może występować także z innych rodzajów. Trzeba ocenić rozległość, organizację warstwową albo konwekcyjną oraz charakter całego systemu.",
+    },
+    {
+      prompt: "Jakie dwie osie pozwalają odtworzyć mapę dziesięciu rodzajów bez wkuwania listy?",
+      answer:
+        "Użyj poziomu oraz dominującej budowy: włóknistej, zasłonowej, członowanej, warstwowej, pionowej lub wielopoziomowej i opadowej.",
+    },
+  ],
+  procesy: [
+    {
+      prompt: "Dlaczego punkt rosy nie jest po prostu wysokością podstawy chmury?",
+      answer:
+        "Punkt rosy jest temperaturą nasycenia dla danych warunków. Wysokość podstawy zależy dodatkowo od pionowego profilu, mieszania i sposobu unoszenia powietrza.",
+    },
+    {
+      prompt: "Co wspólnego mają konwekcja, front, góry i turbulencja w procesie tworzenia chmur?",
+      answer:
+        "Wszystkie mogą unosić wilgotne powietrze do niższego ciśnienia, powodując rozszerzanie, ochładzanie i osiągnięcie nasycenia.",
+    },
+    {
+      prompt: "Dlaczego ta sama wilgotność może dać warstwę albo wysoką wieżę Cumulus?",
+      answer:
+        "O kształcie decyduje stabilność pionowa. Stabilne środowisko ogranicza wyporność i sprzyja rozlewaniu, a niestabilne podtrzymuje przyspieszające unoszenie.",
+    },
+    {
+      prompt: "Jak inwersja może jednocześnie sprzyjać niskiej chmurze i hamować jej wzrost?",
+      answer:
+        "Zatrzymuje wilgoć i mieszanie poniżej swojej podstawy, co pomaga nasycić warstwę, ale cieplejsze powietrze wyżej ogranicza dalszy rozwój pionowy.",
+    },
+    {
+      prompt: "Dlaczego rozpoznanie rodzaju chmury nie wystarcza do oceny oblodzenia?",
+      answer:
+        "Potrzebne są faza wody, temperatura, zawartość przechłodzonej cieczy i dynamika. Ten sam rodzaj może mieć inną mikrofizykę oraz inny poziom zagrożenia.",
+    },
+  ],
+  fronty: [
+    {
+      prompt: "Dlaczego linia frontu na mapie nie wyznacza granicy całego zachmurzenia?",
+      answer:
+        "Linia przedstawia uproszczony ślad strefy przy powierzchni, podczas gdy nachylona struktura i związane z nią chmury mogą rozciągać się setki kilometrów.",
+    },
+    {
+      prompt: "Jakie dodatkowe zmiany wzmacniają hipotezę zbliżania się frontu ciepłego?",
+      answer:
+        "Systematyczne gęstnienie zasłony, blednięcie tarczy Słońca, spadek ciśnienia oraz zgodny kierunek napływu kolejnych, niższych warstw.",
+    },
+    {
+      prompt: "Dlaczego brak burzy nie wyklucza przejścia frontu chłodnego?",
+      answer:
+        "W stabilnym lub suchym środowisku front może dać głównie warstwy, opad i zmianę wiatru. Silna konwekcja wymaga dodatkowo chwiejności oraz wilgoci.",
+    },
+    {
+      prompt: "Jakich danych potrzebujesz, aby mówić o okluzji, a nie tylko o złożonym zachmurzeniu?",
+      answer:
+        "Potrzebny jest szerszy obraz synoptyczny: układ frontów i niżu, wiatr, ciśnienie, kolejność warstw oraz przebieg opadu, nie pojedynczy kadr.",
+    },
+    {
+      prompt: "W jaki sposób pogoda po przejściu układu sprawdza wcześniejszą hipotezę?",
+      answer:
+        "Napływ chłodniejszej masy, zmiana wiatru, przejaśnienia i pola chmur kłębiastych powinny być spójne z zakładanym przejściem strefy frontowej.",
+    },
+  ],
+  wiatr: [
+    {
+      prompt: "Element chmury płynie do północnego wschodu. Z którego kierunku wieje przybliżony wiatr?",
+      answer:
+        "Z południowego zachodu. Kierunek meteorologiczny mówi, skąd wiatr napływa, dlatego obserwowany wektor ruchu trzeba odwrócić o 180 stopni.",
+    },
+    {
+      prompt: "Dlaczego rosnąca krawędź Cumulus jest słabszym znacznikiem wiatru niż mały fragment warstwy?",
+      answer:
+        "Jej położenie zmienia jednocześnie adwekcja i rozwój chmury. Trwały fragment warstwy łatwiej śledzić względem nieruchomego punktu odniesienia.",
+    },
+    {
+      prompt: "Co oznaczają trzy warstwy chmur przemieszczające się w różnych kierunkach?",
+      answer:
+        "To jakościowy sygnał pionowego uskoku wiatru. Każdy kierunek należy przypisać do własnego poziomu, zamiast uśredniać je do jednego przepływu.",
+    },
+    {
+      prompt: "Dlaczego nieruchomy Altocumulus lenticularis może świadczyć o silnym wietrze?",
+      answer:
+        "Kształt jest zakotwiczony w fali, ale powietrze stale przez niego przepływa: kondensuje po stronie wznoszącej i paruje po zawietrznej.",
+    },
+    {
+      prompt: "Dlaczego nachylenia virga nie można bezpośrednio przeliczyć na kierunek i prędkość wiatru?",
+      answer:
+        "Smuga łączy poziome znoszenie z opadaniem hydrometeorów oraz parowaniem. Bez znajomości tych składowych nie daje jednoznacznego profilu przepływu.",
+    },
+    {
+      prompt: "Dlaczego ruch całej burzy może różnić się od ruchu jej widocznych części?",
+      answer:
+        "Układ jest przenoszony przez przepływ, lecz jednocześnie nowe komórki powstają po jednej stronie, a stare zanikają po drugiej. To dodaje propagację do adwekcji.",
+    },
+  ],
+  lotnictwo: [
+    {
+      prompt: "Jakie trzy rzeczy sprawdzasz przed rozwijaniem skrótów w depeszy?",
+      answer:
+        "Najpierw określ, czy to obserwacja METAR czy prognoza TAF, którego lotniska dotyczy produkt oraz jaki moment UTC opisuje lub obejmuje.",
+    },
+    {
+      prompt: "Co dokładnie oznacza grupa SCT020?",
+      answer:
+        "Rozproszone zachmurzenie zajmuje 3–4 oktanty, a jego podstawa znajduje się około 2000 stóp nad poziomem lotniska, czyli AGL.",
+    },
+    {
+      prompt: "W depeszy SCT015 BKN035 OVC080 jaka jest najniższa podstawa, a jaki pułap?",
+      answer:
+        "Najniższa raportowana podstawa to 1500 ft AGL, natomiast pułap tworzy pierwsze BKN, czyli 3500 ft AGL.",
+    },
+    {
+      prompt: "Co oznacza VV002 i dlaczego ta grupa tworzy pułap?",
+      answer:
+        "Niebo jest zasłonięte, a widzialność pionowa wynosi około 200 ft. VV zastępuje możliwą do określenia podstawę i wchodzi do technicznej definicji pułapu.",
+    },
+    {
+      prompt: "Dlaczego grup TAF nie wolno czytać jak niezależnej listy możliwości?",
+      answer:
+        "Każda grupa działa na określonym odcinku osi czasu i może zmieniać warunki bazowe albo opisywać przejściowe wahanie. Najpierw trzeba ustalić aktywny okres.",
+    },
+    {
+      prompt: "Jak przybliżyć wysokość MSL podstawy podanej w METAR i czego ten rachunek nie dowodzi?",
+      answer:
+        "Dodaj elewację lotniska do wartości AGL. Wynik dotyczy punktu lotniska i nie dowodzi wysokości nad sąsiednim terenem ani ciągłości warstwy.",
+    },
+    {
+      prompt: "Jakie dwa pytania powinny zakończyć odczyt każdej depeszy lotniczej?",
+      answer:
+        "Zapytaj, co produkt mówi wprost oraz jakich danych nadal brakuje. To chroni przed traktowaniem raportu punktowego lub TAF jako pełnego obrazu trasy.",
+    },
+  ],
+  warstwy: [
+    {
+      prompt: "Punkt leży na 1500 m MSL nad terenem 1300 m MSL. Jaka jest jego wysokość AGL?",
+      answer:
+        "Około 200 m AGL. Wysokość nad gruntem otrzymujesz przez odjęcie lokalnej elewacji terenu od wysokości odniesionej do poziomu morza.",
+    },
+    {
+      prompt: "Dlaczego poziom 850 hPa nie znajduje się wszędzie około 1500 metrów MSL?",
+      answer:
+        "Wysokość powierzchni ciśnienia zależy od temperatury i rozkładu masy całej kolumny. Powierzchnia faluje przestrzennie oraz zmienia się w czasie.",
+    },
+    {
+      prompt: "Co może być nie tak z odczytem poziomu 850 hPa nad wysokim szczytem?",
+      answer:
+        "Poziom może przecinać modelowy teren albo zostać ekstrapolowany. Dodatkowo wygładzona wysokość komórki modelu może znacznie różnić się od rzeczywistego szczytu.",
+    },
+    {
+      prompt: "Dlaczego mapa podstawy chmur i mapa wierzchołków mogą pokazywać pozornie sprzeczne liczby?",
+      answer:
+        "Mogą używać innych definicji, progów zachmurzenia, warstw, czasu i interpolacji. Najpierw trzeba sprawdzić opis obu produktów.",
+    },
+    {
+      prompt: "Dlaczego temperatura na 700 hPa nie jest temperaturą na jednej stałej wysokości nad ziemią?",
+      answer:
+        "Powierzchnia 700 hPa ma zmienną wysokość MSL, a odległość od gruntu dodatkowo zależy od lokalnego terenu i struktury dolnej atmosfery.",
+    },
+    {
+      prompt: "Jaka kolejność czynności chroni przed błędnym odczytem warstwy w aplikacji pogodowej?",
+      answer:
+        "Ustal miejsce i czas, pole, poziom, jednostkę i układ odniesienia; sprawdź teren oraz wysokość poziomu, porównaj sąsiednie warstwy i skonfrontuj model z obserwacją.",
+    },
+  ],
+  zagrozenia: [
+    {
+      prompt: "Dlaczego sama nazwa chmury nie określa poziomu zagrożenia?",
+      answer:
+        "Nie podaje bezpośrednio fazy i zawartości wody, temperatury, prądów pionowych ani czasu ekspozycji. Te warunki trzeba połączyć z trasą i dodatkowymi danymi.",
+    },
+    {
+      prompt: "Jakie dwa podstawowe warunki muszą współistnieć, aby możliwe było oblodzenie strukturalne?",
+      answer:
+        "Potrzebne są przechłodzone krople ciekłe oraz ujemna temperatura powierzchni, na którą uderzają. Kryształki lodu same w sobie nie tworzą identycznego mechanizmu akrecji.",
+    },
+    {
+      prompt: "Który rodzaj turbulencji może wystąpić bez widocznej chmury i z czym jest związany?",
+      answer:
+        "Turbulencja w czystym powietrzu może wystąpić przy silnym uskoku i deformacji przepływu, często bez chmury wyznaczającej jej położenie.",
+    },
+    {
+      prompt: "Dlaczego duże CAPE nie gwarantuje rozwoju burzy?",
+      answer:
+        "Potencjał wyporności musi zostać uruchomiony. Potrzebne są wilgoć, mechanizm unoszenia i możliwość pokonania warstwy hamującej lub inwersji.",
+    },
+    {
+      prompt: "Dlaczego nie należy czekać na klasyczne kowadło, aby potraktować konwekcję poważnie?",
+      answer:
+        "Cumulonimbus calvus może już zawierać silne prądy, wodę i lód, wyładowania oraz turbulencję. Aktywna część układu może być też zasłonięta opadem.",
+    },
+    {
+      prompt: "Co mówi wał arcus, a czego nie pozwala dokładnie wyznaczyć?",
+      answer:
+        "Wskazuje krawędź odpływu i wymuszone unoszenie, ale nie mierzy pełnej intensywności uskoku ani położenia całego niewidocznego przepływu zstępującego.",
+    },
+    {
+      prompt: "Jakie trzy kolumny powinna mieć matryca analizy zagrożenia?",
+      answer:
+        "Zapisz: co już wiem, czego nadal nie wiem oraz z jakiego źródła uzyskam brakującą informację. To zapobiega dominacji jednego efektownego parametru.",
+    },
+  ],
+  ekspert: [
+    {
+      prompt: "Dlaczego krótka nazwa może być bardziej ekspercka niż długa kombinacja łacińskich członów?",
+      answer:
+        "Dodatkowe człony stosuje się tylko wtedy, gdy obserwacja je uzasadnia i tabela WMO dopuszcza kombinację. Nadmiar niepotwierdzonych określeń zmniejsza precyzję.",
+    },
+    {
+      prompt: "Co rozstrzyga przejście od Cumulus congestus do Cumulonimbus calvus?",
+      answer:
+        "Nie sama wysokość wieży, lecz utrata ostrych kalafiorowych konturów i wygładzanie górnej części związane z postępującym zlodzeniem.",
+    },
+    {
+      prompt: "Czy odmiana może zmienić rodzaj chmury? Wyjaśnij na przykładzie.",
+      answer:
+        "Nie. Undulatus może opisać falowy układ w kilku dopuszczonych rodzajach, ale rodzaj nadal wynika z podstawowej budowy chmury.",
+    },
+    {
+      prompt: "Czym różni się cecha dodatkowa virga od chmury towarzyszącej pannus?",
+      answer:
+        "Virga opisuje opad z chmury, który nie dociera do powierzchni. Pannus jest odrębną, postrzępioną chmurą związaną z głównym systemem.",
+    },
+    {
+      prompt: "Dlaczego nie można dopisać genitus lub mutatus na podstawie pojedynczego zdjęcia?",
+      answer:
+        "Oba człony opisują historię przemiany. Trzeba obserwować chmurę macierzystą i wiedzieć, czy nadal istnieje, czy została w znacznym stopniu przekształcona.",
+    },
+    {
+      prompt: "Jak klasyfikacja traktuje chmurę powstałą z działalności człowieka?",
+      answer:
+        "Nadal klasyfikuje jej rodzaj i budowę, a informację o pochodzeniu dodaje odpowiednim członem, na przykład homogenitus dla chmury antropogenicznej.",
+    },
+    {
+      prompt: "Jak dwie różne nazwy tej samej sytuacji mogą być jednocześnie obronione?",
+      answer:
+        "Obserwatorzy mogą klasyfikować inną część układu, skalę lub moment przemiany. Trzeba najpierw uzgodnić obiekt, czas i dominujące kryterium.",
+    },
+  ],
+};
+
+for (const [lessonId, checkpoints] of Object.entries(chapterCheckpoints)) {
+  const chapters = lessons[lessonId].chapters;
+  if (checkpoints.length !== chapters.length) {
+    throw new Error(`${lessonId}: liczba pytań rozdziałowych nie pasuje do liczby rozdziałów`);
+  }
+  chapters.forEach((chapter, index) => {
+    chapter.checkpoint = checkpoints[index];
+  });
+}
 
 export function lessonMinutes(lesson) {
   return lesson.timePlan.reduce((sum, item) => sum + item.minutes, 0);

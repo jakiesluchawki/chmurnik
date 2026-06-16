@@ -52,6 +52,7 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.equal(manifest.start_url, "/cloud-recognition/");
   assert.equal(manifest.scope, "/cloud-recognition/");
   assert.match(worker, /const BASE = "\/cloud-recognition\/"/);
+  assert.match(worker, /cloud-recognition-v5/);
 });
 
 test("GitHub Pages deployment runs tests before publishing", async () => {
@@ -99,7 +100,10 @@ test("lessons expose honest time plans, adaptive practice and keyboard-safe dial
   assert.match(app, /navigate\(`learn\/\$\{id\}`\)/);
   assert.match(app, /learningModules\.find\(\(module\) => module\.id === routeDetail\)/);
   assert.match(app, /Skąd bierze się/);
-  assert.match(app, /Czas obejmuje czytanie, analizę przykładów, zadanie i sprawdzenie/);
+  assert.match(app, /Zatrzymaj się na 20 sekund/);
+  assert.match(app, /lesson-mobile-progress/);
+  assert.match(app, /saveLessonPosition/);
+  assert.match(app, /Czas obejmuje czytanie, krótkie przypomnienia, analizę przykładów/);
   assert.match(app, /Pamięć rozpoznawania/);
   assert.match(app, /Dlaczego nie/);
   assert.match(app, /function useDialogFocus/);

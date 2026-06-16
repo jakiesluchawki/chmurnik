@@ -3,95 +3,98 @@
 ## Comparison Target
 
 - Source visual truth: `design/reference/atlas-swiatla-mobile.png`
-- Supporting production references:
-  `design/qa/final-atlas-mobile.png` and `design/qa/final-home-desktop.png`
-- Implementation target:
-  `http://127.0.0.1:5174/cloud-recognition/#/atlas/compare`
-- Implementation screenshot: unavailable
-- Intended viewports: 390 x 844 CSS px and 1440 x 900 CSS px
-- State: comparison laboratory, Cirrocumulus versus Altocumulus
-
-## Full-View Comparison Evidence
-
-Blocked. The Codex in-app browser has no available browser surface in this
-session, so a current implementation screenshot cannot be captured and placed
-beside the visual source.
-
-## Focused Region Comparison Evidence
-
-Blocked for the same reason. The critical regions are the preset rail, cloud
-selector, selected-cloud header strip, and one comparison dimension at 390 px.
-
-## Findings
-
-- **P1 — Current comparison screen cannot receive screenshot-based visual QA**
-  - Location: `#/atlas/compare`, mobile and desktop.
-  - Evidence: source visual and prior atlas screenshots are available, but no
-    current rendered screenshot can be captured from the required browser.
-  - Impact: typography, horizontal-scroll affordance, crop quality, spacing,
-    and real 390 px overflow remain unproven.
-  - Fix: capture the comparison route in the Codex browser at both intended
-    viewports, inspect the saved files, create normalized comparison images,
-    and patch every P0/P1/P2 difference.
-
-## Static Review
-
-- Fonts and typography reuse the established Newsreader and Manrope system.
-- Spacing and layout reuse the atlas dividers, paper surfaces, blue method
-  panels, coral actions, and square editorial cards.
-- Colors use existing project tokens only.
-- Image quality uses the same licensed genus photographs as the atlas; no
-  placeholder or code-drawn cloud imagery was introduced.
-- Copy remains Polish, evidence-led, and explicit about uncertainty.
-- Native buttons, global focus-visible treatment, `aria-pressed`, disabled
-  selection limits, and horizontal scroll snapping are implemented.
-
-## Patches Made Since Previous QA
-
-1. Added responsive two-to-three-column comparison structures.
-2. Added mobile horizontal rails with scroll snapping instead of compressing
-   three expert columns below legibility.
-3. Added direct comparison routes from monographs, observer results, and hard
-   cases.
-4. Removed the final dead responsive selector from the former binary key.
-
-final result: blocked
-
-## Learning Curriculum Target
-
-- User evidence: live desktop screenshots of `#/learn` and the former
-  `Chmury w METAR i TAF` module supplied on 16 June 2026.
-- Implementation target:
+- Implementation route:
   `http://127.0.0.1:5174/cloud-recognition/#/learn/lotnictwo`
-- Intended viewports: 390 x 844 CSS px and 1440 x 900 CSS px.
-- Current implementation screenshot: unavailable.
+- Mobile viewport: 390 x 844 CSS px at 2x device scale
+- Desktop viewport: 1440 x 900 CSS px
+- State: full METAR/TAF lesson, chapter navigation, active recall,
+  final check, and global recognition test
 
-### Evidence-Led Finding
+## Evidence
 
-- **P0 — Lesson duration was materially misleading**
-  - The former 26-minute aviation lesson displayed only three short definition
-    rows and one generic 90-second observation exercise.
-  - The visible content could be read in seconds and did not teach TAF time
-    groups, vertical visibility, AGL/MSL conversion, worked decoding, or
-    product limitations.
-  - This was a product-content failure, not a cosmetic discrepancy.
+- Full-view comparison:
+  `design/qa/current/learning-mobile-comparison.png`
+- Mobile lesson opening:
+  `design/qa/current/lesson-mobile-top.png`
+- Focused mobile chapter:
+  `design/qa/current/lesson-mobile-chapter.png`
+- Focused active-recall answer:
+  `design/qa/current/lesson-mobile-recall.png`
+- Longest expert chapter title:
+  `design/qa/current/lesson-mobile-ekspert.png`
+- Mobile final check:
+  `design/qa/current/lesson-mobile-final-check.png`
+- Mobile global test:
+  `design/qa/current/lesson-mobile-global-test.png`
+- Desktop opening:
+  `design/qa/current/lesson-desktop-top.png`
+- Desktop active recall:
+  `design/qa/current/lesson-desktop-recall.png`
 
-### Patches
+The source visual and lesson are different product states, so the full-view
+comparison evaluates design language rather than identical composition.
+All nine lesson routes were also swept at 390 px. Each reported a 390 px
+document width, one visible chapter, 16 px body copy, six mobile navigation
+actions, and no prematurely visible recap, final check, or practice.
 
-1. Replaced all nine summary modules with sourced, multi-chapter lessons.
-2. Added explicit time allocation for reading and notes, examples, practice,
-   and assessment.
-3. Added a words-per-minute quality gate so reading time cannot be inflated.
-4. Added a compact chapter index and stable direct lesson routes.
-5. Added module-specific practices, completion conditions, and four-choice
-   checks.
-6. Added adaptive genus mastery and pair-specific recognition feedback.
-7. Added focus trapping, Escape handling, and focus restoration for dialogs.
+## Findings And Patches
 
-### Current Limit
+1. **P1 fixed — The mobile lesson was an eight-thousand-pixel document**
+   - Before: all seven chapters appeared in one continuous page.
+   - Patch: mobile now presents one chapter at a time, with previous/next
+     navigation, progress, and a locally remembered resume position.
+   - Evidence: one visible chapter and an active-stage height of about
+     3205 CSS px instead of 8024 CSS px.
 
-The Codex in-app browser still has no available browser surface. A direct
-Brave headless capture also failed to produce an image, so current 390 px and
-desktop screenshots cannot honestly be claimed as verified. Static responsive
-review, build output, content tests, and keyboard implementation are available;
-rendered visual QA remains pending.
+2. **P1 fixed — The chapter index consumed almost a full mobile viewport**
+   - Before: seven full-width rows delayed the lesson content.
+   - Patch: the index is a horizontal, snapping rail with the active chapter
+     visible after selection and after a resumed session.
+
+3. **P2 fixed — Mobile lesson prose fell below the 16 px product rule**
+   - Before: chapter paragraphs rendered at about 14 px.
+   - Patch: lesson body copy is 16 px at mobile and desktop widths.
+
+4. **P2 fixed — The floating recognition action obscured lesson content**
+   - Before: a fixed coral button covered paragraphs and final-check content.
+   - Patch: mobile exposes `Test` as the sixth persistent bottom-navigation
+     action. Desktop retains the labeled floating action.
+
+5. **P2 fixed — Reading was still too passive**
+   - Patch: every one of the 52 chapters now ends with a concealed
+     active-recall answer. The lesson audit includes those prompts and answers
+     in its duration calculation.
+
+## Required Fidelity Surfaces
+
+- **Typography:** Newsreader and Manrope remain consistent with Atlas Światła.
+  Display hierarchy is editorial; chapter and body copy wrap without clipping.
+  Lesson prose is 16 px.
+- **Spacing and layout:** warm-paper sections use dividers and whitespace
+  instead of generic card stacks. Mobile rails, sticky progress, chapter
+  navigation, recap, and checks have stable spacing at 390 px.
+- **Colors and tokens:** ink, paper, coral, mist, moss, and white use the
+  existing project tokens. Active, correct, wrong, and source states remain
+  distinguishable.
+- **Image quality:** the lesson itself does not need an identification image.
+  The global test uses the existing licensed atlas photographs without
+  placeholders or code-drawn substitutes.
+- **Copy and content:** all copy is Polish, source-backed, and explicit about
+  operational limits. Time labels now name reading plus recall, examples,
+  practice, and assessment.
+- **Interactions and accessibility:** chapter controls have 44 px targets,
+  active state and progress are visible, resume state survives reload, recall
+  answers expose `aria-expanded`, the global test opens from mobile
+  navigation, and dialogs retain focus trapping and Escape handling.
+
+## Residual Risk
+
+- The six-item bottom navigation is intentionally compact at 390 px. It passes
+  the target viewport; widths below the product target were not used as a
+  release criterion.
+- The comparison evaluates shared visual language because the source mock is a
+  home screen, not a lesson screen.
+
+## Final Result
+
+final result: passed

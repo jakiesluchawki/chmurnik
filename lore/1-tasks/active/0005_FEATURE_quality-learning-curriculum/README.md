@@ -55,7 +55,7 @@ and made the course materially shallower than the encyclopedia.
 - [x] Wrong recognition answers explain the confused pair and link to compare.
 - [x] Dialogs trap focus, close with Escape, and restore prior focus.
 - [x] A versioned `build-quality-lesson` skill enforces the content contract.
-- [ ] The expanded lessons read comfortably at 390 px and on desktop.
+- [x] The expanded lessons read comfortably at 390 px and on desktop.
 - [x] Automated tests, skill audit, link audit, build, and Pages deployment pass.
 
 ## Design Decisions
@@ -79,6 +79,14 @@ and made the course materially shallower than the encyclopedia.
    the project task and lesson.
 6. **Project-local skill:** The skill lives in `.codex/skills/` so it is
    versioned and available from another computer with the repository.
+7. **Chapter focus on phones:** Rendering all chapters produced an 8024 px
+   mobile document. Mobile now shows one chapter at a time while desktop keeps
+   the complete study-desk view.
+8. **Recall is part of duration:** Every chapter ends with active recall, and
+   prompts plus answers are included in the reading-time audit.
+9. **Test belongs in mobile navigation:** The floating recognition action
+   obscured lesson content. It remains floating on desktop but is a persistent
+   sixth bottom-navigation action on phones.
 
 ## Implementation Notes
 
@@ -87,13 +95,18 @@ and made the course materially shallower than the encyclopedia.
 - Added adaptive genus mastery, weakest-genus practice, and pair feedback.
 - Added reusable dialog focus management.
 - Added a skill contract and deterministic lesson audit script.
+- Added 52 active-recall prompts, chapter progress, previous/next navigation,
+  and locally remembered resume positions.
+- Captured and inspected current 390 px and 1440 px renders. The latest
+  `design-qa.md` result is `passed`.
 - Published commit `4170fa7` through GitHub Pages workflow `27601306176`
   and verified the live bundle contains the expanded curriculum.
 
 ## Issues Encountered
 
-- The Product Design browser surface remained unavailable, so current rendered
-  screenshots must be captured through an available browser before release.
+- The Product Design browser surface remained unavailable. Current screenshots
+  were captured from the user's installed Brave through its DevTools protocol,
+  without Playwright or a different browser.
 - The skill validator required PyYAML; validation ran with an isolated
   temporary dependency rather than changing project dependencies.
 
@@ -103,6 +116,8 @@ and made the course materially shallower than the encyclopedia.
   timing, practices, assessments, and adaptive mastery.
 - Extended foundation tests to guard the full lesson UI and keyboard-safe
   dialog behavior.
+- Extended lesson tests so active-recall text contributes to duration and every
+  chapter must provide a substantive prompt and answer.
 
 ## Future Work
 

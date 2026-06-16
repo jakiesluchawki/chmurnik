@@ -38,6 +38,8 @@ The learner should become able to:
 8. Keep all core learning free and independent of paid weather APIs.
 9. Treat every advertised lesson duration as a contract backed by real
    reading, examples, practice, and assessment.
+10. Protect attention on phones with one chapter at a time, visible progress,
+    active recall, and a remembered return point without reducing expert depth.
 
 ## Version 1 Boundaries
 

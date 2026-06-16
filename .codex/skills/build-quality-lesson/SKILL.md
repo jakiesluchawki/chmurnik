@@ -23,6 +23,7 @@ an outline, not a finished lesson.
    - one narrow question,
    - at least two explanatory paragraphs,
    - a source,
+   - one active-recall prompt with a concealed explanatory answer,
    - and, where useful, a worked example, decision table, calculation, or
      misconception.
 5. Add one structured practice with an observable completion condition.
@@ -32,6 +33,8 @@ an outline, not a finished lesson.
 8. Run the project tests and the bundled audit script when the project uses
    the Cloud Recognition lesson schema.
 9. Inspect the rendered mobile reading rhythm when a browser is available.
+10. For long mobile lessons, present one chapter at a time with visible
+    progress, previous/next navigation, and a remembered resume position.
 
 ## Quality Gate
 

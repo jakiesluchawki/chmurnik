@@ -927,6 +927,10 @@ p {
   text-align: right;
 }
 
+.lesson-mobile-progress {
+  display: none;
+}
+
 .lesson-contents {
   max-width: 980px;
   margin: 0 auto 40px;
@@ -960,6 +964,10 @@ p {
 
 .lesson-contents button:hover {
   background: var(--white);
+}
+
+.lesson-contents button.active {
+  background: var(--mist);
 }
 
 .lesson-contents button span {
@@ -1017,7 +1025,7 @@ p {
 }
 
 .lesson-chapter-body > p {
-  font-size: 0.94rem;
+  font-size: 1rem;
 }
 
 .lesson-chapter-body > p:first-child::first-letter {
@@ -1098,6 +1106,47 @@ p {
 
 .lesson-chapter-body > .source-button {
   margin-top: 8px;
+}
+
+.chapter-checkpoint {
+  margin-top: 28px;
+  border-top: 1px solid var(--ink);
+  padding-top: 20px;
+}
+
+.chapter-checkpoint h3 {
+  max-width: 600px;
+  margin: 8px 0 10px;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 560;
+  line-height: 1.25;
+}
+
+.chapter-checkpoint .text-button {
+  min-height: 40px;
+  color: var(--coral);
+}
+
+.chapter-checkpoint .text-button svg {
+  transition: transform 180ms ease;
+}
+
+.chapter-checkpoint .text-button svg.is-open {
+  transform: rotate(180deg);
+}
+
+.chapter-checkpoint > p {
+  margin: 10px 0 0;
+  border-left: 3px solid var(--moss);
+  background: var(--white);
+  padding: 14px 16px;
+  color: var(--ink);
+  font-size: 0.82rem;
+}
+
+.lesson-chapter-nav {
+  display: none;
 }
 
 .lesson-recap {
@@ -4665,7 +4714,7 @@ p {
     border-top: 1px solid rgba(8, 47, 79, 0.12);
     background: rgba(255, 253, 248, 0.97);
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     box-shadow: 0 -8px 24px rgba(8, 47, 79, 0.08);
   }
 
@@ -4896,11 +4945,91 @@ p {
     text-align: left;
   }
 
+  .lesson-mobile-progress {
+    position: sticky;
+    z-index: 18;
+    top: 0;
+    margin: 0 -20px 26px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(247, 242, 232, 0.97);
+    padding: 11px 20px 9px;
+    display: block;
+    backdrop-filter: blur(12px);
+  }
+
+  .lesson-mobile-progress > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .lesson-mobile-progress > div span {
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.56rem;
+    font-weight: 850;
+  }
+
+  .lesson-mobile-progress > div strong {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--ink);
+    display: -webkit-box;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .lesson-mobile-progress > span {
+    height: 2px;
+    margin-top: 8px;
+    background: rgba(8, 47, 79, 0.14);
+    display: block;
+  }
+
+  .lesson-mobile-progress > span i {
+    height: 100%;
+    background: var(--coral);
+    display: block;
+    transition: width 220ms ease;
+  }
+
   .lesson-contents > div {
-    grid-template-columns: 1fr;
+    margin-right: -20px;
+    border-left: 0;
+    padding-right: 20px;
+    display: flex;
+    overflow-x: auto;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .lesson-contents > div::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lesson-contents button {
+    min-width: min(78vw, 280px);
+    min-height: 70px;
+    border-left: 1px solid var(--line);
+    scroll-snap-align: start;
+  }
+
+  .lesson-contents button:last-child {
+    border-right: 1px solid var(--line);
+  }
+
+  .lesson-chapter:not(.is-active) {
+    display: none;
   }
 
   .lesson-chapter {
+    scroll-margin-top: 76px;
     gap: 22px;
     padding-block: 28px 34px;
   }
@@ -4915,7 +5044,64 @@ p {
   }
 
   .lesson-chapter-body > p {
-    font-size: 0.88rem;
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .chapter-checkpoint {
+    margin-top: 24px;
+  }
+
+  .chapter-checkpoint h3 {
+    font-size: 1.2rem;
+  }
+
+  .chapter-checkpoint > p {
+    font-size: 0.9rem;
+  }
+
+  .lesson-chapter-nav {
+    margin-top: 22px;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lesson-chapter-nav button {
+    min-height: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+
+  .lesson-chapter-nav button:last-child {
+    justify-self: end;
+  }
+
+  .lesson-chapter-nav button:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .lesson-chapter-nav > span {
+    color: var(--moss);
+    font-size: 0.62rem;
+  }
+
+  .lesson-page:not(.is-final-chapter) .lesson-recap,
+  .lesson-page:not(.is-final-chapter) .lesson-check,
+  .lesson-page:not(.is-final-chapter) .lesson-practice {
+    display: none;
   }
 
   .lesson-recap ol {
@@ -5246,13 +5432,7 @@ p {
   }
 
   .quick-test-button {
-    right: 12px;
-    bottom: calc(80px + env(safe-area-inset-bottom));
-    width: 50px;
-    height: 50px;
-    min-height: 50px;
-    padding: 0;
-    justify-content: center;
+    display: none;
   }
 
   .quick-test-button span {

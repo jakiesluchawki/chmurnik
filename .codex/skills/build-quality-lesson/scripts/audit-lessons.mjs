@@ -40,12 +40,20 @@ for (const module of learningModules) {
   if (lesson.recap.length < 4) fail(`${module.id}: recap is too short`);
 
   const proseLength = lesson.chapters
-    .flatMap((chapter) => chapter.paragraphs)
+    .flatMap((chapter) => [
+      ...chapter.paragraphs,
+      chapter.checkpoint?.prompt || "",
+      chapter.checkpoint?.answer || "",
+    ])
     .join(" ")
     .length;
   if (proseLength < 1800) fail(`${module.id}: explanatory prose is too shallow`);
   const wordCount = lesson.chapters
-    .flatMap((chapter) => chapter.paragraphs)
+    .flatMap((chapter) => [
+      ...chapter.paragraphs,
+      chapter.checkpoint?.prompt || "",
+      chapter.checkpoint?.answer || "",
+    ])
     .join(" ")
     .trim()
     .split(/\s+/)
@@ -61,6 +69,12 @@ for (const module of learningModules) {
     }
     if (!chapter.sourceIds?.length) {
       fail(`${module.id}.${chapter.number}: missing source IDs`);
+    }
+    if (!chapter.checkpoint?.prompt || chapter.checkpoint.prompt.length < 30) {
+      fail(`${module.id}.${chapter.number}: missing active-recall prompt`);
+    }
+    if (!chapter.checkpoint?.answer || chapter.checkpoint.answer.length < 70) {
+      fail(`${module.id}.${chapter.number}: active-recall answer is too shallow`);
     }
   }
 

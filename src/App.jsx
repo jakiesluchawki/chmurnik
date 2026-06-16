@@ -63,11 +63,13 @@ import { calculatePlacement } from "./lib/placement.js";
 import {
   clearObservationDraft,
   loadJournal,
+  loadLessonPosition,
   loadObservationDraft,
   loadProfile,
   loadProgress,
   loadRecognitionStats,
   saveJournal,
+  saveLessonPosition,
   saveObservationDraft,
   saveProfile,
   saveProgress,
@@ -286,7 +288,7 @@ function AppHeader({ route, navigate }) {
   );
 }
 
-function BottomNav({ route, navigate }) {
+function BottomNav({ route, navigate, onTest, testOpen }) {
   return (
     <nav className="bottom-nav" aria-label="Nawigacja mobilna">
       {navItems.map((item) => (
@@ -300,6 +302,14 @@ function BottomNav({ route, navigate }) {
           <span>{item.label}</span>
         </button>
       ))}
+      <button
+        className={testOpen ? "active" : ""}
+        onClick={onTest}
+        aria-pressed={testOpen}
+      >
+        <Eye size={22} weight={testOpen ? "fill" : "regular"} />
+        <span>Test</span>
+      </button>
     </nav>
   );
 }
@@ -539,6 +549,27 @@ function LessonCheck({ check }) {
   );
 }
 
+function ChapterCheckpoint({ checkpoint }) {
+  const [revealed, setRevealed] = useState(false);
+
+  return (
+    <aside className="chapter-checkpoint">
+      <span className="eyebrow">Zatrzymaj się na 20 sekund</span>
+      <h3>{checkpoint.prompt}</h3>
+      <button
+        type="button"
+        className="text-button"
+        onClick={() => setRevealed((current) => !current)}
+        aria-expanded={revealed}
+      >
+        {revealed ? "Ukryj odpowiedź" : "Sprawdź odpowiedź"}
+        <CaretDown size={17} className={revealed ? "is-open" : ""} />
+      </button>
+      {revealed && <p aria-live="polite">{checkpoint.answer}</p>}
+    </aside>
+  );
+}
+
 function LearnPage({
   completed,
   onToggleCompleted,
@@ -551,6 +582,7 @@ function LearnPage({
   onOpenRecognition,
 }) {
   const [selected, setSelected] = useState(initialModule || null);
+  const [activeChapter, setActiveChapter] = useState(0);
   const [quizOpen, setQuizOpen] = useState(false);
   const mastery = recognitionMastery(clouds.map((cloud) => cloud.id), recognitionStats);
   const masteryAttempts = mastery.reduce((sum, item) => sum + item.attempts, 0);
@@ -565,14 +597,40 @@ function LearnPage({
     }
   }, [initialModule, onConsumeInitial]);
 
+  useEffect(() => {
+    if (!selected) return;
+    const chapterCount = lessons[selected]?.chapters.length || 1;
+    setActiveChapter(Math.min(loadLessonPosition(selected), chapterCount - 1));
+  }, [selected]);
+
+  useEffect(() => {
+    if (!selected || !window.matchMedia("(max-width: 640px)").matches) return;
+    const frame = window.requestAnimationFrame(() => {
+      const rail = document.querySelector(`[data-lesson-contents="${selected}"]`);
+      const active = rail?.querySelector(`[data-chapter-index="${activeChapter}"]`);
+      if (rail && active) {
+        rail.scrollTo({ left: Math.max(0, active.offsetLeft - 20), behavior: "smooth" });
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeChapter, selected]);
+
   if (selected) {
     const module = learningModules.find((item) => item.id === selected);
     const content = lessons[selected];
     const practice = lessonPractices[selected];
     const check = moduleChecks[selected];
     const isDone = completed.includes(selected);
+    const chooseChapter = (index) => {
+      const nextIndex = Math.max(0, Math.min(index, content.chapters.length - 1));
+      setActiveChapter(nextIndex);
+      saveLessonPosition(selected, nextIndex);
+      window.setTimeout(() => document
+        .getElementById(`chapter-${selected}-${content.chapters[nextIndex].number}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+    };
     return (
-      <main className="page lesson-page">
+      <main className={`page lesson-page ${activeChapter === content.chapters.length - 1 ? "is-final-chapter" : ""}`}>
         <button
           className="back-button"
           onClick={() => {
@@ -613,17 +671,27 @@ function LearnPage({
         </section>
         <div className="lesson-source-row">
           <SourceButton ids={module.sourceIds} onOpen={onSources} />
-          <p>Czas obejmuje czytanie, analizę przykładów, zadanie i sprawdzenie — nie sam tekst.</p>
+          <p>Czas obejmuje czytanie, krótkie przypomnienia, analizę przykładów, zadanie i sprawdzenie — nie sam tekst.</p>
+        </div>
+        <div className="lesson-mobile-progress" aria-label={`Rozdział ${activeChapter + 1} z ${content.chapters.length}`}>
+          <div>
+            <span>Rozdział {activeChapter + 1} z {content.chapters.length}</span>
+            <strong>{content.chapters[activeChapter].title}</strong>
+          </div>
+          <span aria-hidden="true">
+            <i style={{ width: `${((activeChapter + 1) / content.chapters.length) * 100}%` }} />
+          </span>
         </div>
         <nav className="lesson-contents" aria-label="Spis rozdziałów lekcji">
           <span className="eyebrow">W tej lekcji</span>
-          <div>
-            {content.chapters.map((chapter) => (
+          <div data-lesson-contents={selected}>
+            {content.chapters.map((chapter, index) => (
               <button
                 key={chapter.number}
-                onClick={() => document
-                  .getElementById(`chapter-${selected}-${chapter.number}`)
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                data-chapter-index={index}
+                className={index === activeChapter ? "active" : ""}
+                onClick={() => chooseChapter(index)}
+                aria-current={index === activeChapter ? "step" : undefined}
               >
                 <span>{chapter.number}</span>
                 {chapter.title}
@@ -632,16 +700,16 @@ function LearnPage({
           </div>
         </nav>
         <div className="lesson-chapters">
-          {content.chapters.map((chapter) => (
+          {content.chapters.map((chapter, index) => (
             <article
               id={`chapter-${selected}-${chapter.number}`}
-              className="lesson-chapter"
+              className={`lesson-chapter ${index === activeChapter ? "is-active" : ""}`}
               key={chapter.number}
             >
               <header>
                 <span>{chapter.number}</span>
                 <div>
-                  <small>{chapter.minutes} min lektury i notatki</small>
+                  <small>{chapter.minutes} min lektury i przypomnienia</small>
                   <h2>{chapter.title}</h2>
                 </div>
               </header>
@@ -666,11 +734,39 @@ function LearnPage({
                   </aside>
                 )}
                 <SourceButton ids={chapter.sourceIds} onOpen={onSources} compact />
+                <ChapterCheckpoint
+                  key={`${selected}-${chapter.number}`}
+                  checkpoint={chapter.checkpoint}
+                />
+                <nav className="lesson-chapter-nav" aria-label="Nawigacja między rozdziałami">
+                  <button
+                    type="button"
+                    onClick={() => chooseChapter(index - 1)}
+                    disabled={index === 0}
+                  >
+                    <ArrowLeft size={17} /> Poprzedni
+                  </button>
+                  <span>{index + 1} / {content.chapters.length}</span>
+                  {index < content.chapters.length - 1 ? (
+                    <button type="button" onClick={() => chooseChapter(index + 1)}>
+                      Następny <ArrowRight size={17} />
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => document
+                        .getElementById(`lesson-recap-${selected}`)
+                        ?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                    >
+                      Podsumowanie <ArrowRight size={17} />
+                    </button>
+                  )}
+                </nav>
               </div>
             </article>
           ))}
         </div>
-        <section className="lesson-recap">
+        <section className="lesson-recap" id={`lesson-recap-${selected}`}>
           <span className="eyebrow">Zapamiętaj przed ćwiczeniem</span>
           <h2>Krótka mapa lekcji</h2>
           <ol>
@@ -2449,7 +2545,12 @@ export function App() {
         {validRoute === "sources" && <SourcesPage onSources={setSourceIds} />}
       </div>
       <Footer navigate={navigate} />
-      <BottomNav route={validRoute} navigate={navigate} />
+      <BottomNav
+        route={validRoute}
+        navigate={navigate}
+        onTest={() => openRecognition()}
+        testOpen={recognitionOpen}
+      />
       <button className="quick-test-button" onClick={() => openRecognition()}>
         <Eye size={20} weight="bold" />
         <span>Sprawdź się</span>

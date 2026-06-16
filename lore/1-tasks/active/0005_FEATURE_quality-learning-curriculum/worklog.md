@@ -27,6 +27,16 @@
 - Published commit `4170fa7` to GitHub Pages. Workflow `27601306176`
   completed successfully, and the public bundle exposes the new lesson
   timing, recognition mastery, differential feedback, and cache version 4.
-- Browser-based 390 px and desktop review remains open because the configured
-  in-app Browser surface is unavailable and the local Brave headless attempt
-  did not produce a usable screenshot.
+- Recovered rendered QA by connecting directly to the installed Brave DevTools
+  protocol. Captured current 390 px and 1440 px lesson states without using
+  Playwright or switching browsers.
+- The first mobile render measured 8024 CSS px and exposed an attention problem.
+  Added chapter focus, active recall, visible progress, resume state, and
+  previous/next navigation. The focused first-stage page measures about
+  3205 CSS px while retaining the rest of the curriculum in later chapters.
+- Replaced the overlapping mobile floating test action with a sixth persistent
+  bottom-navigation action. Desktop retains the labeled floating button.
+- Updated the lesson skill and audit so all 52 chapter prompts and answers are
+  part of the quality and duration contract.
+- Current mobile and desktop visual QA passes with evidence under
+  `design/qa/current/`.

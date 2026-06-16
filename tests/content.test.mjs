@@ -180,7 +180,11 @@ test("every advertised lesson has honest timing and substantive teaching materia
     const practice = lessonPractices[module.id];
     const check = moduleChecks[module.id];
     const prose = lesson.chapters
-      .flatMap((chapter) => chapter.paragraphs)
+      .flatMap((chapter) => [
+        ...chapter.paragraphs,
+        chapter.checkpoint.prompt,
+        chapter.checkpoint.answer,
+      ])
       .join(" ");
     const wordCount = prose.trim().split(/\s+/).length;
     const readingMinutes = lesson.timePlan
@@ -208,6 +212,14 @@ test("every advertised lesson has honest timing and substantive teaching materia
     for (const chapter of lesson.chapters) {
       assert.ok(chapter.paragraphs.length >= 2, `${module.id}.${chapter.number} needs depth`);
       assert.ok(chapter.sourceIds.length > 0, `${module.id}.${chapter.number} needs sources`);
+      assert.ok(
+        chapter.checkpoint.prompt.length >= 30,
+        `${module.id}.${chapter.number} needs an active-recall prompt`,
+      );
+      assert.ok(
+        chapter.checkpoint.answer.length >= 70,
+        `${module.id}.${chapter.number} needs an explanatory recall answer`,
+      );
       for (const sourceId of chapter.sourceIds) {
         assert.ok(sources[sourceId], `${module.id}.${chapter.number} references ${sourceId}`);
       }
