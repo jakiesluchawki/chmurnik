@@ -317,6 +317,7 @@ function AppHeader({ route, navigate }) {
             key={item.id}
             className={route === item.id ? "active" : ""}
             onClick={() => navigate(item.id)}
+            aria-current={route === item.id ? "page" : undefined}
           >
             {item.label}
           </button>
@@ -354,6 +355,7 @@ function BottomNav({ route, navigate }) {
           key={item.id}
           className={route === item.id ? "active" : ""}
           onClick={() => navigate(item.id)}
+          aria-current={route === item.id ? "page" : undefined}
         >
           <item.icon size={22} weight={route === item.id ? "fill" : "regular"} />
           <span>{item.label}</span>
@@ -384,7 +386,12 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
   return (
     <>
       <section className="hero">
-        <img src={publicAsset("assets/hero-atlas-swiatla.png")} alt="" className="hero-image" />
+        <img
+          src={publicAsset("assets/hero-atlas-swiatla.png")}
+          alt=""
+          className="hero-image"
+          fetchPriority="high"
+        />
         <div className="hero-shade" />
         <HeightScale />
         <div className="hero-content">
@@ -750,7 +757,12 @@ function AtlasPage({ onSources }) {
             {filtered.map((cloud) => (
               <button className="cloud-card" key={cloud.id} onClick={() => setSelected(cloud.id)}>
                 <span className="cloud-image-wrap">
-                  <img src={publicAsset(cloud.image.src)} alt={`${cloud.name}, ${cloud.polish}`} />
+                  <img
+                    src={publicAsset(cloud.image.src)}
+                    alt={`${cloud.name}, ${cloud.polish}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <span className="cloud-code">{cloud.code}</span>
                   <span className="cloud-level">{cloud.level}</span>
                 </span>

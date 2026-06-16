@@ -40,6 +40,7 @@ test("GitHub Pages deployment runs tests before publishing", async () => {
   assert.match(workflow, /npm test/);
   assert.match(workflow, /npm run build/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
+  assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24/);
 });
 
 test("npm configuration remains portable across local and CI machines", async () => {
