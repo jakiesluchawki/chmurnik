@@ -627,8 +627,17 @@ export const taxonomyTerms = [
       "Bardzo rzadkie, soczewkowate chmury polarnej stratosfery na wysokości około 20–30 km, intensywnie iryzujące przed wschodem lub po zachodzie Słońca.",
     diagnostic:
       "Jasne barwy perłowe utrzymują się przy Słońcu kilka stopni pod horyzontem; zwykłe chmury troposferyczne są wtedy ciemne.",
+    image: {
+      src: "assets/upper-atmosphere/nacreous-clouds-antarctica.jpg",
+      alt: "Iryzujące chmury perłowe nad stacją McMurdo na Antarktydzie",
+      width: 1920,
+      height: 1440,
+      author: "Alan Light",
+      license: "CC BY 2.0",
+      page: "https://commons.wikimedia.org/wiki/File:Nacreous_clouds_Antarctica.jpg",
+    },
     genera: [],
-    sourceIds: ["wmoUpperAtmosphere"],
+    sourceIds: ["wmoUpperAtmosphere", "nacreousPhoto"],
   },
   {
     id: "polar-stratospheric",
@@ -639,9 +648,18 @@ export const taxonomyTerms = [
       "Chmury powstające zimą w bardzo zimnej polarnej stratosferze, obejmujące różne składy cząstek i mające znaczenie dla chemii ozonu.",
     diagnostic:
       "Nie wszystkie polarne chmury stratosferyczne są efektownie perłowe; typ optyczny i skład nie są tym samym podziałem.",
+    image: {
+      src: "assets/upper-atmosphere/polar-stratospheric-cloud-type-i.jpg",
+      alt: "Polarna chmura stratosferyczna typu I ponad Cirrus o wschodzie Słońca",
+      width: 1920,
+      height: 671,
+      author: "François Guerraz",
+      license: "CC BY-SA 3.0",
+      page: "https://commons.wikimedia.org/wiki/File:Polar_Stratospheric_Cloud_type_I_above_Cirrus.jpg",
+    },
     searchTerms: ["PSC", "stratosfera polarna", "ozon"],
     genera: [],
-    sourceIds: ["wmoUpperAtmosphere"],
+    sourceIds: ["wmoUpperAtmosphere", "polarStratosphericPhoto"],
   },
   {
     id: "noctilucent",
@@ -652,9 +670,18 @@ export const taxonomyTerms = [
       "Najwyższe obserwowane chmury, zwykle około 80–85 km w mezosferze, złożone z drobnych kryształków lodu i widoczne podczas zmierzchu.",
     diagnostic:
       "Świecą srebrzyście lub niebieskawo po zachodzie, gdy mezosfera jest jeszcze oświetlona, a dolna atmosfera pozostaje w cieniu.",
+    image: {
+      src: "assets/upper-atmosphere/noctilucent-clouds-laboe.jpg",
+      alt: "Obłoki srebrzyste nad wodą w Laboe po zachodzie Słońca",
+      width: 1920,
+      height: 1280,
+      author: "Matthias Süßen",
+      license: "CC BY-SA 4.0",
+      page: "https://commons.wikimedia.org/wiki/File:Noctilucent-clouds-msu-6817.jpg",
+    },
     searchTerms: ["NLC", "mezosfera", "nocne obłoki"],
     genera: [],
-    sourceIds: ["wmoUpperAtmosphere"],
+    sourceIds: ["wmoUpperAtmosphere", "noctilucentPhoto"],
   },
 ];
 

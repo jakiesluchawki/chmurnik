@@ -59,6 +59,29 @@ test("scientific cloud names stay intact in display text", async () => {
   assert.doesNotMatch(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*overflow-wrap: anywhere/s);
 });
 
+test("the home atlas workshop uses a licensed noctilucent-cloud photograph", async () => {
+  const app = await read("src/App.jsx");
+  const sources = await read("src/data/sources.js");
+
+  assert.match(app, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
+  assert.match(app, /alt="Obłoki srebrzyste nad wodą w Laboe"/);
+  assert.match(sources, /Noctilucent-clouds-msu-6817\.jpg/);
+  assert.match(sources, /Matthias Süßen/);
+  assert.match(sources, /CC BY-SA 4\.0/);
+});
+
+test("upper-atmosphere terms show licensed photographic evidence", async () => {
+  const app = await read("src/App.jsx");
+  const encyclopedia = await read("src/data/encyclopedia.js");
+
+  assert.match(app, /className="term-detail-visual"/);
+  assert.match(app, /Fot\. \{term\.image\.author\} · \{term\.image\.license\}/);
+  assert.match(app, />Plik i licencja</);
+  assert.match(encyclopedia, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
+  assert.match(encyclopedia, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);
+  assert.match(encyclopedia, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
+});
+
 test("responsive navigation and long scientific names stay bounded", async () => {
   const styles = await read("src/styles.css");
   const redesign = await read("src/zgrywa.css");
@@ -96,7 +119,10 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.equal(manifest.scope, "/chmurnik/");
   assert.match(worker, /const BASE = "\/chmurnik\/"/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v3|`\$\{CACHE_PREFIX\}v3`/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v4|`\$\{CACHE_PREFIX\}v4`/);
+  assert.match(worker, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
+  assert.match(worker, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
+  assert.match(worker, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);
   assert.match(worker, /key\.startsWith\(CACHE_PREFIX\)/);
 });
 

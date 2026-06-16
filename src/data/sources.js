@@ -108,6 +108,48 @@ export const sources = {
     checkText: "Upper atmospheric clouds",
     retrieved: "16 czerwca 2026",
   },
+  nacreousPhoto: {
+    id: "nacreousPhoto",
+    organization: "Wikimedia Commons",
+    title: "Nacreous clouds Antarctica.jpg",
+    label: "Fot. Alan Light: chmury perłowe",
+    url: "https://commons.wikimedia.org/wiki/File:Nacreous_clouds_Antarctica.jpg",
+    kind: "Fotografia · CC BY 2.0",
+    trust:
+      "Strona oryginalnego pliku wskazuje autora, miejsce wykonania i licencję Creative Commons wymagającą uznania autorstwa.",
+    scope:
+      "Chmury perłowe nad stacją McMurdo na Antarktydzie, sfotografowane 23 sierpnia 2009 roku. W aplikacji fotografia jest skalowana i kadrowana przez CSS bez zmiany kolorów.",
+    checkText: "Nacreous clouds",
+    retrieved: "16 czerwca 2026",
+  },
+  polarStratosphericPhoto: {
+    id: "polarStratosphericPhoto",
+    organization: "Wikimedia Commons",
+    title: "Polar Stratospheric Cloud type I above Cirrus.jpg",
+    label: "Fot. François Guerraz: PSC typu I",
+    url: "https://commons.wikimedia.org/wiki/File:Polar_Stratospheric_Cloud_type_I_above_Cirrus.jpg",
+    kind: "Fotografia · CC BY-SA 3.0",
+    trust:
+      "Strona oryginalnego pliku wskazuje autora, opis zjawiska i licencję Creative Commons wymagającą uznania autorstwa i zachowania licencji.",
+    scope:
+      "Polarna chmura stratosferyczna typu I ponad Cirrus o wschodzie Słońca, sfotografowana 9 sierpnia 2012 roku. W aplikacji fotografia jest skalowana przez CSS bez zmiany kolorów.",
+    checkText: "Polar Stratospheric Cloud type I",
+    retrieved: "16 czerwca 2026",
+  },
+  noctilucentPhoto: {
+    id: "noctilucentPhoto",
+    organization: "Wikimedia Commons",
+    title: "Noctilucent-clouds-msu-6817.jpg",
+    label: "Fot. Matthias Süßen: obłoki srebrzyste",
+    url: "https://commons.wikimedia.org/wiki/File:Noctilucent-clouds-msu-6817.jpg",
+    kind: "Fotografia · CC BY-SA 4.0",
+    trust:
+      "Strona oryginalnego pliku wskazuje autora, datę, miejsce wykonania oraz licencję Creative Commons wymagającą uznania autorstwa.",
+    scope:
+      "Fotografia obłoków srebrzystych wykonana 21 czerwca 2019 roku w Laboe w Niemczech. W aplikacji jest skalowana i kadrowana przez CSS bez zmiany kolorów.",
+    checkText: "Noctilucent clouds",
+    retrieved: "16 czerwca 2026",
+  },
   faaWeather: {
     id: "faaWeather",
     organization: "Federal Aviation Administration",

@@ -263,6 +263,20 @@ test("taxonomy search ranks formal terms, aliases and compatible genera", () => 
   );
 });
 
+test("every upper-atmosphere entry includes licensed photographic evidence", () => {
+  const upperAtmosphereTerms = taxonomyTerms.filter((term) => term.category === "upper");
+
+  assert.equal(upperAtmosphereTerms.length, 3);
+  for (const term of upperAtmosphereTerms) {
+    assert.ok(term.image?.src.startsWith("assets/upper-atmosphere/"), `${term.name} needs a local image`);
+    assert.ok(term.image?.alt, `${term.name} needs alternative text`);
+    assert.ok(term.image?.author, `${term.name} needs an author`);
+    assert.match(term.image?.license ?? "", /^CC /, `${term.name} needs a compatible license`);
+    assert.match(term.image?.page ?? "", /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+    assert.equal(term.sourceIds.length, 2, `${term.name} needs classification and photo sources`);
+  }
+});
+
 test("each cloud record exposes evidence, taxonomy, sources and a varied photo bank", async () => {
   const imageIds = new Set();
 

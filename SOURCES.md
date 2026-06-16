@@ -67,5 +67,19 @@ in-app cloud card exposes the author, license, original page, and perspective
 note. Licenses represented in the first release are CC BY-SA 3.0, CC BY-SA
 4.0, CC BY 3.0 US, and public domain.
 
-The generated hero image is decorative and is explicitly labelled as such. It
-is never presented as identification evidence.
+The generated hero image is decorative and is never presented as
+identification evidence.
+
+The upper-atmosphere section uses three Wikimedia Commons photographs:
+
+- *Nacreous clouds Antarctica.jpg* by Alan Light, licensed CC BY 2.0:
+  <https://commons.wikimedia.org/wiki/File:Nacreous_clouds_Antarctica.jpg>
+- *Polar Stratospheric Cloud type I above Cirrus.jpg* by François Guerraz,
+  licensed CC BY-SA 3.0:
+  <https://commons.wikimedia.org/wiki/File:Polar_Stratospheric_Cloud_type_I_above_Cirrus.jpg>
+- *Noctilucent-clouds-msu-6817.jpg* by Matthias Süßen, licensed CC BY-SA 4.0:
+  <https://commons.wikimedia.org/wiki/File:Noctilucent-clouds-msu-6817.jpg>
+
+The 1920 px derivatives are displayed with CSS `object-fit: cover`; colors are
+unchanged. The noctilucent-cloud photograph also appears on the home workshop
+card.

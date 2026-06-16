@@ -4393,6 +4393,35 @@ p {
   font-style: italic;
 }
 
+.term-detail-visual {
+  margin: 0;
+  background: var(--paper);
+}
+
+.term-detail-visual img {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 42vw, 430px);
+  object-fit: cover;
+}
+
+.term-detail-visual figcaption {
+  padding: 10px clamp(28px, 7vw, 68px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.term-detail-visual figcaption a {
+  flex: none;
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
 .term-detail-body {
   padding: clamp(30px, 7vw, 68px);
 }
@@ -9134,6 +9163,16 @@ p {
   .cloud-detail,
   .term-detail {
     align-self: flex-end;
+  }
+
+  .term-detail-visual img {
+    height: clamp(230px, 78vw, 360px);
+  }
+
+  .term-detail-visual figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .detail-image {

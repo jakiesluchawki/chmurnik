@@ -477,11 +477,11 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
           </button>
           <button onClick={() => navigate("atlas")}>
             <img
-              src={publicAsset("assets/clouds/cumulonimbus-incus-krakow.jpg")}
-              alt=""
+              src={publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe.jpg")}
+              alt="Obłoki srebrzyste nad wodą w Laboe"
               decoding="async"
-              width="1600"
-              height="763"
+              width="1920"
+              height="1280"
             />
             <span>Atlas</span>
             <strong>Prawdziwe niebo jako dowód</strong>
@@ -2597,6 +2597,20 @@ function TermDetail({ term, onClose, onOpenCloud, onSources }) {
           <h2>{term.name}</h2>
           <p>{term.polish}</p>
         </div>
+        {term.image && (
+          <figure className="term-detail-visual">
+            <img
+              src={publicAsset(term.image.src)}
+              alt={term.image.alt}
+              width={term.image.width}
+              height={term.image.height}
+            />
+            <figcaption>
+              <span>Fot. {term.image.author} · {term.image.license}</span>
+              <a href={term.image.page} target="_blank" rel="noreferrer">Plik i licencja</a>
+            </figcaption>
+          </figure>
+        )}
         <div className="term-detail-body">
           <span className="eyebrow">Definicja</span>
           <p className="term-definition">{term.definition}</p>
