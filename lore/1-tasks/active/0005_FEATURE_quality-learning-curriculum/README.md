@@ -56,7 +56,7 @@ and made the course materially shallower than the encyclopedia.
 - [x] Dialogs trap focus, close with Escape, and restore prior focus.
 - [x] A versioned `build-quality-lesson` skill enforces the content contract.
 - [ ] The expanded lessons read comfortably at 390 px and on desktop.
-- [ ] Automated tests, skill audit, link audit, build, and Pages deployment pass.
+- [x] Automated tests, skill audit, link audit, build, and Pages deployment pass.
 
 ## Design Decisions
 
@@ -87,6 +87,8 @@ and made the course materially shallower than the encyclopedia.
 - Added adaptive genus mastery, weakest-genus practice, and pair feedback.
 - Added reusable dialog focus management.
 - Added a skill contract and deterministic lesson audit script.
+- Published commit `4170fa7` through GitHub Pages workflow `27601306176`
+  and verified the live bundle contains the expanded curriculum.
 
 ## Issues Encountered
 

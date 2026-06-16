@@ -24,6 +24,9 @@
 - Confirmed that shortened WMO URLs may return a generic page with HTTP 200;
   retained the verified direct atlas destinations and their expected-content
   link checks.
+- Published commit `4170fa7` to GitHub Pages. Workflow `27601306176`
+  completed successfully, and the public bundle exposes the new lesson
+  timing, recognition mastery, differential feedback, and cache version 4.
 - Browser-based 390 px and desktop review remains open because the configured
   in-app Browser surface is unavailable and the local Brave headless attempt
   did not produce a usable screenshot.
