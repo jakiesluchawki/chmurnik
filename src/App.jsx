@@ -373,6 +373,10 @@ function HeightScale() {
   );
 }
 
+function CloudName({ children }) {
+  return <span className="scientific-name" lang="la">{children}</span>;
+}
+
 function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSources, onOpenRecommended }) {
   const recommended = learningModules.find((module) => module.id === profile?.moduleId) || learningModules[0];
   const progress = Math.round((completed.length / learningModules.length) * 100);
@@ -1490,7 +1494,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
                 </div>
                 <div className="hypothesis-body">
                   <span className="eyebrow">{index === 0 ? verdict.label : "Hipoteza alternatywna"}</span>
-                  <h3>{cloud.name}</h3>
+                  <h3><CloudName>{cloud.name}</CloudName></h3>
                   <p className="hypothesis-polish">{cloud.polish}</p>
                   <div className="hypothesis-meter" aria-label={`Wynik zgodności ${result.score}`}>
                     <span style={{ width: `${Math.max(8, (result.score / leadingScore) * 100)}%` }} />
@@ -1517,7 +1521,9 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
         <section className="field-next-observation">
           <div>
             <span className="eyebrow">Najbardziej wartościowy kolejny dowód</span>
-            <h3>Jak rozdzielić {first.name} i {second.name}</h3>
+            <h3>
+              Jak rozdzielić <CloudName>{first.name}</CloudName> i <CloudName>{second.name}</CloudName>
+            </h3>
           </div>
           <p>{discriminator}</p>
         </section>
@@ -1537,7 +1543,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
                   <span className="cloud-code">{cloud.code}</span>
                   <img src={publicAsset(getCloudImage(cloud).src)} alt={`${cloud.name}, ${cloud.polish}`} />
                 </div>
-                <h4>{cloud.name}</h4>
+                <h4><CloudName>{cloud.name}</CloudName></h4>
                 <p>{cloud.altitude}</p>
                 <ul>{cloud.observe.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul>
                 <aside><strong>Uwaga na pułapkę</strong><p>{cloud.trap}</p></aside>
@@ -1770,7 +1776,7 @@ function CloudComparison({ initialIds, onOpenCloud, onSources }) {
               <span className="cloud-code">{cloud.code}</span>
             </div>
             <span className="eyebrow">{cloud.level}</span>
-            <h3>{cloud.name}</h3>
+            <h3><CloudName>{cloud.name}</CloudName></h3>
             <p>{cloud.polish}</p>
             <small>{cloud.altitude}</small>
             <button className="card-link" onClick={() => onOpenCloud(cloud.id)}>
@@ -1802,7 +1808,7 @@ function CloudComparison({ initialIds, onOpenCloud, onSources }) {
             >
               {selectedClouds.map((record) => (
                 <article key={record.cloud.id}>
-                  <strong><span>{record.cloud.code}</span>{record.cloud.name}</strong>
+                  <strong><span>{record.cloud.code}</span><CloudName>{record.cloud.name}</CloudName></strong>
                   <ul>
                     {dimension.value(record).map((item) => (
                       <li key={item}>{item}</li>
@@ -2343,7 +2349,9 @@ function DiagnosticPhotoGallery({ cloud }) {
             {!revealed ? (
               <>
                 <span className="eyebrow">Najpierw obserwacja</span>
-                <h4>Co w tym kadrze podtrzymuje hipotezę „{cloud.name}”?</h4>
+                <h4>
+                  Co w tym kadrze podtrzymuje hipotezę „<CloudName>{cloud.name}</CloudName>”?
+                </h4>
                 <p>
                   Zatrzymaj się na 15 sekund. Oceń kształt, skalę elementów,
                   cieniowanie, warstwowość i rozwój pionowy.
@@ -2442,7 +2450,7 @@ function CloudDetail({
         </div>
         <div className="detail-body">
           <span className="eyebrow">{cloud.level} · {cloud.altitude}</span>
-          <h2>{cloud.name}</h2>
+          <h2><CloudName>{cloud.name}</CloudName></h2>
           <p className="detail-polish">{cloud.polish}</p>
           <p className="detail-lead">{cloud.headline}</p>
           <p className="detail-essence">{profile.essence}</p>
@@ -2605,7 +2613,7 @@ function TermDetail({ term, onClose, onOpenCloud, onSources }) {
                   return (
                     <button key={id} onClick={() => onOpenCloud(id)}>
                       <span>{cloud.code}</span>
-                      <div><strong>{cloud.name}</strong><small>{cloud.polish}</small></div>
+                      <div><strong><CloudName>{cloud.name}</CloudName></strong><small>{cloud.polish}</small></div>
                       <ArrowRight size={17} />
                     </button>
                   );
@@ -4672,7 +4680,7 @@ function RecognitionTest({
             return (
               <button key={id} className={state} onClick={() => choose(id)}>
                 <span>{option.code}</span>
-                <div><strong>{option.name}</strong><small>{option.polish}</small></div>
+                <div><strong><CloudName>{option.name}</CloudName></strong><small>{option.polish}</small></div>
                 {state === "correct" && <Check size={20} />}
                 {state === "wrong" && <X size={20} />}
               </button>
@@ -4690,8 +4698,10 @@ function RecognitionTest({
             <p><strong>Pułapka:</strong> {cloud.trap}</p>
             {discriminator && (
               <aside className="recognition-discriminator">
-                <span>Dlaczego nie {chosenCloud.name}?</span>
-                <strong>{chosenCloud.name} ↔ {cloud.name}</strong>
+                <span>Dlaczego nie <CloudName>{chosenCloud.name}</CloudName>?</span>
+                <strong>
+                  <CloudName>{chosenCloud.name}</CloudName> ↔ <CloudName>{cloud.name}</CloudName>
+                </strong>
                 <p>{discriminator}</p>
               </aside>
             )}

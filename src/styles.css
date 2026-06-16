@@ -93,6 +93,15 @@ p {
   line-height: 1.68;
 }
 
+.scientific-name {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 :focus-visible {
   outline: 3px solid var(--coral);
   outline-offset: 3px;
@@ -3854,8 +3863,8 @@ p {
   max-width: 100%;
   margin-bottom: 0;
   font-size: clamp(3.4rem, 8vw, 6rem);
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  hyphens: none;
   text-wrap: balance;
 }
 
@@ -4021,9 +4030,14 @@ p {
   font-size: clamp(1.4rem, 2vw, 1.9rem);
   font-weight: 590;
   line-height: 1.18;
-  overflow-wrap: anywhere;
-  hyphens: auto;
-  text-wrap: balance;
+  overflow-wrap: break-word;
+  hyphens: none;
+  text-wrap: pretty;
+}
+
+.diagnostic-gallery__analysis h4 .scientific-name {
+  font-size: 0.88em;
+  letter-spacing: -0.025em;
 }
 
 .diagnostic-gallery__content > p {
@@ -4367,8 +4381,8 @@ p {
   margin-bottom: 3px;
   color: var(--white);
   font-size: clamp(3.5rem, 9vw, 6.5rem);
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  hyphens: none;
   text-wrap: balance;
 }
 

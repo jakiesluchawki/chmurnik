@@ -47,6 +47,18 @@ test("hero copy and actions remain separate from the artwork", async () => {
   assert.match(redesign, /\.hero-image\s*\{[^}]*position: relative/s);
 });
 
+test("scientific cloud names stay intact in display text", async () => {
+  const app = await read("src/App.jsx");
+  const styles = await read("src/styles.css");
+
+  assert.match(app, /function CloudName\(\{ children \}\)/);
+  assert.match(app, /hipotezę „<CloudName>\{cloud\.name\}<\/CloudName>”/);
+  assert.match(styles, /\.scientific-name\s*\{[^}]*white-space: nowrap/s);
+  assert.match(styles, /\.scientific-name\s*\{[^}]*hyphens: none/s);
+  assert.match(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*text-wrap: pretty/s);
+  assert.doesNotMatch(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*overflow-wrap: anywhere/s);
+});
+
 test("responsive navigation and long scientific names stay bounded", async () => {
   const styles = await read("src/styles.css");
   const redesign = await read("src/zgrywa.css");
@@ -61,9 +73,9 @@ test("responsive navigation and long scientific names stay bounded", async () =>
     redesign,
     /@media \(max-width: 900px\)\s*\{[^}]*\.atlas-search\s*\{\s*grid-template-columns: 1fr/s,
   );
-  assert.match(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*overflow-wrap: anywhere/s);
-  assert.match(styles, /\.detail-body h2\s*\{[^}]*overflow-wrap: anywhere/s);
-  assert.match(styles, /\.term-detail-heading h2\s*\{[^}]*overflow-wrap: anywhere/s);
+  assert.match(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*overflow-wrap: break-word/s);
+  assert.match(styles, /\.detail-body h2\s*\{[^}]*overflow-wrap: break-word/s);
+  assert.match(styles, /\.term-detail-heading h2\s*\{[^}]*overflow-wrap: break-word/s);
 });
 
 test("the public base path matches the repository", async () => {
@@ -84,7 +96,7 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.equal(manifest.scope, "/chmurnik/");
   assert.match(worker, /const BASE = "\/chmurnik\/"/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v2|`\$\{CACHE_PREFIX\}v2`/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v3|`\$\{CACHE_PREFIX\}v3`/);
   assert.match(worker, /key\.startsWith\(CACHE_PREFIX\)/);
 });
 
