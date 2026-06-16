@@ -36,6 +36,36 @@ test("the project records its visual source of truth", async () => {
   assert.match(design, /design\/reference\/atlas-swiatla-mobile\.png/);
 });
 
+test("hero copy and actions remain separate from the artwork", async () => {
+  const app = await read("src/App.jsx");
+  const redesign = await read("src/zgrywa.css");
+
+  assert.ok(app.indexOf('className="hero-content"') < app.indexOf('className="hero-visual"'));
+  assert.doesNotMatch(app, /Ilustracja dekoracyjna wygenerowana dla projektu/);
+  assert.match(app, /\{validRoute !== "home" && \(\s*<button className="quick-test-button"/s);
+  assert.match(redesign, /\.hero-visual\s*\{[^}]*margin: 34px auto 0/s);
+  assert.match(redesign, /\.hero-image\s*\{[^}]*position: relative/s);
+});
+
+test("responsive navigation and long scientific names stay bounded", async () => {
+  const styles = await read("src/styles.css");
+  const redesign = await read("src/zgrywa.css");
+
+  assert.match(redesign, /\.mobile-menu\s*\{[^}]*max-height: calc\(100svh - 95px\)/s);
+  assert.match(redesign, /\.mobile-menu\s*\{[^}]*overflow-y: auto/s);
+  assert.match(
+    redesign,
+    /@media \(max-width: 640px\)\s*\{[^}]*\.menu-button,\s*\.mobile-menu\s*\{\s*display: none/s,
+  );
+  assert.match(
+    redesign,
+    /@media \(max-width: 900px\)\s*\{[^}]*\.atlas-search\s*\{\s*grid-template-columns: 1fr/s,
+  );
+  assert.match(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*overflow-wrap: anywhere/s);
+  assert.match(styles, /\.detail-body h2\s*\{[^}]*overflow-wrap: anywhere/s);
+  assert.match(styles, /\.term-detail-heading h2\s*\{[^}]*overflow-wrap: anywhere/s);
+});
+
 test("the public base path matches the repository", async () => {
   const config = await read("vite.config.mjs");
 
@@ -54,6 +84,7 @@ test("the installable app and offline shell use the Pages base path", async () =
   assert.equal(manifest.scope, "/chmurnik/");
   assert.match(worker, /const BASE = "\/chmurnik\/"/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v2|`\$\{CACHE_PREFIX\}v2`/);
   assert.match(worker, /key\.startsWith\(CACHE_PREFIX\)/);
 });
 

@@ -380,15 +380,6 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
   return (
     <>
       <section className="hero">
-        <img
-          src={publicAsset("assets/atmosphere-still-life.png")}
-          alt=""
-          className="hero-image"
-          fetchPriority="high"
-          decoding="async"
-          width="1536"
-          height="1024"
-        />
         <div className="hero-shade" />
         <HeightScale />
         <div className="hero-content">
@@ -406,7 +397,17 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
             </button>
           </div>
         </div>
-        <div className="hero-credit">Ilustracja dekoracyjna wygenerowana dla projektu</div>
+        <figure className="hero-visual">
+          <img
+            src={publicAsset("assets/atmosphere-still-life.png")}
+            alt=""
+            className="hero-image"
+            fetchPriority="high"
+            decoding="async"
+            width="1536"
+            height="1024"
+          />
+        </figure>
       </section>
 
       <section className="paper-section home-intro">
@@ -4880,10 +4881,12 @@ export function App() {
         onTest={() => openRecognition()}
         testOpen={recognitionOpen}
       />
-      <button className="quick-test-button" onClick={() => openRecognition()}>
-        <Eye size={20} weight="bold" />
-        <span>Sprawdź się</span>
-      </button>
+      {validRoute !== "home" && (
+        <button className="quick-test-button" onClick={() => openRecognition()}>
+          <Eye size={20} weight="bold" />
+          <span>Sprawdź się</span>
+        </button>
+      )}
       {placementOpen && <PlacementModal onClose={() => setPlacementOpen(false)} onFinish={chooseProfile} />}
       {sourceIds && <SourceDrawer ids={sourceIds} onClose={() => setSourceIds(null)} />}
       {recognitionOpen && (

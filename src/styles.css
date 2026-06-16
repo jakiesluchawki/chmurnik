@@ -3851,8 +3851,12 @@ p {
 }
 
 .detail-body h2 {
+  max-width: 100%;
   margin-bottom: 0;
   font-size: clamp(3.4rem, 8vw, 6rem);
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .detail-polish {
@@ -4010,12 +4014,16 @@ p {
 }
 
 .diagnostic-gallery__analysis h4 {
+  max-width: 100%;
   margin: 10px 0 15px;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
   font-weight: 590;
   line-height: 1.18;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .diagnostic-gallery__content > p {
@@ -4355,9 +4363,13 @@ p {
 }
 
 .term-detail-heading h2 {
+  max-width: 100%;
   margin-bottom: 3px;
   color: var(--white);
   font-size: clamp(3.5rem, 9vw, 6.5rem);
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .term-detail-heading p {

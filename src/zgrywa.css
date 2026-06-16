@@ -218,9 +218,14 @@ p {
   top: 80px;
   right: 15px;
   width: min(360px, calc(100vw - 30px));
+  max-width: calc(100vw - 30px);
+  max-height: calc(100svh - 95px);
   background: var(--ink);
   color: var(--paper);
   border-radius: 22px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   box-shadow: none;
 }
 
@@ -230,15 +235,26 @@ p {
 }
 
 .hero {
-  min-height: 920px;
+  min-height: 0;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
   background: var(--paper);
   color: var(--ink);
+  overflow: visible;
+}
+
+.hero-visual {
+  width: 72%;
+  margin: 34px auto 0;
 }
 
 .hero-image {
-  inset: auto auto 34px 14%;
-  width: 72%;
-  height: 49%;
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: clamp(320px, 30vw, 460px);
   border-radius: 26px;
   object-fit: cover;
   object-position: center 62%;
@@ -299,13 +315,6 @@ p {
   grid-column: 2;
   gap: 12px;
   margin-top: 6px;
-}
-
-.hero-credit {
-  right: 15%;
-  bottom: 14px;
-  color: var(--ink);
-  font-size: 0.68rem;
 }
 
 .button {
@@ -877,11 +886,11 @@ textarea {
   }
 
   .hero {
-    min-height: 860px;
+    min-height: 0;
+    padding-bottom: 64px;
   }
 
-  .hero-image {
-    left: 10%;
+  .hero-visual {
     width: 80%;
   }
 
@@ -934,7 +943,8 @@ textarea {
   }
 
   .hero {
-    min-height: 785px;
+    min-height: 0;
+    padding-bottom: 50px;
   }
 
   .hero-content {
@@ -973,16 +983,18 @@ textarea {
     width: 100%;
   }
 
-  .hero-image {
-    left: 15px;
-    bottom: 20px;
+  .hero-visual {
     width: calc(100% - 30px);
-    height: 34%;
-    border-radius: 20px;
+    margin: 28px auto 0;
   }
 
-  .hero-credit {
-    display: none;
+  .hero-image {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: clamp(245px, 62vw, 330px);
+    border-radius: 20px;
   }
 
   .paper-section,
@@ -1142,6 +1154,30 @@ textarea {
 
   .bottom-nav button.active {
     color: var(--coral);
+  }
+}
+
+@media (max-width: 900px) {
+  .atlas-search {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .atlas-search__status {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-button,
+  .mobile-menu {
+    display: none;
+  }
+
+  .detail-body h2,
+  .term-detail-heading h2 {
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    line-height: 0.96;
   }
 }
 
