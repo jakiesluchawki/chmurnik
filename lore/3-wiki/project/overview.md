@@ -38,7 +38,7 @@ application for learning cloud identification and vertical weather analysis.
 
 ## Public Release
 
-- Application: <https://jakiesluchawki.github.io/chmurnik/>
+- Application: <https://chmurnik.cloud/>
 - Repository: <https://github.com/jakiesluchawki/chmurnik>
 - Legacy application address: <https://jakiesluchawki.github.io/cloud-recognition/>
 - Visual QA: `design-qa.md` with `final result: passed`.

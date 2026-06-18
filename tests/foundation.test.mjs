@@ -101,25 +101,31 @@ test("responsive navigation and long scientific names stay bounded", async () =>
   assert.match(styles, /\.term-detail-heading h2\s*\{[^}]*overflow-wrap: break-word/s);
 });
 
-test("the public base path matches the repository", async () => {
+test("the public base path matches the custom domain root", async () => {
   const config = await read("vite.config.mjs");
+  const styles = await read("src/zgrywa.css");
 
-  assert.match(config, /base: "\/chmurnik\/"/);
+  assert.match(config, /base: "\/"/);
+  assert.doesNotMatch(styles, /\/chmurnik\//);
+  assert.match(styles, /url\("\/fonts\/Romie-Regular\.otf"\)/);
+  assert.match(styles, /url\("\/fonts\/Roobert-Regular\.otf"\)/);
 });
 
-test("the installable app and offline shell use the Pages base path", async () => {
+test("the installable app and offline shell use the custom domain root", async () => {
   const index = await read("index.html");
   const manifest = JSON.parse(await read("public/manifest.webmanifest"));
   const worker = await read("public/service-worker.js");
+  const cname = await read("public/CNAME");
 
   assert.match(index, /href="\.\/manifest\.webmanifest"/);
   assert.match(index, /rel="icon" type="image\/png" href="\.\/icons\/icon-192\.png"/);
   assert.match(index, /href="\.\/icons\/apple-touch-icon\.png"/);
-  assert.equal(manifest.start_url, "/chmurnik/");
-  assert.equal(manifest.scope, "/chmurnik/");
-  assert.match(worker, /const BASE = "\/chmurnik\/"/);
+  assert.equal(manifest.start_url, "/");
+  assert.equal(manifest.scope, "/");
+  assert.equal(cname.trim(), "chmurnik.cloud");
+  assert.match(worker, /const BASE = "\/"/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v4|`\$\{CACHE_PREFIX\}v4`/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v5|`\$\{CACHE_PREFIX\}v5`/);
   assert.match(worker, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);

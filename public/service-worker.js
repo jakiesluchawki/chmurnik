@@ -1,6 +1,6 @@
 const CACHE_PREFIX = "chmurnik-";
-const VERSION = `${CACHE_PREFIX}v4`;
-const BASE = "/chmurnik/";
+const VERSION = `${CACHE_PREFIX}v5`;
+const BASE = "/";
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
   "altocumulus-mackerel.jpg",
