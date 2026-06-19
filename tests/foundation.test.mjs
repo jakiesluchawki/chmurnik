@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
@@ -107,6 +107,8 @@ test("the public base path matches the custom domain root", async () => {
 
   assert.match(config, /base: "\/"/);
   assert.doesNotMatch(styles, /\/chmurnik\//);
+  assert.match(styles, /url\("\/fonts\/Romie-Regular\.woff2"\) format\("woff2"\)/);
+  assert.match(styles, /url\("\/fonts\/Roobert-Regular\.woff2"\) format\("woff2"\)/);
   assert.match(styles, /url\("\/fonts\/Romie-Regular\.otf"\)/);
   assert.match(styles, /url\("\/fonts\/Roobert-Regular\.otf"\)/);
 });
@@ -125,7 +127,7 @@ test("the installable app and offline shell use the custom domain root", async (
   assert.equal(cname.trim(), "chmurnik.cloud");
   assert.match(worker, /const BASE = "\/"/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v5|`\$\{CACHE_PREFIX\}v5`/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v6|`\$\{CACHE_PREFIX\}v6`/);
   assert.match(worker, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);
@@ -150,14 +152,53 @@ test("npm configuration remains portable across local and CI machines", async ()
 });
 
 test("small annotation colors meet WCAG AA against their surfaces", async () => {
-  const styles = await read("src/styles.css");
+  const styles = await read("src/zgrywa.css");
   const token = (name) => styles.match(new RegExp(`--${name}: (#[0-9a-f]{6})`))[1];
   const paper = token("paper");
   const white = token("white");
 
   assert.ok(contrastRatio(token("coral"), paper) >= 4.5);
   assert.ok(contrastRatio(token("coral"), white) >= 4.5);
+  assert.ok(contrastRatio(token("ink"), paper) >= 4.5);
   assert.ok(contrastRatio(token("moss"), paper) >= 4.5);
+  assert.ok(contrastRatio(token("muted"), paper) >= 4.5);
+});
+
+test("home media and licensed fonts use compact production formats", async () => {
+  const app = await read("src/App.jsx");
+  const styles = await read("src/zgrywa.css");
+  const compactAssets = [
+    "public/assets/atmosphere-still-life-1536.avif",
+    "public/assets/convection-still-life-1280.avif",
+    "public/assets/wind-profile-still-life-1280.avif",
+    "public/assets/upper-atmosphere/noctilucent-clouds-laboe-1280.avif",
+  ];
+
+  assert.match(app, /<picture>/);
+  assert.match(app, /type="image\/avif"/);
+  assert.match(app, /type="image\/webp"/);
+  assert.match(app, /loading="lazy"/);
+  assert.match(styles, /Roobert-Regular\.woff2/);
+  assert.match(styles, /Romie-Regular\.woff2/);
+
+  for (const asset of compactAssets) {
+    assert.ok((await stat(new URL(`../${asset}`, import.meta.url))).size < 150_000, `${asset} should stay below 150 KB`);
+  }
+
+  assert.ok(
+    (await stat(new URL("../public/fonts/Roobert-Regular.woff2", import.meta.url))).size
+      < (await stat(new URL("../public/fonts/Roobert-Regular.otf", import.meta.url))).size,
+  );
+});
+
+test("polished controls expose selection and scroll affordances", async () => {
+  const app = await read("src/App.jsx");
+  const styles = await read("src/zgrywa.css");
+  const tabletStyles = styles.slice(styles.indexOf("@media (max-width: 900px)"));
+
+  assert.match(app, /aria-pressed=\{level === item\}/);
+  assert.match(styles, /\.segmented-control,\s*\.filter-scroll\s*\{[^}]*scroll-snap-type: x proximity/s);
+  assert.match(tabletStyles, /\.app-header,\s*\.app-shell:has\(\.page\) \.app-header\s*\{[^}]*height: 104px/s);
 });
 
 test("the recognition test is globally available and explains its methodology", async () => {

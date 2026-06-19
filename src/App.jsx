@@ -402,15 +402,27 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
           </div>
         </div>
         <figure className="hero-visual">
-          <img
-            src={publicAsset("assets/atmosphere-still-life.png")}
-            alt=""
-            className="hero-image"
-            fetchPriority="high"
-            decoding="async"
-            width="1536"
-            height="1024"
-          />
+          <picture>
+            <source
+              type="image/avif"
+              srcSet={`${publicAsset("assets/atmosphere-still-life-960.avif")} 960w, ${publicAsset("assets/atmosphere-still-life-1536.avif")} 1536w`}
+              sizes="(max-width: 720px) calc(100vw - 30px), 72vw"
+            />
+            <source
+              type="image/webp"
+              srcSet={`${publicAsset("assets/atmosphere-still-life-960.webp")} 960w, ${publicAsset("assets/atmosphere-still-life-1536.webp")} 1536w`}
+              sizes="(max-width: 720px) calc(100vw - 30px), 72vw"
+            />
+            <img
+              src={publicAsset("assets/atmosphere-still-life.png")}
+              alt=""
+              className="hero-image"
+              fetchPriority="high"
+              decoding="async"
+              width="1536"
+              height="1024"
+            />
+          </picture>
         </figure>
       </section>
 
@@ -454,35 +466,74 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
         </header>
         <div>
           <button onClick={() => navigate("learn/procesy")}>
-            <img
-              src={publicAsset("assets/convection-still-life.png")}
-              alt=""
-              decoding="async"
-              width="1586"
-              height="992"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet={`${publicAsset("assets/convection-still-life-720.avif")} 720w, ${publicAsset("assets/convection-still-life-1280.avif")} 1280w`}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 900px) calc((100vw - 58px) / 2), calc((100vw - 76px) / 3)"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${publicAsset("assets/convection-still-life-720.webp")} 720w, ${publicAsset("assets/convection-still-life-1280.webp")} 1280w`}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 900px) calc((100vw - 58px) / 2), calc((100vw - 76px) / 3)"
+              />
+              <img
+                src={publicAsset("assets/convection-still-life.png")}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="1586"
+                height="992"
+              />
+            </picture>
             <span>Procesy</span>
             <strong>Jak rośnie konwekcja</strong>
           </button>
           <button onClick={() => navigate("layers")}>
-            <img
-              src={publicAsset("assets/wind-profile-still-life.png")}
-              alt=""
-              decoding="async"
-              width="1586"
-              height="992"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet={`${publicAsset("assets/wind-profile-still-life-720.avif")} 720w, ${publicAsset("assets/wind-profile-still-life-1280.avif")} 1280w`}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 900px) calc((100vw - 58px) / 2), calc((100vw - 76px) / 3)"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${publicAsset("assets/wind-profile-still-life-720.webp")} 720w, ${publicAsset("assets/wind-profile-still-life-1280.webp")} 1280w`}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 900px) calc((100vw - 58px) / 2), calc((100vw - 76px) / 3)"
+              />
+              <img
+                src={publicAsset("assets/wind-profile-still-life.png")}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="1586"
+                height="992"
+              />
+            </picture>
             <span>Warstwy</span>
             <strong>Wiatr na różnych wysokościach</strong>
           </button>
           <button onClick={() => navigate("atlas")}>
-            <img
-              src={publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe.jpg")}
-              alt="Obłoki srebrzyste nad wodą w Laboe"
-              decoding="async"
-              width="1920"
-              height="1280"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet={`${publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe-720.avif")} 720w, ${publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe-1280.avif")} 1280w`}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 900px) calc((100vw - 58px) / 2), calc((100vw - 76px) / 3)"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe-720.webp")} 720w, ${publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe-1280.webp")} 1280w`}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 900px) calc((100vw - 58px) / 2), calc((100vw - 76px) / 3)"
+              />
+              <img
+                src={publicAsset("assets/upper-atmosphere/noctilucent-clouds-laboe.jpg")}
+                alt="Obłoki srebrzyste nad wodą w Laboe"
+                loading="lazy"
+                decoding="async"
+                width="1920"
+                height="1280"
+              />
+            </picture>
             <span>Atlas</span>
             <strong>Prawdziwe niebo jako dowód</strong>
           </button>
@@ -1213,6 +1264,7 @@ function AtlasPage({
                       key={item}
                       className={level === item ? "active" : ""}
                       onClick={() => setLevel(item)}
+                      aria-pressed={level === item}
                     >
                       {item}
                     </button>
@@ -3043,7 +3095,14 @@ function WindPanel({ onSources }) {
         </label>
         <div className="concept-switch wind-levels">
           {["niskie", "średnie", "wysokie"].map((item) => (
-            <button key={item} className={level === item ? "active" : ""} onClick={() => setLevel(item)}>{item}</button>
+            <button
+              key={item}
+              className={level === item ? "active" : ""}
+              onClick={() => setLevel(item)}
+              aria-pressed={level === item}
+            >
+              {item}
+            </button>
           ))}
         </div>
         <div className="wind-result">

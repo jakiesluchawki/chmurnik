@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "chmurnik-";
-const VERSION = `${CACHE_PREFIX}v5`;
+const VERSION = `${CACHE_PREFIX}v6`;
 const BASE = "/";
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
@@ -36,7 +36,6 @@ const CLOUD_PHOTOS = [
 const APP_SHELL = [
   BASE,
   `${BASE}manifest.webmanifest`,
-  `${BASE}assets/hero-atlas-swiatla.png`,
   `${BASE}assets/upper-atmosphere/nacreous-clouds-antarctica.jpg`,
   `${BASE}assets/upper-atmosphere/noctilucent-clouds-laboe.jpg`,
   `${BASE}assets/upper-atmosphere/polar-stratospheric-cloud-type-i.jpg`,

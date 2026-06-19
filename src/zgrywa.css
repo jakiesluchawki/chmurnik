@@ -1,6 +1,8 @@
 @font-face {
   font-family: "Roobert";
-  src: url("/fonts/Roobert-Regular.otf") format("opentype");
+  src:
+    url("/fonts/Roobert-Regular.woff2") format("woff2"),
+    url("/fonts/Roobert-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +10,9 @@
 
 @font-face {
   font-family: "Roobert";
-  src: url("/fonts/Roobert-Bold.otf") format("opentype");
+  src:
+    url("/fonts/Roobert-Bold.woff2") format("woff2"),
+    url("/fonts/Roobert-Bold.otf") format("opentype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -16,7 +20,9 @@
 
 @font-face {
   font-family: "Roobert";
-  src: url("/fonts/Roobert-RegularItalic.otf") format("opentype");
+  src:
+    url("/fonts/Roobert-RegularItalic.woff2") format("woff2"),
+    url("/fonts/Roobert-RegularItalic.otf") format("opentype");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -24,27 +30,31 @@
 
 @font-face {
   font-family: "Romie";
-  src: url("/fonts/Romie-Regular.otf") format("opentype");
+  src:
+    url("/fonts/Romie-Regular.woff2") format("woff2"),
+    url("/fonts/Romie-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 
 :root {
-  color: #746b3c;
+  color: #6d6435;
   background: #ffe1eb;
   font-family: "Roobert", Arial, sans-serif;
-  --ink: #746b3c;
+  --ink: #6d6435;
   --blue: #6464c7;
   --blue-dark: #4d4da7;
   --paper: #ffe1eb;
   --white: #fff7f1;
-  --coral: #9a68ff;
+  --coral: #7442d9;
+  --coral-bright: #9a68ff;
   --mist: #e2f1ff;
-  --moss: #746b3c;
-  --graphite: #746b3c;
-  --line: rgba(116, 107, 60, 0.22);
-  --soft-line: rgba(116, 107, 60, 0.12);
+  --moss: #6d6435;
+  --graphite: #6d6435;
+  --muted: #53616a;
+  --line: rgba(109, 100, 53, 0.25);
+  --soft-line: rgba(109, 100, 53, 0.14);
   --serif: "Romie", Georgia, serif;
   --ui: "Roobert", Arial, sans-serif;
   --sans: var(--ui);
@@ -261,6 +271,10 @@ p {
   transition: border-radius 260ms ease, transform 260ms ease;
 }
 
+.hero-visual picture {
+  display: block;
+}
+
 .hero:hover .hero-image {
   border-radius: 42px;
   transform: scale(0.992);
@@ -337,7 +351,7 @@ p {
 }
 
 .button--coral:hover {
-  background: #8954f2;
+  background: #6c3fc9;
 }
 
 .button--glass,
@@ -421,6 +435,7 @@ p {
 .text-button,
 .card-link {
   color: var(--ink);
+  font-size: 0.78rem;
   font-weight: 400;
 }
 
@@ -444,7 +459,7 @@ p {
 .feature-strip button > svg:last-child {
   grid-column: 2;
   grid-row: 1;
-  color: var(--coral);
+  color: var(--coral-bright);
 }
 
 .feature-strip button:hover {
@@ -452,7 +467,7 @@ p {
 }
 
 .feature-strip button:hover strong {
-  color: var(--coral);
+  color: var(--coral-bright);
 }
 
 .feature-strip span {
@@ -461,7 +476,7 @@ p {
 
 .feature-strip strong {
   margin-bottom: 14px;
-  color: var(--coral);
+  color: var(--coral-bright);
   font-size: clamp(1.55rem, 2.3vw, 2.25rem);
   font-weight: 400;
   line-height: 1.05;
@@ -505,6 +520,10 @@ p {
   padding: 0;
   text-align: left;
   cursor: pointer;
+}
+
+.home-visual-folio picture {
+  display: block;
 }
 
 .home-visual-folio img {
@@ -585,7 +604,7 @@ p {
 }
 
 .promise-quote > svg {
-  color: var(--coral);
+  color: var(--coral-bright);
 }
 
 .promise-quote blockquote {
@@ -698,7 +717,7 @@ p {
 }
 
 .learning-card-content > strong {
-  color: var(--coral);
+  color: var(--coral-bright);
   font-family: var(--ui);
   font-size: clamp(1.9rem, 3.4vw, 3.2rem);
   font-weight: 400;
@@ -851,6 +870,33 @@ textarea {
   box-shadow: none;
 }
 
+.segmented-control,
+.filter-scroll {
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.segmented-control::-webkit-scrollbar,
+.filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.segmented-control button,
+.filter-scroll button {
+  scroll-snap-align: start;
+}
+
+.segmented-control button {
+  font-size: 0.86rem;
+}
+
+.atlas-tools__label,
+.journal-form label,
+.form-footer > span {
+  font-size: 0.78rem;
+}
+
 .app-footer {
   padding-top: 62px;
   padding-bottom: 52px;
@@ -881,6 +927,35 @@ textarea {
 }
 
 @media (max-width: 900px) {
+  .segmented-control,
+  .filter-scroll {
+    box-shadow: inset -22px 0 18px -22px rgba(109, 100, 53, 0.72);
+  }
+
+  .filter-scroll {
+    padding-right: 28px;
+  }
+
+  .app-header,
+  .app-shell:has(.page) .app-header {
+    height: 104px;
+    padding: 16px 20px;
+  }
+
+  .brand {
+    min-height: 72px;
+    gap: 7px;
+  }
+
+  .brand-wordmark-mark {
+    width: 240px;
+    height: 44px;
+  }
+
+  .mobile-menu {
+    top: 72px;
+  }
+
   .desktop-nav {
     gap: 20px;
   }
@@ -913,6 +988,10 @@ textarea {
   .app-shell:has(.page) .app-header {
     height: 92px;
     padding: 14px 15px;
+  }
+
+  .mobile-menu {
+    top: 80px;
   }
 
   .brand {

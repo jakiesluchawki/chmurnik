@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-06-16 17:32. Do not edit manually.
+> Auto-generated on 2026-06-19 10:21. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,34 +9,7 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 0 | 0 | 1 | 16 | 0 |
-
-## Dependency Graph
-
-```mermaid
-flowchart LR
-    subgraph Completed
-        T0001["0001: Build and publish Cloud R..."]
-        T0003["0003: Expand the cloud atlas in..."]
-        T0004["0004: Add an evidence-based fie..."]
-        T0005["0005: Replace lesson summaries ..."]
-        T0006["0006: Build an active METAR and..."]
-        T0007["0007: Add multi-report briefing..."]
-        T0008["0008: Explain the complete META..."]
-        T0009["0009: Unify search across the c..."]
-        T0010["0010: Build a practical Windy l..."]
-        T0011["0011: Build a multi-image cloud..."]
-        T0012["0012: Teach within-genus variat..."]
-        T0013["0013: Build a validated WMO nom..."]
-        T0014["0014: Build an interactive soun..."]
-        T0015["0015: Build the Zgrywa-inspired..."]
-        T0016["0016: Fix atlas card corner cli..."]
-        T0017["0017: Publish CHMURNIK under it..."]
-    end
-    subgraph Backlog
-        T0002["0002: Research automatic cloud ..."]
-    end
-```
+| 0 | 0 | 1 | 20 | 0 |
 
 ## Task Status
 
@@ -59,20 +32,7 @@ flowchart LR
 | 0015 | [Build the Zgrywa-inspired design la...](lore/1-tasks/archive/0015_FEATURE_zgrywa-inspired-design-language.md) | FEATURE | completed | — | — | — |
 | 0016 | [Fix atlas card corner clipping](lore/1-tasks/archive/0016_BUG_atlas-card-corners.md) | BUG | completed | — | — | — |
 | 0017 | [Publish CHMURNIK under its own Page...](lore/1-tasks/archive/0017_FEATURE_chmurnik-pages-address.md) | FEATURE | completed | — | — | — |
-
-## Architecture Decision Records
-
-| ID | Title | Status | Related Tasks |
-|:---|:------|:-------|:--------------|
-
-## Legend
-
-**Task Status:**
-- `active` — Work can proceed
-- `blocked` — Waiting on dependencies
-- `backlog` — Planned but not yet started
-- `completed` — Done, in archive
-
-**Graph Arrows:**
-- `A --> B` — A blocks B (B depends on A)
-- `ADR -.-> Task` — ADR informs Task
+| 0018 | [Fix hero overlap and scientific-nam...](lore/1-tasks/archive/0018_BUG_hero-overlap-and-scientific-name-wrapping.md) | BUG | completed | — | — | — |
+| 0019 | [Add upper-atmosphere photography](lore/1-tasks/archive/0019_FEATURE_upper-atmosphere-photography.md) | FEATURE | completed | — | — | — |
+| 0020 | [Launch chmurnik.cloud](lore/1-tasks/archive/0020_FEATURE_custom-domain.md) | FEATURE | completed | — | — | — |
+| 0021 | [Polish the production GUI](lore/1-tasks/archive/0021_FEATURE_gui-polish.md) | FEATURE | completed | — | — | — |
