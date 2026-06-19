@@ -54,6 +54,30 @@ npm run build
 The versioned `build-quality-lesson` skill under `.codex/skills/` defines the
 content contract for every new or revised lesson.
 
+## iOS
+
+The iPhone application packages the complete production experience in a native
+Capacitor shell. It uses the same Romie/Roobert typography, pink and olive
+palette, content, and interactions as the public application; it does not load
+the website at runtime.
+
+```sh
+npm run ios:assets
+npm run ios:build
+npm run ios:open
+```
+
+The release target is `cloud.chmurnik.app`, version `1.0`, for Apple team
+`78N6WG8P57`. A TestFlight release requires either an Apple Account with App
+Store Connect access in Xcode or all three App Store Connect API variables:
+
+```sh
+CHMURNIK_ASC_KEY_PATH=/path/to/AuthKey_ABC123.p8 \
+CHMURNIK_ASC_KEY_ID=ABC123 \
+CHMURNIK_ASC_ISSUER_ID=00000000-0000-0000-0000-000000000000 \
+npm run release:ios:testflight
+```
+
 ## Publishing
 
 The public application is deployed at:

@@ -46,6 +46,9 @@ Writing production code without an active Lore task is forbidden.
 - Generated imagery may support atmosphere and diagrams, but it must not be
   presented as photographic evidence for cloud identification.
 - Mobile is a primary surface, not a reduced desktop afterthought.
+- The iOS release packages the complete existing product without adding new
+  modules. It should feel deliberately designed for iPhone rather than like a
+  browser embedded in a shell.
 - The selected visual truth is
   `design/reference/atlas-swiatla-mobile.png`.
 

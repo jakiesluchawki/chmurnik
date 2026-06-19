@@ -1,6 +1,6 @@
 {
   "name": "chmurnik",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,13 +9,28 @@
     "check:lessons": "node .codex/skills/build-quality-lesson/scripts/audit-lessons.mjs",
     "check:links": "node scripts/check-links.mjs",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "ios:assets": "node scripts/generate-ios-assets.mjs",
+    "ios:sync": "npm run build && cap sync ios",
+    "ios:open": "cap open ios",
+    "ios:build": "npm run ios:sync && xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -derivedDataPath build/ios-simulator CODE_SIGNING_ALLOWED=NO build",
+    "ios:archive": "npm run ios:sync && xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release -destination generic/platform=iOS -archivePath build/CHMURNIK.xcarchive -allowProvisioningUpdates archive",
+    "release:ios:testflight": "sh scripts/upload-ios-testflight.sh"
   },
   "dependencies": {
+    "@capacitor/core": "^8.4.1",
+    "@capacitor/ios": "^8.4.1",
+    "@capacitor/splash-screen": "^8.0.1",
+    "@capacitor/status-bar": "^8.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "@vitejs/plugin-react": "5.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "vite": "6.4.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.1",
+    "sharp": "^0.32.6",
+    "typescript": "^6.0.3"
   }
 }

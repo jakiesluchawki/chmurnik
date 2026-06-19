@@ -432,3 +432,57 @@ test("external sources and image provenance have a scheduled link monitor", asyn
   assert.match(monitor, /page or file you requested cannot be found/i);
   assert.match(monitor, /expected content marker/);
 });
+
+test("the iOS package embeds the complete production app", async () => {
+  const packageJson = JSON.parse(await read("package.json"));
+  const capacitor = await read("capacitor.config.ts");
+  const entry = await read("src/main.jsx");
+
+  assert.equal(packageJson.version, "1.0.0");
+  assert.equal(packageJson.scripts["ios:sync"], "npm run build && cap sync ios");
+  assert.equal(packageJson.scripts["release:ios:testflight"], "sh scripts/upload-ios-testflight.sh");
+  assert.ok(packageJson.dependencies["@capacitor/core"]);
+  assert.ok(packageJson.dependencies["@capacitor/ios"]);
+  assert.match(capacitor, /appId: "cloud\.chmurnik\.app"/);
+  assert.match(capacitor, /webDir: "dist"/);
+  assert.match(capacitor, /launchAutoHide: false/);
+  assert.match(entry, /Capacitor\.isNativePlatform\(\)/);
+  assert.match(entry, /document\.documentElement\.classList\.add\("native-ios"\)/);
+  assert.match(entry, /else if \("serviceWorker" in navigator/);
+});
+
+test("the iOS shell respects safe areas and release metadata", async () => {
+  const styles = await read("src/zgrywa.css");
+  const project = await read("ios/App/App.xcodeproj/project.pbxproj");
+  const info = await read("ios/App/App/Info.plist");
+
+  assert.match(styles, /html\.native-ios \.app-header/);
+  assert.match(styles, /env\(safe-area-inset-top\)/);
+  assert.match(styles, /env\(safe-area-inset-bottom\)/);
+  assert.match(styles, /html\.native-ios \.bottom-nav button\s*\{[^}]*min-height: 56px/s);
+  assert.match(project, /DEVELOPMENT_TEAM = 78N6WG8P57/g);
+  assert.match(project, /PRODUCT_BUNDLE_IDENTIFIER = cloud\.chmurnik\.app/g);
+  assert.match(project, /TARGETED_DEVICE_FAMILY = 1/g);
+  assert.match(info, /<key>ITSAppUsesNonExemptEncryption<\/key>\s*<false\/>/s);
+  assert.match(info, /UIStatusBarStyleDarkContent/);
+  assert.doesNotMatch(info, /UIInterfaceOrientationLandscape/);
+});
+
+test("the iOS artwork follows the current pink and olive CHMURNIK design", async () => {
+  const appIcon = await stat(new URL(
+    "../ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+    import.meta.url,
+  ));
+  const launchImage = await stat(new URL(
+    "../ios/App/App/Assets.xcassets/Splash.imageset/Default@3x~universal~anyany.jpg",
+    import.meta.url,
+  ));
+  const sourceIcon = await stat(new URL("../resources/icon.png", import.meta.url));
+  const assetScript = await read("scripts/generate-ios-assets.mjs");
+
+  assert.ok(appIcon.size > 100_000);
+  assert.ok(launchImage.size > 100_000);
+  assert.ok(sourceIcon.size > 100_000);
+  assert.match(assetScript, /jpeg\(\{/);
+  assert.match(assetScript, /for \(const scale of \[1, 2, 3\]\)/);
+});

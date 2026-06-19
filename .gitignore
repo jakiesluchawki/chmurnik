@@ -6,6 +6,8 @@ dist/
 
 # Local QA artifacts
 artifacts/
+build/
+.local/
 
 # Lore framework - session-local files
 lore/0-session/current-user.md

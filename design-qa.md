@@ -332,6 +332,37 @@ actions, and no prematurely visible recap, final check, or practice.
 - TAF debrief cards are deliberately detailed and may extend beyond one mobile
   viewport after an answer; they no longer delay the question itself.
 
+## 2026-06-19 — CHMURNIK iOS 1.0
+
+22. **P1 fixed — Native shell initially exposed browser-oriented chrome**
+    - Patch: the iOS shell now owns the status bar, safe-area padding, launch
+      background, modal bounds, and bottom navigation height.
+    - Evidence: `design/qa/ios/home-iphone-17-pro-max.png` and
+      `design/qa/ios/home-iphone-17e.png`. Both screenshots show the current
+      production pink/olive interface, not the superseded visual direction.
+
+23. **P1 fixed — Early icon exploration used an obsolete screenshot**
+    - Patch: the rejected asset was removed. The release icon and launch images
+      are generated only from the current CHMURNIK hero artwork, wordmark, and
+      production palette in `resources/`.
+    - Evidence: `npm run ios:assets` regenerates the versioned Xcode asset
+      catalog deterministically from the current sources.
+
+24. **P1 verified — Product scope remains identical to production**
+    - Patch: the complete Vite build is bundled inside the native app; no new
+      lesson, recognition mode, account system, voice, or network dependency
+      was introduced.
+    - Evidence: 71 automated tests, nine lesson audits, the production build,
+      and the iOS simulator build pass. The application launches from bundled
+      assets on representative large and compact iPhone simulators.
+
+## iOS Residual Risk
+
+- The signed archive is valid, but App Store Connect upload requires an Apple
+  Account with access to team `78N6WG8P57` or an App Store Connect API key.
+- App Store metadata and external beta review are outside the application
+  binary and remain separate release operations.
+
 ## Final Result
 
 final result: passed

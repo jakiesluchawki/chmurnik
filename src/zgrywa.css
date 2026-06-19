@@ -1268,3 +1268,78 @@ textarea {
     transition: none;
   }
 }
+
+/* Native iOS shell ------------------------------------------------------- */
+
+html.native-ios,
+html.native-ios body,
+html.native-ios #root {
+  min-height: 100%;
+  background: var(--paper);
+}
+
+html.native-ios body {
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html.native-ios button,
+html.native-ios a,
+html.native-ios input,
+html.native-ios select,
+html.native-ios textarea {
+  touch-action: manipulation;
+}
+
+html.native-ios .modal-backdrop {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+html.native-ios .detail-close {
+  top: calc(14px + env(safe-area-inset-top));
+}
+
+html.native-ios .source-drawer,
+html.native-ios .cloud-detail,
+html.native-ios .term-detail,
+html.native-ios .recognition-test,
+html.native-ios .placement-modal,
+html.native-ios .quiz-modal {
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 720px) {
+  html.native-ios body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  html.native-ios .app-header,
+  html.native-ios .app-shell:has(.page) .app-header {
+    height: calc(92px + env(safe-area-inset-top));
+    padding-top: calc(14px + env(safe-area-inset-top));
+  }
+
+  html.native-ios .bottom-nav {
+    min-height: calc(56px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  html.native-ios .bottom-nav button {
+    min-height: 56px;
+  }
+
+  html.native-ios .source-drawer,
+  html.native-ios .cloud-detail,
+  html.native-ios .term-detail {
+    height: 100%;
+    border-radius: 26px 26px 0 0;
+  }
+
+  html.native-ios .recognition-test,
+  html.native-ios .placement-modal,
+  html.native-ios .quiz-modal {
+    max-height: calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
+  }
+}
