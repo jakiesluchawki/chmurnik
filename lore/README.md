@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-06-19 10:21. Do not edit manually.
+> Auto-generated on 2026-06-19 20:37. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,7 +9,7 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 0 | 0 | 1 | 20 | 0 |
+| 0 | 0 | 1 | 21 | 0 |
 
 ## Task Status
 
@@ -36,3 +36,4 @@ Quick reference for task dependencies, status, and ADR relationships.
 | 0019 | [Add upper-atmosphere photography](lore/1-tasks/archive/0019_FEATURE_upper-atmosphere-photography.md) | FEATURE | completed | — | — | — |
 | 0020 | [Launch chmurnik.cloud](lore/1-tasks/archive/0020_FEATURE_custom-domain.md) | FEATURE | completed | — | — | — |
 | 0021 | [Polish the production GUI](lore/1-tasks/archive/0021_FEATURE_gui-polish.md) | FEATURE | completed | — | — | — |
+| 0022 | [Ship the CHMURNIK iOS app to TestFl...](lore/1-tasks/archive/0022_FEATURE_ios-testflight.md) | FEATURE | completed | — | — | — |
