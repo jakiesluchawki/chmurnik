@@ -28,6 +28,10 @@ DirectoryIndex index.html
   <FilesMatch "\.(?:avif|webp|png|jpe?g|woff2?|otf)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
+
+  <FilesMatch "^(?:index\.html|manifest\.webmanifest|service-worker\.js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_mime.c>

@@ -160,6 +160,8 @@ test("the shared host serves production security headers", async () => {
   assert.match(config, /Header always set Cross-Origin-Resource-Policy "same-origin"/);
   assert.match(config, /RewriteCond %\{HTTPS\} !=on/);
   assert.match(config, /RewriteRule \^ https:\/\/chmurnik\.cloud%\{REQUEST_URI\}/);
+  assert.match(config, /index\\\.html\|manifest\\\.webmanifest\|service-worker\\\.js/);
+  assert.match(config, /Cache-Control "no-cache, no-store, must-revalidate"/);
 });
 
 test("npm configuration remains portable across local and CI machines", async () => {
