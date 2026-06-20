@@ -9,6 +9,7 @@
     "check:lessons": "node .codex/skills/build-quality-lesson/scripts/audit-lessons.mjs",
     "check:links": "node scripts/check-links.mjs",
     "build": "vite build",
+    "build:pages": "CHMURNIK_BASE_PATH=/chmurnik/ vite build",
     "preview": "vite preview --host 127.0.0.1",
     "ios:assets": "node scripts/generate-ios-assets.mjs",
     "ios:sync": "npm run build && cap sync ios",

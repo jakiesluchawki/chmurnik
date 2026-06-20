@@ -101,11 +101,14 @@ test("responsive navigation and long scientific names stay bounded", async () =>
   assert.match(styles, /\.term-detail-heading h2\s*\{[^}]*overflow-wrap: break-word/s);
 });
 
-test("the public base path matches the custom domain root", async () => {
+test("the public base path supports both the custom domain and GitHub Pages", async () => {
   const config = await read("vite.config.mjs");
+  const packageJson = JSON.parse(await read("package.json"));
   const styles = await read("src/zgrywa.css");
 
-  assert.match(config, /base: "\/"/);
+  assert.match(config, /process\.env\.CHMURNIK_BASE_PATH \|\| "\/"/);
+  assert.match(config, /base,/);
+  assert.equal(packageJson.scripts["build:pages"], "CHMURNIK_BASE_PATH=/chmurnik/ vite build");
   assert.doesNotMatch(styles, /\/chmurnik\//);
   assert.match(styles, /url\("\/fonts\/Romie-Regular\.woff2"\) format\("woff2"\)/);
   assert.match(styles, /url\("\/fonts\/Roobert-Regular\.woff2"\) format\("woff2"\)/);
@@ -117,17 +120,15 @@ test("the installable app and offline shell use the custom domain root", async (
   const index = await read("index.html");
   const manifest = JSON.parse(await read("public/manifest.webmanifest"));
   const worker = await read("public/service-worker.js");
-  const cname = await read("public/CNAME");
 
   assert.match(index, /href="\.\/manifest\.webmanifest"/);
   assert.match(index, /rel="icon" type="image\/png" href="\.\/icons\/icon-192\.png"/);
   assert.match(index, /href="\.\/icons\/apple-touch-icon\.png"/);
-  assert.equal(manifest.start_url, "/");
-  assert.equal(manifest.scope, "/");
-  assert.equal(cname.trim(), "chmurnik.cloud");
-  assert.match(worker, /const BASE = "\/"/);
+  assert.equal(manifest.start_url, "./");
+  assert.equal(manifest.scope, "./");
+  assert.match(worker, /const BASE = new URL\("\.\/", self\.location\.href\)\.pathname/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v6|`\$\{CACHE_PREFIX\}v6`/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v7|`\$\{CACHE_PREFIX\}v7`/);
   assert.match(worker, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);
@@ -139,9 +140,24 @@ test("GitHub Pages deployment runs tests before publishing", async () => {
 
   assert.match(workflow, /npm test/);
   assert.match(workflow, /npm run check:lessons/);
-  assert.match(workflow, /npm run build/);
+  assert.match(workflow, /npm run build:pages/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24/);
+});
+
+test("Netlify serves production security headers", async () => {
+  const config = await read("netlify.toml");
+
+  assert.match(config, /Content-Security-Policy = "default-src 'self';/);
+  assert.match(config, /frame-ancestors 'none'/);
+  assert.match(config, /object-src 'none'/);
+  assert.match(config, /Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"/);
+  assert.match(config, /X-Content-Type-Options = "nosniff"/);
+  assert.match(config, /X-Frame-Options = "DENY"/);
+  assert.match(config, /Referrer-Policy = "strict-origin-when-cross-origin"/);
+  assert.match(config, /Permissions-Policy = "/);
+  assert.match(config, /Cross-Origin-Opener-Policy = "same-origin"/);
+  assert.match(config, /Cross-Origin-Resource-Policy = "same-origin"/);
 });
 
 test("npm configuration remains portable across local and CI machines", async () => {

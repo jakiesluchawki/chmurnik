@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+const base = process.env.CHMURNIK_BASE_PATH || "/";
+
 export default defineConfig({
-  base: "/",
+  base,
   optimizeDeps: {
     include: ["react", "react-dom/client"],
   },

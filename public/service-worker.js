@@ -1,6 +1,6 @@
 const CACHE_PREFIX = "chmurnik-";
-const VERSION = `${CACHE_PREFIX}v6`;
-const BASE = "/";
+const VERSION = `${CACHE_PREFIX}v7`;
+const BASE = new URL("./", self.location.href).pathname;
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
   "altocumulus-mackerel.jpg",
