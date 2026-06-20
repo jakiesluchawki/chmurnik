@@ -145,19 +145,21 @@ test("GitHub Pages deployment runs tests before publishing", async () => {
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24/);
 });
 
-test("Netlify serves production security headers", async () => {
-  const config = await read("netlify.toml");
+test("the shared host serves production security headers", async () => {
+  const config = await read("public/.htaccess");
 
-  assert.match(config, /Content-Security-Policy = "default-src 'self';/);
+  assert.match(config, /Header always set Content-Security-Policy "default-src 'self';/);
   assert.match(config, /frame-ancestors 'none'/);
   assert.match(config, /object-src 'none'/);
-  assert.match(config, /Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"/);
-  assert.match(config, /X-Content-Type-Options = "nosniff"/);
-  assert.match(config, /X-Frame-Options = "DENY"/);
-  assert.match(config, /Referrer-Policy = "strict-origin-when-cross-origin"/);
-  assert.match(config, /Permissions-Policy = "/);
-  assert.match(config, /Cross-Origin-Opener-Policy = "same-origin"/);
-  assert.match(config, /Cross-Origin-Resource-Policy = "same-origin"/);
+  assert.match(config, /Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"/);
+  assert.match(config, /Header always set X-Content-Type-Options "nosniff"/);
+  assert.match(config, /Header always set X-Frame-Options "DENY"/);
+  assert.match(config, /Header always set Referrer-Policy "strict-origin-when-cross-origin"/);
+  assert.match(config, /Header always set Permissions-Policy "/);
+  assert.match(config, /Header always set Cross-Origin-Opener-Policy "same-origin"/);
+  assert.match(config, /Header always set Cross-Origin-Resource-Policy "same-origin"/);
+  assert.match(config, /RewriteCond %\{HTTPS\} !=on/);
+  assert.match(config, /RewriteRule \^ https:\/\/chmurnik\.cloud%\{REQUEST_URI\}/);
 });
 
 test("npm configuration remains portable across local and CI machines", async () => {

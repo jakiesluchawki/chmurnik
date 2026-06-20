@@ -5,7 +5,7 @@ type: FEATURE
 status: active
 related_adr: []
 related_tasks: ["0020"]
-tags: ["priority-high", "security", "hosting", "netlify", "github-pages"]
+tags: ["priority-high", "security", "hosting", "cyberfolks", "github-pages"]
 links:
   - "https://chmurnik.cloud"
   - "https://securityheaders.com/?q=https%3A%2F%2Fchmurnik.cloud%2F&hide=on&followRedirects=on"
@@ -36,8 +36,9 @@ headers, while keeping `jakiesluchawki.github.io/chmurnik/` operational.
 
 ## Implementation Notes
 
-- Added a Netlify production configuration with CSP, HSTS, MIME-sniffing,
-  framing, referrer, permissions, opener, and resource-policy headers.
+- Added an Apache `.htaccess` production configuration with CSP, HSTS,
+  MIME-sniffing, framing, referrer, permissions, opener, and resource-policy
+  headers for the existing Cyber_Folks shared hosting.
 - Added separate root and `/chmurnik/` build targets. Font, JavaScript, CSS,
   manifest, and service-worker requests return `200` in the subpath preview.
 - Changed the PWA manifest and service worker to derive their scope from the
@@ -54,7 +55,7 @@ headers, while keeping `jakiesluchawki.github.io/chmurnik/` operational.
 
 ### Emerged
 
-2. **Use environment-specific Vite bases:** Netlify builds at `/`; GitHub
+2. **Use environment-specific Vite bases:** Cyber_Folks builds at `/`; GitHub
    Actions builds with `CHMURNIK_BASE_PATH=/chmurnik/`. This preserves one
    source tree without runtime host detection.
 3. **Keep the PWA scope relative:** Relative manifest and service-worker paths
@@ -65,8 +66,8 @@ headers, while keeping `jakiesluchawki.github.io/chmurnik/` operational.
 - GitHub Pages does not support repository-defined custom response headers;
   a `_headers` file would be served as inert content rather than configuration.
 - The Netlify connector timed out while listing and creating projects. A
-  validated anonymous deploy was created as a fallback and awaits account
-  claim before domain attachment.
+  validated anonymous deploy was created for technical testing, but the owner
+  chose the already-paid Cyber_Folks hosting to avoid Netlify transfer limits.
 
 ## Broken/Modified Tests
 
