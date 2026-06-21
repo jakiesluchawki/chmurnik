@@ -843,6 +843,7 @@ p {
 .placement-modal,
 .quiz-modal,
 .recognition-test,
+.photo-recognition-modal,
 .source-drawer,
 .cloud-detail,
 .term-detail {
@@ -1305,6 +1306,7 @@ html.native-ios .source-drawer,
 html.native-ios .cloud-detail,
 html.native-ios .term-detail,
 html.native-ios .recognition-test,
+html.native-ios .photo-recognition-modal,
 html.native-ios .placement-modal,
 html.native-ios .quiz-modal {
   overscroll-behavior: contain;
@@ -1338,6 +1340,7 @@ html.native-ios .quiz-modal {
   }
 
   html.native-ios .recognition-test,
+  html.native-ios .photo-recognition-modal,
   html.native-ios .placement-modal,
   html.native-ios .quiz-modal {
     max-height: calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
@@ -1449,6 +1452,10 @@ html.native-ios .quiz-modal {
   gap: 14px;
 }
 
+.home-guidance-row.has-photo-recognition {
+  grid-template-columns: 1.2fr 1fr 1fr;
+}
+
 .home-guidance-row button {
   min-height: 92px;
   border: 1px solid var(--line);
@@ -1467,8 +1474,15 @@ html.native-ios .quiz-modal {
   grid-template-columns: 72px 1fr 18px;
 }
 
-.home-test-card {
+.home-test-card,
+.home-photo-card {
   grid-template-columns: 30px 1fr;
+}
+
+.home-photo-card {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink) !important;
 }
 
 .home-tour-card picture,
@@ -1586,6 +1600,233 @@ html.native-ios .quiz-modal {
   background: var(--line);
 }
 
+.photo-recognition-modal {
+  position: relative;
+  width: min(1040px, calc(100vw - 30px));
+  max-height: calc(100svh - 30px);
+  overflow: auto;
+  border-radius: 28px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(22px, 3vw, 38px);
+}
+
+.photo-recognition-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.photo-recognition-header h2 {
+  margin: 4px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.photo-privacy-note {
+  margin: 22px 0;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 0.86rem;
+}
+
+.photo-privacy-note svg {
+  flex: 0 0 auto;
+  color: var(--coral);
+}
+
+.photo-recognition-intro {
+  min-height: 250px;
+  padding: clamp(28px, 6vw, 72px);
+  border-radius: 20px;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+
+.photo-recognition-intro h3 {
+  margin: 0 0 7px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-weight: 400;
+}
+
+.photo-recognition-intro p {
+  max-width: 520px;
+  margin: 0;
+}
+
+.photo-recognition-preview {
+  position: relative;
+  min-height: 300px;
+  max-height: 54svh;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.photo-recognition-preview img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-height: 54svh;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-recognition-preview figcaption {
+  position: absolute;
+  inset: auto 14px 14px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.photo-recognition-result {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+}
+
+.photo-family-result,
+.photo-hypotheses,
+.photo-recognition-caveat {
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 20px;
+}
+
+.photo-family-result {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.photo-family-result h3 {
+  margin: 10px 0 12px;
+  font-family: var(--serif);
+  font-size: clamp(2.1rem, 4vw, 3.7rem);
+  font-weight: 400;
+  line-height: 0.96;
+  color: var(--paper);
+}
+
+.photo-family-result p,
+.photo-recognition-caveat p {
+  margin: 0;
+}
+
+.photo-hypotheses > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.photo-hypotheses > div small {
+  text-align: right;
+}
+
+.photo-hypotheses ol {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photo-hypotheses li {
+  min-height: 60px;
+  border-top: 1px solid var(--soft-line);
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.photo-hypotheses li > span,
+.photo-hypotheses li b {
+  font-size: 0.75rem;
+}
+
+.photo-hypotheses li div {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-hypotheses li strong {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.photo-hypotheses li small {
+  font-size: 0.72rem;
+}
+
+.photo-recognition-caveat {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--mist);
+  font-size: 0.84rem;
+}
+
+.photo-recognition-caveat svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.photo-result-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo-recognition-error {
+  margin: 14px 0 0;
+  display: flex;
+  gap: 9px;
+  color: #7b3148;
+}
+
+.photo-capture-actions {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.photo-capture-actions button {
+  min-height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.photo-capture-actions button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
 .onboarding-progress span.active {
   background: var(--coral);
 }
@@ -1692,6 +1933,14 @@ html.native-ios .quiz-modal {
     gap: 8px;
   }
 
+  .home-guidance-row.has-photo-recognition {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-guidance-row.has-photo-recognition .home-tour-card {
+    grid-column: 1 / -1;
+  }
+
   .home-guidance-row button {
     min-height: 68px;
     border-radius: 12px;
@@ -1713,7 +1962,8 @@ html.native-ios .quiz-modal {
     height: 52px;
   }
 
-  .home-test-card {
+  .home-test-card,
+  .home-photo-card {
     grid-template-columns: 22px 1fr;
   }
 
@@ -1917,5 +2167,96 @@ html.native-ios .quiz-modal {
   .onboarding-actions .button {
     min-height: 44px;
     padding-inline: 14px;
+  }
+
+  .photo-recognition-modal {
+    width: 100%;
+    max-height: calc(100svh - 8px);
+    align-self: flex-end;
+    padding: 20px 15px calc(16px + env(safe-area-inset-bottom));
+    border-radius: 24px 24px 0 0;
+  }
+
+  .photo-recognition-header h2 {
+    font-size: 2.35rem;
+  }
+
+  .photo-recognition-header .icon-button {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .photo-privacy-note {
+    margin: 15px 0;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
+
+  .photo-recognition-intro {
+    min-height: 180px;
+    padding: 24px 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .photo-recognition-intro h3 {
+    font-size: 2rem;
+  }
+
+  .photo-recognition-preview,
+  .photo-recognition-preview img {
+    min-height: 175px;
+    max-height: 27svh;
+  }
+
+  .photo-recognition-result {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .photo-family-result,
+  .photo-hypotheses,
+  .photo-recognition-caveat {
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .photo-family-result h3 {
+    margin-block: 6px 8px;
+    font-size: 2rem;
+  }
+
+  .photo-family-result p {
+    font-size: 0.83rem;
+  }
+
+  .photo-recognition-caveat,
+  .photo-result-actions {
+    grid-column: auto;
+  }
+
+  .photo-hypotheses li {
+    min-height: 53px;
+  }
+
+  .photo-result-actions .button {
+    flex: 1 1 150px;
+  }
+
+  .photo-capture-actions {
+    position: sticky;
+    bottom: calc(-16px - env(safe-area-inset-bottom));
+    margin-inline: -15px;
+    margin-bottom: calc(-16px - env(safe-area-inset-bottom));
+    padding: 12px 15px calc(12px + env(safe-area-inset-bottom));
+    background: var(--paper);
+  }
+
+  .photo-capture-actions button {
+    min-height: 46px;
+    padding-inline: 7px;
+    font-size: 0.78rem;
   }
 }

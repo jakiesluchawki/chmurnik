@@ -1,0 +1,35 @@
+{
+  "model": "MobileNetV3 Small FP16 Core ML",
+  "classes": 11,
+  "input": "224x224 RGB center crop",
+  "training_source": {
+    "name": "CCSN v2",
+    "doi": "10.7910/DVN/CADDPD",
+    "license": "CC0 1.0"
+  },
+  "independent_atlas": {
+    "samples": 30,
+    "genus_top1": 0.6,
+    "genus_top3": 0.8333333333,
+    "family_top1": 0.8,
+    "family_top2": 0.9333333333
+  },
+  "held_out_test": {
+    "samples": 384,
+    "genus_top1": 0.5339,
+    "genus_top3": 0.8047,
+    "family_top1": 0.7396,
+    "family_top2": 0.9063,
+    "selective_precision": 0.7647,
+    "selective_coverage": 0.1328
+  },
+  "outliers": {
+    "contrail_abstention": 0.9333,
+    "project_artwork_and_upper_atmosphere_abstention": 1.0
+  },
+  "coreml_parity_max_absolute_error": 0.00797,
+  "abstention_policy": {
+    "minimum_confidence": 0.2,
+    "margin_threshold": 0.68
+  }
+}

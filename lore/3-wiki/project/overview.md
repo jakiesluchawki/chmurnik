@@ -16,6 +16,9 @@ application for learning cloud identification and vertical weather analysis.
   aviation significance, evolution, optics, look-alikes, and field procedure.
 - Visual decision key, difficult cases, global adaptive four-choice image
   practice, local progress, and a private local observation journal.
+- The iOS application includes an experimental, fully on-device photo
+  assistant. It leads with an aggregated cloud family, preserves three genus
+  hypotheses, exposes uncertainty, and sends no photograph to a server.
 - Interactive AGL/MSL and pressure-level laboratory plus METAR/TAF, icing,
   turbulence, convection, CAPE, Skew-T, and cloud-motion wind interpretation.
 - Practical Windy layer decoder covering pressure-level wind, temperature,
@@ -29,7 +32,7 @@ application for learning cloud identification and vertical weather analysis.
 ## Architecture
 
 - React 19, Vite 6, static hash routes, and no backend.
-- Local variable Newsreader and Manrope fonts plus Phosphor icons.
+- Local Romie and Roobert fonts plus Phosphor icons.
 - Local storage for learner profile, progress, and journal entries.
 - Web manifest and service worker for installable and runtime offline use.
 - GitHub Actions test/build pipeline and GitHub Pages deployment from `main`.
@@ -43,4 +46,5 @@ application for learning cloud identification and vertical weather analysis.
 - Legacy application address: <https://jakiesluchawki.github.io/cloud-recognition/>
 - Visual QA: `design-qa.md` with `final result: passed`.
 
-Automatic photograph recognition remains deferred to backlog task 0002.
+Recognition research, model provenance, benchmarks, and implementation notes
+are tracked in active task 0002.

@@ -21,12 +21,36 @@ function contrastRatio(first, second) {
   return (luminances[0] + 0.05) / (luminances[1] + 0.05);
 }
 
-test("version 1 boundaries remain explicit", async () => {
+test("version 1 boundaries keep photo recognition private and non-authoritative", async () => {
   const product = await read("PRODUCT.md");
 
-  assert.match(product, /No automatic cloud recognition/);
+  assert.match(product, /runs on-device/);
+  assert.match(product, /No hosted recognition, automatic photo upload, or authoritative diagnosis/);
   assert.match(product, /No Windy integration/);
   assert.match(product, /No recorded or synthesized voice/);
+});
+
+test("the iOS photo assistant bundles a small local model and honest uncertainty", async () => {
+  const app = await read("src/App.jsx");
+  const interpretation = await read("src/lib/photo-recognition.js");
+  const native = await read("ios/App/App/CloudRecognizerPlugin.swift");
+  const plist = await read("ios/App/App/Info.plist");
+  const weights = await stat(new URL(
+    "../ios/App/App/Models/CloudGenusClassifier.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+    import.meta.url,
+  ));
+
+  assert.match(app, /Najbliższa rodzina/);
+  assert.match(app, /Hipotezy do sprawdzenia/);
+  assert.match(app, /To podpowiedź, nie werdykt/);
+  assert.match(app, /Zdjęcie nie opuszcza urządzenia/);
+  assert.match(interpretation, /marginThreshold: 0\.68/);
+  assert.match(interpretation, /low-layered/);
+  assert.match(native, /VNCoreMLRequest/);
+  assert.match(native, /imageCropAndScaleOption = \.centerCrop/);
+  assert.match(plist, /NSCameraUsageDescription/);
+  assert.match(plist, /NSPhotoLibraryUsageDescription/);
+  assert.ok(weights.size < 5_000_000, "the bundled Core ML weights should stay below 5 MB");
 });
 
 test("the project records its visual source of truth", async () => {

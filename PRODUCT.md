@@ -45,14 +45,18 @@ The learner should become able to:
 
 ## Version 1 Boundaries
 
-- No automatic cloud recognition from photographs or camera input.
+- Experimental photograph recognition is available only in the iOS app. It
+  runs on-device, leads with a cloud family, and keeps genus output as ranked
+  hypotheses with visible uncertainty and evidence prompts.
+- No hosted recognition, automatic photo upload, or authoritative diagnosis.
 - No Windy integration, embedded Windy map, or Windy API.
 - No recorded or synthesized voice.
 - No accounts, analytics, advertising, or remote learner profiles.
 - Progress and journal data remain local to the device.
 
-## Deferred Opportunity
+## Recognition Research
 
-Automatic photograph recognition is a promising later version. It must be
-designed separately around privacy, model transparency, confidence, offline
-fallbacks, and the danger of turning uncertain morphology into false certainty.
+The first on-device model is intentionally conservative. Future work requires
+a larger opt-in, expert-reviewed field benchmark before any accuracy expansion
+or retraining claim. Cloud photographs remain private unless a separate,
+explicitly consented data-sharing design is introduced.
