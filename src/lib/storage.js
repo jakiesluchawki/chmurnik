@@ -6,6 +6,7 @@ const KEYS = {
   observationDraft: "cloud-recognition:observation-draft",
   lessonPositions: "cloud-recognition:lesson-positions",
   aviationReview: "cloud-recognition:aviation-review",
+  onboarding: "chmurnik:onboarding:v1",
 };
 
 function read(key, fallback) {
@@ -97,4 +98,12 @@ export function clearAviationReview() {
   } catch {
     // Review history is optional when storage is unavailable.
   }
+}
+
+export function loadOnboarding() {
+  return read(KEYS.onboarding, { completed: false });
+}
+
+export function saveOnboarding(value) {
+  write(KEYS.onboarding, value);
 }

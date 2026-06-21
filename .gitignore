@@ -8,6 +8,7 @@ dist/
 artifacts/
 build/
 .local/
+release/
 
 # Lore framework - session-local files
 lore/0-session/current-user.md

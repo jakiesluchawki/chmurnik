@@ -128,7 +128,8 @@ test("the installable app and offline shell use the custom domain root", async (
   assert.equal(manifest.scope, "./");
   assert.match(worker, /const BASE = new URL\("\.\/", self\.location\.href\)\.pathname/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v7|`\$\{CACHE_PREFIX\}v7`/);
+  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v8|`\$\{CACHE_PREFIX\}v8`/);
+  assert.match(worker, /observer-guide-still-life-720\.webp/);
   assert.match(worker, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
   assert.match(worker, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);
@@ -143,6 +144,25 @@ test("GitHub Pages deployment runs tests before publishing", async () => {
   assert.match(workflow, /npm run build:pages/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /FORCE_JAVASCRIPT_ACTIONS_TO_NODE24/);
+});
+
+test("the compact guided experience keeps five destinations and local onboarding", async () => {
+  const app = await read("src/App.jsx");
+  const storage = await read("src/lib/storage.js");
+  const styles = await read("src/zgrywa.css");
+  const packageJson = JSON.parse(await read("package.json"));
+
+  assert.match(app, /const navItems = \[[\s\S]*Start[\s\S]*Nauka[\s\S]*Atlas[\s\S]*Warstwy[\s\S]*Dziennik[\s\S]*\];/);
+  assert.doesNotMatch(app, /<span>Test<\/span>/);
+  assert.match(app, /function OnboardingModal/);
+  assert.match(app, /Pierwszy raz\?/);
+  assert.match(app, /Pomiń/);
+  assert.match(app, /saveOnboarding/);
+  assert.match(storage, /chmurnik:onboarding:v1/);
+  assert.match(styles, /\.bottom-nav\s*\{\s*grid-template-columns: repeat\(5, 1fr\)/s);
+  assert.match(styles, /\.windy-decoder \.decoder-workbench\s*\{\s*order: -1/s);
+  assert.match(styles, /\.lesson-orientation-disclosure/);
+  assert.equal(packageJson.scripts["release:web"], "sh scripts/build-web-release.sh");
 });
 
 test("the shared host serves production security headers", async () => {
@@ -191,6 +211,7 @@ test("home media and licensed fonts use compact production formats", async () =>
     "public/assets/atmosphere-still-life-1536.avif",
     "public/assets/convection-still-life-1280.avif",
     "public/assets/wind-profile-still-life-1280.avif",
+    "public/assets/observer-guide-still-life-720.avif",
     "public/assets/upper-atmosphere/noctilucent-clouds-laboe-1280.avif",
   ];
 

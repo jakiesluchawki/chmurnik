@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-06-20 21:33. Do not edit manually.
+> Auto-generated on 2026-06-21 16:39. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,13 +9,14 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 0 | 0 | 1 | 22 | 0 |
+| 0 | 0 | 2 | 23 | 0 |
 
 ## Task Status
 
 | ID | Title | Type | Status | Blocked By | Blocks | ADRs |
 |:---|:------|:-----|:-------|:-----------|:-------|:-----|
 | 0002 | [Research automatic cloud recognitio...](lore/1-tasks/backlog/0002_RESEARCH_automatic-cloud-recognition.md) | RESEARCH | backlog | — | — | — |
+| 0025 | [Lazy-load specialist workshops](lore/1-tasks/backlog/0025_PERFORMANCE_lazy-load-workshops.md) | PERFORMANCE | backlog | — | — | — |
 | 0001 | [Build and publish Cloud Recognition...](lore/1-tasks/archive/0001_FEATURE_cloud-recognition-v1/README.md) | FEATURE | completed | — | — | — |
 | 0003 | [Expand the cloud atlas into a profe...](lore/1-tasks/archive/0003_FEATURE_encyclopedic-cloud-atlas/README.md) | FEATURE | completed | — | — | — |
 | 0004 | [Add an evidence-based field observa...](lore/1-tasks/archive/0004_FEATURE_field-observation-assistant/README.md) | FEATURE | completed | — | — | — |
@@ -38,3 +39,4 @@ Quick reference for task dependencies, status, and ADR relationships.
 | 0021 | [Polish the production GUI](lore/1-tasks/archive/0021_FEATURE_gui-polish.md) | FEATURE | completed | — | — | — |
 | 0022 | [Ship the CHMURNIK iOS app to TestFl...](lore/1-tasks/archive/0022_FEATURE_ios-testflight.md) | FEATURE | completed | — | — | — |
 | 0023 | [Harden production response headers](lore/1-tasks/archive/0023_FEATURE_security-headers.md) | FEATURE | completed | — | — | — |
+| 0024 | [Build the compact guided CHMURNIK e...](lore/1-tasks/archive/0024_FEATURE_compact-guided-experience.md) | FEATURE | completed | — | — | — |

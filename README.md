@@ -86,6 +86,17 @@ The public application is deployed at:
 
 The earlier project address remains available at:
 
-<https://jakiesluchawki.github.io/cloud-recognition/>
+<https://jakiesluchawki.github.io/chmurnik/>
+
+Prepare both web targets with one local command:
+
+```sh
+npm run release:web
+```
+
+The command runs the automated checks, creates the Cyber_Folks package at
+`release/chmurnik-cyberfolks.zip`, and verifies the GitHub Pages subpath build.
+Upload the ZIP contents only to the isolated
+`domains/chmurnik.cloud/public_html` document root.
 
 The project is tracked with the Lore Framework under `lore/`.

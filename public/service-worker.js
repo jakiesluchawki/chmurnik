@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "chmurnik-";
-const VERSION = `${CACHE_PREFIX}v7`;
+const VERSION = `${CACHE_PREFIX}v8`;
 const BASE = new URL("./", self.location.href).pathname;
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
@@ -39,6 +39,7 @@ const APP_SHELL = [
   `${BASE}assets/upper-atmosphere/nacreous-clouds-antarctica.jpg`,
   `${BASE}assets/upper-atmosphere/noctilucent-clouds-laboe.jpg`,
   `${BASE}assets/upper-atmosphere/polar-stratospheric-cloud-type-i.jpg`,
+  `${BASE}assets/observer-guide-still-life-720.webp`,
   `${BASE}icons/icon-192.png`,
   `${BASE}icons/icon-512.png`,
   ...CLOUD_PHOTOS.map((file) => `${BASE}assets/clouds/${file}`),

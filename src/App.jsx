@@ -94,6 +94,7 @@ import {
   loadJournal,
   loadLessonPosition,
   loadObservationDraft,
+  loadOnboarding,
   loadProfile,
   loadProgress,
   loadRecognitionStats,
@@ -101,6 +102,7 @@ import {
   saveAviationReview,
   saveLessonPosition,
   saveObservationDraft,
+  saveOnboarding,
   saveProfile,
   saveProgress,
   saveRecognitionStats,
@@ -211,7 +213,7 @@ function useDialogFocus(onClose) {
 }
 
 function useRoute() {
-  const getHash = () => window.location.hash.replace("#/", "") || "home";
+  const getHash = () => window.location.hash.replace("#/", "") || import.meta.env.VITE_QA_ROUTE || "home";
   const [route, setRoute] = useState(getHash);
 
   useEffect(() => {
@@ -333,7 +335,7 @@ function AppHeader({ route, navigate }) {
   );
 }
 
-function BottomNav({ route, navigate, onTest, testOpen }) {
+function BottomNav({ route, navigate }) {
   return (
     <nav className="bottom-nav" aria-label="Nawigacja mobilna">
       {navItems.map((item) => (
@@ -347,14 +349,6 @@ function BottomNav({ route, navigate, onTest, testOpen }) {
           <span>{item.label}</span>
         </button>
       ))}
-      <button
-        className={testOpen ? "active" : ""}
-        onClick={onTest}
-        aria-pressed={testOpen}
-      >
-        <Eye size={22} weight={testOpen ? "fill" : "regular"} />
-        <span>Test</span>
-      </button>
     </nav>
   );
 }
@@ -377,15 +371,13 @@ function CloudName({ children }) {
   return <span className="scientific-name" lang="la">{children}</span>;
 }
 
-function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSources, onOpenRecommended }) {
+function HomePage({ navigate, profile, onPlacement, completed, onSources, onOpenRecommended, onOpenOnboarding, onOpenRecognition }) {
   const recommended = learningModules.find((module) => module.id === profile?.moduleId) || learningModules[0];
   const progress = Math.round((completed.length / learningModules.length) * 100);
 
   return (
     <>
-      <section className="hero">
-        <div className="hero-shade" />
-        <HeightScale />
+      <section className="hero compact-home">
         <div className="hero-content">
           <span className="hero-kicker">Interaktywny atlas nieba</span>
           <h1>Naucz się<br />czytać niebo</h1>
@@ -394,10 +386,7 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
           </p>
           <div className="hero-actions">
             <button className="button button--coral" onClick={onPlacement}>
-              Sprawdź, co już umiesz <ArrowRight size={19} weight="bold" />
-            </button>
-            <button className="button button--glass" onClick={onBeginner}>
-              Zacznij od podstaw
+              Zacznij <ArrowRight size={19} weight="bold" />
             </button>
           </div>
         </div>
@@ -424,9 +413,41 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
             />
           </picture>
         </figure>
+        <nav className="home-primary-actions" aria-label="Najważniejsze miejsca">
+          <button onClick={() => navigate("atlas")}>
+            <Cloud size={22} />
+            <span><strong>Atlas</strong>Prawdziwe zdjęcia</span>
+            <ArrowRight size={17} />
+          </button>
+          <button onClick={() => navigate("layers")}>
+            <Stack size={22} />
+            <span><strong>Warstwy</strong>Zrozum atmosferę</span>
+            <ArrowRight size={17} />
+          </button>
+          <button onClick={() => navigate("learn")}>
+            <BookOpen size={22} />
+            <span><strong>Nauka</strong>Krótkie lekcje</span>
+            <ArrowRight size={17} />
+          </button>
+        </nav>
+        <div className="home-guidance-row">
+          <button className="home-tour-card" onClick={onOpenOnboarding}>
+            <picture aria-hidden="true">
+              <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
+              <source type="image/webp" srcSet={publicAsset("assets/observer-guide-still-life-720.webp")} />
+              <img src={publicAsset("assets/observer-guide-still-life.png")} alt="" />
+            </picture>
+            <span><small>Pierwszy raz?</small><strong>Oprowadzenie</strong></span>
+            <ArrowRight size={17} />
+          </button>
+          <button className="home-test-card" onClick={() => onOpenRecognition()}>
+            <Eye size={21} />
+            <span><small>Na prawdziwych zdjęciach</small><strong>Sprawdź się</strong></span>
+          </button>
+        </div>
       </section>
 
-      <section className="paper-section home-intro">
+      <section className="paper-section home-intro home-intro--compact">
         <div className="section-heading split-heading">
           <div>
             <span className="eyebrow">{profile ? "Twoja ścieżka" : "Nie musisz znać nazw"}</span>
@@ -440,23 +461,6 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
             : "Kształt, skala, światło, opad i zmiana w czasie tworzą dowód. Nazwa pojawia się dopiero wtedy, gdy umiesz go opisać."}
         </p>
 
-        <div className="feature-strip">
-          <button onClick={() => navigate("atlas/observer")}>
-            <Eye size={25} />
-            <span><strong>Obserwator</strong> od cech do hipotez</span>
-            <ArrowRight size={18} />
-          </button>
-          <button onClick={() => navigate("layers")}>
-            <Stack size={25} />
-            <span><strong>Warstwy</strong> wysokości i ciśnienia</span>
-            <ArrowRight size={18} />
-          </button>
-          <button onClick={() => navigate("journal")}>
-            <Notebook size={25} />
-            <span><strong>Dziennik</strong> obserwacji</span>
-            <ArrowRight size={18} />
-          </button>
-        </div>
       </section>
 
       <section className="home-visual-folio" aria-labelledby="home-folio-title">
@@ -586,6 +590,85 @@ function HomePage({ navigate, profile, onPlacement, onBeginner, completed, onSou
         </div>
       </section>
     </>
+  );
+}
+
+const onboardingSteps = [
+  {
+    eyebrow: "01 · Najpierw patrz",
+    title: "Atlas pokazuje prawdziwe niebo",
+    body: "Zdjęcia chmur są tu dowodem. Porównuj kształt, skalę, światło i opad, zanim wybierzesz nazwę.",
+    image: "assets/observer-guide-still-life-720.webp",
+    alt: "Filcowy obiekt obserwatora w studyjnej ramie",
+  },
+  {
+    eyebrow: "02 · Potem zrozum",
+    title: "Warstwy tłumaczą niewidoczne",
+    body: "Filcowe modele prowadzą przez wysokość, ciśnienie i wiatr. Są objaśnieniem, nigdy substytutem zdjęcia chmury.",
+    image: "assets/wind-profile-still-life-720.webp",
+    alt: "Studyjny model przepływu powietrza na kilku wysokościach",
+  },
+  {
+    eyebrow: "03 · Ćwicz krótko",
+    title: "Lekcje zaczynają się od działania",
+    body: "Możesz wejść od razu w potrzebny temat. Postęp zostaje wyłącznie na tym urządzeniu.",
+    image: "assets/convection-still-life-720.webp",
+    alt: "Studyjny model rozwoju konwekcji",
+  },
+  {
+    eyebrow: "04 · Wracaj do dowodów",
+    title: "Obserwacje mają własną pamięć",
+    body: "Dziennik zachowuje opis, pewność i cechy widoczne w kadrze. Bez konta, reklam i śledzenia.",
+    image: "assets/atmosphere-still-life-960.webp",
+    alt: "Studyjny model warstw atmosfery",
+  },
+];
+
+function OnboardingModal({ onClose, onFinish }) {
+  const [step, setStep] = useState(0);
+  const dialogRef = useDialogFocus(onClose);
+  const item = onboardingSteps[step];
+  const isLast = step === onboardingSteps.length - 1;
+
+  return (
+    <div className="modal-backdrop modal-backdrop--center" onMouseDown={onClose}>
+      <section
+        ref={dialogRef}
+        className="onboarding-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="onboarding-title"
+        tabIndex={-1}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <button className="icon-button onboarding-close" onClick={onClose} aria-label="Zamknij oprowadzenie">
+          <X size={21} />
+        </button>
+        <figure>
+          <img src={publicAsset(item.image)} alt={item.alt} />
+        </figure>
+        <div className="onboarding-copy">
+          <span className="eyebrow">{item.eyebrow}</span>
+          <h2 id="onboarding-title">{item.title}</h2>
+          <p>{item.body}</p>
+          <div className="onboarding-progress" aria-label={`Krok ${step + 1} z ${onboardingSteps.length}`}>
+            {onboardingSteps.map((entry, index) => (
+              <span key={entry.title} className={index <= step ? "active" : ""} />
+            ))}
+          </div>
+          <div className="onboarding-actions">
+            <button className="text-button" onClick={onFinish}>Pomiń</button>
+            {step > 0 && <button className="button button--secondary" onClick={() => setStep(step - 1)}>Wstecz</button>}
+            <button
+              className="button button--coral"
+              onClick={() => isLast ? onFinish() : setStep(step + 1)}
+            >
+              {isLast ? "Zaczynam" : "Dalej"} <ArrowRight size={17} />
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 
@@ -730,6 +813,9 @@ function LearnPage({
   const [selected, setSelected] = useState(initialModule || null);
   const [activeChapter, setActiveChapter] = useState(0);
   const [quizOpen, setQuizOpen] = useState(false);
+  const [orientationOpen, setOrientationOpen] = useState(
+    () => !window.matchMedia("(max-width: 640px)").matches,
+  );
   const mastery = recognitionMastery(clouds.map((cloud) => cloud.id), recognitionStats);
   const masteryAttempts = mastery.reduce((sum, item) => sum + item.attempts, 0);
   const steadyCount = mastery.filter((item) => item.state === "steady").length;
@@ -794,31 +880,41 @@ function LearnPage({
             <p>{content.lead}</p>
           </div>
         </div>
-        <section className="lesson-orientation" aria-label="Plan lekcji">
-          <div className="lesson-time-plan">
-            <span className="eyebrow">Skąd bierze się {module.minutes} minut</span>
-            <div>
-              {content.timePlan.map((item) => (
-                <span key={item.label}>
-                  <strong>{item.minutes} min</strong>
-                  {item.label}
-                </span>
-              ))}
+        <details
+          className="lesson-orientation-disclosure"
+          open={orientationOpen}
+          onToggle={(event) => setOrientationOpen(event.currentTarget.open)}
+        >
+          <summary>
+            Plan i cele lekcji
+            <CaretDown size={17} />
+          </summary>
+          <section className="lesson-orientation" aria-label="Plan lekcji">
+            <div className="lesson-time-plan">
+              <span className="eyebrow">Skąd bierze się {module.minutes} minut</span>
+              <div>
+                {content.timePlan.map((item) => (
+                  <span key={item.label}>
+                    <strong>{item.minutes} min</strong>
+                    {item.label}
+                  </span>
+                ))}
+              </div>
             </div>
+            <div className="lesson-objectives">
+              <span className="eyebrow">Po tej lekcji potrafisz</span>
+              <ul>
+                {content.objectives.map((objective) => (
+                  <li key={objective}><Check size={16} />{objective}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+          <div className="lesson-source-row">
+            <SourceButton ids={module.sourceIds} onOpen={onSources} />
+            <p>Czas obejmuje czytanie, krótkie przypomnienia, analizę przykładów, zadanie i sprawdzenie — nie sam tekst.</p>
           </div>
-          <div className="lesson-objectives">
-            <span className="eyebrow">Po tej lekcji potrafisz</span>
-            <ul>
-              {content.objectives.map((objective) => (
-                <li key={objective}><Check size={16} />{objective}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-        <div className="lesson-source-row">
-          <SourceButton ids={module.sourceIds} onOpen={onSources} />
-          <p>Czas obejmuje czytanie, krótkie przypomnienia, analizę przykładów, zadanie i sprawdzenie — nie sam tekst.</p>
-        </div>
+        </details>
         <div className="lesson-mobile-progress" aria-label={`Rozdział ${activeChapter + 1} z ${content.chapters.length}`}>
           <div>
             <span>Rozdział {activeChapter + 1} z {content.chapters.length}</span>
@@ -943,7 +1039,7 @@ function LearnPage({
 
   return (
     <main className="page">
-      <header className="page-heading">
+      <header className="page-heading workbench-heading">
         <span className="eyebrow">Od obserwatora do analityka</span>
         <h1>Twoja ścieżka nauki</h1>
         <p>Możesz iść po kolei albo wejść od razu w temat, którego potrzebujesz. Ukończenie zapisuje się tylko na tym urządzeniu.</p>
@@ -1131,6 +1227,13 @@ function AtlasPage({
     initialComparisonIds?.length >= 2 ? initialComparisonIds : comparisonPresets[1].cloudIds,
   );
   const hasAtlasQuery = Boolean(query.trim());
+  const heading = {
+    atlas: ["Międzynarodowa klasyfikacja WMO", "Encyklopedia chmur", "Dziesięć rodzajów prowadzi dalej do cech, fizyki, pogody i formalnych nazw."],
+    observer: ["Mobilny notes obserwatora", "Najpierw dowody", "Pięć krótkich pytań zamienia spojrzenie w hipotezę, którą możesz sprawdzić w atlasie."],
+    compare: ["Diagnostyka różnicowa", "Porównaj dowody", "Zestaw podobne chmury obok siebie i zobacz kryteria, które naprawdę je rozdzielają."],
+    encyclopedia: ["Formalne warstwy nazwy", "Indeks WMO", "Gatunki, odmiany, cechy dodatkowe oraz pochodzenie w jednym przeszukiwalnym indeksie."],
+    cases: ["Najczęstsze pomyłki", "Trudne przypadki", "Ćwicz granice klasyfikacji na zestawach, w których pierwszy odruch często zawodzi."],
+  }[tab];
 
   useEffect(() => {
     setTab(initialTab);
@@ -1169,11 +1272,11 @@ function AtlasPage({
 
   return (
     <main className="page atlas-page">
-      <header className="page-heading page-heading--inline">
+      <header className="page-heading page-heading--inline workbench-heading">
         <div>
-          <span className="eyebrow">Międzynarodowa klasyfikacja WMO</span>
-          <h1>Encyklopedia chmur</h1>
-          <p>Dziesięć rodzajów jest mapą wejścia. Dalej czeka 49 formalnych pojęć, reguły pochodzenia, fizyka, pogoda i znaczenie lotnicze.</p>
+          <span className="eyebrow">{heading[0]}</span>
+          <h1>{heading[1]}</h1>
+          <p>{heading[2]}</p>
         </div>
         <SourceButton ids={["wmoAtlas", "wmoSummary", "wmoPrinciples", "wmoUpperAtmosphere"]} onOpen={onSources} />
       </header>
@@ -2947,14 +3050,22 @@ function LayersPage({ onSources }) {
   const agl = Math.max(0, selected.altitude - terrain);
   const terrainPercent = Math.min(74, (terrain / 10000) * 100);
   const levelPercent = Math.min(96, (selected.altitude / 10000) * 100);
+  const heading = {
+    decoder: ["Pracownia pionowej atmosfery", "Czytnik Windy", "Wybierz warstwę i od razu zobacz, co oznacza dla wysokości, ciśnienia i terenu."],
+    lab: ["Wysokość i ciśnienie", "Ten sam poziom, inna wysokość", "Przesuwaj teren i poziom hPa, aby zobaczyć różnicę między MSL i AGL."],
+    wind: ["Ruch widoczny na niebie", "Wiatr z obserwacji", "Połącz kierunek ruchu chmur z zasadą, skąd wieje wiatr."],
+    metar: ["Język pogody lotniczej", "METAR i TAF", "Czytaj depeszę grupami i sprawdzaj znaczenie bez pamięciówki."],
+    hazards: ["Świadome granice", "Zagrożenia", "Rozpoznaj sygnały, których nie wolno interpretować bez danych operacyjnych."],
+    sounding: ["Profil pionowy", "Sondaż i Skew-T", "Czytaj stabilność, wilgoć i wiatr na wspólnym przekroju atmosfery."],
+  }[tab];
 
   return (
     <main className="page layers-page">
-      <header className="page-heading page-heading--inline">
+      <header className="page-heading page-heading--inline workbench-heading">
         <div>
-          <span className="eyebrow">Pracownia pionowej atmosfery</span>
-          <h1>Warstwy bez tajemnic</h1>
-          <p>Zrozum, co naprawdę zmieniasz w aplikacjach pogodowych, gdy przesuwasz wysokość albo wybierasz poziom hPa.</p>
+          <span className="eyebrow">{heading[0]}</span>
+          <h1>{heading[1]}</h1>
+          <p>{heading[2]}</p>
         </div>
         <SourceButton
           ids={[
@@ -4847,6 +4958,13 @@ export function App() {
   const [recognitionOpen, setRecognitionOpen] = useState(false);
   const [recognitionTarget, setRecognitionTarget] = useState(null);
   const [recognitionStats, setRecognitionStats] = useState(loadRecognitionStats);
+  const [onboardingOpen, setOnboardingOpen] = useState(false);
+
+  useEffect(() => {
+    if (import.meta.env.VITE_QA_NO_ONBOARDING === "1" || loadOnboarding().completed) return undefined;
+    const frame = window.requestAnimationFrame(() => setOnboardingOpen(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   const [routeName, routeDetail, routePayload] = route.split("/");
   const validRoute = useMemo(
@@ -4895,6 +5013,11 @@ export function App() {
     setRecognitionTarget(null);
   };
 
+  const finishOnboarding = () => {
+    saveOnboarding({ completed: true, completedAt: new Date().toISOString() });
+    setOnboardingOpen(false);
+  };
+
   const saveFieldObservation = (draft) => {
     const cloud = getCloud(draft.cloudId);
     saveObservationDraft({
@@ -4918,8 +5041,9 @@ export function App() {
             profile={profile}
             completed={completed}
             onPlacement={() => setPlacementOpen(true)}
-            onBeginner={() => chooseProfile(calculatePlacement([]))}
             onOpenRecommended={openRecommended}
+            onOpenOnboarding={() => setOnboardingOpen(true)}
+            onOpenRecognition={openRecognition}
           />
         )}
         {validRoute === "learn" && (
@@ -4961,8 +5085,6 @@ export function App() {
       <BottomNav
         route={validRoute}
         navigate={navigate}
-        onTest={() => openRecognition()}
-        testOpen={recognitionOpen}
       />
       {validRoute !== "home" && (
         <button className="quick-test-button" onClick={() => openRecognition()}>
@@ -4971,6 +5093,7 @@ export function App() {
         </button>
       )}
       {placementOpen && <PlacementModal onClose={() => setPlacementOpen(false)} onFinish={chooseProfile} />}
+      {onboardingOpen && <OnboardingModal onClose={finishOnboarding} onFinish={finishOnboarding} />}
       {sourceIds && <SourceDrawer ids={sourceIds} onClose={() => setSourceIds(null)} />}
       {recognitionOpen && (
         <RecognitionTest
