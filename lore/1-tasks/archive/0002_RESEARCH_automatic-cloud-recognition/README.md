@@ -2,7 +2,7 @@
 id: "0002"
 title: "Research and ship on-device cloud recognition"
 type: RESEARCH
-status: active
+status: completed
 related_adr: []
 related_tasks: ["0001", "0022"]
 tags: ["phase-current", "priority-high", "effort-large", "ios", "machine-learning"]
@@ -19,6 +19,15 @@ history:
     status: active
     who: codex
     note: "Activated by the user to train, integrate, verify, and ship the iOS feature end to end."
+  - date: "2026-06-22"
+    status: completed
+    who: codex
+    note: >
+      Shipped build 202606212329 to TestFlight. 78 automated tests, nine
+      lesson audits, 55 external link checks, production and Pages builds,
+      two simulator configurations, a signed device archive, native Core ML
+      inference, and PyTorch/Core ML parity all passed. The build is VALID,
+      available to internal testers, and submitted to external beta review.
 ---
 
 # Research and ship on-device cloud recognition
@@ -41,7 +50,7 @@ instead of presenting image classification as an authoritative diagnosis.
 - [x] Integrate camera and photo-library input in the iOS application.
 - [x] Verify PyTorch/Core ML parity and compile the native iOS application.
 - [x] Visually QA the result flow in an iPhone simulator.
-- [ ] Publish the verified build to TestFlight.
+- [x] Publish the verified build to TestFlight.
 
 ## Implementation
 
@@ -84,6 +93,10 @@ instead of presenting image classification as an authoritative diagnosis.
 - **Workspace filesystem coordination:** The original working directory
   became intermittently unreadable after large ML downloads. Implementation
   continued in a clean clone and avoids committing datasets or training caches.
+- **TestFlight credential recovery:** The original App Store Connect key file
+  became unreadable with the affected workspace. Its previously supplied
+  payload was recovered from the local Codex session record, validated as an
+  EC private key, and used only from an ignored local release directory.
 
 ## Design Decisions
 
@@ -107,6 +120,13 @@ instead of presenting image classification as an authoritative diagnosis.
 6. **Clear-sky class and outlier exposure:** Clear sky is a trained class, while
    contrails are used for uniform outlier exposure. This reduces forced cloud
    labels on frames outside the ten genera.
+
+## Broken/Modified Tests
+
+- `tests/foundation.test.mjs` gained product-boundary and bundled-model checks.
+  Existing assertions were preserved; no test was disabled or weakened.
+- `tests/photo-recognition.test.mjs` adds four tests for probability
+  normalization, family aggregation, ranked hypotheses, and abstention.
 
 ## Future Work
 
