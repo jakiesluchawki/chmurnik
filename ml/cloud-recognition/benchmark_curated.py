@@ -8,7 +8,8 @@ from torch.utils.data import DataLoader
 
 from labels import GENERA
 from model import build_model
-from train_ccsn import Evaluation, PhotoDataset, outlier_report, report
+from train_ccsn import Evaluation, PhotoDataset as V2PhotoDataset, outlier_report, report
+from train_v3 import PhotoDataset as V3PhotoDataset
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -37,19 +38,38 @@ def main() -> None:
     parser.add_argument("--artifacts", type=Path, required=True)
     args = parser.parse_args()
     checkpoint = torch.load(args.artifacts / "cloud-genus-net.pt", map_location="cpu", weights_only=True)
-    model = build_model(len(GENERA))
+    model = build_model(
+        len(GENERA),
+        architecture=checkpoint.get("architecture", "mobilenet_v3_small"),
+    )
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
     items = [(path, label(path)) for path in sorted((ROOT / "public/assets/clouds").glob("*.jpg"))]
+    if checkpoint.get("pipeline_version") == 3:
+        dataset = V3PhotoDataset(
+            items,
+            False,
+            checkpoint["input_size"],
+            checkpoint.get("preprocess", "full_frame"),
+        )
+        outlier_dataset = V3PhotoDataset(
+            [(path, -1) for path in OUTLIERS],
+            False,
+            checkpoint["input_size"],
+            checkpoint.get("preprocess", "full_frame"),
+        )
+    else:
+        dataset = V2PhotoDataset(items, False)
+        outlier_dataset = V2PhotoDataset([(path, -1) for path in OUTLIERS], False)
     logits, labels, paths = [], [], []
     with torch.inference_mode():
-        for images, targets, names in DataLoader(PhotoDataset(items, False), batch_size=32):
+        for images, targets, names in DataLoader(dataset, batch_size=32):
             logits.append(model(images).numpy())
             labels.append(targets.numpy())
             paths.extend(names)
     evaluation = Evaluation(np.concatenate(logits), np.concatenate(labels), paths, float("nan"))
     atlas = report(evaluation, checkpoint["temperature"], checkpoint["abstention_policy"])
-    outliers = outlier_report(model, DataLoader(PhotoDataset([(path, -1) for path in OUTLIERS], False), batch_size=16), torch.device("cpu"), checkpoint["temperature"], checkpoint["abstention_policy"])
+    outliers = outlier_report(model, DataLoader(outlier_dataset, batch_size=16), torch.device("cpu"), checkpoint["temperature"], checkpoint["abstention_policy"])
     benchmark_path = args.artifacts / "benchmark.json"
     benchmark = json.loads(benchmark_path.read_text())
     benchmark["independent_curated_atlas"] = atlas

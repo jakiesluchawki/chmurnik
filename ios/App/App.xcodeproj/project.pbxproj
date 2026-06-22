@@ -14,6 +14,7 @@
 		A10000010000000000000001 /* BridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000001 /* BridgeViewController.swift */; };
 		A10000030000000000000001 /* CloudRecognizerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000040000000000000001 /* CloudRecognizerPlugin.swift */; };
 		A10000050000000000000001 /* CloudGenusClassifier.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = A10000060000000000000001 /* CloudGenusClassifier.mlpackage */; };
+		A10000070000000000000001 /* CloudGenusClassifierV3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = A10000080000000000000001 /* CloudGenusClassifierV3.mlpackage */; };
 		504EC30D1FED79650016851F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30B1FED79650016851F /* Main.storyboard */; };
 		504EC30F1FED79650016851F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504EC30E1FED79650016851F /* Assets.xcassets */; };
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
@@ -28,6 +29,7 @@
 		A10000020000000000000001 /* BridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeViewController.swift; sourceTree = "<group>"; };
 		A10000040000000000000001 /* CloudRecognizerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudRecognizerPlugin.swift; sourceTree = "<group>"; };
 		A10000060000000000000001 /* CloudGenusClassifier.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlmodel; name = CloudGenusClassifier.mlpackage; path = Models/CloudGenusClassifier.mlpackage; sourceTree = "<group>"; };
+		A10000080000000000000001 /* CloudGenusClassifierV3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlmodel; name = CloudGenusClassifierV3.mlpackage; path = Models/CloudGenusClassifierV3.mlpackage; sourceTree = "<group>"; };
 		504EC30C1FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		504EC30E1FED79650016851F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		504EC3111FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				A10000020000000000000001 /* BridgeViewController.swift */,
 				A10000040000000000000001 /* CloudRecognizerPlugin.swift */,
 				A10000060000000000000001 /* CloudGenusClassifier.mlpackage */,
+				A10000080000000000000001 /* CloudGenusClassifierV3.mlpackage */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -168,6 +171,7 @@
 				A10000010000000000000001 /* BridgeViewController.swift in Sources */,
 				A10000030000000000000001 /* CloudRecognizerPlugin.swift in Sources */,
 				A10000050000000000000001 /* CloudGenusClassifier.mlpackage in Sources */,
+				A10000070000000000000001 /* CloudGenusClassifierV3.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

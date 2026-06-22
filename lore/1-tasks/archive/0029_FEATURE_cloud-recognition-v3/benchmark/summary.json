@@ -1,0 +1,57 @@
+{
+  "release": {
+    "model_version": "3.0-ensemble",
+    "base_weight": 0.4,
+    "candidate_weight": 0.6,
+    "minimum_confidence": 0.2,
+    "margin_threshold": 0.51,
+    "coreml_max_absolute_error": 0.0033,
+    "testflight_build": "20260622095204"
+  },
+  "calibration": {
+    "samples": 137,
+    "top1": 0.6788,
+    "top3": 0.9051,
+    "macro_f1": 0.6152,
+    "selective_precision": 0.9565,
+    "selective_coverage": 0.3358
+  },
+  "duplicate_safe_common_test": {
+    "samples": 142,
+    "v2_top1": 0.5563,
+    "ensemble_top1": 0.5493,
+    "v2_top3": 0.7676,
+    "ensemble_top3": 0.8028,
+    "v2_macro_f1": 0.4555,
+    "ensemble_macro_f1": 0.4382
+  },
+  "application_atlas": {
+    "samples": 30,
+    "v2_top1": 0.6,
+    "ensemble_top1": 0.6333,
+    "v2_top3": 0.8333,
+    "ensemble_top3": 0.8333,
+    "v2_macro_f1": 0.522,
+    "ensemble_macro_f1": 0.5842,
+    "ensemble_family_top1": 0.8333
+  },
+  "curated_commons": {
+    "samples": 40,
+    "v2_top1": 0.375,
+    "ensemble_top1": 0.525,
+    "v2_top3": 0.7,
+    "ensemble_top3": 0.8,
+    "v2_macro_f1": 0.3646,
+    "ensemble_macro_f1": 0.4962
+  },
+  "noisy_ccaim_stress": {
+    "samples": 247,
+    "top1": 0.2591,
+    "top3": 0.5061,
+    "macro_f1": 0.1747
+  },
+  "expanded_outliers": {
+    "samples": 29,
+    "abstention_rate": 0.931
+  }
+}

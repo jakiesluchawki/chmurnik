@@ -69,14 +69,18 @@ function normalizedProbabilities(probabilities) {
 }
 
 export function aggregateCloudFamilies(ranked) {
-  return FAMILY_DEFINITIONS
+  const scored = FAMILY_DEFINITIONS
     .map((family) => ({
       ...family,
-      probability: family.classIds.reduce(
-        (sum, classId) => sum + (ranked.find((item) => item.id === classId)?.probability || 0),
-        0,
+      probability: Math.max(
+        ...family.classIds.map(
+          (classId) => ranked.find((item) => item.id === classId)?.probability || 0,
+        ),
       ),
-    }))
+    }));
+  const total = scored.reduce((sum, family) => sum + family.probability, 0) || 1;
+  return scored
+    .map((family) => ({ ...family, probability: family.probability / total }))
     .sort((a, b) => b.probability - a.probability);
 }
 

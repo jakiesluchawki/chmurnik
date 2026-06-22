@@ -9,7 +9,8 @@ from torchvision import transforms
 
 from labels import GENERA
 from model import build_model
-from train_ccsn import transform
+from train_ccsn import transform as v2_transform
+from train_v3 import build_transform as v3_transform
 
 
 def main() -> None:
@@ -19,11 +20,22 @@ def main() -> None:
     parser.add_argument("--image", type=Path, required=True)
     args = parser.parse_args()
     checkpoint = torch.load(args.artifacts / "cloud-genus-net.pt", map_location="cpu", weights_only=True)
-    model = build_model(len(GENERA))
+    model = build_model(
+        len(GENERA),
+        architecture=checkpoint.get("architecture", "mobilenet_v3_small"),
+    )
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
     image = Image.open(args.image).convert("RGB")
-    tensor = transform(False)(image).unsqueeze(0)
+    if checkpoint.get("pipeline_version") == 3:
+        image_transform = v3_transform(
+            False,
+            checkpoint["input_size"],
+            checkpoint.get("preprocess", "full_frame"),
+        )
+    else:
+        image_transform = v2_transform(False)
+    tensor = image_transform(image).unsqueeze(0)
     with torch.inference_mode():
         torch_values = torch.softmax(model(tensor) / checkpoint["temperature"], dim=1).numpy()[0]
     coreml = ct.models.MLModel(str(args.model))

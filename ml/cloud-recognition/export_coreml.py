@@ -26,10 +26,14 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     checkpoint = torch.load(args.artifacts / "cloud-genus-net.pt", map_location="cpu", weights_only=True)
-    model = build_model(len(GENERA))
+    model = build_model(
+        len(GENERA),
+        architecture=checkpoint.get("architecture", "mobilenet_v3_small"),
+    )
     model.load_state_dict(checkpoint["state_dict"])
     calibrated = CalibratedModel(model.eval(), float(checkpoint["temperature"])).eval()
-    example = torch.zeros(1, 3, 224, 224)
+    input_size = int(checkpoint.get("input_size", 224))
+    example = torch.zeros(1, 3, input_size, input_size)
     traced = torch.jit.trace(calibrated, example)
     converted = ct.convert(
         traced,
@@ -42,7 +46,7 @@ def main() -> None:
     converted.author = "CHMURNIK / Mieszko Mahboob"
     converted.license = "Training data: CCSN CC0 1.0; clear-sky tensor supplement MIT."
     converted.short_description = "On-device WMO cloud-family and genus hypothesis model."
-    converted.version = "2.0"
+    converted.version = "3.0" if checkpoint.get("pipeline_version") == 3 else "2.0"
     metadata = converted.user_defined_metadata
     metadata["classes"] = json.dumps(GENERA)
     metadata["minimum_confidence"] = str(checkpoint["abstention_policy"]["minimum_confidence"])
@@ -50,6 +54,9 @@ def main() -> None:
     metadata["abstention_target_precision"] = str(checkpoint["abstention_policy"]["target_precision"])
     metadata["training_data_doi"] = "10.7910/DVN/CADDPD"
     metadata["probability_mode"] = "softmax"
+    metadata["architecture"] = checkpoint.get("architecture", "mobilenet_v3_small")
+    metadata["input_size"] = str(input_size)
+    metadata["preprocess"] = checkpoint.get("preprocess", "center_crop")
     if args.output.exists():
         shutil.rmtree(args.output)
     args.output.parent.mkdir(parents=True, exist_ok=True)

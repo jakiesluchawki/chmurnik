@@ -35,8 +35,12 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
   const interpretation = await read("src/lib/photo-recognition.js");
   const native = await read("ios/App/App/CloudRecognizerPlugin.swift");
   const plist = await read("ios/App/App/Info.plist");
-  const weights = await stat(new URL(
+  const baseWeights = await stat(new URL(
     "../ios/App/App/Models/CloudGenusClassifier.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
+    import.meta.url,
+  ));
+  const candidateWeights = await stat(new URL(
+    "../ios/App/App/Models/CloudGenusClassifierV3.mlpackage/Data/com.apple.CoreML/weights/weight.bin",
     import.meta.url,
   ));
 
@@ -47,10 +51,18 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
   assert.match(interpretation, /marginThreshold: 0\.68/);
   assert.match(interpretation, /low-layered/);
   assert.match(native, /VNCoreMLRequest/);
-  assert.match(native, /imageCropAndScaleOption = \.centerCrop/);
+  assert.match(native, /trainingCropFraction = 0\.902/);
+  assert.match(native, /imageCropAndScaleOption = \.scaleFill/);
+  assert.match(native, /baseWeight = 0\.4/);
+  assert.match(native, /candidateWeight = 0\.6/);
+  assert.match(native, /marginThreshold = 0\.51/);
+  assert.match(native, /modelVersion": "3\.0-ensemble"/);
   assert.match(plist, /NSCameraUsageDescription/);
   assert.match(plist, /NSPhotoLibraryUsageDescription/);
-  assert.ok(weights.size < 5_000_000, "the bundled Core ML weights should stay below 5 MB");
+  assert.ok(
+    baseWeights.size + candidateWeights.size < 15_000_000,
+    "the bundled Core ML ensemble weights should stay below 15 MB",
+  );
 });
 
 test("the project records its visual source of truth", async () => {

@@ -21,8 +21,18 @@ test("aggregates genus scores into meteorologically useful families", () => {
 
   const families = aggregateCloudFamilies(ranked);
   assert.equal(families[0].id, "convective");
-  assert.equal(families[0].probability, 0.74);
+  assert.ok(Math.abs(families[0].probability - (0.43 / 0.69)) < 1e-12);
   assert.equal(families[1].id, "high");
+});
+
+test("family ranking is not biased by the number of genera in a family", () => {
+  const ranked = recognitionClassIds().map((id) => ({ id, probability: 0 }));
+  ranked.find((row) => row.id === "cirrus").probability = 0.12;
+  ranked.find((row) => row.id === "cirrocumulus").probability = 0.11;
+  ranked.find((row) => row.id === "cirrostratus").probability = 0.10;
+  ranked.find((row) => row.id === "cumulus").probability = 0.25;
+
+  assert.equal(aggregateCloudFamilies(ranked)[0].id, "convective");
 });
 
 test("keeps close genus scores as hypotheses instead of a verdict", () => {

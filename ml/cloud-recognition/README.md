@@ -39,3 +39,23 @@ python verify_coreml.py \
 The model is a hypothesis generator. The iOS product aggregates scores into
 families, keeps the three strongest genera visible, and uses a conservative
 abstention threshold. Do not turn the first class into an authoritative label.
+
+## Version 3 evaluation
+
+Version 3 adds duplicate-safe splits, higher-resolution model candidates,
+manual Commons curation, external benchmarks, and an ensemble evaluator. The
+shipped ensemble combines the calibrated v2 MobileNetV3 Small output with a
+320 px MobileNetV3 Large output. Model weights and the abstention policy are
+selected on a holdout unseen by both component models.
+
+```sh
+python benchmark_ensemble.py \
+  --base /path/to/v2/cloud-genus-net.pt \
+  --candidate /path/to/v3/cloud-genus-net.pt \
+  --data /path/to/CCSN_v2 \
+  --clear /path/to/clear_sky_tensor.pt \
+  --atlas ../../public/assets/clouds \
+  --commons /path/to/commons/benchmark \
+  --noisy-stress /path/to/ccaim \
+  --output /path/to/ensemble-benchmark.json
+```

@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-06-22 05:43. Do not edit manually.
+> Auto-generated on 2026-06-22 12:03. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,7 +9,7 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 0 | 0 | 3 | 25 | 0 |
+| 0 | 0 | 3 | 26 | 0 |
 
 ## Task Status
 
@@ -43,3 +43,4 @@ Quick reference for task dependencies, status, and ADR relationships.
 | 0023 | [Harden production response headers](lore/1-tasks/archive/0023_FEATURE_security-headers.md) | FEATURE | completed | — | — | — |
 | 0024 | [Build the compact guided CHMURNIK e...](lore/1-tasks/archive/0024_FEATURE_compact-guided-experience.md) | FEATURE | completed | — | — | — |
 | 0028 | [Fix iOS camera and photo-library ca...](lore/1-tasks/archive/0028_BUG_ios-camera-capture.md) | BUG | completed | — | — | — |
+| 0029 | [Improve on-device cloud recognition...](lore/1-tasks/archive/0029_FEATURE_cloud-recognition-v3/README.md) | FEATURE | completed | — | — | — |
