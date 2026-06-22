@@ -2,7 +2,7 @@
 id: "0028"
 title: "Fix iOS camera and photo-library capture"
 type: BUG
-status: active
+status: completed
 related_adr: []
 related_tasks: ["0002", "0022"]
 tags: ["phase-current", "priority-critical", "effort-small", "ios", "camera"]
@@ -12,6 +12,13 @@ history:
     status: active
     who: codex
     note: "Opened from physical-device TestFlight feedback after the camera flow failed before a preview appeared."
+  - date: "2026-06-22"
+    status: completed
+    who: codex
+    note: >
+      Migrated capture to Capacitor Camera 8 and verified two consecutive
+      camera-to-Core-ML passes on a physical iPhone. 83 tests, 9 lesson modules,
+      and 55 links passed. Build 202606220532 reached internal and external beta.
 ---
 
 # Fix iOS camera and photo-library capture
@@ -29,7 +36,7 @@ simulator but did not exercise the complete native camera handoff.
 - [x] URI and Base64 fallback payloads are covered by automated tests.
 - [x] The native Core ML classifier still receives valid image bytes.
 - [x] Web, lesson, link, production, and iOS build checks pass.
-- [ ] A fixed build reaches TestFlight beta testing.
+- [x] A fixed build reaches TestFlight beta testing.
 
 ## Implementation Notes
 
