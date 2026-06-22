@@ -6,6 +6,10 @@ import {
   interpretCloudProbabilities,
   recognitionClassIds,
 } from "../src/lib/photo-recognition.js";
+import {
+  buildCloudRecognizerInput,
+  cameraPermissionGranted,
+} from "../src/lib/native-cloud-recognizer.js";
 
 test("aggregates genus scores into meteorologically useful families", () => {
   const ranked = recognitionClassIds().map((id) => ({ id, probability: 0 }));
@@ -41,4 +45,24 @@ test("accepts a genus only when the calibrated margin is decisive", () => {
 
 test("rejects malformed model output", () => {
   assert.throws(() => interpretCloudProbabilities([0.5, 0.5]), /niepełny/);
+});
+
+test("sends a native camera file path without a Base64 bridge payload", () => {
+  assert.deepEqual(
+    buildCloudRecognizerInput({ path: "file:///tmp/capacitor-camera.jpeg", base64: "unused" }),
+    { path: "file:///tmp/capacitor-camera.jpeg" },
+  );
+});
+
+test("keeps Base64 as a compatibility fallback for injected QA images", () => {
+  assert.deepEqual(buildCloudRecognizerInput("aGVsbG8="), { base64: "aGVsbG8=" });
+  assert.deepEqual(buildCloudRecognizerInput({ base64String: "aGVsbG8=" }), { base64: "aGVsbG8=" });
+  assert.throws(() => buildCloudRecognizerInput({}), /danych zdjęcia/);
+});
+
+test("accepts only usable iOS camera permission states", () => {
+  assert.equal(cameraPermissionGranted("granted"), true);
+  assert.equal(cameraPermissionGranted("limited"), true);
+  assert.equal(cameraPermissionGranted("prompt"), false);
+  assert.equal(cameraPermissionGranted("denied"), false);
 });

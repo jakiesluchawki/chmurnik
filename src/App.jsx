@@ -4824,7 +4824,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
       const photo = await captureCloudPhoto(source);
       setPreviewUrl(photo.previewUrl);
       setPhase("analyzing");
-      setResult(await recognizeCloudPhoto(photo.base64));
+      setResult(await recognizeCloudPhoto(photo));
       setPhase("result");
     } catch (failure) {
       const message = String(failure?.message || failure || "");
@@ -4832,7 +4832,9 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
         setPhase(previewUrl ? "result" : "idle");
         return;
       }
-      setError("Nie udało się odczytać tego zdjęcia. Spróbuj ponownie z wyraźniejszym kadrem nieba.");
+      setError(failure?.code === "camera-permission-denied"
+        ? failure.message
+        : "Nie udało się odczytać tego zdjęcia. Spróbuj ponownie z wyraźniejszym kadrem nieba.");
       setPhase("idle");
     }
   };
