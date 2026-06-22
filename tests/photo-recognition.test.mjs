@@ -8,7 +8,9 @@ import {
 } from "../src/lib/photo-recognition.js";
 import {
   buildCloudRecognizerInput,
-  cameraPermissionGranted,
+  isPhotoCaptureCancellation,
+  normalizeCapturedPhoto,
+  photoCaptureErrorMessage,
 } from "../src/lib/native-cloud-recognizer.js";
 
 test("aggregates genus scores into meteorologically useful families", () => {
@@ -49,7 +51,7 @@ test("rejects malformed model output", () => {
 
 test("sends a native camera file path without a Base64 bridge payload", () => {
   assert.deepEqual(
-    buildCloudRecognizerInput({ path: "file:///tmp/capacitor-camera.jpeg", base64: "unused" }),
+    buildCloudRecognizerInput({ uri: "file:///tmp/capacitor-camera.jpeg", base64: "unused" }),
     { path: "file:///tmp/capacitor-camera.jpeg" },
   );
 });
@@ -60,9 +62,31 @@ test("keeps Base64 as a compatibility fallback for injected QA images", () => {
   assert.throws(() => buildCloudRecognizerInput({}), /danych zdjęcia/);
 });
 
-test("accepts only usable iOS camera permission states", () => {
-  assert.equal(cameraPermissionGranted("granted"), true);
-  assert.equal(cameraPermissionGranted("limited"), true);
-  assert.equal(cameraPermissionGranted("prompt"), false);
-  assert.equal(cameraPermissionGranted("denied"), false);
+test("normalizes the new native camera result around its file URI", () => {
+  assert.deepEqual(normalizeCapturedPhoto({
+    uri: "file:///tmp/capacitor-camera.jpeg",
+    webPath: "capacitor://localhost/_capacitor_file_/tmp/capacitor-camera.jpeg",
+    thumbnail: "unused",
+  }), {
+    uri: "file:///tmp/capacitor-camera.jpeg",
+    base64: undefined,
+    previewUrl: "capacitor://localhost/_capacitor_file_/tmp/capacitor-camera.jpeg",
+  });
+});
+
+test("keeps the camera thumbnail only as a web compatibility fallback", () => {
+  assert.deepEqual(normalizeCapturedPhoto({ thumbnail: "aGVsbG8=" }), {
+    uri: undefined,
+    base64: "aGVsbG8=",
+    previewUrl: "data:image/jpeg;base64,aGVsbG8=",
+  });
+  assert.throws(() => normalizeCapturedPhoto({}), /nie zwrócił pliku/);
+});
+
+test("recognizes native cancellation and explains structured camera errors", () => {
+  assert.equal(isPhotoCaptureCancellation({ code: "OS-PLUG-CAMR-0006" }), true);
+  assert.equal(isPhotoCaptureCancellation({ code: "OS-PLUG-CAMR-0020" }), true);
+  assert.equal(isPhotoCaptureCancellation({ code: "OS-PLUG-CAMR-0010" }), false);
+  assert.match(photoCaptureErrorMessage({ code: "OS-PLUG-CAMR-0003" }), /Ustawieniach.*0003/);
+  assert.match(photoCaptureErrorMessage({ code: "OS-PLUG-CAMR-0019" }), /0019/);
 });

@@ -135,7 +135,9 @@ import {
 import { windFromCloudMotion } from "./lib/wind.js";
 import {
   captureCloudPhoto,
+  isPhotoCaptureCancellation,
   isPhotoRecognitionSupported,
+  photoCaptureErrorMessage,
   recognizeCloudPhoto,
 } from "./lib/native-cloud-recognizer.js";
 
@@ -4827,14 +4829,12 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
       setResult(await recognizeCloudPhoto(photo));
       setPhase("result");
     } catch (failure) {
-      const message = String(failure?.message || failure || "");
-      if (/cancel|anulow/i.test(message)) {
+      if (isPhotoCaptureCancellation(failure)) {
         setPhase(previewUrl ? "result" : "idle");
         return;
       }
-      setError(failure?.code === "camera-permission-denied"
-        ? failure.message
-        : "Nie udało się odczytać tego zdjęcia. Spróbuj ponownie z wyraźniejszym kadrem nieba.");
+      console.error("[CHMURNIK camera]", failure?.code || "unknown", failure?.message || failure);
+      setError(photoCaptureErrorMessage(failure));
       setPhase("idle");
     }
   };
