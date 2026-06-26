@@ -16,6 +16,15 @@ history:
       Started a time-boxed product sprint to make CHMURNIK cleaner and more
       useful on iOS, add a real-photo daily observation loop, benchmark a
       recognition improvement, and publish the result to web and TestFlight.
+  - date: "2026-06-27"
+    status: active
+    who: codex
+    note: >
+      Shipped commit fd4b8bb to main, deployed GitHub Pages, and released
+      TestFlight build 20260626215133 to both existing groups. All 87 tests,
+      9 lesson audits, and 55 external links pass. Cyber_Folks package is
+      ready locally; production still serves the June 20 build because no
+      non-interactive host credential is available on this machine.
 ---
 
 # Build the focused daily sky experience
@@ -29,14 +38,15 @@ obvious on iPhone.
 
 ## Acceptance Criteria
 
-- [ ] The first iPhone viewport presents one clear promise and one primary action.
-- [ ] Home includes a deterministic daily real-cloud observation with a reveal.
-- [ ] Onboarding is materially shorter, accessible, and does not dominate the screen.
-- [ ] Native navigation and spacing are denser without reducing tap targets.
-- [ ] Recognition changes are benchmarked before inclusion and keep uncertainty visible.
-- [ ] Existing learning, atlas, journal, camera, and offline behavior remains intact.
-- [ ] Automated tests, lesson audit, links, web builds, and iOS simulator QA pass.
-- [ ] GitHub Pages, chmurnik.cloud, and a new TestFlight build are published and verified.
+- [x] The first iPhone viewport presents one clear promise and one primary action.
+- [x] Home includes a deterministic daily real-cloud observation with a reveal.
+- [x] Onboarding is materially shorter, accessible, and does not dominate the screen.
+- [x] Native navigation and spacing are denser without reducing tap targets.
+- [x] Recognition changes are benchmarked before inclusion and keep uncertainty visible.
+- [x] Existing learning, atlas, journal, camera, and offline behavior remains intact.
+- [x] Automated tests, lesson audit, links, web builds, and iOS simulator QA pass.
+- [x] GitHub Pages and TestFlight are published and verified.
+- [ ] `chmurnik.cloud` serves the current build (package ready; host upload pending).
 
 ## Implementation Plan
 
@@ -80,6 +90,12 @@ obvious on iPhone.
   links successfully.
 - Two independently benchmarked recognition variants failed the release gate;
   details and metrics are recorded in the product audit.
+- The system cleared the temporary working clone after midnight. The pushed
+  commit and release artifacts were unaffected; final documentation moved to
+  a durable workspace worktree.
+- Cyber_Folks has no FTP, SSH, or DirectAdmin credential available to a
+  non-interactive process. The isolated 22 MB release package is ready for the
+  existing `domains/chmurnik.cloud/public_html` upload flow.
 
 ## Implementation Notes
 
