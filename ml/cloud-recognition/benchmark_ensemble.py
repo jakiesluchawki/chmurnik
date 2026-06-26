@@ -34,11 +34,18 @@ def load_checkpoint(path: Path):
 
 
 @torch.inference_mode()
-def predict(model, checkpoint: dict, dataset) -> np.ndarray:
+def predict(model, checkpoint: dict, dataset, horizontal_flip_tta: bool = False) -> np.ndarray:
     rows = []
     for images, _, _ in DataLoader(dataset, batch_size=32):
-        rows.append(model(images).numpy())
-    return softmax(np.concatenate(rows), checkpoint["temperature"])
+        values = softmax(model(images).numpy(), checkpoint["temperature"])
+        if horizontal_flip_tta:
+            flipped = softmax(
+                model(torch.flip(images, dims=(3,))).numpy(),
+                checkpoint["temperature"],
+            )
+            values = 0.5 * (values + flipped)
+        rows.append(values)
+    return np.concatenate(rows)
 
 
 def photo_dataset(items, checkpoint: dict):
@@ -71,12 +78,19 @@ def ensemble_probabilities(
     candidate_model,
     candidate_checkpoint,
     base_weight: float,
+    horizontal_flip_tta: bool = False,
 ):
-    base = predict(base_model, base_checkpoint, photo_dataset(items, base_checkpoint))
+    base = predict(
+        base_model,
+        base_checkpoint,
+        photo_dataset(items, base_checkpoint),
+        horizontal_flip_tta,
+    )
     candidate = predict(
         candidate_model,
         candidate_checkpoint,
         photo_dataset(items, candidate_checkpoint),
+        horizontal_flip_tta,
     )
     return base_weight * base + (1 - base_weight) * candidate
 
@@ -205,6 +219,7 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--duplicate-distance", type=int, default=8)
     parser.add_argument("--target-precision", type=float, default=0.85)
+    parser.add_argument("--horizontal-flip-tta", action="store_true")
     args = parser.parse_args()
 
     base_checkpoint, base_model = load_checkpoint(args.base)
@@ -245,8 +260,8 @@ def main() -> None:
             ]
         )
         split_probabilities[split] = (
-            predict(base_model, base_checkpoint, base_dataset),
-            predict(candidate_model, candidate_checkpoint, candidate_dataset),
+            predict(base_model, base_checkpoint, base_dataset, args.horizontal_flip_tta),
+            predict(candidate_model, candidate_checkpoint, candidate_dataset, args.horizontal_flip_tta),
         )
         split_labels[split] = labels
 
@@ -324,6 +339,7 @@ def main() -> None:
             candidate_model,
             candidate_checkpoint,
             base_weight,
+            args.horizontal_flip_tta,
         )
         reports[name] = probability_report(
             values,
@@ -352,6 +368,7 @@ def main() -> None:
         candidate_model,
         candidate_checkpoint,
         base_weight,
+        args.horizontal_flip_tta,
     )
     order = np.argsort(-outlier_values, axis=1)
     confidence = outlier_values[np.arange(len(outlier_values)), order[:, 0]]
@@ -368,6 +385,7 @@ def main() -> None:
         "candidate_checkpoint": str(args.candidate),
         "base_weight": base_weight,
         "candidate_weight": 1 - base_weight,
+        "horizontal_flip_tta": args.horizontal_flip_tta,
         "weight_selection": candidates,
         "abstention_policy": policy,
         "reports": reports,

@@ -1407,6 +1407,15 @@ html.native-ios .quiz-modal {
   border-block: 1px solid var(--line);
 }
 
+.home-quick-links {
+  padding: 0 20px 36px;
+  background: var(--paper);
+}
+
+.home-quick-links .home-guidance-row {
+  margin-top: 14px;
+}
+
 .home-primary-actions button {
   min-height: 96px;
   border: 0;
@@ -1502,6 +1511,108 @@ html.native-ios .quiz-modal {
   font-size: 0.69rem;
 }
 
+.daily-sky {
+  padding: clamp(28px, 4vw, 58px) 20px;
+  border-block: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: clamp(26px, 5vw, 76px);
+  align-items: center;
+}
+
+.daily-sky figure {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+}
+
+.daily-sky figure img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+.daily-sky figcaption {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.daily-sky__content {
+  max-width: 620px;
+}
+
+.daily-sky__content h2 {
+  margin: 12px 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.9vw, 5rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+
+.daily-sky__prompt {
+  max-width: 520px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.daily-sky__answer {
+  min-height: 132px;
+  margin-top: 24px;
+  padding: 20px 0;
+  border-block: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.daily-sky__answer > span {
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.daily-sky__answer h3 {
+  margin: 4px 0 6px;
+  font-family: var(--serif);
+  font-size: 2.15rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.daily-sky__answer p {
+  max-width: 520px;
+  margin: 0;
+  font-size: 0.91rem;
+  line-height: 1.45;
+}
+
+.daily-sky__actions {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.daily-sky__actions .text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .home-intro--compact {
   padding-top: 52px;
   padding-bottom: 58px;
@@ -1547,6 +1658,10 @@ html.native-ios .quiz-modal {
   color: var(--ink);
   display: grid;
   grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.onboarding-modal:focus {
+  outline: none;
 }
 
 .onboarding-modal figure {
@@ -1868,8 +1983,9 @@ html.native-ios .quiz-modal {
   }
 
   .compact-home h1 {
-    font-size: clamp(2.95rem, 12.2vw, 4rem);
+    font-size: clamp(2.9rem, 11.5vw, 3.8rem);
     line-height: 0.9;
+    white-space: nowrap;
   }
 
   .compact-home p {
@@ -1882,6 +1998,8 @@ html.native-ios .quiz-modal {
   .compact-home .hero-actions {
     width: auto;
     margin-top: 6px;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
   }
 
@@ -1897,13 +2015,17 @@ html.native-ios .quiz-modal {
 
   .compact-home .hero-image {
     min-height: 0;
-    height: clamp(145px, 40vw, 190px);
+    height: clamp(130px, 34vw, 166px);
     border-radius: 17px;
     object-position: center 60%;
   }
 
   .home-primary-actions {
     margin-top: 0;
+  }
+
+  .home-quick-links {
+    padding: 0 15px 24px;
   }
 
   .home-primary-actions button {
@@ -1976,6 +2098,60 @@ html.native-ios .quiz-modal {
     line-height: 1.2;
   }
 
+  .daily-sky {
+    padding: 20px 15px 24px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .daily-sky figure img {
+    height: clamp(190px, 54vw, 238px);
+    aspect-ratio: auto;
+    border-radius: 17px;
+  }
+
+  .daily-sky figcaption {
+    top: 10px;
+    left: 10px;
+    padding: 7px 9px;
+    font-size: 0.61rem;
+  }
+
+  .daily-sky__content h2 {
+    margin: 8px 0 10px;
+    font-size: clamp(2.2rem, 10vw, 3rem);
+  }
+
+  .daily-sky__prompt {
+    font-size: 0.9rem;
+    line-height: 1.42;
+  }
+
+  .daily-sky__answer {
+    min-height: 104px;
+    margin-top: 16px;
+    padding: 14px 0;
+  }
+
+  .daily-sky__answer h3 {
+    font-size: 1.75rem;
+  }
+
+  .daily-sky__answer p {
+    font-size: 0.84rem;
+  }
+
+  .daily-sky__actions {
+    margin-top: 14px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .daily-sky__actions .button {
+    min-height: 44px;
+  }
+
   .home-intro--compact {
     padding-top: 42px;
     padding-bottom: 44px;
@@ -2013,21 +2189,25 @@ html.native-ios .quiz-modal {
     margin-bottom: 20px;
   }
 
+  html.native-ios .app-header,
   html.native-ios .app-shell:has(.page) .app-header {
     height: calc(70px + env(safe-area-inset-top));
     padding-top: calc(9px + env(safe-area-inset-top));
     padding-bottom: 8px;
   }
 
+  html.native-ios .brand,
   html.native-ios .app-shell:has(.page) .brand {
     min-height: 52px;
   }
 
+  html.native-ios .brand-wordmark-mark,
   html.native-ios .app-shell:has(.page) .brand-wordmark-mark {
     width: 158px;
     height: 30px;
   }
 
+  html.native-ios .brand-descriptor,
   html.native-ios .app-shell:has(.page) .brand-descriptor {
     display: none;
   }
@@ -2135,33 +2315,37 @@ html.native-ios .quiz-modal {
   }
 
   .onboarding-modal {
-    width: 100%;
-    max-height: calc(100svh - 10px);
+    width: calc(100% - 16px);
+    max-height: calc(78svh - env(safe-area-inset-top));
     align-self: flex-end;
-    border-radius: 24px 24px 0 0;
+    margin: 0 8px calc(6px + env(safe-area-inset-bottom));
+    border-radius: 24px;
     grid-template-columns: 1fr;
   }
 
   .onboarding-modal figure {
     min-height: 0;
-    height: min(34svh, 280px);
+    height: min(18svh, 158px);
   }
 
   .onboarding-copy {
-    padding: 25px 20px calc(22px + env(safe-area-inset-bottom));
+    padding: 20px 18px 18px;
   }
 
   .onboarding-copy h2 {
-    margin: 9px 0 12px;
-    font-size: clamp(2.25rem, 10vw, 3rem);
+    margin: 7px 0 9px;
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 0.96;
   }
 
   .onboarding-copy p {
-    font-size: 0.92rem;
+    font-size: 0.87rem;
+    line-height: 1.4;
   }
 
   .onboarding-progress {
-    margin: 22px 0 18px;
+    margin: 16px 0 14px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .onboarding-actions .button {

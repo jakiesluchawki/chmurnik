@@ -59,3 +59,8 @@ python benchmark_ensemble.py \
   --noisy-stress /path/to/ccaim \
   --output /path/to/ensemble-benchmark.json
 ```
+
+Use `--horizontal-flip-tta` to evaluate averaged original and mirrored
+inference. This is a benchmark switch, not a production default: the
+2026-06-26 evaluation slightly improved the duplicate-safe common test but
+regressed both the application atlas and independent Commons benchmark.

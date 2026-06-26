@@ -133,6 +133,7 @@ import {
   weatherLayerReading,
 } from "./lib/weather-layers.js";
 import { windFromCloudMotion } from "./lib/wind.js";
+import { selectDailyCloud } from "./lib/daily-cloud.js";
 import {
   captureCloudPhoto,
   isPhotoCaptureCancellation,
@@ -161,7 +162,7 @@ const dialogFocusableSelector = [
 ].join(",");
 const dialogStack = [];
 
-function useDialogFocus(onClose) {
+function useDialogFocus(onClose, focusFirstControl = true) {
   const dialogRef = useRef(null);
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
@@ -174,7 +175,9 @@ function useDialogFocus(onClose) {
     dialogStack.push(dialog);
 
     const focusFrame = window.requestAnimationFrame(() => {
-      const firstFocusable = dialog?.querySelector(dialogFocusableSelector);
+      const firstFocusable = focusFirstControl
+        ? dialog?.querySelector(dialogFocusableSelector)
+        : null;
       (firstFocusable || dialog)?.focus();
     });
 
@@ -395,19 +398,33 @@ function HomePage({
 }) {
   const recommended = learningModules.find((module) => module.id === profile?.moduleId) || learningModules[0];
   const progress = Math.round((completed.length / learningModules.length) * 100);
+  const [dailyAnswerVisible, setDailyAnswerVisible] = useState(false);
+  const daily = useMemo(() => selectDailyCloud(clouds), []);
+  const todayLabel = useMemo(() => new Intl.DateTimeFormat("pl-PL", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  }).format(new Date()), []);
 
   return (
     <>
       <section className="hero compact-home">
         <div className="hero-content">
-          <span className="hero-kicker">Interaktywny atlas nieba</span>
-          <h1>Naucz się<br />czytać niebo</h1>
+          <span className="hero-kicker">Dzisiaj · {todayLabel}</span>
+          <h1>Czytaj niebo</h1>
           <p>
-            Od pierwszego spojrzenia po lotniczą analizę warstw. Bez zgadywania i bez ukrywania niepewności.
+            Jeden prawdziwy kadr. Najpierw widoczne cechy, potem nazwa i pewność.
           </p>
           <div className="hero-actions">
-            <button className="button button--coral" onClick={onPlacement}>
-              Zacznij <ArrowRight size={19} weight="bold" />
+            <button
+              className="button button--coral"
+              onClick={showPhotoRecognition ? onOpenPhotoRecognition : () => navigate("atlas/observer")}
+            >
+              {showPhotoRecognition ? <CameraIcon size={19} /> : <Eye size={19} />}
+              {showPhotoRecognition ? "Czytaj zdjęcie" : "Obserwacja 60 s"}
+            </button>
+            <button className="button button--secondary" onClick={onPlacement}>
+              Ułóż ścieżkę
             </button>
           </div>
         </div>
@@ -434,6 +451,54 @@ function HomePage({
             />
           </picture>
         </figure>
+      </section>
+
+      {daily && (
+        <section className="daily-sky" aria-labelledby="daily-sky-title">
+          <figure>
+            <img
+              src={publicAsset(daily.image.src)}
+              alt="Dzisiejszy kadr nieba do samodzielnej obserwacji"
+              loading="eager"
+              decoding="async"
+            />
+            <figcaption>Kadr {String(daily.index + 1).padStart(2, "0")} / {daily.total}</figcaption>
+          </figure>
+          <div className="daily-sky__content">
+            <span className="eyebrow">Kadr dnia · prawdziwe niebo</span>
+            <h2 id="daily-sky-title">Co widzisz, zanim poznasz nazwę?</h2>
+            <p className="daily-sky__prompt">
+              Przez chwilę oceń kształt, skalę elementów, cieniowanie i rozwój pionowy.
+            </p>
+            <div className="daily-sky__answer" aria-live="polite">
+              {dailyAnswerVisible ? (
+                <>
+                  <span>{daily.cloud.level} · {daily.cloud.code}</span>
+                  <h3><CloudName>{daily.cloud.name}</CloudName></h3>
+                  <p>{daily.image.diagnostic || daily.cloud.headline}</p>
+                </>
+              ) : (
+                <p>Nie musisz zgadywać. Najpierw nazwij jeden widoczny dowód.</p>
+              )}
+            </div>
+            <div className="daily-sky__actions">
+              <button
+                className="button button--coral"
+                onClick={() => setDailyAnswerVisible((visible) => !visible)}
+                aria-expanded={dailyAnswerVisible}
+              >
+                {dailyAnswerVisible ? "Ukryj odpowiedź" : "Odsłoń odpowiedź"}
+                <Eye size={18} />
+              </button>
+              <button className="text-button" onClick={() => onOpenRecognition(daily.cloud.id)}>
+                Sprawdź się na tym rodzaju <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="home-quick-links" aria-label="Skróty Chmurnika">
         <nav className="home-primary-actions" aria-label="Najważniejsze miejsca">
           <button onClick={() => navigate("atlas")}>
             <Cloud size={22} />
@@ -451,7 +516,7 @@ function HomePage({
             <ArrowRight size={17} />
           </button>
         </nav>
-        <div className={`home-guidance-row ${showPhotoRecognition ? "has-photo-recognition" : ""}`}>
+        <div className="home-guidance-row">
           <button className="home-tour-card" onClick={onOpenOnboarding}>
             <picture aria-hidden="true">
               <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
@@ -465,12 +530,6 @@ function HomePage({
             <Eye size={21} />
             <span><small>Na prawdziwych zdjęciach</small><strong>Sprawdź się</strong></span>
           </button>
-          {showPhotoRecognition && (
-            <button className="home-photo-card" onClick={onOpenPhotoRecognition}>
-              <CameraIcon size={21} />
-              <span><small>Na tym iPhonie</small><strong>Czytaj zdjęcie</strong></span>
-            </button>
-          )}
         </div>
       </section>
 
@@ -622,30 +681,23 @@ function HomePage({
 
 const onboardingSteps = [
   {
-    eyebrow: "01 · Najpierw patrz",
-    title: "Atlas pokazuje prawdziwe niebo",
-    body: "Zdjęcia chmur są tu dowodem. Porównuj kształt, skalę, światło i opad, zanim wybierzesz nazwę.",
+    eyebrow: "01 · Patrz",
+    title: "Najpierw zauważ cechę",
+    body: "Prawdziwe zdjęcia są dowodem. Nazwa pojawia się dopiero po kształcie, skali i świetle.",
     image: "assets/observer-guide-still-life-720.webp",
     alt: "Filcowy obiekt obserwatora w studyjnej ramie",
   },
   {
-    eyebrow: "02 · Potem zrozum",
-    title: "Warstwy tłumaczą niewidoczne",
-    body: "Filcowe modele prowadzą przez wysokość, ciśnienie i wiatr. Są objaśnieniem, nigdy substytutem zdjęcia chmury.",
+    eyebrow: "02 · Zrozum",
+    title: "Modele pokazują ruch",
+    body: "Filcowe obiekty tłumaczą wysokość, ciśnienie i wiatr. Nie udają prawdziwych chmur.",
     image: "assets/wind-profile-still-life-720.webp",
     alt: "Studyjny model przepływu powietrza na kilku wysokościach",
   },
   {
-    eyebrow: "03 · Ćwicz krótko",
-    title: "Lekcje zaczynają się od działania",
-    body: "Możesz wejść od razu w potrzebny temat. Postęp zostaje wyłącznie na tym urządzeniu.",
-    image: "assets/convection-still-life-720.webp",
-    alt: "Studyjny model rozwoju konwekcji",
-  },
-  {
-    eyebrow: "04 · Wracaj do dowodów",
-    title: "Obserwacje mają własną pamięć",
-    body: "Dziennik zachowuje opis, pewność i cechy widoczne w kadrze. Bez konta, reklam i śledzenia.",
+    eyebrow: "03 · Wracaj",
+    title: "Jedna minuta wystarczy",
+    body: "Kadr dnia, krótka lekcja albo wpis w dzienniku. Postęp zostaje tylko na tym urządzeniu.",
     image: "assets/atmosphere-still-life-960.webp",
     alt: "Studyjny model warstw atmosfery",
   },
@@ -653,7 +705,7 @@ const onboardingSteps = [
 
 function OnboardingModal({ onClose, onFinish }) {
   const [step, setStep] = useState(0);
-  const dialogRef = useDialogFocus(onClose);
+  const dialogRef = useDialogFocus(onClose, false);
   const item = onboardingSteps[step];
   const isLast = step === onboardingSteps.length - 1;
 
