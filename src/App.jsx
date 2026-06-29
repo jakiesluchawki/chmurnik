@@ -5,6 +5,7 @@ import {
   ArrowRight,
   ArrowSquareOut,
   BookOpen,
+  Camera,
   CaretDown,
   CaretRight,
   Check,
@@ -16,6 +17,7 @@ import {
   GraduationCap,
   House,
   Info,
+  ImageSquare,
   Lightning,
   List,
   MagnifyingGlass,
@@ -23,6 +25,7 @@ import {
   Notebook,
   Plus,
   Stack,
+  ShieldCheck,
   Trash,
   Warning,
   Wind,
@@ -130,6 +133,15 @@ import {
   weatherLayerReading,
 } from "./lib/weather-layers.js";
 import { windFromCloudMotion } from "./lib/wind.js";
+import {
+  interpretPhotoRecognition,
+  recognitionSignalLabel,
+} from "./lib/photo-recognition.js";
+import {
+  chooseCloudPhoto,
+  recognizeCloudPhoto,
+  supportsNativeCloudRecognition,
+} from "./lib/native-cloud-recognizer.js";
 
 const navItems = [
   { id: "home", label: "Start", icon: House },
@@ -371,7 +383,7 @@ function CloudName({ children }) {
   return <span className="scientific-name" lang="la">{children}</span>;
 }
 
-function HomePage({ navigate, profile, onPlacement, completed, onSources, onOpenRecommended, onOpenOnboarding, onOpenRecognition }) {
+function HomePage({ navigate, profile, onPlacement, completed, onSources, onOpenRecommended, onOpenOnboarding, onOpenRecognition, onOpenPhotoRecognition, photoRecognitionAvailable }) {
   const recommended = learningModules.find((module) => module.id === profile?.moduleId) || learningModules[0];
   const progress = Math.round((completed.length / learningModules.length) * 100);
 
@@ -431,6 +443,13 @@ function HomePage({ navigate, profile, onPlacement, completed, onSources, onOpen
           </button>
         </nav>
         <div className="home-guidance-row">
+          {photoRecognitionAvailable && (
+            <button className="home-photo-card" onClick={onOpenPhotoRecognition}>
+              <Camera size={23} />
+              <span><small>Prywatnie, na tym iPhonie</small><strong>Rozpoznaj ze zdjęcia</strong></span>
+              <ArrowRight size={17} />
+            </button>
+          )}
           <button className="home-tour-card" onClick={onOpenOnboarding}>
             <picture aria-hidden="true">
               <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
@@ -667,6 +686,202 @@ function OnboardingModal({ onClose, onFinish }) {
             </button>
           </div>
         </div>
+      </section>
+    </div>
+  );
+}
+
+function PhotoRecognitionModal({ onClose, onCompare, onObserver, onSave }) {
+  const dialogRef = useDialogFocus(onClose);
+  const qaResult = import.meta.env.VITE_QA_PHOTO_RECOGNITION === "result";
+  const qaNative = import.meta.env.VITE_QA_PHOTO_RECOGNITION === "native";
+  const [status, setStatus] = useState(qaResult ? "result" : qaNative ? "analyzing" : "idle");
+  const [photo, setPhoto] = useState(
+    qaResult || qaNative ? publicAsset("assets/clouds/cumulus.jpg") : null,
+  );
+  const [result, setResult] = useState(() => qaResult
+    ? interpretPhotoRecognition({
+      probabilities: [0.08, 0.04, 0.05, 0.18, 0.04, 0.03, 0.48, 0.12, 0.91, 0.37, 0.01],
+      marginThreshold: 0.3,
+    })
+    : null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!qaNative) return undefined;
+    let active = true;
+    const runNativeCheck = async () => {
+      try {
+        const response = await fetch(publicAsset("assets/clouds/cumulus.jpg"));
+        const blob = await response.blob();
+        const dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+        const raw = await recognizeCloudPhoto(dataUrl);
+        if (!active) return;
+        setResult(interpretPhotoRecognition(raw));
+        setStatus("result");
+      } catch (caught) {
+        if (!active) return;
+        setError(caught?.message || String(caught));
+        setStatus("idle");
+      }
+    };
+    runNativeCheck();
+    return () => { active = false; };
+  }, [qaNative]);
+
+  const selectAndAnalyze = async (source) => {
+    setError("");
+    try {
+      const dataUrl = await chooseCloudPhoto(source);
+      setPhoto(dataUrl);
+      setStatus("analyzing");
+      const raw = await recognizeCloudPhoto(dataUrl);
+      setResult(interpretPhotoRecognition(raw));
+      setStatus("result");
+    } catch (caught) {
+      const message = caught?.message || String(caught);
+      if (/cancel|anul/i.test(message)) return;
+      setError(message || "Nie udało się przeanalizować zdjęcia.");
+      setStatus(photo ? "result" : "idle");
+    }
+  };
+
+  const reset = () => {
+    setPhoto(null);
+    setResult(null);
+    setError("");
+    setStatus("idle");
+  };
+
+  const cloudsFromResult = result?.ranked
+    .map((item) => ({ ...item, cloud: getCloud(item.id) }))
+    .filter((item) => item.cloud) || [];
+  const leading = cloudsFromResult[0];
+
+  return (
+    <div className="modal-backdrop modal-backdrop--center" onMouseDown={onClose}>
+      <section
+        ref={dialogRef}
+        className="photo-recognition-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="photo-recognition-title"
+        tabIndex={-1}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <button className="icon-button photo-recognition-close" onClick={onClose} aria-label="Zamknij rozpoznawanie">
+          <X size={21} />
+        </button>
+
+        {status === "idle" && (
+          <>
+            <figure className="photo-recognition-intro">
+              <picture>
+                <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
+                <source type="image/webp" srcSet={publicAsset("assets/observer-guide-still-life-720.webp")} />
+                <img src={publicAsset("assets/observer-guide-still-life.png")} alt="Studyjny model uważnej obserwacji nieba" />
+              </picture>
+            </figure>
+            <div className="photo-recognition-start">
+              <span className="eyebrow">Asystent kadru · wersja eksperymentalna</span>
+              <h2 id="photo-recognition-title">Najpierw kadr, potem hipoteza</h2>
+              <p>
+                Model podpowie kilka rodzajów chmur. Nie zastąpi obserwacji całego
+                nieba i odmówi odpowiedzi, kiedy sygnał jest zbyt słaby.
+              </p>
+              <div className="photo-recognition-privacy">
+                <ShieldCheck size={23} weight="duotone" />
+                <div><strong>Zdjęcie nie opuszcza iPhone'a</strong><span>Analiza działa lokalnie, także bez internetu.</span></div>
+              </div>
+              <div className="photo-recognition-pickers">
+                <button className="button button--coral" onClick={() => selectAndAnalyze("camera")}>
+                  <Camera size={19} /> Zrób zdjęcie
+                </button>
+                <button className="button button--secondary" onClick={() => selectAndAnalyze("library")}>
+                  <ImageSquare size={19} /> Wybierz zdjęcie
+                </button>
+              </div>
+              <small className="photo-recognition-tip">Najlepszy kadr pokazuje dużo nieba, naturalne światło i wyraźną strukturę chmur.</small>
+              {error && <p className="photo-recognition-error" role="alert">{error}</p>}
+            </div>
+          </>
+        )}
+
+        {status === "analyzing" && (
+          <div className="photo-recognition-loading" aria-live="polite">
+            <img src={photo} alt="Zdjęcie wybrane do lokalnej analizy" />
+            <div><span className="recognition-pulse" /><strong>Czytam strukturę kadru</strong><p>Porównuję sygnał z dziesięcioma rodzajami WMO.</p></div>
+          </div>
+        )}
+
+        {status === "result" && result && (
+          <div className="photo-recognition-result">
+            <header>
+              <img src={photo} alt="Analizowane zdjęcie nieba" />
+              <div>
+                <span className="eyebrow">Analiza lokalna · model 1.0</span>
+                <h2 id="photo-recognition-title">
+                  {result.state === "ranked" && <>Prowadzi <CloudName>{leading?.cloud.name}</CloudName></>}
+                  {result.state === "abstained" && "Ten kadr nie daje uczciwej odpowiedzi"}
+                  {result.state === "clear" && "Nie widzę dość wyraźnej chmury"}
+                </h2>
+                <p>
+                  {result.state === "ranked"
+                    ? "To ranking podobieństwa, nie pewny werdykt. Sprawdź cechy widoczne w kadrze."
+                    : "Spróbuj szerszego kadru w naturalnym świetle albo przejdź przez obserwację cech bez modelu."}
+                </p>
+              </div>
+            </header>
+
+            {result.state !== "clear" && (
+              <div className={`photo-hypotheses ${result.state === "abstained" ? "photo-hypotheses--weak" : ""}`}>
+                {cloudsFromResult.map(({ cloud, probability }, index) => (
+                  <article key={cloud.id} className={index === 0 ? "leading" : ""}>
+                    <img src={publicAsset(getCloudImage(cloud).src)} alt={`${cloud.name}, przykład z atlasu`} />
+                    <div>
+                      <span>{String(index + 1).padStart(2, "0")} · {recognitionSignalLabel(probability)}</span>
+                      <h3><CloudName>{cloud.name}</CloudName></h3>
+                      <p>{cloud.polish}</p>
+                      <div className="photo-signal" aria-label={`Sygnał modelu ${Math.round(probability * 100)} procent`}>
+                        <span style={{ width: `${Math.max(4, probability * 100)}%` }} />
+                      </div>
+                      <strong>Sprawdź w kadrze</strong>
+                      <ul>{cloud.observe.slice(0, 2).map((item) => <li key={item}>{item}</li>)}</ul>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+
+            <div className="photo-recognition-actions">
+              {cloudsFromResult.length >= 2 && (
+                <button className="button button--coral" onClick={() => onCompare(cloudsFromResult.map((item) => item.cloud.id))}>
+                  Porównaj hipotezy <ArrowRight size={17} />
+                </button>
+              )}
+              <button className="button button--primary" onClick={onObserver}>
+                Sprawdź cechy samodzielnie
+              </button>
+              {result.state === "ranked" && leading && (
+                <button className="text-button" onClick={() => onSave({
+                  cloudId: leading.cloud.id,
+                  confidence: leading.probability >= 0.8 ? "wysoka" : "średnia",
+                  evidence: `Hipoteza modelu ze zdjęcia: ${cloudsFromResult.map((item) => item.cloud.name).join(", ")}. Wymaga sprawdzenia cech w kadrze.`,
+                })}>
+                  <Notebook size={17} /> Zapisz jako hipotezę
+                </button>
+              )}
+              <button className="text-button" onClick={reset}>Inne zdjęcie</button>
+            </div>
+            {error && <p className="photo-recognition-error" role="alert">{error}</p>}
+            <footer><ShieldCheck size={17} /> Zdjęcie zostało przetworzone wyłącznie na tym urządzeniu.</footer>
+          </div>
+        )}
       </section>
     </div>
   );
@@ -4959,11 +5174,18 @@ export function App() {
   const [recognitionTarget, setRecognitionTarget] = useState(null);
   const [recognitionStats, setRecognitionStats] = useState(loadRecognitionStats);
   const [onboardingOpen, setOnboardingOpen] = useState(false);
+  const [photoRecognitionOpen, setPhotoRecognitionOpen] = useState(false);
+  const photoRecognitionAvailable = useMemo(supportsNativeCloudRecognition, []);
 
   useEffect(() => {
     if (import.meta.env.VITE_QA_NO_ONBOARDING === "1" || loadOnboarding().completed) return undefined;
     const frame = window.requestAnimationFrame(() => setOnboardingOpen(true));
     return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (!import.meta.env.VITE_QA_PHOTO_RECOGNITION) return;
+    setPhotoRecognitionOpen(true);
   }, []);
 
   const [routeName, routeDetail, routePayload] = route.split("/");
@@ -5044,6 +5266,8 @@ export function App() {
             onOpenRecommended={openRecommended}
             onOpenOnboarding={() => setOnboardingOpen(true)}
             onOpenRecognition={openRecognition}
+            onOpenPhotoRecognition={() => setPhotoRecognitionOpen(true)}
+            photoRecognitionAvailable={photoRecognitionAvailable}
           />
         )}
         {validRoute === "learn" && (
@@ -5095,6 +5319,24 @@ export function App() {
       {placementOpen && <PlacementModal onClose={() => setPlacementOpen(false)} onFinish={chooseProfile} />}
       {onboardingOpen && <OnboardingModal onClose={finishOnboarding} onFinish={finishOnboarding} />}
       {sourceIds && <SourceDrawer ids={sourceIds} onClose={() => setSourceIds(null)} />}
+      {photoRecognitionOpen && (
+        <PhotoRecognitionModal
+          onClose={() => setPhotoRecognitionOpen(false)}
+          onCompare={(ids) => {
+            setPhotoRecognitionOpen(false);
+            navigate(`atlas/compare/${ids.join(",")}`);
+          }}
+          onObserver={() => {
+            setPhotoRecognitionOpen(false);
+            navigate("atlas/observer");
+          }}
+          onSave={(draft) => {
+            saveObservationDraft(draft);
+            setPhotoRecognitionOpen(false);
+            navigate("journal");
+          }}
+        />
+      )}
       {recognitionOpen && (
         <RecognitionTest
           stats={recognitionStats}

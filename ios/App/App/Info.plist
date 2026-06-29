@@ -26,6 +26,10 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>CHMURNIK używa aparatu wyłącznie do lokalnego rozpoznawania chmur na wybranym zdjęciu.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>CHMURNIK odczytuje tylko zdjęcie wybrane do lokalnego rozpoznawania chmur.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
