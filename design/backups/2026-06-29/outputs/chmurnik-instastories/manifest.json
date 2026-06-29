@@ -1,0 +1,62 @@
+[
+  {
+    "id": "chmurnik-story-01",
+    "index": 1,
+    "title": "Bangla? Nie bangla?",
+    "src": "full/story-01.png",
+    "href": "full/story-01.png",
+    "format": "Instagram Story",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "id": "chmurnik-story-02",
+    "index": 2,
+    "title": "Prognoza i patrzenie w niebo",
+    "src": "full/story-02.png",
+    "href": "full/story-02.png",
+    "format": "Instagram Story",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "id": "chmurnik-story-03",
+    "index": 3,
+    "title": "Chmurnik: zielnik z chmurami",
+    "src": "full/story-03.png",
+    "href": "full/story-03.png",
+    "format": "Instagram Story",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "id": "chmurnik-story-04",
+    "index": 4,
+    "title": "Pogoda ma swój język",
+    "src": "full/story-04.png",
+    "href": "full/story-04.png",
+    "format": "Instagram Story",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "id": "chmurnik-story-05",
+    "index": 5,
+    "title": "Otwórz Chmurnik",
+    "src": "full/story-05.png",
+    "href": "full/story-05.png",
+    "format": "Instagram Story",
+    "width": 1080,
+    "height": 1920
+  },
+  {
+    "id": "chmurnik-story-06",
+    "index": 6,
+    "title": "Domena chmurnik.cloud",
+    "src": "full/story-06.png",
+    "href": "full/story-06.png",
+    "format": "Instagram Story",
+    "width": 1080,
+    "height": 1920
+  }
+]

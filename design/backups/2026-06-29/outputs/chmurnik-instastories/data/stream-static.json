@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Creative Production Review",
+    "summary": "Review, select, and hand off generated Creative Production images.",
+    "source": "review_renderer",
+    "itemCount": 6
+  },
+  "items": [
+    {
+      "id": "chmurnik-story-01",
+      "title": "Bangla? Nie bangla?",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "generated/mcp-thumbs/chmurnik-story-01.jpg",
+      "previewImageUrl": "generated/mcp-thumbs/chmurnik-story-01.jpg",
+      "sourceImageUrl": "generated/chmurnik-story-01.png"
+    },
+    {
+      "id": "chmurnik-story-02",
+      "title": "Prognoza i patrzenie w niebo",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "generated/mcp-thumbs/chmurnik-story-02.jpg",
+      "previewImageUrl": "generated/mcp-thumbs/chmurnik-story-02.jpg",
+      "sourceImageUrl": "generated/chmurnik-story-02.png"
+    },
+    {
+      "id": "chmurnik-story-03",
+      "title": "Chmurnik: zielnik z chmurami",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "generated/mcp-thumbs/chmurnik-story-03.jpg",
+      "previewImageUrl": "generated/mcp-thumbs/chmurnik-story-03.jpg",
+      "sourceImageUrl": "generated/chmurnik-story-03.png"
+    },
+    {
+      "id": "chmurnik-story-04",
+      "title": "Pogoda ma sw\u00f3j j\u0119zyk",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "generated/mcp-thumbs/chmurnik-story-04.jpg",
+      "previewImageUrl": "generated/mcp-thumbs/chmurnik-story-04.jpg",
+      "sourceImageUrl": "generated/chmurnik-story-04.png"
+    },
+    {
+      "id": "chmurnik-story-05",
+      "title": "Otw\u00f3rz Chmurnik",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "generated/mcp-thumbs/chmurnik-story-05.jpg",
+      "previewImageUrl": "generated/mcp-thumbs/chmurnik-story-05.jpg",
+      "sourceImageUrl": "generated/chmurnik-story-05.png"
+    },
+    {
+      "id": "chmurnik-story-06",
+      "title": "Domena chmurnik.cloud",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "generated/mcp-thumbs/chmurnik-story-06.jpg",
+      "previewImageUrl": "generated/mcp-thumbs/chmurnik-story-06.jpg",
+      "sourceImageUrl": "generated/chmurnik-story-06.png"
+    }
+  ]
+}

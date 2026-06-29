@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "runDirectory": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories",
+  "streamPath": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories/data/stream.json",
+  "runStatePath": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories/run-state.json",
+  "latestActionPath": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories/latest-action.json",
+  "paths": {
+    "streamPath": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories/data/stream.json",
+    "runStatePath": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories/run-state.json",
+    "latestActionPath": "/Users/mieszkomahboob/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/outputs/chmurnik-instastories/latest-action.json"
+  },
+  "itemCount": 6,
+  "items": [
+    {
+      "id": "chmurnik-story-01",
+      "title": "Bangla? Nie bangla?",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "/generated/mcp-thumbs/chmurnik-story-01.jpg",
+      "previewImageUrl": "/generated/mcp-thumbs/chmurnik-story-01.jpg",
+      "sourceImageUrl": "/generated/chmurnik-story-01.png"
+    },
+    {
+      "id": "chmurnik-story-02",
+      "title": "Prognoza i patrzenie w niebo",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "/generated/mcp-thumbs/chmurnik-story-02.jpg",
+      "previewImageUrl": "/generated/mcp-thumbs/chmurnik-story-02.jpg",
+      "sourceImageUrl": "/generated/chmurnik-story-02.png"
+    },
+    {
+      "id": "chmurnik-story-03",
+      "title": "Chmurnik: zielnik z chmurami",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "/generated/mcp-thumbs/chmurnik-story-03.jpg",
+      "previewImageUrl": "/generated/mcp-thumbs/chmurnik-story-03.jpg",
+      "sourceImageUrl": "/generated/chmurnik-story-03.png"
+    },
+    {
+      "id": "chmurnik-story-04",
+      "title": "Pogoda ma sw\u00f3j j\u0119zyk",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "/generated/mcp-thumbs/chmurnik-story-04.jpg",
+      "previewImageUrl": "/generated/mcp-thumbs/chmurnik-story-04.jpg",
+      "sourceImageUrl": "/generated/chmurnik-story-04.png"
+    },
+    {
+      "id": "chmurnik-story-05",
+      "title": "Otw\u00f3rz Chmurnik",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "/generated/mcp-thumbs/chmurnik-story-05.jpg",
+      "previewImageUrl": "/generated/mcp-thumbs/chmurnik-story-05.jpg",
+      "sourceImageUrl": "/generated/chmurnik-story-05.png"
+    },
+    {
+      "id": "chmurnik-story-06",
+      "title": "Domena chmurnik.cloud",
+      "caption": "",
+      "tone": "",
+      "prompt": "",
+      "imageUrl": "/generated/mcp-thumbs/chmurnik-story-06.jpg",
+      "previewImageUrl": "/generated/mcp-thumbs/chmurnik-story-06.jpg",
+      "sourceImageUrl": "/generated/chmurnik-story-06.png"
+    }
+  ],
+  "visibleItemIds": [
+    "chmurnik-story-01",
+    "chmurnik-story-02",
+    "chmurnik-story-03",
+    "chmurnik-story-04",
+    "chmurnik-story-05",
+    "chmurnik-story-06"
+  ],
+  "hiddenImageIds": [],
+  "selectedImageIds": [],
+  "currentImageId": "chmurnik-story-01",
+  "updatedAt": "2026-06-18T20:56:58.381113Z"
+}
