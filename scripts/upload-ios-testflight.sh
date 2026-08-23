@@ -28,11 +28,23 @@ command -v xcodebuild >/dev/null 2>&1 || fail "Xcode command line tools are unav
 KEY_PATH="${CHMURNIK_ASC_KEY_PATH:-}"
 KEY_ID="${CHMURNIK_ASC_KEY_ID:-}"
 ISSUER_ID="${CHMURNIK_ASC_ISSUER_ID:-}"
+SIGNING_KEYCHAIN_PATH="${CHMURNIK_IOS_SIGNING_KEYCHAIN_PATH:-}"
+SIGNING_IDENTITY="${CHMURNIK_IOS_SIGNING_IDENTITY:-}"
+SIGNING_PROFILE="${CHMURNIK_IOS_PROVISIONING_PROFILE_SPECIFIER:-}"
 
 if [ -n "$KEY_PATH$KEY_ID$ISSUER_ID" ]; then
   [ -n "$KEY_PATH" ] && [ -n "$KEY_ID" ] && [ -n "$ISSUER_ID" ] \
     || fail "set CHMURNIK_ASC_KEY_PATH, CHMURNIK_ASC_KEY_ID and CHMURNIK_ASC_ISSUER_ID together."
   [ -f "$KEY_PATH" ] || fail "App Store Connect API key does not exist: $KEY_PATH"
+fi
+
+if [ -n "$SIGNING_KEYCHAIN_PATH$SIGNING_IDENTITY$SIGNING_PROFILE" ]; then
+  [ -n "$SIGNING_KEYCHAIN_PATH" ] && [ -n "$SIGNING_IDENTITY" ] && [ -n "$SIGNING_PROFILE" ] \
+    || fail "set the signing keychain, identity and provisioning profile together."
+  [ -f "$SIGNING_KEYCHAIN_PATH" ] || fail "signing keychain does not exist: $SIGNING_KEYCHAIN_PATH"
+  SIGNING_STYLE=manual
+else
+  SIGNING_STYLE=automatic
 fi
 
 mkdir -p "$WORK_DIR" "$EXPORT_DIR" "$DERIVED_DATA"
@@ -49,7 +61,7 @@ cat >"$EXPORT_OPTIONS" <<EOF
   <key>method</key>
   <string>app-store-connect</string>
   <key>signingStyle</key>
-  <string>automatic</string>
+  <string>$SIGNING_STYLE</string>
   <key>stripSwiftSymbols</key>
   <true/>
   <key>teamID</key>
@@ -60,27 +72,66 @@ cat >"$EXPORT_OPTIONS" <<EOF
 </plist>
 EOF
 
-AUTHENTICATION_ARGS=""
-if [ -n "$KEY_PATH" ]; then
-  AUTHENTICATION_ARGS="-authenticationKeyPath $KEY_PATH -authenticationKeyID $KEY_ID -authenticationKeyIssuerID $ISSUER_ID"
+if [ "$SIGNING_STYLE" = "manual" ]; then
+  /usr/libexec/PlistBuddy -c "Add :signingCertificate string $SIGNING_IDENTITY" "$EXPORT_OPTIONS"
+  /usr/libexec/PlistBuddy -c "Add :provisioningProfiles dict" "$EXPORT_OPTIONS"
+  /usr/libexec/PlistBuddy \
+    -c "Add :provisioningProfiles:$EXPECTED_BUNDLE_ID string $SIGNING_PROFILE" \
+    "$EXPORT_OPTIONS"
 fi
 
 cd "$PROJECT_DIR"
 npm run ios:sync
 
-# Word splitting is intentional for the optional three-part authentication args.
-# shellcheck disable=SC2086
-if ! xcodebuild \
-  -project "$IOS_PROJECT" \
-  -scheme "$SCHEME" \
-  -configuration Release \
-  -destination "generic/platform=iOS" \
-  -archivePath "$ARCHIVE_PATH" \
-  -derivedDataPath "$DERIVED_DATA" \
-  -allowProvisioningUpdates \
-  $AUTHENTICATION_ARGS \
-  CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
-  archive >"$ARCHIVE_LOG" 2>&1; then
+archive_app() {
+  set -- \
+    xcodebuild \
+    -project "$IOS_PROJECT" \
+    -scheme "$SCHEME" \
+    -configuration Release \
+    -destination "generic/platform=iOS" \
+    -archivePath "$ARCHIVE_PATH" \
+    -derivedDataPath "$DERIVED_DATA" \
+    -allowProvisioningUpdates
+
+  if [ -n "$KEY_PATH" ]; then
+    set -- "$@" \
+      -authenticationKeyPath "$KEY_PATH" \
+      -authenticationKeyID "$KEY_ID" \
+      -authenticationKeyIssuerID "$ISSUER_ID"
+  fi
+
+  if [ "$SIGNING_STYLE" = "manual" ]; then
+    set -- "$@" \
+      CHMURNIK_ARCHIVE_SIGNING_STYLE=Manual \
+      "CHMURNIK_ARCHIVE_SIGNING_IDENTITY=$SIGNING_IDENTITY" \
+      "CHMURNIK_ARCHIVE_PROVISIONING_PROFILE=$SIGNING_PROFILE"
+  fi
+
+  set -- "$@" CURRENT_PROJECT_VERSION="$BUILD_NUMBER" archive
+  "$@"
+}
+
+upload_archive() {
+  set -- \
+    xcodebuild \
+    -exportArchive \
+    -archivePath "$ARCHIVE_PATH" \
+    -exportPath "$EXPORT_DIR" \
+    -exportOptionsPlist "$EXPORT_OPTIONS" \
+    -allowProvisioningUpdates
+
+  if [ -n "$KEY_PATH" ]; then
+    set -- "$@" \
+      -authenticationKeyPath "$KEY_PATH" \
+      -authenticationKeyID "$KEY_ID" \
+      -authenticationKeyIssuerID "$ISSUER_ID"
+  fi
+
+  "$@"
+}
+
+if ! archive_app >"$ARCHIVE_LOG" 2>&1; then
   tail -n 100 "$ARCHIVE_LOG" >&2
   fail "signed archive did not succeed."
 fi
@@ -94,14 +145,7 @@ ACTUAL_BUILD_NUMBER=$(/usr/libexec/PlistBuddy -c "Print:CFBundleVersion" "$APP_P
 [ "$ACTUAL_BUILD_NUMBER" = "$BUILD_NUMBER" ] \
   || fail "expected build $BUILD_NUMBER, found $ACTUAL_BUILD_NUMBER."
 
-# shellcheck disable=SC2086
-if ! xcodebuild \
-  -exportArchive \
-  -archivePath "$ARCHIVE_PATH" \
-  -exportPath "$EXPORT_DIR" \
-  -exportOptionsPlist "$EXPORT_OPTIONS" \
-  -allowProvisioningUpdates \
-  $AUTHENTICATION_ARGS >"$UPLOAD_LOG" 2>&1; then
+if ! upload_archive >"$UPLOAD_LOG" 2>&1; then
   tail -n 100 "$UPLOAD_LOG" >&2
   fail "App Store Connect upload did not succeed."
 fi

@@ -8,6 +8,13 @@ export function localDateKey(date = new Date()) {
   return localDateParts(date).map((part) => String(part).padStart(2, "0")).join("-");
 }
 
+export function millisecondsUntilNextLocalDay(date = new Date()) {
+  const value = date instanceof Date ? date : new Date(date);
+  if (Number.isNaN(value.getTime())) throw new TypeError("Invalid date");
+  const tomorrow = new Date(value.getFullYear(), value.getMonth(), value.getDate() + 1);
+  return tomorrow.getTime() - value.getTime();
+}
+
 export function dailyIndex(date, length) {
   if (!Number.isInteger(length) || length < 1) return -1;
   const key = localDateKey(date);

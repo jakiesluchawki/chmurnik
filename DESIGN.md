@@ -2,13 +2,13 @@
 
 ## Selected Direction
 
-**Atlas Swiatla** is the visual truth. It combines a contemporary field atlas,
-premium editorial typography, atmospheric photography, warm paper surfaces,
-and restrained scientific annotation. The deeper functionality of the
-**Pracownia Horyzontu** concept is retained in the information architecture,
-diagnostic placement, journal, and expert reference layers.
+The approved **CHMURNIK felt field atlas** is the visual truth. It combines a
+contemporary field atlas, Romie/Roobert editorial typography, real atmospheric
+photography, warm pink paper, olive ink, restrained violet actions, and felt
+studio objects that explain invisible physical ideas. The deeper functionality
+of **Pracownia Horyzontu** stays available through progressive disclosure.
 
-Reference: `design/reference/atlas-swiatla-mobile.png`
+Reference: `design/approved/chmurnik-mobile-density-v1.png`
 
 ## Personality
 
@@ -18,18 +18,16 @@ worksheet, generic dashboard, or children's game.
 
 ## Color
 
-- Sky ink: `#082f4f`
-- Deep ultramarine: `#064f82`
-- Paper: `#f7f2e8`
-- Warm white: `#fffdf8`
-- Coral annotation: `#be432f`
-- Mist blue: `#dcebf0`
-- Moss source accent: `#5e7163`
-- Graphite body: `#253642`
+- Olive ink: `#6d6435`
+- Pink paper: `#ffe1eb`
+- Warm white: `#fff7f1`
+- Accessible violet action: `#7442d9`
+- Soft atmospheric blue: `#6464c7`, only where its surface contrast is adequate
+- Muted annotation: `#53616a`
 
-Colors communicate meaning in addition to decoration. Coral marks the learner's
-next action or an observation cue. Moss marks sources and verified reference
-material. Blue communicates atmospheric structure.
+Colors communicate meaning in addition to decoration. Violet marks the next
+action, olive grounds verified content, and blue communicates atmospheric
+structure only when the text remains accessible.
 
 ## Typography
 

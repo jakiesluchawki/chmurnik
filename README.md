@@ -29,10 +29,13 @@ The application includes:
 - an interactive Skew-T laboratory with four contrasting vertical profiles,
   log-pressure projection, parcel paths, cloud layers, wind, aviation readings,
   uncertainty notes, and interpretation checks;
+- an experimental private, on-device iPhone photo assistant that presents
+  evidence-led cloud families and uncertain genus hypotheses;
 - visible sources and confidence notes throughout the learning experience;
 - a mobile-first installable web app with offline learning support.
 
-The current version deliberately does not classify photos automatically and
+Photo analysis is available only in the native iPhone app, never uploads an
+image, and is never presented as an authoritative diagnosis. The application
 includes no voice or audio system.
 
 ## Development

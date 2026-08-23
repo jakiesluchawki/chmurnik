@@ -18,6 +18,8 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin {
     private let minimumConfidence = 0.2
     private let marginThreshold = 0.51
     private let trainingCropFraction = 0.902
+    private let modelLock = NSLock()
+    private var cachedModels: [String: VNCoreMLModel] = [:]
 
     @objc public func classify(_ call: CAPPluginCall) {
         let encoded = call.getString("base64")
@@ -31,15 +33,17 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin {
             guard let self else { return }
             do {
                 let imageData = try self.loadImageData(encoded: encoded, path: path)
-                let base = try self.probabilities(
+                let image = try self.centerCrop(
                     imageData: imageData,
-                    model: self.loadModel(named: "CloudGenusClassifier"),
-                    cropFraction: self.trainingCropFraction
+                    fraction: self.trainingCropFraction
+                )
+                let base = try self.probabilities(
+                    image: image,
+                    model: self.loadModel(named: "CloudGenusClassifier")
                 )
                 let candidate = try self.probabilities(
-                    imageData: imageData,
-                    model: self.loadModel(named: "CloudGenusClassifierV3"),
-                    cropFraction: self.trainingCropFraction
+                    image: image,
+                    model: self.loadModel(named: "CloudGenusClassifierV3")
                 )
                 let probabilities = zip(base, candidate).map { baseValue, candidateValue in
                     self.baseWeight * baseValue + self.candidateWeight * candidateValue
@@ -79,13 +83,10 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     private func probabilities(
-        imageData: Data,
-        model: MLModel,
-        cropFraction: Double
+        image: CGImage,
+        model: VNCoreMLModel
     ) throws -> [Double] {
-        let image = try centerCrop(imageData: imageData, fraction: cropFraction)
-        let visionModel = try VNCoreMLModel(for: model)
-        let request = VNCoreMLRequest(model: visionModel)
+        let request = VNCoreMLRequest(model: model)
         request.imageCropAndScaleOption = .scaleFill
         let handler = VNImageRequestHandler(cgImage: image, options: [:])
         try handler.perform([request])
@@ -127,13 +128,21 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin {
         return image
     }
 
-    private func loadModel(named name: String) throws -> MLModel {
+    private func loadModel(named name: String) throws -> VNCoreMLModel {
+        modelLock.lock()
+        defer { modelLock.unlock() }
+        if let cached = cachedModels[name] {
+            return cached
+        }
         guard let modelURL = Bundle.main.url(forResource: name, withExtension: "mlmodelc") else {
             throw RecognitionError.modelMissing
         }
         let configuration = MLModelConfiguration()
         configuration.computeUnits = .all
-        return try MLModel(contentsOf: modelURL, configuration: configuration)
+        let model = try MLModel(contentsOf: modelURL, configuration: configuration)
+        let visionModel = try VNCoreMLModel(for: model)
+        cachedModels[name] = visionModel
+        return visionModel
     }
 }
 

@@ -27,8 +27,9 @@ Writing production code without an active Lore task is forbidden.
 ## Product Guardrails
 
 - The product interface and educational content are in Polish.
-- Version 1 teaches people to recognize clouds; it does not automatically
-  classify camera or uploaded images.
+- Version 1 teaches people to recognize clouds. Its experimental iOS photo
+  assistant runs entirely on-device and presents uncertain, evidence-led
+  hypotheses instead of authoritative diagnoses.
 - No narration, synthesized speech, recorded voice, microphone features, or
   audio controls.
 - Cloud Recognition is a separate project. Never edit or publish any
@@ -45,12 +46,16 @@ Writing production code without an active Lore task is forbidden.
   the project rather than overfitting the skill.
 - Generated imagery may support atmosphere and diagrams, but it must not be
   presented as photographic evidence for cloud identification.
+- Preserve the approved pink, olive, violet, Romie/Roobert, and felt-studio
+  identity. Keep the interface calm, compact, and mature; real cloud imagery
+  must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
 - The iOS release packages the complete existing product without adding new
   modules. It should feel deliberately designed for iPhone rather than like a
   browser embedded in a shell.
-- The selected visual truth is
-  `design/reference/atlas-swiatla-mobile.png`.
+- The current selected visual truth is
+  `design/approved/chmurnik-mobile-density-v1.png`; use the earlier
+  `design/reference/atlas-swiatla-mobile.png` only as historical context.
 
 ## Verification
 
@@ -59,7 +64,8 @@ Before publishing:
 1. Run the complete automated test and production build.
 2. Verify the main learning path and all public routes in a browser.
 3. Verify mobile and desktop layouts.
-4. Confirm there are no voice or automatic-recognition features.
+4. Confirm there is no voice feature and photo recognition stays on-device,
+   consent-aware, visibly uncertain, and limited to iOS.
 5. Confirm source attribution remains visible and usable.
 6. Complete `design-qa.md` against the selected visual truth.
 7. Run `npm run check:lessons` and confirm every lesson meets the versioned

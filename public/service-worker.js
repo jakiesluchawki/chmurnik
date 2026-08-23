@@ -1,6 +1,8 @@
 const CACHE_PREFIX = "chmurnik-";
-const VERSION = `${CACHE_PREFIX}v8`;
+const BUILD_VERSION = "__CHMURNIK_BUILD_VERSION__";
+const VERSION = `${CACHE_PREFIX}${BUILD_VERSION.includes("__CHMURNIK") ? "development" : BUILD_VERSION}`;
 const BASE = new URL("./", self.location.href).pathname;
+const RUNTIME_ASSETS = /* __CHMURNIK_RUNTIME_ASSETS__ */ [];
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
   "altocumulus-mackerel.jpg",
@@ -36,31 +38,44 @@ const CLOUD_PHOTOS = [
 const APP_SHELL = [
   BASE,
   `${BASE}manifest.webmanifest`,
-  `${BASE}assets/upper-atmosphere/nacreous-clouds-antarctica.jpg`,
-  `${BASE}assets/upper-atmosphere/noctilucent-clouds-laboe.jpg`,
-  `${BASE}assets/upper-atmosphere/polar-stratospheric-cloud-type-i.jpg`,
+  `${BASE}assets/atmosphere-still-life-960.avif`,
+  `${BASE}assets/observer-guide-still-life-720.avif`,
   `${BASE}assets/observer-guide-still-life-720.webp`,
+  `${BASE}fonts/Roobert-Regular.woff2`,
+  `${BASE}fonts/Roobert-Bold.woff2`,
+  `${BASE}fonts/Romie-Regular.woff2`,
   `${BASE}icons/icon-192.png`,
-  `${BASE}icons/icon-512.png`,
-  ...CLOUD_PHOTOS.map((file) => `${BASE}assets/clouds/${file}`),
+  ...RUNTIME_ASSETS.map((file) => `${BASE}${file}`),
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(VERSION).then((cache) => cache.addAll(APP_SHELL)));
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches
-      .keys()
+    caches.keys()
       .then((keys) => Promise.all(
-        keys
-          .filter((key) => key.startsWith(CACHE_PREFIX) && key !== VERSION)
+        keys.filter((key) => key.startsWith(CACHE_PREFIX) && key !== VERSION)
           .map((key) => caches.delete(key)),
-      )),
+      ))
+      .then(() => self.clients.claim()),
   );
-  self.clients.claim();
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") {
+    self.skipWaiting();
+    return;
+  }
+  if (event.data?.type !== "CACHE_ATLAS") return;
+
+  event.waitUntil(
+    caches.open(VERSION)
+      .then((cache) => cache.addAll(CLOUD_PHOTOS.map((file) => `${BASE}assets/clouds/${file}`)))
+      .then(() => event.source?.postMessage({ type: "CHMURNIK_ATLAS_CACHED" }))
+      .catch(() => event.source?.postMessage({ type: "CHMURNIK_ATLAS_CACHE_FAILED" })),
+  );
 });
 
 self.addEventListener("fetch", (event) => {
@@ -68,19 +83,21 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(VERSION).then((cache) => cache.put(event.request, copy));
-          }
-          return response;
-        })
-        .catch(() => cached || caches.match(BASE));
+  if (event.request.mode === "navigate") {
+    event.respondWith(fetch(event.request).catch(() => caches.match(BASE)));
+    return;
+  }
 
-      return cached || network;
-    }),
-  );
+  event.respondWith(caches.match(event.request).then((cached) => {
+    if (cached) return cached;
+    return fetch(event.request)
+      .then((response) => {
+        if (response.ok) {
+          const copy = response.clone();
+          event.waitUntil(caches.open(VERSION).then((cache) => cache.put(event.request, copy)));
+        }
+        return response;
+      })
+      .catch(() => Response.error());
+  }));
 });

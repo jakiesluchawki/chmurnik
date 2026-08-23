@@ -21,18 +21,37 @@ test("aggregates genus scores into meteorologically useful families", () => {
 
   const families = aggregateCloudFamilies(ranked);
   assert.equal(families[0].id, "convective");
-  assert.ok(Math.abs(families[0].probability - (0.43 / 0.69)) < 1e-12);
+  assert.ok(Math.abs(families[0].posterior - 0.74) < 1e-12);
+  assert.ok(Math.abs(
+    families[0].probability - (Math.hypot(0.43, 0.31) / (Math.hypot(0.43, 0.31) + 0.26)),
+  ) < 1e-12);
+  assert.match(families[0].evidence, /kalafiorowej budowy/);
   assert.equal(families[1].id, "high");
+  assert.ok(Math.abs(families.reduce((sum, family) => sum + family.probability, 0) - 1) < 1e-12);
+  assert.ok(Math.abs(families.reduce((sum, family) => sum + family.posterior, 0) - 1) < 1e-12);
 });
 
-test("family ranking is not biased by the number of genera in a family", () => {
+test("family evidence resists taxonomic group-size bias without discarding posterior mass", () => {
   const ranked = recognitionClassIds().map((id) => ({ id, probability: 0 }));
   ranked.find((row) => row.id === "cirrus").probability = 0.12;
   ranked.find((row) => row.id === "cirrocumulus").probability = 0.11;
   ranked.find((row) => row.id === "cirrostratus").probability = 0.10;
   ranked.find((row) => row.id === "cumulus").probability = 0.25;
 
-  assert.equal(aggregateCloudFamilies(ranked)[0].id, "convective");
+  const families = aggregateCloudFamilies(ranked);
+  assert.equal(families[0].id, "convective");
+  assert.ok(Math.abs(families.find((family) => family.id === "high").posterior - (0.33 / 0.58)) < 1e-12);
+});
+
+test("the real Cumulus atlas result keeps its convective family", () => {
+  const result = interpretCloudProbabilities([
+    0.02785296, 0.20009825, 0.10292582, 0.11333175, 0.03837440,
+    0.04303634, 0.01625477, 0.13692302, 0.26396209, 0.03035391, 0.02688671,
+  ]);
+
+  assert.equal(result.ranked[0].id, "cumulus");
+  assert.equal(result.leadingFamily.id, "convective");
+  assert.ok(result.families.find((family) => family.id === "high").posterior > result.leadingFamily.posterior);
 });
 
 test("keeps close genus scores as hypotheses instead of a verdict", () => {

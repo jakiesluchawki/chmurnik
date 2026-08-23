@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { dailyIndex, localDateKey, selectDailyCloud } from "../src/lib/daily-cloud.js";
+import {
+  dailyIndex,
+  localDateKey,
+  millisecondsUntilNextLocalDay,
+  selectDailyCloud,
+} from "../src/lib/daily-cloud.js";
 
 test("daily cloud selection is stable for a local calendar date", () => {
   const morning = new Date(2026, 5, 26, 7, 10);
@@ -23,4 +28,10 @@ test("daily cloud selection returns a real image candidate", () => {
 test("daily index declines empty candidate collections", () => {
   assert.equal(dailyIndex(new Date(2026, 5, 26), 0), -1);
   assert.equal(selectDailyCloud([], new Date(2026, 5, 26)), null);
+});
+
+test("the next daily refresh follows the local calendar boundary", () => {
+  assert.equal(millisecondsUntilNextLocalDay(new Date(2026, 5, 26, 23, 59, 30)), 30_000);
+  assert.equal(millisecondsUntilNextLocalDay(new Date(2026, 5, 26, 12, 0, 0)), 43_200_000);
+  assert.throws(() => millisecondsUntilNextLocalDay(new Date("invalid")), /Invalid date/);
 });

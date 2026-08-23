@@ -48,7 +48,7 @@
   --paper: #ffe1eb;
   --white: #fff7f1;
   --coral: #7442d9;
-  --coral-bright: #9a68ff;
+  --coral-bright: #7442d9;
   --mist: #e2f1ff;
   --moss: #6d6435;
   --graphite: #6d6435;
@@ -1726,6 +1726,10 @@ html.native-ios .quiz-modal {
   padding: clamp(22px, 3vw, 38px);
 }
 
+.photo-recognition-modal:focus {
+  outline: none;
+}
+
 .photo-recognition-header {
   display: flex;
   align-items: flex-start;
@@ -1771,6 +1775,7 @@ html.native-ios .quiz-modal {
 
 .photo-recognition-intro h3 {
   margin: 0 0 7px;
+  color: var(--paper);
   font-family: var(--serif);
   font-size: clamp(2rem, 4vw, 3.6rem);
   font-weight: 400;
@@ -1779,6 +1784,20 @@ html.native-ios .quiz-modal {
 .photo-recognition-intro p {
   max-width: 520px;
   margin: 0;
+}
+
+.photo-recognition-intro__art {
+  width: clamp(120px, 22vw, 210px);
+  height: clamp(120px, 22vw, 210px);
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.photo-recognition-intro__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .photo-recognition-preview {
@@ -1908,6 +1927,36 @@ html.native-ios .quiz-modal {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.photo-feedback {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo-feedback > span {
+  margin-right: auto;
+  font-size: 0.84rem;
+}
+
+.photo-feedback button {
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--white);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.photo-feedback small {
+  width: 100%;
+  font-size: 0.8rem;
 }
 
 .photo-recognition-error {
@@ -2442,5 +2491,660 @@ html.native-ios .quiz-modal {
     min-height: 46px;
     padding-inline: 7px;
     font-size: 0.78rem;
+  }
+}
+
+/* Field companion: denser tools, honest storage, and usable first screens. */
+
+.app-update-notice {
+  position: fixed;
+  z-index: 35;
+  right: 20px;
+  bottom: 20px;
+  max-width: min(440px, calc(100vw - 30px));
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--white);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.87rem;
+}
+
+.app-update-notice button,
+.atlas-offline > button,
+.journal-backup > div:last-child button {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 0.83rem;
+}
+
+.app-update-notice button {
+  border-color: var(--coral);
+  background: var(--coral);
+  color: var(--white);
+}
+
+.atlas-offline,
+.journal-backup {
+  margin: 28px 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.atlas-offline > div,
+.journal-backup > div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.atlas-offline > div > span,
+.journal-backup > div:first-child > span {
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
+.atlas-offline > button:disabled,
+.journal-backup button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.journal-notice {
+  margin: 0 0 16px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.journal-notice svg {
+  flex: 0 0 auto;
+}
+
+.journal-notice--error {
+  border-color: #a54a62;
+  color: #743048;
+}
+
+.journal-photo-field {
+  margin-top: 18px;
+}
+
+.journal-photo-action {
+  min-height: 50px;
+  padding: 0 15px;
+  border: 1px dashed var(--line);
+  border-radius: 11px;
+  background: transparent;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.journal-photo-preview {
+  position: relative;
+  width: min(300px, 100%);
+}
+
+.journal-photo-preview img,
+.entry-photo {
+  width: 100%;
+  max-height: 260px;
+  border-radius: 13px;
+  object-fit: cover;
+}
+
+.journal-photo-preview .icon-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--white);
+}
+
+.journal-backup > div:last-child {
+  display: flex;
+  gap: 8px;
+}
+
+.entry-photo {
+  width: min(360px, 100%);
+  margin-top: 14px;
+}
+
+.journal-empty-state {
+  min-height: 0;
+  padding: 22px;
+  gap: 14px;
+  text-align: center;
+}
+
+.journal-empty-state picture,
+.journal-empty-state picture img {
+  width: min(220px, 100%);
+  height: 140px;
+  border-radius: 13px;
+  object-fit: cover;
+}
+
+.journal-empty-state h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+@media (max-width: 720px) {
+  .eyebrow,
+  .hero-kicker,
+  .daily-sky figcaption,
+  .home-guidance-row small,
+  .decoder-question > span,
+  .decoder-definitions span,
+  .decoder-controls span,
+  .decoder-band-control > span,
+  .decoder-reading span {
+    font-size: max(0.76rem, 12px);
+    letter-spacing: 0.045em;
+  }
+
+  html.native-ios .app-header,
+  html.native-ios .app-shell:has(.page) .app-header {
+    height: calc(59px + env(safe-area-inset-top));
+    padding-top: calc(4px + env(safe-area-inset-top));
+    padding-bottom: 4px;
+  }
+
+  html.native-ios .brand,
+  html.native-ios .app-shell:has(.page) .brand {
+    min-height: 44px;
+  }
+
+  html.native-ios .brand-wordmark-mark,
+  html.native-ios .app-shell:has(.page) .brand-wordmark-mark {
+    width: 144px;
+    height: 27px;
+  }
+
+  .app-update-notice {
+    right: 10px;
+    bottom: calc(69px + env(safe-area-inset-bottom));
+    left: 10px;
+    max-width: none;
+    padding: 10px;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .page {
+    padding-top: 16px;
+  }
+
+  .page-heading,
+  .page-heading--inline,
+  .workbench-heading {
+    position: relative;
+    min-height: 0;
+    margin-bottom: 13px;
+    padding-bottom: 12px;
+    gap: 6px;
+  }
+
+  .page-heading h1,
+  .workbench-heading h1 {
+    margin: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+    font-family: var(--serif);
+    font-size: clamp(2.1rem, 8.5vw, 3rem);
+    line-height: 1;
+    text-transform: none;
+  }
+
+  .page-heading p,
+  .workbench-heading p {
+    max-width: 39ch;
+    margin: 0;
+    font-size: 0.89rem;
+    line-height: 1.42;
+  }
+
+  .workbench-heading.page-heading--inline > .source-button {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    min-height: 38px;
+    margin-top: 1px;
+    padding-inline: 7px;
+    font-size: 0.77rem;
+  }
+
+  .segmented-control,
+  .layers-tabs {
+    margin-bottom: 11px;
+  }
+
+  .segmented-control button {
+    min-height: 44px;
+    padding-inline: 11px;
+    font-size: 0.8rem;
+  }
+
+  .atlas-search {
+    margin: 0 0 10px;
+    padding: 11px;
+    border-radius: 13px;
+    gap: 8px;
+  }
+
+  .atlas-search__intro .eyebrow,
+  .atlas-search__intro p {
+    display: none;
+  }
+
+  .atlas-search__intro h2 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .atlas-search__field {
+    min-height: 48px;
+    padding-left: 10px;
+    border-radius: 9px;
+    gap: 8px;
+  }
+
+  .atlas-search__field > svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .atlas-search__field input {
+    font-family: var(--ui);
+    font-size: 0.83rem;
+  }
+
+  .atlas-search__status {
+    min-height: 0;
+    font-size: 0.77rem;
+  }
+
+  .atlas-tools {
+    margin: 0 0 11px;
+    gap: 7px;
+  }
+
+  .atlas-tools__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .filter-scroll button {
+    min-height: 42px;
+    padding-inline: 11px;
+    font-size: 0.8rem;
+  }
+
+  .cloud-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 10px;
+  }
+
+  .cloud-image-wrap {
+    aspect-ratio: 1.02;
+  }
+
+  .cloud-card .cloud-image-wrap {
+    border-radius: 11px;
+  }
+
+  .cloud-code {
+    top: 8px;
+    left: 8px;
+    min-width: 33px;
+    min-height: 29px;
+    font-size: 0.77rem;
+  }
+
+  .cloud-level,
+  .cloud-card-body > small,
+  .cloud-card-count,
+  .cloud-card-body > .card-link {
+    display: none;
+  }
+
+  .cloud-card-body {
+    padding: 9px 1px 0;
+  }
+
+  .cloud-card-body strong {
+    font-size: clamp(1rem, 4.1vw, 1.28rem);
+    line-height: 1.08;
+    overflow-wrap: normal;
+  }
+
+  .cloud-card-body i {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.76rem;
+    line-height: 1.28;
+  }
+
+  .atlas-offline,
+  .journal-backup {
+    margin: 20px 0;
+    padding: 13px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .atlas-offline > button {
+    align-self: stretch;
+  }
+
+  .encyclopedia-stats {
+    margin-top: 24px;
+  }
+
+  .windy-decoder {
+    margin-inline: -15px;
+  }
+
+  .decoder-layer-picker {
+    padding: 10px 15px 11px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    gap: 7px;
+  }
+
+  .decoder-layer-picker::-webkit-scrollbar {
+    display: none;
+  }
+
+  .decoder-layer-picker > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .decoder-layer-picker button,
+  .decoder-layer-picker button:last-child {
+    min-width: max-content;
+    min-height: 44px;
+    padding: 0 11px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    grid-template-columns: 18px 1fr;
+    scroll-snap-align: start;
+    gap: 7px;
+  }
+
+  .decoder-layer-picker button > svg:first-child {
+    width: 18px;
+    height: 18px;
+  }
+
+  .decoder-reader {
+    padding: 17px 15px 25px;
+  }
+
+  .decoder-reader > header {
+    gap: 10px;
+  }
+
+  .decoder-reader__icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .decoder-reader > header h2 {
+    font-size: clamp(1.7rem, 7vw, 2.35rem);
+  }
+
+  .decoder-question {
+    margin: 15px 0;
+    padding-left: 11px;
+  }
+
+  .decoder-question p {
+    font-size: 1.13rem;
+  }
+
+  .decoder-controls,
+  .decoder-band-control {
+    margin: 14px 0;
+    padding: 13px;
+  }
+
+  .decoder-pressure-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .decoder-pressure-picker button {
+    min-height: 44px;
+    font-size: 0.79rem;
+  }
+
+  .decoder-reading {
+    margin-block: 14px;
+    padding: 14px;
+    border-radius: 12px;
+    background: var(--ink);
+  }
+
+  .decoder-reading svg,
+  .decoder-reading span {
+    color: var(--white);
+  }
+
+  .journal-page > .page-heading > .button {
+    min-height: 44px;
+    margin-top: 4px;
+  }
+
+  .journal-form {
+    margin-bottom: 13px;
+    padding: 15px;
+    border-radius: 13px;
+  }
+
+  .journal-form .form-row {
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+
+  .journal-form .form-row:nth-of-type(2) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .journal-form label {
+    min-width: 0;
+    font-size: 0.82rem;
+  }
+
+  .journal-form input,
+  .journal-form select,
+  .journal-form textarea {
+    min-width: 0;
+    max-width: 100%;
+    padding-inline: 9px;
+    font-size: 0.84rem;
+  }
+
+  .journal-form input[type="date"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .journal-form textarea {
+    min-height: 108px;
+  }
+
+  .journal-form .form-footer {
+    margin-top: 15px;
+    gap: 11px;
+  }
+
+  .journal-backup > div:last-child {
+    width: 100%;
+  }
+
+  .journal-backup > div:last-child button {
+    min-width: 0;
+    flex: 1;
+    font-size: 0.76rem;
+  }
+
+  .journal-list article {
+    grid-template-columns: 50px minmax(0, 1fr) 40px;
+    padding-block: 18px;
+    gap: 10px;
+  }
+
+  .entry-meta {
+    align-items: flex-start;
+    font-size: 0.77rem;
+    line-height: 1.35;
+  }
+
+  .entry-body h2 {
+    font-size: 1.38rem;
+  }
+
+  .journal-observer-invite {
+    margin-top: 24px;
+    padding-block: 17px;
+    gap: 11px;
+  }
+
+  .journal-observer-invite h2 {
+    font-size: 1.5rem;
+  }
+
+  .journal-observer-invite p {
+    font-size: 0.83rem;
+  }
+
+  .photo-recognition-modal {
+    padding-top: 17px;
+  }
+
+  .photo-recognition-header h2 {
+    font-size: 2.22rem;
+  }
+
+  .photo-privacy-note {
+    margin-block: 11px;
+    font-size: 0.8rem;
+    line-height: 1.38;
+  }
+
+  .photo-recognition-intro {
+    min-height: 154px;
+    padding: 15px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .photo-recognition-intro > div {
+    min-width: 0;
+  }
+
+  .photo-recognition-intro h3 {
+    margin-top: 7px;
+    color: var(--paper);
+    font-size: 1.66rem;
+    line-height: 1.05;
+  }
+
+  .photo-recognition-intro p {
+    font-size: 0.81rem;
+    line-height: 1.35;
+  }
+
+  .photo-recognition-intro__art {
+    width: 108px;
+    height: 125px;
+    border-radius: 11px;
+  }
+
+  .photo-recognition-preview,
+  .photo-recognition-preview img {
+    min-height: 155px;
+    max-height: 24svh;
+  }
+
+  .photo-family-result,
+  .photo-hypotheses,
+  .photo-recognition-caveat {
+    padding: 12px;
+  }
+
+  .photo-hypotheses li {
+    min-height: 48px;
+  }
+
+  .photo-feedback {
+    gap: 7px;
+  }
+
+  .photo-feedback > span {
+    width: 100%;
+    font-size: 0.81rem;
+  }
+
+  .photo-capture-actions {
+    margin-top: 12px;
+  }
+
+  .daily-sky__answer {
+    min-height: 0;
+    margin-top: 10px;
+    padding: 11px 0;
+  }
+
+  .daily-sky__actions {
+    margin-top: 10px;
   }
 }

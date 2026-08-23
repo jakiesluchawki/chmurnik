@@ -51,6 +51,8 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
   assert.match(interpretation, /marginThreshold: 0\.68/);
   assert.match(interpretation, /low-layered/);
   assert.match(native, /VNCoreMLRequest/);
+  assert.match(native, /private var cachedModels: \[String: VNCoreMLModel\]/);
+  assert.match(native, /let image = try self\.centerCrop/);
   assert.match(native, /trainingCropFraction = 0\.902/);
   assert.match(native, /imageCropAndScaleOption = \.scaleFill/);
   assert.match(native, /baseWeight = 0\.4/);
@@ -68,8 +70,8 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
 test("the project records its visual source of truth", async () => {
   const design = await read("DESIGN.md");
 
-  assert.match(design, /Atlas Swiatla/);
-  assert.match(design, /design\/reference\/atlas-swiatla-mobile\.png/);
+  assert.match(design, /felt/i);
+  assert.match(design, /design\/approved\/chmurnik-mobile-density-v1\.png/);
 });
 
 test("hero copy and actions remain separate from the artwork", async () => {
@@ -164,11 +166,12 @@ test("the installable app and offline shell use the custom domain root", async (
   assert.equal(manifest.scope, "./");
   assert.match(worker, /const BASE = new URL\("\.\/", self\.location\.href\)\.pathname/);
   assert.match(worker, /const CACHE_PREFIX = "chmurnik-"/);
-  assert.match(worker, /chmurnik-\$\{CACHE_PREFIX\}v8|`\$\{CACHE_PREFIX\}v8`/);
+  assert.match(worker, /__CHMURNIK_BUILD_VERSION__/);
+  assert.match(worker, /__CHMURNIK_RUNTIME_ASSETS__/);
+  assert.match(worker, /CACHE_ATLAS/);
   assert.match(worker, /observer-guide-still-life-720\.webp/);
-  assert.match(worker, /assets\/upper-atmosphere\/nacreous-clouds-antarctica\.jpg/);
-  assert.match(worker, /assets\/upper-atmosphere\/noctilucent-clouds-laboe\.jpg/);
-  assert.match(worker, /assets\/upper-atmosphere\/polar-stratospheric-cloud-type-i\.jpg/);
+  assert.match(worker, /fonts\/Roobert-Regular\.woff2/);
+  assert.match(worker, /fonts\/Romie-Regular\.woff2/);
   assert.match(worker, /key\.startsWith\(CACHE_PREFIX\)/);
 });
 
@@ -235,6 +238,8 @@ test("small annotation colors meet WCAG AA against their surfaces", async () => 
 
   assert.ok(contrastRatio(token("coral"), paper) >= 4.5);
   assert.ok(contrastRatio(token("coral"), white) >= 4.5);
+  assert.ok(contrastRatio(token("coral-bright"), paper) >= 4.5);
+  assert.ok(contrastRatio(token("coral-bright"), white) >= 4.5);
   assert.ok(contrastRatio(token("ink"), paper) >= 4.5);
   assert.ok(contrastRatio(token("moss"), paper) >= 4.5);
   assert.ok(contrastRatio(token("muted"), paper) >= 4.5);

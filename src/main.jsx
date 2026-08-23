@@ -29,6 +29,23 @@ if (isNative) {
   });
 } else if ("serviceWorker" in navigator && import.meta.env.PROD) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}service-worker.js`);
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}service-worker.js`)
+      .then((registration) => {
+        const announce = () => window.dispatchEvent(new CustomEvent("chmurnik:update-ready", {
+          detail: registration,
+        }));
+        if (registration.waiting) announce();
+        registration.addEventListener("updatefound", () => {
+          const installing = registration.installing;
+          installing?.addEventListener("statechange", () => {
+            if (installing.state === "installed" && navigator.serviceWorker.controller) announce();
+          });
+        });
+      })
+      .catch(() => {});
+
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (window.__chmurnikReloadAfterUpdate) window.location.reload();
+    });
   });
 }

@@ -12,6 +12,7 @@ import {
   Cloud,
   CloudRain,
   Compass,
+  DownloadSimple,
   Eye,
   Gauge,
   GraduationCap,
@@ -26,7 +27,10 @@ import {
   Plus,
   ShieldCheck,
   Stack,
+  ThumbsDown,
+  ThumbsUp,
   Trash,
+  UploadSimple,
   Warning,
   Wind,
   X,
@@ -93,11 +97,13 @@ import { soundingPath, soundingPoint, soundingSummary } from "./lib/sounding.js"
 import {
   clearAviationReview,
   clearObservationDraft,
+  clearPhotoFeedback,
   loadAviationReview,
   loadJournal,
   loadLessonPosition,
   loadObservationDraft,
   loadOnboarding,
+  loadPhotoFeedback,
   loadProfile,
   loadProgress,
   loadRecognitionStats,
@@ -106,6 +112,7 @@ import {
   saveLessonPosition,
   saveObservationDraft,
   saveOnboarding,
+  savePhotoFeedback,
   saveProfile,
   saveProgress,
   saveRecognitionStats,
@@ -133,7 +140,17 @@ import {
   weatherLayerReading,
 } from "./lib/weather-layers.js";
 import { windFromCloudMotion } from "./lib/wind.js";
-import { selectDailyCloud } from "./lib/daily-cloud.js";
+import {
+  localDateKey,
+  millisecondsUntilNextLocalDay,
+  selectDailyCloud,
+} from "./lib/daily-cloud.js";
+import {
+  compactObservationPhoto,
+  mergeJournalEntries,
+  parseJournalBackup,
+  serializeJournalBackup,
+} from "./lib/journal.js";
 import {
   captureCloudPhoto,
   isPhotoCaptureCancellation,
@@ -384,6 +401,27 @@ function CloudName({ children }) {
   return <span className="scientific-name" lang="la">{children}</span>;
 }
 
+function useLocalDay() {
+  const [day, setDay] = useState(() => new Date());
+
+  useEffect(() => {
+    const refresh = () => {
+      const now = new Date();
+      if (localDateKey(now) !== localDateKey(day)) setDay(now);
+    };
+    const timer = window.setTimeout(refresh, millisecondsUntilNextLocalDay(day) + 100);
+    document.addEventListener("visibilitychange", refresh);
+    window.addEventListener("pageshow", refresh);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("visibilitychange", refresh);
+      window.removeEventListener("pageshow", refresh);
+    };
+  }, [day]);
+
+  return day;
+}
+
 function HomePage({
   navigate,
   profile,
@@ -399,12 +437,17 @@ function HomePage({
   const recommended = learningModules.find((module) => module.id === profile?.moduleId) || learningModules[0];
   const progress = Math.round((completed.length / learningModules.length) * 100);
   const [dailyAnswerVisible, setDailyAnswerVisible] = useState(false);
-  const daily = useMemo(() => selectDailyCloud(clouds), []);
+  const day = useLocalDay();
+  const daily = useMemo(() => selectDailyCloud(clouds, day), [day]);
   const todayLabel = useMemo(() => new Intl.DateTimeFormat("pl-PL", {
     weekday: "long",
     day: "numeric",
     month: "long",
-  }).format(new Date()), []);
+  }).format(day), [day]);
+
+  useEffect(() => {
+    setDailyAnswerVisible(false);
+  }, [daily?.dateKey]);
 
   return (
     <>
@@ -1300,6 +1343,7 @@ function AtlasPage({
   const [tab, setTab] = useState(initialTab);
   const [level, setLevel] = useState("wszystkie");
   const [query, setQuery] = useState("");
+  const [offlineState, setOfflineState] = useState("idle");
   const [selected, setSelected] = useState(null);
   const [selectedTerm, setSelectedTerm] = useState(null);
   const [comparisonIds, setComparisonIds] = useState(
@@ -1307,7 +1351,7 @@ function AtlasPage({
   );
   const hasAtlasQuery = Boolean(query.trim());
   const heading = {
-    atlas: ["Międzynarodowa klasyfikacja WMO", "Encyklopedia chmur", "Dziesięć rodzajów prowadzi dalej do cech, fizyki, pogody i formalnych nazw."],
+    atlas: ["Klasyfikacja WMO", "Atlas chmur", "Dziesięć rodzajów, prawdziwe zdjęcia i widoczne cechy."],
     observer: ["Mobilny notes obserwatora", "Najpierw dowody", "Pięć krótkich pytań zamienia spojrzenie w hipotezę, którą możesz sprawdzić w atlasie."],
     compare: ["Diagnostyka różnicowa", "Porównaj dowody", "Zestaw podobne chmury obok siebie i zobacz kryteria, które naprawdę je rozdzielają."],
     encyclopedia: ["Formalne warstwy nazwy", "Indeks WMO", "Gatunki, odmiany, cechy dodatkowe oraz pochodzenie w jednym przeszukiwalnym indeksie."],
@@ -1333,6 +1377,29 @@ function AtlasPage({
   useEffect(() => {
     setTab(initialTab);
   }, [initialTab]);
+
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return undefined;
+    const receive = (event) => {
+      if (event.data?.type === "CHMURNIK_ATLAS_CACHED") setOfflineState("ready");
+      if (event.data?.type === "CHMURNIK_ATLAS_CACHE_FAILED") setOfflineState("error");
+    };
+    navigator.serviceWorker.addEventListener("message", receive);
+    return () => navigator.serviceWorker.removeEventListener("message", receive);
+  }, []);
+
+  const cacheAtlas = async () => {
+    if (!("serviceWorker" in navigator)) return;
+    setOfflineState("loading");
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      const worker = registration.active || registration.waiting;
+      if (!worker) throw new Error("Service worker unavailable");
+      worker.postMessage({ type: "CACHE_ATLAS" });
+    } catch {
+      setOfflineState("error");
+    }
+  };
 
   const openObserver = () => {
     setSelected(null);
@@ -1363,10 +1430,10 @@ function AtlasPage({
       <div className="segmented-control" role="tablist">
         {[
           ["atlas", "Rodzaje · 10"],
-          ["observer", "Obserwator terenowy"],
+          ["observer", "Obserwator"],
           ["compare", "Porównaj"],
           ["encyclopedia", "Indeks · 49"],
-          ["cases", "Trudne przypadki"],
+          ["cases", "Pomyłki"],
         ].map(([id, label]) => (
           <button
             key={id}
@@ -1402,7 +1469,7 @@ function AtlasPage({
                   setQuery(nextQuery);
                   if (nextQuery.trim()) setLevel("wszystkie");
                 }}
-                placeholder="np. Cumulonimbus, Ci, kowadło, bez halo"
+                placeholder="Nazwa, kod lub cecha chmury"
               />
               {hasAtlasQuery && (
                 <button type="button" onClick={() => setQuery("")} aria-label="Wyczyść wyszukiwanie">
@@ -1414,7 +1481,7 @@ function AtlasPage({
               <span aria-live="polite">
                 {hasAtlasQuery
                   ? `${formatPolishCount(filtered.length, "rodzaj", "rodzaje", "rodzajów")} · ${formatPolishCount(matchedTerms.length, "hasło WMO", "hasła WMO", "haseł WMO")}`
-                  : "Przeszukujesz 10 rodzajów i 49 formalnych haseł WMO"}
+                  : "10 rodzajów · 49 haseł WMO"}
               </span>
               {hasAtlasQuery
                 ? <small>Cała klasyfikacja · filtry poziomu są pomijane</small>
@@ -1432,12 +1499,6 @@ function AtlasPage({
             />
           ) : (
             <>
-              <div className="encyclopedia-stats" aria-label="Zakres encyklopedii">
-                <article><strong>10</strong><span>rodzajów troposferycznych</span></article>
-                <article><strong>15</strong><span>gatunków WMO</span></article>
-                <article><strong>9</strong><span>odmian</span></article>
-                <article><strong>25</strong><span>cech, chmur towarzyszących i klas specjalnych</span></article>
-              </div>
               <div className="atlas-tools">
                 <span className="atlas-tools__label">Filtruj według typowego poziomu</span>
                 <div className="filter-scroll" aria-label="Filtruj według typowego poziomu">
@@ -1454,6 +1515,25 @@ function AtlasPage({
                 </div>
               </div>
               <CloudCardGrid items={filtered} onSelect={setSelected} />
+              {"serviceWorker" in navigator && (
+                <aside className="atlas-offline">
+                  <div>
+                    <strong>Atlas pod ręką</strong>
+                    <span>Zachowaj prawdziwe fotografie do oglądania bez internetu.</span>
+                  </div>
+                  <button type="button" onClick={cacheAtlas} disabled={offlineState === "loading" || offlineState === "ready"}>
+                    {offlineState === "ready" ? <Check size={18} /> : <DownloadSimple size={18} />}
+                    {offlineState === "ready" ? "Gotowy offline" : offlineState === "loading" ? "Pobieram zdjęcia…" : "Pobierz atlas"}
+                  </button>
+                  {offlineState === "error" && <small role="alert">Nie udało się pobrać fotografii. Sprawdź połączenie.</small>}
+                </aside>
+              )}
+              <div className="encyclopedia-stats" aria-label="Zakres encyklopedii">
+                <article><strong>10</strong><span>rodzajów troposferycznych</span></article>
+                <article><strong>15</strong><span>gatunków WMO</span></article>
+                <article><strong>9</strong><span>odmian</span></article>
+                <article><strong>25</strong><span>cech, chmur towarzyszących i klas specjalnych</span></article>
+              </div>
             </>
           )}
         </>
@@ -1636,6 +1716,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [resultsOpen, setResultsOpen] = useState(false);
+  const [saveNotice, setSaveNotice] = useState(null);
   const questionHeadingRef = useRef(null);
   const resultsHeadingRef = useRef(null);
   const hasNavigatedRef = useRef(false);
@@ -1673,6 +1754,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
     setAnswers({});
     setStep(0);
     setResultsOpen(false);
+    setSaveNotice(null);
   };
 
   if (resultsOpen) {
@@ -1797,16 +1879,24 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
           </button>
         </section>
 
+        {saveNotice && (
+          <p className="journal-notice journal-notice--error" role="alert">
+            <Warning size={18} /> {saveNotice}
+          </p>
+        )}
         <div className="field-results-actions">
           <button
             className="button button--coral"
-            onClick={() => onSaveObservation(
-              createObservationDraft(
+            onClick={() => {
+              const saved = onSaveObservation(createObservationDraft(
                 answers,
                 topResults,
                 (cloudId) => getCloud(cloudId).name,
-              ),
-            )}
+              ));
+              if (!saved) {
+                setSaveNotice("Nie udało się zachować obserwacji. Zwolnij miejsce na urządzeniu i spróbuj ponownie.");
+              }
+            }}
           >
             <Notebook size={18} /> Zapisz dowody w dzienniku
           </button>
@@ -2974,6 +3064,14 @@ function WindyDecoderPanel({
             <p>{layer.question}</p>
           </section>
 
+          <blockquote className="decoder-reading">
+            <Eye size={24} />
+            <div>
+              <span>Poprawne zdanie interpretacyjne</span>
+              <p>{reading}</p>
+            </div>
+          </blockquote>
+
           {layer.supportsPressure && (
             <section className="decoder-controls" aria-label="Ustaw poziom i teren">
               <div className="decoder-control-heading">
@@ -3037,14 +3135,6 @@ function WindyDecoderPanel({
               </div>
             </section>
           )}
-
-          <blockquote className="decoder-reading">
-            <Eye size={24} />
-            <div>
-              <span>Poprawne zdanie interpretacyjne</span>
-              <p>{reading}</p>
-            </div>
-          </blockquote>
 
           <div className="decoder-definitions">
             <section>
@@ -3130,7 +3220,7 @@ function LayersPage({ onSources }) {
   const terrainPercent = Math.min(74, (terrain / 10000) * 100);
   const levelPercent = Math.min(96, (selected.altitude / 10000) * 100);
   const heading = {
-    decoder: ["Pracownia pionowej atmosfery", "Czytnik Windy", "Wybierz warstwę i od razu zobacz, co oznacza dla wysokości, ciśnienia i terenu."],
+    decoder: ["Warstwy atmosfery", "Czytnik Windy", "Wybierz warstwę i od razu zobacz, co oznacza dla wysokości, ciśnienia i terenu."],
     lab: ["Wysokość i ciśnienie", "Ten sam poziom, inna wysokość", "Przesuwaj teren i poziom hPa, aby zobaczyć różnicę między MSL i AGL."],
     wind: ["Ruch widoczny na niebie", "Wiatr z obserwacji", "Połącz kierunek ruchu chmur z zasadą, skąd wieje wiatr."],
     metar: ["Język pogody lotniczej", "METAR i TAF", "Czytaj depeszę grupami i sprawdzaj znaczenie bez pamięciówki."],
@@ -4739,32 +4829,108 @@ function JournalPage({ navigate }) {
   const [entries, setEntries] = useState(loadJournal);
   const [draft] = useState(loadObservationDraft);
   const [formOpen, setFormOpen] = useState(entries.length === 0 || Boolean(draft));
+  const [notice, setNotice] = useState(null);
+  const [photoBusy, setPhotoBusy] = useState(false);
+  const importRef = useRef(null);
+  const photoRef = useRef(null);
   const [form, setForm] = useState({
-    date: new Date().toISOString().slice(0, 10),
-    location: "",
+    date: draft?.date || localDateKey(),
+    location: draft?.location || "",
     cloud: draft?.cloud || "",
     confidence: draft?.confidence || "średnia",
     evidence: draft?.evidence || "",
+    photo: draft?.photo || null,
   });
 
   useEffect(() => {
-    if (draft) clearObservationDraft();
-  }, [draft]);
+    if (!formOpen || !(form.location || form.cloud || form.evidence)) return undefined;
+    const timer = window.setTimeout(() => {
+      const { photo, ...textDraft } = form;
+      saveObservationDraft(textDraft);
+    }, 300);
+    return () => window.clearTimeout(timer);
+  }, [form, formOpen]);
+
+  const persist = (next) => {
+    if (!saveJournal(next)) {
+      setNotice({
+        kind: "error",
+        message: "Nie udało się zapisać obserwacji. Pamięć przeglądarki może być pełna lub zablokowana; formularz pozostał otwarty.",
+      });
+      return false;
+    }
+    setEntries(next);
+    setNotice(null);
+    return true;
+  };
 
   const submit = (event) => {
     event.preventDefault();
     const entry = { ...form, id: crypto.randomUUID(), createdAt: Date.now() };
     const next = [entry, ...entries];
-    setEntries(next);
-    saveJournal(next);
-    setForm({ ...form, location: "", cloud: "", evidence: "" });
+    if (!persist(next)) return;
+    clearObservationDraft();
+    setForm({
+      date: localDateKey(),
+      location: "",
+      cloud: "",
+      confidence: "średnia",
+      evidence: "",
+      photo: null,
+    });
     setFormOpen(false);
+    setNotice({ kind: "success", message: "Obserwacja została zapisana na tym urządzeniu." });
   };
 
   const remove = (id) => {
     const next = entries.filter((entry) => entry.id !== id);
-    setEntries(next);
-    saveJournal(next);
+    persist(next);
+  };
+
+  const attachPhoto = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    setPhotoBusy(true);
+    try {
+      const photo = await compactObservationPhoto(file);
+      setForm((current) => ({ ...current, photo }));
+      setNotice(null);
+    } catch {
+      setNotice({ kind: "error", message: "Nie udało się przygotować zdjęcia. Wybierz inny plik obrazu." });
+    } finally {
+      setPhotoBusy(false);
+    }
+  };
+
+  const exportJournal = () => {
+    try {
+      const contents = serializeJournalBackup(entries);
+      const url = URL.createObjectURL(new Blob([contents], { type: "application/json" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `chmurnik-dziennik-${localDateKey()}.json`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch {
+      setNotice({ kind: "error", message: "Nie udało się przygotować kopii dziennika." });
+    }
+  };
+
+  const importJournal = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    try {
+      const incoming = parseJournalBackup(await file.text());
+      const merged = mergeJournalEntries(entries, incoming);
+      if (!persist(merged)) return;
+      setNotice({ kind: "success", message: `Przywrócono dziennik. Łącznie: ${merged.length} obserwacji.` });
+    } catch {
+      setNotice({ kind: "error", message: "Ten plik nie jest prawidłową kopią dziennika Chmurnika." });
+    }
   };
 
   return (
@@ -4772,34 +4938,32 @@ function JournalPage({ navigate }) {
       <header className="page-heading page-heading--inline">
         <div>
           <span className="eyebrow">Prywatny notes terenowy</span>
-          <h1>Dziennik obserwacji</h1>
-          <p>Zapisuj dowody, nie tylko nazwę. Dane pozostają w pamięci tej przeglądarki i nie są wysyłane na serwer.</p>
+          <h1>Twój dziennik</h1>
+          <p>Zapisuj zdjęcia i dowody. Wszystko pozostaje na tym urządzeniu.</p>
         </div>
-        <button className="button button--coral" onClick={() => setFormOpen(!formOpen)}>{formOpen ? <X size={18} /> : <Plus size={18} />} {formOpen ? "Zamknij" : "Nowa obserwacja"}</button>
+        <button className="button button--coral" onClick={() => setFormOpen(!formOpen)}>
+          {formOpen ? <X size={18} /> : <Plus size={18} />}
+          {formOpen ? "Ukryj formularz" : "Nowa obserwacja"}
+        </button>
       </header>
 
-      <section className="journal-observer-invite">
-        <div className="panel-icon"><Eye size={27} /></div>
-        <div>
-          <span className="eyebrow">Zanim zapiszesz nazwę</span>
-          <h2>Uporządkuj dowody w obserwatorze</h2>
-          <p>Pięć kroków pomoże oddzielić widoczne cechy od hipotezy i wskaże, co warto sprawdzić przez kolejne 10–15 minut.</p>
-        </div>
-        <button className="button button--primary" onClick={() => navigate("atlas/observer")}>
-          Otwórz obserwator <ArrowRight size={17} />
-        </button>
-      </section>
+      {notice && (
+        <p className={`journal-notice journal-notice--${notice.kind}`} role={notice.kind === "error" ? "alert" : "status"}>
+          {notice.kind === "error" ? <Warning size={19} /> : <Check size={19} />}
+          {notice.message}
+        </p>
+      )}
 
       {formOpen && (
         <form className="journal-form" onSubmit={submit}>
           <div className="form-row">
             <label>Data<input type="date" required value={form.date} onChange={(event) => setForm({ ...form, date: event.target.value })} /></label>
-            <label>Miejsce<input required value={form.location} onChange={(event) => setForm({ ...form, location: event.target.value })} placeholder="np. Gdynia, marina" /></label>
+            <label>Miejsce<input required value={form.location} onChange={(event) => setForm({ ...form, location: event.target.value })} placeholder="np. Gdynia" /></label>
           </div>
           <div className="form-row">
             <label>Rozpoznanie
               <select required value={form.cloud} onChange={(event) => setForm({ ...form, cloud: event.target.value })}>
-                <option value="">Wybierz lub zostaw jako nierozpoznane</option>
+                <option value="">Wybierz rodzaj</option>
                 {clouds.map((cloud) => <option key={cloud.id} value={cloud.name}>{cloud.name} · {cloud.polish}</option>)}
                 <option value="Nierozpoznana">Nierozpoznana / przypadek sporny</option>
               </select>
@@ -4813,12 +4977,44 @@ function JournalPage({ navigate }) {
           <label>Dowody i zmiana w czasie
             <textarea required value={form.evidence} onChange={(event) => setForm({ ...form, evidence: event.target.value })} placeholder="Kształt, skala, światło, opad, kierunek ruchu, co zmieniło się po 10 minutach…" />
           </label>
+          <div className="journal-photo-field">
+            <input ref={photoRef} type="file" accept="image/*" hidden onChange={attachPhoto} />
+            {form.photo ? (
+              <div className="journal-photo-preview">
+                <img src={form.photo} alt="Zdjęcie dołączone do obserwacji" />
+                <button type="button" className="icon-button" onClick={() => setForm({ ...form, photo: null })} aria-label="Usuń zdjęcie z obserwacji">
+                  <Trash size={19} />
+                </button>
+              </div>
+            ) : (
+              <button type="button" className="journal-photo-action" onClick={() => photoRef.current?.click()} disabled={photoBusy}>
+                <ImageSquare size={21} />
+                <span>{photoBusy ? "Przygotowuję zdjęcie…" : "Dodaj zdjęcie nieba"}</span>
+              </button>
+            )}
+          </div>
           <div className="form-footer">
-            <span><Info size={17} /> Bez zdjęć i bez automatycznego rozpoznawania w tej wersji.</span>
+            <span><ShieldCheck size={17} /> Zdjęcie i notatki zostają na urządzeniu.</span>
             <button className="button button--primary" type="submit">Zapisz obserwację <Check size={18} /></button>
           </div>
         </form>
       )}
+
+      <section className="journal-backup" aria-label="Kopia zapasowa dziennika">
+        <div>
+          <strong>{entries.length ? `${entries.length} zapisanych obserwacji` : "Twój dziennik pozostaje prywatny"}</strong>
+          <span>Możesz przenieść obserwacje między urządzeniami.</span>
+        </div>
+        <div>
+          <button type="button" onClick={exportJournal} disabled={!entries.length}>
+            <DownloadSimple size={18} /> Pobierz kopię
+          </button>
+          <button type="button" onClick={() => importRef.current?.click()}>
+            <UploadSimple size={18} /> Przywróć
+          </button>
+          <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={importJournal} />
+        </div>
+      </section>
 
       {entries.length ? (
         <div className="journal-list">
@@ -4829,14 +5025,35 @@ function JournalPage({ navigate }) {
                 <span className="entry-meta"><MapPin size={15} />{entry.location} · pewność {entry.confidence}</span>
                 <h2>{entry.cloud}</h2>
                 <p>{entry.evidence}</p>
+                {entry.photo && <img className="entry-photo" src={entry.photo} alt={`Niebo obserwowane w miejscu ${entry.location}`} loading="lazy" />}
               </div>
               <button className="icon-button" onClick={() => remove(entry.id)} aria-label={`Usuń obserwację ${entry.cloud}`}><Trash size={19} /></button>
             </article>
           ))}
         </div>
       ) : !formOpen && (
-        <div className="empty-state"><Notebook size={34} /><h2>Twój pierwszy zapis zacznie atlas osobistych doświadczeń</h2><button onClick={() => setFormOpen(true)}>Dodaj obserwację</button></div>
+        <div className="empty-state journal-empty-state">
+          <picture aria-hidden="true">
+            <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
+            <source type="image/webp" srcSet={publicAsset("assets/observer-guide-still-life-720.webp")} />
+            <img src={publicAsset("assets/observer-guide-still-life.png")} alt="" loading="lazy" />
+          </picture>
+          <h2>Twoje niebo zaczyna się tutaj</h2>
+          <button className="button button--coral" onClick={() => setFormOpen(true)}><Plus size={18} /> Dodaj obserwację</button>
+        </div>
       )}
+
+      <section className="journal-observer-invite">
+        <div className="panel-icon"><Eye size={27} /></div>
+        <div>
+          <span className="eyebrow">Potrzebujesz wskazówki?</span>
+          <h2>Uporządkuj to, co widzisz</h2>
+          <p>Pięć krótkich pytań pomoże oddzielić cechy chmury od pierwszej hipotezy.</p>
+        </div>
+        <button className="button button--primary" onClick={() => navigate("atlas/observer")}>
+          Otwórz obserwator <ArrowRight size={17} />
+        </button>
+      </section>
     </main>
   );
 }
@@ -4868,26 +5085,54 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
-  const dialogRef = useDialogFocus(onClose);
+  const [feedback, setFeedback] = useState(null);
+  const [feedbackCount, setFeedbackCount] = useState(() => loadPhotoFeedback().length);
+  const dialogRef = useDialogFocus(onClose, false);
 
   const analyze = async (source) => {
     setError(null);
-    setResult(null);
     setPhase("capturing");
     try {
       const photo = await captureCloudPhoto(source);
+      setResult(null);
+      setFeedback(null);
       setPreviewUrl(photo.previewUrl);
       setPhase("analyzing");
       setResult(await recognizeCloudPhoto(photo));
       setPhase("result");
     } catch (failure) {
       if (isPhotoCaptureCancellation(failure)) {
-        setPhase(previewUrl ? "result" : "idle");
+        setPhase(result ? "result" : "idle");
         return;
       }
       console.error("[CHMURNIK camera]", failure?.code || "unknown", failure?.message || failure);
       setError(photoCaptureErrorMessage(failure));
-      setPhase("idle");
+      setPhase(result ? "result" : "idle");
+    }
+  };
+
+  const rememberFeedback = (helpful) => {
+    if (!result) return;
+    const record = {
+      helpful,
+      family: result.leadingFamily.id,
+      candidate: result.ranked[0]?.id || null,
+      createdAt: Date.now(),
+    };
+    if (savePhotoFeedback([record, ...loadPhotoFeedback()])) {
+      setFeedbackCount((count) => Math.min(count + 1, 50));
+      setFeedback(helpful ? "Pomocna wskazówka zapisana lokalnie." : "Niepewny wynik zaznaczony lokalnie.");
+    } else {
+      setFeedback("Nie udało się zachować oceny w pamięci urządzenia.");
+    }
+  };
+
+  const forgetFeedback = () => {
+    if (clearPhotoFeedback()) {
+      setFeedbackCount(0);
+      setFeedback("Wszystkie lokalne oceny zostały usunięte.");
+    } else {
+      setFeedback("Nie udało się usunąć ocen z pamięci urządzenia.");
     }
   };
 
@@ -4956,11 +5201,16 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
           </figure>
         ) : (
           <div className="photo-recognition-intro">
-            <CameraIcon size={42} weight="light" />
             <div>
+              <CameraIcon size={34} weight="light" />
               <h3>Pokaż kawałek nieba</h3>
-              <p>Najlepiej działa pojedynczy, wyraźny rodzaj chmury bez budynków i bardzo szerokiego horyzontu.</p>
+              <p>Najlepszy będzie wyraźny kadr jednej chmury, bez budynków i szerokiego horyzontu.</p>
             </div>
+            <picture className="photo-recognition-intro__art" aria-hidden="true">
+              <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
+              <source type="image/webp" srcSet={publicAsset("assets/observer-guide-still-life-720.webp")} />
+              <img src={publicAsset("assets/observer-guide-still-life.png")} alt="" />
+            </picture>
           </div>
         )}
 
@@ -4990,8 +5240,21 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
 
             <aside className="photo-recognition-caveat">
               <Info size={18} />
-              <p><strong>To podpowiedź, nie werdykt.</strong> W próbie 30 niezależnych zdjęć model trafiał rodzinę w 8 na 10 przypadków, a właściwy rodzaj był w pierwszej trójce w ponad 8 na 10.</p>
+              <p><strong>To podpowiedź, nie werdykt.</strong> Wynik zależy od światła, kadru i jakości zdjęcia. Jedna fotografia może pokazywać kilka rodzajów chmur.</p>
             </aside>
+
+            <div className="photo-feedback" aria-label="Ocena wskazówki modelu">
+              <span>Czy wskazówka była pomocna?</span>
+              <button type="button" onClick={() => rememberFeedback(true)}><ThumbsUp size={19} /> Tak</button>
+              <button type="button" onClick={() => rememberFeedback(false)}><ThumbsDown size={19} /> Nie</button>
+              {feedbackCount > 0 && (
+                <button type="button" onClick={forgetFeedback} aria-label="Usuń zapisane lokalnie oceny">
+                  <Trash size={18} /> Usuń
+                </button>
+              )}
+              <small>Oceny zostają na tym urządzeniu i nie trenują modelu.</small>
+              {feedback && <small role="status">{feedback}</small>}
+            </div>
 
             <div className="photo-result-actions">
               <button className="button button--coral" onClick={() => onCompare(rankedClouds.map((item) => item.id))} disabled={!rankedClouds.length}>
@@ -5195,6 +5458,7 @@ export function App() {
   const [photoRecognitionOpen, setPhotoRecognitionOpen] = useState(
     ["result", "native"].includes(import.meta.env.VITE_QA_PHOTO_RECOGNITION),
   );
+  const [availableUpdate, setAvailableUpdate] = useState(null);
   const photoRecognitionAvailable = isPhotoRecognitionSupported();
 
   useEffect(() => {
@@ -5202,6 +5466,18 @@ export function App() {
     const frame = window.requestAnimationFrame(() => setOnboardingOpen(true));
     return () => window.cancelAnimationFrame(frame);
   }, []);
+
+  useEffect(() => {
+    const handleUpdate = (event) => setAvailableUpdate(event.detail);
+    window.addEventListener("chmurnik:update-ready", handleUpdate);
+    return () => window.removeEventListener("chmurnik:update-ready", handleUpdate);
+  }, []);
+
+  const installUpdate = () => {
+    if (!availableUpdate?.waiting) return;
+    window.__chmurnikReloadAfterUpdate = true;
+    availableUpdate.waiting.postMessage({ type: "SKIP_WAITING" });
+  };
 
   const [routeName, routeDetail, routePayload] = route.split("/");
   const validRoute = useMemo(
@@ -5257,12 +5533,13 @@ export function App() {
 
   const saveFieldObservation = (draft) => {
     const cloud = getCloud(draft.cloudId);
-    saveObservationDraft({
+    const saved = saveObservationDraft({
       cloud: cloud?.name || "Nierozpoznana",
       confidence: draft.confidence,
       evidence: draft.evidence,
     });
-    navigate("journal");
+    if (saved) navigate("journal");
+    return saved;
   };
 
   const pageProps = { navigate, onSources: setSourceIds };
@@ -5270,6 +5547,12 @@ export function App() {
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">Przejdź do treści</a>
+      {availableUpdate && (
+        <aside className="app-update-notice" role="status">
+          <span>Nowa wersja Chmurnika jest gotowa.</span>
+          <button type="button" onClick={installUpdate}>Odśwież <ArrowRight size={16} /></button>
+        </aside>
+      )}
       <AppHeader route={validRoute} navigate={navigate} />
       <div id="main-content">
         {validRoute === "home" && (
@@ -5332,7 +5615,7 @@ export function App() {
         </button>
       )}
       {placementOpen && <PlacementModal onClose={() => setPlacementOpen(false)} onFinish={chooseProfile} />}
-      {onboardingOpen && <OnboardingModal onClose={finishOnboarding} onFinish={finishOnboarding} />}
+      {onboardingOpen && <OnboardingModal onClose={() => setOnboardingOpen(false)} onFinish={finishOnboarding} />}
       {photoRecognitionOpen && (
         <PhotoRecognitionModal
           onClose={() => setPhotoRecognitionOpen(false)}

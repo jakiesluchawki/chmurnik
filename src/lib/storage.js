@@ -6,6 +6,7 @@ const KEYS = {
   observationDraft: "cloud-recognition:observation-draft",
   lessonPositions: "cloud-recognition:lesson-positions",
   aviationReview: "cloud-recognition:aviation-review",
+  photoFeedback: "cloud-recognition:photo-feedback",
   onboarding: "chmurnik:onboarding:v1",
 };
 
@@ -21,8 +22,9 @@ function read(key, fallback) {
 function write(key, value) {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
+    return true;
   } catch {
-    // The app remains usable when storage is blocked or full.
+    return false;
   }
 }
 
@@ -31,7 +33,7 @@ export function loadProfile() {
 }
 
 export function saveProfile(profile) {
-  write(KEYS.profile, profile);
+  return write(KEYS.profile, profile);
 }
 
 export function loadProgress() {
@@ -39,7 +41,7 @@ export function loadProgress() {
 }
 
 export function saveProgress(progress) {
-  write(KEYS.progress, progress);
+  return write(KEYS.progress, progress);
 }
 
 export function loadLessonPosition(lessonId) {
@@ -49,7 +51,7 @@ export function loadLessonPosition(lessonId) {
 
 export function saveLessonPosition(lessonId, chapterIndex) {
   const positions = read(KEYS.lessonPositions, {});
-  write(KEYS.lessonPositions, { ...positions, [lessonId]: chapterIndex });
+  return write(KEYS.lessonPositions, { ...positions, [lessonId]: chapterIndex });
 }
 
 export function loadJournal() {
@@ -57,7 +59,7 @@ export function loadJournal() {
 }
 
 export function saveJournal(entries) {
-  write(KEYS.journal, entries);
+  return write(KEYS.journal, entries);
 }
 
 export function loadRecognitionStats() {
@@ -65,7 +67,7 @@ export function loadRecognitionStats() {
 }
 
 export function saveRecognitionStats(stats) {
-  write(KEYS.recognition, stats);
+  return write(KEYS.recognition, stats);
 }
 
 export function loadObservationDraft() {
@@ -73,14 +75,15 @@ export function loadObservationDraft() {
 }
 
 export function saveObservationDraft(draft) {
-  write(KEYS.observationDraft, draft);
+  return write(KEYS.observationDraft, draft);
 }
 
 export function clearObservationDraft() {
   try {
     window.localStorage.removeItem(KEYS.observationDraft);
+    return true;
   } catch {
-    // The draft is optional when storage is unavailable.
+    return false;
   }
 }
 
@@ -89,14 +92,32 @@ export function loadAviationReview() {
 }
 
 export function saveAviationReview(records) {
-  write(KEYS.aviationReview, records);
+  return write(KEYS.aviationReview, records);
 }
 
 export function clearAviationReview() {
   try {
     window.localStorage.removeItem(KEYS.aviationReview);
+    return true;
   } catch {
-    // Review history is optional when storage is unavailable.
+    return false;
+  }
+}
+
+export function loadPhotoFeedback() {
+  return read(KEYS.photoFeedback, []);
+}
+
+export function savePhotoFeedback(records) {
+  return write(KEYS.photoFeedback, records.slice(0, 50));
+}
+
+export function clearPhotoFeedback() {
+  try {
+    window.localStorage.removeItem(KEYS.photoFeedback);
+    return true;
+  } catch {
+    return false;
   }
 }
 
@@ -105,5 +126,5 @@ export function loadOnboarding() {
 }
 
 export function saveOnboarding(value) {
-  write(KEYS.onboarding, value);
+  return write(KEYS.onboarding, value);
 }
