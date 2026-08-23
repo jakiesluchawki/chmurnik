@@ -1,25 +1,36 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { readFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import test from "node:test";
 
-test("TestFlight release rejects incomplete isolated signing configuration", () => {
-  const result = spawnSync("sh", ["scripts/upload-ios-testflight.sh"], {
-    cwd: new URL("../", import.meta.url),
-    encoding: "utf8",
-    env: {
-      ...process.env,
-      CHMURNIK_ASC_KEY_PATH: "",
-      CHMURNIK_ASC_KEY_ID: "",
-      CHMURNIK_ASC_ISSUER_ID: "",
-      CHMURNIK_IOS_SIGNING_KEYCHAIN_PATH: "",
-      CHMURNIK_IOS_SIGNING_IDENTITY: "test-only-identity",
-      CHMURNIK_IOS_PROVISIONING_PROFILE_SPECIFIER: "",
-    },
-  });
+test("TestFlight release rejects incomplete isolated signing configuration", async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), "chmurnik-signing-test-"));
 
-  assert.equal(result.status, 1);
-  assert.match(result.stderr, /signing keychain, identity and provisioning profile together/);
+  try {
+    await writeFile(path.join(directory, "xcodebuild"), "#!/bin/sh\nexit 0\n", { mode: 0o755 });
+
+    const result = spawnSync("sh", ["scripts/upload-ios-testflight.sh"], {
+      cwd: new URL("../", import.meta.url),
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        PATH: `${directory}${path.delimiter}${process.env.PATH || ""}`,
+        CHMURNIK_ASC_KEY_PATH: "",
+        CHMURNIK_ASC_KEY_ID: "",
+        CHMURNIK_ASC_ISSUER_ID: "",
+        CHMURNIK_IOS_SIGNING_KEYCHAIN_PATH: "",
+        CHMURNIK_IOS_SIGNING_IDENTITY: "test-only-identity",
+        CHMURNIK_IOS_PROVISIONING_PROFILE_SPECIFIER: "",
+      },
+    });
+
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /signing keychain, identity and provisioning profile together/);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
 });
 
 test("manual provisioning stays scoped to the app instead of Swift package dependencies", async () => {

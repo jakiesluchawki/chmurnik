@@ -180,6 +180,9 @@ obvious on iPhone.
   Camera plugin's Swift packages, which correctly reject application profiles.
   Three custom release settings now scope manual signing to the App target
   while all dependencies keep their original signing behavior.
+- The signing validation test originally depended on Xcode being installed,
+  so the Linux GitHub Pages runner failed despite passing on macOS. A temporary
+  executable fixture now makes the behavioral test platform-independent.
 
 ## Implementation Notes
 
