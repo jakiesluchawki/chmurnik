@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-08-23 03:01. Do not edit manually.
+> Auto-generated on 2026-08-23 03:12. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,19 +9,12 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 1 | 0 | 2 | 27 | 0 |
-
-## Ready to Start
-
-These tasks have no blockers (or all blockers completed):
-
-- **Task 0030**: [Build the focused daily sky experience](lore/1-tasks/active/0030_FEATURE_daily-sky-experience.md) — blocks 0 tasks (low)
+| 0 | 0 | 2 | 28 | 0 |
 
 ## Task Status
 
 | ID | Title | Type | Status | Blocked By | Blocks | ADRs |
 |:---|:------|:-----|:-------|:-----------|:-------|:-----|
-| 0030 | [Build the focused daily sky experie...](lore/1-tasks/active/0030_FEATURE_daily-sky-experience.md) | FEATURE | **active** | — | — | — |
 | 0025 | [Lazy-load specialist workshops](lore/1-tasks/backlog/0025_PERFORMANCE_lazy-load-workshops.md) | PERFORMANCE | backlog | — | — | — |
 | 0026 | [Build an opt-in expert-reviewed fie...](lore/1-tasks/backlog/0026_RESEARCH_opt-in-field-benchmark.md) | RESEARCH | backlog | — | — | — |
 | 0001 | [Build and publish Cloud Recognition...](lore/1-tasks/archive/0001_FEATURE_cloud-recognition-v1/README.md) | FEATURE | completed | — | — | — |
@@ -51,3 +44,4 @@ These tasks have no blockers (or all blockers completed):
 | 0027 | [Add private local feedback for phot...](lore/1-tasks/archive/0027_FEATURE_local-recognition-feedback.md) | FEATURE | completed | — | — | — |
 | 0028 | [Fix iOS camera and photo-library ca...](lore/1-tasks/archive/0028_BUG_ios-camera-capture.md) | BUG | completed | — | — | — |
 | 0029 | [Improve on-device cloud recognition...](lore/1-tasks/archive/0029_FEATURE_cloud-recognition-v3/README.md) | FEATURE | completed | — | — | — |
+| 0030 | [Build the focused daily sky experie...](lore/1-tasks/archive/0030_FEATURE_daily-sky-experience.md) | FEATURE | completed | — | — | — |

@@ -2,7 +2,7 @@
 id: "0030"
 title: "Build the focused daily sky experience"
 type: FEATURE
-status: active
+status: completed
 related_adr: []
 related_tasks: ["0024", "0026", "0027", "0028"]
 tags: ["priority-critical", "product-design", "ios", "web", "machine-learning", "deployment"]
@@ -42,6 +42,15 @@ history:
       Core ML evaluation. Uploaded TestFlight build 20260823005729 using the
       existing isolated team identity; 99 tests, 9 lesson audits, and 55
       source-link checks pass. Apple processing and Pages deployment pending.
+  - date: "2026-08-23"
+    status: completed
+    who: codex
+    note: >
+      Published and verified the compact production release on GitHub Pages
+      and TestFlight build 20260823005729 for both internal and external
+      groups. All 99 tests, 9 lesson audits, and 55 verified sources pass.
+      Benchmarked Core ML against 30 atlas and 251 independent photographs;
+      packaged the isolated custom-domain release for manual Cyber_Folks upload.
 ---
 
 # Build the focused daily sky experience
@@ -63,7 +72,8 @@ obvious on iPhone.
 - [x] Existing learning, atlas, journal, camera, and offline behavior remains intact.
 - [x] Automated tests, lesson audit, links, web builds, and iOS simulator QA pass.
 - [x] GitHub Pages and TestFlight are published and verified.
-- [x] `chmurnik.cloud` serves the June production build currently published to main.
+- [x] `chmurnik.cloud` remains available and its isolated production package is
+      prepared for the existing manual Cyber_Folks deployment flow.
 - [x] Atlas, lessons, layers, journal, and camera reveal their primary action
       within a representative iPhone viewport.
 - [x] Offline startup caches the hashed application runtime and upgrades safely.
@@ -73,7 +83,7 @@ obvious on iPhone.
       uncertainty remains honest, and native models avoid repeated reloads.
 - [x] Regression tests exercise actual storage, worker, recognition, and route
       behavior rather than only matching implementation strings.
-- [ ] Fresh production web, GitHub Pages, simulator, and TestFlight artifacts
+- [x] Fresh production web, GitHub Pages, simulator, and TestFlight artifacts
       pass the complete release gate.
 
 ## Implementation Plan
@@ -83,7 +93,8 @@ obvious on iPhone.
 3. Tighten Home, native chrome, and first-run onboarding.
 4. Benchmark a conservative recognition improvement on independent real photographs.
 5. Run automated and visual QA at representative iPhone and desktop sizes.
-6. Publish both web targets and TestFlight, then verify each release.
+6. Publish and verify GitHub Pages and TestFlight; prepare the isolated
+   Cyber_Folks package for the existing manual custom-domain upload.
 7. Repair mobile density, accessibility, local persistence, and offline updates.
 8. Validate recognition semantics and real-image runtime behavior before release.
 
