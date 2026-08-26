@@ -12,6 +12,15 @@ links:
   - "../../../design/app-store-release-2026-08-26.md"
   - "../../../design/app-store-owner-steps-pl.md"
 history:
+  - date: "2026-08-27"
+    status: active
+    who: codex
+    note: >
+      Store preparation is complete and read-back verified: Polish metadata,
+      five COMPLETE screenshots with matching checksums, category/age/rights,
+      private review details, free pricing and selected final build. Internal
+      beta and live GitHub Pages are verified. No review submission exists;
+      owner App Privacy/compliance and physical-device gates remain open.
   - date: "2026-08-26"
     status: active
     who: codex
@@ -47,10 +56,10 @@ present; close release quality and metadata gaps before App Review.
 
 ## Context
 
-Version 1.0 is PREPARE_FOR_SUBMISSION. Its description, screenshots,
+At activation, version 1.0 was PREPARE_FOR_SUBMISSION. Its description, screenshots,
 support URL, privacy URL, category, age questionnaire, rights declaration,
-copyright, review contact and selected build are missing. Published privacy
-answers, account agreements, availability and EU trader status are unverified.
+copyright, review contact and selected build were missing. Preparation is
+now complete except the owner/device gates recorded below; it is not submitted.
 
 ## Implementation
 
@@ -68,12 +77,15 @@ answers, account agreements, availability and EU trader status are unverified.
 ## Acceptance Criteria
 
 - [ ] Task 0032's physical-device acceptance is recorded with build/device details.
-- [ ] Required metadata, authentic screenshots and working public URLs are complete.
+- [x] Required metadata, authentic screenshots and working public URLs are complete.
 - [x] Final candidate archive, privacy manifest and authentic screenshots are verified.
 - [x] Owner confirmed app-embedding rights for both fonts; photograph credits retained.
-- [ ] Privacy, content rights and age declarations reflect verified app behavior.
-- [ ] Account requirements and free/public distribution settings are confirmed.
-- [ ] Appropriate release mode and final submission are approved by the owner.
+- [ ] Published App Privacy answers reflect verified app behavior; age and
+      content-rights declarations are already verified through the API.
+- [ ] Owner account/EU requirements are confirmed; free/public distribution
+      settings are already verified, with missing trader status in 27 territories.
+- [x] Owner authorized publication; existing automatic release after Apple
+      approval is retained. This does not close device acceptance or submit.
 - [ ] App Review submission is verified; public availability is claimed only
       after Apple approves the version and the store listing is actually available.
 
@@ -115,7 +127,13 @@ accuracy from the atlas or replace genuine cloud photography with generated imag
   27; App Privacy publication and owner account declarations remain open.
 - Internal TestFlight assignment and owner access are verified for the exact
   final candidate, `IN_BETA_TESTING`, with Polish/English notes. External beta
-  was not changed. Live Pages and store metadata/screenshots upload remain.
+  was not changed. Store metadata, categories, age, rights and private review
+  contact are complete. All five screenshots are COMPLETE; dimensions/order
+  and stored checksums match. The final build is selected in the draft version.
+- Code commit 6497e51 is deployed to GitHub Pages. The full public-browser
+  flow passes, including standalone help/privacy HTTP 200 and responsive routes.
+- Final API read at 2026-08-26 22:01 UTC still reports PREPARE_FOR_SUBMISSION
+  and zero review submissions. Owner/device confirmations are not received.
 
 ## Issues Encountered
 

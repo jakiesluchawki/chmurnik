@@ -26,6 +26,10 @@
 - Archive signature and all 80 embedded web files were verified. Upload to
   Apple succeeded. No physical-camera, low-storage or VoiceOver pass is
   inferred from the simulator. Device acceptance remains open in 0032/0033.
+- Live GitHub Pages passed the complete public-browser flow after deployment
+  of 6497e51. Apple subsequently reports all five screenshots COMPLETE with
+  matching source checksums, dimensions and order. No public App Store release
+  or external TestFlight promotion was performed.
 
 ## 2026-08-26: METAR / TAF Reader
 

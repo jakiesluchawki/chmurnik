@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-08-26 23:55. Do not edit manually.
+> Auto-generated on 2026-08-27 00:02. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
