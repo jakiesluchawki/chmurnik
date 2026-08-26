@@ -44,9 +44,27 @@ Paczka Cyber_Folks: `release/chmurnik-cyberfolks-20260826-190511-taf.zip`.
 ZIP ma poprawną integralność i płaską strukturę plików strony. SHA-256:
 `c3b510a7c5dec48a3323676da65641723839ed31ff075db24c59e1c75524957e`.
 Wgrać i rozpakować wyłącznie w `domains/chmurnik.cloud/public_html`.
-W tej zmianie nie przesyłano plików na Cyber_Folks, nie zmieniano DNS ani
-innych domen i nie publikowano nowego builda TestFlight. Kod czytnika jest
-wspólny z iOS; zmiana pojawi się tam po osobnym wydaniu aplikacji.
+Nie przesyłano plików na Cyber_Folks ani nie zmieniano DNS i innych domen.
+Czytnik jest opublikowany na GitHub Pages. Poniższe wydanie iOS przygotowano
+osobno po prośbie użytkownika o aktualizację aplikacji.
+
+### iOS / TestFlight
+
+26 sierpnia 2026 udostępniono `1.0 (20260826193304)` w istniejącej grupie
+wewnętrznej. Apple: `VALID`, `IN_BETA_TESTING`; build
+`25d947b1-bd46-4df2-a46a-782727067320`. Obecność właściciela w tej grupie
+i powiązanie nowego builda potwierdzono przez API. Opis zmian zapisano
+oddzielnie po polsku i angielsku. Grupa zewnętrzna nie została zmieniona.
+
+Archiwum urządzeniowe i podpis przeszły weryfikację. Wszystkie 78 plików WWW
+w archiwum jest identycznych z testowanym buildem root, bez prefiksu
+`/chmurnik/`. SDK: iOS 26.5. Ponownie zaliczono 154 testy i dziewięć lekcji.
+Wydzielony pęk podpisujący zablokowano ponownie po udanym uploadzie;
+pulpit i pęk logowania pozostały bez zmian.
+
+Nie jest to potwierdzenie testu na fizycznym telefonie. Kryteria urządzeniowe
+zadania 0032 pozostają otwarte. Nie zgłoszono wydania do publicznego App Store;
+[audyt gotowości](app-store-readiness-2026-08-26.md) opisuje braki w metadanych.
 
 ## Źródła
 

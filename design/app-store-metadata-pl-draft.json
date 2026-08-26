@@ -1,0 +1,20 @@
+{
+  "status": "draft-not-uploaded",
+  "locale": "pl",
+  "name": "CHMURNIK",
+  "subtitle": "Chmury, wiatr i własne niebo",
+  "primaryCategoryProposal": "EDUCATION",
+  "keywords": "chmury,atlas,meteorologia,METAR,TAF,wiatr,żeglarstwo,lotnictwo,niebo,obserwacje",
+  "description": "Spójrz w niebo i naucz się dostrzegać więcej. CHMURNIK łączy atlas prawdziwych fotografii chmur z własną kolekcją obserwacji i praktyczną nauką atmosfery.\n\nPOZNAWAJ CHMURY\nPorównuj fotografie dziesięciu rodzajów chmur, poznawaj ich cechy i sprawdzaj wiedzę w ćwiczeniach. Odwołania do źródeł pomagają zrozumieć, skąd pochodzą objaśnienia.\n\nZACHOWUJ SWOJE NIEBO\nZrób zdjęcie lub wybierz je z biblioteki. Dodaj obserwację, własne rozpoznanie i notatkę. Porównuj kadry, oznaczaj ulubione i dziel się pocztówką. Kolekcję możesz wyeksportować jako kopię zapasową.\n\nKORZYSTAJ Z LOKALNEJ PODPOWIEDZI\nOpcjonalny asystent analizuje zdjęcie na iPhonie, bez wysyłania go do usługi AI. Pokazuje hipotezy, może się mylić i nie zastępuje Twojej obserwacji. Ty decydujesz, czy potwierdzić rozpoznanie.\n\nODCZYTUJ METAR I TAF\nWklej raport, zobacz znaczenie jego grup i naucz się odróżniać obserwację od prognozy. Oś TAF oddziela warunki bazowe, zmiany oraz warianty czasowe i prawdopodobne. Czytnik nie pobiera danych na żywo ani nie potwierdza ich aktualności; nieobsługiwane kody pozostają widoczne.\n\nĆWICZ WIATR I CZYTANIE MAP\nOdkrywaj wiatr pozorny na jachcie i składowe wiatru względem osi drogi startowej. Praktyczne scenariusze z wyjaśnieniem i powtórką pomagają zrozumieć odczyty map oraz granice własnych wniosków.\n\nBez konta i reklam. Zdjęcia i analiza pozostają na urządzeniu; systemowe kopie i świadomy eksport mogą przenieść Twoją kolekcję poza nie.\n\nCHMURNIK jest aplikacją edukacyjną. Nie zastępuje oficjalnego briefingu, ostrzeżeń, bieżących pomiarów ani decyzji o locie lub wyjściu na wodę.",
+  "reviewNotesDraft": "The application interface is in Polish and does not require an account or payment. It combines an authentic photographic cloud atlas and learning modules with on-device Core ML photo assistance, native file-backed private observations, and the system share sheet. On iPhone, start at Dzis (Today), use Obserwuj niebo to capture or select a photo, and save it to Moje niebo (My Sky). The METAR/TAF workshop accepts pasted text and bundled examples; reports are not fetched live and the app does not verify their freshness. Forecast alternatives are kept separate from observations. Training is educational, not an operational aviation or sailing clearance. Model suggestions are uncertain and cannot become user-confirmed identifications automatically. No login credentials are needed. Final device acceptance and required metadata must be completed before submission.",
+  "supportUrl": null,
+  "privacyPolicyUrl": null,
+  "copyright": null,
+  "ownerConfirmationsRequired": [
+    "Public support contact and policy owner",
+    "Content and embedded font rights",
+    "App Privacy declarations and age rating",
+    "Price, territories, account agreements and EU trader status",
+    "Physical-device acceptance and release mode"
+  ]
+}

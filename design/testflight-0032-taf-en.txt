@@ -1,0 +1,13 @@
+METAR and TAF: an observation is not a forecast.
+
+The METAR/TAF workshop now accepts TAF reports, including text copied without the heading. It detects the report type and separates issue time from validity. Select a timeline period to inspect the base forecast, FM, BECMG, TEMPO, or PROB30/40 alternatives. Probabilistic and temporary conditions are not presented as certain weather throughout the forecast.
+
+A short METAR-versus-TAF guide and four new exercises bring this workshop to eight scenarios, with explanations and a retry of incorrect answers. The interface remains in Polish.
+
+To test: open Today (Dzis), then METAR/TAF. Paste a report or choose a TAF example, switch periods and probability alternatives, then paste a METAR. Open the comparison guide and its practice button. The reader works offline; it does not fetch live forecasts or verify their freshness.
+
+This is an educational tool, not an official briefing or clearance to fly or sail. Unsupported groups remain visible.
+
+This beta also includes the My Sky collection from the previous internal release. Back up the journal before updating from an older beta for the first time. Physical iPhone camera, permission changes, background transitions, and low-storage behavior still need device acceptance. This update does not change the camera, collection migration, or model weights. Automated tests do not replace those device checks.
+
+Thank you for testing and sharing feedback.

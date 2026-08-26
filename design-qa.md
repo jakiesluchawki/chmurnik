@@ -22,6 +22,12 @@
 - 154 unit tests, nine lesson checks and 58 primary/provenance link checks pass.
 - Scope: common TAF groups up to 30 hours; no live retrieval or operational
   clearance. Unsupported groups remain visible or stop an ambiguous timeline.
+- iOS follow-up: signed archive `1.0 (20260826193304)`, SDK iOS 26.5,
+  passed system signature validation and all 78 embedded web files matched
+  the tested root build. Apple reports `VALID` and internal `IN_BETA_TESTING`;
+  owner access verified. This does not close physical-device acceptance.
+- Public App Store readiness was assessed read-only; missing metadata and
+  owner/device checks are recorded in `design/app-store-readiness-2026-08-26.md`.
 
 ## 2026-08-26: iOS-First Field Companion
 

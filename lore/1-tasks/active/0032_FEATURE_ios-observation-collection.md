@@ -4,7 +4,7 @@ title: "Connect iOS capture to a private observation collection"
 type: FEATURE
 status: active
 related_adr: ["0001"]
-related_tasks: ["0031", "0026", "0030"]
+related_tasks: ["0031", "0026", "0030", "0033"]
 tags: ["ios", "product-design", "priority-high", "effort-large", "aviation", "sailing"]
 links:
   - "../../../design/ios-next-2026-08-26.md"
@@ -183,14 +183,17 @@ reference content while allowing a distinct iOS navigation and field UI.
 - Expert-reviewed recognition benchmarks remain in task 0026; no new model
   accuracy claim or training data was introduced by this implementation.
 - Workshop code splitting remains in task 0025, outside this feature release.
+- App Store metadata and release readiness are tracked in follow-up task 0033.
 
 ## Distribution Evidence
 
-- Uploaded `1.0 (20260826154430)`, build
-  `c4cca37d-ff1b-43bb-bf75-1b0c4472c4c3`, for `cloud.chmurnik.app` only.
+- Current internal release: `1.0 (20260826193304)`, build
+  `25d947b1-bd46-4df2-a46a-782727067320`, for `cloud.chmurnik.app` only.
 - Apple reports `VALID` and internal `IN_BETA_TESTING`; internal group
   membership and the existing owner's accepted tester access were verified.
-- Added Polish beta notes in `pl` and `en-US`. External state remains
+- Added TAF beta notes in Polish and English. External state remains
   `READY_FOR_BETA_SUBMISSION`; no external group was changed.
+- Signed archive and all 78 embedded web files verified; signing keychain
+  re-locked. Earlier release evidence stays in `design/field-release-2026-08-26.md`.
 - Cyber_Folks ZIP is ready and passes archive integrity verification. Upload
   still uses the existing manual, domain-scoped workflow.

@@ -1,0 +1,13 @@
+METAR i TAF: obserwacja to nie prognoza.
+
+W pracowni METAR/TAF możesz teraz wkleić również TAF, nawet bez nagłówka. Aplikacja rozpozna typ raportu i oddzieli czas wydania od okresu ważności. Dotknij okresu na osi, aby zobaczyć warunki bazowe, zmianę FM, BECMG, TEMPO lub wariant PROB30/40. Możliwości i czasowe odchylenia nie są przedstawiane jako pewna pogoda przez cały okres.
+
+Dodaliśmy krótkie wyjaśnienie różnicy między METAR i TAF oraz cztery ćwiczenia. W tej pracowni jest ich teraz osiem, z wyjaśnieniami i powtórką trudniejszych odpowiedzi.
+
+Jak sprawdzić: Dziś -> METAR/TAF -> wklej swój raport lub wybierz przykład TAF. Przełącz okresy i wariant prawdopodobny, a potem wklej METAR. Otwórz również „METAR a TAF. Jak je odróżnić?” i „Przećwicz różnicę”. Czytnik działa bez internetu; nie pobiera prognozy na żywo i nie potwierdza jej aktualności.
+
+To narzędzie edukacyjne, nie oficjalny briefing ani zgoda na lot lub rejs. Nieobsługiwane kody pozostają widoczne.
+
+Ta beta zawiera też nową kolekcję Moje niebo z poprzedniego wydania wewnętrznego. Przed pierwszą aktualizacją ze starszej bety wykonaj kopię dziennika. Fizyczny aparat, zmiany uprawnień, powrót z tła i zachowanie przy małej ilości miejsca nadal wymagają sprawdzenia na iPhonie. W tym wydaniu nie zmienialiśmy aparatu, migracji kolekcji ani wag modelu. Testy automatyczne nie zastępują tego sprawdzenia.
+
+Dziękujemy za testowanie i uwagi!
