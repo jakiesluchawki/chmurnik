@@ -1,5 +1,28 @@
 # CHMURNIK Field Companion QA
 
+## 2026-08-26: METAR / TAF Reader
+
+- User-approved extension: recognize copied TAF without a heading, explain
+  observation versus forecast, and make forecast periods interactive.
+- Visual identity remains the approved pink/olive/violet, Romie/Roobert and
+  restrained outlined controls. No cloud photographs or artwork changed.
+- Inspected production captures in `design/qa/2026-08-26-taf/`: mobile
+  probability detail and desktop timeline. Selected periods use both a visible
+  outline and `aria-pressed`; temporary/probability periods have dashed markers.
+- The user's exact KLVM input selects TAF, preserves four separate groups,
+  shows 25 kt / gusts 40 kt only within PROB30, and has no fake observed
+  temperature, pressure, or current crosswind. FM and PROB groups can be selected.
+- Eight METAR/TAF scenarios now teach type, probability, FM and BECMG alongside
+  the existing four cases. Incorrect answers can be replayed independently.
+- Full browser flow passed in development, native-layout mode, and production
+  at `/` and `/chmurnik/`, with production CSP and no page errors. Existing
+  collection, backup, map, wind, atlas, all nine lessons and source routes pass.
+- 320, 390 and 1440 px layouts passed overflow/control checks. Native-layout
+  QA is a browser rendering, not a physical-device or new TestFlight test.
+- 154 unit tests, nine lesson checks and 58 primary/provenance link checks pass.
+- Scope: common TAF groups up to 30 hours; no live retrieval or operational
+  clearance. Unsupported groups remain visible or stop an ambiguous timeline.
+
 ## 2026-08-26: iOS-First Field Companion
 
 - Selected identity: `design/approved/chmurnik-mobile-density-v1.png`.

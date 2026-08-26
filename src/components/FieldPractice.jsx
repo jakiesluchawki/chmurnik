@@ -9,7 +9,8 @@ import {
   Wind,
   X,
 } from "@phosphor-icons/react";
-import { decodeMetar } from "../lib/metar-reader.js";
+import { decodeAviationReport } from "../lib/taf-reader.js";
+import { ReportGroups, TafForecast } from "./TafForecast.jsx";
 import {
   apparentWind,
   beaufortForce,
@@ -18,6 +19,7 @@ import {
 } from "../lib/wind.js";
 import {
   metarExamples,
+  tafExamples,
   practiceCases,
   recordPracticeAttempt,
 } from "../data/field-practice.js";
@@ -25,7 +27,7 @@ import {
 const TRACKS = {
   metar: [
     "Dla pilota",
-    "METAR bez zgadywania",
+    "METAR i TAF bez zgadywania",
     "Odczytaj raport. Oddziel obserwację od prognozy. Sprawdź swój tok rozumowania.",
   ],
   wind: [
@@ -65,7 +67,7 @@ export function PracticeLinks({ navigate }) {
   return (
     <nav className="field-practice-links" aria-label="Praktyczne narzędzia">
       {[
-        ["metar", "METAR", "Raport i składowe"],
+        ["metar", "METAR / TAF", "Obserwacja i prognoza"],
         ["wind", "Wiatr", "Pokład i droga startowa"],
         ["maps", "Windy", "Mapy i scenariusze"],
       ].map(([id, label, text]) => (
@@ -81,7 +83,11 @@ export function PracticeLinks({ navigate }) {
 
 function SourceLink({ ids, onSources }) {
   return (
-    <button className="field-source" aria-label="Źródła i metoda" onClick={() => onSources(ids)}>
+    <button
+      className="field-source"
+      aria-label="Źródła i metoda"
+      onClick={() => onSources(ids)}
+    >
       <Info size={16} /> Źródła
     </button>
   );
@@ -347,16 +353,18 @@ function WindRose({ from, speed, heading, apparent, sailing }) {
           fill="none"
         />
       </g>
-      {speed > 0 && <line
-        x1="130"
-        y1="30"
-        x2="130"
-        y2="86"
-        stroke="var(--coral)"
-        strokeWidth="5"
-        markerEnd={`url(#${id}-arrow)`}
-        transform={`rotate(${from} 130 130)`}
-      />}
+      {speed > 0 && (
+        <line
+          x1="130"
+          y1="30"
+          x2="130"
+          y2="86"
+          stroke="var(--coral)"
+          strokeWidth="5"
+          markerEnd={`url(#${id}-arrow)`}
+          transform={`rotate(${from} 130 130)`}
+        />
+      )}
       {apparent?.from != null && (
         <line
           x1="130"
@@ -423,7 +431,8 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
             sailing={sailing}
           />
           <p>
-            <i className="wind-key" /> {speed > 0 ? `z ${degreesToCompass(from)}` : "cisza"} ·{" "}
+            <i className="wind-key" />{" "}
+            {speed > 0 ? `z ${degreesToCompass(from)}` : "cisza"} ·{" "}
             {format(speed)} kt
             {sailing && (
               <>
@@ -559,19 +568,17 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
   );
 }
 
-function MetarReader({ onSources }) {
+function AviationReader({ onSources, onTraining }) {
   const [text, setText] = useState(metarExamples[0].report);
-  const [example, setExample] = useState(true);
+  const [example, setExample] = useState("synthetic");
   const [result, setResult] = useState(() =>
-    decodeMetar(metarExamples[0].report),
+    decodeAviationReport(metarExamples[0].report),
   );
   const [error, setError] = useState("");
-  const [active, setActive] = useState(0);
   const read = (event) => {
     event.preventDefault();
     try {
-      setResult(decodeMetar(text));
-      setActive(0);
+      setResult(decodeAviationReport(text));
       setError("");
     } catch (failure) {
       setResult(null);
@@ -582,10 +589,41 @@ function MetarReader({ onSources }) {
     <section className="field-metar-reader">
       <div className="field-section-label">
         <span className="eyebrow">Czytnik · działa bez internetu</span>
-        <SourceLink ids={["awcCodes", "faaWeather"]} onSources={onSources} />
+        <SourceLink ids={["awcCodes", "faaTaf"]} onSources={onSources} />
       </div>
+      <details className="field-report-guide">
+        <summary>METAR a TAF. Jak je odróżnić?</summary>
+        <div className="field-report-comparison">
+          <div>
+            <span className="eyebrow">METAR / SPECI</span>
+            <h3>Co zaobserwowano?</h3>
+            <p>
+              Obserwacja w określonej chwili. SPECI to obserwacja specjalna. Do
+              METAR może być dołączony krótki trend, ale nie zamienia on pomiaru
+              w prognozę TAF.
+            </p>
+          </div>
+          <div>
+            <span className="eyebrow">TAF</span>
+            <h3>Czego się spodziewamy?</h3>
+            <p>
+              Prognoza dla lotniska w przedziale czasu, np.{" "}
+              <code>2618/2718</code>. <code>FM262300</code> rozpoczyna nowe
+              warunki od konkretnej chwili. Skopiowany TAF może nie mieć
+              nagłówka.
+            </p>
+          </div>
+        </div>
+        <p>
+          Samo <code>TEMPO</code> nie rozstrzyga: występuje też w trendzie
+          METAR. Czytamy strukturę całej depeszy, nie tylko jeden skrót.
+        </p>
+        <button className="field-source" onClick={onTraining}>
+          Przećwicz różnicę <ArrowRight size={17} />
+        </button>
+      </details>
       <form onSubmit={read}>
-        <label htmlFor="raw-metar">Wklej jeden METAR lub SPECI</label>
+        <label htmlFor="raw-metar">Wklej jeden METAR, SPECI lub TAF</label>
         <textarea
           id="raw-metar"
           value={text}
@@ -595,7 +633,7 @@ function MetarReader({ onSources }) {
           autoCapitalize="characters"
           onChange={(event) => {
             setText(event.target.value);
-            setExample(false);
+            setExample(null);
             setResult(null);
             setError("");
           }}
@@ -605,16 +643,15 @@ function MetarReader({ onSources }) {
         </button>
       </form>
       <div className="field-example-picker">
-        <span>Przykłady szkoleniowe:</span>
-        {metarExamples.map((value) => (
+        <span>Przykłady do ćwiczeń · nie aktualna pogoda:</span>
+        {[...metarExamples, ...tafExamples].map((value) => (
           <button
             key={value.label}
             onClick={() => {
               setText(value.report);
-              setResult(decodeMetar(value.report));
-              setActive(0);
+              setResult(decodeAviationReport(value.report));
               setError("");
-              setExample(true);
+              setExample(value.synthetic === false ? "provided" : "synthetic");
             }}
           >
             {value.label}
@@ -629,19 +666,48 @@ function MetarReader({ onSources }) {
       {result && (
         <div className="field-metar-result">
           <div className="field-section-label">
-            <strong>
-              {result.station} · dzień {result.day}, {result.time}
-            </strong>
+            <div className="field-report-identity">
+              <strong>
+                {result.type} · {result.station}
+              </strong>
+              <span>
+                {result.type === "TAF"
+                  ? `Wydano: dzień ${result.issued.day}, ${String(result.issued.hour).padStart(2, "0")}:${String(result.issued.minute).padStart(2, "0")} UTC`
+                  : `Obserwacja: dzień ${result.day}, ${result.time}`}
+              </span>
+            </div>
             <span className="field-badge">
-              {example ? "Syntetyczny przykład" : "Wklejony raport · nie live"}
+              {example === "synthetic"
+                ? "Syntetyczny przykład"
+                : example === "provided"
+                  ? "Przykład raportu · nie live"
+                  : "Wklejony raport · nie live"}
             </span>
           </div>
+          <div
+            className="field-report-type"
+            data-kind={result.type}
+            role="status"
+          >
+            <strong>
+              {result.type === "TAF"
+                ? "Rozpoznano TAF · prognoza, nie obserwacja"
+                : `${result.type} · obserwacja, nie prognoza TAF`}
+            </strong>
+            <p>
+              {result.type === "TAF"
+                ? result.detection
+                : "Poniżej odczyt pomiaru. Ewentualny trend pokazujemy osobno i nie podmieniamy nim obserwacji."}
+            </p>
+          </div>
           <p className="field-caution">
-            {example
+            {example === "synthetic"
               ? "Dane wymyślone do ćwiczeń, nie opisują obecnej pogody."
-              : "Nie sprawdziliśmy źródła ani aktualności. METAR nie zawiera miesiąca i roku. Zweryfikuj czas i pełny oryginał w oficjalnym serwisie."}
+              : "Nie sprawdziliśmy źródła ani aktualności. Depesza nie zawiera miesiąca i roku. Zweryfikuj datę i pełny oryginał w oficjalnym serwisie."}
           </p>
-          {result.nil ? (
+          {result.type === "TAF" ? (
+            <TafForecast key={result.raw} result={result} />
+          ) : result.nil ? (
             <p role="status">NIL: brak obserwacji.</p>
           ) : (
             <>
@@ -656,10 +722,10 @@ function MetarReader({ onSources }) {
                     {!result.skyReported
                       ? "Brak danych o niebie"
                       : result.ceiling?.uncertain
-                      ? "Nieznany / niepełny"
-                      : result.ceiling?.height != null
-                        ? `${result.ceiling.height} ft nad lotniskiem`
-                        : "Brak określonego pułapu"}
+                        ? "Nieznany / niepełny"
+                        : result.ceiling?.height != null
+                          ? `${result.ceiling.height} ft nad lotniskiem`
+                          : "Brak określonego pułapu"}
                   </strong>
                 </div>
                 <div>
@@ -673,22 +739,7 @@ function MetarReader({ onSources }) {
                   <strong>{result.pressure?.text || "Brak danych"}</strong>
                 </div>
               </div>
-              <h3>Dotknij grupy. Zobacz znaczenie.</h3>
-              <div className="field-metar-tokens" aria-label="Grupy raportu">
-                {result.groups.map((group, index) => (
-                  <button
-                    key={`${index}-${group.code}`}
-                    aria-pressed={active === index}
-                    onClick={() => setActive(index)}
-                  >
-                    {group.code}
-                  </button>
-                ))}
-              </div>
-              <div className="field-token-detail" aria-live="polite">
-                <span className="eyebrow">{result.groups[active]?.label}</span>
-                <p>{result.groups[active]?.detail}</p>
-              </div>
+              <ReportGroups key={result.raw} groups={result.groups} />
               {result.warnings.length > 0 && (
                 <ul className="field-warnings">
                   {result.warnings.map((warning) => (
@@ -856,7 +907,7 @@ export function FieldPractice({ track = "metar", navigate, onSources }) {
       </header>
       <nav className="field-segments" aria-label="Pracownie">
         {[
-          ["metar", "METAR"],
+          ["metar", "METAR / TAF"],
           ["wind", "Wiatr"],
           ["maps", "Windy i mapy"],
         ].map(([id, label]) => (
@@ -886,11 +937,18 @@ export function FieldPractice({ track = "metar", navigate, onSources }) {
           aria-controls="field-training"
           onClick={() => setPanel("training")}
         >
-          Trening · 4 sytuacje <ArrowRight size={17} />
+          Trening ·{" "}
+          {practiceCases.filter((item) => item.track === selected).length}{" "}
+          <ArrowRight size={17} />
         </button>
       </nav>
       <div id="field-tool" hidden={panel !== "tool"}>
-        {selected === "metar" && <MetarReader onSources={onSources} />}
+        {selected === "metar" && (
+          <AviationReader
+            onSources={onSources}
+            onTraining={() => setPanel("training")}
+          />
+        )}
         {selected === "wind" && <WindWorkbench onSources={onSources} />}
         {selected === "maps" && <MapWorkbench onSources={onSources} />}
       </div>

@@ -200,6 +200,18 @@ export const sources = {
     checkText: "Easy Access Rules for Aircrew",
     retrieved: "16 czerwca 2026",
   },
+  faaTaf: {
+    id: "faaTaf",
+    organization: "Federal Aviation Administration",
+    title: "Aeronautical Information Manual: ICAO Weather Formats",
+    label: "FAA: METAR, TAF i grupy zmian",
+    url: "https://www.faa.gov/air_traffic/publications/aim_html/chap7_section_1.html",
+    kind: "Wskazówki operacyjne",
+    trust: "Oficjalne objaśnienia FAA dotyczące depesz lotniczych.",
+    scope: "Różnica między obserwacją a prognozą; FM, BECMG, TEMPO, PROB oraz uskok wiatru. Czytnik jest edukacyjny i nie zastępuje oficjalnego briefingu.",
+    checkText: "Forecast Change Indicators",
+    retrieved: "26 sierpnia 2026",
+  },
   awcCodes: {
     id: "awcCodes",
     organization: "NOAA Aviation Weather Center",

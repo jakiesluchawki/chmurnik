@@ -58,6 +58,10 @@ reference content while allowing a distinct iOS navigation and field UI.
   candidates rather than mandatory scope for the first release.
 - Add a functional pasted-METAR reader, wind-vector workshops, and replayable
   map-reading scenarios with feedback and clear synthetic-data labeling.
+- User-approved extension (2026-08-26): detect TAF without its optional copied
+  heading, decode forecast periods separately from observations, and teach
+  the METAR/TAF distinction with replayable cases. Preserve raw unsupported
+  groups and distinguish prevailing, becoming, temporary and probable conditions.
 
 ## Acceptance Criteria
 
@@ -75,6 +79,7 @@ reference content while allowing a distinct iOS navigation and field UI.
 - [x] Aviation and sailing exercises are source-backed, playable, keyboard
       operable and do not imply a flight or sailing authorization. VoiceOver
       acceptance remains in the physical-device criterion above.
+- [x] Copied TAF is identified separately from METAR and taught with timeline cases.
 
 ## Implementation Notes
 
@@ -92,7 +97,7 @@ reference content while allowing a distinct iOS navigation and field UI.
   fetch weather, infer report freshness, or decode a TAF as an observation.
 - Wind tools calculate signed components and apparent wind in one stated
   reference frame. Map training uses explicitly fictional model A/B data.
-- Twelve four-choice cases include feedback, first-attempt tracking and
+- Sixteen four-choice cases include feedback, first-attempt tracking and
   replay of only the missed cases. Existing nine lessons remain intact.
 - Release walkthrough and screenshots: `design/field-release-2026-08-26.md`.
 
@@ -123,9 +128,15 @@ reference content while allowing a distinct iOS navigation and field UI.
    native Foundation tests and SDK compilation. Do not claim hardware results.
 9. **Internal beta first:** Existing signing credentials can sign while the
    desktop remains locked. Physical acceptance precedes external promotion.
+10. **Forecast groups stay separate:** Do not merge PROB/TEMPO into prevailing
+    conditions or invent a calendar month. Reuse tested weather-code decoding.
 
 ## Issues Encountered
 
+- A pasted KLVM TAF without the `TAF` prefix was incorrectly accepted as a
+  METAR. The regression fixture must use the user's exact text; testing only
+  explicit prefixes did not protect copied reports. Extend the shared reader
+  without interpreting forecast groups as current observations.
 - Initial simulator runtime was unavailable. Restored it through Xcode's
   supported runtime download. Full simulator compilation then passed.
 - A Swift bridge returned `[String: Any]` directly instead of a `JSObject`.
@@ -153,6 +164,8 @@ reference content while allowing a distinct iOS navigation and field UI.
   tests enforce production CSP; both report no page errors or violations.
 - Simulator build and signed device archive passed. No physical camera,
   low-storage, permissions, VoiceOver or backgrounding test is claimed.
+- TAF extension: 154 tests, 58 links, root/Pages CSP and native-layout browser
+  flows pass. Release scope and limits: `design/taf-reader-2026-08-26.md`.
 
 ## Broken/Modified Tests
 
@@ -161,6 +174,7 @@ reference content while allowing a distinct iOS navigation and field UI.
   contextual recognition and the original navigation contract.
 - New tests exercise real IndexedDB transactions via `fake-indexeddb`,
   rather than relying exclusively on source-text assertions.
+- Workshop-count test now expects eight METAR/TAF cases; other tracks keep four.
 
 ## Remaining Work
 

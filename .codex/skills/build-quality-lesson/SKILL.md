@@ -56,6 +56,9 @@ describe the actual learner activity present in the product.
 - Practical workshops need an observable decision, useful feedback, and a
   replay path. Use source-backed scenarios, clearly label synthetic reports,
   and reward correct reasoning rather than speed or unsafe risk-taking.
+- When a workshop accepts external input, identify and teach its type before
+  interpreting values. Test realistic copied inputs without optional headings;
+  never silently turn forecasts, possibilities, or missing values into facts.
 - Paraphrase; do not copy long source passages.
 
 ## Feedback Integration

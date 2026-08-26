@@ -180,7 +180,7 @@ test("practice cases have four unique options, feedback, and valid primary sourc
   for (const track of ["wind", "metar", "maps"])
     assert.equal(
       practiceCases.filter((item) => item.track === track).length,
-      4,
+      track === "metar" ? 8 : 4,
     );
 });
 

@@ -44,6 +44,8 @@ function weatherText(token) {
   if (!match) return null;
   const codes = match[2].match(/../g);
   if (!codes.every((code) => WEATHER[code])) return null;
+  if (codes.includes("TS") && ["-", "+"].includes(match[1]))
+    return `${codes.map((code) => WEATHER[code]).join(" · ")} (natężenie opadu: ${match[1] === "-" ? "słabe" : "silne"})`;
   const qualifier =
     { "-": "słabe: ", "+": "silne: ", VC: "w pobliżu: " }[match[1]] || "";
   return qualifier + codes.map((code) => WEATHER[code]).join(" · ");
@@ -54,18 +56,34 @@ function temperature(value) {
   return Number(value.replace("M", "-"));
 }
 
-export function decodeMetar(input) {
+export function normalizeAviationReport(input) {
   if (typeof input !== "string" || input.length > 6000)
-    throw new Error("Wklej jeden raport METAR (do 6000 znaków).");
+    throw new Error("Wklej jeden METAR, SPECI lub TAF (do 6000 znaków).");
   const raw = input.trim().toUpperCase().replace(/\s+/g, " ").replace(/=$/, "");
-  if (!raw)
-    throw new Error("Najpierw wklej raport METAR lub wybierz przykład.");
-  if (raw.startsWith("TAF"))
-    throw new Error(
-      "To prognoza TAF. Czytnik analizuje obserwacje METAR i SPECI; TAF ma osobny trening.",
-    );
+  if (!raw) throw new Error("Najpierw wklej raport lub wybierz przykład.");
   if (raw.includes("="))
     throw new Error("Wklej tylko jeden raport, bez kolejnych komunikatów.");
+  return raw.trim();
+}
+
+export function detectAviationReportType(input) {
+  const raw = normalizeAviationReport(input);
+  const body = raw.split(/\s+RMK\b/)[0];
+  // A copied TAF often omits its heading. METAR trends use HHMM, not DDHHMM.
+  if (
+    /^(TAF|AMD)\b/.test(raw) ||
+    /\b(?:\d{4}\/\d{4}|FM\d{6}|PROB\d{2})\b/.test(body)
+  )
+    return "TAF";
+  return /^SPECI\b/.test(raw) ? "SPECI" : "METAR";
+}
+
+export function decodeMetar(input) {
+  const raw = normalizeAviationReport(input);
+  if (detectAviationReportType(raw) === "TAF")
+    throw new Error(
+      "To prognoza TAF, nie obserwacja METAR. Użyj wspólnego czytnika METAR / TAF.",
+    );
   const tokens = raw.split(" ");
   const type = /^(METAR|SPECI)$/.test(tokens[0]) ? tokens.shift() : "METAR";
   const corrected = tokens[0] === "COR";
@@ -85,15 +103,44 @@ export function decodeMetar(input) {
       "Oczekuję kodu stacji i czasu UTC, np. EPWA 261200Z. Usuń nagłówek strony, a pozostaw sam raport.",
     );
   }
-  if (tokens.some((token) => /^(METAR|SPECI|TAF|\d{6}Z)$/.test(token)))
+  if (
+    tokens
+      .slice(0, tokens.includes("RMK") ? tokens.indexOf("RMK") : undefined)
+      .some((token) => /^(METAR|SPECI|TAF|\d{6}Z)$/.test(token))
+  )
     throw new Error("Wklej jedną obserwację, bez drugiej depeszy.");
-  const result = {
+  const conditions = decodeAviationConditions(tokens);
+  return {
+    ...conditions,
     raw,
     type,
     station,
     day: +date[1],
     time: `${date[2]}:${date[3]} UTC`,
-    corrected,
+    corrected: corrected || conditions.corrected,
+    groups: [
+      {
+        code: station,
+        label: "Stacja",
+        detail:
+          "Kod ICAO miejsca obserwacji. Warunki w innym miejscu mogą być inne.",
+      },
+      {
+        code: stamp,
+        label: "Czas obserwacji",
+        detail: `Dzień ${+date[1]}, ${date[2]}:${date[3]} UTC. W raporcie nie ma miesiąca ani roku; ten czytnik nie potwierdza aktualności.`,
+      },
+      ...conditions.groups,
+    ],
+  };
+}
+
+export function decodeAviationConditions(
+  tokens,
+  { forecast = false, partial = false } = {},
+) {
+  const result = {
+    corrected: false,
     wind: null,
     visibility: null,
     clouds: [],
@@ -110,23 +157,18 @@ export function decodeMetar(input) {
     nil: false,
     cavok: false,
     skyReported: false,
+    weatherReported: false,
+    noSignificantWeather: false,
   };
   const group = (code, label, detail) =>
     result.groups.push({ code, label, detail });
-  group(
-    station,
-    "Stacja",
-    "Kod ICAO miejsca obserwacji. Warunki w innym miejscu mogą być inne.",
-  );
-  group(
-    stamp,
-    "Czas",
-    `Dzień ${result.day}, ${result.time}. W raporcie nie ma miesiąca ani roku; ten czytnik nie potwierdza aktualności.`,
-  );
   for (let index = 0; index < tokens.length; index += 1) {
     const token = tokens[index];
     let match;
-    if (/^(TEMPO|BECMG|NOSIG|INTER|PROB\d{2}|FM\d{4,6})$/.test(token)) {
+    if (
+      !forecast &&
+      /^(TEMPO|BECMG|NOSIG|INTER|PROB\d{2}|FM\d{4,6})$/.test(token)
+    ) {
       const rest = tokens.slice(index);
       const remarksIndex = rest.indexOf("RMK");
       result.trend = (
@@ -140,12 +182,12 @@ export function decodeMetar(input) {
       result.remarks = tokens.slice(index + 1).join(" ");
       break;
     }
-    if (token === "NIL") {
+    if (!forecast && token === "NIL") {
       result.nil = true;
       group(token, "Brak raportu", "Stacja nie dostarczyła obserwacji.");
       continue;
     }
-    if (["AUTO", "COR"].includes(token)) {
+    if (!forecast && ["AUTO", "COR"].includes(token)) {
       if (token === "COR") result.corrected = true;
       group(
         token,
@@ -211,6 +253,8 @@ export function decodeMetar(input) {
     } else if (token === "CAVOK") {
       result.cavok = true;
       result.skyReported = true;
+      result.weatherReported = true;
+      result.noSignificantWeather = true;
       result.visibility = {
         meters: 10000,
         qualifier: "at-least",
@@ -289,7 +333,17 @@ export function decodeMetar(input) {
         "Niebo",
         `${COVER[match[1]]}; ${height == null ? "wysokość nieznana" : `${height} ft nad lotniskiem`}${match[3] ? `; ${match[3] === "CB" ? "Cumulonimbus" : "wypiętrzony Cumulus"}` : ""}.`,
       );
-    } else if (["NSC", "NCD", "SKC", "CLR"].includes(token)) {
+    } else if (forecast && token === "NSW") {
+      result.weatherReported = true;
+      result.noSignificantWeather = true;
+      group(
+        token,
+        "Zjawiska",
+        "Nie przewiduje się istotnych zjawisk pogodowych w tej grupie. NSW nie znaczy: bez chmur, bez wiatru ani bez zagrożeń.",
+      );
+    } else if (
+      (forecast ? ["NSC", "SKC"] : ["NSC", "NCD", "SKC", "CLR"]).includes(token)
+    ) {
       result.skyReported = true;
       group(
         token,
@@ -297,11 +351,16 @@ export function decodeMetar(input) {
         {
           NSC: "Brak chmur istotnych według kryteriów raportowania. Nie gwarantuje całkowicie pustego nieba.",
           NCD: "Automat nie wykrył chmur w swoim zakresie pomiaru.",
-          SKC: "Raportowane bezchmurne niebo.",
+          SKC: forecast
+            ? "Prognozowane bezchmurne niebo."
+            : "Raportowane bezchmurne niebo.",
           CLR: "Automat nie wykrył chmur do granicy raportowania; wyżej mogą być chmury.",
         }[token],
       );
-    } else if ((match = token.match(/^(M?\d{2}|\/\/)\/(M?\d{2}|\/\/)?$/))) {
+    } else if (
+      !forecast &&
+      (match = token.match(/^(M?\d{2}|\/\/)\/(M?\d{2}|\/\/)?$/))
+    ) {
       result.temperature = temperature(match[1]);
       result.dewpoint = temperature(match[2] || "");
       group(
@@ -309,7 +368,7 @@ export function decodeMetar(input) {
         "Temperatura / punkt rosy",
         `${result.temperature ?? "brak"} / ${result.dewpoint ?? "brak"} °C.`,
       );
-    } else if ((match = token.match(/^(Q|A)(\d{4})$/))) {
+    } else if (!forecast && (match = token.match(/^(Q|A)(\d{4})$/))) {
       const hpa = match[1] === "Q" ? +match[2] : (+match[2] / 100) * 33.8638867;
       if (hpa < 600 || hpa > 1100 || result.pressure) {
         result.unsupported.push(token);
@@ -330,6 +389,7 @@ export function decodeMetar(input) {
     } else if (weatherText(token)) {
       const text = weatherText(token);
       result.weather.push(text);
+      result.weatherReported = true;
       group(token, "Zjawiska", text);
     } else {
       result.unsupported.push(token);
@@ -349,17 +409,23 @@ export function decodeMetar(input) {
   }
   if (result.nil)
     result.warnings.push("NIL: nie ma obserwacji do interpretacji.");
-  if (!result.wind && !result.nil)
+  if (!result.wind && !result.nil && !partial)
     result.warnings.push(
       "Brak rozpoznanej grupy wiatru. Nie obliczamy składowych.",
     );
-  if (!result.visibility && !result.nil)
+  if (!result.visibility && !result.nil && !partial)
     result.warnings.push("Brak rozpoznanej widzialności.");
-  if (!result.skyReported && !result.nil)
-    result.warnings.push("Brak rozpoznanych danych o niebie. Nie wnioskuj z tego o braku pułapu.");
+  if (!result.skyReported && !result.nil && !partial)
+    result.warnings.push(
+      "Brak rozpoznanych danych o niebie. Nie wnioskuj z tego o braku pułapu.",
+    );
   if (result.cavok && (result.clouds.length || result.weather.length))
     result.warnings.push(
       "CAVOK występuje razem z innymi grupami nieba lub zjawisk. Sprawdź oryginał: czytnik nie rozstrzyga tej sprzeczności.",
+    );
+  if (result.noSignificantWeather && result.weather.length && !result.cavok)
+    result.warnings.push(
+      "NSW występuje razem ze zjawiskami pogodowymi. Sprawdź sprzeczne grupy w oryginale.",
     );
   if (result.unsupported.length)
     result.warnings.push(

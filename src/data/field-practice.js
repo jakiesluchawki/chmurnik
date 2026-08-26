@@ -19,7 +19,46 @@ export const metarExamples = [
   },
 ];
 
+export const tafExamples = [
+  {
+    label: "TAF: KLVM bez nagłówka",
+    synthetic: false,
+    report:
+      "KLVM 261730Z 2618/2718 29008KT P6SM FEW090 BKN200 FM262300 VRB06KT P6SM VCSH SCT100 BKN140 PROB30 2623/2704 VRB25G40KT 6SM -TSRA BKN080CB FM270700 30008KT P6SM SCT100 BKN160",
+  },
+  {
+    label: "TAF: BECMG i TEMPO",
+    report:
+      "TAF EPWA 261130Z 2612/2712 24010KT 9999 SCT030 BECMG 2616/2618 6000 -RA BKN020 TEMPO 2618/2622 25018G28KT 3000 RA BKN010 PROB40 TEMPO 2620/2622 1500 TSRA BKN008CB FM270000 27008KT CAVOK TX24/2614Z TN12/2705Z",
+  },
+  {
+    label: "TAF: północ i uskok wiatru",
+    report:
+      "TAF AMD KJFK 312030Z 3121/0124 18012KT P6SM SCT025 WS020/24040KT TEMPO 3122/0102 2SM -RA BKN008 FM010300 24010KT P6SM SCT040",
+  },
+];
+
 export const practiceCases = [
+  {
+    id: "metar-or-taf",
+    track: "metar",
+    title: "Raport bez tytułu",
+    context:
+      "KLVM 261730Z 2618/2718 29008KT P6SM FEW090 BKN200 FM262300 VRB06KT P6SM SCT100",
+    question: "Nie ma słowa TAF. Co mówi struktura tego przykładu?",
+    choices: [
+      "To pomiar METAR z 17:30",
+      "To prognoza TAF z okresem ważności i zmianą FM",
+      "To SPECI, bo nie ma nagłówka",
+      "Nie ma nagłówka, więc można pominąć czas",
+    ],
+    answer: 1,
+    explanation:
+      "261730Z to czas wydania, a 2618/2718 to ważność od dnia 26 o 18:00 do dnia 27 o 18:00 UTC. FM262300 zaczyna nową bazę prognozy. Sam brak skopiowanego nagłówka nie czyni z TAF obserwacji.",
+    takeaway:
+      "Najpierw rozpoznaj rodzaj depeszy, dopiero potem interpretuj liczby.",
+    sources: ["awcCodes", "faaTaf"],
+  },
   {
     id: "ceiling",
     track: "metar",
@@ -86,6 +125,61 @@ export const practiceCases = [
       "Ukośniki oznaczają brak określonej wartości. 0300 to widzialność pozioma 300 m, a nie wysokość. Braku danych nie wolno zamieniać w dobrą pogodę ani liczbę zero.",
     takeaway: "Nieznane pozostaje nieznane.",
     sources: ["awcCodes", "faaWeather"],
+  },
+  {
+    id: "taf-probability",
+    track: "metar",
+    title: "30% czego?",
+    context: "PROB30 2623/2704 VRB25G40KT 6SM -TSRA BKN080CB",
+    question: "Jak odczytać PROB30 w tym ćwiczeniu?",
+    choices: [
+      "Burza zajmie dokładnie 30% tego czasu",
+      "Przez całe okno na pewno będzie wiało 40 kt",
+      "Zakodowano 30% prawdopodobieństwa tego wariantu warunków",
+      "Prognoza jest poprawna tylko w 30%",
+    ],
+    answer: 2,
+    explanation:
+      "PROB30 dotyczy prawdopodobieństwa wariantu w określonym oknie, nie odsetka godzin. VRB25G40KT oznacza zmienny kierunek, 25 kt z porywami 40 kt w tym wariancie. To nie potwierdzony pomiar i nie stała baza prognozy.",
+    takeaway:
+      "Prawdopodobieństwo, czas trwania i poryw to trzy różne informacje.",
+    sources: ["awcCodes", "faaTaf"],
+  },
+  {
+    id: "taf-fm-reset",
+    track: "metar",
+    title: "Od tej chwili nowa baza",
+    context: "26010KT 4000 -RA BKN012 FM270700 30008KT P6SM SCT100 BKN160",
+    question: "Który opis należy do prognozy od dnia 27 o 07:00 UTC?",
+    choices: [
+      "Nowa baza: z 300°T, 8 kt, ponad 6 SM, pułap 16000 ft",
+      "Nadal pułap 1200 ft, bo chmury się sumują",
+      "Średnia dwóch widzialności i dwóch wiatrów",
+      "Zmierzono bezchmurne niebo o 07:00",
+    ],
+    answer: 0,
+    explanation:
+      "FM270700 zastępuje poprzednią bazę nowym zestawem. SCT100 nie wyznacza pułapu; BKN160 to prognozowane 16000 ft nad lotniskiem. Nie uśredniamy obu okresów i nie nazywamy tej prognozy obserwacją.",
+    takeaway: "FM wyznacza nową bazę, nie kolejną warstwę starej.",
+    sources: ["awcCodes", "faaTaf"],
+  },
+  {
+    id: "taf-becoming",
+    track: "metar",
+    title: "Kiedy kończy się zmiana?",
+    context: "9999 SCT030 BECMG 2616/2618 6000 -RA BKN020",
+    question: "Co wiemy o początku nowych warunków?",
+    choices: [
+      "Zaczną się dokładnie o 16:00 UTC",
+      "Wystąpią tylko przez połowę okna",
+      "To już zmierzona pogoda o 18:00",
+      "Zmiana nastąpi w oknie 16–18 UTC; po nim zmienione elementy są bazą",
+    ],
+    answer: 3,
+    explanation:
+      "BECMG nie podaje dokładnej minuty przejścia. Zmienione elementy mają ustalić się do końca okna; niewymienione pozostają z tła prognozy. To różni BECMG od krótkich epizodów TEMPO i wariantów PROB.",
+    takeaway: "Nie zamieniaj przedziału niepewnej zmiany w dokładny moment.",
+    sources: ["faaTaf"],
   },
   {
     id: "apparent-beam",

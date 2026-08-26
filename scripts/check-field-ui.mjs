@@ -4,7 +4,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { pathToFileURL } from "node:url";
 import { clouds } from "../src/data/clouds.js";
-import { practiceCases } from "../src/data/field-practice.js";
+import { practiceCases, tafExamples } from "../src/data/field-practice.js";
 import { learningModules } from "../src/data/learning.js";
 import { parseObservationBackup } from "../src/lib/observations.js";
 import { createServer, preview } from "vite";
@@ -36,28 +36,45 @@ let page;
 try {
   if (!values.base) {
     if (values.preview) {
-      assert.equal(values.capture, false, "Capture fixtures require the isolated QA build.");
+      assert.equal(
+        values.capture,
+        false,
+        "Capture fixtures require the isolated QA build.",
+      );
       const apache = await readFile("public/.htaccess", "utf8");
       const headers = Object.fromEntries(
-        [...apache.matchAll(/^\s*Header always set ([\w-]+) "([^"]+)"/gm)]
-          .map((match) => [match[1], match[2]]),
+        [...apache.matchAll(/^\s*Header always set ([\w-]+) "([^"]+)"/gm)].map(
+          (match) => [match[1], match[2]],
+        ),
       );
-      server = await preview({ base: values["path-prefix"], preview: { host: "127.0.0.1", port: 4177, headers } });
+      server = await preview({
+        base: values["path-prefix"],
+        preview: { host: "127.0.0.1", port: 4177, headers },
+      });
     } else {
       server = await createServer({
-      server: { host: "127.0.0.1", port: 4177 },
-      define: {
-        "import.meta.env.VITE_QA_NATIVE_LAYOUT": JSON.stringify(values.native ? "1" : "0"),
-        "import.meta.env.VITE_QA_NO_ONBOARDING": '"1"',
-        "import.meta.env.VITE_QA_PHOTO_RECOGNITION": JSON.stringify(values.capture ? "result" : ""),
-      },
-    });
-    await server.listen();
+        server: { host: "127.0.0.1", port: 4177 },
+        define: {
+          "import.meta.env.VITE_QA_NATIVE_LAYOUT": JSON.stringify(
+            values.native ? "1" : "0",
+          ),
+          "import.meta.env.VITE_QA_NO_ONBOARDING": '"1"',
+          "import.meta.env.VITE_QA_PHOTO_RECOGNITION": JSON.stringify(
+            values.capture ? "result" : "",
+          ),
+        },
+      });
+      await server.listen();
     }
   }
-  const base = values.base || `http://127.0.0.1:${server.httpServer.address().port}${server.config.base}`;
+  const base =
+    values.base ||
+    `http://127.0.0.1:${server.httpServer.address().port}${server.config.base}`;
   // A fresh temporary profile only. Never connect to the user's browser session.
-  browser = await chromium.launch({ headless: true, executablePath: values["browser-path"] });
+  browser = await chromium.launch({
+    headless: true,
+    executablePath: values["browser-path"],
+  });
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 1,
@@ -65,10 +82,14 @@ try {
     reducedMotion: "reduce",
   });
   page = await context.newPage();
-  await page.exposeFunction("recordPolicyViolation", (violation) => policyViolations.push(violation));
+  await page.exposeFunction("recordPolicyViolation", (violation) =>
+    policyViolations.push(violation),
+  );
   await page.addInitScript(() => {
     document.addEventListener("securitypolicyviolation", (event) => {
-      window.recordPolicyViolation(`${event.effectiveDirective}: ${event.blockedURI}`);
+      window.recordPolicyViolation(
+        `${event.effectiveDirective}: ${event.blockedURI}`,
+      );
     });
   });
   page.setDefaultTimeout(15000);
@@ -99,10 +120,18 @@ try {
     const observationRoutes = new Set();
     for (let attempt = 0; attempt < 2; attempt += 1) {
       await navigate("home");
-      if (!await page.getByRole("dialog", { name: "Rozpoznawanie chmur ze zdjęcia" }).isVisible()) {
-        await page.getByRole("button", { name: "Obserwuj niebo", exact: true }).click();
+      if (
+        !(await page
+          .getByRole("dialog", { name: "Rozpoznawanie chmur ze zdjęcia" })
+          .isVisible())
+      ) {
+        await page
+          .getByRole("button", { name: "Obserwuj niebo", exact: true })
+          .click();
       }
-      await page.getByRole("button", { name: "Zapisz w Moim niebie" }).waitFor();
+      await page
+        .getByRole("button", { name: "Zapisz w Moim niebie" })
+        .waitFor();
       await page.locator(".photo-frame summary").click();
       await page.getByRole("slider", { name: "Powiększenie" }).press("End");
       await page.getByRole("button", { name: "Sprawdź ten fragment" }).click();
@@ -110,224 +139,398 @@ try {
       await screenshot(`capture-${attempt + 1}-frame`);
       await page.getByRole("button", { name: "Zapisz w Moim niebie" }).click();
       await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).waitFor();
-      assert.equal(await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).inputValue(), "");
-      assert.match(await page.locator(".sky-hypothesis").textContent(), /qa-fixture/);
+      assert.equal(
+        await page
+          .getByRole("combobox", { name: /Moje rozpoznanie/ })
+          .inputValue(),
+        "",
+      );
+      assert.match(
+        await page.locator(".sky-hypothesis").textContent(),
+        /qa-fixture/,
+      );
       observationRoutes.add(new URL(page.url()).hash);
       await page.reload();
       await page.getByRole("button", { name: "Zamknij rozpoznawanie" }).click();
-      await page.waitForFunction(() => document.querySelector("img.sky-detail-photo")?.naturalWidth > 0);
-      assert.match(await page.locator(".sky-hypothesis").textContent(), /qa-fixture/);
-      assert.equal(await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).inputValue(), "");
+      await page.waitForFunction(
+        () => document.querySelector("img.sky-detail-photo")?.naturalWidth > 0,
+      );
+      assert.match(
+        await page.locator(".sky-hypothesis").textContent(),
+        /qa-fixture/,
+      );
+      assert.equal(
+        await page
+          .getByRole("combobox", { name: /Moje rozpoznanie/ })
+          .inputValue(),
+        "",
+      );
       await screenshot(`capture-${attempt + 1}-saved`);
-      await page.getByRole("button", { name: "Usuń obserwację…", exact: true }).click();
-      await page.getByRole("button", { name: "Usuń tę obserwację", exact: true }).click();
-      await page.getByRole("heading", { name: "Pierwsze niebo jest blisko." }).waitFor();
+      await page
+        .getByRole("button", { name: "Usuń obserwację…", exact: true })
+        .click();
+      await page
+        .getByRole("button", { name: "Usuń tę obserwację", exact: true })
+        .click();
+      await page
+        .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
+        .waitFor();
     }
     assert.equal(observationRoutes.size, 2);
-    console.log("PASS: repeated fixture-photo framing, save, persistence, unconfirmed model hypothesis, and delete. This does not test physical camera hardware or model accuracy.");
-  } else {
-  await navigate("home");
-  if (values.native)
-    assert.equal(await page.locator("h1").textContent(), "Zauważ niebo.");
-  await screenshot("01-home-mobile");
-
-  await navigate("journal");
-  await page
-    .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
-    .waitFor();
-  await page.getByRole("button", { name: "Dodaj wpis", exact: true }).click();
-  await page
-    .getByLabel("Zdjęcie nieba (opcjonalnie)")
-    .setInputFiles(
-      path.resolve(
-        "public",
-        clouds.find((cloud) => cloud.id === "cumulus").images[0].src,
-      ),
+    console.log(
+      "PASS: repeated fixture-photo framing, save, persistence, unconfirmed model hypothesis, and delete. This does not test physical camera hardware or model accuracy.",
     );
-  await page
-    .getByLabel("Notatka", { exact: true })
-    .fill("QA: obserwacja zachowana po ponownym otwarciu.");
-  await page.getByLabel("Własne rozpoznanie").selectOption("cumulus");
-  await page.getByAltText("Zdjęcie do zapisania", { exact: true }).waitFor();
-  await page
-    .getByRole("button", { name: "Zapisz obserwację", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Zapisz zmiany", exact: true })
-    .waitFor();
-  await page.getByLabel("Ulubiona obserwacja").check();
-  await page
-    .getByRole("button", { name: "Zapisz zmiany", exact: true })
-    .click();
-  await page
-    .getByText("Zmiany zapisane. Hipoteza modelu pozostała osobno.")
-    .waitFor();
-  await page.getByRole("button", { name: "Zobacz pocztówkę" }).click();
-  const card = page.getByAltText("Podgląd pocztówki przed udostępnieniem");
-  await card.waitFor();
-  await page.waitForFunction(
-    () => document.querySelector(".sky-share img")?.naturalWidth === 1080,
-  );
-  await screenshot("02-observation-and-postcard");
-  await page.reload();
-  await page.getByLabel("Ulubiona obserwacja").waitFor();
-  assert.equal(await page.getByLabel("Ulubiona obserwacja").isChecked(), true);
-  assert.match(
-    await page.getByLabel("Notatka i cechy").inputValue(),
-    /QA: obserwacja/,
-  );
+  } else {
+    await navigate("home");
+    if (values.native)
+      assert.equal(await page.locator("h1").textContent(), "Zauważ niebo.");
+    await screenshot("01-home-mobile");
 
-  await navigate("journal");
-  await page.locator(".sky-card").waitFor();
-  await screenshot("03-collection-mobile");
-  await page.locator(".sky-backups summary").click();
-  await page.getByRole("button", { name: "Eksportuj kopię" }).click();
-  const downloaded = page.waitForEvent("download");
-  await page.getByRole("button", { name: /Pobierz część 1\/1/ }).click();
-  const backup = await downloaded;
-  const backupText = await readFile(await backup.path(), "utf8");
-  assert.equal(
-    parseObservationBackup(backupText)[0].confirmedCloudId,
-    "cumulus",
-  );
-  await page.locator(".sky-card-main").click();
-  await page
-    .getByRole("button", { name: "Usuń obserwację…", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Usuń tę obserwację", exact: true })
-    .click();
-  await page
-    .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
-    .waitFor();
-  await page.locator(".sky-backups summary").click();
-  await page
-    .locator('.sky-backups input[type="file"]')
-    .setInputFiles({
+    await navigate("journal");
+    await page
+      .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
+      .waitFor();
+    await page.getByRole("button", { name: "Dodaj wpis", exact: true }).click();
+    await page
+      .getByLabel("Zdjęcie nieba (opcjonalnie)")
+      .setInputFiles(
+        path.resolve(
+          "public",
+          clouds.find((cloud) => cloud.id === "cumulus").images[0].src,
+        ),
+      );
+    await page
+      .getByLabel("Notatka", { exact: true })
+      .fill("QA: obserwacja zachowana po ponownym otwarciu.");
+    await page.getByLabel("Własne rozpoznanie").selectOption("cumulus");
+    await page.getByAltText("Zdjęcie do zapisania", { exact: true }).waitFor();
+    await page
+      .getByRole("button", { name: "Zapisz obserwację", exact: true })
+      .click();
+    await page
+      .getByRole("button", { name: "Zapisz zmiany", exact: true })
+      .waitFor();
+    await page.getByLabel("Ulubiona obserwacja").check();
+    await page
+      .getByRole("button", { name: "Zapisz zmiany", exact: true })
+      .click();
+    await page
+      .getByText("Zmiany zapisane. Hipoteza modelu pozostała osobno.")
+      .waitFor();
+    await page.getByRole("button", { name: "Zobacz pocztówkę" }).click();
+    const card = page.getByAltText("Podgląd pocztówki przed udostępnieniem");
+    await card.waitFor();
+    await page.waitForFunction(
+      () => document.querySelector(".sky-share img")?.naturalWidth === 1080,
+    );
+    await screenshot("02-observation-and-postcard");
+    await page.reload();
+    await page.getByLabel("Ulubiona obserwacja").waitFor();
+    assert.equal(
+      await page.getByLabel("Ulubiona obserwacja").isChecked(),
+      true,
+    );
+    assert.match(
+      await page.getByLabel("Notatka i cechy").inputValue(),
+      /QA: obserwacja/,
+    );
+
+    await navigate("journal");
+    await page.locator(".sky-card").waitFor();
+    await screenshot("03-collection-mobile");
+    await page.locator(".sky-backups summary").click();
+    await page.getByRole("button", { name: "Eksportuj kopię" }).click();
+    const downloaded = page.waitForEvent("download");
+    await page.getByRole("button", { name: /Pobierz część 1\/1/ }).click();
+    const backup = await downloaded;
+    const backupText = await readFile(await backup.path(), "utf8");
+    assert.equal(
+      parseObservationBackup(backupText)[0].confirmedCloudId,
+      "cumulus",
+    );
+    await page.locator(".sky-card-main").click();
+    await page
+      .getByRole("button", { name: "Usuń obserwację…", exact: true })
+      .click();
+    await page
+      .getByRole("button", { name: "Usuń tę obserwację", exact: true })
+      .click();
+    await page
+      .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
+      .waitFor();
+    await page.locator(".sky-backups summary").click();
+    await page.locator('.sky-backups input[type="file"]').setInputFiles({
       name: "backup.json",
       mimeType: "application/json",
       buffer: Buffer.from(backupText),
     });
-  await page
-    .getByText("Kopia przywrócona. Istniejące wpisy nie zostały nadpisane.")
-    .waitFor();
-  assert.equal(await page.locator(".sky-card").count(), 1);
+    await page
+      .getByText("Kopia przywrócona. Istniejące wpisy nie zostały nadpisane.")
+      .waitFor();
+    assert.equal(await page.locator(".sky-card").count(), 1);
 
-  await navigate("practice/metar");
-  await screenshot("04-metar-mobile");
-  await page
-    .getByLabel("Wklej jeden METAR lub SPECI")
-    .fill("METAR EPGD 261200Z VRB04KT CAVOK 22/13 Q1015 NOSIG=");
-  await page.getByRole("button", { name: "Rozczytaj raport" }).click();
-  await page.getByText("Wklejony raport · nie live", { exact: true }).waitFor();
-  await page.getByRole("button", { name: "CAVOK", exact: true }).click();
-  assert.equal(await page.locator(".field-wind-workbench").count(), 0);
-  assert.match(
-    await page.locator(".field-metar-result").textContent(),
-    /VRB: brak jednego kierunku/,
-  );
-  const metarCases = practiceCases.filter((item) => item.track === "metar");
-  await page.getByRole("button", { name: "Trening · 4 sytuacje" }).click();
-  for (const [index, item] of metarCases.entries()) {
+    await navigate("practice/metar");
+    await screenshot("04-metar-mobile");
+    await page
+      .getByLabel("Wklej jeden METAR, SPECI lub TAF")
+      .fill("METAR EPGD 261200Z VRB04KT CAVOK 22/13 Q1015 NOSIG=");
+    await page.getByRole("button", { name: "Rozczytaj raport" }).click();
+    await page
+      .getByText("Wklejony raport · nie live", { exact: true })
+      .waitFor();
+    await page.getByRole("button", { name: "CAVOK", exact: true }).click();
+    assert.equal(await page.locator(".field-wind-workbench").count(), 0);
+    assert.match(
+      await page.locator(".field-metar-result").textContent(),
+      /VRB: brak jednego kierunku/,
+    );
+    const readReport = async (report) => {
+      await page.getByLabel("Wklej jeden METAR, SPECI lub TAF").fill(report);
+      await page.getByRole("button", { name: "Rozczytaj raport" }).click();
+    };
+    await readReport(tafExamples[0].report);
+    await page
+      .getByText("Rozpoznano TAF · prognoza, nie obserwacja", { exact: true })
+      .waitFor();
+    assert.equal(await page.locator(".field-taf-timeline button").count(), 4);
+    assert.match(
+      await page.locator(".field-taf-window").textContent(),
+      /dzień 26, 18:00 UTC.*dzień 27, 18:00 UTC/,
+    );
+    assert.equal(
+      await page.getByText("Temperatura / rosa", { exact: true }).count(),
+      0,
+    );
+    assert.equal(
+      await page.getByText("Nastawa wysokościomierza", { exact: true }).count(),
+      0,
+    );
+    await page
+      .locator(".field-taf-timeline")
+      .getByRole("button", { name: /30%/ })
+      .click();
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /Kierunek zmienny · 25 kt, porywy 40 kt/,
+    );
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /8000 ft nad lotniskiem/,
+    );
+    assert.equal(await page.locator(".field-wind-workbench").count(), 0);
+    await screenshot("07-taf-mobile");
+    await page.locator(".field-taf-period-heading").scrollIntoViewIfNeeded();
+    await page.screenshot({
+      path: path.join(output, "07-taf-probability-mobile.png"),
+    });
+    await page.getByRole("button", { name: "2618/2718", exact: true }).click();
+    assert.match(
+      await page.locator(".field-token-detail").textContent(),
+      /Okres ważności prognozy/,
+    );
+    await page.locator(".field-taf-timeline button").nth(3).click();
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /Z 300°T · 8 kt/,
+    );
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /16000 ft nad lotniskiem/,
+    );
+    await page
+      .getByRole("button", { name: "TAF: BECMG i TEMPO", exact: true })
+      .click();
+    await page
+      .locator(".field-taf-timeline")
+      .getByRole("button", { name: /40%/ })
+      .click();
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /Bez zmiany w tej grupie/,
+    );
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /każdy krótszy niż godzina/,
+    );
+    await page
+      .getByRole("button", { name: "TAF: północ i uskok wiatru", exact: true })
+      .click();
+    assert.match(
+      await page.locator(".field-taf-period").textContent(),
+      /Uskok wiatru LLWS/,
+    );
+    await readReport("TAF EPWA 261130Z 2612/2712 CNL");
+    assert.equal(await page.locator(".field-taf-timeline").count(), 0);
+    assert.match(
+      await page.locator(".field-metar-result").textContent(),
+      /CNL: prognoza została odwołana/,
+    );
+    await readReport(`METAR ${tafExamples[0].report}`);
+    await page.getByRole("alert").waitFor();
+    assert.equal(await page.locator(".field-metar-result").count(), 0);
+    await readReport(
+      "METAR EPGD 261200Z 24010KT 9999 SCT030 20/10 Q1015 TEMPO 3000 RA BKN008",
+    );
+    assert.equal(await page.locator(".field-taf-timeline").count(), 0);
+    assert.match(
+      await page.locator(".field-report-type").textContent(),
+      /METAR · obserwacja/,
+    );
+    assert.match(
+      await page.locator(".field-metar-summary").textContent(),
+      /co najmniej 10 km/,
+    );
+    await page.locator(".field-report-guide summary").click();
+    await page.getByRole("button", { name: "Przećwicz różnicę" }).click();
+    const metarCases = practiceCases.filter((item) => item.track === "metar");
+    await page.getByRole("heading", { name: "Raport bez tytułu" }).waitFor();
+    for (const [index, item] of metarCases.entries()) {
+      await page
+        .locator(".field-answers button")
+        .nth(index === 0 ? (item.answer + 1) % 4 : item.answer)
+        .click();
+      await page.locator(".field-explanation").waitFor();
+      await page
+        .getByRole("button", {
+          name:
+            index === metarCases.length - 1
+              ? "Podsumowanie"
+              : "Kolejny przypadek",
+          exact: true,
+        })
+        .click();
+    }
+    await page.getByRole("button", { name: "Powtórz trudniejsze (1)" }).click();
+    assert.equal(await page.locator(".field-case-progress i").count(), 1);
     await page
       .locator(".field-answers button")
-      .nth(index === 0 ? (item.answer + 1) % 4 : item.answer)
+      .nth(metarCases[0].answer)
       .click();
-    await page.locator(".field-explanation").waitFor();
     await page
-      .getByRole("button", {
-        name:
-          index === metarCases.length - 1
-            ? "Podsumowanie"
-            : "Kolejny przypadek",
-        exact: true,
-      })
+      .getByRole("button", { name: "Podsumowanie", exact: true })
       .click();
-  }
-  await page.getByRole("button", { name: "Powtórz trudniejsze (1)" }).click();
-  assert.equal(await page.locator(".field-case-progress i").count(), 1);
-  await page.locator(".field-answers button").nth(metarCases[0].answer).click();
-  await page.getByRole("button", { name: "Podsumowanie", exact: true }).click();
-  assert.match(
-    await page.locator(".field-round-summary").textContent(),
-    /1 z 1/,
-  );
+    assert.match(
+      await page.locator(".field-round-summary").textContent(),
+      /1 z 1/,
+    );
 
-  await navigate("practice/wind");
-  await screenshot("05-wind-sailing-mobile");
-  await page.getByRole("slider", { name: /Prędkość jachtu/ }).press("End");
-  assert.match(await page.locator(".field-readouts").textContent(), /27,7/);
-  await page
-    .getByRole("button", { name: "Na drodze startowej", exact: true })
-    .click();
-  assert.match(
-    await page.locator(".field-readouts").textContent(),
-    /12.*boczny z prawej/,
-  );
-  await page
-    .locator(".field-wind-workbench")
-    .getByRole("button", { name: "Źródła i metoda" })
-    .click();
-  await page.getByRole("dialog").waitFor();
-  await page.keyboard.press("Escape");
+    await navigate("practice/wind");
+    await screenshot("05-wind-sailing-mobile");
+    await page.getByRole("slider", { name: /Prędkość jachtu/ }).press("End");
+    assert.match(await page.locator(".field-readouts").textContent(), /27,7/);
+    await page
+      .getByRole("button", { name: "Na drodze startowej", exact: true })
+      .click();
+    assert.match(
+      await page.locator(".field-readouts").textContent(),
+      /12.*boczny z prawej/,
+    );
+    await page
+      .locator(".field-wind-workbench")
+      .getByRole("button", { name: "Źródła i metoda" })
+      .click();
+    await page.getByRole("dialog").waitFor();
+    await page.keyboard.press("Escape");
 
-  await navigate("practice/maps");
-  await page.getByRole("combobox", { name: /^Poziom/ }).selectOption("upper");
-  await page.getByLabel("Model szkoleniowy").selectOption("B");
-  await page.getByRole("slider", { name: /Horyzont prognozy/ }).press("End");
-  assert.match(
-    await page.locator(".field-map-readout").textContent(),
-    /45.*850.*za 6 h/,
-  );
-  await screenshot("06-maps-mobile");
+    await navigate("practice/maps");
+    await page.getByRole("combobox", { name: /^Poziom/ }).selectOption("upper");
+    await page.getByLabel("Model szkoleniowy").selectOption("B");
+    await page.getByRole("slider", { name: /Horyzont prognozy/ }).press("End");
+    assert.match(
+      await page.locator(".field-map-readout").textContent(),
+      /45.*850.*za 6 h/,
+    );
+    await screenshot("06-maps-mobile");
 
-  for (const route of [
-    "atlas",
-    "learn",
-    "layers/metar",
-    "layers/decoder",
-    "layers/wind",
-    "layers/sounding",
-    "layers/lab",
-    "layers/hazards",
-    "atlas/observer",
-    "atlas/compare/cumulus,cumulonimbus",
-    "sources",
-    ...learningModules.map((module) => `learn/${module.id}`),
-  ]) {
-    await navigate(route);
-    await screenshot(`route-${route.replaceAll("/", "-")}`);
-  }
-  await page.setViewportSize({ width: 320, height: 740 });
-  for (const route of ["home", "journal", "practice/metar", "practice/wind", "practice/maps"]) {
-    await navigate(route);
-    await screenshot(`compact-${route.replaceAll("/", "-")}`);
-    const clippedControls = await page.locator("main button, main input, main textarea, main select").evaluateAll((controls) => controls
-      .filter((control) => control.getClientRects().length)
-      .filter((control) => {
-        const rect = control.getBoundingClientRect();
-        return rect.left < -1 || rect.right > innerWidth + 1;
-      }).map((control) => control.getAttribute("aria-label") || control.textContent));
-    assert.deepEqual(clippedControls, [], `Clipped controls at 320px: ${route}`);
-  }
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  for (const route of [
-    "home",
-    "journal",
-    "practice/metar",
-    "practice/wind",
-    "practice/maps",
-  ]) {
-    await navigate(route);
-    await screenshot(`desktop-${route.replaceAll("/", "-")}`);
-  }
+    for (const route of [
+      "atlas",
+      "learn",
+      "layers/metar",
+      "layers/decoder",
+      "layers/wind",
+      "layers/sounding",
+      "layers/lab",
+      "layers/hazards",
+      "atlas/observer",
+      "atlas/compare/cumulus,cumulonimbus",
+      "sources",
+      ...learningModules.map((module) => `learn/${module.id}`),
+    ]) {
+      await navigate(route);
+      await screenshot(`route-${route.replaceAll("/", "-")}`);
+    }
+    await page.setViewportSize({ width: 320, height: 740 });
+    for (const route of [
+      "home",
+      "journal",
+      "practice/metar",
+      "practice/wind",
+      "practice/maps",
+    ]) {
+      await navigate(route);
+      await screenshot(`compact-${route.replaceAll("/", "-")}`);
+      if (route === "practice/metar") {
+        await readReport(tafExamples[0].report);
+        await page
+          .locator(".field-taf-timeline")
+          .getByRole("button", { name: /30%/ })
+          .click();
+        await screenshot("compact-taf");
+      }
+      const clippedControls = await page
+        .locator("main button, main input, main textarea, main select")
+        .evaluateAll((controls) =>
+          controls
+            .filter((control) => control.getClientRects().length)
+            .filter((control) => {
+              const rect = control.getBoundingClientRect();
+              return rect.left < -1 || rect.right > innerWidth + 1;
+            })
+            .map(
+              (control) =>
+                control.getAttribute("aria-label") || control.textContent,
+            ),
+        );
+      assert.deepEqual(
+        clippedControls,
+        [],
+        `Clipped controls at 320px: ${route}`,
+      );
+    }
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    for (const route of [
+      "home",
+      "journal",
+      "practice/metar",
+      "practice/wind",
+      "practice/maps",
+    ]) {
+      await navigate(route);
+      await screenshot(`desktop-${route.replaceAll("/", "-")}`);
+      if (route === "practice/metar") {
+        await readReport(tafExamples[0].report);
+        await page
+          .locator(".field-taf-timeline")
+          .getByRole("button", { name: /30%/ })
+          .click();
+        await screenshot("desktop-taf");
+        await page.locator(".field-taf-timeline").scrollIntoViewIfNeeded();
+        await page.screenshot({
+          path: path.join(output, "desktop-taf-timeline.png"),
+        });
+      }
+    }
   }
   assert.deepEqual(errors, [], "No uncaught browser errors");
-  assert.deepEqual(policyViolations, [], "No Content Security Policy violations");
-  if (!values.capture)
-  console.log(
-    "PASS: persistent photo collection, edit, postcard, delete, backup round trip, METAR decoding, scenario replay, wind vectors, map controls, mobile/desktop route rendering",
+  assert.deepEqual(
+    policyViolations,
+    [],
+    "No Content Security Policy violations",
   );
+  if (!values.capture)
+    console.log(
+      "PASS: persistent photo collection, edit, postcard, delete, backup round trip, METAR/TAF detection, KLVM forecast timeline, PROB/BECMG/TEMPO, cancellation/error recovery, scenario replay, wind vectors, map controls, mobile/desktop route rendering",
+    );
   console.log(`Screenshots: ${output}`);
 } catch (error) {
   console.error("Browser errors:", errors);
@@ -341,5 +544,6 @@ try {
 } finally {
   await browser?.close();
   if (server?.close) await server.close();
-  else if (server?.httpServer) await new Promise((resolve) => server.httpServer.close(resolve));
+  else if (server?.httpServer)
+    await new Promise((resolve) => server.httpServer.close(resolve));
 }
