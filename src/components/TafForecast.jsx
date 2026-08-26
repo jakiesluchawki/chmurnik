@@ -226,7 +226,7 @@ export function TafForecast({ result }) {
         </ul>
       )}
       {result.remarks && (
-        <details className="field-method">
+        <details className="field-disclosure">
           <summary>RMK: uwagi w oryginale</summary>
           <code>{result.remarks}</code>
           <p>

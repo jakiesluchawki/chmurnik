@@ -545,7 +545,7 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
           )}
         </div>
       </div>
-      <details className="field-method">
+      <details className="field-disclosure">
         <summary>Co zakładamy i czego to nie mierzy?</summary>
         <p>
           {sailing
@@ -754,7 +754,7 @@ function AviationReader({ onSources, onTraining }) {
                 </p>
               )}
               {result.trend && (
-                <details className="field-method">
+                <details className="field-disclosure">
                   <summary>Trend, oddzielony od obserwacji</summary>
                   <code>{result.trend}</code>
                   <p>
@@ -765,7 +765,7 @@ function AviationReader({ onSources, onTraining }) {
                 </details>
               )}
               {result.remarks && (
-                <details className="field-method">
+                <details className="field-disclosure">
                   <summary>RMK: uwagi w oryginale</summary>
                   <code>{result.remarks}</code>
                   <p>

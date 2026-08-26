@@ -1,5 +1,32 @@
 # CHMURNIK Field Companion QA
 
+## 2026-08-26: App Store Release Candidate
+
+- Candidate: `1.0 (20260826214336)`, task 0033. Approved felt artwork,
+  authentic cloud photography, Romie/Roobert and pink/olive/violet identity
+  are preserved; this is release hardening, not a visual redesign.
+- Added readable in-app and standalone help/privacy information. Public
+  routes passed at 320, 390 and 1440 px, including production CSP.
+- Fixed native date-filter overflow, scrolled content beneath the clock and
+  a legacy `field-method` class collision. New workshop disclosures use
+  `field-disclosure`; the existing observer panel is unchanged.
+- Reviewed five actual Release screenshots at 1320 x 2868 from an isolated
+  iPhone 17 Pro Max / iOS 26.5 simulator. Evidence and SHA-256 hashes:
+  `design/app-store/screenshots/`. Screens are unretouched, opaque sRGB PNGs.
+- The screenshots show Today, a real saved photo/hypothesis, the Cirrus
+  monograph, apparent-wind controls and the KLVM TAF timeline. Model results
+  are genuine and uncertain; no fictitious weather or marketing UI is added.
+- Full XCTest run `build/app-store-ui-13.xcresult` passed all four cases.
+  Native library selection, the real model, two saves and relaunch persistence
+  passed. A real library-to-vault file-boundary bug was fixed without loosening
+  the native path guard. Nine stored test JPEGs have no source GPS/capture EXIF.
+- 162 Node tests, nine lesson audits and 58 source links passed. The complete
+  root-production browser flow has no page errors or CSP violations; this
+  includes collection backup/edit/share/delete, reader and training flows.
+- Archive signature and all 80 embedded web files were verified. Upload to
+  Apple succeeded. No physical-camera, low-storage or VoiceOver pass is
+  inferred from the simulator. Device acceptance remains open in 0032/0033.
+
 ## 2026-08-26: METAR / TAF Reader
 
 - User-approved extension: recognize copied TAF without a heading, explain

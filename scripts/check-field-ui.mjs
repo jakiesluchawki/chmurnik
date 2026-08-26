@@ -416,6 +416,16 @@ try {
 
     await navigate("practice/wind");
     await screenshot("05-wind-sailing-mobile");
+    const method = page.locator("details.field-disclosure").first();
+    await method.locator("summary").click();
+    const methodColors = await method.evaluate((element) => ({
+      background: getComputedStyle(element).backgroundColor,
+      summary: getComputedStyle(element.querySelector("summary")).color,
+      paragraph: getComputedStyle(element.querySelector("p")).color,
+    }));
+    assert.equal(methodColors.background, "rgba(0, 0, 0, 0)");
+    assert.equal(methodColors.summary, methodColors.paragraph);
+    await method.locator("summary").click();
     await page.getByRole("slider", { name: /Prędkość jachtu/ }).press("End");
     assert.match(await page.locator(".field-readouts").textContent(), /27,7/);
     await page
@@ -519,6 +529,21 @@ try {
           path: path.join(output, "desktop-taf-timeline.png"),
         });
       }
+    }
+  }
+  if (!values.capture) {
+    for (const route of ["support", "privacy"]) {
+      for (const width of [320, 390, 1440]) {
+        await page.setViewportSize({ width, height: 844 });
+        await navigate(route);
+        await page.getByRole("navigation", { name: "Informacje o aplikacji" }).waitFor();
+        await screenshot(`information-${route}-${width}`);
+      }
+      const response = await page.goto(new URL(`${route}.html`, base).href);
+      assert.equal(response.status(), 200);
+      await page.getByRole("heading", { name: route === "privacy" ? "Prywatność" : "Pomoc", exact: true }).waitFor();
+      assert.ok((await page.locator("main").innerText()).includes("Mieszko Mahboob"));
+      await screenshot(`public-${route}`);
     }
   }
   assert.deepEqual(errors, [], "No uncaught browser errors");

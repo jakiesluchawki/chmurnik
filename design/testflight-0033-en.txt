@@ -1,0 +1,12 @@
+First App Store release candidate: 1.0 (20260826214336).
+
+- Offline help and privacy policy, accessible from Today.
+- Fixed saving a library-selected photograph to the private collection by creating a local copy without weakening the native file-path boundary.
+- Fixed the date-filter width, scrolled content under the status bar, and workshop disclosure contrast.
+- METAR observations and TAF forecasts remain separate, with a forecast timeline for FM, TEMPO, BECMG and PROB groups.
+
+Back up important observations before updating. Do not uninstall the app.
+
+Please check on your iPhone: two consecutive camera captures, cancellation, library selection, saving, and reopening the collection after terminating the app. Check existing entries and offline use. Include the device model, iOS version and build number in any report.
+
+Simulator tests exercise the actual model and persistent store, but do not test a physical camera. This is still a beta, not the public App Store release. Photo hypotheses can be wrong; weather tools are educational and do not provide flight or sailing clearance.

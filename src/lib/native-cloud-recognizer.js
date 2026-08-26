@@ -81,7 +81,7 @@ export async function captureCloudPhoto(source) {
       allowMultipleSelection: false,
       limit: 1,
     })).results?.[0];
-  return normalizeCapturedPhoto(result);
+  return { ...normalizeCapturedPhoto(result), source };
 }
 
 export async function recognizeCloudPhoto(photo) {

@@ -1,5 +1,8 @@
 # CHMURNIK 1.0: Gotowość Do App Store
 
+To historyczny audyt sprzed rozpoczęcia przygotowania publikacji.
+Aktualne wyniki i pozostałe formalności: [evidence wydania](app-store-release-2026-08-26.md).
+
 ## Wniosek
 
 Zakres produktu wystarcza na wartościowe 1.0: prawdziwy atlas chmur,

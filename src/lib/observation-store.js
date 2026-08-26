@@ -1,5 +1,6 @@
 import { Capacitor, registerPlugin } from "@capacitor/core";
 import { loadJournalForMigration } from "./storage.js";
+import { compactObservationPhoto } from "./journal.js";
 import {
   MAX_OBSERVATIONS,
   normalizeObservation,
@@ -151,6 +152,26 @@ export async function listObservations() {
   return entries.sort((a, b) => b.createdAt - a.createdAt);
 }
 
+export async function nativeObservationPhoto(capturedPhoto) {
+  if (capturedPhoto?.source !== "photos") {
+    return {
+      photoPath: capturedPhoto?.uri || capturedPhoto?.path,
+      photoBase64: capturedPhoto?.base64,
+    };
+  }
+  // The gallery may return a Photos-library URL outside our app container.
+  // Copy its selected pixels through the local preview, keeping the vault's path guard.
+  const url = new URL(capturedPhoto.previewUrl);
+  if (url.protocol !== "capacitor:" || url.host !== "localhost"
+      || !url.pathname.startsWith("/_capacitor_file_/")) {
+    throw new TypeError("Zdjęcie musi pochodzić z lokalnej biblioteki.");
+  }
+  const response = await fetch(url.href);
+  if (!response.ok) throw new Error("Nie udało się odczytać wybranego zdjęcia.");
+  const photo = await compactObservationPhoto(await response.blob());
+  return { photoBase64: photo.split(",")[1] };
+}
+
 export async function saveObservation(entry, capturedPhoto = null) {
   await prepare();
   const photo =
@@ -163,8 +184,7 @@ export async function saveObservation(entry, capturedPhoto = null) {
   if (isIOS()) {
     await Vault.save({
       entry: JSON.stringify(normalized),
-      photoPath: capturedPhoto?.uri || capturedPhoto?.path,
-      photoBase64: capturedPhoto?.base64,
+      ...await nativeObservationPhoto(capturedPhoto),
     });
   } else {
     await writeTransaction(["entries", "photos"], async (tx) => {

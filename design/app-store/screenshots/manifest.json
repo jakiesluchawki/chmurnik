@@ -1,0 +1,50 @@
+{
+  "locale": "pl",
+  "displayType": "APP_IPHONE_67",
+  "representsCandidateBuild": "20260826214336",
+  "device": "iPhone 17 Pro Max",
+  "os": "iOS 26.5 Simulator",
+  "capture": "XCTest Release; genuine bundled app, no UI retouching or injected recognition results.",
+  "screenshots": [
+    {
+      "file": "01-dzis.png",
+      "source": "build/app-store-ui-11-attachments/7FD4B6AF-3418-47F9-A0D0-AF94EF8C4CFE.png",
+      "testAttachment": "01-dzis_0_9A6BEBF7-2970-43A4-AA78-43691FC53D9A.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "ab352c5f3043d1c6ca79e22b16217e4553b99635b48629dc6f181609ca3d6d87"
+    },
+    {
+      "file": "02-moje-niebo.png",
+      "source": "build/app-store-ui-11-attachments/99189A40-ED17-4A54-BB3F-9F2C3ED1E2AF.png",
+      "testAttachment": "05-moje-niebo-2_0_D45D287B-21BF-4FAF-9BA4-FAC3FCE8BB17.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "0fd1a1ead25cf099dc974c434cd5895176e0f874f1dbe9080caa3185f75758f4"
+    },
+    {
+      "file": "03-atlas.png",
+      "source": "build/app-store-ui-12-attachments/4F2935D0-8FDD-425F-9E8A-B8FD6C9E3438.png",
+      "testAttachment": "store-atlas-cirrus_0_1FD04894-9C56-479F-925F-F8E7D237DB0C.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "8bf12063208201565128488eb662ea5b4b13a56904ad912c27c2277de4970a8d"
+    },
+    {
+      "file": "04-wiatr.png",
+      "source": "build/app-store-ui-12-attachments/C3068F9D-2EBB-4AFB-A67C-89E2258D1725.png",
+      "testAttachment": "store-wind-tool_0_AC5538DC-4847-4FA0-8F90-E42B60C388F3.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "b185a8b474ee0b50e53f72b43ec217f2768b63ec78ef37a669e9bbda57d53acf"
+    },
+    {
+      "file": "05-taf.png",
+      "source": "build/app-store-ui-12-attachments/96DD6EF9-FD73-423D-8C81-EF73D9A3D1F2.png",
+      "testAttachment": "store-taf-timeline_0_D15D28E0-5D1B-42D6-A1C0-854FFD8BE864.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "c04f5d801e888fe968d79a42b95c19ad654d6c223184eedcc5eb0bf8168b5fdf"
+    }
+  ]
+}

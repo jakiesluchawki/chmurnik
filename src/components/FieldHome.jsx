@@ -110,6 +110,11 @@ export function FieldHome({
           <span>Warstwy i sondaże</span>
           <ArrowRight size={18} />
         </button>
+        <button onClick={() => navigate("support")}>
+          <Info size={21} />
+          <span>Pomoc i prywatność</span>
+          <ArrowRight size={18} />
+        </button>
       </nav>
     </main>
   );

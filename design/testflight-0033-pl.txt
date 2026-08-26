@@ -1,0 +1,12 @@
+Kandydat do pierwszego wydania w App Store: 1.0 (20260826214336).
+
+- Pomoc i polityka prywatności dostępne również offline, z ekranu Dziś.
+- Poprawiony zapis zdjęcia wybranego z biblioteki do Mojej kolekcji: lokalna kopia nie wymaga dostępu do pliku poza kontenerem aplikacji.
+- Poprawione pole daty, odstęp od zegara i czytelność objaśnień w pracowniach.
+- METAR i TAF pozostają oddzielone; prognoza ma osobną oś czasu i grupy FM, TEMPO, BECMG oraz PROB.
+
+Przed aktualizacją zrób kopię ważnych obserwacji. Nie usuwaj aplikacji.
+
+Prosimy sprawdzić na iPhonie: dwa kolejne zdjęcia z aparatu, anulowanie, wybór zdjęcia z biblioteki, zapis oraz ponowne otwarcie kolekcji po zamknięciu aplikacji. Sprawdź wcześniejsze wpisy i działanie offline. Podaj model telefonu, wersję iOS i numer builda przy zgłoszeniu błędu.
+
+Automatyczne testy symulatora sprawdzają rzeczywisty model i zapis. Nie zastępują testu fizycznego aparatu. To nadal beta, nie publiczna premiera w App Store. Asystent zdjęć może się mylić; narzędzia pogodowe są edukacyjne, nie stanowią zgody na lot lub wyjście na wodę.

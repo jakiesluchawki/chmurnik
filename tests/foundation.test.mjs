@@ -80,7 +80,7 @@ test("hero copy and actions remain separate from the artwork", async () => {
 
   assert.ok(app.indexOf('className="hero-content"') < app.indexOf('className="hero-visual"'));
   assert.doesNotMatch(app, /Ilustracja dekoracyjna wygenerowana dla projektu/);
-  assert.match(app, /!nativeLayout && !\["home", "journal", "practice"\]\.includes\(validRoute\)/);
+  assert.match(app, /!nativeLayout && !\["home", "journal", "practice", "support", "privacy"\]\.includes\(validRoute\)/);
   assert.match(app, /<FieldHome[\s\S]*onRecognition=\{openRecognition\}/);
   assert.match(redesign, /\.hero-visual\s*\{[^}]*margin: 34px auto 0/s);
   assert.match(redesign, /\.hero-image\s*\{[^}]*position: relative/s);
@@ -220,7 +220,13 @@ test("the shared host serves production security headers", async () => {
   assert.match(config, /Header always set Cross-Origin-Resource-Policy "same-origin"/);
   assert.match(config, /RewriteCond %\{HTTPS\} !=on/);
   assert.match(config, /RewriteRule \^ https:\/\/chmurnik\.cloud%\{REQUEST_URI\}/);
-  assert.match(config, /index\\\.html\|manifest\\\.webmanifest\|service-worker\\\.js/);
+  const noCacheBlock = [...config.matchAll(/<FilesMatch "([^"]+)">\s*Header set Cache-Control "no-cache, no-store, must-revalidate"\s*<\/FilesMatch>/g)][0];
+  assert.ok(noCacheBlock, "a no-cache rule must exist for documents");
+  const noCacheFiles = new RegExp(noCacheBlock[1]);
+  for (const name of ["index.html", "privacy.html", "support.html", "manifest.webmanifest", "service-worker.js"]) {
+    assert.ok(noCacheFiles.test(name), name);
+  }
+  assert.equal(noCacheFiles.test("assets/index-hash.js"), false);
   assert.match(config, /Cache-Control "no-cache, no-store, must-revalidate"/);
 });
 

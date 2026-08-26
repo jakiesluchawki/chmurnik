@@ -4,6 +4,7 @@ import { FieldHome } from "./components/FieldHome.jsx";
 import { FieldPractice, PracticeLinks } from "./components/FieldPractice.jsx";
 import { SkyCollection } from "./components/SkyCollection.jsx";
 import { PhotoFrame } from "./components/PhotoFrame.jsx";
+import { ApplicationInfo } from "./components/ApplicationInfo.jsx";
 import { observationFromRecognition } from "./lib/observations.js";
 import { saveObservation } from "./lib/observation-store.js";
 import {
@@ -5271,6 +5272,8 @@ function Footer({ navigate }) {
       <p>Polski, bezpłatny atlas i pracownia obserwacji chmur. Bez kont, reklam, śledzenia i dźwięku.</p>
       <div>
         <button onClick={() => navigate("sources")}>Źródła</button>
+        <button onClick={() => navigate("support")}>Pomoc</button>
+        <button onClick={() => navigate("privacy")}>Prywatność</button>
         <a href="https://github.com/jakiesluchawki/chmurnik" target="_blank" rel="noreferrer">GitHub <ArrowSquareOut size={14} /></a>
       </div>
     </footer>
@@ -5316,7 +5319,7 @@ export function App() {
 
   const [routeName, routeDetail, routePayload] = route.split("/");
   const validRoute = useMemo(
-    () => [...navItems.map((item) => item.id), "sources", "practice"].includes(routeName) ? routeName : "home",
+    () => [...navItems.map((item) => item.id), "sources", "practice", "support", "privacy"].includes(routeName) ? routeName : "home",
     [routeName],
   );
   const routeComparisonIds = routeDetail === "compare"
@@ -5447,13 +5450,14 @@ export function App() {
         {validRoute === "layers" && <LayersPage key={routeDetail} initialTab={routeDetail} {...pageProps} />}
         {validRoute === "journal" && <SkyCollection navigate={navigate} selectedId={routeDetail ? (() => { try { return decodeURIComponent(routeDetail); } catch { return null; } })() : null} onCapture={() => openPhoto("camera")} captureAvailable={photoRecognitionAvailable} />}
         {validRoute === "sources" && <SourcesPage onSources={setSourceIds} />}
+        {["support", "privacy"].includes(validRoute) && <ApplicationInfo page={validRoute} navigate={navigate} />}
       </div>
       <Footer navigate={navigate} />
       <BottomNav
         route={validRoute}
         navigate={navigate}
       />
-      {!nativeLayout && !["home", "journal", "practice"].includes(validRoute) && (
+      {!nativeLayout && !["home", "journal", "practice", "support", "privacy"].includes(validRoute) && (
         <button className="quick-test-button" onClick={() => openRecognition()}>
           <Eye size={20} weight="bold" />
           <span>Sprawdź się</span>

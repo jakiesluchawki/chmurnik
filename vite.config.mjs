@@ -3,6 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { publicInformationPages } from "./scripts/public-info-pages.mjs";
 
 const base = process.env.CHMURNIK_BASE_PATH || "/";
 
@@ -55,5 +56,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react(), completeOfflineManifest()],
+  plugins: [react(), publicInformationPages(), completeOfflineManifest()],
 });

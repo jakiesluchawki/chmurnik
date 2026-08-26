@@ -2,13 +2,15 @@
 id: "0032"
 title: "Connect iOS capture to a private observation collection"
 type: FEATURE
-status: active
+status: blocked
 related_adr: ["0001"]
 related_tasks: ["0031", "0026", "0030", "0033"]
 tags: ["ios", "product-design", "priority-high", "effort-large", "aviation", "sailing"]
 links:
   - "../../../design/ios-next-2026-08-26.md"
 history:
+  - { date: "2026-08-26", status: blocked, who: codex, by: ["0033"],
+      note: "Implementation is delivered internally; shared device acceptance is now owned by release task 0033 and is not yet verified." }
   - date: "2026-08-26"
     status: backlog
     who: codex

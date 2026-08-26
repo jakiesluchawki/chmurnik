@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-08-26 21:45. Do not edit manually.
+> Auto-generated on 2026-08-26 23:55. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,22 +9,23 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 1 | 0 | 3 | 29 | 1 |
+| 1 | 1 | 2 | 29 | 1 |
 
 ## Ready to Start
 
 These tasks have no blockers (or all blockers completed):
 
-- **Task 0032**: [Connect iOS capture to a private observation collection](lore/1-tasks/active/0032_FEATURE_ios-observation-collection.md) — blocks 0 tasks (low)
+- **Task 0032**: [Connect iOS capture to a private observation collection](lore/1-tasks/blocked/0032_FEATURE_ios-observation-collection.md) — blocks 0 tasks (low)
+- **Task 0033**: [Prepare and submit the first public App Store release](lore/1-tasks/active/0033_FEATURE_app-store-launch.md) — blocks 0 tasks (low)
 
 ## Task Status
 
 | ID | Title | Type | Status | Blocked By | Blocks | ADRs |
 |:---|:------|:-----|:-------|:-----------|:-------|:-----|
-| 0032 | [Connect iOS capture to a private ob...](lore/1-tasks/active/0032_FEATURE_ios-observation-collection.md) | FEATURE | **active** | — | — | 0001 |
+| 0033 | [Prepare and submit the first public...](lore/1-tasks/active/0033_FEATURE_app-store-launch.md) | FEATURE | **active** | — | — | 0001 |
+| 0032 | [Connect iOS capture to a private ob...](lore/1-tasks/blocked/0032_FEATURE_ios-observation-collection.md) | FEATURE | blocked | — | — | 0001 |
 | 0025 | [Lazy-load specialist workshops](lore/1-tasks/backlog/0025_PERFORMANCE_lazy-load-workshops.md) | PERFORMANCE | backlog | — | — | — |
 | 0026 | [Build an opt-in expert-reviewed fie...](lore/1-tasks/backlog/0026_RESEARCH_opt-in-field-benchmark.md) | RESEARCH | backlog | — | — | — |
-| 0033 | [Prepare and submit the first public...](lore/1-tasks/backlog/0033_FEATURE_app-store-launch.md) | FEATURE | backlog | — | — | 0001 |
 | 0001 | [Build and publish Cloud Recognition...](lore/1-tasks/archive/0001_FEATURE_cloud-recognition-v1/README.md) | FEATURE | completed | — | — | — |
 | 0002 | [Research and ship on-device cloud r...](lore/1-tasks/archive/0002_RESEARCH_automatic-cloud-recognition/README.md) | RESEARCH | completed | — | — | — |
 | 0003 | [Expand the cloud atlas into a profe...](lore/1-tasks/archive/0003_FEATURE_encyclopedic-cloud-atlas/README.md) | FEATURE | completed | — | — | — |
