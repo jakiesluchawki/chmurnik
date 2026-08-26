@@ -1,4 +1,27 @@
 export const sources = {
+  metOfficeBeaufort: {
+    id: "metOfficeBeaufort",
+    organization: "Met Office",
+    title: "Beaufort wind force scale",
+    label: "Met Office: skala Beauforta",
+    url: "https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale",
+    kind: "Skala meteorologiczna",
+    trust: "Oficjalna tabela zakresów prędkości. Opis morza dotyczy rozwiniętej fali na otwartym akwenie.",
+    scope: "Stopnie Beauforta, węzły oraz ograniczenia wnioskowania o fali z samego wiatru.",
+    checkText: "Beaufort",
+    retrieved: "26 sierpnia 2026",
+  },
+  orcWindVectors: {
+    id: "orcWindVectors",
+    organization: "Offshore Racing Congress",
+    title: "ORC Speed Guide Explanation: Appendix A, Mathematical Relations",
+    label: "ORC: wiatr rzeczywisty i pozorny",
+    url: "https://orc.org/uploads/files/Rules-Regulations/2023/Speed-Guide-Explanation-2023.pdf",
+    kind: "Wskazówki żeglarskie",
+    trust: "Oficjalny przewodnik ORC podaje zależności matematyczne pomiędzy wiatrem rzeczywistym, pozornym i prędkością jachtu.",
+    scope: "Dodatek A: wektory wiatru. Pracownia upraszcza sytuację do wspólnego układu odniesienia bez prądu i dryfu; nie wyznacza osiągów ani bezpiecznego ożaglowania jachtu.",
+    retrieved: "26 sierpnia 2026",
+  },
   wmoAtlas: {
     id: "wmoAtlas",
     organization: "World Meteorological Organization",

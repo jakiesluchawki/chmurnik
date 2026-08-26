@@ -53,6 +53,9 @@ describe the actual learner activity present in the product.
   guidance, and interface documentation.
 - State uncertainty and product limits. Do not turn educational material into
   an operational authorization.
+- Practical workshops need an observable decision, useful feedback, and a
+  replay path. Use source-backed scenarios, clearly label synthetic reports,
+  and reward correct reasoning rather than speed or unsafe risk-taking.
 - Paraphrase; do not copy long source passages.
 
 ## Feedback Integration

@@ -58,6 +58,14 @@ export function loadJournal() {
   return read(KEYS.journal, []);
 }
 
+export function loadJournalForMigration() {
+  const value = window.localStorage.getItem(KEYS.journal);
+  if (value == null) return [];
+  const entries = JSON.parse(value);
+  if (!Array.isArray(entries)) throw new TypeError("Nie można odczytać starego dziennika. Oryginalna kopia pozostała bez zmian.");
+  return entries;
+}
+
 export function saveJournal(entries) {
   return write(KEYS.journal, entries);
 }

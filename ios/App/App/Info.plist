@@ -27,9 +27,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>CHMURNIK używa aparatu wyłącznie do lokalnej analizy sfotografowanych chmur.</string>
+	<string>CHMURNIK używa aparatu do lokalnej analizy chmur i zachowywania wybranych zdjęć w Twojej prywatnej kolekcji.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>CHMURNIK odczytuje wybrane zdjęcie wyłącznie na tym urządzeniu, aby podpowiedzieć rodzinę chmury.</string>
+	<string>CHMURNIK odczytuje wybrane zdjęcie na tym urządzeniu, aby podpowiedzieć rodzinę chmury i pozwolić Ci zapisać własną obserwację.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

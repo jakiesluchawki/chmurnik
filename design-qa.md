@@ -1,4 +1,52 @@
-# CHMURNIK Compact Guided Experience QA
+# CHMURNIK Field Companion QA
+
+## 2026-08-26: iOS-First Field Companion
+
+- Selected identity: `design/approved/chmurnik-mobile-density-v1.png`.
+- Approved interaction direction: `design/ios-next-2026-08-26.md`, task 0032.
+- Current captures: `design/qa/2026-08-26-field-companion/`.
+- Evidence: isolated headless Brave, iOS-layout mode at 390 x 844 and
+  320 x 740; web desktop at 1440 x 1000. These are not hardware-camera tests.
+- Production web checks used both `/` and `/chmurnik/` with the actual
+  `public/.htaccess` response headers. No page errors or CSP violations.
+
+### Visual Findings
+
+- The three-destination native navigation is an approved departure from
+  the original five-destination concept, not a fidelity defect. The website
+  keeps all five destinations and all existing lessons.
+- The original Romie/Roobert, pink/olive/violet palette, outlined controls,
+  licensed cloud photographs, and felt observer object remain in use.
+- Home now privileges capture and a private collection. Tool/training tabs
+  put controls ahead of lengthy explanation. Sources remain one tap away.
+- Fixed default browser button borders in the photo grid, oversized native
+  workshop headings, overly small compass labels, and wrapping source actions.
+- Interactive controls remain within the viewport at 320 px. Disclosure
+  sections preserve detailed scientific explanations without flattening lessons.
+- Reference and current viewport images were inspected directly. A combined
+  pixel-match board is not applicable to the explicitly approved navigation change.
+
+### Functional Evidence
+
+- Persistent photo, edit, favorite, postcard preview, export, delete and
+  backup restoration passed through visible controls.
+- METAR variable wind never creates a precise crosswind; missing sky data
+  never becomes an absent ceiling. Wind from-direction and north references
+  stay explicit. Calm air has no fabricated wind arrow.
+- Twelve synthetic cases have unique answers, feedback, and retry paths.
+  A wrong-answer round followed by retrying only the missed case passed.
+- Two repeated photo-fixture cycles preserve the whole frame and model
+  hypothesis while leaving user confirmation empty after reload.
+
+### Remaining Acceptance
+
+Physical iPhone camera, permission changes, backgrounding, real low storage,
+VoiceOver, large text, and sunlight checks remain unverified. Internal beta
+preparation is allowed; external promotion awaits that acceptance.
+
+Current result: automated layout/function gates passed; physical acceptance open.
+
+## Historical QA: Compact Guided Experience (2026-06-21)
 
 - Source visual truth path: `design/approved/chmurnik-mobile-density-v1.png`
 - Implementation screenshot path: `design/qa/2026-06-21-compact-guided/08-home-ios.png`

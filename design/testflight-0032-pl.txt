@@ -1,0 +1,13 @@
+CHMURNIK: Twoje niebo, na wodzie i w powietrzu.
+
+Nowy początek na iPhonie: Dziś, Moje niebo, Atlas. Zrób zdjęcie i zachowaj cały kadr z hipotezą modelu jednym przyciskiem. Wskaż fragment do analizy, porównaj prawdziwe zdjęcia, dodaj własną notatkę lub rozpoznanie. Hipoteza modelu nigdy nie staje się Twoim potwierdzeniem automatycznie.
+
+Moje niebo: fotograficzna kolekcja, ulubione, porównanie dwóch kadrów, 10 rodzajów do zaobserwowania, pocztówki bez miejsca i prywatnych notatek, eksport i import kopii.
+
+Pracownie: wklej i rozczytaj METAR, sprawdź wiatr boczny i czołowy, pobaw się wiatrem pozornym na jachcie i interpretacją map. Każda pracownia ma cztery scenariusze z wyjaśnieniem i powtórką trudniejszych przypadków. Przykłady są syntetyczne. To nauka i pomoc w odczycie, nie odprawa lotnicza ani zgoda na lot lub rejs.
+
+Ta beta zmienia sposób przechowywania kolekcji. Najpierw wykonaj kopię dotychczasowego dziennika. Migracja zachowuje jego lokalną kopię ratunkową. Zdjęcia i analiza pozostają na urządzeniu; systemowa kopia iPhone'a oraz świadomy eksport mogą je przenieść poza nie.
+
+Prosimy sprawdzić na iPhonie: kilka kolejnych zdjęć i anulowań, zapis i otwarcie kolekcji po ponownym uruchomieniu, wybór z biblioteki, powrót z tła, tryb samolotowy, eksport/przywrócenie i VoiceOver. Testy automatyczne, testy przechowywania i kompilacja iOS przeszły; fizyczny aparat i zachowanie przy małej ilości miejsca nie zostały jeszcze zweryfikowane dla tej bety. Wagi modelu rozpoznawania nie zmieniły się.
+
+Dziękujemy za uważne obserwacje i feedback.

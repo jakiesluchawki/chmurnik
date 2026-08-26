@@ -86,11 +86,11 @@ export async function captureCloudPhoto(source) {
 
 export async function recognizeCloudPhoto(photo) {
   if (import.meta.env.VITE_QA_PHOTO_RECOGNITION === "result") {
-    return interpretCloudProbabilities(QA_PROBABILITIES);
+    return { ...interpretCloudProbabilities(QA_PROBABILITIES), modelVersion: "qa-fixture" };
   }
   const native = await CloudRecognizer.classify(buildCloudRecognizerInput(photo));
-  return interpretCloudProbabilities(native.probabilities, {
+  return { ...interpretCloudProbabilities(native.probabilities, {
     minimumConfidence: native.minimumConfidence,
     marginThreshold: native.marginThreshold,
-  });
+  }), modelVersion: native.modelVersion || "unknown" };
 }

@@ -50,9 +50,16 @@ Writing production code without an active Lore task is forbidden.
   identity. Keep the interface calm, compact, and mature; real cloud imagery
   must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
-- The iOS release packages the complete existing product without adding new
-  modules. It should feel deliberately designed for iPhone rather than like a
-  browser embedded in a shell.
+- As explicitly requested on 2026-08-26, iOS may have its own navigation,
+  workflows, and native features; feature parity with the website is not a
+  requirement. Share the scientific content, authentic cloud photography,
+  and brand identity while designing iPhone interactions for field use.
+- The user approved the iOS field-companion direction on 2026-08-26 and
+  expanded the audience to sailors and pilots. Practical METAR, wind, and
+  map-reading workshops must be playable, clear, useful, and source-backed.
+  Label synthetic reports, unsupported decoding, and operational limits;
+  never present a training score as a flight or sailing authorization.
+  The selected study is `design/ios-next-2026-08-26.md`.
 - The current selected visual truth is
   `design/approved/chmurnik-mobile-density-v1.png`; use the earlier
   `design/reference/atlas-swiatla-mobile.png` only as historical context.

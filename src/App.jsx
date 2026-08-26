@@ -1,4 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Capacitor } from "@capacitor/core";
+import { FieldHome } from "./components/FieldHome.jsx";
+import { FieldPractice, PracticeLinks } from "./components/FieldPractice.jsx";
+import { SkyCollection } from "./components/SkyCollection.jsx";
+import { PhotoFrame } from "./components/PhotoFrame.jsx";
+import { observationFromRecognition } from "./lib/observations.js";
+import { saveObservation } from "./lib/observation-store.js";
 import {
   AirplaneTilt,
   ArrowLeft,
@@ -96,18 +103,14 @@ import { calculatePlacement } from "./lib/placement.js";
 import { soundingPath, soundingPoint, soundingSummary } from "./lib/sounding.js";
 import {
   clearAviationReview,
-  clearObservationDraft,
   clearPhotoFeedback,
   loadAviationReview,
-  loadJournal,
   loadLessonPosition,
-  loadObservationDraft,
   loadOnboarding,
   loadPhotoFeedback,
   loadProfile,
   loadProgress,
   loadRecognitionStats,
-  saveJournal,
   saveAviationReview,
   saveLessonPosition,
   saveObservationDraft,
@@ -140,17 +143,12 @@ import {
   weatherLayerReading,
 } from "./lib/weather-layers.js";
 import { windFromCloudMotion } from "./lib/wind.js";
+import { compactObservationPhoto } from "./lib/journal.js";
 import {
   localDateKey,
   millisecondsUntilNextLocalDay,
   selectDailyCloud,
 } from "./lib/daily-cloud.js";
-import {
-  compactObservationPhoto,
-  mergeJournalEntries,
-  parseJournalBackup,
-  serializeJournalBackup,
-} from "./lib/journal.js";
 import {
   captureCloudPhoto,
   isPhotoCaptureCancellation,
@@ -166,6 +164,13 @@ const navItems = [
   { id: "layers", label: "Warstwy", icon: Stack },
   { id: "journal", label: "Dziennik", icon: Notebook },
 ];
+
+const nativeNavigation = [
+  { id: "home", label: "Dziś", icon: House },
+  { id: "journal", label: "Moje niebo", icon: ImageSquare },
+  { id: "atlas", label: "Atlas", icon: Cloud },
+];
+const nativeLayout = Capacitor.getPlatform() === "ios" || import.meta.env.VITE_QA_NATIVE_LAYOUT === "1";
 
 const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -321,6 +326,7 @@ function SourceDrawer({ ids, onClose }) {
 
 function AppHeader({ route, navigate }) {
   const [open, setOpen] = useState(false);
+  const items = nativeLayout ? nativeNavigation : navItems;
 
   return (
     <header className="app-header">
@@ -330,7 +336,7 @@ function AppHeader({ route, navigate }) {
         <span className="brand-descriptor"><i aria-hidden="true" /> atlas chmur i atmosfery</span>
       </button>
       <nav className="desktop-nav" aria-label="Główna nawigacja">
-        {navItems.map((item) => (
+        {items.map((item) => (
           <button
             key={item.id}
             className={route === item.id ? "active" : ""}
@@ -346,7 +352,7 @@ function AppHeader({ route, navigate }) {
       </button>
       {open && (
         <div className="mobile-menu">
-          {navItems.map((item) => (
+          {[...navItems, { id: "practice/metar", label: "Pracownia terenowa", icon: Compass }].map((item) => (
             <button
               key={item.id}
               onClick={() => {
@@ -366,16 +372,18 @@ function AppHeader({ route, navigate }) {
 }
 
 function BottomNav({ route, navigate }) {
+  const items = nativeLayout ? nativeNavigation : navItems;
+  const active = nativeLayout && ["learn", "layers", "practice"].includes(route) ? "atlas" : route;
   return (
     <nav className="bottom-nav" aria-label="Nawigacja mobilna">
-      {navItems.map((item) => (
+      {items.map((item) => (
         <button
           key={item.id}
-          className={route === item.id ? "active" : ""}
+          className={active === item.id ? "active" : ""}
           onClick={() => navigate(item.id)}
-          aria-current={route === item.id ? "page" : undefined}
+          aria-current={active === item.id ? "page" : undefined}
         >
-          <item.icon size={22} weight={route === item.id ? "fill" : "regular"} />
+          <item.icon size={22} weight={active === item.id ? "fill" : "regular"} />
           <span>{item.label}</span>
         </button>
       ))}
@@ -496,6 +504,7 @@ function HomePage({
         </figure>
       </section>
 
+      <section className="web-field-shortcuts"><span className="eyebrow">Pracownia terenowa · dla żeglarzy i pilotów</span><PracticeLinks navigate={navigate} /></section>
       {daily && (
         <section className="daily-sky" aria-labelledby="daily-sky-title">
           <figure>
@@ -746,11 +755,18 @@ const onboardingSteps = [
   },
 ];
 
+const nativeOnboardingSteps = [
+  { ...onboardingSteps[0], eyebrow: "01 · Dziś", title: "Zauważ. Zrób zdjęcie.", body: "Przycisk Obserwuj otwiera aparat. Model na iPhonie podpowie rodzinę chmur; to hipoteza, którą sprawdzisz na prawdziwych zdjęciach." },
+  { ...onboardingSteps[2], eyebrow: "02 · Moje niebo", title: "Twoje kadry mają ciąg dalszy", body: "Zachowaj całe zdjęcie jednym dotknięciem. Dodaj własne rozpoznanie, porównuj obserwacje i wyślij pocztówkę bez prywatnych notatek." },
+  { ...onboardingSteps[1], eyebrow: "03 · Atlas i pracownie", title: "Zrozum, zanim ruszysz", body: "METAR, wiatr na pokładzie i mapy Windy: narzędzia i krótkie scenariusze z wyjaśnieniem. Pełne lekcje i atlas są zawsze pod ręką." },
+];
+
 function OnboardingModal({ onClose, onFinish }) {
   const [step, setStep] = useState(0);
   const dialogRef = useDialogFocus(onClose, false);
-  const item = onboardingSteps[step];
-  const isLast = step === onboardingSteps.length - 1;
+  const steps = nativeLayout ? nativeOnboardingSteps : onboardingSteps;
+  const item = steps[step];
+  const isLast = step === steps.length - 1;
 
   return (
     <div className="modal-backdrop modal-backdrop--center" onMouseDown={onClose}>
@@ -773,8 +789,8 @@ function OnboardingModal({ onClose, onFinish }) {
           <span className="eyebrow">{item.eyebrow}</span>
           <h2 id="onboarding-title">{item.title}</h2>
           <p>{item.body}</p>
-          <div className="onboarding-progress" aria-label={`Krok ${step + 1} z ${onboardingSteps.length}`}>
-            {onboardingSteps.map((entry, index) => (
+          <div className="onboarding-progress" aria-label={`Krok ${step + 1} z ${steps.length}`}>
+            {steps.map((entry, index) => (
               <span key={entry.title} className={index <= step ? "active" : ""} />
             ))}
           </div>
@@ -3211,8 +3227,8 @@ function WindyDecoderPanel({
   );
 }
 
-function LayersPage({ onSources }) {
-  const [tab, setTab] = useState("decoder");
+function LayersPage({ onSources, initialTab = "decoder", navigate }) {
+  const [tab, setTab] = useState(["decoder", "lab", "wind", "metar", "hazards", "sounding"].includes(initialTab) ? initialTab : "decoder");
   const [terrain, setTerrain] = useState(300);
   const [pressure, setPressure] = useState(850);
   const selected = pressureLevels[pressure];
@@ -3248,6 +3264,7 @@ function LayersPage({ onSources }) {
         />
       </header>
 
+      <PracticeLinks navigate={navigate} />
       <div className="segmented-control layers-tabs">
         {[["decoder", "Czytnik Windy"], ["lab", "Wysokość"], ["wind", "Wiatr z nieba"], ["metar", "METAR / TAF"], ["hazards", "Zagrożenia"], ["sounding", "Sondaż i Skew-T"]].map(([id, label]) => (
           <button key={id} className={tab === id ? "active" : ""} onClick={() => setTab(id)}>{label}</button>
@@ -4825,238 +4842,6 @@ function SoundingDiagram({ scenario, visible }) {
   );
 }
 
-function JournalPage({ navigate }) {
-  const [entries, setEntries] = useState(loadJournal);
-  const [draft] = useState(loadObservationDraft);
-  const [formOpen, setFormOpen] = useState(entries.length === 0 || Boolean(draft));
-  const [notice, setNotice] = useState(null);
-  const [photoBusy, setPhotoBusy] = useState(false);
-  const importRef = useRef(null);
-  const photoRef = useRef(null);
-  const [form, setForm] = useState({
-    date: draft?.date || localDateKey(),
-    location: draft?.location || "",
-    cloud: draft?.cloud || "",
-    confidence: draft?.confidence || "średnia",
-    evidence: draft?.evidence || "",
-    photo: draft?.photo || null,
-  });
-
-  useEffect(() => {
-    if (!formOpen || !(form.location || form.cloud || form.evidence)) return undefined;
-    const timer = window.setTimeout(() => {
-      const { photo, ...textDraft } = form;
-      saveObservationDraft(textDraft);
-    }, 300);
-    return () => window.clearTimeout(timer);
-  }, [form, formOpen]);
-
-  const persist = (next) => {
-    if (!saveJournal(next)) {
-      setNotice({
-        kind: "error",
-        message: "Nie udało się zapisać obserwacji. Pamięć przeglądarki może być pełna lub zablokowana; formularz pozostał otwarty.",
-      });
-      return false;
-    }
-    setEntries(next);
-    setNotice(null);
-    return true;
-  };
-
-  const submit = (event) => {
-    event.preventDefault();
-    const entry = { ...form, id: crypto.randomUUID(), createdAt: Date.now() };
-    const next = [entry, ...entries];
-    if (!persist(next)) return;
-    clearObservationDraft();
-    setForm({
-      date: localDateKey(),
-      location: "",
-      cloud: "",
-      confidence: "średnia",
-      evidence: "",
-      photo: null,
-    });
-    setFormOpen(false);
-    setNotice({ kind: "success", message: "Obserwacja została zapisana na tym urządzeniu." });
-  };
-
-  const remove = (id) => {
-    const next = entries.filter((entry) => entry.id !== id);
-    persist(next);
-  };
-
-  const attachPhoto = async (event) => {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
-    setPhotoBusy(true);
-    try {
-      const photo = await compactObservationPhoto(file);
-      setForm((current) => ({ ...current, photo }));
-      setNotice(null);
-    } catch {
-      setNotice({ kind: "error", message: "Nie udało się przygotować zdjęcia. Wybierz inny plik obrazu." });
-    } finally {
-      setPhotoBusy(false);
-    }
-  };
-
-  const exportJournal = () => {
-    try {
-      const contents = serializeJournalBackup(entries);
-      const url = URL.createObjectURL(new Blob([contents], { type: "application/json" }));
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `chmurnik-dziennik-${localDateKey()}.json`;
-      document.body.append(link);
-      link.click();
-      link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch {
-      setNotice({ kind: "error", message: "Nie udało się przygotować kopii dziennika." });
-    }
-  };
-
-  const importJournal = async (event) => {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
-    try {
-      const incoming = parseJournalBackup(await file.text());
-      const merged = mergeJournalEntries(entries, incoming);
-      if (!persist(merged)) return;
-      setNotice({ kind: "success", message: `Przywrócono dziennik. Łącznie: ${merged.length} obserwacji.` });
-    } catch {
-      setNotice({ kind: "error", message: "Ten plik nie jest prawidłową kopią dziennika Chmurnika." });
-    }
-  };
-
-  return (
-    <main className="page journal-page">
-      <header className="page-heading page-heading--inline">
-        <div>
-          <span className="eyebrow">Prywatny notes terenowy</span>
-          <h1>Twój dziennik</h1>
-          <p>Zapisuj zdjęcia i dowody. Wszystko pozostaje na tym urządzeniu.</p>
-        </div>
-        <button className="button button--coral" onClick={() => setFormOpen(!formOpen)}>
-          {formOpen ? <X size={18} /> : <Plus size={18} />}
-          {formOpen ? "Ukryj formularz" : "Nowa obserwacja"}
-        </button>
-      </header>
-
-      {notice && (
-        <p className={`journal-notice journal-notice--${notice.kind}`} role={notice.kind === "error" ? "alert" : "status"}>
-          {notice.kind === "error" ? <Warning size={19} /> : <Check size={19} />}
-          {notice.message}
-        </p>
-      )}
-
-      {formOpen && (
-        <form className="journal-form" onSubmit={submit}>
-          <div className="form-row">
-            <label>Data<input type="date" required value={form.date} onChange={(event) => setForm({ ...form, date: event.target.value })} /></label>
-            <label>Miejsce<input required value={form.location} onChange={(event) => setForm({ ...form, location: event.target.value })} placeholder="np. Gdynia" /></label>
-          </div>
-          <div className="form-row">
-            <label>Rozpoznanie
-              <select required value={form.cloud} onChange={(event) => setForm({ ...form, cloud: event.target.value })}>
-                <option value="">Wybierz rodzaj</option>
-                {clouds.map((cloud) => <option key={cloud.id} value={cloud.name}>{cloud.name} · {cloud.polish}</option>)}
-                <option value="Nierozpoznana">Nierozpoznana / przypadek sporny</option>
-              </select>
-            </label>
-            <label>Pewność
-              <select value={form.confidence} onChange={(event) => setForm({ ...form, confidence: event.target.value })}>
-                <option>niska</option><option>średnia</option><option>wysoka</option>
-              </select>
-            </label>
-          </div>
-          <label>Dowody i zmiana w czasie
-            <textarea required value={form.evidence} onChange={(event) => setForm({ ...form, evidence: event.target.value })} placeholder="Kształt, skala, światło, opad, kierunek ruchu, co zmieniło się po 10 minutach…" />
-          </label>
-          <div className="journal-photo-field">
-            <input ref={photoRef} type="file" accept="image/*" hidden onChange={attachPhoto} />
-            {form.photo ? (
-              <div className="journal-photo-preview">
-                <img src={form.photo} alt="Zdjęcie dołączone do obserwacji" />
-                <button type="button" className="icon-button" onClick={() => setForm({ ...form, photo: null })} aria-label="Usuń zdjęcie z obserwacji">
-                  <Trash size={19} />
-                </button>
-              </div>
-            ) : (
-              <button type="button" className="journal-photo-action" onClick={() => photoRef.current?.click()} disabled={photoBusy}>
-                <ImageSquare size={21} />
-                <span>{photoBusy ? "Przygotowuję zdjęcie…" : "Dodaj zdjęcie nieba"}</span>
-              </button>
-            )}
-          </div>
-          <div className="form-footer">
-            <span><ShieldCheck size={17} /> Zdjęcie i notatki zostają na urządzeniu.</span>
-            <button className="button button--primary" type="submit">Zapisz obserwację <Check size={18} /></button>
-          </div>
-        </form>
-      )}
-
-      <section className="journal-backup" aria-label="Kopia zapasowa dziennika">
-        <div>
-          <strong>{entries.length ? `${entries.length} zapisanych obserwacji` : "Twój dziennik pozostaje prywatny"}</strong>
-          <span>Możesz przenieść obserwacje między urządzeniami.</span>
-        </div>
-        <div>
-          <button type="button" onClick={exportJournal} disabled={!entries.length}>
-            <DownloadSimple size={18} /> Pobierz kopię
-          </button>
-          <button type="button" onClick={() => importRef.current?.click()}>
-            <UploadSimple size={18} /> Przywróć
-          </button>
-          <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={importJournal} />
-        </div>
-      </section>
-
-      {entries.length ? (
-        <div className="journal-list">
-          {entries.map((entry) => (
-            <article key={entry.id}>
-              <div className="entry-date"><span>{new Date(`${entry.date}T12:00:00`).toLocaleDateString("pl-PL", { day: "2-digit", month: "short" })}</span><small>{new Date(`${entry.date}T12:00:00`).getFullYear()}</small></div>
-              <div className="entry-body">
-                <span className="entry-meta"><MapPin size={15} />{entry.location} · pewność {entry.confidence}</span>
-                <h2>{entry.cloud}</h2>
-                <p>{entry.evidence}</p>
-                {entry.photo && <img className="entry-photo" src={entry.photo} alt={`Niebo obserwowane w miejscu ${entry.location}`} loading="lazy" />}
-              </div>
-              <button className="icon-button" onClick={() => remove(entry.id)} aria-label={`Usuń obserwację ${entry.cloud}`}><Trash size={19} /></button>
-            </article>
-          ))}
-        </div>
-      ) : !formOpen && (
-        <div className="empty-state journal-empty-state">
-          <picture aria-hidden="true">
-            <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
-            <source type="image/webp" srcSet={publicAsset("assets/observer-guide-still-life-720.webp")} />
-            <img src={publicAsset("assets/observer-guide-still-life.png")} alt="" loading="lazy" />
-          </picture>
-          <h2>Twoje niebo zaczyna się tutaj</h2>
-          <button className="button button--coral" onClick={() => setFormOpen(true)}><Plus size={18} /> Dodaj obserwację</button>
-        </div>
-      )}
-
-      <section className="journal-observer-invite">
-        <div className="panel-icon"><Eye size={27} /></div>
-        <div>
-          <span className="eyebrow">Potrzebujesz wskazówki?</span>
-          <h2>Uporządkuj to, co widzisz</h2>
-          <p>Pięć krótkich pytań pomoże oddzielić cechy chmury od pierwszej hipotezy.</p>
-        </div>
-        <button className="button button--primary" onClick={() => navigate("atlas/observer")}>
-          Otwórz obserwator <ArrowRight size={17} />
-        </button>
-      </section>
-    </main>
-  );
-}
 
 function SourcesPage({ onSources }) {
   return (
@@ -5080,20 +4865,27 @@ function SourcesPage({ onSources }) {
   );
 }
 
-function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
+function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initialSource }) {
   const [phase, setPhase] = useState("idle");
   const [previewUrl, setPreviewUrl] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [feedback, setFeedback] = useState(null);
+  const [captured, setCaptured] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [frameNote, setFrameNote] = useState("");
+  const started = useRef(false);
   const [feedbackCount, setFeedbackCount] = useState(() => loadPhotoFeedback().length);
-  const dialogRef = useDialogFocus(onClose, false);
+  const dialogRef = useDialogFocus(() => { if (!saving) onClose(); }, false);
 
   const analyze = async (source) => {
+    if (saving || ["capturing", "analyzing"].includes(phase)) return;
     setError(null);
     setPhase("capturing");
     try {
       const photo = await captureCloudPhoto(source);
+      setCaptured({ ...photo, capturedAt: Date.now(), observationId: crypto.randomUUID() });
+      setFrameNote("");
       setResult(null);
       setFeedback(null);
       setPreviewUrl(photo.previewUrl);
@@ -5107,8 +4899,40 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
       }
       console.error("[CHMURNIK camera]", failure?.code || "unknown", failure?.message || failure);
       setError(photoCaptureErrorMessage(failure));
-      setPhase(result ? "result" : "idle");
+      setPhase("idle");
     }
+  };
+
+  useEffect(() => {
+    if (initialSource && !started.current && !import.meta.env.VITE_QA_PHOTO_RECOGNITION) {
+      started.current = true;
+      analyze(initialSource);
+    }
+  }, []);
+
+  const saveCaptured = async () => {
+    if (!captured || saving) return;
+    setSaving(true); setError(null);
+    try {
+      const entry = observationFromRecognition(result, new Date(captured.capturedAt), captured.observationId);
+      entry.evidence = frameNote;
+      await saveObservation(entry, captured);
+      onSaved(entry.id);
+    } catch (failure) {
+      console.error("[CHMURNIK observation save]", failure?.code || failure?.name || "unknown");
+      setError("Nie udało się zachować obserwacji. Zdjęcie nadal jest tutaj. Sprawdź wolne miejsce i spróbuj ponownie.");
+      setSaving(false);
+    }
+  };
+
+  const analyzeFrame = async (photo, selection) => {
+    setPhase("analyzing"); setError(null); setResult(null); setFrameNote("");
+    try {
+      const value = await recognizeCloudPhoto(photo);
+      setResult(value);
+      setFrameNote(`Hipoteza dotyczy fragmentu kadru: ${selection.zoom}×, pozycja ${selection.horizontal}% / ${selection.vertical}%. Zachowano całe zdjęcie.`);
+      setPhase("result");
+    } catch (error) { setPhase("idle"); setError("Nie udało się rozstrzygnąć fragmentu. Możesz zachować samą obserwację."); throw error; }
   };
 
   const rememberFeedback = (helpful) => {
@@ -5143,18 +4967,21 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
     const source = publicAsset(cloud.images[0].src);
     setPreviewUrl(source);
     setPhase("analyzing");
-    const encodedPhoto = qaMode === "result"
-      ? Promise.resolve("qa")
-      : fetch(source)
+    const encodedPhoto = fetch(source)
         .then((response) => response.blob())
-        .then((blob) => new Promise((resolve, reject) => {
+        .then((blob) => qaMode === "result"
+          ? compactObservationPhoto(blob).then((photo) => photo.split(",")[1])
+          : new Promise((resolve, reject) => {
           const reader = new FileReader();
           reader.onload = () => resolve(String(reader.result).split(",")[1]);
           reader.onerror = reject;
           reader.readAsDataURL(blob);
         }));
     encodedPhoto
-      .then((base64) => recognizeCloudPhoto(base64))
+      .then((base64) => {
+        setCaptured({ base64, previewUrl: source, capturedAt: Date.now(), observationId: crypto.randomUUID() });
+        return recognizeCloudPhoto(base64);
+      })
       .then((value) => {
         setResult(value);
         setPhase("result");
@@ -5162,7 +4989,8 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
       .catch(() => setPhase("idle"));
   }, []);
 
-  const rankedClouds = result?.ranked
+  const clearSkyResult = result?.state === "clear" || result?.leadingFamily?.id === "clear";
+  const rankedClouds = (clearSkyResult ? [] : result?.ranked || [])
     .filter((item) => item.id !== "clear_sky")
     .map((item) => ({ ...item, cloud: getCloud(item.id) }))
     .filter((item) => item.cloud);
@@ -5171,7 +4999,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
   const genusIsDecisive = result?.state === "hypothesis";
 
   return (
-    <div className="modal-backdrop modal-backdrop--center" onMouseDown={onClose}>
+    <div className="modal-backdrop modal-backdrop--center" onMouseDown={() => { if (!saving) onClose(); }}>
       <section
         ref={dialogRef}
         className="photo-recognition-modal"
@@ -5186,7 +5014,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
             <span className="eyebrow">Eksperymentalnie · model na urządzeniu</span>
             <h2>Czytaj zdjęcie</h2>
           </div>
-          <button className="icon-button" onClick={onClose} aria-label="Zamknij rozpoznawanie"><X size={22} /></button>
+          <button className="icon-button" onClick={onClose} disabled={saving} aria-label="Zamknij rozpoznawanie"><X size={22} /></button>
         </header>
 
         <div className="photo-privacy-note">
@@ -5197,7 +5025,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
         {previewUrl ? (
           <figure className="photo-recognition-preview">
             <img src={previewUrl} alt="Zdjęcie nieba wybrane do analizy" />
-            {phase === "analyzing" && <figcaption>Odczytuję kształt, skalę i światło…</figcaption>}
+            {phase === "analyzing" && <figcaption>Analizuję zdjęcie na urządzeniu…</figcaption>}
           </figure>
         ) : (
           <div className="photo-recognition-intro">
@@ -5214,6 +5042,9 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
           </div>
         )}
 
+        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || phase === "analyzing"}>{saving ? "Zachowuję kadr…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Całe zdjęcie + hipoteza. Bez ponownego formularza.</small><PhotoFrame source={captured.previewUrl} onAnalyze={analyzeFrame} disabled={saving || phase === "analyzing"} /></div>}
+        {frameNote && <p className="photo-frame-note">{frameNote}</p>}
+
         {result && phase === "result" && (
           <div className="photo-recognition-result" aria-live="polite">
             <div className="photo-family-result">
@@ -5222,21 +5053,23 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
               <p>{leadingFamily.evidence}</p>
             </div>
 
-            <div className="photo-hypotheses">
+            {rankedClouds.length > 0 ? <div className="photo-hypotheses">
               <div>
                 <span className="eyebrow">Hipotezy do sprawdzenia</span>
                 <small>{genusIsDecisive ? "Pierwsza jest wyraźnie silniejsza" : "Kadr nie rozstrzyga jednego rodzaju"}</small>
               </div>
               <ol>
-                {rankedClouds.map((item, index) => (
+                {rankedClouds.slice(0, 2).map((item, index) => (
                   <li key={item.id}>
+                    <img className="photo-reference-thumb" src={publicAsset(item.cloud.images[0].src)} alt={`Atlas: ${item.cloud.name}`} />
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <div><strong><CloudName>{item.cloud.name}</CloudName></strong><small>{item.cloud.polish}</small></div>
                     <b>{Math.round(item.probability * 100)}%</b>
                   </li>
                 ))}
               </ol>
-            </div>
+              <small>Fotografie porównawcze są prawdziwe. Autorzy i licencje dostępne po otwarciu porównania w atlasie.</small>
+            </div> : <p className="photo-recognition-caveat">Ten kadr nie daje podstaw do wskazania rodzaju chmury. Nie przypisujemy nazwy na siłę. Możesz zachować zdjęcie, wybrać fragment albo wrócić do cech w atlasie.</p>}
 
             <aside className="photo-recognition-caveat">
               <Info size={18} />
@@ -5268,10 +5101,10 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve }) {
         {error && <p className="photo-recognition-error" role="alert"><Warning size={18} />{error}</p>}
 
         <footer className="photo-capture-actions">
-          <button onClick={() => analyze("camera")} disabled={phase === "capturing" || phase === "analyzing"}>
+          <button onClick={() => analyze("camera")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
             <CameraIcon size={20} /><span>{previewUrl ? "Zrób nowe" : "Zrób zdjęcie"}</span>
           </button>
-          <button onClick={() => analyze("photos")} disabled={phase === "capturing" || phase === "analyzing"}>
+          <button onClick={() => analyze("photos")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
             <ImageSquare size={20} /><span>Wybierz z biblioteki</span>
           </button>
         </footer>
@@ -5446,6 +5279,7 @@ function Footer({ navigate }) {
 
 export function App() {
   const [route, navigate] = useRoute();
+  const localDay = useLocalDay();
   const [profile, setProfile] = useState(loadProfile);
   const [completed, setCompleted] = useState(loadProgress);
   const [placementOpen, setPlacementOpen] = useState(false);
@@ -5459,6 +5293,7 @@ export function App() {
     ["result", "native"].includes(import.meta.env.VITE_QA_PHOTO_RECOGNITION),
   );
   const [availableUpdate, setAvailableUpdate] = useState(null);
+  const [photoInitialSource, setPhotoInitialSource] = useState(null);
   const photoRecognitionAvailable = isPhotoRecognitionSupported();
 
   useEffect(() => {
@@ -5481,7 +5316,7 @@ export function App() {
 
   const [routeName, routeDetail, routePayload] = route.split("/");
   const validRoute = useMemo(
-    () => [...navItems.map((item) => item.id), "sources"].includes(routeName) ? routeName : "home",
+    () => [...navItems.map((item) => item.id), "sources", "practice"].includes(routeName) ? routeName : "home",
     [routeName],
   );
   const routeComparisonIds = routeDetail === "compare"
@@ -5526,6 +5361,11 @@ export function App() {
     setRecognitionTarget(null);
   };
 
+  const openPhoto = (source = null) => {
+    setPhotoInitialSource(source);
+    setPhotoRecognitionOpen(true);
+  };
+
   const finishOnboarding = () => {
     saveOnboarding({ completed: true, completedAt: new Date().toISOString() });
     setOnboardingOpen(false);
@@ -5545,7 +5385,7 @@ export function App() {
   const pageProps = { navigate, onSources: setSourceIds };
 
   return (
-    <div className="app-shell">
+    <div className={`app-shell${nativeLayout ? " native-field-layout" : ""}`}>
       <a className="skip-link" href="#main-content">Przejdź do treści</a>
       {availableUpdate && (
         <aside className="app-update-notice" role="status">
@@ -5555,7 +5395,8 @@ export function App() {
       )}
       <AppHeader route={validRoute} navigate={navigate} />
       <div id="main-content">
-        {validRoute === "home" && (
+        {validRoute === "home" && nativeLayout && <FieldHome {...pageProps} day={localDay} onCapture={() => openPhoto("camera")} onRecognition={openRecognition} />}
+        {validRoute === "home" && !nativeLayout && (
           <HomePage
             {...pageProps}
             profile={profile}
@@ -5564,7 +5405,7 @@ export function App() {
             onOpenRecommended={openRecommended}
             onOpenOnboarding={() => setOnboardingOpen(true)}
             onOpenRecognition={openRecognition}
-            onOpenPhotoRecognition={() => setPhotoRecognitionOpen(true)}
+            onOpenPhotoRecognition={() => openPhoto()}
             showPhotoRecognition={photoRecognitionAvailable}
           />
         )}
@@ -5586,6 +5427,8 @@ export function App() {
           />
         )}
         {validRoute === "atlas" && (
+          <>
+          {nativeLayout && <div className="native-atlas-shortcuts"><PracticeLinks navigate={navigate} /><button className="field-source" onClick={() => navigate("learn")}><BookOpen size={17} /> Pełne lekcje</button><button className="field-source" onClick={() => navigate("layers")}><Stack size={17} /> Warstwy i sondaże</button></div>}
           <AtlasPage
             onSources={setSourceIds}
             onSaveObservation={saveFieldObservation}
@@ -5598,9 +5441,11 @@ export function App() {
                   : "atlas"
             }
           />
+          </>
         )}
-        {validRoute === "layers" && <LayersPage onSources={setSourceIds} />}
-        {validRoute === "journal" && <JournalPage navigate={navigate} />}
+        {validRoute === "practice" && <FieldPractice key={routeDetail} track={routeDetail} {...pageProps} />}
+        {validRoute === "layers" && <LayersPage key={routeDetail} initialTab={routeDetail} {...pageProps} />}
+        {validRoute === "journal" && <SkyCollection navigate={navigate} selectedId={routeDetail ? (() => { try { return decodeURIComponent(routeDetail); } catch { return null; } })() : null} onCapture={() => openPhoto("camera")} captureAvailable={photoRecognitionAvailable} />}
         {validRoute === "sources" && <SourcesPage onSources={setSourceIds} />}
       </div>
       <Footer navigate={navigate} />
@@ -5608,7 +5453,7 @@ export function App() {
         route={validRoute}
         navigate={navigate}
       />
-      {validRoute !== "home" && (
+      {!nativeLayout && !["home", "journal", "practice"].includes(validRoute) && (
         <button className="quick-test-button" onClick={() => openRecognition()}>
           <Eye size={20} weight="bold" />
           <span>Sprawdź się</span>
@@ -5618,6 +5463,11 @@ export function App() {
       {onboardingOpen && <OnboardingModal onClose={() => setOnboardingOpen(false)} onFinish={finishOnboarding} />}
       {photoRecognitionOpen && (
         <PhotoRecognitionModal
+          initialSource={photoInitialSource}
+          onSaved={(id) => {
+            setPhotoRecognitionOpen(false);
+            navigate(`journal/${encodeURIComponent(id)}`);
+          }}
           onClose={() => setPhotoRecognitionOpen(false)}
           onCompare={(ids) => {
             setPhotoRecognitionOpen(false);

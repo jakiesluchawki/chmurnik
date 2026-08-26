@@ -35,7 +35,7 @@ function normalizePhoto(photo) {
   if (
     typeof photo !== "string"
     || photo.length > MAX_JOURNAL_PHOTO_LENGTH
-    || !/^data:image\/(?:jpeg|png|webp);base64,[a-z\d+/]+=*$/i.test(photo)
+    || !/^data:image\/(?:jpeg|png|webp);base64,(?:[a-z\d+/]{4})*(?:[a-z\d+/]{4}|[a-z\d+/]{2}(?:==)?|[a-z\d+/]{3}=?)$/i.test(photo)
   ) {
     throw new TypeError("Journal entry contains an invalid local photo");
   }

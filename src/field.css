@@ -1,0 +1,1386 @@
+.field-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 28px 80px;
+}
+.field-page :where(button:not(.button):not(.icon-button)),
+.native-atlas-shortcuts > .field-source {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.field-page button:disabled {
+  cursor: default;
+}
+.field-page summary,
+.photo-frame summary {
+  color: var(--ink);
+  background: transparent;
+}
+.field-page [hidden] {
+  display: none;
+}
+.field-lab-mode {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: -6px 0 20px;
+}
+.field-lab-mode > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 0;
+  font-size: 0.88rem;
+  border-bottom: 2px solid transparent;
+}
+.field-lab-mode > button[aria-pressed="true"] {
+  color: var(--coral);
+  border-bottom-color: var(--coral);
+}
+.field-segments button {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+.field-answers > button {
+  background: var(--white);
+}
+.field-page h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.field-page h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+.field-page h3 {
+  font-family: var(--ui);
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+.field-page .eyebrow {
+  font-size: 0.69rem;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+}
+.field-page-heading {
+  margin: 16px 0 28px;
+  max-width: 790px;
+}
+.field-page-heading h1 {
+  margin: 12px 0;
+}
+.field-page-heading p {
+  max-width: 620px;
+  margin: 0;
+  font-size: 1.05rem;
+}
+.field-back,
+.field-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.field-back {
+  font-weight: 700;
+}
+.field-source {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.field-section-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.78rem;
+}
+.field-section-label h2 {
+  margin: 0;
+}
+.field-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.field-segments {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin: 18px 0 24px;
+}
+.field-segments button {
+  flex: 1;
+  min-height: 46px;
+  border-radius: 30px;
+  padding: 10px 14px;
+  font-size: 0.91rem;
+}
+.field-segments button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--white);
+}
+.field-practice-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0 20px;
+}
+.field-practice-links > button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px 8px;
+  padding: 18px;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  min-width: 0;
+}
+.field-practice-links > button:hover {
+  border-color: var(--coral);
+}
+.field-practice-links .eyebrow {
+  grid-column: 1 / -1;
+  color: var(--coral);
+}
+.field-practice-links strong {
+  font-size: 0.94rem;
+  line-height: 1.25;
+  font-weight: 400;
+}
+.field-practice-links svg {
+  align-self: end;
+}
+.web-field-shortcuts {
+  max-width: 1240px;
+  margin: 20px auto 38px;
+  padding: 0 24px;
+}
+.field-metar-reader,
+.field-wind-workbench,
+.field-map-workbench,
+.field-challenge {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+.field-metar-reader > form {
+  display: grid;
+  gap: 10px;
+}
+.field-metar-reader > form > button {
+  justify-self: start;
+}
+.field-page input:not([type="checkbox"]):not([type="range"]),
+.field-page textarea,
+.field-page select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 12px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 16px;
+}
+.field-page textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+.field-page label {
+  display: grid;
+  gap: 7px;
+  font-size: 0.88rem;
+}
+.field-example-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 24px;
+}
+.field-example-picker > span {
+  flex-basis: 100%;
+  font-size: 0.8rem;
+}
+.field-example-picker button {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  min-height: 44px;
+  padding: 8px 13px;
+  font-size: 0.8rem;
+}
+.field-example-picker button:hover {
+  background: var(--paper);
+}
+.field-badge {
+  font-size: 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 5px 9px;
+  white-space: nowrap;
+}
+.field-caution {
+  border-left: 3px solid var(--ink);
+  padding: 7px 0 7px 13px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 16px 0;
+}
+.field-metar-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  border-block: 1px solid var(--line);
+  padding: 20px 0;
+  margin: 24px 0;
+}
+.field-metar-summary > div {
+  display: grid;
+  gap: 5px;
+}
+.field-metar-summary span {
+  font-size: 0.72rem;
+}
+.field-metar-summary strong {
+  font-weight: 400;
+  line-height: 1.3;
+  font-size: 1.2rem;
+}
+.field-metar-tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.field-metar-tokens button {
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+.field-metar-tokens button[aria-pressed="true"] {
+  color: white;
+  background: var(--coral);
+  border-color: var(--coral);
+}
+.field-token-detail {
+  min-height: 110px;
+  padding: 18px 0;
+}
+.field-token-detail p {
+  font-size: 0.92rem;
+  margin: 5px 0 0;
+}
+.field-warnings {
+  padding-left: 20px;
+  font-size: 0.88rem;
+}
+.field-warnings li + li {
+  margin-top: 8px;
+}
+.field-method {
+  border-top: 1px solid var(--line);
+  padding: 14px 0;
+  margin-top: 10px;
+  font-size: 0.86rem;
+}
+.field-method summary {
+  min-height: 30px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.field-method code,
+.field-metar-result code {
+  overflow-wrap: anywhere;
+}
+.field-metar-result > .field-wind-workbench {
+  padding: 20px 0 0;
+  border: 0;
+  border-radius: 0;
+  margin: 8px 0 0;
+}
+.field-wind-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.field-wind-picture {
+  text-align: center;
+}
+.field-wind-picture p {
+  font-size: 0.8rem;
+  margin: 0 0 18px;
+  line-height: 1.7;
+}
+.field-wind-rose {
+  display: block;
+  max-width: 290px;
+  width: 100%;
+  margin: auto;
+  color: var(--ink);
+}
+.field-wind-rose text {
+  fill: var(--ink);
+  font-family: var(--ui);
+  font-size: 13px;
+}
+.wind-key {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 4px;
+  margin-right: 5px;
+  background: var(--coral);
+}
+.wind-key--apparent {
+  background: #216462;
+}
+.field-slider {
+  display: grid;
+  gap: 3px;
+  margin: 15px 0;
+}
+.field-slider > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+.field-slider output {
+  font-weight: 700;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.field-slider input[type="range"] {
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  accent-color: var(--coral);
+}
+.field-readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 12px;
+}
+.field-readouts > div {
+  display: grid;
+  gap: 5px;
+}
+.field-readouts strong {
+  font-size: 2rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+}
+.field-readouts strong small {
+  font-size: 0.9rem;
+}
+.field-readouts span {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+.field-challenge {
+  background: transparent;
+}
+.field-challenge h2 {
+  max-width: 640px;
+}
+.field-case-progress {
+  display: flex;
+  gap: 5px;
+  margin: 18px 0;
+}
+.field-case-progress i {
+  flex: 1;
+  height: 4px;
+  background: var(--line);
+  border-radius: 6px;
+}
+.field-case-progress .is-done {
+  background: var(--coral);
+}
+.field-case-context {
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--white);
+  font-size: 1.02rem;
+  font-variant-numeric: tabular-nums;
+}
+.field-question {
+  font-weight: 700;
+  margin-top: 22px;
+}
+.field-answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.field-answers > button {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.93rem;
+  line-height: 1.35;
+}
+.field-answers > button > span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  font-size: 0.72rem;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+}
+.field-answers button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.field-answers .is-correct {
+  background: #e3edda;
+  color: #354b31;
+  border-color: #607354;
+}
+.field-answers .is-incorrect {
+  background: #f6d6d3;
+  color: #723e38;
+  border-color: #99645b;
+}
+.field-answers svg {
+  flex: 0 0 19px;
+  margin-left: auto;
+}
+.field-explanation {
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+  padding-top: 20px;
+}
+.field-explanation > p {
+  font-size: 0.94rem;
+}
+.field-explanation > strong {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+.field-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  align-items: center;
+  margin: 25px 0;
+}
+.field-map-readout {
+  background: var(--paper);
+  border-radius: 100px 100px 20px 20px;
+  padding: 32px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.field-map-readout > strong {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.field-map-readout > strong small {
+  font-size: 1rem;
+}
+.field-map-readout > span,
+.field-map-readout > small {
+  font-size: 0.82rem;
+}
+.field-map-controls {
+  display: grid;
+  gap: 12px;
+}
+.field-map-controls p {
+  font-size: 0.88rem;
+}
+.field-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+.field-deeper {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-block: 1px solid var(--line);
+  padding: 22px 0;
+}
+.field-deeper > svg {
+  flex: 0 0 24px;
+}
+.field-deeper p {
+  font-size: 0.87rem;
+  margin: 4px 0 0;
+}
+.field-safety {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  margin: 22px 0;
+}
+.field-home-heading {
+  margin: 6px 0 24px;
+}
+.field-home-heading h1 {
+  font-size: clamp(3.1rem, 6vw, 4.5rem);
+  margin: 9px 0;
+}
+.field-home-heading p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+.field-capture-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--white);
+  min-height: 290px;
+  padding: 28px;
+}
+.field-capture-card > div {
+  position: relative;
+  z-index: 1;
+  max-width: 52%;
+}
+.field-capture-card h2 {
+  font-size: 2.8rem;
+  margin: 12px 0;
+}
+.field-capture-card p {
+  max-width: 210px;
+  font-size: 0.91rem;
+  margin: 10px 0 22px;
+}
+.field-capture-card > img {
+  position: absolute;
+  width: 47%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% center;
+  right: 0;
+  bottom: 0;
+}
+.field-collection-shortcut {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  gap: 14px;
+  min-height: 80px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.field-collection-shortcut > span {
+  flex: 1;
+  display: grid;
+  gap: 4px;
+}
+.field-collection-shortcut strong {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.field-collection-shortcut small {
+  font-size: 0.79rem;
+}
+.field-home-practice {
+  margin: 32px 0;
+}
+.field-home-practice h2 {
+  margin: 8px 0 20px;
+}
+.field-daily {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--white);
+}
+.field-daily > .field-section-label {
+  padding: 14px 20px 0;
+  margin: 0;
+}
+.field-daily > img {
+  display: block;
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+}
+.field-daily-caption {
+  padding: 22px;
+}
+.field-daily-caption h2 {
+  margin: 0 0 10px;
+}
+.field-daily-caption p {
+  font-size: 0.94rem;
+}
+.field-daily-caption > small {
+  display: block;
+  font-size: 0.72rem;
+  margin-top: 17px;
+  line-height: 1.5;
+}
+.field-daily-caption a {
+  text-decoration: underline;
+}
+.field-deep-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 26px;
+}
+.field-deep-links button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+.field-deep-links span {
+  flex: 1;
+  font-size: 0.9rem;
+}
+.native-atlas-shortcuts {
+  max-width: 1080px;
+  padding: 0 18px;
+  margin: auto;
+}
+.native-atlas-shortcuts > .field-source {
+  margin-right: 22px;
+}
+.native-field-layout .bottom-nav {
+  grid-template-columns: repeat(3, 1fr);
+}
+.native-field-layout .app-footer {
+  display: none;
+}
+.native-field-layout .app-header {
+  height: calc(66px + env(safe-area-inset-top));
+  min-height: 66px;
+  padding: calc(12px + env(safe-area-inset-top)) 20px 8px;
+  align-items: center;
+}
+.native-field-layout .brand {
+  min-height: 0;
+}
+.native-field-layout .brand-wordmark-mark {
+  width: 156px;
+  height: 30px;
+}
+.native-field-layout .brand-descriptor {
+  display: none;
+}
+.sky-top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.sky-genera {
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border-block: 1px solid var(--line);
+}
+.sky-genera > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 7px;
+  font-size: 0.85rem;
+}
+.sky-genus-chips {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  margin: 15px 0 8px;
+}
+.sky-genus-chips button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 1px dashed var(--line);
+  border-radius: 11px;
+  min-height: 44px;
+  font-size: 0.8rem;
+}
+.sky-genus-chips .is-collected {
+  background: var(--ink);
+  color: var(--white);
+  border-style: solid;
+}
+.sky-genus-chips button[aria-pressed="true"] {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+.sky-genera > small {
+  font-size: 0.74rem;
+}
+.sky-filters {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 22px 0;
+}
+.sky-filters .button {
+  padding: 10px 13px;
+  min-height: 46px;
+  font-size: 0.83rem;
+}
+.sky-filters .button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--white);
+}
+.sky-filters label {
+  flex: 1;
+  min-width: 140px;
+  max-width: 230px;
+  font-size: 0.7rem;
+}
+.sky-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.sky-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 17px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.sky-card-main {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+.sky-card-main > img,
+.sky-card-main > .sky-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+.sky-card-caption {
+  display: grid;
+  gap: 5px;
+  padding: 14px;
+}
+.sky-card-caption small {
+  font-size: 0.69rem;
+}
+.sky-card-caption strong {
+  font-weight: 400;
+  font-size: 1.06rem;
+  line-height: 1.2;
+}
+.sky-card-caption > span {
+  font-size: 0.68rem;
+}
+.sky-favorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--coral);
+}
+.sky-card.is-selected {
+  outline: 3px solid var(--coral);
+  outline-offset: 1px;
+}
+.sky-selected {
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: white;
+  background: var(--coral);
+  border-radius: 50%;
+}
+.sky-photo-placeholder {
+  display: grid !important;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 22px;
+  text-align: center;
+  color: var(--ink);
+  background: var(--paper);
+}
+.sky-photo-placeholder span {
+  font-size: 0.76rem;
+}
+.sky-pair {
+  padding-bottom: 22px;
+}
+.sky-pair > p {
+  font-size: 0.9rem;
+}
+.sky-pair > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sky-pair figure {
+  margin: 0;
+  min-width: 0;
+}
+.sky-pair img,
+.sky-pair .sky-photo-placeholder {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  background: var(--ink);
+  border-radius: 12px;
+}
+.sky-pair figcaption {
+  display: grid;
+  gap: 4px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+.sky-pair figcaption strong {
+  font-weight: 400;
+}
+.sky-empty {
+  position: relative;
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  text-align: center;
+}
+.sky-empty img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.sky-empty h2 {
+  margin: 20px 0 10px;
+}
+.sky-empty p {
+  max-width: 480px;
+  margin: 10px auto 20px;
+}
+.sky-backups {
+  margin-top: 30px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+}
+.sky-backups summary {
+  cursor: pointer;
+  min-height: 44px;
+}
+.sky-backups summary svg {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.sky-backup-parts {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+}
+.sky-notice {
+  border-left: 3px solid var(--coral);
+  padding: 12px 18px;
+  background: var(--white);
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+.sky-detail-photo {
+  display: block;
+  width: 100%;
+  max-height: 62vh;
+  min-height: 180px;
+  object-fit: contain;
+  background: var(--ink);
+  border-radius: 18px;
+}
+.sky-hypothesis {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sky-hypothesis p {
+  font-size: 0.9rem;
+}
+.sky-hypothesis > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.sky-hypothesis > div > span {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  font-size: 0.8rem;
+}
+.sky-edit-form {
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 20px;
+  padding: 26px;
+  margin: 24px 0;
+}
+.sky-edit-form h2,
+.sky-edit-form p {
+  margin: 0;
+}
+.sky-edit-form > p {
+  font-size: 0.89rem;
+}
+.sky-edit-form > button {
+  justify-self: start;
+}
+.sky-edit-form .sky-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.sky-checkbox input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--coral);
+}
+.sky-form-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.sky-form-photo {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.sky-share {
+  margin: 28px 0;
+  padding-top: 12px;
+}
+.sky-share > p {
+  font-size: 0.9rem;
+}
+.sky-share > img {
+  width: min(100%, 390px);
+  display: block;
+  border-radius: 12px;
+}
+.sky-delete {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  font-size: 0.86rem;
+}
+.photo-save-observation {
+  margin: 14px 0 22px;
+}
+.photo-save-observation > button {
+  width: 100%;
+}
+.photo-save-observation > small {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.75rem;
+}
+.photo-frame {
+  margin-top: 20px;
+  border-block: 1px solid var(--line);
+  padding: 14px 0;
+}
+.photo-frame summary {
+  min-height: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.photo-frame p,
+.photo-frame-note {
+  font-size: 0.8rem;
+}
+.photo-frame-image {
+  position: relative;
+}
+.photo-frame-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.photo-frame-image > span {
+  position: absolute;
+  border: 2px solid white;
+  outline: 1px solid var(--ink);
+  background: transparent;
+  pointer-events: none;
+}
+.photo-hypotheses .photo-reference-thumb {
+  width: 54px;
+  height: 54px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+.photo-hypotheses > small {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  margin-top: 10px;
+}
+.photo-recognition-modal .photo-hypotheses li {
+  grid-template-columns: 54px 20px 1fr auto;
+}
+@media (max-width: 720px) {
+  .field-page {
+    padding: 12px 16px 100px;
+  }
+  .field-page h1 {
+    font-size: 3rem;
+  }
+  .field-page-heading {
+    margin: 14px 0 22px;
+  }
+  .field-page-heading > p {
+    font-size: 0.94rem;
+  }
+  .field-page-heading .eyebrow {
+    font-size: 0.65rem;
+  }
+  .field-page h2 {
+    font-size: 1.85rem;
+  }
+  .field-page .button {
+    min-height: 48px;
+    font-size: 0.9rem;
+    padding: 12px 16px;
+  }
+  .field-section-label {
+    flex-wrap: wrap;
+    font-size: 0.73rem;
+  }
+  .field-practice-links {
+    gap: 7px;
+  }
+  .field-practice-links > button {
+    padding: 13px 11px;
+    border-radius: 15px;
+    grid-template-columns: 1fr;
+  }
+  .field-practice-links > button > strong {
+    font-size: 0.82rem;
+  }
+  .field-practice-links > button > svg {
+    margin-top: 5px;
+  }
+  .field-metar-reader,
+  .field-wind-workbench,
+  .field-map-workbench,
+  .field-challenge {
+    padding: 18px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .field-segments button {
+    font-size: 0.81rem;
+    padding: 10px;
+  }
+  .field-wind-layout {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  .field-wind-rose {
+    max-width: 222px;
+  }
+  .field-wind-rose text {
+    font-size: 20px;
+  }
+  .field-wind-picture {
+    display: flex;
+    align-items: center;
+  }
+  .field-wind-picture > p {
+    flex: 0 0 88px;
+    font-size: 0.73rem;
+    margin: 0;
+  }
+  .field-wind-picture > svg {
+    min-width: 0;
+    margin: 0 auto 0 0;
+  }
+  .field-readouts strong {
+    font-size: 1.8rem;
+  }
+  .field-slider {
+    margin: 9px 0;
+  }
+  .field-metar-summary {
+    gap: 15px 12px;
+  }
+  .field-metar-summary strong {
+    font-size: 1.03rem;
+  }
+  .field-answers {
+    grid-template-columns: 1fr;
+  }
+  .field-answers > button {
+    min-height: 60px;
+    padding: 13px;
+    font-size: 0.88rem;
+  }
+  .field-case-context {
+    padding: 14px;
+    font-size: 0.94rem;
+  }
+  .field-map-grid {
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  .field-map-readout {
+    border-radius: 18px;
+    padding: 22px;
+  }
+  .field-map-readout > svg {
+    display: none;
+  }
+  .field-map-readout > strong {
+    font-size: 3.4rem;
+  }
+  .field-deeper {
+    flex-wrap: wrap;
+  }
+  .field-deeper > div {
+    flex: 1;
+    min-width: 200px;
+  }
+  .field-deeper > button {
+    width: 100%;
+  }
+  .web-field-shortcuts {
+    padding: 0 16px;
+  }
+  .field-capture-card {
+    padding: 20px;
+    min-height: 260px;
+  }
+  .field-capture-card > div {
+    max-width: 63%;
+  }
+  .field-capture-card > img {
+    width: 38%;
+    object-position: 48% center;
+  }
+  .field-capture-card h2 {
+    font-size: 2.2rem;
+  }
+  .field-capture-card p {
+    font-size: 0.82rem;
+    max-width: 160px;
+  }
+  .field-capture-card .button {
+    white-space: nowrap;
+    padding: 12px 15px;
+    font-size: 0.83rem;
+  }
+  .field-home-heading h1 {
+    font-size: 3.1rem;
+  }
+  .field-home-heading {
+    margin-top: 10px;
+  }
+  .field-home-practice {
+    margin: 28px 0;
+  }
+  .field-home-practice h2 {
+    max-width: 300px;
+  }
+  .field-deep-links {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .native-field-layout .app-header,
+  html.native-ios .native-field-layout:has(.page) .app-header {
+    height: calc(66px + env(safe-area-inset-top));
+    padding: calc(12px + env(safe-area-inset-top)) 20px 8px;
+  }
+  .native-field-layout .brand-wordmark-mark {
+    width: 156px;
+    height: 30px;
+  }
+  .native-field-layout .brand {
+    min-height: 0;
+  }
+  .native-field-layout .page-heading h1 {
+    font-size: 2.8rem;
+    line-height: 1.06;
+  }
+  .sky-genus-chips {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7px;
+  }
+  .sky-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .sky-card-caption {
+    padding: 12px 10px;
+  }
+  .sky-card-caption strong {
+    font-size: 0.96rem;
+    overflow-wrap: anywhere;
+  }
+  .sky-card-caption > span {
+    font-size: 0.66rem;
+  }
+  .sky-card-caption small {
+    font-size: 0.65rem;
+  }
+  .sky-pair img,
+  .sky-pair .sky-photo-placeholder {
+    height: 220px;
+  }
+  .sky-filters {
+    gap: 9px;
+  }
+  .sky-filters > button:last-child {
+    width: 100%;
+  }
+  .sky-filters label {
+    margin-left: auto;
+  }
+  .sky-edit-form {
+    padding: 20px;
+  }
+  .sky-form-pair {
+    grid-template-columns: 1fr;
+  }
+  .sky-share > h2 {
+    max-width: 320px;
+  }
+  .photo-hypotheses .photo-reference-thumb {
+    width: 45px;
+    height: 45px;
+  }
+  .photo-recognition-modal .photo-hypotheses li {
+    grid-template-columns: 45px 16px 1fr auto;
+    gap: 8px;
+  }
+  .photo-recognition-modal .photo-hypotheses strong {
+    font-size: 0.97rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .field-page *,
+  .photo-frame * {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .native-field-layout .field-page-heading {
+    margin: 8px 0 18px;
+  }
+  .native-field-layout .field-page-heading h1 {
+    font-size: 2.45rem;
+    line-height: 1.04;
+    margin: 8px 0 10px;
+  }
+  .native-field-layout .field-page-heading p {
+    font-size: .88rem;
+    line-height: 1.5;
+  }
+  .field-wind-workbench > h2 {
+    font-size: 1.65rem;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 720px) {
+  .field-wind-layout {
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr);
+    gap: 14px;
+    align-items: start;
+  }
+  .field-wind-picture {
+    display: block;
+    padding-top: 16px;
+  }
+  .field-wind-picture > p {
+    margin-top: 12px;
+    font-size: .77rem;
+  }
+  .field-wind-rose text {
+    font-size: 26px;
+  }
+  .field-slider > span {
+    font-size: .77rem;
+    gap: 6px;
+  }
+  .field-readouts {
+    gap: 8px;
+  }
+  .field-readouts strong {
+    font-size: 1.45rem;
+  }
+  .field-readouts span {
+    font-size: .7rem;
+  }
+}

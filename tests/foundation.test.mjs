@@ -80,7 +80,8 @@ test("hero copy and actions remain separate from the artwork", async () => {
 
   assert.ok(app.indexOf('className="hero-content"') < app.indexOf('className="hero-visual"'));
   assert.doesNotMatch(app, /Ilustracja dekoracyjna wygenerowana dla projektu/);
-  assert.match(app, /\{validRoute !== "home" && \(\s*<button className="quick-test-button"/s);
+  assert.match(app, /!nativeLayout && !\["home", "journal", "practice"\]\.includes\(validRoute\)/);
+  assert.match(app, /<FieldHome[\s\S]*onRecognition=\{openRecognition\}/);
   assert.match(redesign, /\.hero-visual\s*\{[^}]*margin: 34px auto 0/s);
   assert.match(redesign, /\.hero-image\s*\{[^}]*position: relative/s);
 });

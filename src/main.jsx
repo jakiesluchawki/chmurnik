@@ -6,11 +6,14 @@ import { StatusBar, Style } from "@capacitor/status-bar";
 import { App } from "./App.jsx";
 import "./styles.css";
 import "./zgrywa.css";
+import "./field.css";
 
 const isNative = Capacitor.isNativePlatform();
 
-if (isNative) {
+if (isNative || import.meta.env.VITE_QA_NATIVE_LAYOUT === "1") {
   document.documentElement.classList.add("native-ios");
+}
+if (isNative) {
   StatusBar.setOverlaysWebView({ overlay: true }).catch(() => {});
   StatusBar.setStyle({ style: Style.Dark }).catch(() => {});
 }
