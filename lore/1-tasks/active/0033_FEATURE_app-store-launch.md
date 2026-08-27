@@ -16,6 +16,15 @@ history:
     status: active
     who: codex
     note: >
+      Owner confirmed the short iPhone check and privacy publication; free
+      agreement is active and DSA is in review. Submitted the exact final
+      candidate at 05:34:49 UTC; version and submission read back as
+      WAITING_FOR_REVIEW. Apple approval, EU eligibility and the broader
+      task 0032 hardware matrix remain unverified.
+  - date: "2026-08-27"
+    status: active
+    who: codex
+    note: >
       Store preparation is complete and read-back verified: Polish metadata,
       five COMPLETE screenshots with matching checksums, category/age/rights,
       private review details, free pricing and selected final build. Internal
@@ -58,8 +67,9 @@ present; close release quality and metadata gaps before App Review.
 
 At activation, version 1.0 was PREPARE_FOR_SUBMISSION. Its description, screenshots,
 support URL, privacy URL, category, age questionnaire, rights declaration,
-copyright, review contact and selected build were missing. Preparation is
-now complete except the owner/device gates recorded below; it is not submitted.
+copyright, review contact and selected build were missing. Preparation
+is complete and the exact final candidate is now WAITING_FOR_REVIEW.
+Public availability and the remaining checks below are not yet verified.
 
 ## Implementation
 
@@ -76,35 +86,44 @@ now complete except the owner/device gates recorded below; it is not submitted.
 
 ## Acceptance Criteria
 
-- [ ] Task 0032's physical-device acceptance is recorded with build/device details.
+- [x] Owner reports completion of the short iPhone check requested for
+      candidate 20260826214336 (2026-08-27: "3 - done").
+- [ ] Device/iOS details and the broader task 0032 acceptance matrix are recorded;
+      do not infer VoiceOver, oldest-OS or low-storage results from that reply.
 - [x] Required metadata, authentic screenshots and working public URLs are complete.
 - [x] Final candidate archive, privacy manifest and authentic screenshots are verified.
 - [x] Owner confirmed app-embedding rights for both fonts; photograph credits retained.
-- [ ] Published App Privacy answers reflect verified app behavior; age and
-      content-rights declarations are already verified through the API.
-- [ ] Owner account/EU requirements are confirmed; free/public distribution
-      settings are already verified, with missing trader status in 27 territories.
+- [x] Owner confirmed App Privacy publication; Apple's submission eligibility
+      check accepts it. Age and content-rights answers are API-verified.
+- [ ] Final EU eligibility is confirmed. Free agreement is active; DSA is
+      In Review and the API still flags 27 territories. No agent legal selection.
 - [x] Owner authorized publication; existing automatic release after Apple
-      approval is retained. This does not close device acceptance or submit.
-- [ ] App Review submission is verified; public availability is claimed only
-      after Apple approves the version and the store listing is actually available.
+      approval is retained. This does not establish public availability.
+- [x] Exact candidate submitted and WAITING_FOR_REVIEW read back from Apple.
+- [ ] Apple approval and the actual public store listing are verified.
 
 ## Boundary
 
-Do not promote the internal candidate to external TestFlight or App Review
-as a shortcut around task 0032's device acceptance. Do not claim model
-accuracy from the atlas or replace genuine cloud photography with generated images.
+The owner accepted the requested short iPhone checklist before submission.
+Do not infer the broader task 0032 matrix from that reply or promote another
+candidate without acceptance. Do not claim model accuracy from atlas examples
+or replace genuine cloud photography with generated images.
 
 ## Owner Confirmations
 
 - 2026-08-26: the owner confirmed purchasing licenses for both Romie and
   Roobert in response to the app-embedding rights question. Receipts are
   available in their email; no mailbox inspection was needed or performed.
-- Public support email and current physical-device acceptance remain
-  unconfirmed. The public repository issue tracker is an existing contact
+- Public support email remains unconfirmed. The public repository issue tracker is an existing contact
   channel; do not publish a private mailbox without the requested answer.
 - Owner requested step-by-step instructions for remaining actions. The
   Polish handoff explains App Privacy, EU status and exact-build device checks.
+- 2026-08-27: owner reported step 3 done in response to the exact candidate's
+  camera/library/save/reopen checklist. Device model/iOS were not supplied;
+  this is owner-reported acceptance, not an agent-run physical hardware test.
+- Latest screenshot shows Free Apps Agreement Active and DSA In Review.
+  Owner then confirmed Publish. Apple's former APP_DATA_USAGES_REQUIRED
+  blocker cleared; no legal status or terms were selected by the agent.
 
 ## Implementation And Verification
 
@@ -123,17 +142,18 @@ accuracy from the atlas or replace genuine cloud photography with generated imag
   files match the tested root build. Signature/privacy/model checks pass.
 - Five unretouched 1320 x 2868 screenshots retain honest model uncertainty
   and licensed real cloud photography. Source/hash manifest is committed.
-- Free price verified for 175 territories. EU trader status is missing for
-  27; App Privacy publication and owner account declarations remain open.
+- Free price verified for 175 territories; final EU trader verification
+  remains pending for 27. App Privacy eligibility is now accepted by Apple.
 - Internal TestFlight assignment and owner access are verified for the exact
   final candidate, `IN_BETA_TESTING`, with Polish/English notes. External beta
   was not changed. Store metadata, categories, age, rights and private review
   contact are complete. All five screenshots are COMPLETE; dimensions/order
-  and stored checksums match. The final build is selected in the draft version.
+  and stored checksums match. The final build is selected in the submitted version.
 - Code commit 6497e51 is deployed to GitHub Pages. The full public-browser
   flow passes, including standalone help/privacy HTTP 200 and responsive routes.
-- Final API read at 2026-08-26 22:01 UTC still reports PREPARE_FOR_SUBMISSION
-  and zero review submissions. Owner/device confirmations are not received.
+- Submission 48f55907-6f36-4ea6-9874-7f169a1f9382 has exactly one version
+  item. At 2026-08-27 05:34:51 UTC both it and version 1.0 read back as
+  WAITING_FOR_REVIEW, retaining build 20260826214336 and AFTER_APPROVAL.
 
 ## Issues Encountered
 
@@ -175,5 +195,6 @@ accuracy from the atlas or replace genuine cloud photography with generated imag
    publishing an unconfirmed private mailbox. Reviewer contact stays private.
 5. Keep the vault's file boundary strict and copy only local library previews.
    Fix the integration point instead of accepting arbitrary native paths.
-6. Preserve automatic release after approval under the explicit publication
-   request, but do not submit before device/privacy/account gates are closed.
+6. Preserve automatic release under the owner's publication request. Submit
+   after the requested owner checklist/privacy steps; keep pending DSA,
+   broader hardware coverage and actual public availability explicitly open.
