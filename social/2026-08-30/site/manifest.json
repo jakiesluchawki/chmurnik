@@ -1,0 +1,136 @@
+{
+  "generatedOn": "2026-08-30",
+  "availability": "Approved outside EU; Polish/EU availability pending DSA",
+  "artworks": [
+    {
+      "id": "story-01-mamy-to",
+      "title": "Mamy to",
+      "format": "story",
+      "phase": "now",
+      "alt": "Różowa storka z filcowym okiem. Mamy to. Chmurnik zaakceptowany przez Apple. Polska i UE czekają na DSA.",
+      "file": "images/story-01-mamy-to.jpg",
+      "thumbnail": "images/story-01-mamy-to-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 304904,
+      "sha256": "49add97e9bba29cbb12f1175ea3afa58410a0baecfa0debf4be478275ae70a78"
+    },
+    {
+      "id": "story-02-atlas",
+      "title": "Spójrz w górę",
+      "format": "story",
+      "phase": "now",
+      "alt": "Kremowa storka z prawdziwą fotografią Cirrus. Spójrz w górę. Atlas dziesięciu rodzajów chmur.",
+      "file": "images/story-02-atlas.jpg",
+      "thumbnail": "images/story-02-atlas-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 299121,
+      "sha256": "85a81be716655b525208bf22b323f81e6659660ae2fa2ea07348837b00b3829f"
+    },
+    {
+      "id": "story-03-moje-niebo",
+      "title": "Twoje własne niebo",
+      "format": "story",
+      "phase": "now",
+      "alt": "Storka z autentycznym ekranem iOS. Twoje własne niebo. Zdjęcia, notatki i obserwacje w prywatnej kolekcji.",
+      "file": "images/story-03-moje-niebo.jpg",
+      "thumbnail": "images/story-03-moje-niebo-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201279,
+      "sha256": "2e0b5f81388c46a7f32f1adb43f68a3f36120e52b9edb35aa120b57bae06bf42"
+    },
+    {
+      "id": "story-04-wiatr",
+      "title": "Wiatr bez zgadywania",
+      "format": "story",
+      "phase": "now",
+      "alt": "Oliwkowa storka z przestrzennym filcowym modelem wiatru. METAR, TAF, wiatr i czytanie map. Pracownie edukacyjne.",
+      "file": "images/story-04-wiatr.jpg",
+      "thumbnail": "images/story-04-wiatr-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 292509,
+      "sha256": "cc174b33e6fe8f3f53bfff3a22f821bba12ef14e2b5f317d242147925f305fb1"
+    },
+    {
+      "id": "post-01-mamy-to",
+      "title": "Ogłoszenie akceptacji",
+      "format": "post",
+      "phase": "now",
+      "alt": "Kwadratowo-pionowy post z filcowym okiem. Mamy to. Chmurnik zaakceptowany przez Apple; Polska i UE czekają na DSA.",
+      "file": "images/post-01-mamy-to.jpg",
+      "thumbnail": "images/post-01-mamy-to-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 240196,
+      "sha256": "97a20d79f327dfdf442ce3a472c68f8fa1ec5fdd7559325a5c5c39c164409a07"
+    },
+    {
+      "id": "post-02-odkrywaj",
+      "title": "Co potrafi Chmurnik",
+      "format": "post",
+      "phase": "now",
+      "alt": "Oliwkowy post z autentycznym ekranem aplikacji. Zacznij od nieba. Atlas, prywatna kolekcja, METAR, TAF i wiatr.",
+      "file": "images/post-02-odkrywaj.jpg",
+      "thumbnail": "images/post-02-odkrywaj-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 195915,
+      "sha256": "20dc6038166008edc52c897d129f7d50d3ba3cced5d08b9208d0882ce633de59"
+    },
+    {
+      "id": "po-dsa-story-pobierz",
+      "title": "Pobierz na iPhone’a",
+      "format": "story",
+      "phase": "after-dsa",
+      "alt": "Wersja do użycia dopiero po uruchomieniu polskiego App Store. Chmurnik na iPhone’a. Pobierz bezpłatnie.",
+      "file": "images/po-dsa-story-pobierz.jpg",
+      "thumbnail": "images/po-dsa-story-pobierz-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 313467,
+      "sha256": "98864e9c93148f6a18107c0dac00dc37e7246151c5e2efad3e960377f02c7d1d"
+    },
+    {
+      "id": "po-dsa-post-pobierz",
+      "title": "Premiera w polskim App Store",
+      "format": "post",
+      "phase": "after-dsa",
+      "alt": "Wersja do użycia dopiero po uruchomieniu polskiego App Store. Niebo w Twojej kieszeni. Chmurnik do pobrania bezpłatnie.",
+      "file": "images/po-dsa-post-pobierz.jpg",
+      "thumbnail": "images/po-dsa-post-pobierz-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 241611,
+      "sha256": "552d70695ec7631608ad25c0dc5ddea05c4ed147ab12b27e28369954b1092ab8"
+    }
+  ],
+  "captions": [
+    {
+      "id": "instagram",
+      "title": "Instagram / Facebook",
+      "phase": "now",
+      "text": "Mamy to. CHMURNIK przeszedł weryfikację Apple!\n\nZaczęło się od patrzenia w niebo. Skończyło na aplikacji, która pomaga zobaczyć w nim coś więcej.\n\nPrawdziwe fotografie chmur i atlas, do którego chce się wracać. Na iPhonie także własna kolekcja zdjęć i obserwacji. Do tego METAR, TAF, nauka wiatru i czytania map. Trochę zachwytu, trochę wiedzy, dużo ciekawości.\n\nChmurnik jest bezpłatny. Bez reklam i zakładania konta.\n\nWażne: aplikacja jest już opublikowana poza UE. W Polsce i pozostałych krajach UE czekamy jeszcze na weryfikację DSA. Samo zatwierdzenie aplikacji mamy za sobą!\n\nNa razie możecie zajrzeć do wersji WWW: https://chmurnik.cloud\n\nDzięki wszystkim, którzy testowali, zgłaszali błędy i podrzucali pomysły. To też Wasz kawałek nieba.\n\nA Ty? Kiedy ostatnio po prostu patrzyłeś w górę?\n\n#chmurnik #chmury #niebo #meteorologia #polskaaplikacja\n\nFotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Zdjęcie przeskalowano i kadrowano. Fotografia i jej adaptowane fragmenty pozostają na tej samej licencji."
+    },
+    {
+      "id": "linkedin",
+      "title": "LinkedIn",
+      "phase": "now",
+      "text": "CHMURNIK zaakceptowany przez Apple.\n\nTo mój projekt z ciekawości świata: polski atlas chmur i pracownia obserwacji atmosfery. Chciałem, żeby wiedza była nie tylko poprawna, ale też czytelna i po prostu piękna.\n\nW aplikacji na iPhone’a są prawdziwe zdjęcia chmur, prywatna kolekcja obserwacji oraz interaktywne pracownie METAR, TAF i wiatru. Eksperymentalny asystent zdjęć działa na urządzeniu i przedstawia podpowiedzi do sprawdzenia, nie nieomylne rozpoznania.\n\nTo narzędzie do nauki, także dla osób zainteresowanych żeglarstwem i lotnictwem. Nie zastępuje oficjalnego briefingu ani pomiarów.\n\nAplikacja jest bezpłatna, bez reklam i kont. Działa już w App Store poza UE; polska dostępność czeka jeszcze na oddzielną weryfikację DSA. Wersja WWW: https://chmurnik.cloud\n\nDziękuję testerom za cierpliwość i szczery feedback. Pomogliście zmienić ładny pomysł w coś użytecznego.\n\nFotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Zdjęcie przeskalowano i kadrowano. Fotografia i jej adaptowane fragmenty pozostają na tej samej licencji."
+    },
+    {
+      "id": "threads",
+      "title": "Threads / krótki post",
+      "phase": "now",
+      "text": "Mamy to! CHMURNIK zaakceptowany przez Apple.\n\nAtlas prawdziwych chmur, własne obserwacje na iPhonie, METAR, TAF i nauka wiatru. Bezpłatnie, bez reklam i kont.\n\nPolska i UE czekają jeszcze na DSA, ale samą akceptację już świętuję.\n\nWersja WWW: https://chmurnik.cloud\n\nDzięki każdemu, kto testował. Teraz spójrzcie w górę."
+    },
+    {
+      "id": "premiera-po-dsa",
+      "title": "Dopiero po dostępności w Polsce",
+      "phase": "after-dsa",
+      "text": "CHMURNIK jest już w polskim App Store. Mamy to!\n\nPrawdziwe chmury. Własne zdjęcia, notatki i obserwacje. Atlas, który uczy patrzeć uważniej. Do tego METAR, TAF i nauka wiatru.\n\nZrobiłem tę aplikację dla ludzi ciekawych nieba. Jest bezpłatna, bez reklam i bez zakładania konta.\n\nPobierz na iPhone’a: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\nTesterzy, dzięki za każdy pomysł i każdy znaleziony błąd. A wszystkich zapraszam do patrzenia w górę.\n\n#chmurnik #chmury #niebo #meteorologia #iphone\n\nFotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Zdjęcie przeskalowano i kadrowano. Fotografia i jej adaptowane fragmenty pozostają na tej samej licencji."
+    }
+  ]
+}

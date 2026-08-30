@@ -11,6 +11,7 @@ links:
   - "../../../design/app-store-metadata-pl-draft.json"
   - "../../../design/app-store-release-2026-08-26.md"
   - "../../../design/app-store-owner-steps-pl.md"
+  - "../../../social/2026-08-30/README.md"
 history:
   - date: "2026-08-27"
     status: active
@@ -68,8 +69,8 @@ present; close release quality and metadata gaps before App Review.
 At activation, version 1.0 was PREPARE_FOR_SUBMISSION. Its description, screenshots,
 support URL, privacy URL, category, age questionnaire, rights declaration,
 copyright, review contact and selected build were missing. Preparation
-is complete and the exact final candidate is now WAITING_FOR_REVIEW.
-Public availability and the remaining checks below are not yet verified.
+is complete. On 2026-08-30 the exact candidate is READY_FOR_SALE in 148
+territories; 27 EU territories remain blocked by DSA. See the launch media log.
 
 ## Implementation
 
@@ -100,7 +101,7 @@ Public availability and the remaining checks below are not yet verified.
 - [x] Owner authorized publication; existing automatic release after Apple
       approval is retained. This does not establish public availability.
 - [x] Exact candidate submitted and WAITING_FOR_REVIEW read back from Apple.
-- [ ] Apple approval and the actual public store listing are verified.
+- [x] 2026-08-30: Apple approval and US listing verified; EU remains blocked.
 
 ## Boundary
 

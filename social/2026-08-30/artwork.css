@@ -1,0 +1,41 @@
+@font-face{font-family:Romie;src:url('/public/fonts/Romie-Regular.woff2') format('woff2');font-weight:400}
+@font-face{font-family:Roobert;src:url('/public/fonts/Roobert-Regular.woff2') format('woff2');font-weight:400}
+@font-face{font-family:Roobert;src:url('/public/fonts/Roobert-Bold.woff2') format('woff2');font-weight:700}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:Roobert,sans-serif;color:#6d6435}
+#artwork{position:relative;width:1080px;overflow:hidden;background:#ffe1eb}
+p,h1,h2{margin:0;font-weight:400}h1{font-family:Romie,serif;font-size:124px;line-height:.98;letter-spacing:-3px}
+header{position:absolute;left:78px;right:78px;top:248px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+header .wordmark{width:404px;height:auto;display:block}header span{font-size:23px;letter-spacing:1.2px;white-space:nowrap}
+h1,.intro,.closing,.credit{position:absolute;left:78px;right:78px}h1{top:402px}.intro{top:672px;font-size:34px;line-height:1.4}
+.observer{position:absolute;display:block;width:924px;height:730px;left:78px;top:735px;object-fit:cover;object-position:center 58%}
+.closing{top:1496px;font-size:29px;line-height:1.4}.closing .large{font-size:41px;margin-bottom:24px}
+.credit{font-size:19px;line-height:1.35;top:1622px;letter-spacing:.05px}
+.phone{position:absolute;background:#3b3827;border:9px solid #3b3827;border-radius:62px;overflow:hidden;box-shadow:0 20px 60px #3b382729}
+.phone img{width:100%;height:auto;display:block}.story .phone{width:406px;left:337px;top:765px}
+.story-01-mamy-to h1{font-size:176px;top:390px}.story-01-mamy-to .intro{top:597px}
+.story-01-mamy-to .closing{top:1498px}.story-01-mamy-to .closing .large{font-size:40px}
+.story-02-atlas{background:#fff7f1!important}.story-02-atlas h1{font-size:151px;top:380px}.story-02-atlas .intro{top:729px}
+.cloud-photo{position:absolute;left:78px;top:878px;width:924px;height:590px;object-fit:cover;display:block}
+.story-02-atlas .closing{top:1496px}.story-02-atlas .closing .large{margin-bottom:12px}
+.story-02-atlas .credit{top:1632px}
+.story-03-moje-niebo{background:#fff7f1!important}.story-03-moje-niebo h1{font-size:118px;top:392px}
+.story-03-moje-niebo .intro{top:651px;font-size:32px}.story-03-moje-niebo .phone{top:785px;width:386px;left:347px;border-width:7px;border-radius:48px}
+.story-03-moje-niebo .credit{left:78px;top:1640px;font-size:18px}
+.story-04-wiatr,.post-02-odkrywaj{background:#6d6435!important;color:#fff7f1}
+.story-04-wiatr .wordmark,.post-02-odkrywaj .wordmark{filter:brightness(0) invert(98%) sepia(8%) saturate(717%) hue-rotate(312deg) brightness(104%) contrast(103%)}
+.story-04-wiatr h1{font-size:121px;top:416px}.wind-art{position:absolute;left:78px;top:773px;width:924px;height:auto}
+.story-04-wiatr .closing{top:1392px}.story-04-wiatr .closing .large{font-size:51px;margin-bottom:18px}
+.story-04-wiatr .note{font-size:25px;margin-top:35px;line-height:1.4}
+.post header{top:88px}.post header .wordmark{width:408px}.post h1{top:228px;font-size:168px}
+.post .intro{top:426px;font-size:35px}.post .observer{width:780px;height:650px;left:150px;top:502px}
+.post .closing{top:1174px;font-size:29px}.post .closing .large{font-size:39px;margin-bottom:9px}
+.post-02-odkrywaj h1{top:255px;font-size:124px;right:auto;width:555px}
+.post-02-odkrywaj .phone{width:366px;left:634px;top:364px;border-width:7px;border-radius:46px;box-shadow:0 20px 60px #35321f55}
+.features{position:absolute;top:623px;left:78px;width:516px}.features section{margin-bottom:55px}
+.features h2{font-weight:700;font-size:31px;margin-bottom:12px}.features p{font-size:27px;line-height:1.4}
+.post .credit{top:1214px;font-size:19px}
+.po-dsa-story-pobierz h1{top:392px;font-size:114px}.po-dsa-story-pobierz .intro{top:667px}
+.po-dsa-story-pobierz .observer{top:765px;height:720px}.po-dsa-story-pobierz .closing{top:1520px}
+.po-dsa-story-pobierz .closing .large{color:#6c3fc9;font-size:50px;margin-bottom:17px}
+.po-dsa-post-pobierz h1{top:226px;font-size:111px}.po-dsa-post-pobierz .observer{top:480px;width:780px;height:668px;left:150px}
+.po-dsa-post-pobierz .closing{top:1170px}.po-dsa-post-pobierz .closing p:last-child{color:#6c3fc9}

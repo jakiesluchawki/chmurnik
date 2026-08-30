@@ -30,6 +30,8 @@ jobs:
       - run: npm test
       - run: npm run check:lessons
       - run: npm run build:pages
+      - name: Add the separate launch media gallery (not bundled in iOS)
+        run: cp -R social/2026-08-30/site dist/premiera
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

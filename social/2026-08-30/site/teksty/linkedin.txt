@@ -1,0 +1,13 @@
+CHMURNIK zaakceptowany przez Apple.
+
+To mój projekt z ciekawości świata: polski atlas chmur i pracownia obserwacji atmosfery. Chciałem, żeby wiedza była nie tylko poprawna, ale też czytelna i po prostu piękna.
+
+W aplikacji na iPhone’a są prawdziwe zdjęcia chmur, prywatna kolekcja obserwacji oraz interaktywne pracownie METAR, TAF i wiatru. Eksperymentalny asystent zdjęć działa na urządzeniu i przedstawia podpowiedzi do sprawdzenia, nie nieomylne rozpoznania.
+
+To narzędzie do nauki, także dla osób zainteresowanych żeglarstwem i lotnictwem. Nie zastępuje oficjalnego briefingu ani pomiarów.
+
+Aplikacja jest bezpłatna, bez reklam i kont. Działa już w App Store poza UE; polska dostępność czeka jeszcze na oddzielną weryfikację DSA. Wersja WWW: https://chmurnik.cloud
+
+Dziękuję testerom za cierpliwość i szczery feedback. Pomogliście zmienić ładny pomysł w coś użytecznego.
+
+Fotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Zdjęcie przeskalowano i kadrowano. Fotografia i jej adaptowane fragmenty pozostają na tej samej licencji.

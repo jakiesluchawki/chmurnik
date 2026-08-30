@@ -1,0 +1,72 @@
+CHMURNIK / PAKIET PREMIEROWY / 30 SIERPNIA 2026
+
+WAŻNE: AKCEPTACJA APPLE NIE OZNACZA JESZCZE DOSTĘPNOŚCI W POLSCE.
+
+W dniu przygotowania paczki aplikacja 1.0 jest zatwierdzona i dostępna w 148
+krajach. Polska oraz 26 pozostałych krajów UE czekają na weryfikację DSA.
+Nie znamy terminu Apple. Nie zmieniaj komunikatu na „pobierz już teraz”,
+dopóki polski sklep faktycznie nie pozwala pobrać aplikacji.
+
+NA TERAZ: chmurnik-na-teraz.zip
+- Cztery storki: story-01, 02, 03, 04. Kolejność jest celowa.
+- Dwa posty: post-01 i post-02. Osobno lub jako karuzela.
+- Teksty: Instagram/Facebook, LinkedIn, Threads.
+
+NA PÓŹNIEJ: chmurnik-po-dsa.zip
+- Dwa pliki zaczynające się od po-dsa- oraz tekst premiera-po-dsa.txt.
+- Opublikuj dopiero po sprawdzeniu polskiej karty App Store:
+  https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+JAK ZAPISAĆ NA IPHONIE
+1. Otwórz https://jakiesluchawki.github.io/chmurnik/premiera/ w Safari.
+2. Przy grafice wybierz „Zapisz / udostępnij”, a potem „Zapisz obraz”.
+3. Jeśli udostępnianie plików nie jest dostępne: „Otwórz JPG”, przytrzymaj
+   obraz i zapisz w Zdjęciach albo użyj systemowego udostępniania Safari.
+4. ZIP trafi do Plików. Dotknij archiwum, aby je rozpakować; obrazy możesz
+   otworzyć i zapisać do Zdjęć przez menu udostępniania.
+5. W Instagramie wybierz zdjęcia i dodaj podpis. Link dodaje się osobno
+   naklejką „Link” w relacji. Tekst na grafice sam w sobie nie jest linkiem.
+
+POMYSŁ NA RELACJE
+- 01: ogłoszenie akceptacji.
+- 02: ankieta w Instagramie: „Patrzysz czasem w niebo?” / „Codziennie” /
+  „Od dziś”. Naklejki nie są wtopione w obraz; dodaj je w Instagramie.
+- 03: pokaż prywatną kolekcję. Nie pokazuj cudzych zdjęć bez zgody.
+- 04: pytanie „Wiatr, chmury czy mapy: co chcesz lepiej rozumieć?”.
+- Na dziś jako link użyj https://chmurnik.cloud (wersja WWW).
+- Po DSA: link do polskiego App Store powyżej.
+
+FORMAT
+- Storki: JPG, 1080 x 1920, 9:16.
+- Posty: JPG, 1080 x 1350, 4:5.
+- Teksty: UTF-8, gotowe do skopiowania.
+- Pełne grafiki mają około 190-310 KB. Pliki „-preview” są tylko miniaturami
+  w galerii i nie są dołączone do ZIP. Pobieraj pełne JPG.
+- Nie dołączono fontów ani prywatnych plików konta Apple.
+
+ŹRÓDŁA I PRAWA
+Fotografia Cirrus, także wewnątrz autentycznego ekranu aplikacji:
+„CirrusField-color.jpg”, PiccoloNamek at English Wikipedia.
+Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg
+Licencja: https://creativecommons.org/licenses/by-sa/3.0/
+Zmiany: przeskalowanie, kadrowanie i kompresja JPG. Fotografia i jej
+adaptowane fragmenty zachowują CC BY-SA 3.0. Nie usuwaj widocznego podpisu
+ani informacji o autorze, źródle i licencji z tekstu towarzyszącego zdjęciu.
+Autor fotografii nie jest powiązany z promocją aplikacji.
+
+Ekrany aplikacji są prawdziwymi zrzutami Release 1.0 (20260826214336)
+z symulatora iPhone 17 Pro Max / iOS 26.5. Nie są renderami wymyślonego UI.
+Nie zmieniano wyników modelu ani treści aplikacji. Dodano tylko ramkę,
+skalowanie i cień. Widoczna niepewność rozpoznania pochodzi z aplikacji.
+
+Obiekty filcowe są istniejącymi ilustracjami Chmurnika wygenerowanymi dla
+projektu. Nie służą jako dowody do rozpoznawania chmur. Zdjęcie chmur nie
+jest wygenerowane przez AI. Logo jest oryginalnym plikiem marki. Użyto
+licencjonowanych fontów Romie i Roobert, utrwalonych w rasteryzacji.
+
+Licencja fotografii nie daje praw do cudzych znaków towarowych, fontów
+ani innych elementów aplikacji. Apple i Instagram nie sponsorują projektu.
+
+Narzędzia meteorologiczne mają charakter edukacyjny. Nie zastępują
+oficjalnego briefingu, ostrzeżeń, pomiarów ani ograniczeń załogi i sprzętu.
+Czytnik METAR/TAF analizuje wklejone teksty, nie dostarcza danych live.
