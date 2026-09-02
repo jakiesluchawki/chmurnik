@@ -1,11 +1,12 @@
-CHMURNIK / PEŁNY PAKIET NA 3 WRZEŚNIA 2026
+CHMURNIK / PEŁNY PAKIET NA 3 WRZEŚNIA 2026 / MONTAŻ V2
 
 Materiały są gotowe do ręcznej publikacji. Nic nie zostało automatycznie zamieszczone na Instagramie, Facebooku ani LinkedIn.
 
 1. INSTAGRAM STORIES
-Polecana wersja: 10 filmów MP4 w kolejności 01–10. Sześć pokazuje prawdziwą obsługę aplikacji; cztery są nieruchomymi planszami z czasem na spokojne przeczytanie. JPG z tym samym numerem jest alternatywą, nie dodatkową relacją. Wszystkie pliki: 1080 x 1920. H.264 MP4, 30 fps, bez dźwięku. Każdy film zachowuje cały zatwierdzony tekst w kolejnych fragmentach.
+Polecana wersja: 10 filmów MP4 w kolejności 01–10, po 6–8 sekund. Sześć demonstracji i cztery montaże produktowe. Szybkie cięcia, zbliżenia i prawdziwe gesty, bez postojów na czytanie. Cały zatwierdzony tekst każdej storki jest stale widoczny w filmie, nie znika wraz z kolejnym ujęciem. JPG z tym samym numerem jest alternatywą, nie dodatkową relacją. Wszystkie pliki: 1080 x 1920, H.264 MP4, 30 fps, bez dźwięku. Muzykę dobierz w Instagramie.
 
-Dodaj w Instagramie prawdziwą naklejkę Link. Jej pole w każdej storce: x=240, y=1510, szerokość 600, wysokość 120. Nie zasłaniaj zastrzeżeń pod polem. Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
+Dodaj w Instagramie prawdziwą naklejkę Link. Jej pole w każdej storce: x=240, y=1510, szerokość 600, wysokość 120. Nie zasłaniaj zastrzeżeń pod polem.
+Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
 Podpisy naklejek: teksty/linki-do-storek.txt. Pełen tekst: teksty/storki-pelny-tekst.txt.
 
 2. INSTAGRAM POST / KARUZELA
@@ -19,10 +20,10 @@ Oficjalna instrukcja dodawania dokumentu: https://www.linkedin.com/help/linkedin
 Dołącz images/facebook-z-kogos-bliskiego.jpg i wklej teksty/facebook-post.txt. Link do App Store jest już w tekście posta.
 
 5. ZAPIS NA IPHONIE
-Galeria udostępnia pojedyncze JPG i MP4 oraz przycisk systemowego udostępnienia, jeśli przeglądarka go obsługuje. Alternatywa JPG: otwórz obraz i przytrzymaj, aby go zapisać. Alternatywa MP4: pobierz do Plików, otwórz i wybierz Udostępnij / Zapisz wideo. ZIP rozpakujesz, stukając plik w aplikacji Pliki. Rzeczywista lista opcji zależy od systemu.
+Galeria udostępnia pojedyncze JPG i MP4 oraz przycisk systemowego udostępnienia, jeśli przeglądarka go obsługuje. Alternatywa JPG: otwórz obraz i przytrzymaj, aby go zapisać. Alternatywa MP4: pobierz do Plików, otwórz i wybierz Udostępnij / Zapisz wideo. ZIP rozpakujesz, stukając plik w aplikacji Pliki. Rzeczywista lista opcji zależy od systemu. Pobierz ponownie paczkę V2, żeby nie użyć wcześniejszego montażu zapisanego w Plikach.
 
 6. DEMONSTRACJE I GRANICE
-To nagrania prawdziwego interfejsu React z mobilnym układem, z izolowanej przeglądarki, nie nagrania fizycznego iPhone’a. Dotknięcia, przewijanie, wklejanie i przesuwanie suwaków zmieniają rzeczywisty stan aplikacji. Nie podmieniano odpowiedzi, odczytów ani obrazów. Pokazujemy fragment pierwszej lekcji, nie jej ukończenie. Raport METAR jest przykładem szkoleniowym. Pracownia Windy jest niezależna, bez integracji. Telefon nie mierzy wiatru. Narzędzia nie zastępują oficjalnego briefingu.
+To montaż nagrań prawdziwego interfejsu React z mobilnym układem, z izolowanej przeglądarki, nie nagrania fizycznego iPhone’a. Dotknięcia, przewijanie, wklejanie i przesuwanie suwaków zmieniają rzeczywisty stan aplikacji. Nagrania skrócono, przyspieszono i wykadrowano. Nie podmieniano odpowiedzi, odczytów ani fotografii. Pokazujemy fragment pierwszej lekcji, nie jej ukończenie. Raport METAR jest przykładem szkoleniowym. Pracownia Windy jest niezależna, bez integracji. Telefon nie mierzy wiatru. Narzędzia nie zastępują oficjalnego briefingu.
 
 7. ŹRÓDŁA
-Fotografie: ZRODLA-ZDJEC.txt. Zachowaj autorstwo i licencje. Opowieść pochodzi od autora CHMURNIKA; dziesięć tekstów zostało zatwierdzonych przed produkcją. Oryginalna identyfikacja: Romie, Roobert, róż, oliwka, fiolet i filcowy obiekt. Pliki fontów nie są dołączone do paczek. Prywatne statystyki, tokeny, dane kont i robocze klatki nagrań są wykluczone.
+Fotografie: ZRODLA-ZDJEC.txt. Zachowaj autorstwo i licencje. Opowieść pochodzi od autora CHMURNIKA; dziesięć tekstów zostało zatwierdzonych przed produkcją i nie zostało skróconych w V2. Oryginalna identyfikacja: Romie, Roobert, róż, oliwka, fiolet i filcowy obiekt. Pliki fontów nie są dołączone do paczek. Prywatne statystyki, tokeny, dane kont i robocze klatki nagrań są wykluczone.

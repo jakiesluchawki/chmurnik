@@ -1,0 +1,1509 @@
+{
+  "revision": "20260903-fast-v2",
+  "stories": [
+    {
+      "id": "story-01-geneza",
+      "duration": 7.2,
+      "cuts": [
+        {
+          "image": "public/assets/observer-guide-still-life.png",
+          "seconds": 1.2,
+          "focus": 0.5,
+          "zoom": 1.06,
+          "at": 0,
+          "duration": 1.2
+        },
+        {
+          "demo": "atlas",
+          "from": 1.4,
+          "to": 3.7,
+          "seconds": 1.5,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 1.2,
+          "duration": 1.5
+        },
+        {
+          "demo": "reader",
+          "from": 8.5,
+          "to": 10,
+          "seconds": 1.5,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 2.7,
+          "duration": 1.5
+        },
+        {
+          "demo": "height",
+          "from": 11.1,
+          "to": 13.1,
+          "seconds": 1.5,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 4.2,
+          "duration": 1.5
+        },
+        {
+          "demo": "wind",
+          "from": 16.1,
+          "to": 17.8,
+          "seconds": 1.5,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 5.7,
+          "duration": 1.5
+        }
+      ],
+      "copy": {
+        "lead": "Zaczęło się od kogoś bliskiego.",
+        "body": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Zaczęło się od kogoś bliskiego.",
+          "body": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem."
+        },
+        "parts": [
+          {
+            "text": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 509.21875,
+                "width": 830.125,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 557.84375,
+                "width": 569.359375,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.",
+            "rects": [
+              {
+                "x": 648.484375,
+                "y": 557.84375,
+                "width": 272.546875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 606.46875,
+                "width": 911.25,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 655.09375,
+                "width": 160.9375,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.",
+            "rects": [
+              {
+                "x": 240.0625,
+                "y": 655.09375,
+                "width": 714.71875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 703.71875,
+                "width": 648.890625,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 162.21875
+        },
+        "body": {
+          "x": 70,
+          "y": 508.21875,
+          "width": 940,
+          "height": 243.125
+        },
+        "stage": {
+          "x": 70,
+          "y": 790,
+          "width": 940,
+          "height": 684
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/01-geneza-copy-0.png",
+          "sha256": "0a218cc85aa570a9e3417c3fc6b66b346e96db2177c7264c4bdbacc49fb231b8"
+        },
+        {
+          "file": "build/social-full/promo/01-geneza-copy-1.png",
+          "sha256": "649175317a342d0e66f50f487d7ecb97b652e92a6d9938df6a0d9e728bdb7355"
+        },
+        {
+          "file": "build/social-full/promo/01-geneza-copy-2.png",
+          "sha256": "abbe357feb4b29b486ff721b818714f0c771012b4bfa0436aa51e4588295691d"
+        }
+      ]
+    },
+    {
+      "id": "story-02-atlas",
+      "duration": 8,
+      "cuts": [
+        {
+          "demo": "atlas",
+          "from": 1.35,
+          "to": 3.55,
+          "seconds": 1.6,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.6
+        },
+        {
+          "demo": "atlas",
+          "from": 3.6,
+          "to": 5.15,
+          "seconds": 1.6,
+          "focus": 0.2,
+          "zoom": 1.08,
+          "at": 1.6,
+          "duration": 1.6
+        },
+        {
+          "demo": "atlas",
+          "from": 6.15,
+          "to": 7.45,
+          "seconds": 1.6,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 3.2,
+          "duration": 1.6
+        },
+        {
+          "demo": "atlas",
+          "from": 9.35,
+          "to": 10.6,
+          "seconds": 1.6,
+          "focus": 0.65,
+          "zoom": 1.08,
+          "at": 4.8,
+          "duration": 1.6
+        },
+        {
+          "demo": "atlas",
+          "from": 19.75,
+          "to": 21.25,
+          "seconds": 1.6,
+          "focus": 0.65,
+          "zoom": 1.08,
+          "at": 6.4,
+          "duration": 1.6
+        }
+      ],
+      "copy": {
+        "lead": "Żeby niebo stawało się znajome.",
+        "body": "Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Żeby niebo stawało się znajome.",
+          "body": "Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową."
+        },
+        "parts": [
+          {
+            "text": "Otwórz atlas i wybierz chmurę, którą chcesz poznać.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 509.21875,
+                "width": 904.296875,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 557.84375,
+                "width": 907.859375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 606.46875,
+                "width": 594.515625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.",
+            "rects": [
+              {
+                "x": 673.640625,
+                "y": 606.46875,
+                "width": 215.359375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 655.09375,
+                "width": 919.109375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 703.71875,
+                "width": 894.375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 752.34375,
+                "width": 314.375,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 162.21875
+        },
+        "body": {
+          "x": 70,
+          "y": 508.21875,
+          "width": 940,
+          "height": 291.75
+        },
+        "stage": {
+          "x": 70,
+          "y": 838,
+          "width": 940,
+          "height": 636
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/02-atlas-copy-0.png",
+          "sha256": "d1acc2f70dbfaf06d0333a0a96e87bc40ac8ea82625c0619a7c4319b60584caf"
+        },
+        {
+          "file": "build/social-full/promo/02-atlas-copy-1.png",
+          "sha256": "26ba3cdf37409cc121475384a000d99b1d3f1049c572448f47208ddbacf1ef93"
+        },
+        {
+          "file": "build/social-full/promo/02-atlas-copy-2.png",
+          "sha256": "127b67a0ffed3613ab34ca09b094d9f239f14b8d32e49c77ccd78ca93c78b10b"
+        }
+      ]
+    },
+    {
+      "id": "story-03-lekcja",
+      "duration": 8,
+      "cuts": [
+        {
+          "demo": "lesson",
+          "from": 0.65,
+          "to": 2.25,
+          "seconds": 1.6,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.6
+        },
+        {
+          "demo": "lesson",
+          "from": 3.4,
+          "to": 6.6,
+          "seconds": 1.6,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 1.6,
+          "duration": 1.6
+        },
+        {
+          "demo": "lesson",
+          "from": 7.5,
+          "to": 9.1,
+          "seconds": 1.6,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 3.2,
+          "duration": 1.6
+        },
+        {
+          "demo": "lesson",
+          "from": 14.8,
+          "to": 16.35,
+          "seconds": 1.6,
+          "focus": 0.8,
+          "zoom": 1.08,
+          "at": 4.8,
+          "duration": 1.6
+        },
+        {
+          "demo": "lesson",
+          "from": 17.45,
+          "to": 19,
+          "seconds": 1.6,
+          "focus": 0.6,
+          "zoom": 1.08,
+          "at": 6.4,
+          "duration": 1.6
+        }
+      ],
+      "copy": {
+        "lead": "Najpierw patrz, potem nazywaj.",
+        "body": "To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Najpierw patrz, potem nazywaj.",
+          "body": "To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania."
+        },
+        "parts": [
+          {
+            "text": "To tytuł pierwszej lekcji.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 509.21875,
+                "width": 402.8125,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź.",
+            "rects": [
+              {
+                "x": 481.9375,
+                "y": 509.21875,
+                "width": 356.796875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 557.84375,
+                "width": 827.265625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 606.46875,
+                "width": 898.484375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 655.09375,
+                "width": 856.609375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 703.71875,
+                "width": 781.546875,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 162.21875
+        },
+        "body": {
+          "x": 70,
+          "y": 508.21875,
+          "width": 940,
+          "height": 243.125
+        },
+        "stage": {
+          "x": 70,
+          "y": 790,
+          "width": 940,
+          "height": 684
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/03-lekcja-copy-0.png",
+          "sha256": "700604f2d06f30f090b315e191a63f54cb6ff8726a389028433d1efab827ff6b"
+        },
+        {
+          "file": "build/social-full/promo/03-lekcja-copy-1.png",
+          "sha256": "083fbb107abfd6f0b664430eb5376b351d377165705974ed0f483ecd52719e4c"
+        },
+        {
+          "file": "build/social-full/promo/03-lekcja-copy-2.png",
+          "sha256": "d86ed8aba121d763c6bfcb593daccd77cbd9bcb8a1caa9d4efda88e62e65d1f2"
+        }
+      ]
+    },
+    {
+      "id": "story-04-metar",
+      "duration": 6,
+      "cuts": [
+        {
+          "demo": "reader",
+          "from": 5.7,
+          "to": 7.25,
+          "seconds": 1.5,
+          "focus": 0.6,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.5
+        },
+        {
+          "demo": "reader",
+          "from": 8.35,
+          "to": 9.95,
+          "seconds": 1.5,
+          "focus": 0.25,
+          "zoom": 1.08,
+          "at": 1.5,
+          "duration": 1.5
+        },
+        {
+          "demo": "reader",
+          "from": 17.25,
+          "to": 18.9,
+          "seconds": 1.5,
+          "focus": 0.2,
+          "zoom": 1.08,
+          "at": 3,
+          "duration": 1.5
+        },
+        {
+          "demo": "reader",
+          "from": 19.4,
+          "to": 21,
+          "seconds": 1.5,
+          "focus": 0.55,
+          "zoom": 1.08,
+          "at": 4.5,
+          "duration": 1.5
+        }
+      ],
+      "copy": {
+        "lead": "Potem przyszła kolej na język pilotów.",
+        "body": "Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Potem przyszła kolej na język pilotów.",
+          "body": "Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury."
+        },
+        "parts": [
+          {
+            "text": "Do rozpoznawania chmur dobudowałem trening METAR.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 509.21875,
+                "width": 833.421875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 557.84375,
+                "width": 129.25,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury.",
+            "rects": [
+              {
+                "x": 208.375,
+                "y": 557.84375,
+                "width": 706.5,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 606.46875,
+                "width": 687.390625,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 162.21875
+        },
+        "body": {
+          "x": 70,
+          "y": 508.21875,
+          "width": 940,
+          "height": 145.875
+        },
+        "stage": {
+          "x": 70,
+          "y": 696,
+          "width": 940,
+          "height": 778
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/04-metar-copy-0.png",
+          "sha256": "0e8414512f492615efc7268d40e5784c418fed2d9873b715e190e3c35e445489"
+        },
+        {
+          "file": "build/social-full/promo/04-metar-copy-1.png",
+          "sha256": "452574c1f88075d1a4724ab9e48fd3026064ec7bf9f4a3c4a5e2f654955a174b"
+        }
+      ]
+    },
+    {
+      "id": "story-05-czytnik",
+      "duration": 7,
+      "cuts": [
+        {
+          "demo": "reader",
+          "from": 1.35,
+          "to": 3.1,
+          "seconds": 1.4,
+          "focus": 0.2,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.4
+        },
+        {
+          "demo": "reader",
+          "from": 5.65,
+          "to": 7.2,
+          "seconds": 1.4,
+          "focus": 0.6,
+          "zoom": 1.08,
+          "at": 1.4,
+          "duration": 1.4
+        },
+        {
+          "demo": "reader",
+          "from": 8.4,
+          "to": 9.95,
+          "seconds": 1.4,
+          "focus": 0.3,
+          "zoom": 1.08,
+          "at": 2.8,
+          "duration": 1.4
+        },
+        {
+          "demo": "reader",
+          "from": 17.45,
+          "to": 19,
+          "seconds": 1.4,
+          "focus": 0.2,
+          "zoom": 1.08,
+          "at": 4.2,
+          "duration": 1.4
+        },
+        {
+          "demo": "reader",
+          "from": 19.45,
+          "to": 21.1,
+          "seconds": 1.4,
+          "focus": 0.55,
+          "zoom": 1.08,
+          "at": 5.6,
+          "duration": 1.4
+        }
+      ],
+      "copy": {
+        "lead": "Kilka znaków. Tyle pogody.",
+        "body": "METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Kilka znaków. Tyle pogody.",
+          "body": "METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia."
+        },
+        "parts": [
+          {
+            "text": "METAR opisuje obserwację. TAF jest prognozą.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 428.109375,
+                "width": 798.15625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Wklejasz depeszę i rozczytujesz ją po kawałku.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 476.734375,
+                "width": 800.28125,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Skróty zaczynają nabierać znaczenia.",
+            "rects": [
+              {
+                "x": 879.40625,
+                "y": 476.734375,
+                "width": 111.046875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 525.359375,
+                "width": 520.875,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 81.109375
+        },
+        "body": {
+          "x": 70,
+          "y": 427.109375,
+          "width": 940,
+          "height": 145.875
+        },
+        "stage": {
+          "x": 70,
+          "y": 696,
+          "width": 940,
+          "height": 778
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/05-czytnik-copy-0.png",
+          "sha256": "0592fc84125f9a1574418e2f40a959c92ec257e5816370c0625406bf96d1eef5"
+        },
+        {
+          "file": "build/social-full/promo/05-czytnik-copy-1.png",
+          "sha256": "f91ed27390d426479488f3b39bd3d150e474b555cd1f27ec0d1be14bb26642ef"
+        },
+        {
+          "file": "build/social-full/promo/05-czytnik-copy-2.png",
+          "sha256": "b1ac0c3ae07b2842c13fac652d6e13eed7e618d5047320c512c08f2239f6e68d"
+        }
+      ]
+    },
+    {
+      "id": "story-06-windy",
+      "duration": 6.4,
+      "cuts": [
+        {
+          "demo": "layers",
+          "from": 1.7,
+          "to": 3.9,
+          "seconds": 1.6,
+          "focus": 0.25,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.6
+        },
+        {
+          "demo": "height",
+          "from": 1.3,
+          "to": 2.8,
+          "seconds": 1.6,
+          "focus": 0.35,
+          "zoom": 1.08,
+          "at": 1.6,
+          "duration": 1.6
+        },
+        {
+          "demo": "height",
+          "from": 11.15,
+          "to": 13.05,
+          "seconds": 1.6,
+          "focus": 0.45,
+          "zoom": 1.08,
+          "at": 3.2,
+          "duration": 1.6
+        },
+        {
+          "demo": "layers",
+          "from": 17.5,
+          "to": 19.2,
+          "seconds": 1.6,
+          "focus": 0.6,
+          "zoom": 1.08,
+          "at": 4.8,
+          "duration": 1.6
+        }
+      ],
+      "copy": {
+        "lead": "Mapa przyciąga wzrok. Chciałem rozumieć więcej.",
+        "body": "Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Mapa przyciąga wzrok. Chciałem rozumieć więcej.",
+          "body": "Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy."
+        },
+        "parts": [
+          {
+            "text": "Aplikacja rosła.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 492.59375,
+                "width": 257.15625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy.",
+            "rects": [
+              {
+                "x": 336.28125,
+                "y": 492.59375,
+                "width": 628.1875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 541.21875,
+                "width": 891.53125,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 589.84375,
+                "width": 722.046875,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 145.59375
+        },
+        "body": {
+          "x": 70,
+          "y": 491.59375,
+          "width": 940,
+          "height": 145.875
+        },
+        "stage": {
+          "x": 70,
+          "y": 696,
+          "width": 940,
+          "height": 778
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/06-windy-copy-0.png",
+          "sha256": "bd5f4607cdc485d90de08f4908079b8415b8d1752ca407a22eb07e039524a048"
+        },
+        {
+          "file": "build/social-full/promo/06-windy-copy-1.png",
+          "sha256": "914194a872c846f55e0d39ddd698cb7a7074ef8e3f0a1c258eddfcac3695bed9"
+        }
+      ]
+    },
+    {
+      "id": "story-07-warstwy",
+      "duration": 7.166666666666667,
+      "cuts": [
+        {
+          "demo": "layers",
+          "from": 2.55,
+          "to": 3.95,
+          "seconds": 1.44,
+          "focus": 0.25,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "layers",
+          "from": 4,
+          "to": 5.3,
+          "seconds": 1.44,
+          "focus": 0.25,
+          "zoom": 1.08,
+          "at": 1.4333333333333333,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "layers",
+          "from": 6.9,
+          "to": 8.35,
+          "seconds": 1.44,
+          "focus": 0.55,
+          "zoom": 1.08,
+          "at": 2.8666666666666667,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "layers",
+          "from": 17.4,
+          "to": 18.75,
+          "seconds": 1.44,
+          "focus": 0.6,
+          "zoom": 1.08,
+          "at": 4.3,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "layers",
+          "from": 19.5,
+          "to": 21,
+          "seconds": 1.44,
+          "focus": 0.55,
+          "zoom": 1.08,
+          "at": 5.733333333333333,
+          "duration": 1.4333333333333333
+        }
+      ],
+      "copy": {
+        "lead": "Kolor to dopiero początek.",
+        "body": "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Kolor to dopiero początek.",
+          "body": "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy."
+        },
+        "parts": [
+          {
+            "text": "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 428.109375,
+                "width": 883.203125,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 476.734375,
+                "width": 651.171875,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Potem odpowiadasz na pytanie i poznajesz wyjaśnienie.",
+            "rects": [
+              {
+                "x": 730.296875,
+                "y": 476.734375,
+                "width": 113.0625,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 525.359375,
+                "width": 835.9375,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Tak ćwiczysz czytanie mapy.",
+            "rects": [
+              {
+                "x": 915.0625,
+                "y": 525.359375,
+                "width": 57.875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 573.984375,
+                "width": 416.828125,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 81.109375
+        },
+        "body": {
+          "x": 70,
+          "y": 427.109375,
+          "width": 940,
+          "height": 194.5
+        },
+        "stage": {
+          "x": 70,
+          "y": 696,
+          "width": 940,
+          "height": 778
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/07-warstwy-copy-0.png",
+          "sha256": "77ae92e24ce0c8c348b27e10f4f6a48b83d491795e878f6a370849385866ebb9"
+        },
+        {
+          "file": "build/social-full/promo/07-warstwy-copy-1.png",
+          "sha256": "652c09b083c9803fdc01c3761716b44374ebb6f330b6cb78bd6447ca268c46e9"
+        },
+        {
+          "file": "build/social-full/promo/07-warstwy-copy-2.png",
+          "sha256": "5df37081d33cc8febab9a48440fac82fee21fea96773e49e74101a1260ad70c6"
+        }
+      ]
+    },
+    {
+      "id": "story-08-wysokosc",
+      "duration": 7.166666666666667,
+      "cuts": [
+        {
+          "demo": "height",
+          "from": 1.2,
+          "to": 2.65,
+          "seconds": 1.44,
+          "focus": 0.3,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "height",
+          "from": 4.3,
+          "to": 5.75,
+          "seconds": 1.44,
+          "focus": 0.4,
+          "zoom": 1.08,
+          "at": 1.4333333333333333,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "height",
+          "from": 11.1,
+          "to": 13.05,
+          "seconds": 1.44,
+          "focus": 0.4,
+          "zoom": 1.08,
+          "at": 2.8666666666666667,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "height",
+          "from": 16.15,
+          "to": 17.6,
+          "seconds": 1.44,
+          "focus": 0.4,
+          "zoom": 1.08,
+          "at": 4.3,
+          "duration": 1.4333333333333333
+        },
+        {
+          "demo": "height",
+          "from": 17.65,
+          "to": 19.1,
+          "seconds": 1.44,
+          "focus": 0.4,
+          "zoom": 1.08,
+          "at": 5.733333333333333,
+          "duration": 1.4333333333333333
+        }
+      ],
+      "copy": {
+        "lead": "Ten sam poziom. Ziemia coraz bliżej.",
+        "body": "Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Ten sam poziom. Ziemia coraz bliżej.",
+          "body": "Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami."
+        },
+        "parts": [
+          {
+            "text": "Przesuwasz teren pod wybraną powierzchnią ciśnienia.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 509.21875,
+                "width": 777.109375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 557.84375,
+                "width": 159.71875,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu.",
+            "rects": [
+              {
+                "x": 238.84375,
+                "y": 557.84375,
+                "width": 622.453125,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 606.46875,
+                "width": 851.328125,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "hPa, MSL i AGL przestają być tylko skrótami.",
+            "rects": [
+              {
+                "x": 930.453125,
+                "y": 606.46875,
+                "width": 72.65625,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 655.09375,
+                "width": 674.390625,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 162.21875
+        },
+        "body": {
+          "x": 70,
+          "y": 508.21875,
+          "width": 940,
+          "height": 194.5
+        },
+        "stage": {
+          "x": 70,
+          "y": 741,
+          "width": 940,
+          "height": 733
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/08-wysokosc-copy-0.png",
+          "sha256": "63f27b2fb977c4dc4e08a50d7ae1d9c4e3a91cc0fb4acd8ee54cec3fde919e44"
+        },
+        {
+          "file": "build/social-full/promo/08-wysokosc-copy-1.png",
+          "sha256": "d6e9228ad6bf0e6139a073b3fb7613e24c15070972d35f35f6b1229efc854a7c"
+        },
+        {
+          "file": "build/social-full/promo/08-wysokosc-copy-2.png",
+          "sha256": "a5784fc04f434de93259fd588d9f4a0512470e34e47bb5935a414d187864d2bb"
+        }
+      ]
+    },
+    {
+      "id": "story-09-zagle",
+      "duration": 8,
+      "cuts": [
+        {
+          "demo": "wind",
+          "from": 1.3,
+          "to": 2.6,
+          "seconds": 1.6,
+          "focus": 0.35,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.6
+        },
+        {
+          "demo": "wind",
+          "from": 12.2,
+          "to": 14.15,
+          "seconds": 1.6,
+          "focus": 0.35,
+          "zoom": 1.08,
+          "at": 1.6,
+          "duration": 1.6
+        },
+        {
+          "demo": "wind",
+          "from": 16,
+          "to": 17.8,
+          "seconds": 1.6,
+          "focus": 0.25,
+          "zoom": 1.08,
+          "at": 3.2,
+          "duration": 1.6
+        },
+        {
+          "demo": "wind",
+          "from": 18.15,
+          "to": 19.6,
+          "seconds": 1.6,
+          "focus": 0.6,
+          "zoom": 1.08,
+          "at": 4.8,
+          "duration": 1.6
+        },
+        {
+          "demo": "wind",
+          "from": 21.2,
+          "to": 22.6,
+          "seconds": 1.6,
+          "focus": 0.3,
+          "zoom": 1.08,
+          "at": 6.4,
+          "duration": 1.6
+        }
+      ],
+      "copy": {
+        "lead": "A potem popłynęliśmy.",
+        "body": "Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "A potem popłynęliśmy.",
+          "body": "Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze."
+        },
+        "parts": [
+          {
+            "text": "Na żagle z chłopakami zabrałem też CHMURNIKA.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 428.109375,
+                "width": 858.15625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 476.734375,
+                "width": 843.640625,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 525.359375,
+                "width": 643.203125,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny.",
+            "rects": [
+              {
+                "x": 722.328125,
+                "y": 525.359375,
+                "width": 145.546875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 573.984375,
+                "width": 819.59375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 622.609375,
+                "width": 441.75,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Trochę fizyki, którą na wodzie czujesz na własnej skórze.",
+            "rects": [
+              {
+                "x": 520.875,
+                "y": 622.609375,
+                "width": 373.046875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 671.234375,
+                "width": 578.515625,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 81.109375
+        },
+        "body": {
+          "x": 70,
+          "y": 427.109375,
+          "width": 940,
+          "height": 291.75
+        },
+        "stage": {
+          "x": 70,
+          "y": 757,
+          "width": 940,
+          "height": 717
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/09-zagle-copy-0.png",
+          "sha256": "42fca8a0b75b948f9d63b5c80a0ce5478e4038e42504db48c7c9e9664f549386"
+        },
+        {
+          "file": "build/social-full/promo/09-zagle-copy-1.png",
+          "sha256": "cc03cf29f8029c4f0d6a97e23feffdf2d965701d28838c63a39fa13d05fbbffd"
+        },
+        {
+          "file": "build/social-full/promo/09-zagle-copy-2.png",
+          "sha256": "0f2958aa23adacefbb6ccaa5fc2ef75e9c1aa3e580e3610bc34905f39bba2792"
+        },
+        {
+          "file": "build/social-full/promo/09-zagle-copy-3.png",
+          "sha256": "e44173f36f19078ce29cee2b1a34ab9ad35d08782184f903b3fe5fff57a064dc"
+        }
+      ]
+    },
+    {
+      "id": "story-10-zaproszenie",
+      "duration": 7.2,
+      "cuts": [
+        {
+          "demo": "atlas",
+          "from": 3.4,
+          "to": 4.7,
+          "seconds": 1.2,
+          "focus": 0.2,
+          "zoom": 1.08,
+          "at": 0,
+          "duration": 1.2
+        },
+        {
+          "demo": "lesson",
+          "from": 15,
+          "to": 16.3,
+          "seconds": 1.2,
+          "focus": 0.75,
+          "zoom": 1.08,
+          "at": 1.2,
+          "duration": 1.2
+        },
+        {
+          "demo": "reader",
+          "from": 18,
+          "to": 19.35,
+          "seconds": 1.2,
+          "focus": 0.25,
+          "zoom": 1.08,
+          "at": 2.4,
+          "duration": 1.2
+        },
+        {
+          "demo": "height",
+          "from": 11.5,
+          "to": 13,
+          "seconds": 1.2,
+          "focus": 0.4,
+          "zoom": 1.08,
+          "at": 3.6,
+          "duration": 1.2
+        },
+        {
+          "demo": "wind",
+          "from": 21.35,
+          "to": 22.6,
+          "seconds": 1.2,
+          "focus": 0.3,
+          "zoom": 1.08,
+          "at": 4.8,
+          "duration": 1.2
+        },
+        {
+          "image": "public/assets/observer-guide-still-life.png",
+          "seconds": 1.2,
+          "focus": 0.5,
+          "zoom": 1.06,
+          "at": 6,
+          "duration": 1.2
+        }
+      ],
+      "copy": {
+        "lead": "Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.",
+        "body": "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+        "cta": "CHMURNIK. Bezpłatnie na iPhone’a."
+      },
+      "fullCopyAlwaysVisible": true,
+      "geometry": {
+        "text": {
+          "lead": "Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.",
+          "body": "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+          "cta": "CHMURNIK. Bezpłatnie na iPhone’a."
+        },
+        "parts": [
+          {
+            "text": "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo.",
+            "rects": [
+              {
+                "x": 70,
+                "y": 492.59375,
+                "width": 876.8125,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 541.21875,
+                "width": 105.640625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia.",
+            "rects": [
+              {
+                "x": 184.765625,
+                "y": 541.21875,
+                "width": 738.53125,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 589.84375,
+                "width": 548.265625,
+                "height": 45
+              }
+            ]
+          },
+          {
+            "text": "Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+            "rects": [
+              {
+                "x": 627.390625,
+                "y": 589.84375,
+                "width": 336.34375,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 638.46875,
+                "width": 900.6875,
+                "height": 45
+              },
+              {
+                "x": 70,
+                "y": 687.09375,
+                "width": 521.25,
+                "height": 45
+              }
+            ]
+          }
+        ],
+        "title": {
+          "x": 70,
+          "y": 322,
+          "width": 940,
+          "height": 145.59375
+        },
+        "body": {
+          "x": 70,
+          "y": 491.59375,
+          "width": 940,
+          "height": 243.125
+        },
+        "stage": {
+          "x": 70,
+          "y": 773,
+          "width": 940,
+          "height": 627
+        },
+        "fontSize": "38px"
+      },
+      "overlays": [
+        {
+          "file": "build/social-full/promo/10-zaproszenie-copy-0.png",
+          "sha256": "10274eac2419a928fea26a087e07b5c37fb7e6b95d582323197abf537bf931db"
+        },
+        {
+          "file": "build/social-full/promo/10-zaproszenie-copy-1.png",
+          "sha256": "9e44cf0e202cf5111a6c692133574b7323c05894308bf1bece7e6913f036f739"
+        },
+        {
+          "file": "build/social-full/promo/10-zaproszenie-copy-2.png",
+          "sha256": "157c4d2287a60ff761462ebcd6c3f69fd2e21dc4a1fc71108135159f95825cbc"
+        }
+      ]
+    }
+  ],
+  "method": "Fast edit of existing genuine app capture frames, with jump cuts, short push-ins and pointer traces retained. Whole approved copy is composited above every frame, including all lead/body/CTA sentences. No reading-time holds. Sources and readouts are not redrawn. Music is intentionally absent. Not a physical iPhone capture."
+}

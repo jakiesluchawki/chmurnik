@@ -19,6 +19,18 @@ history:
     status: active
     who: codex
     note: >
+      Owner rejected the initial social videos as slow and incompletely
+      captioned. Replaced all ten with silent 6-8 second promo edits, 49
+      source-backed shots and the entire approved copy visible on every
+      frame. All shot midpoints visually reviewed; OCR checks 49 decoded
+      shots and 21 JPGs. Six ZIPs rebuilt with V2 cache-busted downloads.
+      179 tests, nine lesson audits, Pages build, full app flow, all three
+      galleries and the unchanged PDF checks pass. No social posting or
+      physical-device acceptance claimed; the broader task remains active.
+  - date: "2026-09-02"
+    status: active
+    who: codex
+    note: >
       Owner approved ten complete Stories and requested full Instagram,
       LinkedIn and Facebook adaptations. Produced ten silent MP4 Stories
       (six genuine app walkthroughs), ten alternative JPGs, ten carousel
@@ -154,6 +166,10 @@ not the separate account-level trader verification. See the launch media log.
       kit includes genuine mobile walkthroughs, ten carousel slides, LinkedIn
       PDF/post, Facebook image/post, full copy and six verified archives.
       The `/premiera/historia/` gallery preserves both previous packages.
+- [x] 2026-09-02: owner-requested V2 replaces slow reading-time films with
+      6-8 second action-led edits and persistent complete approved copy.
+      Final decoded frames, all platform text, six rebuilt archives and
+      cache-busted gallery downloads pass technical verification.
 
 ## Boundary
 

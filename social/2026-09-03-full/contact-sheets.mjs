@@ -26,6 +26,7 @@ for (const format of ['story', 'carousel', 'facebook']) {
 }
 const pdfPages = (await readdir(path.join(output, 'pdf'))).filter(file => /^page-\d+\.png$/.test(file)).sort();
 await contactSheets('pdf', pdfPages.map(file => path.join(output, 'pdf', file)), 432, 540);
-for (const item of manifest.artworks.filter(item => item.video?.kind === 'walkthrough')) {
-  await contactSheets(`video-${item.id}`, [0, 1, 2].map(index => path.join(output, 'qa', `${item.id}-frame-${index}.png`)), 432, 768, 3);
+const edit = JSON.parse(await readFile(path.join(campaign, 'captures/promo-edit.json'), 'utf8'));
+for (const item of edit.stories) {
+  await contactSheets(`promo-${item.id}`, item.cuts.map((cut, index) => path.join(output, 'promo', `${item.id}-shot-${index}.png`)), 360, 640, Math.min(5, item.cuts.length));
 }

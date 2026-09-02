@@ -15,6 +15,7 @@ const output = path.join(root, `build/social-full/qa${values.base ? '-live' : ''
 await mkdir(output, { recursive: true });
 const manifest = JSON.parse(await readFile(path.join(site, 'manifest.json'), 'utf8'));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const mediaSource = file => `./${file}?v=${encodeURIComponent(manifest.revision)}`;
 let server;
 let browser;
 try {
@@ -32,6 +33,7 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(base, { waitUntil: 'networkidle' });
   await page.locator('#story-grid .asset').first().waitFor();
+  assert.equal(await page.locator('body').getAttribute('data-media-revision'), manifest.revision);
   assert.equal(await page.locator('#story-grid .asset').count(), 10);
   assert.equal(await page.locator('#story-grid video').count(), 10);
   assert.equal(await page.locator('#carousel-grid .asset').count(), 10);
@@ -58,13 +60,14 @@ try {
 
   const files = [...manifest.artworks, ...manifest.artworks.flatMap(item => item.video ? [item.video] : []), ...manifest.documents, ...manifest.archives];
   for (const file of files) {
-    const response = await context.request.get(new URL(file.file, base).href);
+    const response = await context.request.get(new URL(mediaSource(file.file), base).href);
     assert.equal(response.status(), 200, file.file);
     assert.equal(hash(await response.body()), file.sha256, file.file);
   }
   console.log(`${files.length} public images, videos, PDF and ZIPs match their hashes.`);
   for (const item of manifest.artworks.filter(item => item.video)) {
-    const video = page.locator(`video:has(source[src="./${item.video.file}"])`);
+    const selector = `video:has(source[src="${mediaSource(item.video.file)}"])`;
+    const video = page.locator(selector);
     await video.scrollIntoViewIfNeeded();
     const metadata = await video.evaluate(async node => {
       if (node.readyState < 2) await new Promise((resolve, reject) => {
@@ -92,9 +95,9 @@ try {
       hashes.push(hash(bytes));
       await writeFile(path.join(output, `${item.id}-frame-${index}.png`), bytes);
     }
-    if (item.video.kind === 'walkthrough') assert.equal(new Set(hashes).size, 3, `${item.id}: actual changing frames`);
+    assert.equal(new Set(hashes).size, 3, `${item.id}: every promo must have changing frames`);
     await video.evaluate(async node => { node.muted = true; await node.play(); });
-    await page.waitForFunction(selector => document.querySelector(selector).ended, `video:has(source[src="./${item.video.file}"])`, { timeout: 10000 });
+    await page.waitForFunction(selector => document.querySelector(selector).ended, selector, { timeout: 10000 });
     console.log(`${item.id}: decode, three seeks, inline/no-autoplay and playback to end PASS`);
   }
 
@@ -122,7 +125,7 @@ try {
   assert.ok(await page.locator('details.caption textarea').first().evaluate(node => node.selectionStart === 0 && node.selectionEnd === node.value.length));
   for (const file of [...manifest.archives, ...manifest.documents]) {
     const downloadEvent = page.waitForEvent('download');
-    await page.locator(`a[download][href="./${file.file}"]`).first().click();
+    await page.locator(`a[download][href*="/${file.file}"]`).first().click();
     const download = await downloadEvent;
     assert.equal(download.suggestedFilename(), file.file);
     await download.saveAs(path.join(output, file.file));

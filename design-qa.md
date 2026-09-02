@@ -1,5 +1,42 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-02: Fast Social Edit V2
+
+- The owner rejected the first ten-film edit as too slow and found approved
+  text missing from visible frames. Earlier checks of caption events were
+  insufficient to establish the final viewing experience. The reading-time
+  pacing below is superseded by this correction, not treated as accepted.
+- All ten films are now 6-8 seconds, with 49 shots overall and 4-6 shots per
+  film. Genuine captured app pixels are edited into action-led cuts and
+  close-ups. Four reading cards become product montages; no soundtrack is
+  added. Original typography, colors, licensed photos and training limits stay.
+- Every approved lead, body sentence and final CTA is composited on every
+  frame. Changing underlines emphasize words without replacing them. Exact
+  DOM-copy and line-bound checks pass; all body copy fits at 38 px. The full
+  METAR-observation / TAF-forecast paragraph is present throughout Story 05.
+- Every shot midpoint was decoded from the final H.264 and visually reviewed.
+  Vision OCR checks 49 decoded shots plus all 21 JPGs against canonical copy.
+  Joined words and Cyrillic look-alike OCR output were inspected and handled
+  without relaxing missing-word thresholds or changing approved text.
+- Explicit sRGB input and Rec.709 video metadata correct a gamma shift found
+  during QA. Decoded background samples are within five RGB levels of the
+  source palette. Video dimensions, 30 fps, duration and absent audio pass.
+- All 179 Node tests, nine lesson audits, Pages production build, full app
+  flow and both older galleries pass. The corrected gallery passes at
+  320/390/1440 px, including 38 media/archive hashes, ten decode/seek/end
+  checks, seven ZIP/PDF downloads, complete captions and ten sticker links.
+- The unchanged ten-page LinkedIn PDF was rechecked for every approved
+  visible character, embedded fonts, source and App Store links and rendered
+  again. Existing carousel and Facebook exports retain their full copy.
+- Six archives were rebuilt. The full pack is about 51 MB. Gallery, manifest,
+  MP4, share and archive URLs use revision `20260903-fast-v2` to avoid cached
+  slow media. Physical iPhone sharing and Instagram uploads remain untested.
+- Evidence: `social/2026-09-03-full/captures/promo-edit.json`, its manifest,
+  and ignored `build/social-full/promo/copy-audit.json`, `sheets/`, `qa/`.
+
+Result: V2 technical and content checks pass; creative acceptance stays with
+the owner. No app behavior or social account was changed.
+
 ## 2026-09-02: Complete Ten-Part Social Package
 
 - The owner approved the entire ten-part copy before production and requested
@@ -37,7 +74,8 @@
 - Local evidence: `build/social-full/qa/`, `build/social-full/pdf/`,
   `build/social-full/sheets/`, `build/social-full/app-qa/`.
 
-Result: complete package validated; social posting remains with the owner.
+Historical result: initial technical checks passed, but owner review rejected
+the video pacing and text presentation. The V2 correction above supersedes it.
 
 ## 2026-09-02: Origin-Story Social Pack
 

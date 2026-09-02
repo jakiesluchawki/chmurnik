@@ -8,6 +8,7 @@ import test from 'node:test';
 import sharp from 'sharp';
 import { stories, storeUrl, stickerArea, storyTranscript } from '../social/2026-09-03-full/copy.mjs';
 import { captions } from '../social/2026-09-03-full/captions.mjs';
+import { durationFor, edits, promoHtml, revision } from '../social/2026-09-03-full/promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = path.join(root, 'social/2026-09-03-full/site');
@@ -47,11 +48,11 @@ test('all 21 final JPGs match their geometry and hashes', async () => {
   }
 });
 
-test('ten complete MP4s distinguish six walkthroughs from four reading cards', async () => {
+test('ten brisk MP4s preserve complete copy without reading-time cards', async () => {
   const movies = manifest.artworks.filter(item => item.video);
   assert.equal(movies.length, 10);
   assert.equal(movies.filter(item => item.video.kind === 'walkthrough').length, 6);
-  assert.equal(movies.filter(item => item.video.kind === 'reading').length, 4);
+  assert.equal(movies.filter(item => item.video.kind === 'montage').length, 4);
   for (const item of movies) {
     const video = item.video;
     const bytes = await readFile(path.join(site, video.file));
@@ -63,7 +64,12 @@ test('ten complete MP4s distinguish six walkthroughs from four reading cards', a
     assert.equal(video.fps, 30);
     assert.equal(video.codec, 'H.264');
     assert.equal(video.audio, false);
-    assert.ok(video.duration >= 12 && video.duration < 60);
+    const story = stories.find(story => story.id === item.storyId);
+    assert.equal(video.duration, durationFor(story));
+    assert.ok(video.duration >= 6 && video.duration <= 8);
+    assert.equal(video.fullCopyAlwaysVisible, true);
+    assert.equal(video.revision, revision);
+    assert.equal(video.cuts, edits[story.id].length);
   }
   assert.deepEqual(manifest.publicationOrder, stories.map(item => `story-${item.id}.mp4`));
 });
@@ -75,10 +81,6 @@ test('walkthrough evidence retains every approved sentence and actual gestures',
     assert.ok(evidence);
     const copy = evidence.events.filter(event => event.type === 'copy');
     assert.deepEqual(copy.map(event => event.text), story.parts);
-    for (const [index, segment] of copy.entries()) {
-      const end = copy[index + 1]?.at ?? evidence.duration;
-      assert.ok(end - segment.at >= segment.text.split(/\s+/).length / 3.5, `${story.id}: reading time`);
-    }
     assert.ok(evidence.events.some(event => event.type === 'touch-drag'));
     if (!['wind'].includes(story.demo)) assert.ok(evidence.events.some(event => event.type === 'tap'));
     if (['height', 'wind'].includes(story.demo)) assert.ok(evidence.events.some(event => event.type === 'range-result' && event.after !== event.before));
@@ -91,6 +93,30 @@ test('walkthrough evidence retains every approved sentence and actual gestures',
   assert.equal(sailing.windFrom, sailingEvents.find(event => event.type === 'initial-state').windFrom);
   assert.ok(Math.abs(sailing.heading - 135) <= 2);
   assert.ok(Math.abs(sailing.boatSpeed - 15) <= 1);
+});
+
+test('promo edit puts every full sentence in the persistent overlay and bounds every cut', async () => {
+  const evidence = JSON.parse(await readFile(path.join(root, 'social/2026-09-03-full/captures/promo-edit.json'), 'utf8'));
+  assert.equal(evidence.revision, revision);
+  assert.equal(evidence.stories.length, 10);
+  for (const story of stories) {
+    const exported = evidence.stories.find(item => item.id === `story-${story.id}`);
+    assert.equal(exported.copy.lead, story.lead);
+    assert.equal(exported.copy.body, story.body);
+    assert.equal(exported.copy.cta, story.cta);
+    assert.equal(exported.fullCopyAlwaysVisible, true);
+    assert.deepEqual(exported.geometry.parts.map(part => part.text), story.parts);
+    for (const part of exported.geometry.parts) for (const rect of part.rects) {
+      assert.ok(rect.x >= 69 && rect.x + rect.width <= 1011);
+      assert.ok(rect.y + rect.height < exported.geometry.stage.y - 25);
+    }
+    assert.ok(exported.cuts.length >= 4);
+    assert.ok(exported.cuts.every(cut => cut.duration <= 1.6));
+    const html = promoHtml(story, '');
+    for (const part of story.parts) assert.ok(html.includes(part));
+    assert.doesNotMatch(html, /live-copy|display:none|visibility:hidden/);
+  }
+  assert.equal(stories[4].body, 'METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.');
 });
 
 test('complete texts are copyable and platform captions stay within practical lengths', async () => {

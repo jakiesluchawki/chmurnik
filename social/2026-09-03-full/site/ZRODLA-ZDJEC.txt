@@ -73,4 +73,4 @@ Autor: NOAA/AOML/Hurricane Research Division
 Licencja: domena publiczna
 Źródło: https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg
 
-W materiałach pokazujemy rzeczywisty interfejs aplikacji i skalujemy cały jego kadr. Nie podmieniamy zdjęć ani wyników. Prawa i licencje fotografii pozostają przy ich autorach; obecność fotografii nie oznacza poparcia aplikacji przez autora. Zachowaj małe podpisy w materiałach i ten wykaz źródeł przy dalszym udostępnianiu pakietu.
+W materiałach pokazujemy rzeczywisty interfejs aplikacji. Nagrania skrócono, skalowano i kadrowano na potrzeby montażu. Nie podmieniamy zdjęć ani wyników i nie retuszujemy fotografii. Prawa i licencje fotografii pozostają przy ich autorach; obecność fotografii nie oznacza poparcia aplikacji przez autora. Zachowaj małe podpisy w materiałach i ten wykaz źródeł przy dalszym udostępnianiu pakietu.

@@ -59,6 +59,11 @@ Writing production code without an active Lore task is forbidden.
   the approved warm, restrained romantic tone and practical technical detail.
   Feature demos should show genuine mobile taps, swipes, lesson questions and
   explanations, not just isolated panels with changing numbers.
+- Instagram Stories should feel like a brisk startup product promo: short
+  action-led edits, decisive cuts and useful close-ups, without reading-time
+  holds. Keep each story's entire approved copy visible, not only successive
+  excerpts or metadata. Verify the text in decoded video frames. Keep videos
+  silent so the owner can choose music in Instagram.
 - As explicitly requested on 2026-08-26, iOS may have its own navigation,
   workflows, and native features; feature parity with the website is not a
   requirement. Share the scientific content, authentic cloud photography,

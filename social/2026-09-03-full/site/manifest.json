@@ -50,11 +50,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 18,
-        "kind": "reading",
+        "duration": 7.2,
+        "kind": "montage",
         "audio": false,
-        "bytes": 4468086,
-        "sha256": "ef0bc3ae79802d439b915e70c4066f2c08fc183e90dc105750b990c6649ecde9"
+        "bytes": 3980266,
+        "sha256": "ac8ede2ee1461a1a1cbd26152156314ec51cac6e978032eae906f8909ccd0202",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -102,11 +105,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 24.3,
+        "duration": 8,
         "kind": "walkthrough",
         "audio": false,
-        "bytes": 14474520,
-        "sha256": "4cf254a2b772b25b9ad3aad63513c264b99d6b9f75577f765422c9b7295adb10"
+        "bytes": 5702337,
+        "sha256": "de4887d83808eb452f1937e9fa9df8d59d0112668121f256c3ed93452adf7cbb",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -154,11 +160,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 27.3,
+        "duration": 8,
         "kind": "walkthrough",
         "audio": false,
-        "bytes": 9238068,
-        "sha256": "d6811af55a4c34bd16f58af296543a52e879026d5cea30b1363e2118dbed049c"
+        "bytes": 5558024,
+        "sha256": "32f2c853681572be0360969fbb0fe58e4cd7fbbb8744656f87ac967d90fda378",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -204,11 +213,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 12,
-        "kind": "reading",
+        "duration": 6,
+        "kind": "montage",
         "audio": false,
-        "bytes": 2403727,
-        "sha256": "34605a81c89b4b87f9760e41de89228603f2594a4cb2d054299f688620253ef6"
+        "bytes": 3786523,
+        "sha256": "5a8906b1f54424d51c79d130d5141c67a1db29a536e89d82c58ca28882f11e2e",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 4
       }
     },
     {
@@ -256,11 +268,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 22.466666666666665,
+        "duration": 7,
         "kind": "walkthrough",
         "audio": false,
-        "bytes": 6133785,
-        "sha256": "88ca295da7676fcd1cdc8b700288b45b88d8f2dc3781f197503c1fd3547e8941"
+        "bytes": 4154366,
+        "sha256": "26c1940101e4aa548786fcf735776d90370db6a45a095f93aafef08e3b7ab7e0",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -307,11 +322,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 13,
-        "kind": "reading",
+        "duration": 6.4,
+        "kind": "montage",
         "audio": false,
-        "bytes": 2665942,
-        "sha256": "8cb7d1e411d5353b4fac1b008c937654edae202595640642f0ce7aecf2f3a7d9"
+        "bytes": 3710776,
+        "sha256": "d3f38d8786b7bdd05ee4182e8a3acc4b8ad1e32bbb78d685d6cdd0f224eed9d8",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 4
       }
     },
     {
@@ -359,11 +377,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 22.8,
+        "duration": 7.166666666666667,
         "kind": "walkthrough",
         "audio": false,
-        "bytes": 9007546,
-        "sha256": "8ceb66285b787045281e9d4592c16568f78950b1b0533db6dcdfcfbc87dab50d"
+        "bytes": 5056607,
+        "sha256": "c7e11e2e511b53726c48ea783bf7bcb5da4505850a574f70d82009fd127be6d5",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -411,11 +432,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 23.2,
+        "duration": 7.166666666666667,
         "kind": "walkthrough",
         "audio": false,
-        "bytes": 6247391,
-        "sha256": "80c58832642ce4a3df2936a9370a0e5a387c48997e149b22b313d65c0beaee8c"
+        "bytes": 3237423,
+        "sha256": "dac24f2e24ed5138669be069bb70b3eb40603a5e21989fdd0170faa9d859ed6c",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -464,11 +488,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 25.4,
+        "duration": 8,
         "kind": "walkthrough",
         "audio": false,
-        "bytes": 4781274,
-        "sha256": "c1aa206c8a16e5f3a2d1ec7b58ae0261423c25be68db96f0da47159b5abe720b"
+        "bytes": 4346803,
+        "sha256": "a3e13d9a9860e0f397738b4f904068ee237955c7798bbaf6d5e0671c851f1bbf",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 5
       }
     },
     {
@@ -515,11 +542,14 @@
         "width": 1080,
         "height": 1920,
         "fps": 30,
-        "duration": 20,
-        "kind": "reading",
+        "duration": 7.2,
+        "kind": "montage",
         "audio": false,
-        "bytes": 4704017,
-        "sha256": "6ccfc62f7ee96e79a288f435b00ec187e2d990484c34248e2b68c9d3a529294b"
+        "bytes": 5053015,
+        "sha256": "f527f0de1033eb120f24452fb308cc9784b5d8098c875b13718ba8cb78d3b582",
+        "revision": "20260903-fast-v2",
+        "fullCopyAlwaysVisible": true,
+        "cuts": 6
       }
     },
     {
@@ -949,8 +979,8 @@
         "teksty/instagram-bio-link.txt",
         "teksty/alt-teksty.txt"
       ],
-      "bytes": 72509956,
-      "sha256": "306f9d2839c7ae3b67a8185825a1f35fb4857c5d2555cf2306731331fcad79e4"
+      "bytes": 53271764,
+      "sha256": "aa93ae16c86e06aea1595a2dd6018bfa75108041135bfc77daed69a513a84164"
     },
     {
       "file": "chmurnik-stories.zip",
@@ -981,8 +1011,8 @@
         "teksty/storki-pelny-tekst.txt",
         "teksty/linki-do-storek.txt"
       ],
-      "bytes": 65879917,
-      "sha256": "c5166a1b73ce9581dfbd207026d654c8e637a707e3ea8a34f5f37134ee16a963"
+      "bytes": 46641725,
+      "sha256": "f25bf4d69a6d2e1984afc13b58dd877c461a16af3130f7fd1e34558347f41652"
     },
     {
       "file": "chmurnik-stories-jpg.zip",
@@ -1003,8 +1033,8 @@
         "teksty/storki-pelny-tekst.txt",
         "teksty/linki-do-storek.txt"
       ],
-      "bytes": 2083891,
-      "sha256": "a16e9ab4bc0b1e07909d961e19b264ee317274085943e39f614ff77f1f3a5bfc"
+      "bytes": 2084077,
+      "sha256": "0e9ded8d42a66ba300845f47e7b33f89736e41eb54edf928e121e0bb2a242193"
     },
     {
       "file": "chmurnik-instagram-karuzela.zip",
@@ -1026,8 +1056,8 @@
         "teksty/instagram-bio-link.txt",
         "teksty/alt-teksty.txt"
       ],
-      "bytes": 2000982,
-      "sha256": "416ab522d6ddd03a114400ffbf2df4fa864ac465ecec72663711de48dfd86959"
+      "bytes": 2001168,
+      "sha256": "70f543a062c2d2cab43556d8b4db981a58da5eb5bf749a8fbbb8acddeaab87a2"
     },
     {
       "file": "chmurnik-linkedin.zip",
@@ -1038,8 +1068,8 @@
         "chmurnik-historia-linkedin.pdf",
         "teksty/linkedin-post.txt"
       ],
-      "bytes": 4453665,
-      "sha256": "8490e8d4c06176ee87cd2011688aa2b1f41c226e4a5a54145404896b7b75f5b9"
+      "bytes": 4453851,
+      "sha256": "c6cb80de421302e7a7e8d95417c7557a66fa3d11aef636237f0ac454b71030cb"
     },
     {
       "file": "chmurnik-facebook.zip",
@@ -1050,8 +1080,8 @@
         "images/facebook-z-kogos-bliskiego.jpg",
         "teksty/facebook-post.txt"
       ],
-      "bytes": 184890,
-      "sha256": "dd0b60dee19f3b3fe2fe2296373d4774776dfd43f351ae4da7e790c7677e21b8"
+      "bytes": 185076,
+      "sha256": "04d9399a332275be55e1c7b37b84e68dc613e05a338c766e21538beb3f828d43"
     }
   ],
   "photoCredits": [
@@ -1163,5 +1193,6 @@
     "story-08-wysokosc.mp4",
     "story-09-zagle.mp4",
     "story-10-zaproszenie.mp4"
-  ]
+  ],
+  "revision": "20260903-fast-v2"
 }

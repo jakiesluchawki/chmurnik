@@ -1,4 +1,11 @@
 const notice = document.querySelector('#notice');
+const mediaRevision = document.body.dataset.mediaRevision;
+const mediaUrl = file => `./${file}${mediaRevision ? `?v=${encodeURIComponent(mediaRevision)}` : ''}`;
+if (mediaRevision) for (const link of document.querySelectorAll('a[href$=".zip"], a[href$=".pdf"]')) {
+  const url = new URL(link.href);
+  url.searchParams.set('v', mediaRevision);
+  link.href = url.href;
+}
 let noticeTimer;
 function announce(message) {
   notice.textContent = message;
@@ -40,8 +47,8 @@ function card(artwork) {
   const extension = artwork.video ? 'mp4' : 'jpg';
   const format = extension.toUpperCase();
   if (artwork.video) {
-    const video = element('video', { controls: '', playsinline: '', preload: 'metadata', poster: `./${artwork.thumbnail}`, width: artwork.width, height: artwork.height, 'aria-label': `${artwork.video.kind === 'reading' ? 'Plansza do przeczytania' : 'Demo'}: ${artwork.title}. ${artwork.alt}` });
-    video.append(element('source', { src: `./${media.file}`, type: media.mime }));
+    const video = element('video', { controls: '', playsinline: '', preload: 'metadata', poster: mediaUrl(artwork.thumbnail), width: artwork.width, height: artwork.height, 'aria-label': `${artwork.video.kind === 'reading' ? 'Plansza do przeczytania' : artwork.video.kind === 'montage' ? 'Montaż promo' : 'Demo'}: ${artwork.title}. ${artwork.alt}` });
+    video.append(element('source', { src: mediaUrl(media.file), type: media.mime }));
     figure.append(video);
   } else {
     const imageLink = element('a', { href: `./${artwork.file}`, target: '_blank', rel: 'noopener', 'aria-label': `Otwórz JPG: ${artwork.title}` });
@@ -49,13 +56,13 @@ function card(artwork) {
     figure.append(imageLink);
   }
   const actions = element('div', { class: 'actions' });
-  const open = element('a', { href: `./${media.file}`, target: '_blank', rel: 'noopener' }, `Otwórz ${format}`);
-  const download = element('a', { href: `./${media.file}`, download: `${artwork.id}.${extension}` }, artwork.video ? 'Pobierz MP4' : 'Pobierz plik');
+  const open = element('a', { href: mediaUrl(media.file), target: '_blank', rel: 'noopener' }, `Otwórz ${format}`);
+  const download = element('a', { href: mediaUrl(media.file), download: `${artwork.id}.${extension}` }, artwork.video ? 'Pobierz MP4' : 'Pobierz plik');
   if (navigator.share && navigator.canShare) {
     const button = element('button', { type: 'button', class: 'secondary', disabled: '' }, 'Przygotowuję zapis…');
     const prepare = async () => {
       try {
-        const response = await fetch(`./${media.file}`);
+        const response = await fetch(mediaUrl(media.file));
         if (!response.ok) throw new Error('Download failed');
         const file = new File([await response.blob()], `${artwork.id}.${extension}`, { type: media.mime });
         if (!navigator.canShare({ files: [file] })) { button.remove(); return; }
@@ -84,7 +91,7 @@ function card(artwork) {
     actions.append(button);
   }
   actions.append(open, download);
-  const duration = artwork.video ? ` · ${new Intl.NumberFormat('pl-PL').format(artwork.video.duration)} s · bez dźwięku${artwork.video.kind === 'reading' ? ' · czas na czytanie' : ''}` : '';
+  const duration = artwork.video ? ` · ${new Intl.NumberFormat('pl-PL', { maximumFractionDigits: 1 }).format(artwork.video.duration)} s · bez dźwięku${artwork.video.fullCopyAlwaysVisible ? ' · pełny tekst stale na ekranie' : artwork.video.kind === 'reading' ? ' · czas na czytanie' : ''}` : '';
   article.append(figure, element('h3', {}, artwork.title), element('p', { class: 'meta' }, `${artwork.width} × ${artwork.height} · ${format} · ${Math.round(media.bytes / 1024)} KB${duration}`), actions);
   if (artwork.video) {
     const alternative = element('p', { class: 'hint' });
@@ -114,7 +121,7 @@ function caption(item) {
 }
 
 try {
-  const response = await fetch('./manifest.json?v=20260903');
+  const response = await fetch(`./manifest.json?v=${encodeURIComponent(mediaRevision || '20260903')}`);
   if (!response.ok) throw new Error('Manifest unavailable');
   const manifest = await response.json();
   for (const artwork of manifest.artworks) {
