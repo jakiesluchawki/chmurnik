@@ -35,6 +35,28 @@
   `build/social-full/qa/` and `build/social-full/promo/copy-audit.json`.
   No social account posting, physical-device acceptance or DSA change made.
 
+### Publication Verification
+
+- Commit `a1f824e` is live on Pages; workflow `33692193674` completed
+  successfully. The public V3 gallery passes the entire media, archive,
+  complete-copy and browser-interaction suite. The full public application
+  flow also passes, including the pasted METAR/TAF reader and new launch note.
+- Both older galleries pass regression checks. The separate native-layout
+  browser run passes all application flows and verifies the launch note is
+  absent there; this is not a new iOS binary or physical-device acceptance.
+- The live apex domain still returns `index-DeD26LFn.js`, Last-Modified
+  August 23, with no Open Graph image. Opening `/#/practice/metar` returns
+  the old home rather than the new report reader. Publication of the WWW-first
+  feed posts should wait for the actual root-hosting upload, not just Pages.
+- The root ZIP passed every CRC test. Its SHA-256 is
+  `cd3858fd4922eb48d72d43f4d9ed1473f4d1f87cc03940826a982214419ee375`.
+  Hosting SSH responds but rejects the existing key. The legitimate panel
+  login remains behind the owner's iCloud verification. No password reset,
+  access-key creation, DNS change or hosting-file modification was performed.
+- Public evidence is in ignored `build/social-full/qa-live/` and
+  `build/domain-20260903/pages-live-qa/`; native-layout evidence is in
+  `build/domain-20260903/native-layout-qa/`.
+
 ## 2026-09-02: Fast Social Edit V2
 
 - The owner rejected the first ten-film edit as too slow and found approved

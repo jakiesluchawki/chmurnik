@@ -27,6 +27,10 @@ history:
       audits, source links, builds and full root app flow pass. Live domain
       was an older August 23 build; root-hosting release is kept separate
       from Pages and is not claimed deployed before authentication succeeds.
+      Pages commit a1f824e and workflow 33692193674 are now successful;
+      public gallery and full application tests pass. Root hosting still
+      requires owner iCloud/panel authentication; the old domain lacks the
+      new pasted-report reader, so WWW-first posting must wait for upload.
   - date: "2026-09-02"
     status: active
     who: codex
@@ -186,6 +190,10 @@ not the separate account-level trader verification. See the launch media log.
       promote the browser domain; all six V3 ZIPs preserve the approved
       iPhone Stories/carousel and fast edit. Web-only launch note and static
       social preview pass root-build and responsive application checks.
+- [x] 2026-09-03: Pages V3 publication is verified through the complete
+      public gallery and application browser tests.
+- [ ] Deploy the prepared root-hosting build to chmurnik.cloud and verify
+      the actual domain before promoting the new browser-reader features.
 
 ## Boundary
 
