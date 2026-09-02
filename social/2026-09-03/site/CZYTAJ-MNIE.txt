@@ -1,0 +1,59 @@
+CHMURNIK / SKĄD SIĘ WZIĄŁ / STORIES NA 3 WRZEŚNIA 2026
+
+POLECANA KOLEJNOŚĆ
+01 JPG: Pilot w rodzinie. Szybownik i kurs PPL. Rozpoznawanie chmur.
+02 JPG: Potem doszedł trening METAR. Obok autentyczny czytnik TAF.
+03 MP4: A potem Windy. Zmieniasz poziom, model i czas (12 s).
+04 MP4: Wyjazd na żagle. Kurs, prędkość i wiatr pozorny (10,6 s).
+05 JPG: Zrobiony dla kogoś bliskiego. Teraz dla wszystkich.
+
+Oba MP4 mają alternatywne wersje JPG. To nadal pięć Stories, nie siedem.
+Wybierz po jednej wersji 03 i 04. Filmy nie mają ścieżki dźwiękowej.
+Możesz dodać muzykę w Instagramie; teksty działają także bez niej.
+
+NA IPHONIE
+W galerii użyj Zapisz / udostępnij (dla filmu: Zapisz film / udostępnij).
+W arkuszu systemowym wybierz Zapisz obraz lub Zapisz wideo, jeśli dostępne.
+JPG: możesz też otworzyć obraz, przytrzymać go i zapisać w Zdjęciach.
+MP4: pobierz plik do Plików, otwórz i wybierz Udostępnij > Zapisz wideo.
+ZIP: stuknij pobrane archiwum w Plikach, aby je rozpakować.
+
+LINK W RELACJI
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+Instagram > naklejki > Link > wklej adres. Zmień tekst naklejki zgodnie
+z propozycją przy storce (pełna lista: teksty/kolejnosc-i-linki.txt).
+Nie wklejaj adresu galerii do naklejki służącej pobraniu aplikacji.
+Pliki JPG i MP4 nie mają wbudowanego klikalnego linku.
+
+Wolne pole: x=240, y=1510, szerokość=600, wysokość=120 px.
+Środek naklejki: x=540, y=1570, około 82% wysokości pliku 1080x1920.
+Nie zakrywaj podpisów i zastrzeżeń znajdujących się pod tym polem.
+
+GENEZA I UCZCIWOŚĆ DEMO
+Historia pochodzi bezpośrednio od autora: szybownik w rodzinie, teraz kurs
+PPL; pomoc w rozpoznawaniu chmur; trening METAR; pracownia czytania Windy;
+moduł wiatru przydatny podczas wyjazdu na żagle z chłopakami.
+Nie dopisano nazwiska, stopnia pokrewieństwa ani miejsca wyjazdu.
+
+Ekrany atlasu i czytnika TAF pochodzą z aplikacji iOS w symulatorze Release.
+Nie zmieniano ich zawartości. Przeskalowano pełne zrzuty do kompozycji.
+Dema pokazują prawdziwe komponenty aplikacji w przeglądarce z układem
+natywnym. Zmieniano rzeczywiste kontrolki, nie wyniki ani dane w obrazie.
+To nie jest nagranie z fizycznego iPhone'a.
+
+Dane ćwiczeniowe są fikcyjne. Nie przedstawiamy aktualnej pogody.
+Pracownia Windy nie jest oficjalną integracją ani mapą lub danymi Windy.
+Telefon nie mierzy tu wiatru. Materiały nie zastępują oficjalnego briefingu.
+
+PRAWA I ŹRÓDŁA
+Storka 01 zawiera fotografię Cirrus autorstwa PiccoloNamek:
+https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg
+Licencja: https://creativecommons.org/licenses/by-sa/3.0/
+Cały zrzut ekranu przeskalowano. Fragment fotograficzny zachowuje licencję
+CC BY-SA 3.0. Zachowaj widoczny podpis przy publikacji.
+Autor fotografii nie jest powiązany z promocją aplikacji.
+
+Pozostałe elementy: własna identyfikacja, interfejs i grafiki CHMURNIKA.
+Fonty są zrasteryzowane; pliki fontów nie są częścią paczek do pobrania.
+Pełna historia i gotowe teksty naklejek są w katalogu teksty.

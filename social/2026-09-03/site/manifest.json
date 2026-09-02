@@ -1,0 +1,197 @@
+{
+  "generatedOn": "2026-09-02",
+  "availability": "Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.",
+  "publishOn": "2026-09-03",
+  "title": "Skąd się wziął CHMURNIK",
+  "originSource": "First-person account supplied by the owner on 2026-09-02. No name, relation degree, flight credential, or location was inferred.",
+  "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+  "artworks": [
+    {
+      "id": "jutro-01-geneza",
+      "title": "01 / Pilot w rodzinie",
+      "stickerLabel": "Poznaj CHMURNIK",
+      "alt": "Różowa storka. Najpierw był pilot w rodzinie: szybownik, który robi teraz kurs PPL. Chmurnik powstał, żeby pomóc mu rozpoznawać chmury. Autentyczny ekran atlasu iOS.",
+      "sources": [
+        "owner-origin-story-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "design/app-store/screenshots/03-atlas.png"
+      ],
+      "format": "story",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "file": "images/jutro-01-geneza.jpg",
+      "thumbnail": "images/jutro-01-geneza-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 229262,
+      "sha256": "95043634dad1e296a0f0cde075f8970b07e3ff074ad709b5f279ddde46f6e5e6"
+    },
+    {
+      "id": "jutro-02-metar",
+      "title": "02 / Z chmur do METAR-u",
+      "stickerLabel": "Zajrzyj do pracowni",
+      "alt": "Kremowa storka o rozwoju aplikacji. Potem doszedł trening METAR. Czytnik METAR i TAF oraz ćwiczenia pomagają oddzielić obserwację od prognozy. Prawdziwy ekran czytnika TAF z przykładem, nie aktualną pogodą.",
+      "sources": [
+        "owner-origin-story-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "design/app-store/screenshots/05-taf.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "format": "story",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "file": "images/jutro-02-metar.jpg",
+      "thumbnail": "images/jutro-02-metar-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 217655,
+      "sha256": "ae43151f3b3e302887440d3218b8393f9ad5ef12b86c08aafbe55dc97c079846"
+    },
+    {
+      "id": "jutro-03-windy",
+      "title": "03 / A potem Windy",
+      "stickerLabel": "Naucz się czytać mapy",
+      "demo": "windy",
+      "alt": "Fioletowa storka o pracowni czytania Windy. Aplikacja wyszła fajnie, więc doszła nauka warstw, modeli i czasu. Demo prawdziwego laboratorium CHMURNIKA z fikcyjnymi danymi, nie integracja ani dane Windy.",
+      "sources": [
+        "owner-origin-story-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03/captures/windy.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "format": "story",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "file": "images/jutro-03-windy.jpg",
+      "thumbnail": "images/jutro-03-windy-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198444,
+      "sha256": "59cdeaf05447fd2f433192218433977ffe5f99263291b0c6600315741e5f8288",
+      "videoArea": {
+        "x": 78,
+        "y": 875,
+        "width": 924,
+        "height": 480,
+        "top": 875,
+        "right": 1002,
+        "bottom": 1355,
+        "left": 78
+      },
+      "video": {
+        "file": "videos/jutro-03-windy.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 12,
+        "audio": false,
+        "bytes": 2051617,
+        "sha256": "c693463b5c08e217bcdf1994c8c3e198335c3429f4ed3229146fcbdd91b16b3e"
+      }
+    },
+    {
+      "id": "jutro-04-zagle",
+      "title": "04 / Wiatr przydał się na żaglach",
+      "stickerLabel": "Sprawdź pracownię wiatru",
+      "demo": "wind",
+      "alt": "Oliwkowa storka. A potem pojechałem na żagle. Podczas wyjazdu z chłopakami przydał się moduł wiatru. Prawdziwe demo zmian kierunku dziobu i prędkości jachtu w szkoleniowym modelu wiatru pozornego.",
+      "sources": [
+        "owner-origin-story-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03/captures/wind.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "format": "story",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "file": "images/jutro-04-zagle.jpg",
+      "thumbnail": "images/jutro-04-zagle-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 174240,
+      "sha256": "e9640d65bd0240931d4fef195774b66d76c3e48ecc2cebbca29f3c003121a0c4",
+      "videoArea": {
+        "x": 78,
+        "y": 855,
+        "width": 924,
+        "height": 510,
+        "top": 855,
+        "right": 1002,
+        "bottom": 1365,
+        "left": 78
+      },
+      "video": {
+        "file": "videos/jutro-04-zagle.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 10.6,
+        "audio": false,
+        "bytes": 1434749,
+        "sha256": "3794d19a37feb39a9e447f9a8da58eb23441b8d2127adf3236b6baa1183a509b"
+      }
+    },
+    {
+      "id": "jutro-05-dla-was",
+      "title": "05 / Zrobiony dla bliskich. Dostępny dla Was.",
+      "stickerLabel": "Pobierz CHMURNIK za darmo",
+      "alt": "Kremowa storka z filcowym okiem CHMURNIKA. Zrobiłem dla kogoś bliskiego. Udostępniam Wam. Atlas, zdjęcia i obserwacje, METAR, TAF, Windy i wiatr. Bezpłatnie na iPhone’a, bez reklam i konta.",
+      "sources": [
+        "owner-origin-story-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "public/assets/observer-guide-still-life.png",
+        "src/data/app-information.js"
+      ],
+      "format": "story",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "file": "images/jutro-05-dla-was.jpg",
+      "thumbnail": "images/jutro-05-dla-was-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 238075,
+      "sha256": "56baa7c9a95f4f396ff3b4971fe56540b728ae7dfae3fe967345d34a18ded557"
+    }
+  ],
+  "captions": [
+    {
+      "id": "kolejnosc-i-linki",
+      "title": "Kolejność publikacji i naklejki Link",
+      "text": "CHMURNIK / 3 września 2026\n\nPięć Stories tworzy jedną historię. Polecana kolejność: 01 JPG, 02 JPG, 03 MP4, 04 MP4, 05 JPG. Dla 03 i 04 możesz zamiast filmu użyć JPG. Nie publikuj obu wersji tej samej storki pod rząd.\n\n01 / Pilot w rodzinie\nTekst naklejki: Poznaj CHMURNIK\nLink: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\n02 / Z chmur do METAR-u\nTekst naklejki: Zajrzyj do pracowni\nLink: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\n03 / A potem Windy\nTekst naklejki: Naucz się czytać mapy\nLink: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\n04 / Wiatr przydał się na żaglach\nTekst naklejki: Sprawdź pracownię wiatru\nLink: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\n05 / Zrobiony dla bliskich. Dostępny dla Was.\nTekst naklejki: Pobierz CHMURNIK za darmo\nLink: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\nDodaj prawdziwą naklejkę Link w Instagramie. Środek pustego pola: x=540, y=1570 w pliku 1080 × 1920. Naklejka powinna zmieścić się w 600 × 120 px. Nie zasłaniaj podpisów i zastrzeżeń poniżej. JPG i MP4 nie mają własnego klikalnego linku.\n\nDemo jest nieme i pokazuje działające narzędzia CHMURNIKA, nie pomiar wiatru ani aktualną pogodę. Dźwięk nie jest potrzebny do zrozumienia serii."
+    },
+    {
+      "id": "historia",
+      "title": "Geneza / tekst do wykorzystania",
+      "text": "CHMURNIK zaczął się od pilota w rodzinie. Jest szybownikiem, a teraz robi kurs PPL. Chciałem mu pomóc z rozpoznawaniem chmur.\n\nPotem dobudowałem trening METAR. A kiedy okazało się, że apka wyszła fajnie, doszła pracownia czytania Windy.\n\nNa żaglach z chłopakami przydał się z kolei moduł wiatru. I tak z jednej potrzeby zrobiła się aplikacja, którą chciałem udostępnić szerzej.\n\nDziś CHMURNIK ma atlas chmur, własne zdjęcia i obserwacje, czytnik i ćwiczenia METAR/TAF oraz pracownie Windy i wiatru.\n\nBezpłatnie na iPhone’a. Bez reklam i zakładania konta.\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nTo narzędzia edukacyjne. Pracownia Windy jest niezależnym ćwiczeniem, nie integracją z Windy. Telefon nie mierzy wiatru; aplikacja nie zastępuje oficjalnego briefingu."
+    }
+  ]
+}

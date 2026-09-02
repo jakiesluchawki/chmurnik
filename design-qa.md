@@ -1,5 +1,33 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-02: Origin-Story Social Pack
+
+- Owner requested five Stories for September 3 and explicitly approved the
+  existing `/premiera/` download-gallery format. The dated addition preserves
+  the original pack, app UI, selected mobile design and embedded iOS assets.
+- Source of truth: the approved Romie/Roobert, pink/olive/violet/cream and felt
+  identity, authentic store screenshots, and the owner's first-person origin.
+  No relative's name, exact relationship, trip location or PPL completion added.
+- All five 1080 x 1920 JPGs inspected; deterministic font/bounds checks pass.
+  Each reserves x=240, y=1510, w=600, h=120 for an actual Instagram Link sticker.
+  All headlines, credits and training caveats remain outside that area.
+- The TAF screenshot is explicitly labeled as TAF alongside METAR training.
+  Windy remains an independent educational exercise; no live data or physical
+  wind measurement is claimed. The Cirrus photo retains its visible license.
+- Both H.264 MP4s use genuine workshop controls, 30 fps, no audio, 12/10.6 s.
+  AVFoundation decodes the final frames; Chromium plays, seeks and verifies
+  distinct start/middle/end states. These are not physical iPhone recordings.
+- Gallery QA at 320/390/1440 px passes with no overflow/page errors. All JPG,
+  MP4 and ZIP hashes match. Caption/clipboard fallback and all sticker links
+  pass; JPEG/MP4 File Sharing is simulated, not native-device certification.
+- Existing launch-gallery regression passes. Complete production app routes,
+  collection, backup, METAR/TAF, training, wind and maps still pass. All 169 Node
+  tests and nine lesson audits pass. No app feature or lesson was changed.
+- Local evidence: `build/social-2026-09-03/qa/`, `build/field-ui-qa/`.
+  Export sources/hashes: `social/2026-09-03/`. No private analytics published.
+
+Result: media/gallery checks passed; Instagram posting stays with the owner.
+
 ## 2026-08-26: App Store Release Candidate
 
 - Candidate: `1.0 (20260826214336)`, task 0033. Approved felt artwork,

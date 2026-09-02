@@ -1,0 +1,27 @@
+CHMURNIK / 3 września 2026
+
+Pięć Stories tworzy jedną historię. Polecana kolejność: 01 JPG, 02 JPG, 03 MP4, 04 MP4, 05 JPG. Dla 03 i 04 możesz zamiast filmu użyć JPG. Nie publikuj obu wersji tej samej storki pod rząd.
+
+01 / Pilot w rodzinie
+Tekst naklejki: Poznaj CHMURNIK
+Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+02 / Z chmur do METAR-u
+Tekst naklejki: Zajrzyj do pracowni
+Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+03 / A potem Windy
+Tekst naklejki: Naucz się czytać mapy
+Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+04 / Wiatr przydał się na żaglach
+Tekst naklejki: Sprawdź pracownię wiatru
+Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+05 / Zrobiony dla bliskich. Dostępny dla Was.
+Tekst naklejki: Pobierz CHMURNIK za darmo
+Link: https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+Dodaj prawdziwą naklejkę Link w Instagramie. Środek pustego pola: x=540, y=1570 w pliku 1080 × 1920. Naklejka powinna zmieścić się w 600 × 120 px. Nie zasłaniaj podpisów i zastrzeżeń poniżej. JPG i MP4 nie mają własnego klikalnego linku.
+
+Demo jest nieme i pokazuje działające narzędzia CHMURNIKA, nie pomiar wiatru ani aktualną pogodę. Dźwięk nie jest potrzebny do zrozumienia serii.

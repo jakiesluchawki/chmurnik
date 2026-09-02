@@ -1,0 +1,29 @@
+{
+  "capturedOn": "2026-09-02",
+  "viewport": {
+    "width": 760,
+    "height": 1200,
+    "scale": 2
+  },
+  "method": "Genuine React application components, native-layout presentation, isolated browser. Real controls exercised; no altered readouts, weather injection, image-model fixtures, or personal data. Educational scenarios are synthetic. This is not a physical iPhone recording.",
+  "captures": [
+    {
+      "id": "wind",
+      "route": "practice/wind",
+      "selector": ".field-wind-layout",
+      "fps": 30,
+      "duration": 10.6,
+      "poster": "social/2026-09-03/captures/wind.png",
+      "posterSHA256": "1e05a9aecf1f9212ff1a6ea57df48a79ed002774df03b922b9460a2e99e58c59"
+    },
+    {
+      "id": "windy",
+      "route": "practice/maps",
+      "selector": ".field-map-grid",
+      "fps": 30,
+      "duration": 12,
+      "poster": "social/2026-09-03/captures/windy.png",
+      "posterSHA256": "77eb7a3d58e5913e26b13c82c1b17ceac9eac5da96589825f2f5706d8b320dc1"
+    }
+  ]
+}

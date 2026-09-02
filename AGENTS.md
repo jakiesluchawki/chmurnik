@@ -50,6 +50,10 @@ Writing production code without an active Lore task is forbidden.
   identity. Keep the interface calm, compact, and mature; real cloud imagery
   must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
+- For social-media deliverables, preserve the owner-approved mobile download
+  gallery at `/premiera/`: dated packs, individual files, ZIP downloads and
+  copyable App Store sticker links. On 2026-09-02 the owner explicitly asked
+  to reuse this format; keep already-published packs available.
 - As explicitly requested on 2026-08-26, iOS may have its own navigation,
   workflows, and native features; feature parity with the website is not a
   requirement. Share the scientific content, authentic cloud photography,

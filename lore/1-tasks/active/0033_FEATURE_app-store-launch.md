@@ -12,7 +12,20 @@ links:
   - "../../../design/app-store-release-2026-08-26.md"
   - "../../../design/app-store-owner-steps-pl.md"
   - "../../../social/2026-08-30/README.md"
+  - "../../../social/2026-09-03/README.md"
 history:
+  - date: "2026-09-02"
+    status: active
+    who: codex
+    note: >
+      Prepared five origin-story Stories for September 3 from the owner's
+      account: glider pilot in the family, PPL study, clouds, METAR, Windy,
+      then sailing. Included two real-workshop silent MP4 demos and five
+      JPGs. Owner approved the existing mobile download-gallery format and
+      authorized a dated public pack; the original launch assets remain.
+      169 tests, lesson audit, complete browser flow and both gallery
+      download/copy contracts pass. Physical iPhone sharing is not inferred
+      from simulated JPEG/MP4 share tests. Private analytics stay excluded.
   - date: "2026-09-02"
     status: active
     who: codex
@@ -119,6 +132,10 @@ not the separate account-level trader verification. See the launch media log.
 - [x] 2026-09-02: Polish launch kit includes five Stories, two posts, iPhone
       downloads and direct App Store sticker links; all seven exports and
       local Chromium/WebKit download/copy/share contracts pass verification.
+- [x] 2026-09-02: the September 3 origin series includes five JPGs, two
+      silent H.264 demo alternatives, direct download ZIPs and five sticker
+      links. Genuine UI, owner-sourced copy, photograph credits and training
+      limits are preserved; responsive Chromium and video decoding pass.
 
 ## Boundary
 

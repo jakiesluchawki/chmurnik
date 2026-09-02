@@ -6,13 +6,14 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import sharp from 'sharp';
-import { artworks, artworkHtml, storeUrl } from './artwork.mjs';
-import { captions } from './captions.mjs';
 
-const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, 'browser-path': { type: 'string' } } });
+const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, 'browser-path': { type: 'string' }, campaign: { type: 'string' } } });
 const { chromium } = await import(values['playwright-path'] ? pathToFileURL(values['playwright-path']).href : 'playwright');
-const directory = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(directory, '../..');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const directory = values.campaign ? path.resolve(root, values.campaign) : path.dirname(fileURLToPath(import.meta.url));
+assert.ok(directory.startsWith(path.join(root, 'social') + path.sep));
+const { artworks, artworkHtml, storeUrl, campaign = {} } = await import(pathToFileURL(path.join(directory, 'artwork.mjs')).href);
+const { captions } = await import(pathToFileURL(path.join(directory, 'captions.mjs')).href);
 const output = path.join(directory, 'site');
 const css = await readFile(path.join(directory, 'artwork.css'), 'utf8');
 const mime = { '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html' };
@@ -62,8 +63,9 @@ try {
         return { text: element.innerText, x, y, width, height, overflow: element.scrollWidth > element.clientWidth + 1 };
       });
       const sticker = document.querySelector('.sticker-area')?.getBoundingClientRect().toJSON();
-      const visual = [...document.querySelectorAll('.phone, .observer, .cloud-photo, .wind-art')].map(node => node.getBoundingClientRect().toJSON());
-      return { width: canvas.offsetWidth, height: canvas.offsetHeight, safe, sticker, visual, fonts: [...document.fonts].map(font => ({ name: font.family, status: font.status })) };
+      const visual = [...document.querySelectorAll('.phone, .observer, .cloud-photo, .wind-art, .demo-frame')].map(node => node.getBoundingClientRect().toJSON());
+      const videoArea = document.querySelector('.demo-frame')?.getBoundingClientRect().toJSON();
+      return { width: canvas.offsetWidth, height: canvas.offsetHeight, safe, sticker, visual, videoArea, fonts: [...document.fonts].map(font => ({ name: font.family, status: font.status })) };
     });
     assert.equal(audit.width, 1080);
     assert.equal(audit.height, height);
@@ -92,13 +94,13 @@ try {
     const thumbnail = `images/${artwork.id}-preview.jpg`;
     await sharp(data).resize({ width: 432 }).jpeg({ quality: 86 }).toFile(path.join(output, thumbnail));
     const { content, ...description } = artwork;
-    manifest.push({ ...description, file, thumbnail, width: 1080, height, bytes: data.length, sha256: createHash('sha256').update(data).digest('hex') });
+    manifest.push({ ...description, file, thumbnail, width: 1080, height, bytes: data.length, sha256: createHash('sha256').update(data).digest('hex'), ...(audit.videoArea ? { videoArea: audit.videoArea } : {}) });
     console.log(`${artwork.id}: ${1080}x${height}, ${Math.round(data.length / 1024)} KB, safe zones and fonts OK`);
   }
   assert.deepEqual(errors, []);
   for (const caption of captions) await writeFile(path.join(output, 'teksty', `${caption.id}.txt`), `${caption.text}\n`);
   await copyFile(path.join(root, 'public/brand/chmurnik-wordmark.png'), path.join(output, 'wordmark.png'));
-  await writeFile(path.join(output, 'manifest.json'), `${JSON.stringify({ generatedOn: '2026-09-02', availability: 'Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.', storeUrl, artworks: manifest, captions }, null, 2)}\n`);
+  await writeFile(path.join(output, 'manifest.json'), `${JSON.stringify({ generatedOn: '2026-09-02', availability: 'Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.', ...campaign, storeUrl, artworks: manifest, captions }, null, 2)}\n`);
 } finally {
   await browser?.close();
   await new Promise(resolve => server.close(resolve));

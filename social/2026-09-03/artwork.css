@@ -1,0 +1,27 @@
+@font-face{font-family:Romie;src:url('/public/fonts/Romie-Regular.woff2') format('woff2');font-weight:400}
+@font-face{font-family:Roobert;src:url('/public/fonts/Roobert-Regular.woff2') format('woff2');font-weight:400}
+@font-face{font-family:Roobert;src:url('/public/fonts/Roobert-Bold.woff2') format('woff2');font-weight:700}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:Roobert,sans-serif;color:#6d6435}
+#artwork{position:relative;width:1080px;height:1920px;overflow:hidden;background:#ffe1eb}
+p,h1,figure{margin:0}h1{font-family:Romie,serif;font-weight:400;letter-spacing:-2.4px;line-height:1.05;font-size:114px}
+header{position:absolute;left:78px;right:78px;top:246px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.wordmark{width:340px;display:block}header span{font-size:20px;letter-spacing:.8px;white-space:nowrap}
+h1,.intro,.closing,.credit,.note,.demo-label,.feature-list{position:absolute;left:78px;right:78px}
+h1{top:385px}.intro{top:667px;font-size:33px;line-height:1.45}
+.story-copy{position:absolute;left:78px;top:763px;width:498px;font-size:41px;line-height:1.35}
+.story-copy p+p{margin-top:44px}.story-copy .detail{font-size:30px;line-height:1.5}.story-copy .aside{font-size:24px;line-height:1.5;max-width:300px}
+.phone{position:absolute;left:610px;top:652px;width:376px;overflow:hidden;border:7px solid #413d29;border-radius:48px;box-shadow:0 18px 50px #362f2729}
+.phone img{width:100%;height:auto;display:block}.closing{top:1410px;font-size:31px;line-height:1.4}
+.credit,.note{top:1640px;font-size:22px;line-height:1.45}.sticker-area{position:absolute;left:240px;top:1510px;width:600px;height:120px}
+.jutro-01-geneza h1{font-size:117px}.jutro-01-geneza .phone{top:643px;width:365px;left:631px}.jutro-01-geneza .closing{top:1390px;right:auto;width:510px;font-size:34px}
+.jutro-02-metar{background:#fff7f1!important}.jutro-02-metar h1{font-size:113px}.jutro-02-metar .phone{top:644px;width:365px;left:630px}.jutro-02-metar .story-copy{top:739px}.jutro-02-metar .closing{font-size:29px}
+.jutro-03-windy{background:#6c3fc9!important;color:#fff7f1}.jutro-03-windy .wordmark,.jutro-04-zagle .wordmark{filter:brightness(0) invert(98%) sepia(8%) saturate(717%) hue-rotate(312deg) brightness(104%) contrast(103%)}
+.demo-label{top:806px;font-size:25px;letter-spacing:1.5px}
+.demo-frame{position:absolute;left:78px;top:875px;width:924px;height:480px;border-radius:24px;overflow:hidden;background:#fff7f1}
+.demo-frame img{width:100%;height:100%;object-fit:contain;display:block}
+.jutro-03-windy .closing,.jutro-04-zagle .closing{top:1403px;font-size:33px}
+.jutro-03-windy .note,.jutro-04-zagle .note{font-size:22px}
+.jutro-04-zagle{background:#6d6435!important;color:#fff7f1}.jutro-04-zagle h1{font-size:97px;line-height:1.1}.jutro-04-zagle .intro{top:646px}.jutro-04-zagle .demo-label{top:792px}.jutro-04-zagle .demo-frame{top:855px;height:510px}
+.jutro-05-dla-was{background:#fff7f1!important}.jutro-05-dla-was h1{font-size:98px;top:370px;line-height:1.1}
+.observer{position:absolute;left:240px;top:737px;width:600px;height:458px;object-fit:cover;object-position:center 58%}
+.feature-list{top:1235px;font-size:33px;line-height:1.5}.jutro-05-dla-was .closing{top:1400px;font-size:43px}

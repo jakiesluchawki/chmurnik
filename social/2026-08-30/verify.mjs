@@ -6,7 +6,8 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 
-const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, base: { type: 'string' } } });
+const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, 'browser-path': { type: 'string' }, engine: { type: 'string' }, base: { type: 'string' } } });
+assert.ok(!values.engine || ['chromium', 'webkit'].includes(values.engine), 'Unknown browser engine');
 const { chromium, webkit } = await import(values['playwright-path'] ? pathToFileURL(values['playwright-path']).href : 'playwright');
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(directory, '../..');
@@ -21,7 +22,8 @@ try {
   }
   const base = values.base || `http://127.0.0.1:${server.httpServer.address().port}/chmurnik/premiera/`;
   for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]]) {
-    const browser = await engine.launch({ headless: true });
+    if (values.engine && values.engine !== engineName) continue;
+    const browser = await engine.launch({ headless: true, executablePath: engineName === 'chromium' ? values['browser-path'] : undefined });
     try {
       const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, locale: 'pl-PL', reducedMotion: 'reduce', isMobile: true, hasTouch: true });
       const page = await context.newPage();

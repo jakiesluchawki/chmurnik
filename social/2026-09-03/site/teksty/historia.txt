@@ -1,0 +1,12 @@
+CHMURNIK zaczął się od pilota w rodzinie. Jest szybownikiem, a teraz robi kurs PPL. Chciałem mu pomóc z rozpoznawaniem chmur.
+
+Potem dobudowałem trening METAR. A kiedy okazało się, że apka wyszła fajnie, doszła pracownia czytania Windy.
+
+Na żaglach z chłopakami przydał się z kolei moduł wiatru. I tak z jednej potrzeby zrobiła się aplikacja, którą chciałem udostępnić szerzej.
+
+Dziś CHMURNIK ma atlas chmur, własne zdjęcia i obserwacje, czytnik i ćwiczenia METAR/TAF oraz pracownie Windy i wiatru.
+
+Bezpłatnie na iPhone’a. Bez reklam i zakładania konta.
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+To narzędzia edukacyjne. Pracownia Windy jest niezależnym ćwiczeniem, nie integracją z Windy. Telefon nie mierzy wiatru; aplikacja nie zastępuje oficjalnego briefingu.
