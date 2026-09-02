@@ -1,9 +1,7 @@
-Mamy to! CHMURNIK zaakceptowany przez Apple.
+No i jest! CHMURNIK już w polskim App Store.
 
-Atlas prawdziwych chmur, własne obserwacje na iPhonie, METAR, TAF i nauka wiatru. Bezpłatnie, bez reklam i kont.
+Atlas prawdziwych chmur, własne obserwacje na iPhonie, METAR, TAF i nauka wiatru. Bezpłatnie, bez reklam i bez konta.
 
-Polska i UE czekają jeszcze na DSA, ale samą akceptację już świętuję.
+Zrobiłem go z ciekawości nieba. Sprawdźcie i dajcie znać, co zobaczyliście nad głową.
 
-Wersja WWW: https://chmurnik.cloud
-
-Dzięki każdemu, kto testował. Teraz spójrzcie w górę.
+https://apps.apple.com/pl/app/chmurnik/id6782159027

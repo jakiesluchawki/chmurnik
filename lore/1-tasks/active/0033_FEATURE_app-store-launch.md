@@ -13,6 +13,16 @@ links:
   - "../../../design/app-store-owner-steps-pl.md"
   - "../../../social/2026-08-30/README.md"
 history:
+  - date: "2026-09-02"
+    status: active
+    who: codex
+    note: >
+      Polish public availability and free pricing are confirmed; Apple reports
+      READY_FOR_SALE and 175 AVAILABLE territories after the owner's app-level
+      non-trader declaration. Replaced the waiting announcement with five
+      ready-to-post Stories, two feed images, iPhone downloads and verified
+      App Store sticker links. Account trader review and the broader task
+      0032 hardware matrix remain separate and are not claimed complete.
   - date: "2026-08-27"
     status: active
     who: codex
@@ -69,8 +79,11 @@ present; close release quality and metadata gaps before App Review.
 At activation, version 1.0 was PREPARE_FOR_SUBMISSION. Its description, screenshots,
 support URL, privacy URL, category, age questionnaire, rights declaration,
 copyright, review contact and selected build were missing. Preparation
-is complete. On 2026-08-30 the exact candidate is READY_FOR_SALE in 148
-territories; 27 EU territories remain blocked by DSA. See the launch media log.
+is complete. On 2026-09-02 the exact candidate is READY_FOR_SALE in 175
+territories. Public Polish lookup returns CHMURNIK, Apple ID 6782159027,
+bundle cloud.chmurnik.app and 0 PLN; the Polish listing is accessible.
+The owner selected non-trader for the app. This resolves app availability,
+not the separate account-level trader verification. See the launch media log.
 
 ## Implementation
 
@@ -96,12 +109,16 @@ territories; 27 EU territories remain blocked by DSA. See the launch media log.
 - [x] Owner confirmed app-embedding rights for both fonts; photograph credits retained.
 - [x] Owner confirmed App Privacy publication; Apple's submission eligibility
       check accepts it. Age and content-rights answers are API-verified.
-- [ ] Final EU eligibility is confirmed. Free agreement is active; DSA is
-      In Review and the API still flags 27 territories. No agent legal selection.
+- [x] 2026-09-02: final EU distribution eligibility is confirmed, with 175
+      AVAILABLE territories and a public Polish listing. The owner made the
+      app-level non-trader declaration; no agent legal selection was made.
 - [x] Owner authorized publication; existing automatic release after Apple
       approval is retained. This does not establish public availability.
 - [x] Exact candidate submitted and WAITING_FOR_REVIEW read back from Apple.
 - [x] 2026-08-30: Apple approval and US listing verified; EU remains blocked.
+- [x] 2026-09-02: Polish launch kit includes five Stories, two posts, iPhone
+      downloads and direct App Store sticker links; all seven exports and
+      local Chromium/WebKit download/copy/share contracts pass verification.
 
 ## Boundary
 

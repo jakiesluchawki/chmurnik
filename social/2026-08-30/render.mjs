@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import sharp from 'sharp';
-import { artworks, artworkHtml } from './artwork.mjs';
+import { artworks, artworkHtml, storeUrl } from './artwork.mjs';
 import { captions } from './captions.mjs';
 
 const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, 'browser-path': { type: 'string' } } });
@@ -61,7 +61,9 @@ try {
         const { x, y, width, height } = element.getBoundingClientRect();
         return { text: element.innerText, x, y, width, height, overflow: element.scrollWidth > element.clientWidth + 1 };
       });
-      return { width: canvas.offsetWidth, height: canvas.offsetHeight, safe, fonts: [...document.fonts].map(font => ({ name: font.family, status: font.status })) };
+      const sticker = document.querySelector('.sticker-area')?.getBoundingClientRect().toJSON();
+      const visual = [...document.querySelectorAll('.phone, .observer, .cloud-photo, .wind-art')].map(node => node.getBoundingClientRect().toJSON());
+      return { width: canvas.offsetWidth, height: canvas.offsetHeight, safe, sticker, visual, fonts: [...document.fonts].map(font => ({ name: font.family, status: font.status })) };
     });
     assert.equal(audit.width, 1080);
     assert.equal(audit.height, height);
@@ -71,6 +73,14 @@ try {
       assert.ok(box.x >= 60 && box.x + box.width <= 1020, `${artwork.id}: horizontal safe zone`);
       assert.ok(box.y >= (height === 1920 ? 220 : 60), `${artwork.id}: top safe zone`);
       assert.ok(box.y + box.height <= (height === 1920 ? 1704 : 1290), `${artwork.id}: bottom safe zone ${box.text}`);
+    }
+    if (artwork.stickerArea) {
+      const { x, y, width, height } = audit.sticker;
+      assert.deepEqual({ x, y, width, height }, artwork.stickerArea);
+      for (const box of [...audit.safe, ...audit.visual]) {
+        const overlaps = box.x < x + width && box.x + box.width > x && box.y < y + height && box.y + box.height > y;
+        assert.ok(!overlaps, `${artwork.id}: sticker would cover text or artwork`);
+      }
     }
     const file = `images/${artwork.id}.jpg`;
     const target = path.join(output, file);
@@ -88,7 +98,7 @@ try {
   assert.deepEqual(errors, []);
   for (const caption of captions) await writeFile(path.join(output, 'teksty', `${caption.id}.txt`), `${caption.text}\n`);
   await copyFile(path.join(root, 'public/brand/chmurnik-wordmark.png'), path.join(output, 'wordmark.png'));
-  await writeFile(path.join(output, 'manifest.json'), `${JSON.stringify({ generatedOn: '2026-08-30', availability: 'Approved outside EU; Polish/EU availability pending DSA', artworks: manifest, captions }, null, 2)}\n`);
+  await writeFile(path.join(output, 'manifest.json'), `${JSON.stringify({ generatedOn: '2026-09-02', availability: 'Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.', storeUrl, artworks: manifest, captions }, null, 2)}\n`);
 } finally {
   await browser?.close();
   await new Promise(resolve => server.close(resolve));

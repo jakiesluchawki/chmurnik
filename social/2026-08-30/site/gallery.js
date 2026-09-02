@@ -19,7 +19,7 @@ async function copy(text, fallback) {
     await navigator.clipboard.writeText(text);
     announce('Skopiowane. Możesz wkleić na Instagramie lub w innym miejscu.');
   } catch {
-    if (fallback instanceof HTMLTextAreaElement) {
+    if (fallback instanceof HTMLTextAreaElement || fallback instanceof HTMLInputElement) {
       fallback.focus();
       fallback.select();
       fallback.setSelectionRange(0, fallback.value.length);
@@ -74,6 +74,15 @@ function card(artwork) {
   }
   actions.append(open, download);
   article.append(figure, element('h3', {}, artwork.title), element('p', { class: 'meta' }, `${artwork.width} × ${artwork.height} · JPG · ${Math.round(artwork.bytes / 1024)} KB`), actions);
+  if (artwork.stickerLabel) {
+    const sticker = element('div', { class: 'sticker-tools' });
+    const label = element('p', {}, `Tekst naklejki: „${artwork.stickerLabel}”`);
+    const link = element('input', { readonly: '', 'aria-label': `Link: ${artwork.title}`, value: artwork.storeUrl });
+    const button = element('button', { type: 'button', class: 'secondary' }, 'Kopiuj link do storki');
+    button.addEventListener('click', () => copy(artwork.storeUrl, link));
+    sticker.append(label, link, button);
+    article.append(sticker);
+  }
   return article;
 }
 
@@ -88,14 +97,14 @@ function caption(item) {
 }
 
 try {
-  const response = await fetch('./manifest.json');
+  const response = await fetch('./manifest.json?v=20260902');
   if (!response.ok) throw new Error('Manifest unavailable');
   const manifest = await response.json();
   for (const artwork of manifest.artworks) {
-    const target = artwork.phase === 'after-dsa' ? '#later-grid' : artwork.format === 'story' ? '#story-grid' : '#post-grid';
+    const target = artwork.format === 'story' ? '#story-grid' : '#post-grid';
     document.querySelector(target).append(card(artwork));
   }
-  for (const item of manifest.captions) document.querySelector(item.phase === 'now' ? '#caption-list' : '#later-caption').append(caption(item));
+  for (const item of manifest.captions) document.querySelector('#caption-list').append(caption(item));
 } catch {
   announce('Galeria nie mogła się wczytać. Możesz pobrać paczkę ZIP przyciskiem u góry.');
 }

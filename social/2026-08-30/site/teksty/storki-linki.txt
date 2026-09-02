@@ -1,0 +1,24 @@
+W każdej storce dodaj prawdziwą naklejkę Link w Instagramie.
+Adres do wszystkich pięciu naklejek:
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+01 / Mamy to
+Tekst naklejki: Pobierz za darmo
+
+02 / Spójrz w górę
+Tekst naklejki: Odkryj CHMURNIK
+
+03 / Twoje własne niebo
+Tekst naklejki: Zacznij swoją kolekcję
+
+04 / Wiatr już nie zagadka
+Tekst naklejki: Pobierz CHMURNIK
+
+05 / Z ciekawości nieba
+Tekst naklejki: Pobierz za darmo
+
+Miejsce: na środku pustego pola pod głównym tekstem, około 82% wysokości grafiki (środek x=540, y=1570 w pliku 1080 x 1920). Nie zasłaniaj drobnego podpisu zdjęcia niżej. Naklejka powinna zmieścić się w obszarze 600 x 120 px; w razie potrzeby zmniejsz ją w edytorze Instagrama.
+
+JPG nie zawiera klikalnego linku. Link wstawiasz osobno jako naklejkę, a nie zwykły tekst. Każda naklejka prowadzi bezpośrednio do tej samej aplikacji w polskim App Store.
+
+Publikuj w kolejności 01–05 lub wybierz pojedynczą storkę. Pierwsza i ostatnia są najprostsze jako samodzielne ogłoszenie.

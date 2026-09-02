@@ -1,64 +1,22 @@
-const credit = '\n\nFotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Zdjęcie przeskalowano i kadrowano. Fotografia i jej adaptowane fragmenty pozostają na tej samej licencji.';
-
 export const captions = [
   {
-    id: 'instagram', title: 'Instagram / Facebook', phase: 'now',
-    text: `Mamy to. CHMURNIK przeszedł weryfikację Apple!
-
-Zaczęło się od patrzenia w niebo. Skończyło na aplikacji, która pomaga zobaczyć w nim coś więcej.
-
-Prawdziwe fotografie chmur i atlas, do którego chce się wracać. Na iPhonie także własna kolekcja zdjęć i obserwacji. Do tego METAR, TAF, nauka wiatru i czytania map. Trochę zachwytu, trochę wiedzy, dużo ciekawości.
-
-Chmurnik jest bezpłatny. Bez reklam i zakładania konta.
-
-Ważne: aplikacja jest już opublikowana poza UE. W Polsce i pozostałych krajach UE czekamy jeszcze na weryfikację DSA. Samo zatwierdzenie aplikacji mamy za sobą!
-
-Na razie możecie zajrzeć do wersji WWW: https://chmurnik.cloud
-
-Dzięki wszystkim, którzy testowali, zgłaszali błędy i podrzucali pomysły. To też Wasz kawałek nieba.
-
-A Ty? Kiedy ostatnio po prostu patrzyłeś w górę?
-
-#chmurnik #chmury #niebo #meteorologia #polskaaplikacja${credit}`,
+    "id": "instagram",
+    "title": "Instagram / Facebook",
+    "text": "No i jest. CHMURNIK już w polskim App Store!\n\nZrobiłem apkę dla ludzi, którzy lubią patrzeć w górę. Z ciekawości, dla ciekawych.\n\nAtlas prawdziwych chmur. Własne zdjęcia, notatki i obserwacje na iPhonie. Do tego METAR, TAF i nauka wiatru. Trochę zachwytu, trochę nauki.\n\nBezpłatnie. Bez reklam i bez zakładania konta.\n\nPobierz na iPhone’a: https://apps.apple.com/pl/app/chmurnik/id6782159027\nNa Instagramie kliknij link w mojej relacji.\n\nDzięki wszystkim, którzy testowali i podrzucali pomysły. Teraz Wasza kolej: spójrzcie w górę.\n\n#chmurnik #chmury #niebo #meteorologia #polskaaplikacja\n\nFotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Przeskalowano i kadrowano; fragmenty fotograficzne zachowują tę licencję."
   },
   {
-    id: 'linkedin', title: 'LinkedIn', phase: 'now',
-    text: `CHMURNIK zaakceptowany przez Apple.
-
-To mój projekt z ciekawości świata: polski atlas chmur i pracownia obserwacji atmosfery. Chciałem, żeby wiedza była nie tylko poprawna, ale też czytelna i po prostu piękna.
-
-W aplikacji na iPhone’a są prawdziwe zdjęcia chmur, prywatna kolekcja obserwacji oraz interaktywne pracownie METAR, TAF i wiatru. Eksperymentalny asystent zdjęć działa na urządzeniu i przedstawia podpowiedzi do sprawdzenia, nie nieomylne rozpoznania.
-
-To narzędzie do nauki, także dla osób zainteresowanych żeglarstwem i lotnictwem. Nie zastępuje oficjalnego briefingu ani pomiarów.
-
-Aplikacja jest bezpłatna, bez reklam i kont. Działa już w App Store poza UE; polska dostępność czeka jeszcze na oddzielną weryfikację DSA. Wersja WWW: https://chmurnik.cloud
-
-Dziękuję testerom za cierpliwość i szczery feedback. Pomogliście zmienić ładny pomysł w coś użytecznego.${credit}`,
+    "id": "linkedin",
+    "title": "LinkedIn",
+    "text": "CHMURNIK jest już dostępny w polskim App Store.\n\nMój projekt z ciekawości nieba: atlas prawdziwych chmur, prywatna kolekcja zdjęć i obserwacji na iPhonie oraz interaktywne pracownie METAR, TAF i wiatru.\n\nEksperymentalny asystent zdjęć działa na urządzeniu. Podpowiada hipotezy do sprawdzenia, nie obiecuje nieomylnego rozpoznania. Pracownie służą do nauki i nie zastępują oficjalnego briefingu.\n\nAplikacja jest bezpłatna, bez reklam i zakładania konta.\n\nPobierz: https://apps.apple.com/pl/app/chmurnik/id6782159027\n\nDziękuję testerom za pomysły, zgłoszenia i cierpliwość. Z ciekawości powstała aplikacja. Teraz niech przydaje się innym.\n\nFotografia Cirrus: PiccoloNamek, CC BY-SA 3.0. Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg. Licencja: https://creativecommons.org/licenses/by-sa/3.0/. Przeskalowano i kadrowano; fragmenty fotograficzne zachowują tę licencję."
   },
   {
-    id: 'threads', title: 'Threads / krótki post', phase: 'now',
-    text: `Mamy to! CHMURNIK zaakceptowany przez Apple.
-
-Atlas prawdziwych chmur, własne obserwacje na iPhonie, METAR, TAF i nauka wiatru. Bezpłatnie, bez reklam i kont.
-
-Polska i UE czekają jeszcze na DSA, ale samą akceptację już świętuję.
-
-Wersja WWW: https://chmurnik.cloud
-
-Dzięki każdemu, kto testował. Teraz spójrzcie w górę.`,
+    "id": "threads",
+    "title": "Threads / krótki post",
+    "text": "No i jest! CHMURNIK już w polskim App Store.\n\nAtlas prawdziwych chmur, własne obserwacje na iPhonie, METAR, TAF i nauka wiatru. Bezpłatnie, bez reklam i bez konta.\n\nZrobiłem go z ciekawości nieba. Sprawdźcie i dajcie znać, co zobaczyliście nad głową.\n\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027"
   },
   {
-    id: 'premiera-po-dsa', title: 'Dopiero po dostępności w Polsce', phase: 'after-dsa',
-    text: `CHMURNIK jest już w polskim App Store. Mamy to!
-
-Prawdziwe chmury. Własne zdjęcia, notatki i obserwacje. Atlas, który uczy patrzeć uważniej. Do tego METAR, TAF i nauka wiatru.
-
-Zrobiłem tę aplikację dla ludzi ciekawych nieba. Jest bezpłatna, bez reklam i bez zakładania konta.
-
-Pobierz na iPhone’a: https://apps.apple.com/pl/app/chmurnik/id6782159027
-
-Testerzy, dzięki za każdy pomysł i każdy znaleziony błąd. A wszystkich zapraszam do patrzenia w górę.
-
-#chmurnik #chmury #niebo #meteorologia #iphone${credit}`,
-  },
+    "id": "storki-linki",
+    "title": "Naklejki Link / gotowa kolejność",
+    "text": "W każdej storce dodaj prawdziwą naklejkę Link w Instagramie.\nAdres do wszystkich pięciu naklejek:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n01 / Mamy to\nTekst naklejki: Pobierz za darmo\n\n02 / Spójrz w górę\nTekst naklejki: Odkryj CHMURNIK\n\n03 / Twoje własne niebo\nTekst naklejki: Zacznij swoją kolekcję\n\n04 / Wiatr już nie zagadka\nTekst naklejki: Pobierz CHMURNIK\n\n05 / Z ciekawości nieba\nTekst naklejki: Pobierz za darmo\n\nMiejsce: na środku pustego pola pod głównym tekstem, około 82% wysokości grafiki (środek x=540, y=1570 w pliku 1080 x 1920). Nie zasłaniaj drobnego podpisu zdjęcia niżej. Naklejka powinna zmieścić się w obszarze 600 x 120 px; w razie potrzeby zmniejsz ją w edytorze Instagrama.\n\nJPG nie zawiera klikalnego linku. Link wstawiasz osobno jako naklejkę, a nie zwykły tekst. Każda naklejka prowadzi bezpośrednio do tej samej aplikacji w polskim App Store.\n\nPublikuj w kolejności 01–05 lub wybierz pojedynczą storkę. Pierwsza i ostatnia są najprostsze jako samodzielne ogłoszenie."
+  }
 ];

@@ -9,16 +9,19 @@ import { fileURLToPath } from 'node:url';
 const site = path.join(path.dirname(fileURLToPath(import.meta.url)), 'site');
 const manifest = JSON.parse(await readFile(path.join(site, 'manifest.json'), 'utf8'));
 const temporary = await mkdtemp(path.join(tmpdir(), 'chmurnik-social-'));
-for (const phase of ['now', 'after-dsa']) {
-  const files = manifest.artworks.filter(item => item.phase === phase);
-  assert.equal(files.length, phase === 'now' ? 6 : 2);
+const archives = [
+  { name: 'chmurnik-storki-pl-2026-09-02.zip', storiesOnly: true },
+  { name: 'chmurnik-polska-2026-09-02.zip', storiesOnly: false },
+];
+for (const { name, storiesOnly } of archives) {
+  const files = manifest.artworks.filter(item => !storiesOnly || item.format === 'story');
+  assert.equal(files.length, storiesOnly ? 5 : 7);
   for (const file of files) {
     const actual = await readFile(path.join(site, file.file));
     assert.equal(createHash('sha256').update(actual).digest('hex'), file.sha256);
   }
-  const name = phase === 'now' ? 'chmurnik-na-teraz.zip' : 'chmurnik-po-dsa.zip';
   const archive = path.join(temporary, name);
-  const entries = ['CZYTAJ-MNIE.txt', ...files.map(item => item.file), ...manifest.captions.filter(item => item.phase === phase).map(item => `teksty/${item.id}.txt`)];
+  const entries = ['CZYTAJ-MNIE.txt', ...files.map(item => item.file), ...manifest.captions.filter(item => !storiesOnly || item.id === 'storki-linki').map(item => `teksty/${item.id}.txt`)];
   execFileSync('zip', ['-q', '-X', archive, ...entries], { cwd: site });
   execFileSync('unzip', ['-t', archive]);
   const contents = execFileSync('unzip', ['-Z1', archive], { encoding: 'utf8' }).trim().split('\n');

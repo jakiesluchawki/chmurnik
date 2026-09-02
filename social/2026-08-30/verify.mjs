@@ -29,9 +29,11 @@ try {
       page.on('pageerror', error => errors.push(error.message));
       await page.goto(base, { waitUntil: 'networkidle' });
       await page.locator('#story-grid .asset').first().waitFor();
-      assert.equal(await page.locator('#story-grid .asset').count(), 4);
+      assert.equal(await page.locator('#story-grid .asset').count(), 5);
       assert.equal(await page.locator('#post-grid .asset').count(), 2);
-      assert.equal(await page.locator('#after-dsa').evaluate(node => node.open), false);
+      assert.equal(await page.locator('#after-dsa').count(), 0);
+      assert.equal(await page.locator('#store-link').inputValue(), manifest.storeUrl);
+      assert.equal(await page.locator('.sticker-tools').count(), 5);
       await page.evaluate(() => document.fonts.ready);
       for (const width of [320, 390, 1440]) {
         await page.setViewportSize({ width, height: 920 });
@@ -51,21 +53,28 @@ try {
       await page.locator('#caption-list').getByRole('button', { name: 'Kopiuj tekst' }).first().click();
       assert.ok(await textarea.evaluate(node => node.selectionEnd === node.value.length && node.selectionStart === 0));
       assert.match(await page.locator('#notice').innerText(), /Zaznaczyłem tekst/);
-      for (const zip of ['chmurnik-na-teraz.zip', 'chmurnik-po-dsa.zip']) {
+      await page.locator('#copy-store-link').click();
+      assert.ok(await page.locator('#store-link').evaluate(node => node.selectionStart === 0 && node.selectionEnd === node.value.length));
+      await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async text => { window.copiedText = text; } } }));
+      for (const [index, item] of manifest.artworks.filter(item => item.format === 'story').entries()) {
+        const card = page.locator('#story-grid .asset').nth(index);
+        assert.equal(await card.locator('.sticker-tools input').inputValue(), manifest.storeUrl);
+        assert.match(await card.locator('.sticker-tools p').innerText(), new RegExp(item.stickerLabel));
+        await card.getByRole('button', { name: 'Kopiuj link do storki', exact: true }).click();
+        assert.equal(await page.evaluate(() => window.copiedText), manifest.storeUrl);
+      }
+      for (const zip of ['chmurnik-storki-pl-2026-09-02.zip', 'chmurnik-polska-2026-09-02.zip']) {
         const response = await context.request.get(new URL(zip, base).href);
         assert.equal(response.status(), 200);
         const expected = await readFile(path.join(directory, 'site', zip));
         assert.ok((await response.body()).equals(expected), `${zip}: downloaded archive differs`);
       }
       const downloadPromise = page.waitForEvent('download');
-      await page.getByRole('link', { name: 'Pobierz pakiet na teraz · ZIP', exact: true }).click();
+      await page.getByRole('link', { name: 'Pobierz 5 storek · ZIP', exact: true }).click();
       const download = await downloadPromise;
-      assert.equal(download.suggestedFilename(), 'chmurnik-na-teraz.zip');
+      assert.equal(download.suggestedFilename(), 'chmurnik-storki-pl-2026-09-02.zip');
       await download.saveAs(path.join(output, `${engineName}-download.zip`));
       assert.equal(await download.failure(), null);
-      await page.locator('#after-dsa > summary').click();
-      assert.equal(await page.locator('#later-grid .asset').count(), 2);
-      assert.equal(await page.locator('#after-dsa').evaluate(node => node.open), true);
       assert.deepEqual(errors, []);
       await context.close();
 
@@ -86,9 +95,9 @@ try {
       await share.waitFor({ state: 'visible' });
       await share.click();
       const shared = await sharePage.evaluate(() => window.sharedFiles);
-      assert.deepEqual(shared, [{ name: 'story-01-mamy-to.jpg', size: manifest.artworks[0].bytes, type: 'image/jpeg' }]);
+      assert.deepEqual(shared, [{ name: 'pl-story-01-mamy-to.jpg', size: manifest.artworks[0].bytes, type: 'image/jpeg' }]);
       await shareContext.close();
-      console.log(`${engineName}: responsive layouts, 8 images, ZIP downloads, caption fallback, DSA separation and simulated file-share contract PASS`);
+      console.log(`${engineName}: responsive layouts, 7 images, ZIP downloads, caption/link fallback, all 5 sticker links and simulated file-share contract PASS`);
     } finally {
       await browser.close();
     }
