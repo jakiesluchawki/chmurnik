@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import sharp from 'sharp';
 import { stories, storeUrl, stickerArea, storyTranscript } from '../social/2026-09-03-full/copy.mjs';
-import { captions } from '../social/2026-09-03-full/captions.mjs';
+import { captions, packageRevision, websiteUrl } from '../social/2026-09-03-full/captions.mjs';
 import { durationFor, edits, promoHtml, revision } from '../social/2026-09-03-full/promo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -120,13 +120,29 @@ test('promo edit puts every full sentence in the persistent overlay and bounds e
 });
 
 test('complete texts are copyable and platform captions stay within practical lengths', async () => {
-  assert.equal(manifest.captions.length, captions.length);
+  assert.deepEqual(manifest.captions, captions);
   const transcript = captions.find(item => item.id === 'storki-pelny-tekst').text;
   for (const story of stories) assert.ok(transcript.includes(storyTranscript(story)));
   for (const caption of captions) assert.equal(await readFile(path.join(site, 'teksty', `${caption.id}.txt`), 'utf8'), caption.text + '\n');
   assert.ok(captions.find(item => item.id === 'instagram-post').text.length < 2200);
   assert.ok(captions.find(item => item.id === 'linkedin-post').text.length < 3000);
   for (const id of ['linkedin-post', 'facebook-post']) assert.ok(captions.find(item => item.id === id).text.includes(storeUrl));
+});
+
+test('WWW update promotes the domain in complete feed posts without changing the app Stories', () => {
+  assert.equal(manifest.revision, packageRevision);
+  assert.equal(manifest.websiteUrl, websiteUrl);
+  for (const id of ['linkedin-post', 'facebook-post']) {
+    const { text } = captions.find(item => item.id === id);
+    assert.ok(text.includes(websiteUrl));
+    assert.ok(text.indexOf(websiteUrl) < text.indexOf(storeUrl));
+    for (const feature of ['atlas', 'lekcje', 'METAR', 'TAF', 'Windy', 'wiatr']) assert.ok(text.toLowerCase().includes(feature.toLowerCase()), feature);
+    assert.match(text, /bez konta i instalacji|bez zakładania konta i instalowania/);
+    assert.match(text, /symulacją, nie pomiarem/);
+  }
+  assert.doesNotMatch(captions.find(item => item.id === 'storki-pelny-tekst').text, /chmurnik\.cloud/);
+  assert.doesNotMatch(captions.find(item => item.id === 'instagram-post').text, /chmurnik\.cloud/);
+  assert.match(manifest.artworks.find(item => item.format === 'facebook').alt, /chmurnik\.cloud/);
 });
 
 test('LinkedIn document is included as a distinct ten-page PDF', async () => {
@@ -153,6 +169,10 @@ test('all six download ZIPs contain exactly the public files described', async (
     assert.ok(entries.includes('ZRODLA-ZDJEC.txt'));
     assert.ok(entries.every(name => /\.(jpg|mp4|pdf|txt)$/.test(name)));
     assert.ok(entries.every(name => !/token|analytics|\.env|\.woff|frames\/|private|build\//i.test(name)));
+    for (const id of ['linkedin-post', 'facebook-post']) {
+      const entry = `teksty/${id}.txt`;
+      if (entries.includes(entry)) assert.equal(execFileSync('unzip', ['-p', file, entry], { encoding: 'utf8' }), captions.find(item => item.id === id).text + '\n');
+    }
   }
 });
 

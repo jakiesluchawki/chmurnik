@@ -28,7 +28,7 @@ for (const item of manifest.artworks.filter(item => ['story', 'carousel'].includ
 }
 const facebook = manifest.artworks.find(item => item.format === 'facebook');
 checks.push({ id: facebook.id, file: path.join(directory, 'site', facebook.file),
-  expected: `${stories[9].lead} Atlas chmur i lekcje. METAR i TAF. Pracownie Windy i wiatru. Bezpłatnie na iPhone’a.` });
+  expected: `${stories[9].lead} Atlas chmur i lekcje. METAR i TAF. Pracownie Windy i wiatru. chmurnik.cloud Bezpłatnie w przeglądarce i na iPhone’a.` });
 const input = path.join(output, 'copy-checks.json');
 const resultsFile = path.join(output, 'ocr-results.json');
 await writeFile(input, JSON.stringify(checks, null, 2) + '\n');

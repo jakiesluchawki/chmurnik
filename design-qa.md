@@ -1,5 +1,40 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-03: Browser Launch And Social V3
+
+- Owner requested complete LinkedIn and Facebook posts centered on
+  `https://chmurnik.cloud/`, while keeping the accepted fast iPhone Stories.
+  Both posts retain the family origin, exact METAR/TAF explanation, atlas,
+  lessons, independent Windy workshop and apparent-wind simulation. Browser
+  access is primary; App Store remains an additional option. No live Windy
+  integration, measured wind or native photo recognition on WWW is claimed.
+- All ten MP4s, twenty Story/carousel JPGs, approved Story copy, Instagram
+  caption and ten-page LinkedIn PDF are byte-for-byte unchanged. Only the
+  Facebook artwork was rerendered, with the domain and browser/iPhone footer.
+  Exact-copy OCR passes for all 49 decoded film shots and 21 final JPGs.
+- The web learning home keeps its shortcuts and receives a compact App Store
+  note below them, not a new blog or a replacement landing page. The note is
+  excluded from the native layout. Static canonical/Open Graph metadata and
+  a 1200 x 630 JPEG use the existing fonts, palette and felt artwork. Both new
+  images and desktop/mobile home captures were inspected.
+- All 182 Node tests, nine lesson audits, 58 provenance links, root and Pages
+  builds and the complete root-production browser flow pass. The V3 gallery
+  passes 320/390/1440 layouts, 38 media/archive hashes, ten video decoding,
+  seeking and playback checks, complete text, ZIP/PDF downloads and simulated
+  file sharing. The original launch gallery also passes regression checks.
+- Caption TXT downloads now use the same revision as the manifest and media.
+  Six ZIPs are rebuilt from canonical full captions; archive contents and
+  hashes are tested. Gallery revision is `20260903-web-v3`; film edit stays V2.
+- The initial live domain inspection found an older August 23 build. A
+  separate root-hosting release is prepared under ignored
+  `build/domain-20260903/site/` and
+  `release/chmurnik-cyberfolks-20260903-web-v3.zip`. It must not be confused
+  with the `/chmurnik/` Pages build. Hosting authentication and actual public
+  deployment are verified separately; local build success is not publication.
+- Evidence: ignored `build/domain-20260903/qa/`,
+  `build/social-full/qa/` and `build/social-full/promo/copy-audit.json`.
+  No social account posting, physical-device acceptance or DSA change made.
+
 ## 2026-09-02: Fast Social Edit V2
 
 - The owner rejected the first ten-film edit as too slow and found approved

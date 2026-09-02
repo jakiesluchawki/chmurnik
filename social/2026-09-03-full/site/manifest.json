@@ -868,7 +868,7 @@
       "theme": "cream",
       "visual": "observer",
       "number": 1,
-      "alt": "CHMURNIK. Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Atlas chmur, lekcje, METAR i TAF, pracownie Windy i wiatru. Bezpłatnie na iPhone’a. Oryginalny filcowy obiekt w kształcie oka.",
+      "alt": "CHMURNIK. Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Atlas chmur, lekcje, METAR i TAF, pracownie Windy i wiatru. chmurnik.cloud. Bezpłatnie w przeglądarce i na iPhone’a. Oryginalny filcowy obiekt w kształcie oka.",
       "sources": [
         "owner-approved-ten-story-copy-2026-09-02",
         "public/brand/chmurnik-wordmark.png",
@@ -878,8 +878,8 @@
       "thumbnail": "images/facebook-z-kogos-bliskiego-preview.jpg",
       "width": 1080,
       "height": 1350,
-      "bytes": 191344,
-      "sha256": "92f12648126b44e6b43ff575f98e8412ad23359cfd551b50f52710271ab6068f"
+      "bytes": 189272,
+      "sha256": "4faf915014e8b01cd96d17797bca04d6814ea7de6a3b155c52347762f53871c3"
     }
   ],
   "captions": [
@@ -893,13 +893,13 @@
       "id": "linkedin-post",
       "platform": "linkedin",
       "title": "LinkedIn / cały post",
-      "text": "Zaczęło się od kogoś bliskiego, nie od planu na produkt.\n\nMam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Chciałem pomóc mu rozpoznawać chmury, więc zacząłem robić CHMURNIKA.\n\nPotem przyszła kolej na język pilotów. Do atlasu dobudowałem trening METAR i czytnik METAR/TAF, żeby za ciągiem liter i cyfr zobaczyć wiatr, widzialność i chmury.\n\nAplikacja rosła. Dodałem niezależną pracownię czytania Windy: warstwy, jednostki, poziomy ciśnienia i różnicę między wysokością nad morzem a odległością od gruntu. Na żaglach z chłopakami przydał się z kolei moduł wiatru rzeczywistego i pozornego.\n\nDziś to atlas z prawdziwymi zdjęciami, lekcje z pytaniami i wyjaśnieniami oraz interaktywne narzędzia do nauki. W załączonym dokumencie pokazuję tę drogę i konkretne fragmenty aplikacji.\n\nZależało mi, żeby techniczny konkret nie odbierał przyjemności patrzenia w niebo. Żeby po odłożeniu telefonu zostało coś, co można zauważyć podczas następnego spaceru.\n\nUdostępniam CHMURNIKA bezpłatnie na iPhone’a:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nNie trzeba latać ani żeglować. Wystarczy ciekawość.\n\nPracownie są edukacyjne i nie zastępują oficjalnego briefingu. Nie ma integracji z Windy, a telefon nie mierzy wiatru.\n\n#CHMURNIK #meteorologia #projektowanie"
+      "text": "CHMURNIK ma własny kawałek internetu: chmurnik.cloud. Do aplikacji o chmurach trudno byłoby dobrać lepszy adres.\n\nhttps://chmurnik.cloud/\n\nZaczęło się od kogoś bliskiego, nie od planu na produkt. Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Chciałem pomóc mu rozpoznawać chmury, więc zacząłem robić CHMURNIKA.\n\nPotem przyszła kolej na język pilotów. Do atlasu dobudowałem trening METAR i czytnik METAR/TAF. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.\n\nAplikacja rosła. Dodałem niezależną pracownię czytania Windy, żeby za kolorami mapy zobaczyć warstwy, jednostki i poziomy ciśnienia. Na żaglach z chłopakami przydał się z kolei moduł wiatru: zmieniasz kurs i prędkość jachtu, a na ekranie widzisz, co dzieje się z wiatrem pozornym.\n\nAtlas z prawdziwymi zdjęciami dziesięciu rodzajów chmur, lekcje z pytaniami i wyjaśnieniami oraz te pracownie są dostępne także w przeglądarce. Bezpłatnie, bez konta i instalacji, na komputerze, tablecie lub telefonie. Otwierasz adres i możesz zacząć od tego, co Cię zaciekawiło.\n\nZależało mi na przejrzystości i wygodzie, ale też na tym, żeby techniczny konkret nie odbierał przyjemności patrzenia w niebo. Żeby po zamknięciu aplikacji zostało coś, co można zauważyć podczas następnego spaceru.\n\nW załączonym dokumencie pokazuję tę drogę i fragmenty aplikacji na iPhone’a. Wersje WWW i iOS mają własny układ; łączy je ta sama ciekawość nieba.\n\nWolisz aplikację na iPhone’a? CHMURNIK jest też bezpłatnie w App Store:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nNie trzeba latać ani żeglować. Wystarczy ciekawość.\n\nTo narzędzia edukacyjne, nie oficjalny briefing. Pracownia Windy jest niezależna, bez integracji z Windy. Moduł wiatru jest symulacją, nie pomiarem.\n\n#CHMURNIK #meteorologia #projektowanie"
     },
     {
       "id": "facebook-post",
       "platform": "facebook",
       "title": "Facebook / cały post",
-      "text": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.\n\nTak zaczął się CHMURNIK, który urósł trochę bardziej, niż planowałem.\n\nJest atlas dziesięciu rodzajów chmur z prawdziwymi zdjęciami. Są lekcje, w których można zatrzymać się przy pytaniu i sprawdzić odpowiedź. Potem doszły trening METAR, czytnik METAR/TAF i niezależna pracownia czytania Windy. A kiedy pojechałem na żagle z chłopakami, przydał się moduł wiatru.\n\nMożesz zmienić kurs i prędkość jachtu, zobaczyć, jak zmienia się wiatr pozorny, albo sprawdzić na przekroju, dlaczego ten sam poziom ciśnienia nie oznacza tej samej wysokości nad ziemią.\n\nAle nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Chciałbym, żeby po chwili z CHMURNIKIEM zostało z Tobą coś, co zauważysz podczas następnego spaceru.\n\nZrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.\n\nBezpłatnie na iPhone’a:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nTo narzędzia do nauki, nie oficjalny briefing. Pracownia Windy nie ma integracji z Windy. Telefon nie mierzy wiatru."
+      "text": "Niebo dostało naprawdę dobry adres: chmurnik.cloud. Przyznaję, z tej domeny cieszę się prawie tak samo jak z aplikacji.\n\nhttps://chmurnik.cloud/\n\nCHMURNIK działa też w przeglądarce. Bezpłatnie, bez zakładania konta i instalowania czegokolwiek. Możesz wejść z komputera, tabletu albo telefonu i od razu zajrzeć do atlasu, otworzyć lekcję lub pobawić się wiatrem.\n\nA wszystko zaczęło się od kogoś bliskiego. Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Potem trochę mnie poniosło.\n\nW atlasie są prawdziwe zdjęcia dziesięciu rodzajów chmur. Lekcje prowadzą przez kształty, warstwy i światło; możesz zatrzymać się przy pytaniu i sprawdzić odpowiedź. Z czasem nazwa zaczyna kojarzyć się z czymś, co naprawdę widzisz nad głową.\n\nPotem przyszła kolej na język pilotów: trening METAR i czytnik METAR/TAF. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.\n\nJest też pracownia czytania Windy: sprawdzasz warstwy i jednostki, przesuwasz teren pod wybranym poziomem ciśnienia i widzisz, dlaczego wysokość nad morzem to nie to samo co odległość od ziemi.\n\nA kiedy pojechałem na żagle z chłopakami, przydał się moduł wiatru. Zmieniasz kurs i prędkość jachtu i widzisz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.\n\nChciałem, żeby było wygodnie, przejrzyście i po prostu przyjemnie się uczyć. Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Może po chwili z CHMURNIKIEM zauważysz coś nowego podczas następnego spaceru.\n\nZrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą: chmurnik.cloud.\n\nA jeśli wolisz aplikację na iPhone’a, też jest, również bezpłatnie:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nTo narzędzia do nauki, nie oficjalny briefing. Pracownia Windy jest niezależna, bez integracji z Windy. Moduł wiatru jest symulacją, nie pomiarem."
     },
     {
       "id": "storki-pelny-tekst",
@@ -979,8 +979,8 @@
         "teksty/instagram-bio-link.txt",
         "teksty/alt-teksty.txt"
       ],
-      "bytes": 53271764,
-      "sha256": "aa93ae16c86e06aea1595a2dd6018bfa75108041135bfc77daed69a513a84164"
+      "bytes": 53270694,
+      "sha256": "0cbf4c4c7078de7223107a987aadb79ec32b33bcb555f23f0acd30e76a6239a9"
     },
     {
       "file": "chmurnik-stories.zip",
@@ -1011,8 +1011,8 @@
         "teksty/storki-pelny-tekst.txt",
         "teksty/linki-do-storek.txt"
       ],
-      "bytes": 46641725,
-      "sha256": "f25bf4d69a6d2e1984afc13b58dd877c461a16af3130f7fd1e34558347f41652"
+      "bytes": 46641921,
+      "sha256": "8aa6a1dc71cd1a8d130f1b76b848f95375dae4f0198dcf5afdc7a83da27c0470"
     },
     {
       "file": "chmurnik-stories-jpg.zip",
@@ -1033,8 +1033,8 @@
         "teksty/storki-pelny-tekst.txt",
         "teksty/linki-do-storek.txt"
       ],
-      "bytes": 2084077,
-      "sha256": "0e9ded8d42a66ba300845f47e7b33f89736e41eb54edf928e121e0bb2a242193"
+      "bytes": 2084273,
+      "sha256": "1a8cc5721a6d5db6f6682519e393616a40c0efc504db934c222a71bacd128013"
     },
     {
       "file": "chmurnik-instagram-karuzela.zip",
@@ -1056,8 +1056,8 @@
         "teksty/instagram-bio-link.txt",
         "teksty/alt-teksty.txt"
       ],
-      "bytes": 2001168,
-      "sha256": "70f543a062c2d2cab43556d8b4db981a58da5eb5bf749a8fbbb8acddeaab87a2"
+      "bytes": 2001376,
+      "sha256": "b4b22e74434c9885fca30f270b7cd3de8f98b852e7769d89bb4cf29a314bf9c1"
     },
     {
       "file": "chmurnik-linkedin.zip",
@@ -1068,8 +1068,8 @@
         "chmurnik-historia-linkedin.pdf",
         "teksty/linkedin-post.txt"
       ],
-      "bytes": 4453851,
-      "sha256": "c6cb80de421302e7a7e8d95417c7557a66fa3d11aef636237f0ac454b71030cb"
+      "bytes": 4454338,
+      "sha256": "beebf68dcc3e01d7b52a07919281b59a898abf1327f9c09b7307060349a4f132"
     },
     {
       "file": "chmurnik-facebook.zip",
@@ -1080,8 +1080,8 @@
         "images/facebook-z-kogos-bliskiego.jpg",
         "teksty/facebook-post.txt"
       ],
-      "bytes": 185076,
-      "sha256": "04d9399a332275be55e1c7b37b84e68dc613e05a338c766e21538beb3f828d43"
+      "bytes": 183703,
+      "sha256": "f070a17fe70113d6ed11f2306381c039fc035a92a545a97ba37f1951b389ab30"
     }
   ],
   "photoCredits": [
@@ -1194,5 +1194,7 @@
     "story-09-zagle.mp4",
     "story-10-zaproszenie.mp4"
   ],
-  "revision": "20260903-fast-v2"
+  "revision": "20260903-web-v3",
+  "updatedOn": "2026-09-03",
+  "websiteUrl": "https://chmurnik.cloud/"
 }

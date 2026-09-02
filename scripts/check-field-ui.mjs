@@ -186,6 +186,14 @@ try {
     await navigate("home");
     if (values.native)
       assert.equal(await page.locator("h1").textContent(), "Zauważ niebo.");
+    if (!values.native) {
+      const store = page.getByRole("link", { name: "Bezpłatnie w App Store" });
+      assert.equal(await store.getAttribute("href"), "https://apps.apple.com/pl/app/chmurnik/id6782159027");
+      assert.equal(await page.locator('meta[property="og:url"]').getAttribute("content"), "https://chmurnik.cloud/");
+      assert.ok(await page.locator(".web-app-note").isVisible());
+    } else {
+      assert.equal(await page.locator(".web-app-note").count(), 0);
+    }
     await screenshot("01-home-mobile");
 
     await navigate("journal");

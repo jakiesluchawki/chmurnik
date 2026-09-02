@@ -1,5 +1,8 @@
 import { stories, storeUrl, storyTranscript } from './copy.mjs';
 
+export const websiteUrl = 'https://chmurnik.cloud/';
+export const packageRevision = '20260903-web-v3';
+
 export const captions = [
   {
     id: 'instagram-post', platform: 'instagram', title: 'Instagram / opis karuzeli',
@@ -7,11 +10,57 @@ export const captions = [
   },
   {
     id: 'linkedin-post', platform: 'linkedin', title: 'LinkedIn / cały post',
-    text: `Zaczęło się od kogoś bliskiego, nie od planu na produkt.\n\nMam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Chciałem pomóc mu rozpoznawać chmury, więc zacząłem robić CHMURNIKA.\n\nPotem przyszła kolej na język pilotów. Do atlasu dobudowałem trening METAR i czytnik METAR/TAF, żeby za ciągiem liter i cyfr zobaczyć wiatr, widzialność i chmury.\n\nAplikacja rosła. Dodałem niezależną pracownię czytania Windy: warstwy, jednostki, poziomy ciśnienia i różnicę między wysokością nad morzem a odległością od gruntu. Na żaglach z chłopakami przydał się z kolei moduł wiatru rzeczywistego i pozornego.\n\nDziś to atlas z prawdziwymi zdjęciami, lekcje z pytaniami i wyjaśnieniami oraz interaktywne narzędzia do nauki. W załączonym dokumencie pokazuję tę drogę i konkretne fragmenty aplikacji.\n\nZależało mi, żeby techniczny konkret nie odbierał przyjemności patrzenia w niebo. Żeby po odłożeniu telefonu zostało coś, co można zauważyć podczas następnego spaceru.\n\nUdostępniam CHMURNIKA bezpłatnie na iPhone’a:\n${storeUrl}\n\nNie trzeba latać ani żeglować. Wystarczy ciekawość.\n\nPracownie są edukacyjne i nie zastępują oficjalnego briefingu. Nie ma integracji z Windy, a telefon nie mierzy wiatru.\n\n#CHMURNIK #meteorologia #projektowanie`,
+    text: `CHMURNIK ma własny kawałek internetu: chmurnik.cloud. Do aplikacji o chmurach trudno byłoby dobrać lepszy adres.
+
+${websiteUrl}
+
+Zaczęło się od kogoś bliskiego, nie od planu na produkt. Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Chciałem pomóc mu rozpoznawać chmury, więc zacząłem robić CHMURNIKA.
+
+Potem przyszła kolej na język pilotów. Do atlasu dobudowałem trening METAR i czytnik METAR/TAF. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.
+
+Aplikacja rosła. Dodałem niezależną pracownię czytania Windy, żeby za kolorami mapy zobaczyć warstwy, jednostki i poziomy ciśnienia. Na żaglach z chłopakami przydał się z kolei moduł wiatru: zmieniasz kurs i prędkość jachtu, a na ekranie widzisz, co dzieje się z wiatrem pozornym.
+
+Atlas z prawdziwymi zdjęciami dziesięciu rodzajów chmur, lekcje z pytaniami i wyjaśnieniami oraz te pracownie są dostępne także w przeglądarce. Bezpłatnie, bez konta i instalacji, na komputerze, tablecie lub telefonie. Otwierasz adres i możesz zacząć od tego, co Cię zaciekawiło.
+
+Zależało mi na przejrzystości i wygodzie, ale też na tym, żeby techniczny konkret nie odbierał przyjemności patrzenia w niebo. Żeby po zamknięciu aplikacji zostało coś, co można zauważyć podczas następnego spaceru.
+
+W załączonym dokumencie pokazuję tę drogę i fragmenty aplikacji na iPhone’a. Wersje WWW i iOS mają własny układ; łączy je ta sama ciekawość nieba.
+
+Wolisz aplikację na iPhone’a? CHMURNIK jest też bezpłatnie w App Store:
+${storeUrl}
+
+Nie trzeba latać ani żeglować. Wystarczy ciekawość.
+
+To narzędzia edukacyjne, nie oficjalny briefing. Pracownia Windy jest niezależna, bez integracji z Windy. Moduł wiatru jest symulacją, nie pomiarem.
+
+#CHMURNIK #meteorologia #projektowanie`,
   },
   {
     id: 'facebook-post', platform: 'facebook', title: 'Facebook / cały post',
-    text: `Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.\n\nTak zaczął się CHMURNIK, który urósł trochę bardziej, niż planowałem.\n\nJest atlas dziesięciu rodzajów chmur z prawdziwymi zdjęciami. Są lekcje, w których można zatrzymać się przy pytaniu i sprawdzić odpowiedź. Potem doszły trening METAR, czytnik METAR/TAF i niezależna pracownia czytania Windy. A kiedy pojechałem na żagle z chłopakami, przydał się moduł wiatru.\n\nMożesz zmienić kurs i prędkość jachtu, zobaczyć, jak zmienia się wiatr pozorny, albo sprawdzić na przekroju, dlaczego ten sam poziom ciśnienia nie oznacza tej samej wysokości nad ziemią.\n\nAle nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Chciałbym, żeby po chwili z CHMURNIKIEM zostało z Tobą coś, co zauważysz podczas następnego spaceru.\n\nZrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.\n\nBezpłatnie na iPhone’a:\n${storeUrl}\n\nTo narzędzia do nauki, nie oficjalny briefing. Pracownia Windy nie ma integracji z Windy. Telefon nie mierzy wiatru.`,
+    text: `Niebo dostało naprawdę dobry adres: chmurnik.cloud. Przyznaję, z tej domeny cieszę się prawie tak samo jak z aplikacji.
+
+${websiteUrl}
+
+CHMURNIK działa też w przeglądarce. Bezpłatnie, bez zakładania konta i instalowania czegokolwiek. Możesz wejść z komputera, tabletu albo telefonu i od razu zajrzeć do atlasu, otworzyć lekcję lub pobawić się wiatrem.
+
+A wszystko zaczęło się od kogoś bliskiego. Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Potem trochę mnie poniosło.
+
+W atlasie są prawdziwe zdjęcia dziesięciu rodzajów chmur. Lekcje prowadzą przez kształty, warstwy i światło; możesz zatrzymać się przy pytaniu i sprawdzić odpowiedź. Z czasem nazwa zaczyna kojarzyć się z czymś, co naprawdę widzisz nad głową.
+
+Potem przyszła kolej na język pilotów: trening METAR i czytnik METAR/TAF. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.
+
+Jest też pracownia czytania Windy: sprawdzasz warstwy i jednostki, przesuwasz teren pod wybranym poziomem ciśnienia i widzisz, dlaczego wysokość nad morzem to nie to samo co odległość od ziemi.
+
+A kiedy pojechałem na żagle z chłopakami, przydał się moduł wiatru. Zmieniasz kurs i prędkość jachtu i widzisz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.
+
+Chciałem, żeby było wygodnie, przejrzyście i po prostu przyjemnie się uczyć. Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Może po chwili z CHMURNIKIEM zauważysz coś nowego podczas następnego spaceru.
+
+Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą: chmurnik.cloud.
+
+A jeśli wolisz aplikację na iPhone’a, też jest, również bezpłatnie:
+${storeUrl}
+
+To narzędzia do nauki, nie oficjalny briefing. Pracownia Windy jest niezależna, bez integracji z Windy. Moduł wiatru jest symulacją, nie pomiarem.`,
   },
   {
     id: 'storki-pelny-tekst', platform: 'stories', title: 'Stories / pełny zatwierdzony tekst 01–10',

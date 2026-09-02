@@ -1412,6 +1412,33 @@ html.native-ios .quiz-modal {
   background: var(--paper);
 }
 
+.web-app-note {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  padding: 20px;
+  border-block: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+
+.web-app-note > div {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.web-app-note p {
+  margin: 6px 0 0;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.web-app-note .button {
+  max-width: 100%;
+}
+
 .home-quick-links .home-guidance-row {
   margin-top: 14px;
 }

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>CHMURNIK / podgląd linku</title>
+  <style>
+    @font-face { font-family: Romie; src: url('/fonts/Romie-Regular.woff2'); }
+    @font-face { font-family: Roobert; src: url('/fonts/Roobert-Regular.woff2'); }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+    body { background: #fff7f1; color: #6d6435; font-family: Roobert, sans-serif; }
+    main { position: relative; width: 1200px; height: 630px; padding: 52px 62px; }
+    .wordmark { display: block; width: 258px; }
+    .art { position: absolute; right: 38px; top: 108px; width: 462px; height: 405px; object-fit: contain; }
+    h1 { position: relative; width: 690px; font: 400 78px/1.02 Romie, serif; letter-spacing: -1.6px; margin: 43px 0 24px; }
+    .features { position: relative; width: 670px; font-size: 24px; line-height: 1.5; margin: 0; }
+    footer { position: absolute; left: 62px; right: 62px; bottom: 51px; display: flex; justify-content: space-between; align-items: baseline; gap: 30px; }
+    .domain { font-size: 36px; }
+    .access { font-size: 20px; }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="wordmark" data-safe src="/brand/chmurnik-wordmark.png" alt="CHMURNIK">
+    <img class="art" src="/assets/observer-guide-still-life.png" alt="Dekoracyjny filcowy obiekt w kształcie oka">
+    <h1 data-safe>Niebo ma<br>dobry adres.</h1>
+    <p class="features" data-safe>Atlas chmur i lekcje. METAR i TAF.<br>Pracownie Windy i wiatru.</p>
+    <footer data-safe><span class="domain">chmurnik.cloud</span><span class="access">Bezpłatnie w przeglądarce i na iPhone’a.</span></footer>
+  </main>
+</body>
+</html>

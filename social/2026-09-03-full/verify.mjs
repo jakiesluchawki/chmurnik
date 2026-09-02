@@ -108,7 +108,9 @@ try {
     assert.equal(await textarea.inputValue(), item.text);
     await textarea.locator('..').getByRole('button', { name: 'Kopiuj tekst', exact: true }).click();
     assert.equal(await page.evaluate(() => window.copiedText), item.text);
-    const response = await context.request.get(new URL(`teksty/${item.id}.txt`, base).href);
+    const captionUrl = await textarea.locator('..').getByRole('link', { name: 'Pobierz TXT', exact: true }).getAttribute('href');
+    assert.equal(captionUrl, mediaSource(`teksty/${item.id}.txt`));
+    const response = await context.request.get(new URL(captionUrl, base).href);
     assert.equal(await response.text(), item.text + '\n');
   }
   for (const [index, story] of manifest.artworks.filter(item => item.format === 'story').entries()) {

@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import sharp from 'sharp';
 
-const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, 'browser-path': { type: 'string' }, campaign: { type: 'string' } } });
+const { values } = parseArgs({ options: { 'playwright-path': { type: 'string' }, 'browser-path': { type: 'string' }, campaign: { type: 'string' }, only: { type: 'string' } } });
 const { chromium } = await import(values['playwright-path'] ? pathToFileURL(values['playwright-path']).href : 'playwright');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const directory = values.campaign ? path.resolve(root, values.campaign) : path.dirname(fileURLToPath(import.meta.url));
@@ -15,6 +15,10 @@ assert.ok(directory.startsWith(path.join(root, 'social') + path.sep));
 const { artworks, artworkHtml, storeUrl, campaign = {} } = await import(pathToFileURL(path.join(directory, 'artwork.mjs')).href);
 const { captions } = await import(pathToFileURL(path.join(directory, 'captions.mjs')).href);
 const output = path.join(directory, 'site');
+const selected = values.only ? artworks.filter(item => item.id === values.only) : artworks;
+assert.ok(selected.length, `Unknown artwork: ${values.only}`);
+const previous = values.only ? JSON.parse(await readFile(path.join(output, 'manifest.json'), 'utf8')) : null;
+if (previous) assert.deepEqual(previous.artworks.map(item => item.id), artworks.map(item => item.id));
 const css = await readFile(path.join(directory, 'artwork.css'), 'utf8');
 const mime = { '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html' };
 const server = createServer(async (request, response) => {
@@ -47,7 +51,7 @@ try {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   const manifest = [];
-  for (const artwork of artworks) {
+  for (const artwork of selected) {
     const height = artwork.format === 'story' ? 1920 : 1350;
     await page.setViewportSize({ width: 1080, height });
     await page.goto(`http://127.0.0.1:${server.address().port}/artwork?id=${artwork.id}`);
@@ -100,7 +104,8 @@ try {
   assert.deepEqual(errors, []);
   for (const caption of captions) await writeFile(path.join(output, 'teksty', `${caption.id}.txt`), `${caption.text}\n`);
   await copyFile(path.join(root, 'public/brand/chmurnik-wordmark.png'), path.join(output, 'wordmark.png'));
-  await writeFile(path.join(output, 'manifest.json'), `${JSON.stringify({ generatedOn: '2026-09-02', availability: 'Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.', ...campaign, storeUrl, artworks: manifest, captions }, null, 2)}\n`);
+  const exports = previous ? previous.artworks.map(item => ({ ...item, ...manifest.find(update => update.id === item.id) })) : manifest;
+  await writeFile(path.join(output, 'manifest.json'), `${JSON.stringify({ generatedOn: '2026-09-02', availability: 'Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.', ...previous, ...campaign, storeUrl, artworks: exports, captions }, null, 2)}\n`);
 } finally {
   await browser?.close();
   await new Promise(resolve => server.close(resolve));

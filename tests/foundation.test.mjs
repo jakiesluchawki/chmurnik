@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
+import sharp from "sharp";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -84,6 +85,28 @@ test("hero copy and actions remain separate from the artwork", async () => {
   assert.match(app, /<FieldHome[\s\S]*onRecognition=\{openRecognition\}/);
   assert.match(redesign, /\.hero-visual\s*\{[^}]*margin: 34px auto 0/s);
   assert.match(redesign, /\.hero-image\s*\{[^}]*position: relative/s);
+});
+
+test("web launch discovery links to the store without replacing the learning home", async () => {
+  const app = await read("src/App.jsx");
+  const home = app.slice(app.indexOf("function HomePage("), app.indexOf("function HomePage(") + 22000);
+  assert.match(home, /className="web-app-note"/);
+  assert.match(home, /https:\/\/apps\.apple\.com\/pl\/app\/chmurnik\/id6782159027/);
+  assert.match(home, /Już także na iPhone’a/);
+  assert.ok(home.indexOf('className="web-field-shortcuts"') < home.indexOf('className="web-app-note"'));
+  assert.match(app, /validRoute === "home" && !nativeLayout/);
+});
+
+test("shared website links have static canonical metadata and a real social preview", async () => {
+  const index = await read("index.html");
+  assert.match(index, /rel="canonical" href="https:\/\/chmurnik\.cloud\/"/);
+  assert.match(index, /property="og:url" content="https:\/\/chmurnik\.cloud\/"/);
+  assert.match(index, /property="og:title" content="CHMURNIK · czytaj niebo"/);
+  assert.match(index, /property="og:image" content="https:\/\/chmurnik\.cloud\/brand\/chmurnik-share-20260903\.jpg"/);
+  const metadata = await sharp(new URL("../public/brand/chmurnik-share-20260903.jpg", import.meta.url).pathname).metadata();
+  assert.equal(metadata.format, "jpeg");
+  assert.equal(metadata.width, 1200);
+  assert.equal(metadata.height, 630);
 });
 
 test("scientific cloud names stay intact in display text", async () => {

@@ -116,7 +116,7 @@ function caption(item) {
   textarea.value = item.text;
   const button = element('button', { type: 'button', class: 'secondary' }, 'Kopiuj tekst');
   button.addEventListener('click', () => copy(textarea.value, textarea));
-  container.append(element('summary', {}, item.title), textarea, button, element('a', { href: `./teksty/${item.id}.txt`, download: '' }, 'Pobierz TXT'));
+  container.append(element('summary', {}, item.title), textarea, button, element('a', { href: mediaUrl(`teksty/${item.id}.txt`), download: '' }, 'Pobierz TXT'));
   return container;
 }
 

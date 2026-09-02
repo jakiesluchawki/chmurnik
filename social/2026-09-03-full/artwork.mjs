@@ -33,9 +33,9 @@ export const artworks = [
   ...stories.map(({ demo, stickerLabel, stickerArea: unused, ...story }) => ({ ...story, id: `karuzela-${story.id}`, storyId: story.id, title: `${String(story.number).padStart(2, '0')} / ${story.label}`, format: 'carousel', alt: `${story.lead} ${story.body}${story.note ? ` ${story.note}` : ''}`, sources: sources({ ...story, demo }), content: content({ ...story, demo }, 'carousel') })),
   {
     id: 'facebook-z-kogos-bliskiego', title: 'Facebook / grafika do posta', format: 'facebook', theme: 'cream', visual: 'observer', number: 1,
-    alt: 'CHMURNIK. Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Atlas chmur, lekcje, METAR i TAF, pracownie Windy i wiatru. Bezpłatnie na iPhone’a. Oryginalny filcowy obiekt w kształcie oka.',
+    alt: 'CHMURNIK. Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Atlas chmur, lekcje, METAR i TAF, pracownie Windy i wiatru. chmurnik.cloud. Bezpłatnie w przeglądarce i na iPhone’a. Oryginalny filcowy obiekt w kształcie oka.',
     sources: ['owner-approved-ten-story-copy-2026-09-02', 'public/brand/chmurnik-wordmark.png', 'public/assets/observer-guide-still-life.png'],
-    content: `<header data-safe>${logo}<span>Z CIEKAWOŚCI NIEBA</span></header><section class="composition"><h1 data-safe>Zrobiłem dla kogoś bliskiego.<br>Teraz dzielę się z Tobą.</h1><div class="art-visual">${image('/public/assets/observer-guide-still-life.png', 'Dekoracyjny filcowy obiekt CHMURNIKA w kształcie oka', 'observer')}</div><p class="body-copy" data-safe>Atlas chmur i lekcje. METAR i TAF.<br>Pracownie Windy i wiatru.</p><p class="cta" data-safe>Bezpłatnie na iPhone’a.</p></section><footer data-safe>Narzędzia edukacyjne · link do App Store w treści posta</footer>`,
+    content: `<header data-safe>${logo}<span>Z CIEKAWOŚCI NIEBA</span></header><section class="composition"><h1 data-safe>Zrobiłem dla kogoś bliskiego.<br>Teraz dzielę się z Tobą.</h1><div class="art-visual">${image('/public/assets/observer-guide-still-life.png', 'Dekoracyjny filcowy obiekt CHMURNIKA w kształcie oka', 'observer')}</div><p class="body-copy" data-safe>Atlas chmur i lekcje. METAR i TAF.<br>Pracownie Windy i wiatru.</p><p class="cta" data-safe>chmurnik.cloud</p></section><footer data-safe>Bezpłatnie w przeglądarce i na iPhone’a · narzędzia edukacyjne</footer>`,
   },
 ];
 

@@ -7,10 +7,16 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { clouds } from '../../src/data/clouds.js';
 import { storeUrl, stories } from './copy.mjs';
+import { captions, packageRevision, websiteUrl } from './captions.mjs';
 
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const site = path.join(directory, 'site');
 const manifest = JSON.parse(await readFile(path.join(site, 'manifest.json'), 'utf8'));
+manifest.revision = packageRevision;
+manifest.updatedOn = '2026-09-03';
+manifest.websiteUrl = websiteUrl;
+manifest.captions = captions;
+for (const caption of captions) await writeFile(path.join(site, 'teksty', `${caption.id}.txt`), `${caption.text}\n`);
 const videos = manifest.artworks.flatMap(item => item.video ? [item.video] : []);
 assert.equal(manifest.artworks.length, 21);
 assert.equal(videos.length, 10);
@@ -26,7 +32,7 @@ const licenseUrl = license => license.match(/CC BY-SA ([\d.]+)/) ? `https://crea
   : license.match(/CC BY ([\d.]+)/) ? `https://creativecommons.org/licenses/by/${license.match(/CC BY ([\d.]+)/)[1]}/` : null;
 const creditText = `CHMURNIK / ŹRÓDŁA FOTOGRAFII\n\nPrawdziwe zdjęcia widoczne w atlasie i jego demonstracji. Zestaw obejmuje główne fotografie dziesięciu rodzajów oraz fotografie monografii Cirrus. Nie wszystkie występują w każdej planszy. Metadane pochodzą z rejestru źródeł aplikacji.\n\n${photographed.map(image => `${image.cloud} / ${image.id}\nAutor: ${image.author}\nLicencja: ${image.license}${licenseUrl(image.license) ? `\n${licenseUrl(image.license)}` : ''}\nŹródło: ${image.page}`).join('\n\n')}\n\nW materiałach pokazujemy rzeczywisty interfejs aplikacji. Nagrania skrócono, skalowano i kadrowano na potrzeby montażu. Nie podmieniamy zdjęć ani wyników i nie retuszujemy fotografii. Prawa i licencje fotografii pozostają przy ich autorach; obecność fotografii nie oznacza poparcia aplikacji przez autora. Zachowaj małe podpisy w materiałach i ten wykaz źródeł przy dalszym udostępnianiu pakietu.\n`;
 await writeFile(path.join(site, 'ZRODLA-ZDJEC.txt'), creditText);
-const guide = `CHMURNIK / PEŁNY PAKIET NA 3 WRZEŚNIA 2026 / MONTAŻ V2
+const guide = `CHMURNIK / PEŁNY PAKIET NA 3 WRZEŚNIA 2026 / WWW V3, FILMY V2
 
 Materiały są gotowe do ręcznej publikacji. Nic nie zostało automatycznie zamieszczone na Instagramie, Facebooku ani LinkedIn.
 
@@ -41,14 +47,14 @@ Podpisy naklejek: teksty/linki-do-storek.txt. Pełen tekst: teksty/storki-pelny-
 Wybierz 10 plików images/karuzela-*.jpg w kolejności 01–10. Wszystkie mają 1080 x 1350 (4:5); zachowaj proporcje całej serii. Opis: teksty/instagram-post.txt. W opisie odsyłamy do relacji, więc opublikuj też relacje z naklejką Link. Możesz również dodać adres do linków w profilu. Sam JPG ani tekst adresu w opisie nie jest klikalnym przyciskiem.
 
 3. LINKEDIN
-Dołącz chmurnik-historia-linkedin.pdf jako Dokument, nie jako zdjęcie. Tytuł: CHMURNIK: zaczęło się od kogoś bliskiego. Wklej cały tekst z teksty/linkedin-post.txt. PDF ma 10 stron i klikalny link do App Store na ostatniej stronie.
+Dołącz chmurnik-historia-linkedin.pdf jako Dokument, nie jako zdjęcie. Tytuł: CHMURNIK: zaczęło się od kogoś bliskiego. Wklej cały tekst z teksty/linkedin-post.txt. Post zaprasza przede wszystkim do ${websiteUrl}, bez konta i instalacji; zachowuje także link do App Store. PDF pokazuje pełną zatwierdzoną historię i wersję na iPhone’a, ma 10 stron i klikalny link do App Store na ostatniej stronie. Układ WWW jest inny od iOS.
 Oficjalna instrukcja dodawania dokumentu: https://www.linkedin.com/help/linkedin/answer/a518909/upload-and-share-documents-on-linkedin?lang=en
 
 4. FACEBOOK
-Dołącz images/facebook-z-kogos-bliskiego.jpg i wklej teksty/facebook-post.txt. Link do App Store jest już w tekście posta.
+Dołącz images/facebook-z-kogos-bliskiego.jpg i wklej teksty/facebook-post.txt. Główny link w poście prowadzi do ${websiteUrl}; adres App Store jest dodatkową opcją. Grafika również pokazuje domenę. Post jest kompletny, nie trzeba składać fragmentów. Stories i karuzela pozostają skupione na aplikacji na iPhone’a.
 
 5. ZAPIS NA IPHONIE
-Galeria udostępnia pojedyncze JPG i MP4 oraz przycisk systemowego udostępnienia, jeśli przeglądarka go obsługuje. Alternatywa JPG: otwórz obraz i przytrzymaj, aby go zapisać. Alternatywa MP4: pobierz do Plików, otwórz i wybierz Udostępnij / Zapisz wideo. ZIP rozpakujesz, stukając plik w aplikacji Pliki. Rzeczywista lista opcji zależy od systemu. Pobierz ponownie paczkę V2, żeby nie użyć wcześniejszego montażu zapisanego w Plikach.
+Galeria udostępnia pojedyncze JPG i MP4 oraz przycisk systemowego udostępnienia, jeśli przeglądarka go obsługuje. Alternatywa JPG: otwórz obraz i przytrzymaj, aby go zapisać. Alternatywa MP4: pobierz do Plików, otwórz i wybierz Udostępnij / Zapisz wideo. ZIP rozpakujesz, stukając plik w aplikacji Pliki. Rzeczywista lista opcji zależy od systemu. Pobierz aktualną paczkę WWW V3, żeby mieć nowe posty na LinkedIn i Facebook. Przyspieszone filmy V2, pełne teksty Stories i karuzela nie zostały zmienione.
 
 6. DEMONSTRACJE I GRANICE
 To montaż nagrań prawdziwego interfejsu React z mobilnym układem, z izolowanej przeglądarki, nie nagrania fizycznego iPhone’a. Dotknięcia, przewijanie, wklejanie i przesuwanie suwaków zmieniają rzeczywisty stan aplikacji. Nagrania skrócono, przyspieszono i wykadrowano. Nie podmieniano odpowiedzi, odczytów ani fotografii. Pokazujemy fragment pierwszej lekcji, nie jej ukończenie. Raport METAR jest przykładem szkoleniowym. Pracownia Windy jest niezależna, bez integracji. Telefon nie mierzy wiatru. Narzędzia nie zastępują oficjalnego briefingu.

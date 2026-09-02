@@ -7,6 +7,23 @@ without deleting it or the previously published launch pack.
 
 Download gallery: https://jakiesluchawki.github.io/chmurnik/premiera/historia/
 
+## Browser Launch Update V3
+
+On September 3 the owner requested complete LinkedIn and Facebook posts
+promoting https://chmurnik.cloud/ alongside the iPhone app. Both texts lead
+with the browser address, retain the personal origin and practical features,
+and distinguish the educational tools from measurements or an official
+briefing. The Facebook image now includes the domain. Ten fast V2 films,
+approved Story copy, Instagram caption/carousel and the LinkedIn PDF are
+unchanged. The PDF continues to show the iPhone interface, as the post states.
+
+`package.mjs` refreshes caption TXT files and manifest copy directly from
+`captions.mjs` before rebuilding all six archives. The gallery/download
+revision is `20260903-web-v3`; each film retains its own V2 revision. For a
+copy-only update, run packaging rather than regenerating videos or JPGs.
+The shared JPG renderer supports `--only facebook-z-kogos-bliskiego` while
+retaining the other exports, documents and video metadata in the manifest.
+
 ## Fast Edit V2
 
 The owner rejected the original reading-time pacing and disappearing text
@@ -35,7 +52,8 @@ the mobile gallery from serving a previously cached slow MP4 or ZIP.
 - Full approved copy, ten App Store sticker labels, alt text, photo credits,
   individual downloads and six ZIPs. The full archive is about 51 MB.
 
-All direct download links point to Apple ID `6782159027`. The JPG/MP4 files
+All App Store links point to Apple ID `6782159027`; LinkedIn and Facebook
+also invite readers to the browser version at `chmurnik.cloud`. The JPG/MP4 files
 do not contain an interactive Instagram sticker: the owner must add it in
 Instagram. The clear sticker area is x=240, y=1510, w=600, h=120. Each MP4
 and same-numbered JPG are alternatives, not consecutive parts of the series.

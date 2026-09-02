@@ -15,6 +15,18 @@ links:
   - "../../../social/2026-09-03/README.md"
   - "../../../social/2026-09-03-full/README.md"
 history:
+  - date: "2026-09-03"
+    status: active
+    who: codex
+    note: >
+      Owner requested WWW-first LinkedIn/Facebook posts and deployment to
+      chmurnik.cloud as well as Pages. Prepared complete captions, domain
+      artwork and six V3 packages without changing fast films, approved
+      Stories, Instagram carousel or LinkedIn PDF. Added a compact web-only
+      App Store note and static social preview. All 182 tests, nine lesson
+      audits, source links, builds and full root app flow pass. Live domain
+      was an older August 23 build; root-hosting release is kept separate
+      from Pages and is not claimed deployed before authentication succeeds.
   - date: "2026-09-02"
     status: active
     who: codex
@@ -170,6 +182,10 @@ not the separate account-level trader verification. See the launch media log.
       6-8 second action-led edits and persistent complete approved copy.
       Final decoded frames, all platform text, six rebuilt archives and
       cache-busted gallery downloads pass technical verification.
+- [x] 2026-09-03: complete LinkedIn/Facebook captions and Facebook artwork
+      promote the browser domain; all six V3 ZIPs preserve the approved
+      iPhone Stories/carousel and fast edit. Web-only launch note and static
+      social preview pass root-build and responsive application checks.
 
 ## Boundary
 

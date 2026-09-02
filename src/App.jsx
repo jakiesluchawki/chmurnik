@@ -586,6 +586,16 @@ function HomePage({
         </div>
       </section>
 
+      <aside className="web-app-note" aria-label="CHMURNIK w App Store">
+        <div>
+          <span className="eyebrow">Już także na iPhone’a</span>
+          <p>Tutaj bez konta i instalacji. <strong>Niebo możesz też zabrać ze sobą w aplikacji.</strong></p>
+        </div>
+        <a className="button button--secondary" href="https://apps.apple.com/pl/app/chmurnik/id6782159027" target="_blank" rel="noopener noreferrer">
+          Bezpłatnie w App Store <ArrowRight size={18} aria-hidden="true" />
+        </a>
+      </aside>
+
       <section className="paper-section home-intro home-intro--compact">
         <div className="section-heading split-heading">
           <div>

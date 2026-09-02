@@ -1,4 +1,4 @@
-CHMURNIK / PEŁNY PAKIET NA 3 WRZEŚNIA 2026 / MONTAŻ V2
+CHMURNIK / PEŁNY PAKIET NA 3 WRZEŚNIA 2026 / WWW V3, FILMY V2
 
 Materiały są gotowe do ręcznej publikacji. Nic nie zostało automatycznie zamieszczone na Instagramie, Facebooku ani LinkedIn.
 
@@ -13,14 +13,14 @@ Podpisy naklejek: teksty/linki-do-storek.txt. Pełen tekst: teksty/storki-pelny-
 Wybierz 10 plików images/karuzela-*.jpg w kolejności 01–10. Wszystkie mają 1080 x 1350 (4:5); zachowaj proporcje całej serii. Opis: teksty/instagram-post.txt. W opisie odsyłamy do relacji, więc opublikuj też relacje z naklejką Link. Możesz również dodać adres do linków w profilu. Sam JPG ani tekst adresu w opisie nie jest klikalnym przyciskiem.
 
 3. LINKEDIN
-Dołącz chmurnik-historia-linkedin.pdf jako Dokument, nie jako zdjęcie. Tytuł: CHMURNIK: zaczęło się od kogoś bliskiego. Wklej cały tekst z teksty/linkedin-post.txt. PDF ma 10 stron i klikalny link do App Store na ostatniej stronie.
+Dołącz chmurnik-historia-linkedin.pdf jako Dokument, nie jako zdjęcie. Tytuł: CHMURNIK: zaczęło się od kogoś bliskiego. Wklej cały tekst z teksty/linkedin-post.txt. Post zaprasza przede wszystkim do https://chmurnik.cloud/, bez konta i instalacji; zachowuje także link do App Store. PDF pokazuje pełną zatwierdzoną historię i wersję na iPhone’a, ma 10 stron i klikalny link do App Store na ostatniej stronie. Układ WWW jest inny od iOS.
 Oficjalna instrukcja dodawania dokumentu: https://www.linkedin.com/help/linkedin/answer/a518909/upload-and-share-documents-on-linkedin?lang=en
 
 4. FACEBOOK
-Dołącz images/facebook-z-kogos-bliskiego.jpg i wklej teksty/facebook-post.txt. Link do App Store jest już w tekście posta.
+Dołącz images/facebook-z-kogos-bliskiego.jpg i wklej teksty/facebook-post.txt. Główny link w poście prowadzi do https://chmurnik.cloud/; adres App Store jest dodatkową opcją. Grafika również pokazuje domenę. Post jest kompletny, nie trzeba składać fragmentów. Stories i karuzela pozostają skupione na aplikacji na iPhone’a.
 
 5. ZAPIS NA IPHONIE
-Galeria udostępnia pojedyncze JPG i MP4 oraz przycisk systemowego udostępnienia, jeśli przeglądarka go obsługuje. Alternatywa JPG: otwórz obraz i przytrzymaj, aby go zapisać. Alternatywa MP4: pobierz do Plików, otwórz i wybierz Udostępnij / Zapisz wideo. ZIP rozpakujesz, stukając plik w aplikacji Pliki. Rzeczywista lista opcji zależy od systemu. Pobierz ponownie paczkę V2, żeby nie użyć wcześniejszego montażu zapisanego w Plikach.
+Galeria udostępnia pojedyncze JPG i MP4 oraz przycisk systemowego udostępnienia, jeśli przeglądarka go obsługuje. Alternatywa JPG: otwórz obraz i przytrzymaj, aby go zapisać. Alternatywa MP4: pobierz do Plików, otwórz i wybierz Udostępnij / Zapisz wideo. ZIP rozpakujesz, stukając plik w aplikacji Pliki. Rzeczywista lista opcji zależy od systemu. Pobierz aktualną paczkę WWW V3, żeby mieć nowe posty na LinkedIn i Facebook. Przyspieszone filmy V2, pełne teksty Stories i karuzela nie zostały zmienione.
 
 6. DEMONSTRACJE I GRANICE
 To montaż nagrań prawdziwego interfejsu React z mobilnym układem, z izolowanej przeglądarki, nie nagrania fizycznego iPhone’a. Dotknięcia, przewijanie, wklejanie i przesuwanie suwaków zmieniają rzeczywisty stan aplikacji. Nagrania skrócono, przyspieszono i wykadrowano. Nie podmieniano odpowiedzi, odczytów ani fotografii. Pokazujemy fragment pierwszej lekcji, nie jej ukończenie. Raport METAR jest przykładem szkoleniowym. Pracownia Windy jest niezależna, bez integracji. Telefon nie mierzy wiatru. Narzędzia nie zastępują oficjalnego briefingu.
