@@ -1,5 +1,44 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-02: Complete Ten-Part Social Package
+
+- The owner approved the entire ten-part copy before production and requested
+  an Instagram carousel, LinkedIn and Facebook package from that narrative.
+  The latest pilot wording, all approved sentences and practical romantic
+  tone are preserved. Canonical copy: `social/2026-09-03-full/copy.mjs`.
+- Original Romie/Roobert, wordmark, pink/olive/violet/cream and felt identity
+  remain intact. Atlas photographs are genuine and retain visible credit,
+  license/source links and a complete downloadable attribution inventory.
+- Twenty-one JPGs were inspected at 1080 x 1920 or 1080 x 1350. Font,
+  geometry and safe-area assertions pass. The ten Story sticker rectangles
+  remain blank at x=240, y=1510, w=600, h=120.
+- Ten silent H.264 Stories run at 30 fps: six real interactive walkthroughs
+  and four reading-time cards. Genuine taps, swipes, form input, feedback
+  and slider changes are recorded continuously; narrative is outside the app.
+  Atlas, a lesson excerpt, METAR parsing, cloud-base interpretation, terrain
+  height and apparent wind are demonstrated. No course completion is claimed.
+- Visual QA found and corrected two framing issues and a recording gesture:
+  lesson feedback and both pressure/ground lines now remain visible; vertical
+  wind-demo swipes use the gutter instead of changing a range control. Final
+  sailing values are verified after the return swipe, with true wind unchanged.
+- All ten PDF pages were structurally checked, rendered by Poppler and
+  inspected. Full approved text, self-contained font glyphs, clickable photo
+  source and final App Store link are present. PDF is static, not a video.
+- The new gallery passes 320/390/1440 px checks. All 38 media/archive hashes,
+  ten video decode/seek/end-playback checks, complete copy, ten sticker links,
+  clipboard fallback and seven ZIP/PDF downloads pass. Browser File Sharing
+  is simulated; physical iPhone sharing and platform uploads are not claimed.
+- All 178 Node tests, nine lesson audits, Pages build, both older galleries
+  and the complete production app flow pass. Only a QA onboarding timing
+  race was adjusted; no app behavior, lesson or embedded iOS asset changed.
+- The complete gallery lives at `/premiera/historia/`. Older pack links remain
+  available. Captures/provenance and the hashed manifest are committed;
+  private analytics and working frames remain excluded from publication.
+- Local evidence: `build/social-full/qa/`, `build/social-full/pdf/`,
+  `build/social-full/sheets/`, `build/social-full/app-qa/`.
+
+Result: complete package validated; social posting remains with the owner.
+
 ## 2026-09-02: Origin-Story Social Pack
 
 - Owner requested five Stories for September 3 and explicitly approved the

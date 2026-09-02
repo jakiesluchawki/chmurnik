@@ -12,6 +12,7 @@ struct Job: Decodable {
     let area: Area
     let frames: [Frame]
     let fps: Int32
+    let fullFrame: Bool?
 }
 struct Jobs: Decodable { let jobs: [Job] }
 enum RenderError: Error { case failed(String) }
@@ -70,17 +71,23 @@ for job in plan.jobs {
             throw RenderError.failed("Cannot create drawing context")
         }
         context.interpolationQuality = .high
-        context.draw(background, in: CGRect(x: 0, y: 0, width: 1080, height: 1920))
-        context.saveGState()
-        context.addPath(CGPath(roundedRect: area, cornerWidth: 24, cornerHeight: 24, transform: nil))
-        context.clip()
-        context.setFillColor(CGColor(red: 1, green: 247.0 / 255, blue: 241.0 / 255, alpha: 1))
-        context.fill(area)
-        let demo = try image(frame.file)
-        let scale = min(area.width / CGFloat(demo.width), area.height / CGFloat(demo.height))
-        let size = CGSize(width: CGFloat(demo.width) * scale, height: CGFloat(demo.height) * scale)
-        context.draw(demo, in: CGRect(x: area.midX - size.width / 2, y: area.midY - size.height / 2, width: size.width, height: size.height))
-        context.restoreGState()
+        if job.fullFrame == true {
+            let recorded = try image(frame.file)
+            try require(recorded.width == 1080 && recorded.height == 1920, "Wrong screencast dimensions")
+            context.draw(recorded, in: CGRect(x: 0, y: 0, width: 1080, height: 1920))
+        } else {
+            context.draw(background, in: CGRect(x: 0, y: 0, width: 1080, height: 1920))
+            context.saveGState()
+            context.addPath(CGPath(roundedRect: area, cornerWidth: 24, cornerHeight: 24, transform: nil))
+            context.clip()
+            context.setFillColor(CGColor(red: 1, green: 247.0 / 255, blue: 241.0 / 255, alpha: 1))
+            context.fill(area)
+            let demo = try image(frame.file)
+            let scale = min(area.width / CGFloat(demo.width), area.height / CGFloat(demo.height))
+            let size = CGSize(width: CGFloat(demo.width) * scale, height: CGFloat(demo.height) * scale)
+            context.draw(demo, in: CGRect(x: area.midX - size.width / 2, y: area.midY - size.height / 2, width: size.width, height: size.height))
+            context.restoreGState()
+        }
         CVPixelBufferUnlockBaseAddress(buffer, [])
         for _ in 0..<frame.holdFrames {
             let deadline = Date().addingTimeInterval(30)

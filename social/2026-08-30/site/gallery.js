@@ -40,7 +40,7 @@ function card(artwork) {
   const extension = artwork.video ? 'mp4' : 'jpg';
   const format = extension.toUpperCase();
   if (artwork.video) {
-    const video = element('video', { controls: '', playsinline: '', preload: 'metadata', poster: `./${artwork.thumbnail}`, width: artwork.width, height: artwork.height, 'aria-label': `Demo: ${artwork.title}. ${artwork.alt}` });
+    const video = element('video', { controls: '', playsinline: '', preload: 'metadata', poster: `./${artwork.thumbnail}`, width: artwork.width, height: artwork.height, 'aria-label': `${artwork.video.kind === 'reading' ? 'Plansza do przeczytania' : 'Demo'}: ${artwork.title}. ${artwork.alt}` });
     video.append(element('source', { src: `./${media.file}`, type: media.mime }));
     figure.append(video);
   } else {
@@ -84,7 +84,7 @@ function card(artwork) {
     actions.append(button);
   }
   actions.append(open, download);
-  const duration = artwork.video ? ` · ${new Intl.NumberFormat('pl-PL').format(artwork.video.duration)} s · bez dźwięku` : '';
+  const duration = artwork.video ? ` · ${new Intl.NumberFormat('pl-PL').format(artwork.video.duration)} s · bez dźwięku${artwork.video.kind === 'reading' ? ' · czas na czytanie' : ''}` : '';
   article.append(figure, element('h3', {}, artwork.title), element('p', { class: 'meta' }, `${artwork.width} × ${artwork.height} · ${format} · ${Math.round(media.bytes / 1024)} KB${duration}`), actions);
   if (artwork.video) {
     const alternative = element('p', { class: 'hint' });
@@ -118,10 +118,15 @@ try {
   if (!response.ok) throw new Error('Manifest unavailable');
   const manifest = await response.json();
   for (const artwork of manifest.artworks) {
-    const target = artwork.format === 'story' ? '#story-grid' : '#post-grid';
-    document.querySelector(target).append(card(artwork));
+    const target = document.querySelector(`[data-asset-format="${artwork.format}"]`)
+      || document.querySelector(artwork.format === 'story' ? '#story-grid' : '#post-grid');
+    target?.append(card(artwork));
   }
-  for (const item of manifest.captions) document.querySelector('#caption-list').append(caption(item));
+  for (const item of manifest.captions) {
+    const target = document.querySelector(`[data-caption-platform="${item.platform}"]`)
+      || document.querySelector('#caption-list');
+    target?.append(caption(item));
+  }
 } catch {
   announce('Galeria nie mogła się wczytać. Możesz pobrać paczkę ZIP przyciskiem u góry.');
 }

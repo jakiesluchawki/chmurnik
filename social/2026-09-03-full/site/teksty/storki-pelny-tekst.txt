@@ -1,0 +1,81 @@
+01 / Geneza
+Zaczęło się od kogoś bliskiego.
+
+Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.
+
+────────────────────
+
+02 / Atlas
+Żeby niebo stawało się znajome.
+
+Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.
+
+────────────────────
+
+03 / Lekcja
+Najpierw patrz, potem nazywaj.
+
+To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.
+
+────────────────────
+
+04 / METAR
+Potem przyszła kolej na język pilotów.
+
+Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury.
+
+Mały podpis: Przykład do nauki, nie aktualna pogoda.
+
+────────────────────
+
+05 / Czytnik
+Kilka znaków. Tyle pogody.
+
+METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.
+
+Mały podpis: Przykład do nauki, nie aktualna pogoda.
+
+────────────────────
+
+06 / Windy
+Mapa przyciąga wzrok. Chciałem rozumieć więcej.
+
+Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy.
+
+Mały podpis: Niezależna pracownia edukacyjna. Bez integracji z Windy.
+
+────────────────────
+
+07 / Warstwy
+Kolor to dopiero początek.
+
+Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy.
+
+Mały podpis: Niezależna pracownia edukacyjna. Bez integracji z Windy.
+
+────────────────────
+
+08 / Wysokość
+Ten sam poziom. Ziemia coraz bliżej.
+
+Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami.
+
+Mały podpis: Niezależna pracownia edukacyjna. Bez integracji z Windy.
+
+────────────────────
+
+09 / Żagle
+A potem popłynęliśmy.
+
+Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.
+
+Mały podpis: Model szkoleniowy. Telefon nie mierzy wiatru.
+
+────────────────────
+
+10 / Zaproszenie
+Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.
+
+Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.
+
+CHMURNIK. Bezpłatnie na iPhone’a.

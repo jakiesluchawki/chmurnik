@@ -54,6 +54,11 @@ Writing production code without an active Lore task is forbidden.
   gallery at `/premiera/`: dated packs, individual files, ZIP downloads and
   copyable App Store sticker links. On 2026-09-02 the owner explicitly asked
   to reuse this format; keep already-published packs available.
+- Social copy revisions must always present the complete set, including
+  unchanged items. The owner approves copy before visual production. Preserve
+  the approved warm, restrained romantic tone and practical technical detail.
+  Feature demos should show genuine mobile taps, swipes, lesson questions and
+  explanations, not just isolated panels with changing numbers.
 - As explicitly requested on 2026-08-26, iOS may have its own navigation,
   workflows, and native features; feature parity with the website is not a
   requirement. Share the scientific content, authentic cloud photography,

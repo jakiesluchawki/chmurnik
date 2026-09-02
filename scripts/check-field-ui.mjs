@@ -100,6 +100,8 @@ try {
     url.searchParams.set("qa-route", route);
     await page.goto(url.href);
     await page.locator("h1").first().waitFor();
+    // The production onboarding opens on an animation frame after the first render.
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     const skip = page.getByRole("button", { name: "Pomiń", exact: true });
     if (await skip.isVisible()) await skip.click();
     await page.evaluate(() => document.fonts.ready);

@@ -1,0 +1,76 @@
+CHMURNIK / ŹRÓDŁA FOTOGRAFII
+
+Prawdziwe zdjęcia widoczne w atlasie i jego demonstracji. Zestaw obejmuje główne fotografie dziesięciu rodzajów oraz fotografie monografii Cirrus. Nie wszystkie występują w każdej planszy. Metadane pochodzą z rejestru źródeł aplikacji.
+
+Cirrus / cirrus-field
+Autor: PiccoloNamek
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg
+
+Cirrus / cirrus-elko
+Autor: Famartin
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:2013-09-10_06_47_39_Cirrus_in_Elko%2C_Nevada.jpg
+
+Cirrus / cirrus-uncinus-new-jersey
+Autor: Famartin
+Licencja: CC BY-SA 4.0
+https://creativecommons.org/licenses/by-sa/4.0/
+Źródło: https://commons.wikimedia.org/wiki/File:2023-08-31_11_37_51_Cirrus_uncinus_(mares'_tails)_viewed_from_Aquetong_Lane_in_the_Mountainview_section_of_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg
+
+Cirrocumulus / cirrocumulus-20040830
+Autor: autor niepodany w metadanych pliku
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:Cirrocumulus_20040830.jpg
+
+Cirrostratus / cirrostratus-mock-sun
+Autor: The Great Cloudwatcher
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg
+
+Altocumulus / altocumulus-bidgee
+Autor: Bidgee
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:Altocumulus.jpg
+
+Altostratus / altostratus-wavy-base
+Autor: Famartin
+Licencja: CC BY-SA 4.0
+https://creativecommons.org/licenses/by-sa/4.0/
+Źródło: https://commons.wikimedia.org/wiki/File:2020-12-31_16_06_58_Altostratus_with_a_wavy_undulating_base_above_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg
+
+Nimbostratus / nimbostratus-ns1
+Autor: autor niepodany w metadanych pliku
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:Ns1.jpg
+
+Stratocumulus / stratocumulus-above-clouds
+Autor: Arun Kulshreshtha
+Licencja: CC BY 3.0 US
+https://creativecommons.org/licenses/by/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:Above_the_Clouds.jpg
+
+Stratus / stratus-vodno
+Autor: kallerna
+Licencja: CC BY-SA 4.0
+https://creativecommons.org/licenses/by-sa/4.0/
+Źródło: https://commons.wikimedia.org/wiki/File:Stratus_clouds_Vodno_4.jpg
+
+Cumulus / cumulus-golden-meadows
+Autor: PiccoloNamek
+Licencja: CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Źródło: https://commons.wikimedia.org/wiki/File:GoldenMedows.jpg
+
+Cumulonimbus / cumulonimbus-noaa-anvil
+Autor: NOAA/AOML/Hurricane Research Division
+Licencja: domena publiczna
+Źródło: https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg
+
+W materiałach pokazujemy rzeczywisty interfejs aplikacji i skalujemy cały jego kadr. Nie podmieniamy zdjęć ani wyników. Prawa i licencje fotografii pozostają przy ich autorach; obecność fotografii nie oznacza poparcia aplikacji przez autora. Zachowaj małe podpisy w materiałach i ten wykaz źródeł przy dalszym udostępnianiu pakietu.

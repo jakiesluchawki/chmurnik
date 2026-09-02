@@ -1,0 +1,1167 @@
+{
+  "generatedOn": "2026-09-02",
+  "availability": "Available in Poland; verified 2026-09-02 at 08:30 Europe/Warsaw. Account trader review is separate.",
+  "title": "Zaczęło się od kogoś bliskiego",
+  "publishOn": "2026-09-03",
+  "approvedOn": "2026-09-02",
+  "originSource": "Owner-provided first-person account and exact ten-story copy approved in the conversation. The latest correction says the relative recently started powered flying. No relationship degree, location, credential or commercial outcome is inferred.",
+  "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+  "artworks": [
+    {
+      "id": "story-01-geneza",
+      "label": "Geneza",
+      "theme": "pink",
+      "visual": "observer",
+      "lead": "Zaczęło się od kogoś bliskiego.",
+      "parts": [
+        "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej.",
+        "Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.",
+        "Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem."
+      ],
+      "stickerLabel": "Poznaj CHMURNIK",
+      "number": 1,
+      "body": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "01-geneza",
+      "title": "01 / Geneza",
+      "format": "story",
+      "alt": "Zaczęło się od kogoś bliskiego. Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "public/assets/observer-guide-still-life.png"
+      ],
+      "file": "images/story-01-geneza.jpg",
+      "thumbnail": "images/story-01-geneza-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 246263,
+      "sha256": "998ef9441873d054ba0f094ee54bdce7f7438e84930b6955b4dbe0d9d2f00e20",
+      "video": {
+        "file": "videos/story-01-geneza.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 18,
+        "kind": "reading",
+        "audio": false,
+        "bytes": 4468086,
+        "sha256": "ef0bc3ae79802d439b915e70c4066f2c08fc183e90dc105750b990c6649ecde9"
+      }
+    },
+    {
+      "id": "story-02-atlas",
+      "label": "Atlas",
+      "theme": "cream",
+      "demo": "atlas",
+      "lead": "Żeby niebo stawało się znajome.",
+      "parts": [
+        "Otwórz atlas i wybierz chmurę, którą chcesz poznać.",
+        "Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych.",
+        "Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową."
+      ],
+      "stickerLabel": "Otwórz atlas chmur",
+      "credit": "Fot. PiccoloNamek, Famartin i inni. Autorzy i licencje:\njakiesluchawki.github.io/chmurnik/premiera/historia/#credits",
+      "number": 2,
+      "body": "Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "02-atlas",
+      "title": "02 / Atlas",
+      "format": "story",
+      "alt": "Żeby niebo stawało się znajome. Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/atlas-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/story-02-atlas.jpg",
+      "thumbnail": "images/story-02-atlas-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 297137,
+      "sha256": "2f5455e3c08e508f9720abeed2d254ec62eb358c23eea6e5ae17e01559e597ab",
+      "video": {
+        "file": "videos/story-02-atlas.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 24.3,
+        "kind": "walkthrough",
+        "audio": false,
+        "bytes": 14474520,
+        "sha256": "4cf254a2b772b25b9ad3aad63513c264b99d6b9f75577f765422c9b7295adb10"
+      }
+    },
+    {
+      "id": "story-03-lekcja",
+      "label": "Lekcja",
+      "theme": "pink",
+      "demo": "lesson",
+      "lead": "Najpierw patrz, potem nazywaj.",
+      "parts": [
+        "To tytuł pierwszej lekcji.",
+        "Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź.",
+        "Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania."
+      ],
+      "stickerLabel": "Zajrzyj do lekcji",
+      "demoLabel": "Fragment lekcji · prawdziwy interfejs",
+      "number": 3,
+      "body": "To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "03-lekcja",
+      "title": "03 / Lekcja",
+      "format": "story",
+      "alt": "Najpierw patrz, potem nazywaj. To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/lesson-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/story-03-lekcja.jpg",
+      "thumbnail": "images/story-03-lekcja-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 222859,
+      "sha256": "804529cad55e100c85889d9c539e24285a309d851ef441cc3f095802f1555dd2",
+      "video": {
+        "file": "videos/story-03-lekcja.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 27.3,
+        "kind": "walkthrough",
+        "audio": false,
+        "bytes": 9238068,
+        "sha256": "d6811af55a4c34bd16f58af296543a52e879026d5cea30b1363e2118dbed049c"
+      }
+    },
+    {
+      "id": "story-04-metar",
+      "label": "METAR",
+      "theme": "violet",
+      "visual": "metar",
+      "lead": "Potem przyszła kolej na język pilotów.",
+      "parts": [
+        "Do rozpoznawania chmur dobudowałem trening METAR.",
+        "Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury."
+      ],
+      "stickerLabel": "Poznaj trening METAR",
+      "note": "Przykład do nauki, nie aktualna pogoda.",
+      "number": 4,
+      "body": "Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "04-metar",
+      "title": "04 / METAR",
+      "format": "story",
+      "alt": "Potem przyszła kolej na język pilotów. Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury. Przykład do nauki, nie aktualna pogoda.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "src/data/field-practice.js"
+      ],
+      "file": "images/story-04-metar.jpg",
+      "thumbnail": "images/story-04-metar-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 211418,
+      "sha256": "9717c020d4924d7c80d3c73e3637586723dddbb0b0422032026f7608e3968009",
+      "video": {
+        "file": "videos/story-04-metar.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 12,
+        "kind": "reading",
+        "audio": false,
+        "bytes": 2403727,
+        "sha256": "34605a81c89b4b87f9760e41de89228603f2594a4cb2d054299f688620253ef6"
+      }
+    },
+    {
+      "id": "story-05-czytnik",
+      "label": "Czytnik",
+      "theme": "cream",
+      "demo": "reader",
+      "lead": "Kilka znaków. Tyle pogody.",
+      "parts": [
+        "METAR opisuje obserwację. TAF jest prognozą.",
+        "Wklejasz depeszę i rozczytujesz ją po kawałku.",
+        "Skróty zaczynają nabierać znaczenia."
+      ],
+      "stickerLabel": "Wypróbuj czytnik",
+      "note": "Przykład do nauki, nie aktualna pogoda.",
+      "number": 5,
+      "body": "METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "05-czytnik",
+      "title": "05 / Czytnik",
+      "format": "story",
+      "alt": "Kilka znaków. Tyle pogody. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia. Przykład do nauki, nie aktualna pogoda.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/reader-poster.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "file": "images/story-05-czytnik.jpg",
+      "thumbnail": "images/story-05-czytnik-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186313,
+      "sha256": "d65546746706240e1b522a5c985916b284f574716b74572ece68af66eb4a72a7",
+      "video": {
+        "file": "videos/story-05-czytnik.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 22.466666666666665,
+        "kind": "walkthrough",
+        "audio": false,
+        "bytes": 6133785,
+        "sha256": "88ca295da7676fcd1cdc8b700288b45b88d8f2dc3781f197503c1fd3547e8941"
+      }
+    },
+    {
+      "id": "story-06-windy",
+      "label": "Windy",
+      "theme": "olive",
+      "visual": "windy",
+      "lead": "Mapa przyciąga wzrok. Chciałem rozumieć więcej.",
+      "parts": [
+        "Aplikacja rosła.",
+        "Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy."
+      ],
+      "stickerLabel": "Poznaj pracownię Windy",
+      "note": "Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "number": 6,
+      "body": "Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "06-windy",
+      "title": "06 / Windy",
+      "format": "story",
+      "alt": "Mapa przyciąga wzrok. Chciałem rozumieć więcej. Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy. Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/layers-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/story-06-windy.jpg",
+      "thumbnail": "images/story-06-windy-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 238960,
+      "sha256": "9625ea38d49e324a57c377af1aa066a9d5809bc0a26fa3b9e7965124c0f04f22",
+      "video": {
+        "file": "videos/story-06-windy.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 13,
+        "kind": "reading",
+        "audio": false,
+        "bytes": 2665942,
+        "sha256": "8cb7d1e411d5353b4fac1b008c937654edae202595640642f0ce7aecf2f3a7d9"
+      }
+    },
+    {
+      "id": "story-07-warstwy",
+      "label": "Warstwy",
+      "theme": "violet",
+      "demo": "layers",
+      "lead": "Kolor to dopiero początek.",
+      "parts": [
+        "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego.",
+        "Potem odpowiadasz na pytanie i poznajesz wyjaśnienie.",
+        "Tak ćwiczysz czytanie mapy."
+      ],
+      "stickerLabel": "Przećwicz warstwy",
+      "note": "Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "number": 7,
+      "body": "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "07-warstwy",
+      "title": "07 / Warstwy",
+      "format": "story",
+      "alt": "Kolor to dopiero początek. Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy. Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/layers-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/story-07-warstwy.jpg",
+      "thumbnail": "images/story-07-warstwy-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 245369,
+      "sha256": "fd8f70db5f95ff21ac451c33f7448c12d236f39719955680ca8c99480aaffa2e",
+      "video": {
+        "file": "videos/story-07-warstwy.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 22.8,
+        "kind": "walkthrough",
+        "audio": false,
+        "bytes": 9007546,
+        "sha256": "8ceb66285b787045281e9d4592c16568f78950b1b0533db6dcdfcfbc87dab50d"
+      }
+    },
+    {
+      "id": "story-08-wysokosc",
+      "label": "Wysokość",
+      "theme": "cream",
+      "demo": "height",
+      "lead": "Ten sam poziom. Ziemia coraz bliżej.",
+      "parts": [
+        "Przesuwasz teren pod wybraną powierzchnią ciśnienia.",
+        "Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu.",
+        "hPa, MSL i AGL przestają być tylko skrótami."
+      ],
+      "stickerLabel": "Zobacz różnicę wysokości",
+      "note": "Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "number": 8,
+      "body": "Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "08-wysokosc",
+      "title": "08 / Wysokość",
+      "format": "story",
+      "alt": "Ten sam poziom. Ziemia coraz bliżej. Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami. Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/height-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/story-08-wysokosc.jpg",
+      "thumbnail": "images/story-08-wysokosc-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200055,
+      "sha256": "a31472442df269d48f066f5bf264e6faeb1ebc869cad1b3b36609eb626e9d39a",
+      "video": {
+        "file": "videos/story-08-wysokosc.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 23.2,
+        "kind": "walkthrough",
+        "audio": false,
+        "bytes": 6247391,
+        "sha256": "80c58832642ce4a3df2936a9370a0e5a387c48997e149b22b313d65c0beaee8c"
+      }
+    },
+    {
+      "id": "story-09-zagle",
+      "label": "Żagle",
+      "theme": "olive",
+      "demo": "wind",
+      "lead": "A potem popłynęliśmy.",
+      "parts": [
+        "Na żagle z chłopakami zabrałem też CHMURNIKA.",
+        "Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi.",
+        "Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny.",
+        "Trochę fizyki, którą na wodzie czujesz na własnej skórze."
+      ],
+      "stickerLabel": "Poznaj wiatr na pokładzie",
+      "note": "Model szkoleniowy. Telefon nie mierzy wiatru.",
+      "number": 9,
+      "body": "Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "09-zagle",
+      "title": "09 / Żagle",
+      "format": "story",
+      "alt": "A potem popłynęliśmy. Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze. Model szkoleniowy. Telefon nie mierzy wiatru.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/wind-poster.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "file": "images/story-09-zagle.jpg",
+      "thumbnail": "images/story-09-zagle-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 229138,
+      "sha256": "150d5efc31df7d94f1cb88451e2be06774be449395320be87823a8cc96874562",
+      "video": {
+        "file": "videos/story-09-zagle.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 25.4,
+        "kind": "walkthrough",
+        "audio": false,
+        "bytes": 4781274,
+        "sha256": "c1aa206c8a16e5f3a2d1ec7b58ae0261423c25be68db96f0da47159b5abe720b"
+      }
+    },
+    {
+      "id": "story-10-zaproszenie",
+      "label": "Zaproszenie",
+      "theme": "pink",
+      "visual": "observer",
+      "lead": "Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.",
+      "parts": [
+        "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo.",
+        "CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia.",
+        "Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru."
+      ],
+      "cta": "CHMURNIK. Bezpłatnie na iPhone’a.",
+      "stickerLabel": "Pobierz CHMURNIK",
+      "number": 10,
+      "body": "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "stickerArea": {
+        "x": 240,
+        "y": 1510,
+        "width": 600,
+        "height": 120
+      },
+      "storyId": "10-zaproszenie",
+      "title": "10 / Zaproszenie",
+      "format": "story",
+      "alt": "Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "public/assets/observer-guide-still-life.png"
+      ],
+      "file": "images/story-10-zaproszenie.jpg",
+      "thumbnail": "images/story-10-zaproszenie-preview.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 241280,
+      "sha256": "7ba855fe2dcd5943c4977f008f25a022ccad1e62a16fbbaec2d12444a5719361",
+      "video": {
+        "file": "videos/story-10-zaproszenie.mp4",
+        "mime": "video/mp4",
+        "codec": "H.264",
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "duration": 20,
+        "kind": "reading",
+        "audio": false,
+        "bytes": 4704017,
+        "sha256": "6ccfc62f7ee96e79a288f435b00ec187e2d990484c34248e2b68c9d3a529294b"
+      }
+    },
+    {
+      "id": "karuzela-01-geneza",
+      "label": "Geneza",
+      "theme": "pink",
+      "visual": "observer",
+      "lead": "Zaczęło się od kogoś bliskiego.",
+      "parts": [
+        "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej.",
+        "Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.",
+        "Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem."
+      ],
+      "number": 1,
+      "body": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "01-geneza",
+      "title": "01 / Geneza",
+      "format": "carousel",
+      "alt": "Zaczęło się od kogoś bliskiego. Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "public/assets/observer-guide-still-life.png"
+      ],
+      "file": "images/karuzela-01-geneza.jpg",
+      "thumbnail": "images/karuzela-01-geneza-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 222552,
+      "sha256": "093c56388acfd83bb4d6717a37492e03328abc9d9188b7943a12a3138b735142"
+    },
+    {
+      "id": "karuzela-02-atlas",
+      "label": "Atlas",
+      "theme": "cream",
+      "lead": "Żeby niebo stawało się znajome.",
+      "parts": [
+        "Otwórz atlas i wybierz chmurę, którą chcesz poznać.",
+        "Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych.",
+        "Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową."
+      ],
+      "credit": "Fot. PiccoloNamek, Famartin i inni. Autorzy i licencje:\njakiesluchawki.github.io/chmurnik/premiera/historia/#credits",
+      "number": 2,
+      "body": "Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "02-atlas",
+      "title": "02 / Atlas",
+      "format": "carousel",
+      "alt": "Żeby niebo stawało się znajome. Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/atlas-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/karuzela-02-atlas.jpg",
+      "thumbnail": "images/karuzela-02-atlas-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 286224,
+      "sha256": "ae9d7a0d2c74176226468c27c99885010d8663c1c46a6c9f8573b958fba322b5"
+    },
+    {
+      "id": "karuzela-03-lekcja",
+      "label": "Lekcja",
+      "theme": "pink",
+      "lead": "Najpierw patrz, potem nazywaj.",
+      "parts": [
+        "To tytuł pierwszej lekcji.",
+        "Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź.",
+        "Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania."
+      ],
+      "demoLabel": "Fragment lekcji · prawdziwy interfejs",
+      "number": 3,
+      "body": "To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "03-lekcja",
+      "title": "03 / Lekcja",
+      "format": "carousel",
+      "alt": "Najpierw patrz, potem nazywaj. To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/lesson-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/karuzela-03-lekcja.jpg",
+      "thumbnail": "images/karuzela-03-lekcja-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 207501,
+      "sha256": "b6008db5dbdf93c80c5e8ade9e343a3252702d07c1ac1a766f64c0c76362b160"
+    },
+    {
+      "id": "karuzela-04-metar",
+      "label": "METAR",
+      "theme": "violet",
+      "visual": "metar",
+      "lead": "Potem przyszła kolej na język pilotów.",
+      "parts": [
+        "Do rozpoznawania chmur dobudowałem trening METAR.",
+        "Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury."
+      ],
+      "note": "Przykład do nauki, nie aktualna pogoda.",
+      "number": 4,
+      "body": "Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "04-metar",
+      "title": "04 / METAR",
+      "format": "carousel",
+      "alt": "Potem przyszła kolej na język pilotów. Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury. Przykład do nauki, nie aktualna pogoda.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "src/data/field-practice.js"
+      ],
+      "file": "images/karuzela-04-metar.jpg",
+      "thumbnail": "images/karuzela-04-metar-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 194326,
+      "sha256": "70d5928b99e29a04d80450e880c0a791672672261ad0301ce9c74bace5fdf213"
+    },
+    {
+      "id": "karuzela-05-czytnik",
+      "label": "Czytnik",
+      "theme": "cream",
+      "lead": "Kilka znaków. Tyle pogody.",
+      "parts": [
+        "METAR opisuje obserwację. TAF jest prognozą.",
+        "Wklejasz depeszę i rozczytujesz ją po kawałku.",
+        "Skróty zaczynają nabierać znaczenia."
+      ],
+      "note": "Przykład do nauki, nie aktualna pogoda.",
+      "number": 5,
+      "body": "METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "05-czytnik",
+      "title": "05 / Czytnik",
+      "format": "carousel",
+      "alt": "Kilka znaków. Tyle pogody. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia. Przykład do nauki, nie aktualna pogoda.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/reader-poster.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "file": "images/karuzela-05-czytnik.jpg",
+      "thumbnail": "images/karuzela-05-czytnik-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 171282,
+      "sha256": "45a76ef7ca7389dafdb9d98ab48fad0332114d8423c2d062abc0a3a7b4cf91a1"
+    },
+    {
+      "id": "karuzela-06-windy",
+      "label": "Windy",
+      "theme": "olive",
+      "visual": "windy",
+      "lead": "Mapa przyciąga wzrok. Chciałem rozumieć więcej.",
+      "parts": [
+        "Aplikacja rosła.",
+        "Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy."
+      ],
+      "note": "Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "number": 6,
+      "body": "Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "06-windy",
+      "title": "06 / Windy",
+      "format": "carousel",
+      "alt": "Mapa przyciąga wzrok. Chciałem rozumieć więcej. Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy. Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/layers-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/karuzela-06-windy.jpg",
+      "thumbnail": "images/karuzela-06-windy-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 229981,
+      "sha256": "7c9a18ef8f92b908ce65ef3fd79eb6b419174adbe6125d630d5ed8974dbf9758"
+    },
+    {
+      "id": "karuzela-07-warstwy",
+      "label": "Warstwy",
+      "theme": "violet",
+      "lead": "Kolor to dopiero początek.",
+      "parts": [
+        "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego.",
+        "Potem odpowiadasz na pytanie i poznajesz wyjaśnienie.",
+        "Tak ćwiczysz czytanie mapy."
+      ],
+      "note": "Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "number": 7,
+      "body": "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "07-warstwy",
+      "title": "07 / Warstwy",
+      "format": "carousel",
+      "alt": "Kolor to dopiero początek. Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy. Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/layers-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/karuzela-07-warstwy.jpg",
+      "thumbnail": "images/karuzela-07-warstwy-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 235654,
+      "sha256": "948897548cc33142890fb77fdb291fbfebac9d3443cae879a821dbf00e4bf762"
+    },
+    {
+      "id": "karuzela-08-wysokosc",
+      "label": "Wysokość",
+      "theme": "cream",
+      "lead": "Ten sam poziom. Ziemia coraz bliżej.",
+      "parts": [
+        "Przesuwasz teren pod wybraną powierzchnią ciśnienia.",
+        "Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu.",
+        "hPa, MSL i AGL przestają być tylko skrótami."
+      ],
+      "note": "Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "number": 8,
+      "body": "Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "08-wysokosc",
+      "title": "08 / Wysokość",
+      "format": "carousel",
+      "alt": "Ten sam poziom. Ziemia coraz bliżej. Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami. Niezależna pracownia edukacyjna. Bez integracji z Windy.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/height-poster.png",
+        "src/App.jsx"
+      ],
+      "file": "images/karuzela-08-wysokosc.jpg",
+      "thumbnail": "images/karuzela-08-wysokosc-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 181357,
+      "sha256": "577046fe4995ed7a0a9f9b9928ed586b93cd2b4b17da900f7ae98912d6692ffa"
+    },
+    {
+      "id": "karuzela-09-zagle",
+      "label": "Żagle",
+      "theme": "olive",
+      "lead": "A potem popłynęliśmy.",
+      "parts": [
+        "Na żagle z chłopakami zabrałem też CHMURNIKA.",
+        "Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi.",
+        "Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny.",
+        "Trochę fizyki, którą na wodzie czujesz na własnej skórze."
+      ],
+      "note": "Model szkoleniowy. Telefon nie mierzy wiatru.",
+      "number": 9,
+      "body": "Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "09-zagle",
+      "title": "09 / Żagle",
+      "format": "carousel",
+      "alt": "A potem popłynęliśmy. Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze. Model szkoleniowy. Telefon nie mierzy wiatru.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "social/2026-09-03-full/captures/wind-poster.png",
+        "src/components/FieldPractice.jsx"
+      ],
+      "file": "images/karuzela-09-zagle.jpg",
+      "thumbnail": "images/karuzela-09-zagle-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 204174,
+      "sha256": "d1ef52bbe175f4c7dcfffd03861d168b09a8db79eae241b59ea8037fb4f0bf8f"
+    },
+    {
+      "id": "karuzela-10-zaproszenie",
+      "label": "Zaproszenie",
+      "theme": "pink",
+      "visual": "observer",
+      "lead": "Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.",
+      "parts": [
+        "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo.",
+        "CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia.",
+        "Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru."
+      ],
+      "cta": "CHMURNIK. Bezpłatnie na iPhone’a.",
+      "number": 10,
+      "body": "Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+      "storeUrl": "https://apps.apple.com/pl/app/chmurnik/id6782159027",
+      "storyId": "10-zaproszenie",
+      "title": "10 / Zaproszenie",
+      "format": "carousel",
+      "alt": "Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "public/assets/observer-guide-still-life.png"
+      ],
+      "file": "images/karuzela-10-zaproszenie.jpg",
+      "thumbnail": "images/karuzela-10-zaproszenie-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 248006,
+      "sha256": "ef6de1144be2d9d62803f6afa169dbcdadb212aa8d5c9d1a9c3b7694f692474f"
+    },
+    {
+      "id": "facebook-z-kogos-bliskiego",
+      "title": "Facebook / grafika do posta",
+      "format": "facebook",
+      "theme": "cream",
+      "visual": "observer",
+      "number": 1,
+      "alt": "CHMURNIK. Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą. Atlas chmur, lekcje, METAR i TAF, pracownie Windy i wiatru. Bezpłatnie na iPhone’a. Oryginalny filcowy obiekt w kształcie oka.",
+      "sources": [
+        "owner-approved-ten-story-copy-2026-09-02",
+        "public/brand/chmurnik-wordmark.png",
+        "public/assets/observer-guide-still-life.png"
+      ],
+      "file": "images/facebook-z-kogos-bliskiego.jpg",
+      "thumbnail": "images/facebook-z-kogos-bliskiego-preview.jpg",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 191344,
+      "sha256": "92f12648126b44e6b43ff575f98e8412ad23359cfd551b50f52710271ab6068f"
+    }
+  ],
+  "captions": [
+    {
+      "id": "instagram-post",
+      "platform": "instagram",
+      "title": "Instagram / opis karuzeli",
+      "text": "Zaczęło się od kogoś bliskiego.\n\nMam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.\n\nTak zaczął się CHMURNIK. Potem przyszła kolej na język pilotów: trening METAR i czytnik METAR/TAF. Dodałem też pracownię czytania Windy, bo chciałem rozumieć, co właściwie pokazują te wszystkie warstwy. A na żaglach z chłopakami przydał się moduł wiatru.\n\nW karuzeli pokazuję, co z tego wyrosło: prawdziwe zdjęcia w atlasie, fragment lekcji, czytnik i pracownie, w których można coś przesunąć, sprawdzić i zrozumieć.\n\nNie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.\n\nCHMURNIK jest bezpłatny na iPhone’a. W App Store szukaj: CHMURNIK. Link do pobrania znajdziesz też w relacjach.\n\nTo narzędzia edukacyjne, nie oficjalny briefing. Pracownia Windy jest niezależna i nie ma integracji z Windy. Telefon nie mierzy wiatru.\n\n#CHMURNIK #chmury #meteorologia #żeglarstwo #lotnictwo"
+    },
+    {
+      "id": "linkedin-post",
+      "platform": "linkedin",
+      "title": "LinkedIn / cały post",
+      "text": "Zaczęło się od kogoś bliskiego, nie od planu na produkt.\n\nMam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Chciałem pomóc mu rozpoznawać chmury, więc zacząłem robić CHMURNIKA.\n\nPotem przyszła kolej na język pilotów. Do atlasu dobudowałem trening METAR i czytnik METAR/TAF, żeby za ciągiem liter i cyfr zobaczyć wiatr, widzialność i chmury.\n\nAplikacja rosła. Dodałem niezależną pracownię czytania Windy: warstwy, jednostki, poziomy ciśnienia i różnicę między wysokością nad morzem a odległością od gruntu. Na żaglach z chłopakami przydał się z kolei moduł wiatru rzeczywistego i pozornego.\n\nDziś to atlas z prawdziwymi zdjęciami, lekcje z pytaniami i wyjaśnieniami oraz interaktywne narzędzia do nauki. W załączonym dokumencie pokazuję tę drogę i konkretne fragmenty aplikacji.\n\nZależało mi, żeby techniczny konkret nie odbierał przyjemności patrzenia w niebo. Żeby po odłożeniu telefonu zostało coś, co można zauważyć podczas następnego spaceru.\n\nUdostępniam CHMURNIKA bezpłatnie na iPhone’a:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nNie trzeba latać ani żeglować. Wystarczy ciekawość.\n\nPracownie są edukacyjne i nie zastępują oficjalnego briefingu. Nie ma integracji z Windy, a telefon nie mierzy wiatru.\n\n#CHMURNIK #meteorologia #projektowanie"
+    },
+    {
+      "id": "facebook-post",
+      "platform": "facebook",
+      "title": "Facebook / cały post",
+      "text": "Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.\n\nTak zaczął się CHMURNIK, który urósł trochę bardziej, niż planowałem.\n\nJest atlas dziesięciu rodzajów chmur z prawdziwymi zdjęciami. Są lekcje, w których można zatrzymać się przy pytaniu i sprawdzić odpowiedź. Potem doszły trening METAR, czytnik METAR/TAF i niezależna pracownia czytania Windy. A kiedy pojechałem na żagle z chłopakami, przydał się moduł wiatru.\n\nMożesz zmienić kurs i prędkość jachtu, zobaczyć, jak zmienia się wiatr pozorny, albo sprawdzić na przekroju, dlaczego ten sam poziom ciśnienia nie oznacza tej samej wysokości nad ziemią.\n\nAle nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Chciałbym, żeby po chwili z CHMURNIKIEM zostało z Tobą coś, co zauważysz podczas następnego spaceru.\n\nZrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.\n\nBezpłatnie na iPhone’a:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nTo narzędzia do nauki, nie oficjalny briefing. Pracownia Windy nie ma integracji z Windy. Telefon nie mierzy wiatru."
+    },
+    {
+      "id": "storki-pelny-tekst",
+      "platform": "stories",
+      "title": "Stories / pełny zatwierdzony tekst 01–10",
+      "text": "01 / Geneza\nZaczęło się od kogoś bliskiego.\n\nMam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.\n\n────────────────────\n\n02 / Atlas\nŻeby niebo stawało się znajome.\n\nOtwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.\n\n────────────────────\n\n03 / Lekcja\nNajpierw patrz, potem nazywaj.\n\nTo tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.\n\n────────────────────\n\n04 / METAR\nPotem przyszła kolej na język pilotów.\n\nDo rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury.\n\nMały podpis: Przykład do nauki, nie aktualna pogoda.\n\n────────────────────\n\n05 / Czytnik\nKilka znaków. Tyle pogody.\n\nMETAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.\n\nMały podpis: Przykład do nauki, nie aktualna pogoda.\n\n────────────────────\n\n06 / Windy\nMapa przyciąga wzrok. Chciałem rozumieć więcej.\n\nAplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy.\n\nMały podpis: Niezależna pracownia edukacyjna. Bez integracji z Windy.\n\n────────────────────\n\n07 / Warstwy\nKolor to dopiero początek.\n\nWybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy.\n\nMały podpis: Niezależna pracownia edukacyjna. Bez integracji z Windy.\n\n────────────────────\n\n08 / Wysokość\nTen sam poziom. Ziemia coraz bliżej.\n\nPrzesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami.\n\nMały podpis: Niezależna pracownia edukacyjna. Bez integracji z Windy.\n\n────────────────────\n\n09 / Żagle\nA potem popłynęliśmy.\n\nNa żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.\n\nMały podpis: Model szkoleniowy. Telefon nie mierzy wiatru.\n\n────────────────────\n\n10 / Zaproszenie\nZrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.\n\nNie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.\n\nCHMURNIK. Bezpłatnie na iPhone’a."
+    },
+    {
+      "id": "linki-do-storek",
+      "platform": "stories",
+      "title": "Stories / wszystkie naklejki Link",
+      "text": "01 / Geneza\nTekst naklejki: Poznaj CHMURNIK\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n02 / Atlas\nTekst naklejki: Otwórz atlas chmur\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n03 / Lekcja\nTekst naklejki: Zajrzyj do lekcji\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n04 / METAR\nTekst naklejki: Poznaj trening METAR\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n05 / Czytnik\nTekst naklejki: Wypróbuj czytnik\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n06 / Windy\nTekst naklejki: Poznaj pracownię Windy\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n07 / Warstwy\nTekst naklejki: Przećwicz warstwy\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n08 / Wysokość\nTekst naklejki: Zobacz różnicę wysokości\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n09 / Żagle\nTekst naklejki: Poznaj wiatr na pokładzie\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\n10 / Zaproszenie\nTekst naklejki: Pobierz CHMURNIK\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027"
+    },
+    {
+      "id": "instagram-bio-link",
+      "platform": "instagram",
+      "title": "Instagram / link do profilu lub naklejki",
+      "text": "https://apps.apple.com/pl/app/chmurnik/id6782159027"
+    }
+  ],
+  "documents": [
+    {
+      "file": "chmurnik-historia-linkedin.pdf",
+      "title": "CHMURNIK: zaczęło się od kogoś bliskiego",
+      "platform": "linkedin",
+      "pages": 10,
+      "mime": "application/pdf",
+      "bytes": 4792910,
+      "sha256": "ddb6a50ff05b437e59e6bff15f504f6d79c10a2650a039251ccc920cfcda7ae7",
+      "source": "Ten complete carousel compositions, original embedded fonts, selectable Polish text and real screenshots. No animation is implied in the PDF."
+    }
+  ],
+  "archives": [
+    {
+      "file": "chmurnik-pelny-pakiet.zip",
+      "title": "Pełny pakiet",
+      "entries": [
+        "CZYTAJ-MNIE.txt",
+        "ZRODLA-ZDJEC.txt",
+        "images/story-01-geneza.jpg",
+        "images/story-02-atlas.jpg",
+        "images/story-03-lekcja.jpg",
+        "images/story-04-metar.jpg",
+        "images/story-05-czytnik.jpg",
+        "images/story-06-windy.jpg",
+        "images/story-07-warstwy.jpg",
+        "images/story-08-wysokosc.jpg",
+        "images/story-09-zagle.jpg",
+        "images/story-10-zaproszenie.jpg",
+        "images/karuzela-01-geneza.jpg",
+        "images/karuzela-02-atlas.jpg",
+        "images/karuzela-03-lekcja.jpg",
+        "images/karuzela-04-metar.jpg",
+        "images/karuzela-05-czytnik.jpg",
+        "images/karuzela-06-windy.jpg",
+        "images/karuzela-07-warstwy.jpg",
+        "images/karuzela-08-wysokosc.jpg",
+        "images/karuzela-09-zagle.jpg",
+        "images/karuzela-10-zaproszenie.jpg",
+        "images/facebook-z-kogos-bliskiego.jpg",
+        "videos/story-01-geneza.mp4",
+        "videos/story-02-atlas.mp4",
+        "videos/story-03-lekcja.mp4",
+        "videos/story-04-metar.mp4",
+        "videos/story-05-czytnik.mp4",
+        "videos/story-06-windy.mp4",
+        "videos/story-07-warstwy.mp4",
+        "videos/story-08-wysokosc.mp4",
+        "videos/story-09-zagle.mp4",
+        "videos/story-10-zaproszenie.mp4",
+        "chmurnik-historia-linkedin.pdf",
+        "teksty/instagram-post.txt",
+        "teksty/linkedin-post.txt",
+        "teksty/facebook-post.txt",
+        "teksty/storki-pelny-tekst.txt",
+        "teksty/linki-do-storek.txt",
+        "teksty/instagram-bio-link.txt",
+        "teksty/alt-teksty.txt"
+      ],
+      "bytes": 72509956,
+      "sha256": "306f9d2839c7ae3b67a8185825a1f35fb4857c5d2555cf2306731331fcad79e4"
+    },
+    {
+      "file": "chmurnik-stories.zip",
+      "title": "Stories z filmami",
+      "entries": [
+        "CZYTAJ-MNIE.txt",
+        "ZRODLA-ZDJEC.txt",
+        "images/story-01-geneza.jpg",
+        "images/story-02-atlas.jpg",
+        "images/story-03-lekcja.jpg",
+        "images/story-04-metar.jpg",
+        "images/story-05-czytnik.jpg",
+        "images/story-06-windy.jpg",
+        "images/story-07-warstwy.jpg",
+        "images/story-08-wysokosc.jpg",
+        "images/story-09-zagle.jpg",
+        "images/story-10-zaproszenie.jpg",
+        "videos/story-01-geneza.mp4",
+        "videos/story-02-atlas.mp4",
+        "videos/story-03-lekcja.mp4",
+        "videos/story-04-metar.mp4",
+        "videos/story-05-czytnik.mp4",
+        "videos/story-06-windy.mp4",
+        "videos/story-07-warstwy.mp4",
+        "videos/story-08-wysokosc.mp4",
+        "videos/story-09-zagle.mp4",
+        "videos/story-10-zaproszenie.mp4",
+        "teksty/storki-pelny-tekst.txt",
+        "teksty/linki-do-storek.txt"
+      ],
+      "bytes": 65879917,
+      "sha256": "c5166a1b73ce9581dfbd207026d654c8e637a707e3ea8a34f5f37134ee16a963"
+    },
+    {
+      "file": "chmurnik-stories-jpg.zip",
+      "title": "Stories JPG",
+      "entries": [
+        "CZYTAJ-MNIE.txt",
+        "ZRODLA-ZDJEC.txt",
+        "images/story-01-geneza.jpg",
+        "images/story-02-atlas.jpg",
+        "images/story-03-lekcja.jpg",
+        "images/story-04-metar.jpg",
+        "images/story-05-czytnik.jpg",
+        "images/story-06-windy.jpg",
+        "images/story-07-warstwy.jpg",
+        "images/story-08-wysokosc.jpg",
+        "images/story-09-zagle.jpg",
+        "images/story-10-zaproszenie.jpg",
+        "teksty/storki-pelny-tekst.txt",
+        "teksty/linki-do-storek.txt"
+      ],
+      "bytes": 2083891,
+      "sha256": "a16e9ab4bc0b1e07909d961e19b264ee317274085943e39f614ff77f1f3a5bfc"
+    },
+    {
+      "file": "chmurnik-instagram-karuzela.zip",
+      "title": "Instagram: karuzela i opis",
+      "entries": [
+        "CZYTAJ-MNIE.txt",
+        "ZRODLA-ZDJEC.txt",
+        "images/karuzela-01-geneza.jpg",
+        "images/karuzela-02-atlas.jpg",
+        "images/karuzela-03-lekcja.jpg",
+        "images/karuzela-04-metar.jpg",
+        "images/karuzela-05-czytnik.jpg",
+        "images/karuzela-06-windy.jpg",
+        "images/karuzela-07-warstwy.jpg",
+        "images/karuzela-08-wysokosc.jpg",
+        "images/karuzela-09-zagle.jpg",
+        "images/karuzela-10-zaproszenie.jpg",
+        "teksty/instagram-post.txt",
+        "teksty/instagram-bio-link.txt",
+        "teksty/alt-teksty.txt"
+      ],
+      "bytes": 2000982,
+      "sha256": "416ab522d6ddd03a114400ffbf2df4fa864ac465ecec72663711de48dfd86959"
+    },
+    {
+      "file": "chmurnik-linkedin.zip",
+      "title": "LinkedIn: PDF i post",
+      "entries": [
+        "CZYTAJ-MNIE.txt",
+        "ZRODLA-ZDJEC.txt",
+        "chmurnik-historia-linkedin.pdf",
+        "teksty/linkedin-post.txt"
+      ],
+      "bytes": 4453665,
+      "sha256": "8490e8d4c06176ee87cd2011688aa2b1f41c226e4a5a54145404896b7b75f5b9"
+    },
+    {
+      "file": "chmurnik-facebook.zip",
+      "title": "Facebook: grafika i post",
+      "entries": [
+        "CZYTAJ-MNIE.txt",
+        "ZRODLA-ZDJEC.txt",
+        "images/facebook-z-kogos-bliskiego.jpg",
+        "teksty/facebook-post.txt"
+      ],
+      "bytes": 184890,
+      "sha256": "dd0b60dee19f3b3fe2fe2296373d4774776dfd43f351ae4da7e790c7677e21b8"
+    }
+  ],
+  "photoCredits": [
+    {
+      "cloud": "Cirrus",
+      "id": "cirrus-field",
+      "author": "PiccoloNamek",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg"
+    },
+    {
+      "cloud": "Cirrus",
+      "id": "cirrus-elko",
+      "author": "Famartin",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2013-09-10_06_47_39_Cirrus_in_Elko%2C_Nevada.jpg"
+    },
+    {
+      "cloud": "Cirrus",
+      "id": "cirrus-uncinus-new-jersey",
+      "author": "Famartin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2023-08-31_11_37_51_Cirrus_uncinus_(mares'_tails)_viewed_from_Aquetong_Lane_in_the_Mountainview_section_of_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg"
+    },
+    {
+      "cloud": "Cirrocumulus",
+      "id": "cirrocumulus-20040830",
+      "author": "autor niepodany w metadanych pliku",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cirrocumulus_20040830.jpg"
+    },
+    {
+      "cloud": "Cirrostratus",
+      "id": "cirrostratus-mock-sun",
+      "author": "The Great Cloudwatcher",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg"
+    },
+    {
+      "cloud": "Altocumulus",
+      "id": "altocumulus-bidgee",
+      "author": "Bidgee",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altocumulus.jpg"
+    },
+    {
+      "cloud": "Altostratus",
+      "id": "altostratus-wavy-base",
+      "author": "Famartin",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2020-12-31_16_06_58_Altostratus_with_a_wavy_undulating_base_above_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg"
+    },
+    {
+      "cloud": "Nimbostratus",
+      "id": "nimbostratus-ns1",
+      "author": "autor niepodany w metadanych pliku",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ns1.jpg"
+    },
+    {
+      "cloud": "Stratocumulus",
+      "id": "stratocumulus-above-clouds",
+      "author": "Arun Kulshreshtha",
+      "license": "CC BY 3.0 US",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Above_the_Clouds.jpg"
+    },
+    {
+      "cloud": "Stratus",
+      "id": "stratus-vodno",
+      "author": "kallerna",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stratus_clouds_Vodno_4.jpg"
+    },
+    {
+      "cloud": "Cumulus",
+      "id": "cumulus-golden-meadows",
+      "author": "PiccoloNamek",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:GoldenMedows.jpg"
+    },
+    {
+      "cloud": "Cumulonimbus",
+      "id": "cumulonimbus-noaa-anvil",
+      "author": "NOAA/AOML/Hurricane Research Division",
+      "license": "domena publiczna",
+      "licenseUrl": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg"
+    }
+  ],
+  "publicationOrder": [
+    "story-01-geneza.mp4",
+    "story-02-atlas.mp4",
+    "story-03-lekcja.mp4",
+    "story-04-metar.mp4",
+    "story-05-czytnik.mp4",
+    "story-06-windy.mp4",
+    "story-07-warstwy.mp4",
+    "story-08-wysokosc.mp4",
+    "story-09-zagle.mp4",
+    "story-10-zaproszenie.mp4"
+  ]
+}

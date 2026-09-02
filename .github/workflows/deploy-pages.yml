@@ -34,6 +34,8 @@ jobs:
         run: cp -R social/2026-08-30/site dist/premiera
       - name: Add the origin-story media gallery (not bundled in iOS)
         run: cp -R social/2026-09-03/site dist/premiera/2026-09-03
+      - name: Add the complete multi-platform story pack (not bundled in iOS)
+        run: cp -R social/2026-09-03-full/site dist/premiera/historia
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,106 @@
+# CHMURNIK: Complete Origin-Story Package
+
+Prepared on September 2 for September 3, 2026. The owner approved all ten
+Polish Stories before production, then requested Instagram carousel,
+LinkedIn and Facebook adaptations. This supersedes the five-part draft
+without deleting it or the previously published launch pack.
+
+Download gallery: https://jakiesluchawki.github.io/chmurnik/premiera/historia/
+
+## Deliverables
+
+- Ten silent 1080 x 1920 H.264 MP4 Stories, numbered 01-10. Six are genuine
+  app walkthroughs; four are static cards held long enough to read.
+- Ten alternative 1080 x 1920 JPG Stories with the entire approved copy.
+- Ten 1080 x 1350 JPG carousel slides and a complete Instagram caption.
+- A ten-page LinkedIn PDF and a distinct, complete LinkedIn post.
+- A 1080 x 1350 Facebook image and a complete Facebook post.
+- Full approved copy, ten App Store sticker labels, alt text, photo credits,
+  individual downloads and six ZIPs. The full archive is about 69 MB.
+
+All direct download links point to Apple ID `6782159027`. The JPG/MP4 files
+do not contain an interactive Instagram sticker: the owner must add it in
+Instagram. The clear sticker area is x=240, y=1510, w=600, h=120. Each MP4
+and same-numbered JPG are alternatives, not consecutive parts of the series.
+No social account has been posted to automatically.
+
+## Content And Evidence
+
+`copy.mjs` is the canonical, approved ten-part narrative. It preserves the
+owner's latest correction that the pilot already flies with an engine. It
+does not invent a relative's name, relationship, trip location or credential.
+`captions.mjs` contains the platform adaptations and the complete transcript.
+
+The original Romie/Roobert, pink/olive/violet/cream palette, wordmark and
+felt observer asset are retained. Photographic evidence is real and comes
+from the application's licensed atlas, not generated cloud imagery.
+
+`capture.mjs` records an isolated browser running the genuine React app in
+its mobile native-layout presentation. It records actual taps, swipes,
+form input and range changes. The touch indicator and narrative are outside
+the unmodified app frame. These are not recordings from a physical iPhone.
+
+The six walkthroughs show:
+
+1. Atlas selection, Cirrus photography, description and recognition cues.
+2. A fragment of the first lesson, its question and revealed explanation.
+3. METAR/TAF guidance, pasted sample report, parsing and wind-token details.
+4. Cloud-base layer selection, units/reference, question and feedback.
+5. A real terrain-height slider and the unchanged 850 hPa pressure surface.
+6. Yacht-speed and heading changes, apparent-wind readouts and wind rose.
+
+Vertical gestures use the frame gutter to avoid touching range controls.
+The final sailing state is asserted after scrolling: true wind unchanged,
+boat speed about 15 kt and heading about 135 degrees. No app values are
+replaced for filming. The first lesson is only an excerpt, not a claimed
+completion. The METAR is explicitly synthetic; Windy is an independent
+educational workshop without integration. The phone does not measure wind.
+
+## Reproduction
+
+From the repository root, with Node, Sharp, macOS Swift/AVFoundation and
+Playwright available:
+
+```sh
+node social/2026-09-03-full/capture.mjs --playwright-path /path/to/playwright/index.mjs --browser-path /path/to/browser
+node social/2026-08-30/render.mjs --campaign social/2026-09-03-full --playwright-path /path/to/playwright/index.mjs --browser-path /path/to/browser
+node social/2026-09-03-full/document.mjs --playwright-path /path/to/playwright/index.mjs --browser-path /path/to/browser
+node social/2026-09-03-full/video.mjs
+node social/2026-09-03-full/package.mjs
+npm test
+npm run check:lessons
+npm run build:pages
+node social/2026-09-03-full/verify.mjs --playwright-path /path/to/playwright/index.mjs --browser-path /path/to/browser
+python3 social/2026-09-03-full/qa-pdf.py --pdftoppm /path/to/pdftoppm
+node social/2026-09-03-full/contact-sheets.mjs
+```
+
+Run document, video and packaging after the shared JPG renderer: it creates
+a fresh manifest. `--only wind` on the capture script re-records one demo;
+retained frame plans remain under ignored `build/social-full/`.
+
+## Verification
+
+- All 178 Node tests, nine lesson audits and the Pages production build pass.
+- All 21 JPGs have the specified geometry, loaded original fonts, complete
+  approved text and clear safe/sticker areas; visual inspection is complete.
+- AVFoundation verifies ten silent MP4s, their dimensions and duration.
+  Chromium decodes and seeks all ten, checks genuine changing frames for
+  all six walkthroughs, and plays each through to its end.
+- PDF inspection confirms ten uniform pages, complete approved visible
+  characters, self-contained font glyphs, original photo-source links and
+  the final App Store link. All pages were rendered with Poppler and viewed.
+- Gallery checks pass at 320/390/1440 px without horizontal overflow or
+  script errors. All 38 media/archive hashes and seven ZIP/PDF download
+  actions pass; complete captions, clipboard fallback and ten stickers pass.
+- JPG/MP4 File Sharing was tested with a simulated browser API, not a
+  physical iPhone or an actual Instagram upload.
+- Both older galleries and the full production app flow pass regression.
+  A pre-existing QA race was corrected by waiting for the two animation
+  frames around production onboarding before testing its skip control.
+
+Evidence: `captures/provenance.json`, `site/manifest.json`,
+`tests/social-full-pack.test.mjs` and ignored `build/social-full/`.
+The Pages workflow copies this gallery to `dist/premiera/historia`; social
+assets are not included in the embedded iOS app. Private analytics, raw
+recording frames, account data, tokens and font files are excluded from ZIPs.

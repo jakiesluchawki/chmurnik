@@ -13,7 +13,21 @@ links:
   - "../../../design/app-store-owner-steps-pl.md"
   - "../../../social/2026-08-30/README.md"
   - "../../../social/2026-09-03/README.md"
+  - "../../../social/2026-09-03-full/README.md"
 history:
+  - date: "2026-09-02"
+    status: active
+    who: codex
+    note: >
+      Owner approved ten complete Stories and requested full Instagram,
+      LinkedIn and Facebook adaptations. Produced ten silent MP4 Stories
+      (six genuine app walkthroughs), ten alternative JPGs, ten carousel
+      slides, a ten-page LinkedIn PDF, Facebook art, full platform copy,
+      ten sticker links and six download ZIPs. All 178 tests, nine lesson
+      audits, production build, full app flow and all three galleries pass.
+      PDF pages and final media were rendered/inspected. No social account
+      posting, physical iPhone share test or account-level DSA change claimed.
+      Task remains active for the separate hardware acceptance boundary.
   - date: "2026-09-02"
     status: active
     who: codex
@@ -136,6 +150,10 @@ not the separate account-level trader verification. See the launch media log.
       silent H.264 demo alternatives, direct download ZIPs and five sticker
       links. Genuine UI, owner-sourced copy, photograph credits and training
       limits are preserved; responsive Chromium and video decoding pass.
+- [x] 2026-09-02: approved expansion to ten Stories and a complete cross-platform
+      kit includes genuine mobile walkthroughs, ten carousel slides, LinkedIn
+      PDF/post, Facebook image/post, full copy and six verified archives.
+      The `/premiera/historia/` gallery preserves both previous packages.
 
 ## Boundary
 

@@ -1,0 +1,872 @@
+{
+  "capturedOn": "2026-09-02",
+  "viewport": {
+    "width": 390,
+    "height": 414,
+    "displayScale": 2
+  },
+  "method": "Continuous isolated-browser screencast of genuine mobile React UI. Actual touch taps and swipes, actual form input and range changes. Native-layout presentation, not a physical iPhone recording. Touch indicator and approved narrative sit outside the unmodified application. No invented UI, edited readouts or personal data. METAR scenario is synthetic. Only a fragment of the unchanged first lesson is shown; no course completion is claimed.",
+  "captures": [
+    {
+      "id": "reader",
+      "storyId": "05-czytnik",
+      "route": "practice/metar",
+      "fps": 30,
+      "duration": 22.466666666666665,
+      "events": [
+        {
+          "at": 0.022,
+          "type": "copy",
+          "index": 0,
+          "text": "METAR opisuje obserwację. TAF jest prognozą."
+        },
+        {
+          "at": 1.169,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 865
+          },
+          "to": {
+            "x": 846,
+            "y": 1039.34375
+          }
+        },
+        {
+          "at": 1.818,
+          "type": "tap",
+          "label": "METAR a TAF. Jak je odróżnić?",
+          "x": 540,
+          "y": 877.65625
+        },
+        {
+          "at": 5.03,
+          "type": "copy",
+          "index": 1,
+          "text": "Wklejasz depeszę i rozczytujesz ją po kawałku."
+        },
+        {
+          "at": 5.374,
+          "type": "tap",
+          "label": "METAR a TAF. Jak je odróżnić?",
+          "x": 540,
+          "y": 877.65625
+        },
+        {
+          "at": 6.146,
+          "type": "tap",
+          "label": "METAR EPWA 261200Z 24015G25KT 6000 -RA SCT012 BKN025 17/15 Q1012 NOSIG",
+          "x": 540,
+          "y": 1161.625
+        },
+        {
+          "at": 6.587,
+          "type": "paste",
+          "text": "METAR EPWA 261200Z 24015G25KT 6000 -RA SCT012 BKN025 17/15 Q1012 NOSIG",
+          "source": "src/data/field-practice.js"
+        },
+        {
+          "at": 8.7,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 916.375
+          }
+        },
+        {
+          "at": 9.356,
+          "type": "tap",
+          "label": "Rozczytaj raport",
+          "x": 387.15625,
+          "y": 921.625
+        },
+        {
+          "at": 10.748,
+          "type": "copy",
+          "index": 2,
+          "text": "Skróty zaczynają nabierać znaczenia."
+        },
+        {
+          "at": 11.852,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 13.235,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 14.636,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865.96875
+          }
+        },
+        {
+          "at": 17.935,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 887.15625
+          }
+        },
+        {
+          "at": 18.578,
+          "type": "tap",
+          "label": "24015G25KT",
+          "x": 660.828125,
+          "y": 918.84375
+        },
+        {
+          "at": 20.102,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 1057.15625
+          }
+        },
+        {
+          "at": 20.484,
+          "type": "poster"
+        }
+      ],
+      "poster": "social/2026-09-03-full/captures/reader-poster.png",
+      "posterSHA256": "79cb27bae9e74facae9ec5e06f255dc5a8572ee383f0ef5228df72cc7af5389f"
+    },
+    {
+      "id": "layers",
+      "storyId": "07-warstwy",
+      "route": "layers",
+      "fps": 30,
+      "duration": 22.8,
+      "events": [
+        {
+          "at": 0.026,
+          "type": "copy",
+          "index": 0,
+          "text": "Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego."
+        },
+        {
+          "at": 1.148,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 865
+          },
+          "to": {
+            "x": 846,
+            "y": 1045.53125
+          }
+        },
+        {
+          "at": 2.547,
+          "type": "touch-drag",
+          "from": {
+            "x": 845,
+            "y": 889.46875
+          },
+          "to": {
+            "x": 230,
+            "y": 889.46875
+          }
+        },
+        {
+          "at": 3.199,
+          "type": "tap",
+          "label": "Podstawa",
+          "x": 700.359375,
+          "y": 889.46875
+        },
+        {
+          "at": 5.314,
+          "type": "poster"
+        },
+        {
+          "at": 6.429,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 7.812,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 876.59375
+          }
+        },
+        {
+          "at": 10.676,
+          "type": "copy",
+          "index": 1,
+          "text": "Potem odpowiadasz na pytanie i poznajesz wyjaśnienie."
+        },
+        {
+          "at": 11.798,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 13.197,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 14.581,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 17.481,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 18.125,
+          "type": "tap",
+          "label": "BBo model wygładza teren, więc jego AGL może odnosić się do innej wysokości gruntu niż rzeczywista.",
+          "x": 540,
+          "y": 1189.4375
+        },
+        {
+          "at": 19.513,
+          "type": "copy",
+          "index": 2,
+          "text": "Tak ćwiczysz czytanie mapy."
+        }
+      ],
+      "poster": "social/2026-09-03-full/captures/layers-poster.png",
+      "posterSHA256": "8755bd5907f5447f37d08a44f051190ac98d2298d69841dfe1dfd5b3e0e2823f"
+    },
+    {
+      "id": "lesson",
+      "storyId": "03-lekcja",
+      "route": "learn",
+      "fps": 30,
+      "duration": 27.3,
+      "events": [
+        {
+          "at": 0.025,
+          "type": "copy",
+          "index": 0,
+          "text": "To tytuł pierwszej lekcji."
+        },
+        {
+          "at": 1.147,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 865
+          },
+          "to": {
+            "x": 846,
+            "y": 1064.9375
+          }
+        },
+        {
+          "at": 1.792,
+          "type": "tap",
+          "label": "01Początek · 12 minNajpierw patrz, potem nazywajSześć pytań, które zamieniają „jakaś chmura” w uporządkowaną obserwację.kształtwarstwaskala",
+          "x": 540,
+          "y": 1099.3125
+        },
+        {
+          "at": 3.202,
+          "type": "copy",
+          "index": 1,
+          "text": "Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź."
+        },
+        {
+          "at": 4.614,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 6.315,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 7.996,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 952.4375
+          }
+        },
+        {
+          "at": 11.511,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 13.198,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 15.555,
+          "type": "tap",
+          "label": "Sprawdź odpowiedź",
+          "x": 320.203125,
+          "y": 1297.25
+        },
+        {
+          "at": 16.945,
+          "type": "copy",
+          "index": 2,
+          "text": "Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania."
+        },
+        {
+          "at": 18.331,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 1160
+          }
+        },
+        {
+          "at": 18.7,
+          "type": "poster"
+        }
+      ],
+      "poster": "social/2026-09-03-full/captures/lesson-poster.png",
+      "posterSHA256": "7043242488decd8577b1427518a859128282ab89cb434fe646a3bb56746de54b"
+    },
+    {
+      "id": "height",
+      "storyId": "08-wysokosc",
+      "route": "layers",
+      "fps": 30,
+      "duration": 23.2,
+      "events": [
+        {
+          "at": 0.024,
+          "type": "copy",
+          "index": 0,
+          "text": "Przesuwasz teren pod wybraną powierzchnią ciśnienia."
+        },
+        {
+          "at": 1.137,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 865
+          },
+          "to": {
+            "x": 846,
+            "y": 1065.53125
+          }
+        },
+        {
+          "at": 1.786,
+          "type": "tap",
+          "label": "Wysokość",
+          "x": 474.984375,
+          "y": 889.46875
+        },
+        {
+          "at": 3.324,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 4.737,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 1218.1875
+          }
+        },
+        {
+          "at": 7.807,
+          "type": "copy",
+          "index": 1,
+          "text": "Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu."
+        },
+        {
+          "at": 8.921,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 10.32,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 12.608,
+          "type": "touch-drag",
+          "from": {
+            "x": 290.3636363636364,
+            "y": 1007.1875
+          },
+          "to": {
+            "x": 503.54545454545456,
+            "y": 1007.1875
+          }
+        },
+        {
+          "at": 12.895,
+          "type": "range-result",
+          "before": 300,
+          "after": 1000,
+          "intended": 1000
+        },
+        {
+          "at": 15.701,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 865
+          },
+          "to": {
+            "x": 846,
+            "y": 1360
+          }
+        },
+        {
+          "at": 17.084,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 865
+          },
+          "to": {
+            "x": 846,
+            "y": 1331.1875
+          }
+        },
+        {
+          "at": 17.462,
+          "type": "poster"
+        },
+        {
+          "at": 18.429,
+          "type": "copy",
+          "index": 2,
+          "text": "hPa, MSL i AGL przestają być tylko skrótami."
+        }
+      ],
+      "poster": "social/2026-09-03-full/captures/height-poster.png",
+      "posterSHA256": "f22a748fcfdbdae41bab824dc60619a115e750467688f59256f14669ed854f12"
+    },
+    {
+      "id": "atlas",
+      "storyId": "02-atlas",
+      "route": "atlas",
+      "fps": 30,
+      "duration": 24.3,
+      "events": [
+        {
+          "at": 0.024,
+          "type": "copy",
+          "index": 0,
+          "text": "Otwórz atlas i wybierz chmurę, którą chcesz poznać."
+        },
+        {
+          "at": 2.367,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 871.59375
+          }
+        },
+        {
+          "at": 3.038,
+          "type": "tap",
+          "label": "CiwysokieCirruspierzasteWłókna, haczyki i pasma z kryształków lodu.11 powiązanych terminówOtwórz monografię",
+          "x": 355,
+          "y": 1089.0625
+        },
+        {
+          "at": 4.968,
+          "type": "poster"
+        },
+        {
+          "at": 5.939,
+          "type": "copy",
+          "index": 1,
+          "text": "Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych."
+        },
+        {
+          "at": 7.051,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 10.233,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 1040
+          }
+        },
+        {
+          "at": 12.683,
+          "type": "copy",
+          "index": 2,
+          "text": "Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową."
+        },
+        {
+          "at": 13.817,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 15.218,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 16.631,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 18.018,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 19.45,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        },
+        {
+          "at": 20.834,
+          "type": "touch-drag",
+          "from": {
+            "x": 846,
+            "y": 1360
+          },
+          "to": {
+            "x": 846,
+            "y": 865
+          }
+        }
+      ],
+      "poster": "social/2026-09-03-full/captures/atlas-poster.png",
+      "posterSHA256": "5854647acda6ecf00d3fb21beaa844b2e7a48392e8bb760be5a3b4038c395b70"
+    },
+    {
+      "id": "wind",
+      "storyId": "09-zagle",
+      "route": "practice/wind",
+      "fps": 30,
+      "duration": 25.4,
+      "events": [
+        {
+          "at": 0.004,
+          "type": "initial-state",
+          "windFrom": 90
+        },
+        {
+          "at": 0.025,
+          "type": "copy",
+          "index": 0,
+          "text": "Na żagle z chłopakami zabrałem też CHMURNIKA."
+        },
+        {
+          "at": 1.167,
+          "type": "touch-drag",
+          "from": {
+            "x": 916,
+            "y": 865
+          },
+          "to": {
+            "x": 916,
+            "y": 995
+          }
+        },
+        {
+          "at": 4.026,
+          "type": "copy",
+          "index": 1,
+          "text": "Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi."
+        },
+        {
+          "at": 10.404,
+          "type": "copy",
+          "index": 2,
+          "text": "Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny."
+        },
+        {
+          "at": 11.522,
+          "type": "touch-drag",
+          "from": {
+            "x": 916,
+            "y": 1360
+          },
+          "to": {
+            "x": 916,
+            "y": 865
+          }
+        },
+        {
+          "at": 13.738,
+          "type": "touch-drag",
+          "from": {
+            "x": 571.1,
+            "y": 931.96875
+          },
+          "to": {
+            "x": 709.05,
+            "y": 931.96875
+          }
+        },
+        {
+          "at": 14.021,
+          "type": "range-result",
+          "before": 5,
+          "after": 15,
+          "intended": 15
+        },
+        {
+          "at": 15.15,
+          "type": "touch-drag",
+          "from": {
+            "x": 916,
+            "y": 865
+          },
+          "to": {
+            "x": 916,
+            "y": 995
+          }
+        },
+        {
+          "at": 17.388,
+          "type": "touch-drag",
+          "from": {
+            "x": 502.125,
+            "y": 901.03125
+          },
+          "to": {
+            "x": 631.8133704735376,
+            "y": 901.03125
+          }
+        },
+        {
+          "at": 17.676,
+          "type": "range-result",
+          "before": 0,
+          "after": 135,
+          "intended": 135
+        },
+        {
+          "at": 20.257,
+          "type": "copy",
+          "index": 3,
+          "text": "Trochę fizyki, którą na wodzie czujesz na własnej skórze."
+        },
+        {
+          "at": 21.368,
+          "type": "touch-drag",
+          "from": {
+            "x": 916,
+            "y": 865
+          },
+          "to": {
+            "x": 916,
+            "y": 1224.78125
+          }
+        },
+        {
+          "at": 21.747,
+          "type": "poster"
+        },
+        {
+          "at": 21.752,
+          "type": "final-state",
+          "windFrom": 90,
+          "boatSpeed": 15,
+          "heading": 135,
+          "readouts": "25 kt\nwiatr pozorny\n20°\nod lewej burty, licząc od dziobu"
+        }
+      ],
+      "poster": "social/2026-09-03-full/captures/wind-poster.png",
+      "posterSHA256": "495a9c9bc29a06089b923b8ada1a1e2b86ca0361f9314e4b6c9ccd084a92bc98"
+    }
+  ]
+}
