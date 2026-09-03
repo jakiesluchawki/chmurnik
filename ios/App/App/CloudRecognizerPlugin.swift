@@ -1,15 +1,18 @@
 import Capacitor
 import CoreML
 import Foundation
+import ImageIO
 import UIKit
+import UniformTypeIdentifiers
 import Vision
 
 @objc(CloudRecognizerPlugin)
-public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin {
+public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumentPickerDelegate {
     public let identifier = "CloudRecognizerPlugin"
     public let jsName = "CloudRecognizer"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "classify", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "classify", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "pickPhoto", returnType: CAPPluginReturnPromise)
     ]
 
     private let classCount = 11
@@ -20,6 +23,58 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin {
     private let trainingCropFraction = 0.902
     private let modelLock = NSLock()
     private var cachedModels: [String: VNCoreMLModel] = [:]
+    private var pendingPhotoCall: CAPPluginCall?
+
+    @objc public func pickPhoto(_ call: CAPPluginCall) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self, let controller = self.bridge?.viewController else {
+                call.reject("Nie można otworzyć wyboru zdjęcia.")
+                return
+            }
+            guard self.pendingPhotoCall == nil else {
+                call.reject("Wybór zdjęcia jest już otwarty.")
+                return
+            }
+            self.pendingPhotoCall = call
+            let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.image], asCopy: true)
+            picker.allowsMultipleSelection = false
+            picker.delegate = self
+            controller.present(picker, animated: true)
+        }
+    }
+
+    public func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        pendingPhotoCall?.reject("Anulowano wybór zdjęcia.", "photo-cancelled")
+        pendingPhotoCall = nil
+    }
+
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let call = pendingPhotoCall else { return }
+        pendingPhotoCall = nil
+        guard let url = urls.first else {
+            call.reject("Nie wybrano zdjęcia.")
+            return
+        }
+        do {
+            let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+            guard size > 0, size <= 30 * 1024 * 1024,
+                  let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+                  let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                    kCGImageSourceCreateThumbnailFromImageAlways: true,
+                    kCGImageSourceCreateThumbnailWithTransform: true,
+                    kCGImageSourceThumbnailMaxPixelSize: 1800,
+                  ] as CFDictionary),
+                  let data = UIImage(cgImage: image).jpegData(compressionQuality: 0.86) else {
+                call.reject("Wybierz poprawne zdjęcie o rozmiarze do 30 MB.")
+                return
+            }
+            let destination = FileManager.default.temporaryDirectory.appendingPathComponent("chmurnik-photo-\(UUID().uuidString).jpg")
+            try data.write(to: destination, options: .atomic)
+            call.resolve(["uri": destination.absoluteString])
+        } catch {
+            call.reject("Nie udało się przygotować zdjęcia.", nil, error)
+        }
+    }
 
     @objc public func classify(_ call: CAPPluginCall) {
         let encoded = call.getString("base64")

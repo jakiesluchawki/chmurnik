@@ -18,6 +18,7 @@ export function FieldHome({
   onRecognition,
   onSources,
   day,
+  desktop = false,
 }) {
   const daily = selectDailyCloud(clouds, day);
   return (
@@ -35,7 +36,7 @@ export function FieldHome({
       </header>
       <section className="field-capture-card">
         <div>
-          <span className="eyebrow">Aparat terenowy</span>
+          <span className="eyebrow">{desktop ? "Twoje fotograficzne obserwacje" : "Aparat terenowy"}</span>
           <h2>
             Co masz
             <br />
@@ -43,7 +44,7 @@ export function FieldHome({
           </h2>
           <p>Zdjęcie, wskazówka, Twój własny atlas.</p>
           <button className="button button--primary" onClick={onCapture}>
-            <Camera size={21} /> Obserwuj niebo
+            {desktop ? <ImageSquare size={21} /> : <Camera size={21} />} {desktop ? "Wybierz zdjęcie nieba" : "Obserwuj niebo"}
           </button>
         </div>
         <img src={asset("assets/observer-guide-still-life-720.webp")} alt="" />

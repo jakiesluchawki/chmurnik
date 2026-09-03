@@ -37,6 +37,9 @@ export default defineConfig({
     include: ["react", "react-dom/client"],
   },
   server: {
+    watch: {
+      ignored: ["**/build/**", "**/ios/**", "**/release/**"],
+    },
     warmup: {
       clientFiles: ["./src/main.jsx"],
     },

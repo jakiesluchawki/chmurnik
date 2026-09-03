@@ -574,10 +574,16 @@ test("the iOS shell respects safe areas and release metadata", async () => {
   assert.match(styles, /html\.native-ios \.bottom-nav button\s*\{[^}]*min-height: 56px/s);
   assert.match(project, /DEVELOPMENT_TEAM = 78N6WG8P57/g);
   assert.match(project, /PRODUCT_BUNDLE_IDENTIFIER = cloud\.chmurnik\.app/g);
-  assert.match(project, /TARGETED_DEVICE_FAMILY = 1/g);
+  assert.equal([...project.matchAll(/TARGETED_DEVICE_FAMILY = "1,2"/g)].length, 4);
+  assert.match(project, /SUPPORTS_MACCATALYST = YES/);
   assert.match(info, /<key>ITSAppUsesNonExemptEncryption<\/key>\s*<false\/>/s);
   assert.match(info, /UIStatusBarStyleDarkContent/);
-  assert.doesNotMatch(info, /UIInterfaceOrientationLandscape/);
+  const phoneOrientations = info.match(/<key>UISupportedInterfaceOrientations<\/key>\s*<array>(.*?)<\/array>/s)?.[1];
+  assert.match(phoneOrientations, /UIInterfaceOrientationPortrait/);
+  assert.doesNotMatch(phoneOrientations, /Landscape/);
+  assert.match(info, /<key>UISupportedInterfaceOrientations~ipad<\/key>\s*<array>.*?UIInterfaceOrientationLandscapeLeft.*?UIInterfaceOrientationLandscapeRight.*?<\/array>/s);
+  assert.match(info, /UIApplicationSceneManifest/);
+  assert.match(info, /UIApplicationSupportsIndirectInputEvents<\/key>\s*<true\/>/s);
 });
 
 test("the iOS artwork follows the current pink and olive CHMURNIK design", async () => {

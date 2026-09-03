@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Capacitor } from "@capacitor/core";
+import { isMacWorkspace, workspaceRoutes, workspaceShortcut } from "./lib/native-workspace.js";
 import { FieldHome } from "./components/FieldHome.jsx";
 import { FieldPractice, PracticeLinks } from "./components/FieldPractice.jsx";
 import { SkyCollection } from "./components/SkyCollection.jsx";
@@ -172,6 +173,14 @@ const nativeNavigation = [
   { id: "atlas", label: "Atlas", icon: Cloud },
 ];
 const nativeLayout = Capacitor.getPlatform() === "ios" || import.meta.env.VITE_QA_NATIVE_LAYOUT === "1";
+const macWorkspace = isMacWorkspace();
+const workspaceItems = [
+  ...nativeNavigation,
+  { id: "learn", label: "Lekcje", icon: BookOpen },
+  { id: "practice/metar", label: "METAR i TAF", icon: AirplaneTilt },
+  { id: "practice/wind", label: "Wiatr", icon: Wind },
+  { id: "layers", label: "Mapy i warstwy", icon: Stack },
+];
 
 const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -767,7 +776,7 @@ const onboardingSteps = [
 ];
 
 const nativeOnboardingSteps = [
-  { ...onboardingSteps[0], eyebrow: "01 · Dziś", title: "Zauważ. Zrób zdjęcie.", body: "Przycisk Obserwuj otwiera aparat. Model na iPhonie podpowie rodzinę chmur; to hipoteza, którą sprawdzisz na prawdziwych zdjęciach." },
+  { ...onboardingSteps[0], eyebrow: "01 · Dziś", title: "Zauważ. Zatrzymaj w kadrze.", body: "Zrób zdjęcie lub wybierz je z biblioteki. Model na Twoim urządzeniu podpowie rodzinę chmur; to hipoteza, którą sprawdzisz na prawdziwych zdjęciach." },
   { ...onboardingSteps[2], eyebrow: "02 · Moje niebo", title: "Twoje kadry mają ciąg dalszy", body: "Zachowaj całe zdjęcie jednym dotknięciem. Dodaj własne rozpoznanie, porównuj obserwacje i wyślij pocztówkę bez prywatnych notatek." },
   { ...onboardingSteps[1], eyebrow: "03 · Atlas i pracownie", title: "Zrozum, zanim ruszysz", body: "METAR, wiatr na pokładzie i mapy Windy: narzędzia i krótkie scenariusze z wyjaśnieniem. Pełne lekcje i atlas są zawsze pod ręką." },
 ];
@@ -5030,7 +5039,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
 
         <div className="photo-privacy-note">
           <ShieldCheck size={21} weight="bold" />
-          <span><strong>Prywatnie.</strong> Analiza odbywa się na tym iPhonie. Zdjęcie nie opuszcza urządzenia.</span>
+          <span><strong>Prywatnie.</strong> Analiza odbywa się na tym urządzeniu. Zdjęcie nie opuszcza urządzenia.</span>
         </div>
 
         {previewUrl ? (
@@ -5112,11 +5121,11 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
         {error && <p className="photo-recognition-error" role="alert"><Warning size={18} />{error}</p>}
 
         <footer className="photo-capture-actions">
-          <button onClick={() => analyze("camera")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
+          {!macWorkspace && <button onClick={() => analyze("camera")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
             <CameraIcon size={20} /><span>{previewUrl ? "Zrób nowe" : "Zrób zdjęcie"}</span>
-          </button>
+          </button>}
           <button onClick={() => analyze("photos")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
-            <ImageSquare size={20} /><span>Wybierz z biblioteki</span>
+            <ImageSquare size={20} /><span>{macWorkspace ? "Wybierz plik zdjęcia" : "Wybierz z biblioteki"}</span>
           </button>
         </footer>
       </section>
@@ -5310,6 +5319,21 @@ export function App() {
   const photoRecognitionAvailable = isPhotoRecognitionSupported();
 
   useEffect(() => {
+    const onKeyDown = (event) => {
+      const next = workspaceShortcut(event, {
+        native: nativeLayout,
+        modal: Boolean(document.querySelector('[aria-modal="true"]')),
+      });
+      if (next) {
+        event.preventDefault();
+        navigate(next);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [navigate]);
+
+  useEffect(() => {
     if (import.meta.env.VITE_QA_NO_ONBOARDING === "1" || loadOnboarding().completed) return undefined;
     const frame = window.requestAnimationFrame(() => setOnboardingOpen(true));
     return () => window.cancelAnimationFrame(frame);
@@ -5407,8 +5431,23 @@ export function App() {
         </aside>
       )}
       <AppHeader route={validRoute} navigate={navigate} />
+      {nativeLayout && <aside className="native-workspace-sidebar">
+        <span className="eyebrow">Twoja pracownia nieba</span>
+        <nav aria-label="Pracownia">
+          {workspaceItems.map((item, index) => {
+            const selected = item.id === route || (!route.includes("/") && item.id === validRoute)
+              || (!item.id.includes("/") && route.startsWith(`${item.id}/`));
+            return <button key={item.id} onClick={() => navigate(item.id)} aria-current={selected ? "page" : undefined}
+              aria-label={item.label} aria-keyshortcuts={`Meta+${workspaceRoutes.indexOf(item.id) + 1}`}>
+              <item.icon size={21} /><span>{item.label}</span><kbd aria-hidden="true">⌘{index + 1}</kbd>
+            </button>;
+          })}
+        </nav>
+        <p>Ten sam atlas.<br />Więcej miejsca na odkrycia.</p>
+        <button className="field-source" onClick={() => navigate("support")}><Info size={17} /> Pomoc i prywatność</button>
+      </aside>}
       <div id="main-content">
-        {validRoute === "home" && nativeLayout && <FieldHome {...pageProps} day={localDay} onCapture={() => openPhoto("camera")} onRecognition={openRecognition} />}
+        {validRoute === "home" && nativeLayout && <FieldHome {...pageProps} desktop={macWorkspace} day={localDay} onCapture={() => openPhoto(macWorkspace ? "photos" : "camera")} onRecognition={openRecognition} />}
         {validRoute === "home" && !nativeLayout && (
           <HomePage
             {...pageProps}
@@ -5458,7 +5497,7 @@ export function App() {
         )}
         {validRoute === "practice" && <FieldPractice key={routeDetail} track={routeDetail} {...pageProps} />}
         {validRoute === "layers" && <LayersPage key={routeDetail} initialTab={routeDetail} {...pageProps} />}
-        {validRoute === "journal" && <SkyCollection navigate={navigate} selectedId={routeDetail ? (() => { try { return decodeURIComponent(routeDetail); } catch { return null; } })() : null} onCapture={() => openPhoto("camera")} captureAvailable={photoRecognitionAvailable} />}
+        {validRoute === "journal" && <SkyCollection navigate={navigate} selectedId={routeDetail ? (() => { try { return decodeURIComponent(routeDetail); } catch { return null; } })() : null} onCapture={() => openPhoto(macWorkspace ? "photos" : "camera")} captureAvailable={photoRecognitionAvailable} />}
         {validRoute === "sources" && <SourcesPage onSources={setSourceIds} />}
         {["support", "privacy"].includes(validRoute) && <ApplicationInfo page={validRoute} navigate={navigate} />}
       </div>

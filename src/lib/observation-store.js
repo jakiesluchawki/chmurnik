@@ -9,6 +9,11 @@ import {
 
 const Vault = registerPlugin("ObservationVault");
 const isIOS = () => Capacitor.getPlatform() === "ios";
+
+export async function pickObservationBackup() {
+  const result = await Vault.pickBackup();
+  return result.cancelled ? null : result.text;
+}
 let database;
 let preparation;
 

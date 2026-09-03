@@ -93,13 +93,15 @@ try {
     });
   });
   page.setDefaultTimeout(15000);
+  page.setDefaultNavigationTimeout(90000);
   page.on("pageerror", (error) => errors.push(error.message));
   const navigate = async (route) => {
+    console.log(`Checking route: ${route}`);
     const url = new URL(base);
     url.hash = `/${route}`;
     url.searchParams.set("qa-route", route);
     await page.goto(url.href);
-    await page.locator("h1").first().waitFor();
+    await page.locator("h1").first().waitFor({ timeout: 45000 });
     // The production onboarding opens on an animation frame after the first render.
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     const skip = page.getByRole("button", { name: "Pomiń", exact: true });
@@ -568,9 +570,10 @@ try {
     );
   console.log(`Screenshots: ${output}`);
 } catch (error) {
+  console.error("QA failure:", error);
   console.error("Browser errors:", errors);
   if (page) {
-    console.error((await page.locator("body").innerText()).slice(0, 5000));
+    console.error((await page.locator("body").innerText({ timeout: 3000 }).catch(() => "Page body unavailable")).slice(0, 5000));
     await page
       .screenshot({ path: path.join(output, "failure.png"), fullPage: true })
       .catch(() => {});

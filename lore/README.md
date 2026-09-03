@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-09-04 16:07. Do not edit manually.
+> Auto-generated on 2026-09-04 21:21. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,23 +9,24 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 1 | 1 | 2 | 32 | 1 |
+| 0 | 2 | 3 | 33 | 2 |
 
 ## Ready to Start
 
 These tasks have no blockers (or all blockers completed):
 
 - **Task 0032**: [Connect iOS capture to a private observation collection](lore/1-tasks/blocked/0032_FEATURE_ios-observation-collection.md) — blocks 0 tasks (low)
-- **Task 0033**: [Prepare and submit the first public App Store release](lore/1-tasks/active/0033_FEATURE_app-store-launch.md) — blocks 0 tasks (low)
+- **Task 0033**: [Prepare and submit the first public App Store release](lore/1-tasks/blocked/0033_FEATURE_app-store-launch.md) — blocks 0 tasks (low)
 
 ## Task Status
 
 | ID | Title | Type | Status | Blocked By | Blocks | ADRs |
 |:---|:------|:-----|:-------|:-----------|:-------|:-----|
-| 0033 | [Prepare and submit the first public...](lore/1-tasks/active/0033_FEATURE_app-store-launch.md) | FEATURE | **active** | — | — | 0001 |
 | 0032 | [Connect iOS capture to a private ob...](lore/1-tasks/blocked/0032_FEATURE_ios-observation-collection.md) | FEATURE | blocked | — | — | 0001 |
+| 0033 | [Prepare and submit the first public...](lore/1-tasks/blocked/0033_FEATURE_app-store-launch.md) | FEATURE | blocked | — | — | 0001 |
 | 0025 | [Lazy-load specialist workshops](lore/1-tasks/backlog/0025_PERFORMANCE_lazy-load-workshops.md) | PERFORMANCE | backlog | — | — | — |
 | 0026 | [Build an opt-in expert-reviewed fie...](lore/1-tasks/backlog/0026_RESEARCH_opt-in-field-benchmark.md) | RESEARCH | backlog | — | — | — |
+| 0035 | [Accept and distribute the iPad and ...](lore/1-tasks/backlog/0035_RELEASE_apple-platform-acceptance.md) | RELEASE | backlog | — | — | 0001, 0002 |
 | 0001 | [Build and publish Cloud Recognition...](lore/1-tasks/archive/0001_FEATURE_cloud-recognition-v1/README.md) | FEATURE | completed | — | — | — |
 | 0002 | [Research and ship on-device cloud r...](lore/1-tasks/archive/0002_RESEARCH_automatic-cloud-recognition/README.md) | RESEARCH | completed | — | — | — |
 | 0003 | [Expand the cloud atlas into a profe...](lore/1-tasks/archive/0003_FEATURE_encyclopedic-cloud-atlas/README.md) | FEATURE | completed | — | — | — |
@@ -55,6 +56,7 @@ These tasks have no blockers (or all blockers completed):
 | 0029 | [Improve on-device cloud recognition...](lore/1-tasks/archive/0029_FEATURE_cloud-recognition-v3/README.md) | FEATURE | completed | — | — | — |
 | 0030 | [Build the focused daily sky experie...](lore/1-tasks/archive/0030_FEATURE_daily-sky-experience.md) | FEATURE | completed | — | — | — |
 | 0031 | [Explore an iOS-first field companio...](lore/1-tasks/archive/0031_RESEARCH_ios-field-companion/README.md) | RESEARCH | completed | — | — | — |
+| 0034 | [Adapt CHMURNIK for iPad and Mac Cat...](lore/1-tasks/archive/0034_FEATURE_ipad-mac-catalyst.md) | FEATURE | completed | — | — | 0001, 0002 |
 | 0039 | [Produce the approved Astra static S...](lore/1-tasks/archive/0039_FEATURE_astra-static-stories.md) | FEATURE | completed | — | — | — |
 | 0040 | [Complete the Astra social campaign ...](lore/1-tasks/archive/0040_FEATURE_astra-social-platforms.md) | FEATURE | completed | — | — | — |
 | 0041 | [Expand the wallpaper bonus to ten d...](lore/1-tasks/archive/0041_FEATURE_ten-wallpaper-motifs.md) | FEATURE | completed | — | — | — |
@@ -64,3 +66,4 @@ These tasks have no blockers (or all blockers completed):
 | ID | Title | Status | Related Tasks |
 |:---|:------|:-------|:--------------|
 | 0001 | [Store private observations outside localStorage](lore/2-adrs/0001_private-observation-storage.md) | accepted | 0032 |
+| 0002 | [Share the native application across iPhone, iPad and Mac Catalyst](lore/2-adrs/0002_shared-ipad-mac-catalyst.md) | accepted | 0034, 0035 |

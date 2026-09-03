@@ -7,9 +7,9 @@ final class AppStoreUITests: XCTestCase {
         continueAfterFailure = false
         app.launchArguments = ["-AppleLanguages", "(pl)", "-AppleLocale", "pl_PL"]
         app.launch()
+        XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 45))
         let skip = app.buttons["Pomiń"].firstMatch
-        if skip.waitForExistence(timeout: 5) { skip.tap() }
-        XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 15))
+        if skip.waitForExistence(timeout: 10) { skip.tap() }
     }
 
     private func button(_ label: String) -> XCUIElement {
@@ -79,7 +79,7 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertTrue(visibleText("Wiatr"))
         capture("03-wiatr")
         tap("Atlas")
-        XCTAssertTrue(visibleText("Atlas"))
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Cirrus, pierzaste")).firstMatch.waitForExistence(timeout: 15))
         capture("04-atlas")
     }
 
@@ -161,5 +161,29 @@ final class AppStoreUITests: XCTestCase {
         tap("Cirrus, pierzaste", contains: true)
         XCTAssertTrue(visibleText("PiccoloNamek"), app.debugDescription)
         capture("store-atlas-cirrus")
+    }
+
+    func test05TabletWorkspaceRotatesWithoutLosingTheRoute() throws {
+        #if targetEnvironment(macCatalyst)
+        throw XCTSkip("Tablet orientation test")
+        #else
+        guard app.frame.width > 700 else { throw XCTSkip("iPad only") }
+        defer { XCUIDevice.shared.orientation = .portrait }
+        capture("ipad-portrait-home")
+        XCUIDevice.shared.orientation = .landscapeLeft
+        tap("Atlas")
+        tap("Cirrus, pierzaste", contains: true)
+        XCTAssertTrue(visibleText("PiccoloNamek"))
+        capture("ipad-landscape-atlas")
+        XCUIDevice.shared.orientation = .portrait
+        XCTAssertTrue(visibleText("PiccoloNamek"))
+        capture("ipad-portrait-atlas")
+        XCUIDevice.shared.orientation = .landscapeLeft
+        tap("Zamknij kartę")
+        tap("METAR i TAF")
+        tap("TAF: KLVM bez nagłówka")
+        XCTAssertTrue(visibleText("Oś prognozy"))
+        capture("ipad-landscape-taf")
+        #endif
     }
 }

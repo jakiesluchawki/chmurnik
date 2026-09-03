@@ -1,5 +1,5 @@
 export const applicationInformation = {
-  updated: "26 sierpnia 2026",
+  updated: "3 września 2026",
   publisher: "Mieszko Mahboob",
   supportUrl: "https://github.com/jakiesluchawki/chmurnik/issues",
   supportLabel: "Zgłoś problem na GitHubie",
@@ -12,14 +12,14 @@ export const applicationInformation = {
         {
           title: "Aparat i biblioteka",
           paragraphs: [
-            "Na iPhonie wybierz Dziś → Obserwuj niebo. Możesz zrobić zdjęcie albo wybrać je z biblioteki. Dostęp do aparatu jest potrzebny tylko do fotografowania; atlas, nauka i pracownie działają bez niego.",
-            "Jeżeli odmówisz dostępu, możesz zmienić decyzję w Ustawieniach iPhone’a → Aplikacje → CHMURNIK → Aparat. Gdy zdjęcie się nie wczyta, zanotuj kod komunikatu i spróbuj ponownie. Nie usuwaj aplikacji, zanim nie wyeksportujesz swojej kolekcji.",
+            "Na iPhonie i iPadzie wybierz Dziś → Obserwuj niebo. Możesz zrobić zdjęcie albo wybrać je z biblioteki. Na Macu przycisk Wybierz zdjęcie nieba otwiera systemowe okno wyboru pliku (do 30 MB). Dostęp do aparatu jest potrzebny tylko do fotografowania; atlas, nauka i pracownie działają bez niego.",
+            "Jeżeli odmówisz dostępu, możesz zmienić decyzję w Ustawieniach urządzenia → Aplikacje → CHMURNIK → Aparat. Gdy zdjęcie się nie wczyta, zanotuj kod komunikatu i spróbuj ponownie. Nie usuwaj aplikacji, zanim nie wyeksportujesz swojej kolekcji.",
           ],
         },
         {
           title: "Podpowiedź, nie pewnik",
           paragraphs: [
-            "Model analizuje zdjęcie na iPhonie, bez wysyłania go do serwera. Może się mylić, szczególnie przy mieszanych chmurach, słabym świetle i szerokim horyzoncie. Wynik jest hipotezą, a nie potwierdzonym rozpoznaniem ani pomiarem pogody.",
+            "Model analizuje zdjęcie na Twoim urządzeniu, bez wysyłania go do serwera. Może się mylić, szczególnie przy mieszanych chmurach, słabym świetle i szerokim horyzoncie. Wynik jest hipotezą, a nie potwierdzonym rozpoznaniem ani pomiarem pogody.",
             "Porównaj kadr z prawdziwymi fotografiami atlasu. Zapisz własne rozpoznanie osobno od sugestii modelu. Możesz także zachować obserwację bez ustalania rodzaju chmury.",
           ],
         },
@@ -40,13 +40,13 @@ export const applicationInformation = {
         {
           title: "Bez internetu",
           paragraphs: [
-            "Aplikacja iOS zawiera atlas, lekcje, model i pracownie na urządzeniu. Linki do źródeł i zewnętrznych map wymagają internetu. Zdjęcie przechowywane wyłącznie w iCloud może najpierw wymagać pobrania przez system. Na WWW dostęp offline zależy od wcześniejszego załadowania zasobów i pamięci przeglądarki.",
+            "Aplikacje na iPhone’a, iPada i Maca zawierają atlas, lekcje, model i pracownie na urządzeniu. Linki do źródeł i zewnętrznych map wymagają internetu. Zdjęcie przechowywane wyłącznie w iCloud może najpierw wymagać pobrania przez system. Na WWW dostęp offline zależy od wcześniejszego załadowania zasobów i pamięci przeglądarki.",
           ],
         },
         {
           title: "Zgłoś problem",
           paragraphs: [
-            "CHMURNIK rozwija Mieszko Mahboob. W zgłoszeniu podaj wersję aplikacji, model iPhone’a, wersję iOS i kroki prowadzące do problemu. Na WWW dodaj nazwę przeglądarki i adres strony.",
+            "CHMURNIK rozwija Mieszko Mahboob. W zgłoszeniu podaj wersję aplikacji, model urządzenia, wersję systemu i kroki prowadzące do problemu. Na WWW dodaj nazwę przeglądarki i adres strony.",
             "Zgłoszenia na GitHubie są publiczne. Nie dołączaj prywatnych zdjęć, kopii kolekcji, haseł ani danych innych osób. Do samego korzystania z aplikacji nie potrzebujesz konta.",
           ],
         },
@@ -59,7 +59,7 @@ export const applicationInformation = {
         {
           title: "Kto i czego dotyczy ta informacja",
           paragraphs: [
-            "CHMURNIK jest aplikacją i witryną edukacyjną rozwijaną przez Mieszka Mahbooba. Ta informacja opisuje aplikację iOS oraz strony chmurnik.cloud i jakiesluchawki.github.io/chmurnik.",
+            "CHMURNIK jest aplikacją i witryną edukacyjną rozwijaną przez Mieszka Mahbooba. Ta informacja opisuje aplikacje na iPhone’a, iPada i Maca oraz strony chmurnik.cloud i jakiesluchawki.github.io/chmurnik.",
             "Aplikacja nie wysyła zdjęć, notatek, wyników modelu ani postępów do twórcy. Nie zawiera kont, reklam, analityki zachowania ani mechanizmów śledzenia reklamowego.",
           ],
         },
@@ -67,21 +67,21 @@ export const applicationInformation = {
           title: "Co zostaje na urządzeniu",
           paragraphs: [
             "Zapisane obserwacje mogą zawierać zdjęcie, datę, miejsce wpisane ręcznie, notatkę, ulubione, własne rozpoznanie i oddzielną hipotezę modelu. Postępy nauki i preferencje również są lokalne. CHMURNIK nie pobiera lokalizacji GPS i nie używa mikrofonu.",
-            "Na iOS kolekcja jest zapisywana w plikach aplikacji, a postępy w jej lokalnej pamięci. Na WWW używamy IndexedDB i localStorage w danej przeglądarce. Dane nie synchronizują się automatycznie między urządzeniami.",
+            "Na iPhonie, iPadzie i Macu kolekcja jest zapisywana w plikach aplikacji, a postępy w jej lokalnej pamięci. Na WWW używamy IndexedDB i localStorage w danej przeglądarce. Dane nie synchronizują się automatycznie między urządzeniami.",
           ],
         },
         {
           title: "Zdjęcia i zgody",
           paragraphs: [
             "Aparat uruchamiasz samodzielnie. Przy korzystaniu z biblioteki iOS pyta o dostęp do Zdjęć. Możesz udzielić go tylko wybranym zdjęciom albo całej bibliotece; w jej podglądzie wybierasz pojedynczy kadr do analizy. Odmowa dostępu nie blokuje atlasu, lekcji ani pracowni. Zgody można zmienić w ustawieniach systemowych.",
-            "Rozpoznawanie wykorzystuje model na iPhonie. Zdjęcie nie trafia do zewnętrznej usługi AI ani do treningu modelu. W kopiach zdjęć zapisanych w kolekcji i na pocztówkach usuwamy źródłowe metadane EXIF i GPS. Plik może zachować techniczne informacje o rozmiarze i kolorze obrazu. Nie modyfikujemy oryginału w Twojej bibliotece.",
+            "Na Macu wybierasz pojedynczy plik w systemowym oknie. Aplikacja przygotowuje lokalną kopię do analizy. Rozpoznawanie wykorzystuje model na urządzeniu. Zdjęcie nie trafia do zewnętrznej usługi AI ani do treningu modelu. W kopiach zdjęć zapisanych w kolekcji i na pocztówkach usuwamy źródłowe metadane EXIF i GPS. Plik może zachować techniczne informacje o rozmiarze i kolorze obrazu. Nie modyfikujemy oryginału w Twojej bibliotece ani wskazanego pliku.",
           ],
         },
         {
           title: "Eksport, udostępnianie i kopie systemowe",
           paragraphs: [
             "Dane opuszczają aplikację, gdy samodzielnie wyeksportujesz kopię lub udostępnisz pocztówkę do wybranej aplikacji bądź usługi. Pełny eksport obejmuje zdjęcia, miejsca i notatki. Pocztówka zawiera wybrany kadr, datę i opis rozpoznania, ale nie prywatną notatkę ani miejsce.",
-            "Systemowe kopie iPhone’a mogą obejmować dane aplikacji, zależnie od ustawień urządzenia i iCloud. Pliki wyeksportowane do innych usług podlegają ich zasadom. CHMURNIK nie kontroluje tych kopii i nie usuwa ich zdalnie.",
+            "Systemowe kopie urządzenia mogą obejmować dane aplikacji, zależnie od ustawień urządzenia, iCloud lub Time Machine. Pliki wyeksportowane do innych usług podlegają ich zasadom. CHMURNIK nie kontroluje tych kopii i nie usuwa ich zdalnie.",
           ],
         },
         {
@@ -89,6 +89,7 @@ export const applicationInformation = {
           paragraphs: [
             "Wpis można usunąć w Moje niebo → szczegóły obserwacji → Usuń obserwację. Usunięcie usuwa bieżący wpis i jego zdjęcie z kolekcji. Lokalna poprzednia wersja indeksu lub zachowana kopia dawnego dziennika może nadal zawierać dane odzyskiwania.",
             "Aby usunąć również lokalne kopie odzyskiwania i pliki tymczasowe, usuń aplikację wraz z jej danymi w ustawieniach iOS (nie wybieraj samego odinstalowania z zachowaniem dokumentów). Na WWW usuń dane tej witryny w przeglądarce. Najpierw wyeksportuj wszystko, co chcesz zachować.",
+            "Na Macu samo przeniesienie aplikacji do Kosza nie usuwa jej kontenera danych. Po wykonaniu eksportu zamknij aplikację; usunięcie wszystkich jej danych wymaga również usunięcia kontenera cloud.chmurnik.app z Biblioteka/Containers użytkownika. Nie usuwaj kontenerów innych aplikacji.",
             "Oryginały w bibliotece Zdjęcia, wcześniej wyeksportowane pliki i kopie systemowe usuwa się osobno w odpowiedniej aplikacji lub ustawieniach. Nie mamy dostępu do Twojej lokalnej kolekcji ani możliwości jej odzyskania z serwera.",
           ],
         },

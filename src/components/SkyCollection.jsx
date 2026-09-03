@@ -37,10 +37,12 @@ import {
   importObservations,
   listObservations,
   observationPhoto,
+  pickObservationBackup,
   saveObservation,
   sharePostcard,
 } from "../lib/observation-store.js";
 import { createObservationPostcard } from "../lib/postcard.js";
+import { isMacWorkspace } from "../lib/native-workspace.js";
 
 const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 const dateLabel = (date) =>
@@ -564,18 +566,13 @@ export function SkyCollection({
       (!date || value.date === date) &&
       (!filter || value.confirmedCloudId === filter),
   );
-  const importBackup = async (event) => {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
+  const restoreBackup = async (read) => {
     setBusy(true);
     setNotice("");
     try {
-      if (file.size > MAX_BACKUP_BYTES)
-        throw new Error(
-          "Kopia ma więcej niż 50 MB. Wybierz pojedynczą część eksportu.",
-        );
-      await importObservations(parseObservationBackup(await file.text()));
+      const text = await read();
+      if (text === null) return;
+      await importObservations(parseObservationBackup(text));
       await refresh();
       setNotice("Kopia przywrócona. Istniejące wpisy nie zostały nadpisane.");
     } catch (failure) {
@@ -585,6 +582,16 @@ export function SkyCollection({
     } finally {
       setBusy(false);
     }
+  };
+  const importBackup = (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    return restoreBackup(() => {
+      if (file.size > MAX_BACKUP_BYTES)
+        throw new Error("Kopia ma więcej niż 50 MB. Wybierz pojedynczą część eksportu.");
+      return file.text();
+    });
   };
   const exportBackup = async () => {
     setBusy(true);
@@ -892,7 +899,7 @@ export function SkyCollection({
               <button
                 className="button button--secondary"
                 disabled={busy}
-                onClick={() => importRef.current?.click()}
+                onClick={() => isMacWorkspace() ? restoreBackup(pickObservationBackup) : importRef.current?.click()}
               >
                 <UploadSimple size={18} /> Importuj kopię
               </button>

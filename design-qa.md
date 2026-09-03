@@ -1,5 +1,53 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-03: iPad And Mac Implementation
+
+- Universal iPhone/iPad target, scene lifecycle, iPad orientations and indirect
+  input. Catalyst uses a 760 x 600 minimum window. Native views gain a two-column
+  home and a sidebar from 1100 CSS pixels. Command-1 through Command-7 preserve
+  text editing and modal focus. The approved identity and lessons remain.
+- Official Capacitor 8.4.1 binary frameworks lack Catalyst. Its pinned official
+  source builds arm64/x86_64 frameworks in an isolated generated Mac project,
+  leaving the iPhone dependency graph and installed npm packages untouched.
+- Five iPad simulator tests pass: report distinction, tools, privacy, real photo
+  picker/local model/persistent observations, and orientation/route continuity.
+  Two iPhone simulator regression tests pass. Physical iPad camera acceptance
+  and hardware-specific release checks remain in task 0035.
+- 184 Node tests and nine lesson audits pass. Browser checks pass 42 viewport/
+  route combinations and keyboard behavior. The full native-layout browser
+  flow passes against an isolated production build: backup round trip, report
+  timelines, wind vectors, map controls and all lessons.
+- Two development-server runs timed out at different routes with no JS errors;
+  failures remain recorded. The successful production run avoids development
+  transforms. Later the exec/apply_patch service hit EMFILE; an independent
+  Node runtime completed work without changing SSH or Remote. This does not
+  prove the earlier timeout cause.
+- Initial iPad tests exposed translated/overlapping header hit targets and a
+  tablet mastery-grid overflow; fixed. The rotation test also needed to close
+  the atlas dialog before navigating. Assertions were not weakened.
+- Real arm64 Mac testing verifies launch, image import, Core ML, observation
+  save/edit/relaunch, lesson answers, keyboard navigation, TAF classification
+  and the postcard sharing panel. No photo or message was sent externally.
+  One clearly labeled atlas-fixture observation remains in the local test app.
+- Mac backup export uses a Save panel. The resulting 233955-byte JSON passes
+  the normal parser; native import displays successful restoration and keeps
+  exactly one entry, without overwriting it. The selected original still exists.
+  Native JSON import follows the image-picker pattern; it replaced a stalled
+  WebKit input during QA, not a proven WebKit-wide defect.
+- Evidence: ignored `build/apple-workspace-qa/`,
+  `build/apple-field-production-qa/`, `build/ipad-final-tests.xcresult`,
+  `build/ipad-final-attachments/`, `build/iphone-regression-tests.xcresult`
+  and `build/chmurnik-macos-qa-backup.json`.
+- Ad-hoc Mac builds and unsigned iOS archives are not App Store releases.
+  No Apple account, DNS, hosting or social account changed in this task.
+- Final Release device archive rebuilt successfully after the last native
+  import changes. UIDeviceFamily is 1,2; iPad icons/orientations and final
+  index-Bl612cgV.js are present. All three handoff ZIPs pass CRC; paths and
+  SHA-256 values are recorded in completed task 0034. A fresh 184-test run
+  and nine-module lesson audit pass. A redundant Node-REPL test run timed
+  out and is not counted as successful. Mac runtime tested the final import
+  handler; the broad browser/simulator suites precede that narrow change.
+
 ## 2026-09-03: Browser Launch And Social V3
 
 - Owner requested complete LinkedIn and Facebook posts centered on

@@ -50,6 +50,11 @@ Writing production code without an active Lore task is forbidden.
   identity. Keep the interface calm, compact, and mature; real cloud imagery
   must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
+- On 2026-09-03 the owner explicitly requested iPad and macOS applications.
+  Keep a shared iPhone/iPad UIKit target and build Mac Catalyst from the same
+  sources. Preserve compact phone navigation; wide native windows get a
+  workspace sidebar and keyboard shortcuts. Do not advertise store readiness
+  based only on a simulator or an ad-hoc signed Mac build.
 - For social-media deliverables, preserve the owner-approved mobile download
   gallery at `/premiera/`: dated packs, individual files, ZIP downloads and
   copyable App Store sticker links. On 2026-09-02 the owner explicitly asked
@@ -89,7 +94,8 @@ Before publishing:
 2. Verify the main learning path and all public routes in a browser.
 3. Verify mobile and desktop layouts.
 4. Confirm there is no voice feature and photo recognition stays on-device,
-   consent-aware, visibly uncertain, and limited to iOS.
+   consent-aware, visibly uncertain, and limited to native Apple builds
+   (iPhone/iPad and the explicitly requested Mac Catalyst version).
 5. Confirm source attribution remains visible and usable.
 6. Complete `design-qa.md` against the selected visual truth.
 7. Run `npm run check:lessons` and confirm every lesson meets the versioned

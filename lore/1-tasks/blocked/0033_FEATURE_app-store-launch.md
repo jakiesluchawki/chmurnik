@@ -2,7 +2,8 @@
 id: "0033"
 title: "Prepare and submit the first public App Store release"
 type: FEATURE
-status: active
+status: blocked
+by: ["0032"]
 related_adr: ["0001"]
 related_tasks: ["0032", "0026"]
 tags: ["ios", "release", "priority-high", "effort-medium"]
@@ -15,6 +16,14 @@ links:
   - "../../../social/2026-09-03/README.md"
   - "../../../social/2026-09-03-full/README.md"
 history:
+  - date: "2026-09-03"
+    status: blocked
+    who: codex
+    note: >
+      Owner took over Cyber_Folks upload and received the verified root ZIP.
+      No hosting login or upload should block the requested iPad/Mac work
+      in task 0034. The original release retains the outstanding broader
+      physical-device acceptance dependency in 0032; no Codex task archived.
   - date: "2026-09-03"
     status: active
     who: codex

@@ -4,12 +4,14 @@ import UIKit
 import UniformTypeIdentifiers
 
 @objc(ObservationVaultPlugin)
-final class ObservationVaultPlugin: CAPPlugin, CAPBridgedPlugin {
+final class ObservationVaultPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumentPickerDelegate {
     let identifier = "ObservationVaultPlugin"
     let jsName = "ObservationVault"
-    let pluginMethods: [CAPPluginMethod] = ["list", "save", "merge", "remove", "exportBackup", "shareCard"].map { CAPPluginMethod(name: $0, returnType: CAPPluginReturnPromise) }
+    let pluginMethods: [CAPPluginMethod] = ["list", "save", "merge", "remove", "exportBackup", "pickBackup", "shareCard"].map { CAPPluginMethod(name: $0, returnType: CAPPluginReturnPromise) }
     private let queue = DispatchQueue(label: "cloud.chmurnik.observations")
     private var sharing = false
+    private var pendingExport: (call: CAPPluginCall, directory: URL)?
+    private var pendingImport: CAPPluginCall?
 
     private func store() throws -> ObservationVaultStore {
         let root = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("ChmurnikObservations")
@@ -88,7 +90,7 @@ final class ObservationVaultPlugin: CAPPlugin, CAPBridgedPlugin {
         }
     }
 
-    private func presentShare(_ urls: [URL], directory: URL, call: CAPPluginCall) {
+    private func presentShare(_ urls: [URL], directory: URL, call: CAPPluginCall, saveToDisk: Bool = false) {
         DispatchQueue.main.async {
             guard !urls.isEmpty, !self.sharing, let presenter = self.bridge?.viewController,
                   presenter.presentedViewController == nil else {
@@ -96,6 +98,15 @@ final class ObservationVaultPlugin: CAPPlugin, CAPBridgedPlugin {
                 call.reject("Zamknij otwarte okno i spróbuj ponownie.", "share-busy"); return
             }
             self.sharing = true
+            #if targetEnvironment(macCatalyst)
+            if saveToDisk {
+                self.pendingExport = (call, directory)
+                let picker = UIDocumentPickerViewController(forExporting: urls, asCopy: true)
+                picker.delegate = self
+                presenter.present(picker, animated: true)
+                return
+            }
+            #endif
             let sheet = UIActivityViewController(activityItems: urls, applicationActivities: nil)
             sheet.popoverPresentationController?.sourceView = presenter.view
             sheet.popoverPresentationController?.sourceRect = CGRect(x: presenter.view.bounds.midX, y: presenter.view.bounds.maxY - 60, width: 1, height: 1)
@@ -109,12 +120,71 @@ final class ObservationVaultPlugin: CAPPlugin, CAPBridgedPlugin {
         }
     }
 
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        if let call = pendingImport {
+            pendingImport = nil
+            sharing = false
+            call.resolve(["cancelled": true])
+            return
+        }
+        finishExport(saved: false)
+    }
+
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let call = pendingImport {
+            pendingImport = nil
+            sharing = false
+            guard let url = urls.first else { call.resolve(["cancelled": true]); return }
+            queue.async {
+                // The picker imports a copy. Never alter the user's selected original.
+                defer {
+                    let imported = url.resolvingSymlinksInPath().standardizedFileURL
+                    let home = URL(fileURLWithPath: NSHomeDirectory()).resolvingSymlinksInPath().path + "/"
+                    if imported.path.hasPrefix(home) { try? FileManager.default.removeItem(at: imported) }
+                }
+                do {
+                    guard let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize,
+                          size <= 50_000_000 else { throw ObservationVaultError.invalidData }
+                    let text = try String(contentsOf: url, encoding: .utf8)
+                    call.resolve(["text": text])
+                } catch {
+                    call.reject("Nie udało się odczytać kopii. Wybierz plik JSON do 50 MB.", "import-failed", error)
+                }
+            }
+            return
+        }
+        finishExport(saved: !urls.isEmpty)
+    }
+
+    @objc func pickBackup(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            guard !self.sharing, let presenter = self.bridge?.viewController,
+                  presenter.presentedViewController == nil else {
+                call.reject("Zamknij otwarte okno i spróbuj ponownie.", "import-busy"); return
+            }
+            self.sharing = true
+            self.pendingImport = call
+            let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.json], asCopy: true)
+            picker.allowsMultipleSelection = false
+            picker.delegate = self
+            presenter.present(picker, animated: true)
+        }
+    }
+
+    private func finishExport(saved: Bool) {
+        guard let pending = pendingExport else { return }
+        pendingExport = nil
+        sharing = false
+        try? FileManager.default.removeItem(at: pending.directory)
+        pending.call.resolve(["shared": saved])
+    }
+
     @objc func exportBackup(_ call: CAPPluginCall) {
         queue.async {
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent("chmurnik-export-" + UUID().uuidString)
             do {
                 let urls = try self.store().exportParts(to: directory)
-                self.presentShare(urls, directory: directory, call: call)
+                self.presentShare(urls, directory: directory, call: call, saveToDisk: true)
             } catch {
                 try? FileManager.default.removeItem(at: directory)
                 call.reject("Nie udało się przygotować kompletnej kopii. Żadne obserwacje nie zostały usunięte.", "export-failed", error)

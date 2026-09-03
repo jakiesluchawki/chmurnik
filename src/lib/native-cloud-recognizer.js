@@ -1,6 +1,7 @@
 import { Capacitor, registerPlugin } from "@capacitor/core";
 import { Camera, CameraDirection, MediaTypeSelection } from "@capacitor/camera";
 import { interpretCloudProbabilities } from "./photo-recognition.js";
+import { isMacWorkspace } from "./native-workspace.js";
 
 const CloudRecognizer = registerPlugin("CloudRecognizer");
 
@@ -41,25 +42,28 @@ export function isPhotoCaptureCancellation(error) {
 export function photoCaptureErrorMessage(error) {
   const code = error?.code;
   if (code === "OS-PLUG-CAMR-0003") {
-    return "CHMURNIK nie ma dostępu do aparatu. Włącz Aparat w Ustawieniach iPhone’a. [0003]";
+    return "CHMURNIK nie ma dostępu do aparatu. Włącz Aparat w Ustawieniach urządzenia. [0003]";
   }
   if (code === "OS-PLUG-CAMR-0005") {
-    return "CHMURNIK nie ma dostępu do biblioteki zdjęć. Zmień dostęp w Ustawieniach iPhone’a. [0005]";
+    return "CHMURNIK nie ma dostępu do biblioteki zdjęć. Zmień dostęp w Ustawieniach urządzenia. [0005]";
   }
   if (code === "OS-PLUG-CAMR-0007") {
-    return "iPhone nie udostępnił aparatu tej aplikacji. [0007]";
+    return "Urządzenie nie udostępniło aparatu tej aplikacji. [0007]";
   }
   if (code === "OS-PLUG-CAMR-0010") {
     return "Aparat nie zdołał zapisać zdjęcia. Spróbuj zrobić je ponownie. [0010]";
   }
   if (code === "OS-PLUG-CAMR-0012" || code === "OS-PLUG-CAMR-0019") {
-    return `iPhone nie zdołał przygotować zdjęcia do analizy. [${code.slice(-4)}]`;
+    return `Nie udało się przygotować zdjęcia do analizy. [${code.slice(-4)}]`;
   }
   const suffix = code ? ` [${String(code).replace("OS-PLUG-CAMR-", "")}]` : "";
   return `Nie udało się odczytać tego zdjęcia.${suffix}`;
 }
 
 export async function captureCloudPhoto(source) {
+  if (isMacWorkspace()) {
+    return { ...normalizeCapturedPhoto(await CloudRecognizer.pickPhoto()), source: "photos" };
+  }
   const commonOptions = {
     quality: 86,
     targetWidth: 1800,

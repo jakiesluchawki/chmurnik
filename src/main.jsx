@@ -4,6 +4,7 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { App } from "./App.jsx";
+import { isMacWorkspace } from "./lib/native-workspace.js";
 import "./styles.css";
 import "./zgrywa.css";
 import "./field.css";
@@ -13,7 +14,8 @@ const isNative = Capacitor.isNativePlatform();
 if (isNative || import.meta.env.VITE_QA_NATIVE_LAYOUT === "1") {
   document.documentElement.classList.add("native-ios");
 }
-if (isNative) {
+if (isNative && isMacWorkspace()) document.documentElement.classList.add("native-mac");
+if (isNative && !isMacWorkspace()) {
   StatusBar.setOverlaysWebView({ overlay: true }).catch(() => {});
   StatusBar.setStyle({ style: Style.Dark }).catch(() => {});
 }
