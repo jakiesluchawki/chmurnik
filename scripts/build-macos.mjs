@@ -2,6 +2,7 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } fr
 import { execFileSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { sdkSigningArguments } from "./macos-sdk-signatures.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const runtime = resolve(root, "build/catalyst-runtime");
@@ -9,6 +10,9 @@ const source = resolve(runtime, "source");
 const staging = resolve(root, "build/mac-app");
 const version = "8.4.1";
 const revision = "7217b5215a175eededf607a216e0cab2a8450a34";
+const signingArgs = process.argv.includes("--store-sdk")
+  ? sdkSigningArguments(process.env.CHMURNIK_SDK_SIGN_IDENTITY, process.env.CHMURNIK_SIGNING_KEYCHAIN)
+  : null;
 const run = (command, args, options = {}) => execFileSync(command, args, { cwd: root, stdio: "inherit", ...options });
 const output = (command, args) => run(command, args, { stdio: "pipe", encoding: "utf8" }).trim();
 const installed = JSON.parse(readFileSync(resolve(root, "node_modules/@capacitor/ios/package.json"))).version;
@@ -31,6 +35,11 @@ for (const name of ["Capacitor", "Cordova"]) {
   rmSync(xcframework, { force: true, recursive: true });
   run("xcodebuild", ["-create-xcframework", "-framework",
     resolve(runtime, `derived/Build/Products/Release-maccatalyst/${name}.framework`), "-output", xcframework]);
+  if (signingArgs) {
+    // Attest our build of the pinned upstream source, not Ionic's binary release.
+    run("codesign", [...signingArgs, xcframework]);
+    run("codesign", ["--verify", "--strict", "--verbose=2", xcframework]);
+  }
 }
 cpSync(resolve(source, "LICENSE"), resolve(localPackage, "LICENSE"));
 writeFileSync(resolve(localPackage, "Package.swift"), `// swift-tools-version: 5.9
@@ -75,3 +84,4 @@ run("xcodebuild", ["-quiet", "-project", resolve(staging, "App.xcodeproj"), "-sc
   "DEVELOPMENT_TEAM=", "PROVISIONING_PROFILE_SPECIFIER=", "build"]);
 console.log(`Local development build: ${resolve(root, "build/macos/Build/Products/Debug-maccatalyst/App.app")}`);
 console.log("Ad-hoc signed for local testing; not a notarized or App Store distribution.");
+if (!signingArgs) console.log("SDKs are unsigned: regenerate with --store-sdk before an App Store archive.");
