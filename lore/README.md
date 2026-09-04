@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-08-27 00:02. Do not edit manually.
+> Auto-generated on 2026-09-04 14:59. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,7 +9,7 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 1 | 1 | 2 | 29 | 1 |
+| 1 | 1 | 2 | 30 | 1 |
 
 ## Ready to Start
 
@@ -55,6 +55,7 @@ These tasks have no blockers (or all blockers completed):
 | 0029 | [Improve on-device cloud recognition...](lore/1-tasks/archive/0029_FEATURE_cloud-recognition-v3/README.md) | FEATURE | completed | — | — | — |
 | 0030 | [Build the focused daily sky experie...](lore/1-tasks/archive/0030_FEATURE_daily-sky-experience.md) | FEATURE | completed | — | — | — |
 | 0031 | [Explore an iOS-first field companio...](lore/1-tasks/archive/0031_RESEARCH_ios-field-companion/README.md) | RESEARCH | completed | — | — | — |
+| 0039 | [Produce the approved Astra static S...](lore/1-tasks/archive/0039_FEATURE_astra-static-stories.md) | FEATURE | completed | — | — | — |
 
 ## Architecture Decision Records
 

@@ -2,7 +2,7 @@
 id: "0039"
 title: "Produce the approved Astra static Stories"
 type: FEATURE
-status: active
+status: completed
 related_adr: []
 related_tasks: ["0033", "0035"]
 tags: ["social", "astra", "png"]
@@ -15,6 +15,10 @@ history:
     status: active
     who: codex
     note: "Owner added a permanent parent page for every social-media asset pack, grouped by campaign and format."
+  - date: "2026-09-04"
+    status: completed
+    who: codex
+    note: "Published 10 static PNG Stories and the permanent four-campaign media library. 182 existing tests, OCR, downloads, 25 live links and PNG/ZIP hashes passed."
 ---
 
 # Astra Static Stories
@@ -33,10 +37,10 @@ OpenAI endorsement or that Astra analyzes users' photographs.
 - [x] All ten complete approved texts appear in final static PNGs.
 - [x] Original fonts, readable contrast and Instagram-safe margins verified.
 - [x] App screens are authentic; generated art is not scientific evidence.
-- [ ] Ten PNGs, previews, ZIP and mobile download gallery available.
-- [ ] Text, dimensions, hashes and download links verified.
+- [x] Ten PNGs, previews, ZIP and mobile download gallery available.
+- [x] Text, dimensions, hashes and download links verified.
 - [x] Existing releases, private analytics and Android work remain untouched.
-- [ ] Stable `/assetySM/` parent library links every campaign and its formats.
+- [x] Stable `/assetySM/` parent library links every campaign and its formats.
 
 ## Design Decisions
 
@@ -86,6 +90,19 @@ OCR retained 99.4-100% of normalized characters; differences were recognizable
 OCR substitutions, verified visually against the exact source. Gallery passed
 390/768/1440 px overflow checks, link copying, PNG and ZIP download hashes.
 No existing test or release file has been modified.
+
+Published commit `bd66a1e`; Pages run `33875322919` succeeded. The isolated
+publication branch passed all 182 existing tests, the nine-module lesson audit
+and the production Pages build. At 12:58:06Z, a live check confirmed the
+four-campaign catalogue, all 25 gallery/cover/download routes and byte-exact
+SHA-256 equality for all ten hosted PNGs and the ZIP.
+
+Permanent bookmark: https://jakiesluchawki.github.io/chmurnik/assetySM/
+Current series: https://jakiesluchawki.github.io/chmurnik/premiera/astra/
+
+The `codex/chmurnik-finish` worktree retains its unrelated release changes
+and pre-existing staged task move. Publication was made from an isolated
+branch; no merge, reset or checkout of those changes was performed.
 
 ## Issues Encountered
 
