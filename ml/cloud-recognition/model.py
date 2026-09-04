@@ -1,10 +1,12 @@
 import torch
 from torch import nn
 from torchvision.models import (
+    ConvNeXt_Tiny_Weights,
     EfficientNet_B0_Weights,
     MobileNet_V3_Large_Weights,
     MobileNet_V3_Small_Weights,
     efficientnet_b0,
+    convnext_tiny,
     mobilenet_v3_large,
     mobilenet_v3_small,
 )
@@ -33,6 +35,9 @@ class CloudGenusNet(nn.Module):
         elif architecture == "efficientnet_b0":
             weights = EfficientNet_B0_Weights.DEFAULT if pretrained else None
             self.network = efficientnet_b0(weights=weights, dropout=0.2)
+        elif architecture == "convnext_tiny":
+            weights = ConvNeXt_Tiny_Weights.DEFAULT if pretrained else None
+            self.network = convnext_tiny(weights=weights, stochastic_depth_prob=0.1)
         else:
             raise ValueError(f"Unsupported architecture: {architecture}")
         inputs = self.network.classifier[-1].in_features

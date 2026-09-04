@@ -64,3 +64,39 @@ Use `--horizontal-flip-tta` to evaluate averaged original and mirrored
 inference. This is a benchmark switch, not a production default: the
 2026-06-26 evaluation slightly improved the duplicate-safe common test but
 regressed both the application atlas and independent Commons benchmark.
+
+## Version 4 experiments
+
+V4 is under evaluation, not yet shipped. The experiment contract and known data
+limitations are in Lore task 0042. Keep private feedback out of training and Git.
+
+```sh
+python v4_data.py --data /path/to/CCSN_v2 \
+  --clear /path/to/clear_sky_tensor.pt --atlas ../../public/assets/clouds \
+  --stress /path/to/old-ccaim/images --output /path/to/frozen-data
+
+python v4_baseline.py --manifest /path/to/frozen-data/manifest.json \
+  --models ../../ios/App/App/Models --output /path/to/baseline.json
+
+python train_v4.py --manifest /path/to/frozen-data/manifest.json \
+  --output /path/to/experiment --batch-size 4 --accumulation-steps 4
+
+# Add --resume with the same arguments to restore a completed epoch, including
+# optimizer and random state. Partial writes never replace the last checkpoint.
+python evaluate_v4.py --manifest /path/to/frozen-data/manifest.json \
+  --checkpoint /path/to/experiment/cloud-genus-net.pt \
+  --output /path/to/validation-report
+
+# Only after selecting the candidate on validation:
+python evaluate_v4.py --manifest /path/to/frozen-data/manifest.json \
+  --checkpoint /path/to/experiment/cloud-genus-net.pt \
+  --baseline /path/to/baseline.json --evaluate-holdouts \
+  --output /path/to/calibrated-candidate
+
+python -m unittest discover -s . -p test_v4.py
+```
+
+The default evaluator reads only validation. Holdout evaluation calibrates on
+calibration only and reports paired, duplicate-group-aware comparisons. Atlas
+and stress sources are not interchangeable; their scores must stay separate.
+`train_v4.py` currently does not train on contrails or private feedback.

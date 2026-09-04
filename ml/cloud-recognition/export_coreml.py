@@ -46,7 +46,7 @@ def main() -> None:
     converted.author = "CHMURNIK / Mieszko Mahboob"
     converted.license = "Training data: CCSN CC0 1.0; clear-sky tensor supplement MIT."
     converted.short_description = "On-device WMO cloud-family and genus hypothesis model."
-    converted.version = "3.0" if checkpoint.get("pipeline_version") == 3 else "2.0"
+    converted.version = f"{checkpoint.get('pipeline_version', 2)}.0"
     metadata = converted.user_defined_metadata
     metadata["classes"] = json.dumps(GENERA)
     metadata["minimum_confidence"] = str(checkpoint["abstention_policy"]["minimum_confidence"])
@@ -57,6 +57,11 @@ def main() -> None:
     metadata["architecture"] = checkpoint.get("architecture", "mobilenet_v3_small")
     metadata["input_size"] = str(input_size)
     metadata["preprocess"] = checkpoint.get("preprocess", "center_crop")
+    if checkpoint.get("pipeline_version") == 4:
+        metadata["manifest_sha256"] = checkpoint["manifest_sha256"]
+        metadata["crop_fraction"] = str(checkpoint["crop_fraction"])
+        metadata["validation_epoch"] = str(checkpoint["epoch"])
+        metadata["calibration_temperature"] = str(checkpoint["temperature"])
     if args.output.exists():
         shutil.rmtree(args.output)
     args.output.parent.mkdir(parents=True, exist_ok=True)
