@@ -411,3 +411,78 @@ Failed or incomplete candidates require explicit `--research-only`, recorded
 in package version/metadata; conversion alone never authorizes release.
 All 34 focused Python tests pass. Earlier failed research exports/reports are
 preserved, not backfilled with a fabricated approval or a revised outcome.
+
+## Bounded Input-Geometry Diagnostic
+
+Before predictions, fix three input policies on V2 validation only: the exact
+existing torchvision center crop, full-frame bilinear scaleFill, and the mean
+of three probabilities from 90.2%-of-short-side squares at the beginning,
+center and end of the long axis. No new fit, calibrated threshold, or holdout
+evaluation. Use the selected, uncalibrated V2 MLP checkpoint recorded above.
+Keep predictions, source-stratified/per-class reports and paired intervals.
+This diagnoses discarded context and crop sensitivity; it does not establish
+that a detected box contains a particular cloud or authorize publication.
+
+The Montenegro multi-annotator dataset (Zenodo DOI 10.5281/zenodo.21787669,
+CC BY 4.0) was inspected through its public API and README, not downloaded for
+training. It contains SYNOP codes, ambiguous/mixed genera and substantial rater
+disagreement, not 2,522 independent single-genus truths. Its README also retains
+unfilled acquisition/provenance fields. Do not silently use it as a replacement
+11-class confirmation set. SWIMSEG's linked license is CC BY-NC 4.0; the
+CloudSegNet/UCloudNet released implementations restrict use to research. None
+is approved for product integration. Existing release gates remain unchanged.
+
+Input study complete: 452 validation rows, 449 unique labeled groups. Center
+crop gives 63.70% top-1 / .63243 macro-F1; full-frame scaleFill 61.02% / .60521;
+three windows 63.25% / .62895. Three windows correct 11 and regress 13 cases;
+paired difference -0.45pp, 95% interval -2.41 to +1.62pp. Full-frame input
+corrects 22 and regresses 34. Neither policy improves this candidate overall.
+Do not deploy a slower multi-crop replacement on this evidence. All outputs
+remain in `.local/v4/input-views-v2`; five input-study tests join the 34 passing
+ML tests. No additional held-out images were evaluated.
+
+## Bounded SigLIP 2 Feature Trial
+
+Declare before any predictions: compare one frozen SigLIP 2 Base image encoder
+with a linear head (C .01, .1, 1, 10) and the existing fixed 128-unit MLP recipe.
+Use only V2 train and validation, original plus horizontal-flip training views,
+train-only normalization, seed 7042, and maximum validation macro-F1 selection.
+No backbone fine-tuning, prompt search, test-based head selection or new input
+geometry search. Report both heads even if neither improves the DINO candidate.
+The previously exposed test/atlas/stress/IMGW confirmation remain regression
+sets, not fresh confirmation and never training input. Release gates stay fixed.
+
+Use timm 1.0.24 and safetensors 0.7.0. The Apache-2.0 image-only port is
+`timm/vit_base_patch16_siglip_224.v2_webli`, revision
+`4c3661e5ac879a276ddc5ddc6d3f0ecc78fd5d82`; published weight SHA256
+`9106b0d8d9d02ea90fc3571fffd1557cf444736f695ee40b1e57c856bc3d9494`,
+371,551,936 bytes. Its published config specifies 224 pixels, bicubic resizing,
+center crop .9, RGB mean/std .5, and learned attention pooling (768 features).
+Follow this exact port's config rather than assume DINO preprocessing or copy
+the full Google text-and-image package. Save small heads referencing the hashed
+immutable backbone, not repeated 372 MB weight copies. Export/parity/native
+latency and package size are still untested. No remote photo inference.
+
+Sources: [Google model card](https://huggingface.co/google/siglip2-base-patch16-224),
+[maintainer port](https://huggingface.co/timm/vit_base_patch16_siglip_224.v2_webli),
+and pinned config/Hub LFS metadata retrieved on September 4. Apple MobileCLIP 2
+was excluded because its model license restricts use to research and expressly
+excludes product development; an MIT code license does not remove that limit.
+
+To bound disk use, both calibrated DINO checkpoint copies were losslessly
+archived against hash-checked existing backbones. Every tensor and metadata
+field of the previously restored V1 copy was verified before removing that
+duplicate. Original evaluation reports and immutable training sources remain.
+
+The SigLIP trial completed on September 5 in 132 seconds: linear C .01 yields
+53.32% validation top-1 / .53840 macro-F1; MLP epoch 21 yields 59.29% / .59292
+(41 epochs before the declared early stop). Both lose to the selected DINO V2
+MLP's .63164 macro-F1 on the same validation population. Do not calibrate,
+export or ship this candidate, and do not expand its hyperparameter search
+after seeing this result. Selected head SHA256:
+`48a311e8bd42e1184066d838a0265d3d11f1b392be2db9f6b4c69e673860f941`.
+Full cache/head/config/software-version/history evidence remains under
+`.local/v4/siglip2-v2`. No additional holdout was opened. Forty-four focused
+ML tests pass. The large public backbone can be re-fetched from its immutable
+URL/hash if needed; preserving a failed trial does not require keeping a
+re-downloadable 372 MB copy on the nearly full system disk.
