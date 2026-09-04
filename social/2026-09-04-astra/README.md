@@ -1,7 +1,8 @@
-# Astra Static Stories
+# Astra Social Campaign
 
 Ten owner-approved Polish Instagram Stories, exported as static RGB PNGs,
-1080 x 1920. No videos, soundtrack, or automatic social posting.
+1080 x 1920, plus the complete feed/Facebook/LinkedIn package. No videos,
+soundtrack, or automatic social posting.
 
 ## Delivery
 
@@ -11,6 +12,16 @@ Ten owner-approved Polish Instagram Stories, exported as static RGB PNGs,
   links, instructions and photo attribution. No font files in the ZIP.
 - `site/previews/`: lightweight gallery previews, not the delivery originals.
 - `site/manifest.json`: dimensions, exact copy, links, byte sizes and SHA-256.
+- `site/karuzela/`: ten 1080 x 1350 PNGs with all approved copy, reflowed for feed.
+- `site/facebook/`: a 1200 x 1500 PNG hero with the website address.
+- `site/CHMURNIK-ASTRA-LINKEDIN.pdf`: ten pages, selectable Polish text,
+  original typography and links to the website, App Store and photo sources.
+- `site/teksty/`: complete Instagram, Facebook and LinkedIn posts, profile
+  links and accessibility descriptions.
+- `site/CHMURNIK-ASTRA-{INSTAGRAM,FACEBOOK,LINKEDIN}.zip`: platform bundles.
+- `site/CHMURNIK-ASTRA-PELNY-PAKIET.zip`: all 21 PNGs, PDF, posts and guidance.
+- `site/platforms-manifest.json`: platform assets, full post copy and hashes.
+- Permanent bookmark: https://jakiesluchawki.github.io/chmurnik/assetySM/
 
 ## Copy And Identity
 
@@ -55,6 +66,9 @@ local Playwright installation:
 ```sh
 node social/2026-09-04-astra/render.mjs
 node social/2026-09-04-astra/verify.mjs
+node social/2026-09-04-astra/platforms.mjs
+node social/2026-09-04-astra/verify-platforms.mjs
+node social/library/build.mjs
 ```
 
 Rendering uses a loopback-only server and an isolated headless browser, never
@@ -63,6 +77,14 @@ exact DOM equality, font and bounding-box assertions, PNG metadata and hashes,
 ZIP integrity, clipboard copying and actual browser downloads. Gallery widths
 checked: 390, 768 and 1440 px. No existing application tests were changed.
 Local QA reports and review screenshots are under `build/astra-stories-qa/`.
+
+Platform QA lives in `build/astra-platforms-qa/`. The bundled PDF.js and
+canvas modules render every PDF page when Poppler is unavailable. Set
+`PDF_QA_MODULES` to a directory containing `pdfjs-dist` and `@napi-rs/canvas`
+on another host. Full text, links, geometry, OCR, all archive contents,
+clipboard operations and browser downloads are checked. The original Stories
+manifest and asset hashes remain unchanged. The common `gallery.mjs` builder
+preserves the full gallery when either format is rendered again.
 
 The public Pages workflow copies only `site/`, not production source files,
 into `/premiera/astra/`. Previous galleries and application code are unchanged.

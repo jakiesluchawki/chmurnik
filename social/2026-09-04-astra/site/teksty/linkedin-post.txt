@@ -1,0 +1,23 @@
+Największą pomoc Astry poczułem nie wtedy, gdy CHMURNIK zaczął lepiej wyglądać, ale gdy zaczął lepiej służyć.
+
+Od pewnego czasu pracuję z Astrą, nowym modelem OpenAI. Dziś mogę opowiedzieć o konkretnym efekcie: aplikacji do poznawania chmur i pogody, którą rozwijam pod nazwą CHMURNIK.
+
+Projekt zaczął się jeszcze przy GPT‑5.5. Z pomocą Astry przebudowałem silnik rozpoznawania chmur, dopracowałem nawigację i układ ekranów oraz przygotowałem wersję na iPada.
+
+Najciekawsza była dla mnie praca nad granicami odpowiedzi. Zdjęcie nie mówi wszystkiego, rozpoznanie może być błędne, a na jednym niebie można zobaczyć więcej niż jeden rodzaj chmur. Dlatego aplikacja pokazuje możliwe rozpoznania i cechy, którym warto się przyjrzeć. Ma pomagać uczyć się obserwacji, nie udawać nieomylność.
+
+Jest tu też ważne rozróżnienie: używałem Astry przy tworzeniu aplikacji, ale model nie analizuje zdjęć jej użytkowników. Rozpoznawanie na iPhonie i iPadzie działa lokalnie, bez wysyłania fotografii na serwer.
+
+Obok niego są atlas z prawdziwymi zdjęciami, lekcje, METAR, TAF, ćwiczenia z wiatrem i pracownia Windy. Miękka forma, konkretna treść. Dużo pracy poszło w to, żeby techniczne szczegóły nie stawały się przeszkodą w korzystaniu.
+
+W załączonej karuzeli pokazuję tę opowieść w dziesięciu planszach. Samą aplikację można poznawać również w przeglądarce:
+https://chmurnik.cloud/
+
+Wersja na iPhone’a i iPada:
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+Dla mnie to ciekawy etap pracy z AI: mniej skupienia na samym generowaniu, więcej na dopracowywaniu produktu, z którego ktoś naprawdę będzie korzystał.
+
+A w przypadku CHMURNIKA także na tym, co zauważy po odłożeniu telefonu.
+
+#CHMURNIK #Astra #OpenAI #ProductDesign

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { packs } from '../library/catalog.mjs';
+import { captions } from './captions.mjs';
 
 const root='https://jakiesluchawki.github.io/chmurnik/';
 const library=new URL('assetySM/',root);
@@ -15,6 +16,7 @@ const home=await (await response(library)).text();
 assert(home.includes('Materiały do sociali.'));
 const catalog=await (await response(new URL('catalog.json',library))).json();
 assert.deepEqual(catalog.packs.map(p=>p.id),packs.map(p=>p.id));
+assert.deepEqual(catalog.packs.find(p=>p.id==='astra').downloads,packs.find(p=>p.id==='astra').downloads);
 let checkedLinks=0;
 for(const p of packs){
   for(const f of ['',p.preview,...p.downloads.map(d=>d[1])]){
@@ -31,4 +33,14 @@ for(const story of manifest.stories){
 const zipName='CHMURNIK-ASTRA-10-STORIES-PNG.zip';
 const zip=await response(new URL(zipName,gallery));
 assert.equal(hash(Buffer.from(await zip.arrayBuffer())),hash(await readFile(new URL('./site/'+zipName,import.meta.url))));
-console.log(JSON.stringify({checkedAt:new Date().toISOString(),library:library.href,gallery:gallery.href,campaigns:packs.length,checkedLinks,pngHashes:10,zipHash:true},null,2));
+const platformManifest=JSON.parse(await readFile(new URL('./site/platforms-manifest.json',import.meta.url)));
+const platformAssets=[...platformManifest.artworks,...platformManifest.documents,...platformManifest.archives];
+for(const asset of platformAssets){
+  const r=await response(new URL(asset.file,gallery));
+  assert.equal(hash(Buffer.from(await r.arrayBuffer())),asset.sha256,asset.file);
+}
+for(const c of captions)assert.equal(await(await response(new URL(`teksty/${c.id}-post.txt`,gallery))).text(),c.text+'\n');
+const galleryHtml=await(await response(gallery)).text();
+for(const id of ['instagram','facebook','linkedin','stories'])assert(galleryHtml.includes(`id="${id}"`));
+assert(galleryHtml.includes('Kopiuj cały post'));
+console.log(JSON.stringify({checkedAt:new Date().toISOString(),library:library.href,gallery:gallery.href,campaigns:packs.length,checkedLinks,pngHashes:21,pdfHashes:1,zipHashes:5,completePosts:3,platformSections:4},null,2));

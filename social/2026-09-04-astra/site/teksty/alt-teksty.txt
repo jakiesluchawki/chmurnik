@@ -1,0 +1,56 @@
+01-astra
+Biała chmura i fioletowa rzeźbiarska gwiazda na różowym tle; wprowadzenie do pracy nad CHMURNIKIEM z Astrą.
+W tym niebie jest trochę Astry.
+Od pewnego czasu korzystam z Astry, nowego modelu OpenAI. Pomagała mi dopracować CHMURNIKA i dziś mogę opowiedzieć, co z tej pracy zostało w aplikacji, którą możecie mieć w kieszeni.
+
+02-kolejne-modele
+Warstwy rzeźbiarskich chmur układają się w kolejne stopnie; tekst o rozwijaniu aplikacji z kolejnymi modelami.
+CHMURNIK rósł razem z modelami.
+Pracowałem nad nim już z GPT‑5.5, później przyszły kolejne etapy i poprawki. Największą pomoc Astry poczułem przy dopracowywaniu całości: kiedy trzeba było sprawić, żeby aplikacja nie tylko dobrze wyglądała, ale też dobrze służyła.
+
+03-rozpoznawanie
+Taktowna ilustracja mechanizmu optycznego z chmurą w środku; tekst o przebudowie silnika rozpoznawania.
+Najważniejsze zmiany nie zawsze widać na ekranie.
+Z pomocą Astry przebudowałem silnik rozpoznawania chmur. To ta część CHMURNIKA, która analizuje zdjęcie i proponuje, co możesz na nim widzieć. Zależało mi, żeby pomagała patrzeć uważniej, a nie tylko przyklejała niebu etykietkę.
+
+04-niepewnosc
+Trzy stylizowane formy chmur na fioletowym tle; tekst o niepewności i uczeniu się obserwacji.
+Nie każde zdjęcie ma jedną odpowiedź.
+CHMURNIK pokazuje możliwe rozpoznania i podpowiada, na jakie cechy spojrzeć. Może się pomylić, a samo zdjęcie nie mówi wszystkiego. Chciałem zostawić w tej aplikacji miejsce na wątpliwość, bo od niej też zaczyna się nauka.
+
+05-prywatnosc
+Mała chmura w otwartym oliwkowym pudełku; tekst wyjaśnia lokalną analizę zdjęć i rolę Astry przy tworzeniu aplikacji.
+Twoje niebo zostaje przy Tobie.
+Rozpoznawanie zdjęć działa lokalnie na iPhonie i iPadzie, bez wysyłania ich na serwer. Astra pomogła mi zbudować ten mechanizm, ale nie ogląda zdjęć użytkowników. Fotografujesz chmurę, a analiza odbywa się na Twoim urządzeniu.
+
+06-wygoda
+Autentyczny mobilny interfejs atlasu CHMURNIKA; tekst o nawigacji i wygodzie korzystania.
+Mniej szukania przycisku, więcej przyglądania się chmurom.
+Z Astrą dopracowałem też nawigację i układ ekranów. Chciałem, żeby między zdjęciem, atlasem a własnymi obserwacjami można było przechodzić swobodnie. Żeby aplikacja pomagała poznawać niebo, zamiast wymagać poznawania samej aplikacji.
+
+07-pogoda
+Prawdziwe ekrany ćwiczeń z METAR i wiatru z CHMURNIKA; opis technicznej zawartości aplikacji.
+Pod miękkimi kolorami jest całkiem konkretna pogoda.
+W atlasie oglądasz prawdziwe zdjęcia chmur, w lekcjach sprawdzasz, co już rozumiesz. Dalej czekają METAR, TAF i ćwiczenia z wiatrem. Praca z Astrą pomogła mi nadać temu wygodniejszą formę, bez rezygnowania z technicznych szczegółów.
+
+08-ipad
+Autentyczny zrzut ekranu CHMURNIKA z symulatora iPada w dekoracyjnej ramie urządzenia.
+Na iPadzie niebo dostało więcej miejsca.
+Z pomocą Astry przygotowałem również wersję na iPada. Układ dopasowuje się do większego ekranu, a atlas i ćwiczenia możesz oglądać w pionie i w poziomie. Ten sam CHMURNIK, tylko z większą przestrzenią na przyglądanie się szczegółom.
+
+09-macos
+Prawdziwy ekran natywnej wersji CHMURNIKA na Maca; tekst informuje, że wersja macOS jest w recenzji Apple.
+Jeszcze jedno okno na niebo czeka na otwarcie.
+Wersja na macOS jest już w recenzji Apple. Chcę, żeby CHMURNIK miał swoje miejsce również na biurku, kiedy masz ochotę rozłożyć atlas na większym ekranie i zostać przy nim trochę dłużej.
+
+10-zaproszenie
+Rzeźbiarskie okno otwiera się na jasne niebo; zaproszenie do CHMURNIKA na iPhone, iPad i w przeglądarce.
+O Astrze mogę opowiadać. Efekt wolę dać Ci do ręki.
+CHMURNIKA możesz już pobrać na iPhone’a i iPada albo otworzyć na chmurnik.cloud. Zajrzyj do atlasu, przejdź fragment lekcji, a potem spójrz przez okno. Najbardziej zależy mi na tym, co zauważysz już po odłożeniu telefonu.
+
+facebook
+Różowa plansza CHMURNIKA. Miękka biała chmura na tle fioletowej gwiazdy. Nagłówek: W tym niebie jest trochę Astry. Podpis o dopracowaniu aplikacji oraz adres chmurnik.cloud.
+W tym niebie jest trochę Astry.
+Z jej pomocą dopracowałem CHMURNIKA.
+Atlas chmur, nauka pogody i więcej miejsca
+na uważne patrzenie.

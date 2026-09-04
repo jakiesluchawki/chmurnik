@@ -1,0 +1,266 @@
+{
+  "title": "W tym niebie jest trochę Astry",
+  "date": "2026-09-04",
+  "artworks": [
+    {
+      "id": "01-astra",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/01-astra.jpg",
+      "lead": "W tym niebie jest trochę Astry.",
+      "body": "Od pewnego czasu korzystam z Astry, nowego modelu OpenAI. Pomagała mi dopracować CHMURNIKA i dziś mogę opowiedzieć, co z tej pracy zostało w aplikacji, którą możecie mieć w kieszeni.",
+      "alt": "Biała chmura i fioletowa rzeźbiarska gwiazda na różowym tle; wprowadzenie do pracy nad CHMURNIKIEM z Astrą.",
+      "file": "karuzela/chmurnik-astra-01-astra.png",
+      "bytes": 544715,
+      "sha256": "61bb55351c5a4d9682b59ecd1a4d9854db60a9643bb665c78c6ff3b146367f3b"
+    },
+    {
+      "id": "02-kolejne-modele",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/02-kolejne-modele.jpg",
+      "lead": "CHMURNIK rósł razem z modelami.",
+      "body": "Pracowałem nad nim już z GPT‑5.5, później przyszły kolejne etapy i poprawki. Największą pomoc Astry poczułem przy dopracowywaniu całości: kiedy trzeba było sprawić, żeby aplikacja nie tylko dobrze wyglądała, ale też dobrze służyła.",
+      "alt": "Warstwy rzeźbiarskich chmur układają się w kolejne stopnie; tekst o rozwijaniu aplikacji z kolejnymi modelami.",
+      "file": "karuzela/chmurnik-astra-02-kolejne-modele.png",
+      "bytes": 589840,
+      "sha256": "69c7743b271aad7d603798a992cc077afcd175055412eef14c5a9edd1c4e2bc5"
+    },
+    {
+      "id": "03-rozpoznawanie",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/03-rozpoznawanie.jpg",
+      "lead": "Najważniejsze zmiany nie zawsze widać na ekranie.",
+      "body": "Z pomocą Astry przebudowałem silnik rozpoznawania chmur. To ta część CHMURNIKA, która analizuje zdjęcie i proponuje, co możesz na nim widzieć. Zależało mi, żeby pomagała patrzeć uważniej, a nie tylko przyklejała niebu etykietkę.",
+      "alt": "Taktowna ilustracja mechanizmu optycznego z chmurą w środku; tekst o przebudowie silnika rozpoznawania.",
+      "file": "karuzela/chmurnik-astra-03-rozpoznawanie.png",
+      "bytes": 687748,
+      "sha256": "ea1c8b7991b3e53613d90cf749574c26967eb27645fd0034e8fd63d3d9df73ab"
+    },
+    {
+      "id": "04-niepewnosc",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/04-niepewnosc.jpg",
+      "lead": "Nie każde zdjęcie ma jedną odpowiedź.",
+      "body": "CHMURNIK pokazuje możliwe rozpoznania i podpowiada, na jakie cechy spojrzeć. Może się pomylić, a samo zdjęcie nie mówi wszystkiego. Chciałem zostawić w tej aplikacji miejsce na wątpliwość, bo od niej też zaczyna się nauka.",
+      "alt": "Trzy stylizowane formy chmur na fioletowym tle; tekst o niepewności i uczeniu się obserwacji.",
+      "file": "karuzela/chmurnik-astra-04-niepewnosc.png",
+      "bytes": 649150,
+      "sha256": "54266ab9440852d4b35b0512ca9d14b64ea4150e76112bc03c87de3dc5f19a22"
+    },
+    {
+      "id": "05-prywatnosc",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/05-prywatnosc.jpg",
+      "lead": "Twoje niebo zostaje przy Tobie.",
+      "body": "Rozpoznawanie zdjęć działa lokalnie na iPhonie i iPadzie, bez wysyłania ich na serwer. Astra pomogła mi zbudować ten mechanizm, ale nie ogląda zdjęć użytkowników. Fotografujesz chmurę, a analiza odbywa się na Twoim urządzeniu.",
+      "alt": "Mała chmura w otwartym oliwkowym pudełku; tekst wyjaśnia lokalną analizę zdjęć i rolę Astry przy tworzeniu aplikacji.",
+      "file": "karuzela/chmurnik-astra-05-prywatnosc.png",
+      "bytes": 652809,
+      "sha256": "e0d023f693dde57eff22d1e78b2e6a3c5c208caeb7c35d872820049368eef3ae"
+    },
+    {
+      "id": "06-wygoda",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/06-wygoda.jpg",
+      "lead": "Mniej szukania przycisku, więcej przyglądania się chmurom.",
+      "body": "Z Astrą dopracowałem też nawigację i układ ekranów. Chciałem, żeby między zdjęciem, atlasem a własnymi obserwacjami można było przechodzić swobodnie. Żeby aplikacja pomagała poznawać niebo, zamiast wymagać poznawania samej aplikacji.",
+      "alt": "Autentyczny mobilny interfejs atlasu CHMURNIKA; tekst o nawigacji i wygodzie korzystania.",
+      "file": "karuzela/chmurnik-astra-06-wygoda.png",
+      "bytes": 420555,
+      "sha256": "7e3e9199786b3a6fada38e11d7cd0750a12dce0694e0fa3624ad6cc41b869ca3"
+    },
+    {
+      "id": "07-pogoda",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/07-pogoda.jpg",
+      "lead": "Pod miękkimi kolorami jest całkiem konkretna pogoda.",
+      "body": "W atlasie oglądasz prawdziwe zdjęcia chmur, w lekcjach sprawdzasz, co już rozumiesz. Dalej czekają METAR, TAF i ćwiczenia z wiatrem. Praca z Astrą pomogła mi nadać temu wygodniejszą formę, bez rezygnowania z technicznych szczegółów.",
+      "alt": "Prawdziwe ekrany ćwiczeń z METAR i wiatru z CHMURNIKA; opis technicznej zawartości aplikacji.",
+      "file": "karuzela/chmurnik-astra-07-pogoda.png",
+      "bytes": 232715,
+      "sha256": "100bfe01d7b245c07aeb73029056c505fae68493c1de30c1c7fade97f2572e10"
+    },
+    {
+      "id": "08-ipad",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/08-ipad.jpg",
+      "lead": "Na iPadzie niebo dostało więcej miejsca.",
+      "body": "Z pomocą Astry przygotowałem również wersję na iPada. Układ dopasowuje się do większego ekranu, a atlas i ćwiczenia możesz oglądać w pionie i w poziomie. Ten sam CHMURNIK, tylko z większą przestrzenią na przyglądanie się szczegółom.",
+      "alt": "Autentyczny zrzut ekranu CHMURNIKA z symulatora iPada w dekoracyjnej ramie urządzenia.",
+      "file": "karuzela/chmurnik-astra-08-ipad.png",
+      "bytes": 296131,
+      "sha256": "9fe756c52d3c5f695952820c1d42fcaec82bc193d15a0de66ceb72a3ef4f0fca"
+    },
+    {
+      "id": "09-macos",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/09-macos.jpg",
+      "lead": "Jeszcze jedno okno na niebo czeka na otwarcie.",
+      "body": "Wersja na macOS jest już w recenzji Apple. Chcę, żeby CHMURNIK miał swoje miejsce również na biurku, kiedy masz ochotę rozłożyć atlas na większym ekranie i zostać przy nim trochę dłużej.",
+      "alt": "Prawdziwy ekran natywnej wersji CHMURNIKA na Maca; tekst informuje, że wersja macOS jest w recenzji Apple.",
+      "file": "karuzela/chmurnik-astra-09-macos.png",
+      "bytes": 371048,
+      "sha256": "a18cee4950e3adbdce4cc718962b02caf64dfc164fd1875322a0d1c96c0a43b3"
+    },
+    {
+      "id": "10-zaproszenie",
+      "format": "carousel",
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/10-zaproszenie.jpg",
+      "lead": "O Astrze mogę opowiadać. Efekt wolę dać Ci do ręki.",
+      "body": "CHMURNIKA możesz już pobrać na iPhone’a i iPada albo otworzyć na chmurnik.cloud. Zajrzyj do atlasu, przejdź fragment lekcji, a potem spójrz przez okno. Najbardziej zależy mi na tym, co zauważysz już po odłożeniu telefonu.",
+      "alt": "Rzeźbiarskie okno otwiera się na jasne niebo; zaproszenie do CHMURNIKA na iPhone, iPad i w przeglądarce.",
+      "file": "karuzela/chmurnik-astra-10-zaproszenie.png",
+      "bytes": 569053,
+      "sha256": "8215eda7a23e856646732710e2514436901d7d262096b7cb7335e3aafbc4deb4"
+    },
+    {
+      "id": "facebook",
+      "format": "facebook",
+      "width": 1200,
+      "height": 1500,
+      "preview": "previews/facebook.jpg",
+      "lead": "W tym niebie jest trochę Astry.",
+      "body": "Z jej pomocą dopracowałem CHMURNIKA.\nAtlas chmur, nauka pogody i więcej miejsca\nna uważne patrzenie.",
+      "alt": "Różowa plansza CHMURNIKA. Miękka biała chmura na tle fioletowej gwiazdy. Nagłówek: W tym niebie jest trochę Astry. Podpis o dopracowaniu aplikacji oraz adres chmurnik.cloud.",
+      "file": "facebook/chmurnik-astra-facebook.png",
+      "bytes": 641548,
+      "sha256": "4dd0948a9e8ca406ac6caa71eb94c4e0e6df3a7d2ac9a99581645c8df8f80832"
+    }
+  ],
+  "documents": [
+    {
+      "title": "CHMURNIK: w tym niebie jest trochę Astry",
+      "pages": 10,
+      "width": 1080,
+      "height": 1350,
+      "file": "CHMURNIK-ASTRA-LINKEDIN.pdf",
+      "bytes": 21225615,
+      "sha256": "d16279a78de0ddf76d6ef67a6352e90c732fb8db1a37fe47d7b1d6110b9f5229"
+    }
+  ],
+  "captions": [
+    {
+      "id": "instagram",
+      "title": "Instagram · opis karuzeli",
+      "text": "W tym niebie jest trochę Astry.\n\nOd pewnego czasu pracuję z Astrą, nowym modelem OpenAI. Dziś mogę pokazać, co z tej pracy zostało w CHMURNIKU.\n\nZaczynałem z GPT‑5.5. Później aplikacja rosła, a największą pomoc Astry poczułem przy dopracowywaniu tego, co sprawia, że chce się do niej wracać: rozpoznawania chmur, nawigacji i układu ekranów. Z jej pomocą przygotowałem też wersję na iPada.\n\nPod miękkimi kolorami jest konkret: atlas z prawdziwymi zdjęciami, lekcje, METAR, TAF i ćwiczenia z wiatrem. A przy rozpoznawaniu chmur jest również miejsce na wątpliwość. Zdjęcie nie mówi wszystkiego, więc aplikacja podpowiada, na co spojrzeć, zamiast obiecywać nieomylność.\n\nI ważne: Astra pomogła mi zbudować ten mechanizm, ale nie ogląda Waszych zdjęć. Ich rozpoznawanie działa lokalnie na iPhonie i iPadzie.\n\nPrzesuń karuzelę. Opowiadam w niej, co się zmieniło i dlaczego.\n\nCHMURNIK jest już na iPhone’a i iPada. Możesz też zajrzeć na chmurnik.cloud. Linki do pobrania i WWW dodaję w profilu.\n\nNajbardziej zależy mi na tym, co zauważysz już po odłożeniu telefonu.\n\n#CHMURNIK #Astra #OpenAI #Chmury #Meteorologia"
+    },
+    {
+      "id": "facebook",
+      "title": "Facebook · cały post",
+      "text": "W tym niebie jest trochę Astry.\n\nCHMURNIK dostał ostatnio sporo zmian. Część widać od razu, inne schowały się pod miękkimi kolorami. Pomagała mi przy nich Astra, nowy model OpenAI, z którym pracuję już od pewnego czasu.\n\nZaczynałem budować tę aplikację z GPT‑5.5. Z pomocą Astry przebudowałem silnik rozpoznawania chmur, dopracowałem nawigację i przygotowałem wersję na iPada. Chciałem, żeby między zdjęciem, atlasem i ćwiczeniami można było przechodzić swobodnie. Żeby aplikacja pomagała poznawać niebo, zamiast wymagać poznawania samej aplikacji.\n\nW atlasie czekają prawdziwe zdjęcia chmur, w lekcjach można sprawdzić, co już się rozumie. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia. Są też ćwiczenia z wiatrem i pracownia Windy, która pomaga zrozumieć to, co oglądamy na mapach pogody.\n\nNie musisz zaczynać od instalacji. Jest wersja WWW, pod adresem, który nadal bardzo mnie cieszy:\nhttps://chmurnik.cloud/\n\nA jeśli wolisz mieć CHMURNIKA w kieszeni albo na iPadzie:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nRozpoznawanie zdjęć na iPhonie i iPadzie odbywa się na urządzeniu. Astra pomogła mi je zbudować, ale nie ogląda zdjęć użytkowników. A wyniki są podpowiedziami, nie wyrokiem: nie każde niebo mieści się w jednej odpowiedzi.\n\nZajrzyj do atlasu, przejdź fragment lekcji, a potem spójrz przez okno. Ciekaw jestem, co zauważysz."
+    },
+    {
+      "id": "linkedin",
+      "title": "LinkedIn · cały post",
+      "documentTitle": "CHMURNIK: w tym niebie jest trochę Astry",
+      "text": "Największą pomoc Astry poczułem nie wtedy, gdy CHMURNIK zaczął lepiej wyglądać, ale gdy zaczął lepiej służyć.\n\nOd pewnego czasu pracuję z Astrą, nowym modelem OpenAI. Dziś mogę opowiedzieć o konkretnym efekcie: aplikacji do poznawania chmur i pogody, którą rozwijam pod nazwą CHMURNIK.\n\nProjekt zaczął się jeszcze przy GPT‑5.5. Z pomocą Astry przebudowałem silnik rozpoznawania chmur, dopracowałem nawigację i układ ekranów oraz przygotowałem wersję na iPada.\n\nNajciekawsza była dla mnie praca nad granicami odpowiedzi. Zdjęcie nie mówi wszystkiego, rozpoznanie może być błędne, a na jednym niebie można zobaczyć więcej niż jeden rodzaj chmur. Dlatego aplikacja pokazuje możliwe rozpoznania i cechy, którym warto się przyjrzeć. Ma pomagać uczyć się obserwacji, nie udawać nieomylność.\n\nJest tu też ważne rozróżnienie: używałem Astry przy tworzeniu aplikacji, ale model nie analizuje zdjęć jej użytkowników. Rozpoznawanie na iPhonie i iPadzie działa lokalnie, bez wysyłania fotografii na serwer.\n\nObok niego są atlas z prawdziwymi zdjęciami, lekcje, METAR, TAF, ćwiczenia z wiatrem i pracownia Windy. Miękka forma, konkretna treść. Dużo pracy poszło w to, żeby techniczne szczegóły nie stawały się przeszkodą w korzystaniu.\n\nW załączonej karuzeli pokazuję tę opowieść w dziesięciu planszach. Samą aplikację można poznawać również w przeglądarce:\nhttps://chmurnik.cloud/\n\nWersja na iPhone’a i iPada:\nhttps://apps.apple.com/pl/app/chmurnik/id6782159027\n\nDla mnie to ciekawy etap pracy z AI: mniej skupienia na samym generowaniu, więcej na dopracowywaniu produktu, z którego ktoś naprawdę będzie korzystał.\n\nA w przypadku CHMURNIKA także na tym, co zauważy po odłożeniu telefonu.\n\n#CHMURNIK #Astra #OpenAI #ProductDesign"
+    }
+  ],
+  "archives": [
+    {
+      "file": "CHMURNIK-ASTRA-INSTAGRAM.zip",
+      "title": "Instagram · karuzela i opis",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "ZRODLA-ZDJEC.txt",
+        "karuzela/chmurnik-astra-01-astra.png",
+        "karuzela/chmurnik-astra-02-kolejne-modele.png",
+        "karuzela/chmurnik-astra-03-rozpoznawanie.png",
+        "karuzela/chmurnik-astra-04-niepewnosc.png",
+        "karuzela/chmurnik-astra-05-prywatnosc.png",
+        "karuzela/chmurnik-astra-06-wygoda.png",
+        "karuzela/chmurnik-astra-07-pogoda.png",
+        "karuzela/chmurnik-astra-08-ipad.png",
+        "karuzela/chmurnik-astra-09-macos.png",
+        "karuzela/chmurnik-astra-10-zaproszenie.png",
+        "teksty/instagram-post.txt",
+        "teksty/instagram-linki-profil.txt",
+        "teksty/alt-teksty.txt"
+      ],
+      "bytes": 4961400,
+      "sha256": "62b5b2734504b9f75111bdec074a01537dceae4888a5d2fbf40e8e1ffbd28edb"
+    },
+    {
+      "file": "CHMURNIK-ASTRA-FACEBOOK.zip",
+      "title": "Facebook · grafika i post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "ZRODLA-ZDJEC.txt",
+        "facebook/chmurnik-astra-facebook.png",
+        "teksty/facebook-post.txt"
+      ],
+      "bytes": 637952,
+      "sha256": "16ab7da6fe173a73ad30ed9389ee8aaad95457b60f5d932f3cd3bc7e20bf2bfb"
+    },
+    {
+      "file": "CHMURNIK-ASTRA-LINKEDIN.zip",
+      "title": "LinkedIn · PDF i post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "ZRODLA-ZDJEC.txt",
+        "CHMURNIK-ASTRA-LINKEDIN.pdf",
+        "teksty/linkedin-post.txt"
+      ],
+      "bytes": 21138723,
+      "sha256": "0aa646d6763d842392c5e75bad03a262219d93529289862738c0ad8f33c73f13"
+    },
+    {
+      "file": "CHMURNIK-ASTRA-PELNY-PAKIET.zip",
+      "title": "Pełny pakiet · wszystkie platformy",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "ZRODLA-ZDJEC.txt",
+        "karuzela/chmurnik-astra-01-astra.png",
+        "karuzela/chmurnik-astra-02-kolejne-modele.png",
+        "karuzela/chmurnik-astra-03-rozpoznawanie.png",
+        "karuzela/chmurnik-astra-04-niepewnosc.png",
+        "karuzela/chmurnik-astra-05-prywatnosc.png",
+        "karuzela/chmurnik-astra-06-wygoda.png",
+        "karuzela/chmurnik-astra-07-pogoda.png",
+        "karuzela/chmurnik-astra-08-ipad.png",
+        "karuzela/chmurnik-astra-09-macos.png",
+        "karuzela/chmurnik-astra-10-zaproszenie.png",
+        "facebook/chmurnik-astra-facebook.png",
+        "CHMURNIK-ASTRA-LINKEDIN.pdf",
+        "teksty/instagram-post.txt",
+        "teksty/facebook-post.txt",
+        "teksty/linkedin-post.txt",
+        "teksty/instagram-linki-profil.txt",
+        "teksty/alt-teksty.txt",
+        "png/chmurnik-astra-01-astra.png",
+        "png/chmurnik-astra-02-kolejne-modele.png",
+        "png/chmurnik-astra-03-rozpoznawanie.png",
+        "png/chmurnik-astra-04-niepewnosc.png",
+        "png/chmurnik-astra-05-prywatnosc.png",
+        "png/chmurnik-astra-06-wygoda.png",
+        "png/chmurnik-astra-07-pogoda.png",
+        "png/chmurnik-astra-08-ipad.png",
+        "png/chmurnik-astra-09-macos.png",
+        "png/chmurnik-astra-10-zaproszenie.png",
+        "TEKSTY-I-LINKI.txt",
+        "CZYTAJ-MNIE.txt"
+      ],
+      "bytes": 32842263,
+      "sha256": "dff11a840b3e25e7b186d7e4882f40b5a9287b374561536855a7da54f0620027"
+    }
+  ]
+}

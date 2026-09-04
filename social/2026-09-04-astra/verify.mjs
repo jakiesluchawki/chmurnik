@@ -69,24 +69,24 @@ try{
   for(const width of [390,768,1440]){
     await page.setViewportSize({width,height:1000});
     await page.goto(base);await page.evaluate(()=>document.fonts.ready);
-    const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,articles:document.querySelectorAll('article').length,downloads:[...document.querySelectorAll('a[download]')].length}));
-    assert.equal(metrics.width,metrics.scroll);assert.equal(metrics.articles,10);assert.equal(metrics.downloads,21);
+    const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,articles:document.querySelectorAll('.stories article').length,downloads:[...document.querySelectorAll('.stories a[download]')].length}));
+    assert.equal(metrics.width,metrics.scroll);assert.equal(metrics.articles,10);assert.equal(metrics.downloads,20);
     viewportChecks.push(metrics);
     if(width===390||width===1440)await page.screenshot({path:path.join(qa,`gallery-${width}.png`)});
   }
-  const shown=await page.locator('article').evaluateAll(nodes=>nodes.map(n=>({lead:n.querySelector('h2').textContent,body:n.querySelector('.card-copy>p').textContent})));
+  const shown=await page.locator('.stories article').evaluateAll(nodes=>nodes.map(n=>({lead:n.querySelector('h3').textContent,body:n.querySelector('.card-copy>p').textContent})));
   for(const [i,r]of shown.entries()){assert.equal(r.lead,stories[i].lead);assert.equal(r.body,stories[i].body);}
   await page.getByRole('button',{name:'Kopiuj link',exact:true}).first().click();
   assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),stories[0].link);
   const downloadPromise=page.waitForEvent('download');
-  await page.locator('article .button').first().click();
+  await page.locator('.stories article .button').first().click();
   const download=await downloadPromise;
   assert.equal(hash(await readFile(await download.path())),manifest.stories[0].sha256);
   const zipPromise=page.waitForEvent('download');
-  await page.locator('.button.big').click();
+  await page.locator('.stories-zip').click();
   const zipDownload=await zipPromise;
   assert.equal(hash(await readFile(await zipDownload.path())),hash(await readFile(zip)));
-  for(const file of await page.locator('[src],[href]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('src')||n.getAttribute('href')).filter(v=>v&&!v.startsWith('http')&&!v.startsWith('../')))){
+  for(const file of await page.locator('[src],[href]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('src')||n.getAttribute('href')).filter(v=>v&&!v.startsWith('http')&&!v.startsWith('../')&&!v.startsWith('#')))){
     const response=await page.request.get(new URL(file,base).href);assert(response.ok(),`Broken link: ${file}`);
   }
   assert.deepEqual(errors,[]);

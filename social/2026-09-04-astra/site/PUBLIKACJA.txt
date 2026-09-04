@@ -1,0 +1,20 @@
+CHMURNIK / ASTRA / PEŁNY PAKIET / 4 WRZEŚNIA 2026
+
+1. INSTAGRAM POST
+Wybierz 10 PNG z folderu karuzela w kolejności 01-10. Każda plansza ma 1080 x 1350 (4:5), z pełnym tekstem zatwierdzonej historii. Zachowaj cały kadr. Opis: teksty/instagram-post.txt. Przed publikacją dodaj linki z teksty/instagram-linki-profil.txt do profilu, bo opis odsyła do nich. Adres napisany na PNG lub w opisie nie jest klikalnym przyciskiem. Opcjonalne opisy dostępności: teksty/alt-teksty.txt.
+
+2. FACEBOOK
+Dodaj facebook/chmurnik-astra-facebook.png (1200 x 1500, 4:5) i cały tekst z teksty/facebook-post.txt. Post zawiera link do chmurnik.cloud oraz App Store. Nie trzeba niczego składać z fragmentów.
+
+3. LINKEDIN
+Dodaj CHMURNIK-ASTRA-LINKEDIN.pdf jako Dokument. Tytuł: CHMURNIK: w tym niebie jest trochę Astry. Wklej teksty/linkedin-post.txt. PDF ma 10 stron z pełną historią, zaznaczalnym tekstem, linkiem do WWW na każdej stronie i linkiem do App Store na ostatniej. Źródła fotografii również są klikalne.
+
+4. STORIES
+Bez zmian: folder png, 10 plików 1080 x 1920. Linki do naklejek i pełne teksty: TEKSTY-I-LINKI.txt. Instrukcja Stories: CZYTAJ-MNIE.txt. Nowe PNG z folderu karuzela są do posta, nie są zamiennikiem pionowych Stories.
+
+5. GRANICE I ŹRÓDŁA
+Stan opowieści: 4 września 2026. iPhone i iPad są dostępne; macOS pozostaje w recenzji według ostatniego potwierdzenia. Przed publikacją tej planszy w późniejszym terminie sprawdź status Maca. Astra pomagała w tworzeniu aplikacji, nie analizuje zdjęć użytkowników. Rozpoznawanie na iPhonie/iPadzie działa lokalnie. Wyniki i narzędzia pogodowe są edukacyjne, nie zastępują oficjalnego briefingu.
+Zachowaj autorstwo fotografii i plik ZRODLA-ZDJEC.txt. Ekrany są autentyczne, ramki i ilustracje dekoracyjne. Materiały nie są reklamą zatwierdzoną przez OpenAI. Żadne posty nie zostały opublikowane automatycznie.
+
+Stała biblioteka: https://jakiesluchawki.github.io/chmurnik/assetySM/
+Ta kampania: https://jakiesluchawki.github.io/chmurnik/premiera/astra/

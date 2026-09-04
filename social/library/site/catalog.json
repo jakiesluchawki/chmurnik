@@ -9,19 +9,56 @@
       "dateLabel": "4 września 2026",
       "status": "Najnowszy pakiet",
       "title": "W tym niebie jest trochę Astry.",
-      "description": "10 statycznych Stories o pracy nad CHMURNIKIEM z Astrą. Pełne teksty, nowe ilustracje, prawdziwe ekrany aplikacji i linki do naklejek.",
+      "description": "Pełny pakiet Astry: 10 Stories, 10 plansz karuzeli na Instagram, grafika Facebooka, dokument LinkedIn i kompletne posty. Statyczne PNG, prawdziwe ekrany i pełna opowieść.",
       "base": "../premiera/astra/",
       "preview": "previews/01-astra.jpg",
       "formats": [
         "Stories",
-        "PNG",
-        "Teksty i linki"
+        "Karuzela",
+        "Facebook",
+        "LinkedIn",
+        "PNG + PDF"
       ],
       "downloads": [
         [
-          "Cały pakiet · 10 PNG",
+          "Cały pakiet · wszystkie platformy",
+          "CHMURNIK-ASTRA-PELNY-PAKIET.zip",
+          "zip"
+        ],
+        [
+          "Instagram · karuzela i opis",
+          "CHMURNIK-ASTRA-INSTAGRAM.zip",
+          "zip"
+        ],
+        [
+          "Facebook · grafika i post",
+          "CHMURNIK-ASTRA-FACEBOOK.zip",
+          "zip"
+        ],
+        [
+          "LinkedIn · PDF i post",
+          "CHMURNIK-ASTRA-LINKEDIN.zip",
+          "zip"
+        ],
+        [
+          "Stories · 10 PNG",
           "CHMURNIK-ASTRA-10-STORIES-PNG.zip",
           "zip"
+        ],
+        [
+          "Sam tekst na Facebook",
+          "teksty/facebook-post.txt",
+          "txt"
+        ],
+        [
+          "Sam tekst na LinkedIn",
+          "teksty/linkedin-post.txt",
+          "txt"
+        ],
+        [
+          "Sam opis karuzeli",
+          "teksty/instagram-post.txt",
+          "txt"
         ],
         [
           "Teksty i linki do naklejek",

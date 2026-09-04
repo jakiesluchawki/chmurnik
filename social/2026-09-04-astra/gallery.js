@@ -1,9 +1,4 @@
 const status = document.getElementById('status');
-const libraryLink = document.createElement('a');
-libraryLink.href = '../../assetySM/';
-libraryLink.textContent = 'Wszystkie materiały SM';
-document.querySelector('header>span').replaceWith(libraryLink);
-document.querySelector('header>a').href = libraryLink.href;
 let timer;
 function notify(message) {
   status.textContent = message;
@@ -11,6 +6,15 @@ function notify(message) {
   clearTimeout(timer);
   timer = setTimeout(() => status.classList.remove('visible'), 4500);
 }
+document.querySelectorAll('.copy-post').forEach(button => button.addEventListener('click', async () => {
+  const content = document.getElementById(button.dataset.target);
+  try { await navigator.clipboard.writeText(content.textContent); notify('Cały post skopiowany.'); }
+  catch {
+    const range = document.createRange(); range.selectNodeContents(content);
+    const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+    content.focus(); notify('Zaznaczony tekst możesz skopiować ręcznie lub pobrać jako TXT.');
+  }
+}));
 document.querySelectorAll('.copy-link').forEach(button => button.addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(button.dataset.link); notify('Link do naklejki skopiowany.'); }
   catch { const input=button.parentElement.querySelector('input'); input.focus(); input.select(); notify('Zaznaczony link możesz skopiować ręcznie.'); }

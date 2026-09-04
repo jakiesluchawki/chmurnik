@@ -1,0 +1,17 @@
+W tym niebie jest trochę Astry.
+
+Od pewnego czasu pracuję z Astrą, nowym modelem OpenAI. Dziś mogę pokazać, co z tej pracy zostało w CHMURNIKU.
+
+Zaczynałem z GPT‑5.5. Później aplikacja rosła, a największą pomoc Astry poczułem przy dopracowywaniu tego, co sprawia, że chce się do niej wracać: rozpoznawania chmur, nawigacji i układu ekranów. Z jej pomocą przygotowałem też wersję na iPada.
+
+Pod miękkimi kolorami jest konkret: atlas z prawdziwymi zdjęciami, lekcje, METAR, TAF i ćwiczenia z wiatrem. A przy rozpoznawaniu chmur jest również miejsce na wątpliwość. Zdjęcie nie mówi wszystkiego, więc aplikacja podpowiada, na co spojrzeć, zamiast obiecywać nieomylność.
+
+I ważne: Astra pomogła mi zbudować ten mechanizm, ale nie ogląda Waszych zdjęć. Ich rozpoznawanie działa lokalnie na iPhonie i iPadzie.
+
+Przesuń karuzelę. Opowiadam w niej, co się zmieniło i dlaczego.
+
+CHMURNIK jest już na iPhone’a i iPada. Możesz też zajrzeć na chmurnik.cloud. Linki do pobrania i WWW dodaję w profilu.
+
+Najbardziej zależy mi na tym, co zauważysz już po odłożeniu telefonu.
+
+#CHMURNIK #Astra #OpenAI #Chmury #Meteorologia

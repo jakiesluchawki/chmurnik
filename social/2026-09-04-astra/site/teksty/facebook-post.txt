@@ -1,0 +1,17 @@
+W tym niebie jest trochę Astry.
+
+CHMURNIK dostał ostatnio sporo zmian. Część widać od razu, inne schowały się pod miękkimi kolorami. Pomagała mi przy nich Astra, nowy model OpenAI, z którym pracuję już od pewnego czasu.
+
+Zaczynałem budować tę aplikację z GPT‑5.5. Z pomocą Astry przebudowałem silnik rozpoznawania chmur, dopracowałem nawigację i przygotowałem wersję na iPada. Chciałem, żeby między zdjęciem, atlasem i ćwiczeniami można było przechodzić swobodnie. Żeby aplikacja pomagała poznawać niebo, zamiast wymagać poznawania samej aplikacji.
+
+W atlasie czekają prawdziwe zdjęcia chmur, w lekcjach można sprawdzić, co już się rozumie. METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia. Są też ćwiczenia z wiatrem i pracownia Windy, która pomaga zrozumieć to, co oglądamy na mapach pogody.
+
+Nie musisz zaczynać od instalacji. Jest wersja WWW, pod adresem, który nadal bardzo mnie cieszy:
+https://chmurnik.cloud/
+
+A jeśli wolisz mieć CHMURNIKA w kieszeni albo na iPadzie:
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+Rozpoznawanie zdjęć na iPhonie i iPadzie odbywa się na urządzeniu. Astra pomogła mi je zbudować, ale nie ogląda zdjęć użytkowników. A wyniki są podpowiedziami, nie wyrokiem: nie każde niebo mieści się w jednej odpowiedzi.
+
+Zajrzyj do atlasu, przejdź fragment lekcji, a potem spójrz przez okno. Ciekaw jestem, co zauważysz.
