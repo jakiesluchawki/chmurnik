@@ -1,11 +1,11 @@
 ---
 id: "0040"
-title: "Complete the Astra campaign for Instagram, Facebook and LinkedIn"
+title: "Complete the Astra social campaign and 4K wallpaper bonus"
 type: FEATURE
-status: active
+status: done
 related_adr: []
 related_tasks: ["0039"]
-tags: ["social", "astra", "png", "pdf"]
+tags: ["social", "astra", "png", "pdf", "wallpapers"]
 history:
   - date: "2026-09-04"
     status: active
@@ -15,6 +15,10 @@ history:
     status: active
     who: codex
     note: "Owner added downloadable 4K wallpapers as a bonus in the same campaign page and package."
+  - date: "2026-09-04"
+    status: done
+    who: codex
+    note: "Published complete platform pack and six 4K wallpapers. 188 tests pass (+6). Live checks verified 33 links, 27 PNGs, one PDF, six ZIPs and three full posts; originals and unrelated work preserved."
 ---
 
 # Astra Social Platforms
@@ -37,8 +41,8 @@ link for private sharing. The page is unlisted, not access-controlled.
 - [x] LinkedIn PDF has ten pages, selectable text, working links and verified renders.
 - [x] Platform ZIPs and full ZIP include the right assets, copy and attribution.
 - [x] Existing Stories and old campaigns remain available and unchanged.
-- [ ] Gallery and permanent catalogue are published with working downloads.
-- [ ] Six 4K wallpapers, bonus ZIP and section are visually checked and published.
+- [x] Gallery and permanent catalogue are published with working downloads.
+- [x] Six 4K wallpapers, bonus ZIP and section are visually checked and published.
 
 ## Design Decisions
 
@@ -105,8 +109,20 @@ Unrelated app release and Android worktrees remain untouched.
 
 The core social pack was published in `c1bb78f82405f0b261949b1f81d941fe995da2c4`
 with successful Pages workflow 33878739060 before the bonus was ready, so the
-owner could start manual social publication immediately. Wallpaper deployment
-and final public hash checks remain pending.
+owner could start manual social publication immediately. The wallpaper bonus
+was published in `887d78859d45f8514b4423108d36abfc1d5f4aac`, with successful
+Pages workflow 33879666106 (build 51 seconds, deploy 26 seconds).
+
+Final live verification at 2026-09-04 13:46:32 UTC checked all four campaigns,
+33 public links, exact hashes for 27 PNGs, one PDF and six ZIPs, plus all three
+complete post texts. The public gallery includes the `#tapety` section and
+the permanent catalogue exposes the bonus ZIP. Browser interaction checks
+passed locally before the byte-identical exports were published.
+
+Delivery URLs:
+- Permanent catalogue: https://jakiesluchawki.github.io/chmurnik/assetySM/
+- Campaign: https://jakiesluchawki.github.io/chmurnik/premiera/astra/
+- Wallpaper sharing: https://jakiesluchawki.github.io/chmurnik/premiera/astra/#tapety
 
 ## Issues Encountered
 
@@ -116,6 +132,9 @@ and final public hash checks remain pending.
   allow less than one point, consistent with the previous campaign validator.
 - Visual review caught unsupported CSS mask and shadow output in PDF.js;
   fixed with direct alpha PNG wordmarks and print-only shadow removal.
+- GitHub warned that the full ZIP is 73.98 MiB, above its recommended 50 MiB
+  file size. Push and Pages deployment succeeded; public download hash matched.
+  The independent wallpaper ZIP is 42.66 MiB and platform ZIPs remain smaller.
 
 ## Future Work
 
