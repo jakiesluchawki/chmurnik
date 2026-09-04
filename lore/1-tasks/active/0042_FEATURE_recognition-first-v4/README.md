@@ -5,7 +5,7 @@ type: FEATURE
 status: active
 related_adr: ["0001", "0002"]
 related_tasks: ["0029", "0026", "0034", "0035"]
-tags: ["priority-high", "machine-learning", "ios", "macos", "web", "field-feedback"]
+tags: ["priority-high", "machine-learning", "ios", "macos", "web", "field-feedback", "copy-editing"]
 history:
   - date: "2026-09-04"
     status: active
@@ -26,6 +26,10 @@ abstention, or more attractive results as improved classification accuracy.
 Then add automatic region proposals with tap selection, a comprehensible result,
 own-photo versus atlas comparison, and a discoverable full learning path.
 Deliver iPhone/iPad and Mac Catalyst builds plus appropriate web improvements.
+The owner explicitly added comprehensive interface copy-editing on September 4:
+replace vague, staccato slogans with natural Polish explaining functions,
+actions and results, informed by the better approved social copy. This is a
+separate release requirement, not a substitute for model improvement.
 
 ## Feedback
 
@@ -38,12 +42,15 @@ Deliver iPhone/iPad and Mac Catalyst builds plus appropriate web improvements.
   cloud regions automatically; let users tap them or point at a missed region.
 - Multiple and overlapping clouds and continuous layers need explicit handling.
 - The three visible learning modules hide the full layers learning module.
+- Interface slogans and strings of short fragments obscure practical meaning.
+  Audit the home screen, recognition, atlas, learning navigation, METAR/TAF,
+  wind, empty/error states and relevant web entry points as complete journeys.
 - Private messages/videos are research evidence only: no public uploads, no
   training use, and no identifiable feedback committed.
 
 ## Acceptance Criteria
 
-- [ ] Audit actual shipped Core ML models, preprocessing and baseline results.
+- [x] Audit actual shipped Core ML models, preprocessing and baseline results.
 - [x] Freeze duplicate-aware train/validation/calibration/test manifests and
   provenance before candidate selection; retain an external evaluation set.
 - [ ] Train and evaluate stronger models, with per-class results, top-1/top-3,
@@ -57,6 +64,12 @@ Deliver iPhone/iPad and Mac Catalyst builds plus appropriate web improvements.
 - [ ] Results show a short explanation and retain optional technical detail.
 - [ ] Comparison clearly shows own selected photo and real licensed atlas photo.
 - [ ] Full learning and layers module are discoverable without completing teasers.
+- [ ] Edit the complete Apple interface and applicable web copy: users can tell
+  what each feature does, how to proceed, and what the result means. Remove
+  empty slogans and unnecessary sentence fragments; retain technical accuracy,
+  uncertainty and restrained warmth. Preserve approved published social assets.
+- [ ] Review revised copy as complete sets, verify it in context and at phone,
+  tablet and desktop sizes; do not replace useful technical content with slogans.
 - [ ] Native and web regression, layout, accessibility and lesson checks pass.
 - [ ] Prepare and verify iOS/macOS release artifacts, preserve SDK-signature fix,
   and deliver web package/deployment without changing unrelated services.
@@ -67,7 +80,8 @@ Deliver iPhone/iPad and Mac Catalyst builds plus appropriate web improvements.
 1. Recover data, measure the shipped ensemble directly, and lock evaluation.
 2. Train stronger candidates and calibrate with held-out data; validate Core ML.
 3. Implement region analysis, comparison and progressive results.
-4. Repair course navigation and appropriate web behavior.
+4. Repair course navigation and appropriate web behavior; edit interface copy
+   throughout complete user journeys and verify meaning and fit in context.
 5. Complete Apple and web verification and release delivery.
 
 ## Design Decisions
@@ -91,7 +105,9 @@ Shipped recognition uses calibrated MobileNetV3 Small and Large at 40/60 weight,
 an explicit 90.2% center square crop and an 11-label softmax. The historical
 40-photo Commons benchmark recorded 52.5% top-1, not general 95% accuracy.
 The historical 95.7% precision concerned only accepted calibration predictions
-at 33.6% coverage. New baseline reproduction remains pending.
+at 33.6% coverage. Exact native reproduction is now complete on 737 photos;
+the group-aware test top-1 is 68/123 (55.28%), cloud-only 37/92 (40.22%).
+See `experiment-contract.md` for provenance and all comparison gates.
 
 The original CCSN, clear-sky and old CCAiM datasets are locally available.
 The v2/v3 training checkpoints and curated Commons subset are not yet located.
@@ -100,9 +116,9 @@ subset; treat dataset versions separately and audit label/provenance quality.
 
 ## Release Integration Note
 
-The previous Mac SDK signature repair is uncommitted in chmurnik-finish. Read and
-port only those reviewed release fixes before packaging; do not lose them or
-claim iPad/Mac review approval based on September 3 history alone.
+The previous Mac SDK signature repair was reviewed in chmurnik-finish and ported
+as f674f55 with five passing tests. No distribution build or upload has occurred;
+do not claim iPad/Mac review approval based on September 3 history alone.
 
 ## Worklog
 
@@ -128,3 +144,7 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   synthetic classifier output verifies tap framing and retained photo comparison;
   this is UI evidence only, not model-accuracy evidence. Native release remains
   unmodified and unpublished.
+- Added the owner's full copy-editing requirement to this active goal's scope
+  and acceptance criteria, and recorded reusable writing rules in AGENTS.md.
+  Recognition remains the first priority. Current regression count is 206
+  JavaScript and 31 focused Python tests, with all nine lesson audits passing.

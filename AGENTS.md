@@ -64,6 +64,14 @@ Writing production code without an active Lore task is forbidden.
   the approved warm, restrained romantic tone and practical technical detail.
   Feature demos should show genuine mobile taps, swipes, lesson questions and
   explanations, not just isolated panels with changing numbers.
+- On 2026-09-04 the owner expanded the recognition-first release to include
+  a full interface-copy edit on Apple platforms and applicable web pages.
+  Explain what a feature does, what the user can do next, and what a result
+  means. Use natural Polish sentences, not sequences of slogan fragments,
+  vague promises, or empty audience labels. Retain the restrained warmth of
+  the approved social copy without sacrificing technical meaning, uncertainty,
+  or scientific sources. Review the complete journey, not just reported phrases;
+  present complete revised copy sets for review and preserve published SM packs.
 - For wallpaper packs, the requested count means distinct visual motifs.
   Portrait and landscape exports of the same motif do not count as two
   designs. Label motif and file counts separately in galleries and bundles.
