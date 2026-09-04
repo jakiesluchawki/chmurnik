@@ -160,3 +160,16 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   keyboard selection and original-photo save; its classifier is a QA fixture.
   All 211 JavaScript tests and the production web build pass. Native release
   regression and the full copy edit remain outstanding.
+- Rewrote native/web home introductions, both onboarding sequences, workshop
+  introductions and photo-entry/save copy with explicit actions and meanings.
+  The review set is `design/copy-v4-entry-review.md`; it clearly lists what
+  still needs editing. Fixed a pre-existing mobile `nowrap` constraint exposed
+  by the longer headline. Browser QA covered 390x844 native-layout/workshop/web
+  views, web onboarding, 1024x1366 native home and 1280x900 web home. Full-course
+  access works without completing short practice. All 213 JavaScript tests,
+  production build and nine lesson audits pass. This is not a native release.
+- Completed the validation-only input-geometry comparison and the predeclared
+  frozen SigLIP 2 comparison. Neither provides an improvement over the selected
+  DINO candidate. Preserved negative results and added ten focused tests, for
+  44 passing ML tests total. No new held-out evaluation or production model
+  replacement occurred. Full recognition/copy/native acceptance remains open.

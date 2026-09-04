@@ -31,20 +31,20 @@ export function FieldHome({
             month: "long",
           })}
         </span>
-        <h1>Zauważ niebo.</h1>
-        <p>Jeden kadr. Jedna dobra obserwacja.</p>
+        <h1>Poznaj chmury nad sobą</h1>
+        <p>Rozpoznawaj ich cechy na zdjęciach, a w lekcjach sprawdzaj, jak powstają.</p>
       </header>
       <section className="field-capture-card">
         <div>
-          <span className="eyebrow">{desktop ? "Twoje fotograficzne obserwacje" : "Aparat terenowy"}</span>
+          <span className="eyebrow">Rozpoznawanie ze zdjęcia</span>
           <h2>
             Co masz
             <br />
             nad głową?
           </h2>
-          <p>Zdjęcie, wskazówka, Twój własny atlas.</p>
+          <p>{desktop ? "Wybierz zdjęcie, sprawdź podpowiedź modelu i porównaj ją z atlasem." : "Zrób zdjęcie, sprawdź podpowiedź modelu i porównaj ją z atlasem."}</p>
           <button className="button button--primary" onClick={onCapture}>
-            {desktop ? <ImageSquare size={21} /> : <Camera size={21} />} {desktop ? "Wybierz zdjęcie nieba" : "Obserwuj niebo"}
+            {desktop ? <ImageSquare size={21} /> : <Camera size={21} />} {desktop ? "Wybierz zdjęcie nieba" : "Zrób zdjęcie"}
           </button>
         </div>
         <img src={asset("assets/observer-guide-still-life-720.webp")} alt="" />
@@ -56,22 +56,22 @@ export function FieldHome({
         <ImageSquare size={24} weight="light" />
         <span>
           <strong>Moje niebo</strong>
-          <small>Twoje zdjęcia, niepewności i odkrycia</small>
+          <small>Zapisane zdjęcia i Twoje notatki o chmurach</small>
         </span>
         <ArrowRight size={21} />
       </button>
       <section className="field-home-practice">
         <div className="field-section-label">
-          <span className="eyebrow">Na wodę. W powietrze. W teren.</span>
+          <span className="eyebrow">Pogoda w praktyce</span>
           <Compass size={21} />
         </div>
-        <h2>Przećwicz, zanim wyruszysz.</h2>
+        <h2>Poznaj depesze, wiatr i mapy</h2>
         <PracticeLinks navigate={navigate} />
         <FullLearningLinks navigate={navigate} />
       </section>
       <section className="field-daily">
         <div className="field-section-label">
-          <span className="eyebrow">Uważne oko · kadr dnia</span>
+          <span className="eyebrow">Fotografia z atlasu</span>
           <button
             className="field-source"
             onClick={() => onSources(daily.cloud.sourceIds)}
@@ -90,14 +90,14 @@ export function FieldHome({
             className="button button--secondary"
             onClick={() => onRecognition(daily.cloud.id)}
           >
-            Sprawdź swoje oko <ArrowRight size={17} />
+            Ćwicz rozpoznawanie <ArrowRight size={17} />
           </button>
           <small>
             Fot. {daily.image.author} ·{" "}
             <a href={daily.image.page} target="_blank" rel="noreferrer">
               {daily.image.license}
             </a>
-            . Kadr z atlasu, nie dzisiejsza pogoda.
+            . To zdjęcie z atlasu, nie widok dzisiejszej pogody.
           </small>
         </div>
       </section>

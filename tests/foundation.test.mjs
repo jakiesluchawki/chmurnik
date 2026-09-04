@@ -53,7 +53,8 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
   assert.match(result, /Własne zdjęcie nieba/);
   assert.match(result, /Szczegóły analizy i jej ograniczenia/);
   assert.doesNotMatch(app, /Najbliższa rodzina.*% sygnału/);
-  assert.match(app, /Zdjęcie nie opuszcza urządzenia/);
+  assert.match(app, /Zdjęcie zostaje na urządzeniu/);
+  assert.match(app, /nie wysyła fotografii na serwer/);
   assert.match(interpretation, /marginThreshold: 0\.68/);
   assert.match(interpretation, /low-layered/);
   assert.match(native, /VNCoreMLRequest/);

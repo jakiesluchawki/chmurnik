@@ -26,19 +26,19 @@ import {
 
 const TRACKS = {
   metar: [
-    "Dla pilota",
-    "METAR i TAF bez zgadywania",
-    "Odczytaj raport. Oddziel obserwację od prognozy. Sprawdź swój tok rozumowania.",
+    "Depesze lotnicze",
+    "Rozczytaj METAR i TAF",
+    "METAR opisuje obserwację, a TAF jest prognozą. Wklej depeszę, żeby zobaczyć znaczenie jej skrótów i grup, albo wybierz przykład do ćwiczeń.",
   ],
   wind: [
-    "Dla żeglarza i pilota",
-    "Poczuj, skąd wieje",
-    "Zmień kurs, rusz jachtem, zobacz składowe. Tu liczby zaczynają mieć kierunek.",
+    "Żeglarstwo i lotnictwo",
+    "Sprawdź składowe wiatru",
+    "Ustaw kierunek i prędkość wiatru. Sprawdź, jak ruch jachtu zmienia wiatr odczuwany na pokładzie albo ile wiatru wieje w poprzek drogi startowej.",
   ],
   maps: [
-    "Dla każdego w terenie",
-    "Czytaj mapę, nie kolor",
-    "Poziom, jednostka, godzina, model. Cztery pytania, które zmieniają sposób czytania Windy.",
+    "Odczytywanie map",
+    "Zrozum mapy w Windy",
+    "Na przykładzie szkoleniowym sprawdzisz, jak poziom atmosfery, czas i wybrany model zmieniają odczyt wiatru. Pełna pracownia wyjaśnia też warstwy dostępne w Windy.",
   ],
 };
 const format = (value) =>
@@ -67,9 +67,9 @@ export function PracticeLinks({ navigate }) {
   return (
     <nav className="field-practice-links" aria-label="Praktyczne narzędzia">
       {[
-        ["metar", "METAR / TAF", "Obserwacja i prognoza"],
-        ["wind", "Wiatr", "Pokład i droga startowa"],
-        ["maps", "Windy", "Mapy i scenariusze"],
+        ["metar", "METAR / TAF", "Rozczytaj depeszę"],
+        ["wind", "Wiatr", "Oblicz składowe wiatru"],
+        ["maps", "Windy", "Zrozum warstwy mapy"],
       ].map(([id, label, text]) => (
         <button key={id} onClick={() => navigate(`practice/${id}`)}>
           <span className="eyebrow">{label}</span>
@@ -83,17 +83,17 @@ export function PracticeLinks({ navigate }) {
 
 export function FullLearningLinks({ navigate }) {
   return (
-    <nav className="full-learning-links" aria-label="Pełna nauka, nie tylko krótkie ćwiczenia">
+    <nav className="full-learning-links" aria-label="Pełne lekcje i pracownia atmosfery">
       <button onClick={() => navigate("layers")}>
         <span className="eyebrow">Pełna pracownia</span>
         <strong>Warstwy atmosfery i Windy</strong>
-        <span>Wysokość, mapy, wiatr i sondaże. Wszystkie zakładki w jednym miejscu.</span>
+        <span>Sprawdź, jak wysokość i ciśnienie zmieniają odczyt map, oraz poznaj pionowy przekrój atmosfery na sondażu.</span>
         <ArrowRight size={20} />
       </button>
       <button onClick={() => navigate("learn")}>
         <span className="eyebrow">Cała ścieżka nauki</span>
-        <strong>Od obserwacji do rozumienia nieba</strong>
-        <span>Pełne lekcje z przykładami i pytaniami. Możesz zacząć od dowolnego tematu.</span>
+        <strong>Lekcje o chmurach i pogodzie</strong>
+        <span>Wybierz dowolny temat i ucz się na przykładach, z pytaniami oraz wyjaśnieniami odpowiedzi.</span>
         <ArrowRight size={20} />
       </button>
     </nav>
@@ -155,14 +155,14 @@ export function PracticeChallenge({ track, onSources }) {
   return (
     <section className="field-challenge" aria-labelledby={`challenge-${track}`}>
       <div className="field-section-label">
-        <span className="eyebrow">Twój ruch · scenariusze syntetyczne</span>
+        <span className="eyebrow">Ćwiczenia na wymyślonych sytuacjach</span>
         <span>
           {all.filter((value) => records[value.id]?.lastCorrect).length}/
           {all.length} opanowane
         </span>
       </div>
       <h2 id={`challenge-${track}`} ref={heading} tabIndex={-1}>
-        {item ? item.title : "Dobra praktyka zostaje z Tobą"}
+        {item ? item.title : "Podsumowanie ćwiczeń"}
       </h2>
       {item ? (
         <>
@@ -228,8 +228,8 @@ export function PracticeChallenge({ track, onSources }) {
             <strong>
               {queue.length - missed.length} z {queue.length}
             </strong>{" "}
-            trafnych decyzji za pierwszym razem. Powtórka utrwala zasadę, nie
-            tylko odpowiedź.
+            poprawnych odpowiedzi za pierwszym razem. Możesz wrócić do
+            trudniejszych pytań i przeczytać ich wyjaśnienia.
           </p>
           <div className="field-action-row">
             {missed.length > 0 && (
@@ -418,7 +418,7 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
     <section className="field-wind-workbench">
       <div className="field-section-label">
         <span className="eyebrow">
-          {fixed ? "Obliczenie z wklejonej grupy" : "Przesuń i zobacz"}
+          {fixed ? "Wiatr z wklejonej depeszy" : "Symulator wiatru"}
         </span>
         <SourceLink
           ids={
@@ -439,7 +439,7 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
           </button>
         </div>
       )}
-      <h2>{sailing ? "Wiatr na pokładzie" : "Wiatr względem osi"}</h2>
+      <h2>{sailing ? "Wiatr na pokładzie" : "Wiatr względem drogi startowej"}</h2>
       <div className="field-wind-layout">
         <div className="field-wind-picture">
           <WindRose
@@ -611,7 +611,7 @@ function AviationReader({ onSources, onTraining }) {
         <SourceLink ids={["awcCodes", "faaTaf"]} onSources={onSources} />
       </div>
       <details className="field-report-guide">
-        <summary>METAR a TAF. Jak je odróżnić?</summary>
+        <summary>Czym różni się METAR od TAF?</summary>
         <div className="field-report-comparison">
           <div>
             <span className="eyebrow">METAR / SPECI</span>
@@ -699,7 +699,7 @@ function AviationReader({ onSources, onTraining }) {
               {example === "synthetic"
                 ? "Syntetyczny przykład"
                 : example === "provided"
-                  ? "Przykład raportu · nie live"
+                  ? "Przykładowa depesza, nie bieżąca pogoda"
                   : "Wklejony raport · nie live"}
             </span>
           </div>
@@ -835,7 +835,7 @@ function MapWorkbench({ onSources }) {
           onSources={onSources}
         />
       </div>
-      <h2>Ta sama pinezka. Inna odpowiedź.</h2>
+      <h2>Co zmienia odczyt na mapie?</h2>
       <p>
         Zmień jeden parametr i obserwuj odczyt. To schemat edukacyjny, nie mapa
         ani dane Windy.
@@ -984,10 +984,10 @@ export function FieldPractice({ track = "metar", navigate, onSources }) {
       <aside className="field-deeper">
         <Wind size={24} />
         <div>
-          <strong>Chcesz wejść głębiej?</strong>
+          <strong>Poznaj pełną pracownię atmosfery</strong>
           <p>
-            Pełne lekcje, TAF, briefing i pionowy przekrój atmosfery nadal są w
-            pracowni.
+            Znajdziesz w niej opisy warstw Windy, trening depesz, ćwiczenia
+            briefingu i sondaże pokazujące zmiany pogody wraz z wysokością.
           </p>
         </div>
         <button

@@ -475,9 +475,10 @@ function HomePage({
       <section className="hero compact-home">
         <div className="hero-content">
           <span className="hero-kicker">Dzisiaj · {todayLabel}</span>
-          <h1>Czytaj niebo</h1>
+          <h1>Poznaj chmury nad sobą</h1>
           <p>
-            Jeden prawdziwy kadr. Najpierw widoczne cechy, potem nazwa i pewność.
+            CHMURNIK pomaga rozpoznawać cechy chmur, rozumieć pogodę i czytać
+            mapy atmosfery. Zacznij od tego, co widzisz nad głową.
           </p>
           <div className="hero-actions">
             <button
@@ -485,10 +486,10 @@ function HomePage({
               onClick={showPhotoRecognition ? onOpenPhotoRecognition : () => navigate("atlas/observer")}
             >
               {showPhotoRecognition ? <CameraIcon size={19} /> : <Eye size={19} />}
-              {showPhotoRecognition ? "Czytaj zdjęcie" : "Obserwacja 60 s"}
+              {showPhotoRecognition ? "Sprawdź chmury na zdjęciu" : "Rozpoznaj widoczne cechy"}
             </button>
             <button className="button button--secondary" onClick={onPlacement}>
-              Ułóż ścieżkę
+              Dobierz lekcje dla siebie
             </button>
           </div>
         </div>
@@ -517,20 +518,20 @@ function HomePage({
         </figure>
       </section>
 
-      <section className="web-field-shortcuts"><span className="eyebrow">Pracownia terenowa · dla żeglarzy i pilotów</span><PracticeLinks navigate={navigate} /><FullLearningLinks navigate={navigate} /></section>
+      <section className="web-field-shortcuts"><span className="eyebrow">Pogoda w praktyce</span><PracticeLinks navigate={navigate} /><FullLearningLinks navigate={navigate} /></section>
       {daily && (
         <section className="daily-sky" aria-labelledby="daily-sky-title">
           <figure>
             <img
               src={publicAsset(daily.image.src)}
-              alt="Dzisiejszy kadr nieba do samodzielnej obserwacji"
+              alt="Zdjęcie z atlasu wybrane do dzisiejszego ćwiczenia"
               loading="eager"
               decoding="async"
             />
             <figcaption>Kadr {String(daily.index + 1).padStart(2, "0")} / {daily.total}</figcaption>
           </figure>
           <div className="daily-sky__content">
-            <span className="eyebrow">Kadr dnia · prawdziwe niebo</span>
+            <span className="eyebrow">Dzisiejsze ćwiczenie z atlasu</span>
             <h2 id="daily-sky-title">Co widzisz, zanim poznasz nazwę?</h2>
             <p className="daily-sky__prompt">
               Przez chwilę oceń kształt, skalę elementów, cieniowanie i rozwój pionowy.
@@ -543,7 +544,7 @@ function HomePage({
                   <p>{daily.image.diagnostic || daily.cloud.headline}</p>
                 </>
               ) : (
-                <p>Nie musisz zgadywać. Najpierw nazwij jeden widoczny dowód.</p>
+                <p>Wybierz jedną widoczną cechę, a potem sprawdź ją w opisie chmury.</p>
               )}
             </div>
             <div className="daily-sky__actions">
@@ -556,7 +557,7 @@ function HomePage({
                 <Eye size={18} />
               </button>
               <button className="text-button" onClick={() => onOpenRecognition(daily.cloud.id)}>
-                Sprawdź się na tym rodzaju <ArrowRight size={16} />
+                Ćwicz rozpoznawanie {daily.cloud.name} <ArrowRight size={16} />
               </button>
             </div>
           </div>
@@ -572,12 +573,12 @@ function HomePage({
           </button>
           <button onClick={() => navigate("layers")}>
             <Stack size={22} />
-            <span><strong>Warstwy</strong>Zrozum atmosferę</span>
+            <span><strong>Warstwy</strong>Wysokość, ciśnienie i mapy</span>
             <ArrowRight size={17} />
           </button>
           <button onClick={() => navigate("learn")}>
             <BookOpen size={22} />
-            <span><strong>Nauka</strong>Krótkie lekcje</span>
+            <span><strong>Nauka</strong>Lekcje z ćwiczeniami</span>
             <ArrowRight size={17} />
           </button>
         </nav>
@@ -601,7 +602,7 @@ function HomePage({
       <aside className="web-app-note" aria-label="CHMURNIK w App Store">
         <div>
           <span className="eyebrow">Już także na iPhone’a</span>
-          <p>Tutaj bez konta i instalacji. <strong>Niebo możesz też zabrać ze sobą w aplikacji.</strong></p>
+          <p>Z wersji WWW korzystasz bez konta i instalacji. <strong>Na iPhonie możesz też analizować własne zdjęcia w aplikacji.</strong></p>
         </div>
         <a className="button button--secondary" href="https://apps.apple.com/pl/app/chmurnik/id6782159027" target="_blank" rel="noopener noreferrer">
           Bezpłatnie w App Store <ArrowRight size={18} aria-hidden="true" />
@@ -612,14 +613,14 @@ function HomePage({
         <div className="section-heading split-heading">
           <div>
             <span className="eyebrow">{profile ? "Twoja ścieżka" : "Nie musisz znać nazw"}</span>
-            <h2>{profile ? profile.title : "Najpierw nauczysz się widzieć"}</h2>
+            <h2>{profile ? profile.title : "Zacznij od widocznych cech"}</h2>
           </div>
           <SourceButton ids={["wmoAtlas"]} onOpen={onSources} />
         </div>
         <p className="section-lead">
           {profile
             ? profile.message
-            : "Kształt, skala, światło, opad i zmiana w czasie tworzą dowód. Nazwa pojawia się dopiero wtedy, gdy umiesz go opisać."}
+            : "Przyjrzyj się kształtowi chmury, wielkości jej części i temu, jak przepuszcza światło. Lekcje pomogą Ci połączyć te obserwacje z nazwą i sposobem powstawania chmury."}
         </p>
 
       </section>
@@ -700,7 +701,7 @@ function HomePage({
               />
             </picture>
             <span>Atlas</span>
-            <strong>Prawdziwe niebo jako dowód</strong>
+            <strong>Zdjęcia i opisy chmur</strong>
           </button>
         </div>
       </section>
@@ -730,23 +731,23 @@ function HomePage({
       <section className="paper-section promise-section">
         <div className="promise-quote">
           <Eye size={28} />
-          <blockquote>„Nie uczymy zgadywać zdjęć. Uczymy budować rozpoznanie z widocznych cech.”</blockquote>
+          <blockquote>Łatwiej rozpoznać chmurę, gdy wiesz, na jakie cechy patrzeć.</blockquote>
         </div>
         <div className="promise-grid">
           <article>
             <span>01</span>
-            <h3>Łagodny początek</h3>
-            <p>Diagnoza nie ocenia. Po prostu pomija rzeczy, które już umiesz.</p>
+            <h3>Lekcje dopasowane do Ciebie</h3>
+            <p>Krótki test podpowie, od którego tematu zacząć. Wszystkie lekcje pozostają dostępne.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>Ekspercka głębia</h3>
-            <p>Gatunki, odmiany, cechy dodatkowe, przemiany i sporne granice są zawsze dostępne.</p>
+            <h3>Więcej niż nazwy rodzajów</h3>
+            <p>Atlas opisuje również gatunki, odmiany i przemiany chmur oraz pomaga porównywać podobne formy.</p>
           </article>
           <article>
             <span>03</span>
             <h3>Źródła na widoku</h3>
-            <p>Przy ważnych twierdzeniach możesz od razu sprawdzić podstawę i rolę źródła.</p>
+            <p>Przy opisach i ćwiczeniach znajdziesz odnośniki do materiałów, na których je oparto.</p>
           </article>
         </div>
       </section>
@@ -756,32 +757,32 @@ function HomePage({
 
 const onboardingSteps = [
   {
-    eyebrow: "01 · Patrz",
-    title: "Najpierw zauważ cechę",
-    body: "Prawdziwe zdjęcia są dowodem. Nazwa pojawia się dopiero po kształcie, skali i świetle.",
+    eyebrow: "01 · Atlas chmur",
+    title: "Zacznij od chmury, którą widzisz",
+    body: "Atlas zawiera prawdziwe zdjęcia i opisy cech rozpoznawczych. Porównaj kształt, cieniowanie i wielkość części chmury z tym, co masz przed sobą.",
     image: "assets/observer-guide-still-life-720.webp",
     alt: "Filcowy obiekt obserwatora w studyjnej ramie",
   },
   {
-    eyebrow: "02 · Zrozum",
-    title: "Modele pokazują ruch",
-    body: "Filcowe obiekty tłumaczą wysokość, ciśnienie i wiatr. Nie udają prawdziwych chmur.",
+    eyebrow: "02 · Warstwy atmosfery",
+    title: "Sprawdź, co dzieje się wyżej",
+    body: "Pracownia pomaga zrozumieć wysokość, ciśnienie i wiatr oraz odczytywać mapy Windy. Filcowe ilustracje objaśniają zjawiska; fotografie chmur znajdziesz w atlasie.",
     image: "assets/wind-profile-still-life-720.webp",
     alt: "Studyjny model przepływu powietrza na kilku wysokościach",
   },
   {
-    eyebrow: "03 · Wracaj",
-    title: "Jedna minuta wystarczy",
-    body: "Kadr dnia, krótka lekcja albo wpis w dzienniku. Postęp zostaje tylko na tym urządzeniu.",
+    eyebrow: "03 · Lekcje i ćwiczenia",
+    title: "Ucz się w swoim tempie",
+    body: "Możesz wybrać dowolną lekcję albo zacząć od zdjęcia dnia. Ćwiczenia zawierają wyjaśnienia odpowiedzi, a postęp zapisuje się na tym urządzeniu.",
     image: "assets/atmosphere-still-life-960.webp",
     alt: "Studyjny model warstw atmosfery",
   },
 ];
 
 const nativeOnboardingSteps = [
-  { ...onboardingSteps[0], eyebrow: "01 · Dziś", title: "Zauważ. Zatrzymaj w kadrze.", body: "Zrób zdjęcie lub wybierz je z biblioteki. Model na Twoim urządzeniu podpowie rodzinę chmur; to hipoteza, którą sprawdzisz na prawdziwych zdjęciach." },
-  { ...onboardingSteps[2], eyebrow: "02 · Moje niebo", title: "Twoje kadry mają ciąg dalszy", body: "Zachowaj całe zdjęcie jednym dotknięciem. Dodaj własne rozpoznanie, porównuj obserwacje i wyślij pocztówkę bez prywatnych notatek." },
-  { ...onboardingSteps[1], eyebrow: "03 · Atlas i pracownie", title: "Zrozum, zanim ruszysz", body: "METAR, wiatr na pokładzie i mapy Windy: narzędzia i krótkie scenariusze z wyjaśnieniem. Pełne lekcje i atlas są zawsze pod ręką." },
+  { ...onboardingSteps[0], eyebrow: "01 · Rozpoznawanie ze zdjęcia", title: "Sprawdź chmurę na zdjęciu", body: "Wybierz zdjęcie lub zrób nowe. Analiza odbywa się na urządzeniu, bez wysyłania fotografii. Model może się pomylić, dlatego jego podpowiedź porównasz ze zdjęciami w atlasie." },
+  { ...onboardingSteps[2], eyebrow: "02 · Moje niebo", title: "Zachowaj swoje obserwacje", body: "Zapisz całe zdjęcie wraz z wynikiem analizy i dodaj własne notatki. Później możesz wrócić do obserwacji albo udostępnić pocztówkę bez prywatnych zapisków." },
+  { ...onboardingSteps[1], eyebrow: "03 · Nauka i narzędzia", title: "Poznaj pogodę krok po kroku", body: "Rozczytuj METAR i TAF, obliczaj składowe wiatru i ucz się korzystać z map Windy. W pełnej pracowni znajdziesz też warstwy atmosfery, sondaże i ćwiczenia z wyjaśnieniami." },
 ];
 
 function OnboardingModal({ onClose, onFinish }) {
@@ -5078,15 +5079,15 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       >
         <header className="photo-recognition-header">
           <div>
-            <span className="eyebrow">Eksperymentalnie · model na urządzeniu</span>
-            <h2>Czytaj zdjęcie</h2>
+            <span className="eyebrow">Wersja eksperymentalna</span>
+            <h2>Rozpoznawanie ze zdjęcia</h2>
           </div>
           <button className="icon-button" onClick={onClose} disabled={saving} aria-label="Zamknij rozpoznawanie"><X size={22} /></button>
         </header>
 
         <div className="photo-privacy-note">
           <ShieldCheck size={21} weight="bold" />
-          <span><strong>Prywatnie.</strong> Analiza odbywa się na tym urządzeniu. Zdjęcie nie opuszcza urządzenia.</span>
+          <span><strong>Zdjęcie zostaje na urządzeniu.</strong> Analiza działa lokalnie i nie wysyła fotografii na serwer.</span>
         </div>
 
         {captured ? <PhotoFrame key={captured.observationId} source={captured.previewUrl} onAnalyze={analyzeFrame}
@@ -5099,7 +5100,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
           <div className="photo-recognition-intro">
             <div>
               <CameraIcon size={34} weight="light" />
-              <h3>Pokaż kawałek nieba</h3>
+              <h3>Wybierz zdjęcie chmur</h3>
               <p>Najlepszy będzie wyraźny kadr jednej chmury, bez budynków i szerokiego horyzontu.</p>
             </div>
             <picture className="photo-recognition-intro__art" aria-hidden="true">
@@ -5134,7 +5135,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
           </div>
         )}
 
-        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || phase === "analyzing"}>{saving ? "Zachowuję kadr…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Całe zdjęcie + hipoteza. Bez ponownego formularza.</small></div>}
+        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || phase === "analyzing"}>{saving ? "Zapisuję zdjęcie…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Zapiszesz całe zdjęcie wraz z dostępnym wynikiem analizy.</small></div>}
 
         {error && <p className="photo-recognition-error" role="alert"><Warning size={18} />{error}</p>}
 
@@ -5450,7 +5451,7 @@ export function App() {
       )}
       <AppHeader route={validRoute} navigate={navigate} />
       {nativeLayout && <aside className="native-workspace-sidebar">
-        <span className="eyebrow">Twoja pracownia nieba</span>
+        <span className="eyebrow">Chmury i pogoda</span>
         <nav aria-label="Pracownia">
           {workspaceItems.map((item, index) => {
             const selected = item.id === route || (!route.includes("/") && item.id === validRoute)
@@ -5461,7 +5462,7 @@ export function App() {
             </button>;
           })}
         </nav>
-        <p>Ten sam atlas.<br />Więcej miejsca na odkrycia.</p>
+        <p>Wybierz atlas, lekcję lub narzędzie z menu powyżej.</p>
         <button className="field-source" onClick={() => navigate("support")}><Info size={17} /> Pomoc i prywatność</button>
       </aside>}
       <div id="main-content">

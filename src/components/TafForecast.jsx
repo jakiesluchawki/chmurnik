@@ -8,7 +8,7 @@ export function ReportGroups({ groups }) {
   const [active, setActive] = useState(0);
   return (
     <>
-      <h3>Dotknij grupy. Zobacz znaczenie.</h3>
+      <h3>Dotknij grupy, żeby zobaczyć jej znaczenie</h3>
       <div className="field-metar-tokens" aria-label="Grupy raportu">
         {groups.map((group, index) => (
           <button
