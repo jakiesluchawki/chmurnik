@@ -10,6 +10,7 @@ const site=new URL('../social/2026-09-04-astra/site/',import.meta.url);
 const read=file=>readFile(new URL(file,site));
 const manifest=JSON.parse(await read('platforms-manifest.json'));
 const original=JSON.parse(await read('manifest.json'));
+const bonus=JSON.parse(await read('wallpapers-manifest.json'));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 
 test('Astra carousel preserves all ten approved headlines and paragraphs',()=>{
@@ -60,15 +61,34 @@ test('Astra PDF and all platform bundles match their published manifest',async()
       for(const entry of asset.entries){assert(!entry.startsWith('art/'));assert(!/\.(mov|mp4|woff2)$/i.test(entry));assert((await read(entry)).length>0);}
     }
   }
-  assert.equal(manifest.archives.find(a=>a.file.includes('PELNY')).entries.filter(e=>e.endsWith('.png')).length,21);
+  assert.equal(manifest.archives.find(a=>a.file.includes('PELNY')).entries.filter(e=>e.endsWith('.png')).length,27);
 });
 
 test('Astra gallery and permanent library expose every platform without replacing Stories',async()=>{
   const html=(await read('index.html')).toString();
-  for(const id of ['instagram','facebook','linkedin','stories'])assert(html.includes(`id="${id}"`));
+  for(const id of ['instagram','facebook','linkedin','stories','tapety'])assert(html.includes(`id="${id}"`));
   for(const c of captions)assert(html.includes(`id="post-${c.id}"`));
   assert(html.includes('../../assetySM/'));assert(html.includes('CHMURNIK-ASTRA-10-STORIES-PNG.zip'));
   const pack=packs.find(p=>p.id==='astra');
   for(const archive of manifest.archives)assert(pack.downloads.some(d=>d[1]===archive.file));
   assert(pack.downloads.some(d=>d[1]==='CHMURNIK-ASTRA-10-STORIES-PNG.zip'));
+  assert(pack.downloads.some(d=>d[1]===bonus.archive.file));
+});
+
+test('Astra wallpaper bonus contains six clean 4K exports and is included in the full pack',async()=>{
+  assert.equal(bonus.wallpapers.length,6);
+  assert.equal(new Set(bonus.wallpapers.map(w=>w.id)).size,3);
+  assert.equal(bonus.archive.entries.length,7);
+  assert.equal(hash(await read(bonus.archive.file)),bonus.archive.sha256);
+  const full=manifest.archives.find(a=>a.file.includes('PELNY'));
+  for(const w of bonus.wallpapers){
+    const bytes=await read(w.file);assert.equal(hash(bytes),w.sha256);
+    assert.equal(bytes.readUInt32BE(16),w.orientation==='desktop'?3840:2160);
+    assert.equal(bytes.readUInt32BE(20),w.orientation==='desktop'?2160:3840);
+    assert.equal(bytes[25],2);assert(full.entries.includes(w.file));
+    for(let offset=8;offset<bytes.length;){
+      const length=bytes.readUInt32BE(offset),type=bytes.subarray(offset+4,offset+8).toString();
+      assert(['IHDR','IDAT','IEND','pHYs'].includes(type),`Unexpected export metadata: ${type}`);offset+=12+length;
+    }
+  }
 });

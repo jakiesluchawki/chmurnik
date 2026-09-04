@@ -35,12 +35,14 @@ const zip=await response(new URL(zipName,gallery));
 assert.equal(hash(Buffer.from(await zip.arrayBuffer())),hash(await readFile(new URL('./site/'+zipName,import.meta.url))));
 const platformManifest=JSON.parse(await readFile(new URL('./site/platforms-manifest.json',import.meta.url)));
 const platformAssets=[...platformManifest.artworks,...platformManifest.documents,...platformManifest.archives];
+const bonus=JSON.parse(await readFile(new URL('./site/wallpapers-manifest.json',import.meta.url)));
+platformAssets.push(...bonus.wallpapers,bonus.archive);
 for(const asset of platformAssets){
   const r=await response(new URL(asset.file,gallery));
   assert.equal(hash(Buffer.from(await r.arrayBuffer())),asset.sha256,asset.file);
 }
 for(const c of captions)assert.equal(await(await response(new URL(`teksty/${c.id}-post.txt`,gallery))).text(),c.text+'\n');
 const galleryHtml=await(await response(gallery)).text();
-for(const id of ['instagram','facebook','linkedin','stories'])assert(galleryHtml.includes(`id="${id}"`));
+for(const id of ['instagram','facebook','linkedin','stories','tapety'])assert(galleryHtml.includes(`id="${id}"`));
 assert(galleryHtml.includes('Kopiuj cały post'));
-console.log(JSON.stringify({checkedAt:new Date().toISOString(),library:library.href,gallery:gallery.href,campaigns:packs.length,checkedLinks,pngHashes:21,pdfHashes:1,zipHashes:5,completePosts:3,platformSections:4},null,2));
+console.log(JSON.stringify({checkedAt:new Date().toISOString(),library:library.href,gallery:gallery.href,campaigns:packs.length,checkedLinks,pngHashes:27,pdfHashes:1,zipHashes:6,completePosts:3,platformSections:4,wallpapers:6},null,2));

@@ -1,4 +1,8 @@
 const status = document.getElementById('status');
+if (document.getElementById('tapety')) {
+  const link=document.createElement('a');link.href='#tapety';link.textContent='Tapety 4K';
+  document.querySelector('.platform-nav').append(link);
+}
 let timer;
 function notify(message) {
   status.textContent = message;
@@ -8,7 +12,7 @@ function notify(message) {
 }
 document.querySelectorAll('.copy-post').forEach(button => button.addEventListener('click', async () => {
   const content = document.getElementById(button.dataset.target);
-  try { await navigator.clipboard.writeText(content.textContent); notify('Cały post skopiowany.'); }
+  try { await navigator.clipboard.writeText(content.textContent); notify(button.dataset.target==='wallpaper-share-link'?'Link do tapet skopiowany.':'Cały post skopiowany.'); }
   catch {
     const range = document.createRange(); range.selectNodeContents(content);
     const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);

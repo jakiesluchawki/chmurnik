@@ -9,7 +9,7 @@
       "dateLabel": "4 września 2026",
       "status": "Najnowszy pakiet",
       "title": "W tym niebie jest trochę Astry.",
-      "description": "Pełny pakiet Astry: 10 Stories, 10 plansz karuzeli na Instagram, grafika Facebooka, dokument LinkedIn i kompletne posty. Statyczne PNG, prawdziwe ekrany i pełna opowieść.",
+      "description": "Pełny pakiet Astry: 10 Stories, 10 plansz karuzeli na Instagram, grafika Facebooka, dokument LinkedIn i kompletne posty. Dodatkowo 6 tapet 4K na komputer i telefon.",
       "base": "../premiera/astra/",
       "preview": "previews/01-astra.jpg",
       "formats": [
@@ -17,7 +17,7 @@
         "Karuzela",
         "Facebook",
         "LinkedIn",
-        "PNG + PDF"
+        "Tapety 4K"
       ],
       "downloads": [
         [
@@ -38,6 +38,11 @@
         [
           "LinkedIn · PDF i post",
           "CHMURNIK-ASTRA-LINKEDIN.zip",
+          "zip"
+        ],
+        [
+          "Dodatek · 6 tapet 4K",
+          "CHMURNIK-TAPETY-4K.zip",
           "zip"
         ],
         [

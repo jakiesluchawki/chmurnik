@@ -19,7 +19,11 @@ soundtrack, or automatic social posting.
 - `site/teksty/`: complete Instagram, Facebook and LinkedIn posts, profile
   links and accessibility descriptions.
 - `site/CHMURNIK-ASTRA-{INSTAGRAM,FACEBOOK,LINKEDIN}.zip`: platform bundles.
-- `site/CHMURNIK-ASTRA-PELNY-PAKIET.zip`: all 21 PNGs, PDF, posts and guidance.
+- `site/CHMURNIK-ASTRA-PELNY-PAKIET.zip`: all 27 PNGs, PDF, posts and guidance.
+- `site/tapety/`: six text-free 4K wallpaper PNGs, three motifs in separate
+  3840x2160 desktop and 2160x3840 phone compositions.
+- `site/CHMURNIK-TAPETY-4K.zip`: six wallpapers and their own instructions.
+- Direct bonus link: https://jakiesluchawki.github.io/chmurnik/premiera/astra/#tapety
 - `site/platforms-manifest.json`: platform assets, full post copy and hashes.
 - Permanent bookmark: https://jakiesluchawki.github.io/chmurnik/assetySM/
 
@@ -67,6 +71,7 @@ local Playwright installation:
 node social/2026-09-04-astra/render.mjs
 node social/2026-09-04-astra/verify.mjs
 node social/2026-09-04-astra/platforms.mjs
+node social/2026-09-04-astra/wallpapers.mjs
 node social/2026-09-04-astra/verify-platforms.mjs
 node social/library/build.mjs
 ```
@@ -85,6 +90,21 @@ on another host. Full text, links, geometry, OCR, all archive contents,
 clipboard operations and browser downloads are checked. The original Stories
 manifest and asset hashes remain unchanged. The common `gallery.mjs` builder
 preserves the full gallery when either format is rendered again.
+
+## Wallpaper Bonus
+
+The six wallpaper compositions reuse the approved tactile visual language:
+cloud/star, open-sky arch and cloud orbits. Portrait scenes were composed
+separately with clock/control space; they are not crops of the desktop views.
+The supplied raw artworks are about 1672x941 or 941x1672, then scaled to the
+specified 4K output dimensions. They are not described as native 4K detail.
+No promotional text or logo is added. Local sources and production metadata
+stay in git-ignored `art/wallpapers/`; clean exports contain only image data.
+
+`wallpaper-bundle.mjs` refreshes the full pack without changing platform-only
+ZIPs. Both export flows preserve the bonus and the same gallery address.
+The gallery is noindex and link-shareable, but not access-controlled; this
+limitation was disclosed to the owner before publication.
 
 The public Pages workflow copies only `site/`, not production source files,
 into `/premiera/astra/`. Previous galleries and application code are unchanged.

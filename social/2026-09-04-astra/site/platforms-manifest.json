@@ -257,10 +257,17 @@
         "png/chmurnik-astra-09-macos.png",
         "png/chmurnik-astra-10-zaproszenie.png",
         "TEKSTY-I-LINKI.txt",
-        "CZYTAJ-MNIE.txt"
+        "CZYTAJ-MNIE.txt",
+        "tapety/chmurnik-01-astra-3840x2160.png",
+        "tapety/chmurnik-01-astra-2160x3840.png",
+        "tapety/chmurnik-02-okno-3840x2160.png",
+        "tapety/chmurnik-02-okno-2160x3840.png",
+        "tapety/chmurnik-03-orbity-3840x2160.png",
+        "tapety/chmurnik-03-orbity-2160x3840.png",
+        "tapety/CZYTAJ-MNIE.txt"
       ],
-      "bytes": 32842263,
-      "sha256": "dff11a840b3e25e7b186d7e4882f40b5a9287b374561536855a7da54f0620027"
+      "bytes": 77570708,
+      "sha256": "6b384075f3be7e71e743c04c68b0468f655d8b7ef7d9bc97090b27e7e4f100fa"
     }
   ]
 }

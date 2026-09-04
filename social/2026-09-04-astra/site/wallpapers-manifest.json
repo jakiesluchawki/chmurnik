@@ -1,0 +1,92 @@
+{
+  "title": "Tapety CHMURNIK · 4K",
+  "date": "2026-09-04",
+  "wallpapers": [
+    {
+      "id": "01-astra",
+      "title": "Odrobina Astry",
+      "alt": "Miękka biała chmura przed fioletową, rzeźbiarską gwiazdą na oliwkowym postumencie. Pudroworóżowe tło.",
+      "orientation": "desktop",
+      "width": 3840,
+      "height": 2160,
+      "file": "tapety/chmurnik-01-astra-3840x2160.png",
+      "preview": "previews/tapety/01-astra-desktop.jpg",
+      "bytes": 5176345,
+      "sha256": "5525804292308579b10f42fe62257259eedf444a8af452763320957e81afb9f5"
+    },
+    {
+      "id": "01-astra",
+      "title": "Odrobina Astry",
+      "alt": "Miękka biała chmura przed fioletową, rzeźbiarską gwiazdą na oliwkowym postumencie. Pudroworóżowe tło.",
+      "orientation": "phone",
+      "width": 2160,
+      "height": 3840,
+      "file": "tapety/chmurnik-01-astra-2160x3840.png",
+      "preview": "previews/tapety/01-astra-phone.jpg",
+      "bytes": 5393264,
+      "sha256": "63da8039123b341509351e95bcc8383e1da1c2788df09a817b84785533a0e0fd"
+    },
+    {
+      "id": "02-okno",
+      "title": "Okno na niebo",
+      "alt": "Jasny, rzeźbiarski łuk otwiera się na błękitne niebo i białą chmurę. Oliwkowy stopień, mała fioletowa kula i różowe tło.",
+      "orientation": "desktop",
+      "width": 3840,
+      "height": 2160,
+      "file": "tapety/chmurnik-02-okno-3840x2160.png",
+      "preview": "previews/tapety/02-okno-desktop.jpg",
+      "bytes": 5080704,
+      "sha256": "076c1775d642612345391b2cb4d26c91d478c1e406fa194fe7f762637479f299"
+    },
+    {
+      "id": "02-okno",
+      "title": "Okno na niebo",
+      "alt": "Jasny, rzeźbiarski łuk otwiera się na błękitne niebo i białą chmurę. Oliwkowy stopień, mała fioletowa kula i różowe tło.",
+      "orientation": "phone",
+      "width": 2160,
+      "height": 3840,
+      "file": "tapety/chmurnik-02-okno-2160x3840.png",
+      "preview": "previews/tapety/02-okno-phone.jpg",
+      "bytes": 5942886,
+      "sha256": "94db9793785b79f2e770c8ddcea94ca43cb6a3dc61ced397c0875cc8e99be16f"
+    },
+    {
+      "id": "03-orbity",
+      "title": "Własne orbity",
+      "alt": "Białe, filcowe chmury unoszą się w cienkich kremowych orbitach na spokojnym lawendowym tle.",
+      "orientation": "desktop",
+      "width": 3840,
+      "height": 2160,
+      "file": "tapety/chmurnik-03-orbity-3840x2160.png",
+      "preview": "previews/tapety/03-orbity-desktop.jpg",
+      "bytes": 11586325,
+      "sha256": "0accf8ee2a6932f6d06812f5e5ba4e55248536d9480f2a1491a97e47e750f9b2"
+    },
+    {
+      "id": "03-orbity",
+      "title": "Własne orbity",
+      "alt": "Białe, filcowe chmury unoszą się w cienkich kremowych orbitach na spokojnym lawendowym tle.",
+      "orientation": "phone",
+      "width": 2160,
+      "height": 3840,
+      "file": "tapety/chmurnik-03-orbity-2160x3840.png",
+      "preview": "previews/tapety/03-orbity-phone.jpg",
+      "bytes": 11717136,
+      "sha256": "ceaf95433c61463463f69aa21b95bd849da34a18a2446659c76d59a59e356ace"
+    }
+  ],
+  "archive": {
+    "file": "CHMURNIK-TAPETY-4K.zip",
+    "entries": [
+      "tapety/chmurnik-01-astra-3840x2160.png",
+      "tapety/chmurnik-01-astra-2160x3840.png",
+      "tapety/chmurnik-02-okno-3840x2160.png",
+      "tapety/chmurnik-02-okno-2160x3840.png",
+      "tapety/chmurnik-03-orbity-3840x2160.png",
+      "tapety/chmurnik-03-orbity-2160x3840.png",
+      "tapety/CZYTAJ-MNIE.txt"
+    ],
+    "bytes": 44728467,
+    "sha256": "8eadcdab34cceef84765f91ec8735917330e93f7fdebf65778e98350f41b32e5"
+  }
+}

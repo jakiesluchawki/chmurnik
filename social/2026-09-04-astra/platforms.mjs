@@ -9,6 +9,7 @@ import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
 import { campaign, stories } from './copy.mjs';
 import { captions, facebook } from './captions.mjs';
+import { addWallpaperBonusToFullPack } from './wallpaper-bundle.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -149,5 +150,6 @@ const thumbs=[];
 for (const artwork of artworks.slice(0,10)) thumbs.push(await sharp(path.join(site,artwork.file)).resize(216,270).toBuffer());
 await sharp({create:{width:1120,height:564,channels:3,background:'#ddd5cb'}}).composite(thumbs.map((input,i)=>({input,left:8+(i%5)*224,top:8+Math.floor(i/5)*278}))).png().toFile(path.join(qa,'carousel-contact-sheet.png'));
 const { buildGallery } = await import('./gallery.mjs');
+await addWallpaperBonusToFullPack(site);
 await buildGallery();
 console.log('Platform exports and gallery ready.');

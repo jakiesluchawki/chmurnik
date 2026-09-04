@@ -16,6 +16,7 @@ const site=path.join(here,'site');
 const qa=path.join(root,'build/astra-platforms-qa');
 const manifest=JSON.parse(await readFile(path.join(site,'platforms-manifest.json')));
 const original=JSON.parse(await readFile(path.join(site,'manifest.json')));
+const bonus=JSON.parse(await readFile(path.join(site,'wallpapers-manifest.json')));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 // Chromium's PDF font map exposes the nonbreaking hyphen as its visible ASCII glyph.
 const normalized=s=>s.normalize('NFC').replace(/[\u2010\u2011]/g,'-').replace(/\s+/g,'');
@@ -34,7 +35,12 @@ for(const s of original.stories)assert.equal(hash(await readFile(path.join(site,
 for(const c of captions)assert.equal(await readFile(path.join(site,`teksty/${c.id}-post.txt`),'utf8'),c.text+'\n');
 assert(captions.find(c=>c.id==='instagram').text.length<2200);
 assert(captions.find(c=>c.id==='linkedin').text.length<3000);
-for(const archive of manifest.archives){
+for(const wallpaper of bonus.wallpapers){
+  const bytes=await readFile(path.join(site,wallpaper.file)),meta=await sharp(bytes).metadata();
+  assert.equal(hash(bytes),wallpaper.sha256);assert.equal(meta.width,wallpaper.width);assert.equal(meta.height,wallpaper.height);
+  assert.equal(meta.format,'png');assert.equal(meta.hasAlpha,false);
+}
+for(const archive of [...manifest.archives,bonus.archive]){
   const file=path.join(site,archive.file);
   assert.equal(hash(await readFile(file)),archive.sha256);
   assert.deepEqual(execFileSync('unzip',['-Z1',file],{encoding:'utf8'}).trim().split('\n'),archive.entries);
@@ -103,12 +109,16 @@ try{
     const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,carousel:document.querySelectorAll('.carousel-card').length,stories:document.querySelectorAll('.stories article').length}));
     assert.equal(metrics.width,metrics.scroll);assert.equal(metrics.carousel,10);assert.equal(metrics.stories,10);viewports.push(metrics);
     await page.screenshot({path:path.join(qa,`gallery-${width}.png`)});
+    assert.equal(await page.locator('.wallpaper-card').count(),3);
+    await page.locator('#tapety').screenshot({path:path.join(qa,`wallpapers-gallery-${width}.png`)});
   }
   for(const c of captions){
     await page.locator(`.copy-post[data-target="post-${c.id}"]`).click();
     assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),c.text);
   }
-  const downloads=[...manifest.archives,manifest.documents[0],manifest.artworks[0],manifest.artworks[10]];
+  await page.locator('.copy-post[data-target="wallpaper-share-link"]').click();
+  assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),campaign.galleryUrl+'#tapety');
+  const downloads=[...manifest.archives,manifest.documents[0],manifest.artworks[0],manifest.artworks[10],bonus.archive,...bonus.wallpapers.slice(0,2)];
   for(const file of downloads){
     const pending=page.waitForEvent('download');await page.locator(`a[download][href="${file.file}"]`).first().click();const result=await pending;
     assert.equal(hash(await readFile(await result.path())),file.sha256);
@@ -116,6 +126,6 @@ try{
   for(const file of await page.locator('[src],[href]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('src')||n.getAttribute('href')).filter(v=>v&&!v.startsWith('http')&&!v.startsWith('../')&&!v.startsWith('#'))))assert((await page.request.get(new URL(file,base).href)).ok(),`Broken route: ${file}`);
   assert.deepEqual(errors,[]);
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
-const report={checkedAt:new Date().toISOString(),pngCount:11,preservedStories:10,archives:manifest.archives.map(a=>({file:a.file,entries:a.entries.length})),pdfChecks,ocr,viewports,clipboardPosts:3,verifiedBrowserDownloads:7};
+const report={checkedAt:new Date().toISOString(),pngCount:11,preservedStories:10,wallpapers:6,archives:[...manifest.archives,bonus.archive].map(a=>({file:a.file,entries:a.entries.length})),pdfChecks,ocr,viewports,clipboardPosts:3,wallpaperLinkCopied:true,verifiedBrowserDownloads:10};
 await writeFile(path.join(qa,'verification.json'),JSON.stringify(report,null,2));
 console.log(JSON.stringify(report,null,2));
