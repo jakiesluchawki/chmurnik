@@ -59,6 +59,9 @@ Writing production code without an active Lore task is forbidden.
   the approved warm, restrained romantic tone and practical technical detail.
   Feature demos should show genuine mobile taps, swipes, lesson questions and
   explanations, not just isolated panels with changing numbers.
+- For wallpaper packs, the requested count means distinct visual motifs.
+  Portrait and landscape exports of the same motif do not count as two
+  designs. Label motif and file counts separately in galleries and bundles.
 - Instagram Stories should feel like a brisk startup product promo: short
   action-led edits, decisive cuts and useful close-ups, without reading-time
   holds. Keep each story's entire approved copy visible, not only successive

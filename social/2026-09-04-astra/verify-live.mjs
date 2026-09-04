@@ -9,7 +9,7 @@ const library=new URL('assetySM/',root);
 const gallery=new URL('premiera/astra/',root);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 async function response(url,method='GET'){
-  const r=await fetch(url,{method,signal:AbortSignal.timeout(30000)});
+  const r=await fetch(url,{method,signal:AbortSignal.timeout(120000)});
   assert.equal(r.status,200,`${method} ${url}: ${r.status}`);return r;
 }
 const home=await (await response(library)).text();
@@ -45,4 +45,5 @@ for(const c of captions)assert.equal(await(await response(new URL(`teksty/${c.id
 const galleryHtml=await(await response(gallery)).text();
 for(const id of ['instagram','facebook','linkedin','stories','tapety'])assert(galleryHtml.includes(`id="${id}"`));
 assert(galleryHtml.includes('Kopiuj cały post'));
-console.log(JSON.stringify({checkedAt:new Date().toISOString(),library:library.href,gallery:gallery.href,campaigns:packs.length,checkedLinks,pngHashes:27,pdfHashes:1,zipHashes:6,completePosts:3,platformSections:4,wallpapers:6},null,2));
+assert.equal((galleryHtml.match(/class="wallpaper-card"/g)||[]).length,10);
+console.log(JSON.stringify({checkedAt:new Date().toISOString(),library:library.href,gallery:gallery.href,campaigns:packs.length,checkedLinks,pngHashes:41,pdfHashes:1,zipHashes:6,completePosts:3,platformSections:4,wallpapers:20,motifs:10},null,2));

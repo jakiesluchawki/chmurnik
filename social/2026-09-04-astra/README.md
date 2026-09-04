@@ -19,10 +19,10 @@ soundtrack, or automatic social posting.
 - `site/teksty/`: complete Instagram, Facebook and LinkedIn posts, profile
   links and accessibility descriptions.
 - `site/CHMURNIK-ASTRA-{INSTAGRAM,FACEBOOK,LINKEDIN}.zip`: platform bundles.
-- `site/CHMURNIK-ASTRA-PELNY-PAKIET.zip`: all 27 PNGs, PDF, posts and guidance.
-- `site/tapety/`: six text-free 4K wallpaper PNGs, three motifs in separate
+- `site/CHMURNIK-ASTRA-PELNY-PAKIET.zip`: all 41 PNGs, PDF, posts and guidance.
+- `site/tapety/`: twenty text-free 4K wallpaper PNGs, ten motifs in separate
   3840x2160 desktop and 2160x3840 phone compositions.
-- `site/CHMURNIK-TAPETY-4K.zip`: six wallpapers and their own instructions.
+- `site/CHMURNIK-TAPETY-4K.zip`: twenty wallpaper exports and their instructions.
 - Direct bonus link: https://jakiesluchawki.github.io/chmurnik/premiera/astra/#tapety
 - `site/platforms-manifest.json`: platform assets, full post copy and hashes.
 - Permanent bookmark: https://jakiesluchawki.github.io/chmurnik/assetySM/
@@ -93,8 +93,9 @@ preserves the full gallery when either format is rendered again.
 
 ## Wallpaper Bonus
 
-The six wallpaper compositions reuse the approved tactile visual language:
-cloud/star, open-sky arch and cloud orbits. Portrait scenes were composed
+The ten wallpaper motifs reuse the approved tactile visual language:
+cloud/star, open-sky arch, cloud orbits, cloud layers, wind ribbons, rain,
+sunlight, a sky map, water and stairs. Portrait scenes were composed
 separately with clock/control space; they are not crops of the desktop views.
 The supplied raw artworks are about 1672x941 or 941x1672, then scaled to the
 specified 4K output dimensions. They are not described as native 4K detail.
@@ -103,8 +104,16 @@ stay in git-ignored `art/wallpapers/`; clean exports contain only image data.
 
 `wallpaper-bundle.mjs` refreshes the full pack without changing platform-only
 ZIPs. Both export flows preserve the bonus and the same gallery address.
+The two large ZIPs are git-ignored and rebuilt from tracked final assets with
+`node social/2026-09-04-astra/rebuild-downloads.mjs` before deployment. Tests
+also rebuild them for fresh checkouts. Fixed ZIP headers and stored image/PDF
+bytes make downloads identical across hosts, without lossy image compression
+or oversized duplicate ZIP files in Git. Manifest hashes are verified in CI.
 The gallery is noindex and link-shareable, but not access-controlled; this
 limitation was disclosed to the owner before publication.
+
+Wallpaper counts always refer to distinct motifs, not orientation variants:
+ten motifs, twenty PNG files. This corrects the original three-motif delivery.
 
 The public Pages workflow copies only `site/`, not production source files,
 into `/premiera/astra/`. Previous galleries and application code are unchanged.

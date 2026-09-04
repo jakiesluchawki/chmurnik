@@ -1,2 +1,5 @@
 # Original production artwork stays local; public PNGs are final compositions.
 art/
+# Built from tracked final assets before tests and Pages deployment.
+site/CHMURNIK-ASTRA-PELNY-PAKIET.zip
+site/CHMURNIK-TAPETY-4K.zip

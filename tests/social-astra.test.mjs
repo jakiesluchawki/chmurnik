@@ -5,6 +5,9 @@ import { createHash } from 'node:crypto';
 import { campaign, stories } from '../social/2026-09-04-astra/copy.mjs';
 import { captions } from '../social/2026-09-04-astra/captions.mjs';
 import { packs } from '../social/library/catalog.mjs';
+import { rebuildDownloads } from '../social/2026-09-04-astra/rebuild-downloads.mjs';
+
+await rebuildDownloads({quiet:true});
 
 const site=new URL('../social/2026-09-04-astra/site/',import.meta.url);
 const read=file=>readFile(new URL(file,site));
@@ -61,7 +64,7 @@ test('Astra PDF and all platform bundles match their published manifest',async()
       for(const entry of asset.entries){assert(!entry.startsWith('art/'));assert(!/\.(mov|mp4|woff2)$/i.test(entry));assert((await read(entry)).length>0);}
     }
   }
-  assert.equal(manifest.archives.find(a=>a.file.includes('PELNY')).entries.filter(e=>e.endsWith('.png')).length,27);
+  assert.equal(manifest.archives.find(a=>a.file.includes('PELNY')).entries.filter(e=>e.endsWith('.png')).length,41);
 });
 
 test('Astra gallery and permanent library expose every platform without replacing Stories',async()=>{
@@ -75,10 +78,12 @@ test('Astra gallery and permanent library expose every platform without replacin
   assert(pack.downloads.some(d=>d[1]===bonus.archive.file));
 });
 
-test('Astra wallpaper bonus contains six clean 4K exports and is included in the full pack',async()=>{
-  assert.equal(bonus.wallpapers.length,6);
-  assert.equal(new Set(bonus.wallpapers.map(w=>w.id)).size,3);
-  assert.equal(bonus.archive.entries.length,7);
+test('Astra wallpaper bonus contains ten distinct motifs, each in two clean 4K exports',async()=>{
+  assert.equal(bonus.wallpapers.length,20);
+  assert.equal(new Set(bonus.wallpapers.map(w=>w.id)).size,10);
+  assert.equal(new Set(bonus.wallpapers.map(w=>w.sha256)).size,20);
+  assert.equal(bonus.archive.entries.length,21);
+  for(const id of new Set(bonus.wallpapers.map(w=>w.id)))assert.deepEqual(bonus.wallpapers.filter(w=>w.id===id).map(w=>w.orientation).sort(),['desktop','phone']);
   assert.equal(hash(await read(bonus.archive.file)),bonus.archive.sha256);
   const full=manifest.archives.find(a=>a.file.includes('PELNY'));
   for(const w of bonus.wallpapers){

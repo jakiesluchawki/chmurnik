@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { writeDownloadZip } from './zip-downloads.mjs';
 
 export async function addWallpaperBonusToFullPack(site){
   let bonus;
@@ -14,7 +15,7 @@ export async function addWallpaperBonusToFullPack(site){
   const temporary=await mkdtemp(path.join(tmpdir(),'chmurnik-full-wallpapers-'));
   try{
     const target=path.join(temporary,archive.file);
-    execFileSync('zip',['-q','-X',target,...archive.entries],{cwd:site});execFileSync('unzip',['-t',target]);
+    await writeDownloadZip(site,target,archive.entries);execFileSync('unzip',['-t',target]);
     assert.deepEqual(execFileSync('unzip',['-Z1',target],{encoding:'utf8'}).trim().split('\n'),archive.entries);
     await copyFile(target,path.join(site,archive.file));
     const bytes=await readFile(target);archive.bytes=bytes.length;archive.sha256=createHash('sha256').update(bytes).digest('hex');

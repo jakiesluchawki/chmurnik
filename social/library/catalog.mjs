@@ -3,7 +3,7 @@ export const packs = [
     id: 'astra', source: '2026-09-04-astra', date: '2026-09-04',
     dateLabel: '4 września 2026', status: 'Najnowszy pakiet',
     title: 'W tym niebie jest trochę Astry.',
-    description: 'Pełny pakiet Astry: 10 Stories, 10 plansz karuzeli na Instagram, grafika Facebooka, dokument LinkedIn i kompletne posty. Dodatkowo 6 tapet 4K na komputer i telefon.',
+    description: 'Pełny pakiet Astry: 10 Stories, 10 plansz karuzeli na Instagram, grafika Facebooka, dokument LinkedIn i kompletne posty. Dodatkowo 10 motywów tapet 4K, każdy na komputer i telefon: 20 PNG.',
     base: '../premiera/astra/', preview: 'previews/01-astra.jpg',
     formats: ['Stories', 'Karuzela', 'Facebook', 'LinkedIn', 'Tapety 4K'],
     downloads: [
@@ -11,7 +11,7 @@ export const packs = [
       ['Instagram · karuzela i opis', 'CHMURNIK-ASTRA-INSTAGRAM.zip', 'zip'],
       ['Facebook · grafika i post', 'CHMURNIK-ASTRA-FACEBOOK.zip', 'zip'],
       ['LinkedIn · PDF i post', 'CHMURNIK-ASTRA-LINKEDIN.zip', 'zip'],
-      ['Dodatek · 6 tapet 4K', 'CHMURNIK-TAPETY-4K.zip', 'zip'],
+      ['Dodatek · 10 motywów tapet / 20 PNG', 'CHMURNIK-TAPETY-4K.zip', 'zip'],
       ['Stories · 10 PNG', 'CHMURNIK-ASTRA-10-STORIES-PNG.zip', 'zip'],
       ['Sam tekst na Facebook', 'teksty/facebook-post.txt', 'txt'],
       ['Sam tekst na LinkedIn', 'teksty/linkedin-post.txt', 'txt'],

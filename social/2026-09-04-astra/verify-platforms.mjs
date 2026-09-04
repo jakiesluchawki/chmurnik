@@ -109,7 +109,11 @@ try{
     const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,carousel:document.querySelectorAll('.carousel-card').length,stories:document.querySelectorAll('.stories article').length}));
     assert.equal(metrics.width,metrics.scroll);assert.equal(metrics.carousel,10);assert.equal(metrics.stories,10);viewports.push(metrics);
     await page.screenshot({path:path.join(qa,`gallery-${width}.png`)});
-    assert.equal(await page.locator('.wallpaper-card').count(),3);
+    assert.equal(await page.locator('.wallpaper-card').count(),10);
+    await page.locator('#tapety img').evaluateAll(async images=>{
+      for(const image of images)image.loading='eager';
+      await Promise.all(images.map(image=>image.decode()));
+    });
     await page.locator('#tapety').screenshot({path:path.join(qa,`wallpapers-gallery-${width}.png`)});
   }
   for(const c of captions){
@@ -118,7 +122,7 @@ try{
   }
   await page.locator('.copy-post[data-target="wallpaper-share-link"]').click();
   assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),campaign.galleryUrl+'#tapety');
-  const downloads=[...manifest.archives,manifest.documents[0],manifest.artworks[0],manifest.artworks[10],bonus.archive,...bonus.wallpapers.slice(0,2)];
+  const downloads=[...manifest.archives,manifest.documents[0],manifest.artworks[0],manifest.artworks[10],bonus.archive,...bonus.wallpapers.slice(0,2),...bonus.wallpapers.slice(-2)];
   for(const file of downloads){
     const pending=page.waitForEvent('download');await page.locator(`a[download][href="${file.file}"]`).first().click();const result=await pending;
     assert.equal(hash(await readFile(await result.path())),file.sha256);
@@ -126,6 +130,6 @@ try{
   for(const file of await page.locator('[src],[href]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('src')||n.getAttribute('href')).filter(v=>v&&!v.startsWith('http')&&!v.startsWith('../')&&!v.startsWith('#'))))assert((await page.request.get(new URL(file,base).href)).ok(),`Broken route: ${file}`);
   assert.deepEqual(errors,[]);
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}
-const report={checkedAt:new Date().toISOString(),pngCount:11,preservedStories:10,wallpapers:6,archives:[...manifest.archives,bonus.archive].map(a=>({file:a.file,entries:a.entries.length})),pdfChecks,ocr,viewports,clipboardPosts:3,wallpaperLinkCopied:true,verifiedBrowserDownloads:10};
+const report={checkedAt:new Date().toISOString(),pngCount:11,preservedStories:10,wallpapers:bonus.wallpapers.length,motifs:10,archives:[...manifest.archives,bonus.archive].map(a=>({file:a.file,entries:a.entries.length})),pdfChecks,ocr,viewports,clipboardPosts:3,wallpaperLinkCopied:true,verifiedBrowserDownloads:12};
 await writeFile(path.join(qa,'verification.json'),JSON.stringify(report,null,2));
 console.log(JSON.stringify(report,null,2));

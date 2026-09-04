@@ -27,6 +27,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Rebuild complete social downloads from final assets
+        run: node social/2026-09-04-astra/rebuild-downloads.mjs
       - run: npm test
       - run: npm run check:lessons
       - name: Update the permanent social media library
