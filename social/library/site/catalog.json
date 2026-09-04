@@ -1,0 +1,156 @@
+{
+  "updatedOn": "2026-09-04",
+  "canonicalUrl": "https://jakiesluchawki.github.io/chmurnik/assetySM/",
+  "packs": [
+    {
+      "id": "astra",
+      "source": "2026-09-04-astra",
+      "date": "2026-09-04",
+      "dateLabel": "4 września 2026",
+      "status": "Najnowszy pakiet",
+      "title": "W tym niebie jest trochę Astry.",
+      "description": "10 statycznych Stories o pracy nad CHMURNIKIEM z Astrą. Pełne teksty, nowe ilustracje, prawdziwe ekrany aplikacji i linki do naklejek.",
+      "base": "../premiera/astra/",
+      "preview": "previews/01-astra.jpg",
+      "formats": [
+        "Stories",
+        "PNG",
+        "Teksty i linki"
+      ],
+      "downloads": [
+        [
+          "Cały pakiet · 10 PNG",
+          "CHMURNIK-ASTRA-10-STORIES-PNG.zip",
+          "zip"
+        ],
+        [
+          "Teksty i linki do naklejek",
+          "TEKSTY-I-LINKI.txt",
+          "txt"
+        ]
+      ]
+    },
+    {
+      "id": "historia",
+      "source": "2026-09-03-full",
+      "date": "2026-09-03",
+      "dateLabel": "3 września 2026",
+      "status": "Pełna wersja · szybkie filmy V2 · WWW V3",
+      "title": "Zaczęło się od kogoś bliskiego.",
+      "description": "Geneza, atlas, lekcje, METAR, TAF i wiatr. Przyspieszone filmy z pełnym tekstem. LinkedIn i Facebook zapraszają również na chmurnik.cloud.",
+      "base": "../premiera/historia/",
+      "preview": "images/story-01-geneza-preview.jpg",
+      "formats": [
+        "Stories",
+        "Karuzela",
+        "LinkedIn",
+        "Facebook"
+      ],
+      "downloads": [
+        [
+          "Cały pakiet",
+          "chmurnik-pelny-pakiet.zip",
+          "zip"
+        ],
+        [
+          "Stories · 10 MP4",
+          "chmurnik-stories.zip",
+          "zip"
+        ],
+        [
+          "Stories · 10 JPG",
+          "chmurnik-stories-jpg.zip",
+          "zip"
+        ],
+        [
+          "Instagram · karuzela i opis",
+          "chmurnik-instagram-karuzela.zip",
+          "zip"
+        ],
+        [
+          "LinkedIn · PDF i tekst",
+          "chmurnik-linkedin.zip",
+          "zip"
+        ],
+        [
+          "Facebook · grafika i tekst",
+          "chmurnik-facebook.zip",
+          "zip"
+        ],
+        [
+          "Sam tekst na LinkedIn",
+          "teksty/linkedin-post.txt",
+          "txt"
+        ],
+        [
+          "Sam tekst na Facebook",
+          "teksty/facebook-post.txt",
+          "txt"
+        ],
+        [
+          "Sam opis karuzeli",
+          "teksty/instagram-post.txt",
+          "txt"
+        ]
+      ]
+    },
+    {
+      "id": "premiera",
+      "source": "2026-08-30",
+      "date": "2026-09-02",
+      "dateLabel": "2 września 2026",
+      "status": "Premiera w Polsce",
+      "title": "Mamy to. CHMURNIK w App Store.",
+      "description": "Pierwsza paczka premierowa: 5 statycznych Stories, 2 grafiki do feedu oraz podpisy. Materiały z dnia premiery.",
+      "base": "../premiera/",
+      "preview": "images/pl-story-01-mamy-to-preview.jpg",
+      "formats": [
+        "Stories",
+        "Instagram · posty",
+        "JPG",
+        "Podpisy"
+      ],
+      "downloads": [
+        [
+          "Cały pakiet premierowy",
+          "chmurnik-polska-2026-09-02.zip",
+          "zip"
+        ],
+        [
+          "Stories · 5 JPG",
+          "chmurnik-storki-pl-2026-09-02.zip",
+          "zip"
+        ]
+      ]
+    },
+    {
+      "id": "pierwsza-historia",
+      "source": "2026-09-03",
+      "date": "2026-09-02",
+      "dateLabel": "Wcześniejszy wariant na 3 września",
+      "status": "Archiwum",
+      "archived": true,
+      "title": "Skąd się wziął CHMURNIK.",
+      "description": "Pierwszy, pięcioczęściowy wariant opowieści z dwiema demonstracjami. Później zastąpiony pełną serią 10 Stories powyżej. Zachowany do wglądu, nie jako wersja polecana.",
+      "base": "../premiera/2026-09-03/",
+      "preview": "images/jutro-01-geneza-preview.jpg",
+      "formats": [
+        "5 Stories",
+        "JPG + MP4",
+        "Starsze teksty"
+      ],
+      "downloads": [
+        [
+          "Starszy pakiet · JPG i MP4",
+          "chmurnik-historia-2026-09-03.zip",
+          "zip"
+        ],
+        [
+          "Starszy pakiet · tylko JPG",
+          "chmurnik-storki-jpg-2026-09-03.zip",
+          "zip"
+        ]
+      ]
+    }
+  ]
+}

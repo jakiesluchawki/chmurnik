@@ -1,0 +1,82 @@
+export const campaign = {
+  title: 'W tym niebie jest trochę Astry',
+  approvedOn: '2026-09-04',
+  format: 'Ten static Instagram Stories, PNG, 1080x1920',
+  storeUrl: 'https://apps.apple.com/pl/app/chmurnik/id6782159027',
+  webUrl: 'https://chmurnik.cloud/',
+  galleryUrl: 'https://jakiesluchawki.github.io/chmurnik/premiera/astra/',
+};
+
+export const stories = [
+  {
+    id: '01-astra', theme: 'pink', art: '01-astra-cloud.png',
+    lead: 'W tym niebie jest trochę Astry.',
+    body: 'Od pewnego czasu korzystam z Astry, nowego modelu OpenAI. Pomagała mi dopracować CHMURNIKA i dziś mogę opowiedzieć, co z tej pracy zostało w aplikacji, którą możecie mieć w kieszeni.',
+    sticker: 'Poznaj CHMURNIK',
+    alt: 'Biała chmura i fioletowa rzeźbiarska gwiazda na różowym tle; wprowadzenie do pracy nad CHMURNIKIEM z Astrą.',
+  },
+  {
+    id: '02-kolejne-modele', theme: 'cream', art: '02-evolving-layers.png',
+    lead: 'CHMURNIK rósł razem z modelami.',
+    body: 'Pracowałem nad nim już z GPT‑5.5, później przyszły kolejne etapy i poprawki. Największą pomoc Astry poczułem przy dopracowywaniu całości: kiedy trzeba było sprawić, żeby aplikacja nie tylko dobrze wyglądała, ale też dobrze służyła.',
+    sticker: 'Zobacz aplikację',
+    alt: 'Warstwy rzeźbiarskich chmur układają się w kolejne stopnie; tekst o rozwijaniu aplikacji z kolejnymi modelami.',
+  },
+  {
+    id: '03-rozpoznawanie', theme: 'cream', art: '03-recognition-optic.png',
+    lead: 'Najważniejsze zmiany nie zawsze widać na ekranie.',
+    body: 'Z pomocą Astry przebudowałem silnik rozpoznawania chmur. To ta część CHMURNIKA, która analizuje zdjęcie i proponuje, co możesz na nim widzieć. Zależało mi, żeby pomagała patrzeć uważniej, a nie tylko przyklejała niebu etykietkę.',
+    sticker: 'Poznaj rozpoznawanie',
+    alt: 'Taktowna ilustracja mechanizmu optycznego z chmurą w środku; tekst o przebudowie silnika rozpoznawania.',
+  },
+  {
+    id: '04-niepewnosc', theme: 'violet', art: '04-several-clouds.png',
+    lead: 'Nie każde zdjęcie ma jedną odpowiedź.',
+    body: 'CHMURNIK pokazuje możliwe rozpoznania i podpowiada, na jakie cechy spojrzeć. Może się pomylić, a samo zdjęcie nie mówi wszystkiego. Chciałem zostawić w tej aplikacji miejsce na wątpliwość, bo od niej też zaczyna się nauka.',
+    sticker: 'Ucz się patrzeć',
+    alt: 'Trzy stylizowane formy chmur na fioletowym tle; tekst o niepewności i uczeniu się obserwacji.',
+  },
+  {
+    id: '05-prywatnosc', theme: 'pink', art: '05-private-sky.png',
+    lead: 'Twoje niebo zostaje przy Tobie.',
+    body: 'Rozpoznawanie zdjęć działa lokalnie na iPhonie i iPadzie, bez wysyłania ich na serwer. Astra pomogła mi zbudować ten mechanizm, ale nie ogląda zdjęć użytkowników. Fotografujesz chmurę, a analiza odbywa się na Twoim urządzeniu.',
+    sticker: 'Pobierz CHMURNIK',
+    alt: 'Mała chmura w otwartym oliwkowym pudełku; tekst wyjaśnia lokalną analizę zdjęć i rolę Astry przy tworzeniu aplikacji.',
+  },
+  {
+    id: '06-wygoda', theme: 'olive', visual: 'mobile',
+    lead: 'Mniej szukania przycisku, więcej przyglądania się chmurom.',
+    body: 'Z Astrą dopracowałem też nawigację i układ ekranów. Chciałem, żeby między zdjęciem, atlasem a własnymi obserwacjami można było przechodzić swobodnie. Żeby aplikacja pomagała poznawać niebo, zamiast wymagać poznawania samej aplikacji.',
+    sticker: 'Zajrzyj do atlasu',
+    alt: 'Autentyczny mobilny interfejs atlasu CHMURNIKA; tekst o nawigacji i wygodzie korzystania.',
+  },
+  {
+    id: '07-pogoda', theme: 'cream', visual: 'workshops',
+    lead: 'Pod miękkimi kolorami jest całkiem konkretna pogoda.',
+    body: 'W atlasie oglądasz prawdziwe zdjęcia chmur, w lekcjach sprawdzasz, co już rozumiesz. Dalej czekają METAR, TAF i ćwiczenia z wiatrem. Praca z Astrą pomogła mi nadać temu wygodniejszą formę, bez rezygnowania z technicznych szczegółów.',
+    sticker: 'Poznaj ćwiczenia',
+    alt: 'Prawdziwe ekrany ćwiczeń z METAR i wiatru z CHMURNIKA; opis technicznej zawartości aplikacji.',
+  },
+  {
+    id: '08-ipad', theme: 'pink', visual: 'ipad',
+    lead: 'Na iPadzie niebo dostało więcej miejsca.',
+    body: 'Z pomocą Astry przygotowałem również wersję na iPada. Układ dopasowuje się do większego ekranu, a atlas i ćwiczenia możesz oglądać w pionie i w poziomie. Ten sam CHMURNIK, tylko z większą przestrzenią na przyglądanie się szczegółom.',
+    sticker: 'Pobierz na iPada',
+    alt: 'Autentyczny zrzut ekranu CHMURNIKA z symulatora iPada w dekoracyjnej ramie urządzenia.',
+  },
+  {
+    id: '09-macos', theme: 'violet', visual: 'mac',
+    lead: 'Jeszcze jedno okno na niebo czeka na otwarcie.',
+    body: 'Wersja na macOS jest już w recenzji Apple. Chcę, żeby CHMURNIK miał swoje miejsce również na biurku, kiedy masz ochotę rozłożyć atlas na większym ekranie i zostać przy nim trochę dłużej.',
+    sticker: 'Na razie zajrzyj do WWW',
+    link: campaign.webUrl,
+    alt: 'Prawdziwy ekran natywnej wersji CHMURNIKA na Maca; tekst informuje, że wersja macOS jest w recenzji Apple.',
+  },
+  {
+    id: '10-zaproszenie', theme: 'pink', art: '10-open-sky.png',
+    lead: 'O Astrze mogę opowiadać. Efekt wolę dać Ci do ręki.',
+    body: 'CHMURNIKA możesz już pobrać na iPhone’a i iPada albo otworzyć na chmurnik.cloud. Zajrzyj do atlasu, przejdź fragment lekcji, a potem spójrz przez okno. Najbardziej zależy mi na tym, co zauważysz już po odłożeniu telefonu.',
+    sticker: 'Pobierz CHMURNIK',
+    alt: 'Rzeźbiarskie okno otwiera się na jasne niebo; zaproszenie do CHMURNIKA na iPhone, iPad i w przeglądarce.',
+  },
+].map((story, index) => ({ ...story, number: index + 1, link: story.link || campaign.storeUrl }));

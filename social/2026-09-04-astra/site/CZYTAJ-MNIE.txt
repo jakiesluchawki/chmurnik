@@ -1,0 +1,12 @@
+CHMURNIK / Z POMOCĄ ASTRY
+
+10 gotowych, statycznych PNG 1080 x 1920. Wgrywaj w kolejności 01-10.
+Pełny zaakceptowany tekst znajduje się na każdej planszy. Bez filmów i bez muzyki.
+
+Naklejkę z linkiem dodaj samodzielnie w Instagramie, w wolnym miejscu między tekstem a dolną linią. Sugerowany środek: x=540, y=1612 na planszy 1080 x 1920. Linki i etykiety: TEKSTY-I-LINKI.txt. Na planszy 09 link prowadzi do WWW, bo wersja Mac jest w recenzji Apple.
+
+PNG nie zawiera klikalnego linku. Otwierając galerię na telefonie, użyj Pobierz PNG lub Udostępnij PNG, a następnie zachowaj obraz. ZIP zawiera wszystkie 10 oryginałów, teksty, linki i źródła.
+
+Autentyczność: ilustracje są dekoracyjne, a nie materiałem do rozpoznawania gatunków chmur. Ekrany 06-07 przedstawiają rzeczywisty interfejs w układzie mobilnym, uchwycony w izolowanej przeglądarce; nie są fotografią fizycznego telefonu. Ekran 08 pochodzi z symulatora iPada, ekran 09 z natywnej aplikacji na Macu. Ramy urządzeń są dekoracyjne. Ekrany skalowano i obracano, bez podmieniania danych ani retuszu zdjęć.
+
+Przykłady meteorologiczne służą do nauki, nie zastępują oficjalnego briefingu. Status macOS potwierdzony 4 września 2026. Zachowaj podpisy autorów fotografii oraz ZRODLA-ZDJEC.txt.

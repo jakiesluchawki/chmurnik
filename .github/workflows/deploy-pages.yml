@@ -29,6 +29,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run check:lessons
+      - name: Update the permanent social media library
+        run: node social/library/build.mjs
       - run: npm run build:pages
       - name: Add the separate launch media gallery (not bundled in iOS)
         run: cp -R social/2026-08-30/site dist/premiera
@@ -36,6 +38,10 @@ jobs:
         run: cp -R social/2026-09-03/site dist/premiera/2026-09-03
       - name: Add the complete multi-platform story pack (not bundled in iOS)
         run: cp -R social/2026-09-03-full/site dist/premiera/historia
+      - name: Add the static Astra Stories gallery (not bundled in iOS)
+        run: cp -R social/2026-09-04-astra/site dist/premiera/astra
+      - name: Add the permanent social media library (not bundled in iOS)
+        run: cp -R social/library/site dist/assetySM
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
