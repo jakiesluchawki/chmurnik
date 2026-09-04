@@ -1,6 +1,17 @@
 """Predeclared classification gates; passing these is not Apple release approval."""
 
 
+def confirmatory_gates(candidate, previous):
+    clouds = candidate.get("cloud_only", {})
+    checks = {
+        "fresh_test_top1_plus_5pp": candidate.get("top1_accuracy", 0) >= previous.get("top1_accuracy", 1) + .05,
+        "fresh_test_macro_f1_plus_3pp": candidate.get("macro_f1", 0) >= previous.get("macro_f1", 1) + .03,
+        "fresh_cloud_precision_at_least_85pct": (clouds.get("selective_precision") or 0) >= .85,
+        "fresh_at_least_20_accepted_clouds": clouds.get("accepted_count", 0) >= 20,
+    }
+    return {"passed": all(checks.values()), "checks": checks}
+
+
 def classification_gates(reports, baseline):
     test, previous = reports["test"], baseline["test"]
     atlas, old_atlas = reports["diagnostic"], baseline["diagnostic"]

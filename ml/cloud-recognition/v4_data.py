@@ -92,7 +92,7 @@ def validate_manifest(rows: list[dict]) -> None:
     for row in rows:
         by_group[row["group"]].add(row["split"])
     for group, roles in by_group.items():
-        active = roles & {"train", "validation", "calibration", "test"}
+        active = roles & {"train", "validation", "calibration", "test", "confirmatory"}
         if len(active) > 1 or (active and roles & {"diagnostic", "stress"}):
             raise ValueError(f"Split leakage in group {group}: {sorted(roles)}")
     counts = Counter(row["label"] for row in rows if row["split"] == "train")

@@ -27,6 +27,21 @@ def fold_scaler(coefficients, intercept, mean, scale):
     return weights, intercept - weights @ mean
 
 
+def reuse_parent_features(parent, manifest, cache, size, views, split, parent_digest):
+    if manifest.get("parent_sha256") != parent_digest or manifest["rows"][:len(parent["rows"])] != parent["rows"]:
+        raise ValueError("Parent manifest is not an unchanged prefix")
+    rows = [row for row in parent["rows"] if row["split"] == split]
+    if split not in {"train", "validation"}:
+        raise ValueError("Only development features may be reused")
+    if (cache["manifest_sha256"] != parent_digest or cache["revision"] != DINOV2_REVISION
+            or cache["size"] != size or cache["views"] != views
+            or cache["completed"] != len(rows) or cache["ids"] != [row["id"] for row in rows]
+            or tuple(cache["features"].shape) != (len(rows) * views, 768)
+            or not torch.isfinite(cache["features"]).all()):
+        raise ValueError("Parent feature cache contract mismatch")
+    return cache
+
+
 @torch.inference_mode()
 def cached_features(model, rows, size, device, path, digest, views):
     features, completed = [], 0
@@ -62,6 +77,8 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", choices=["cpu", "mps"], default="cpu")
     parser.add_argument("--size", type=int, default=224)
+    parser.add_argument("--parent-manifest", type=Path)
+    parser.add_argument("--parent-features", type=Path)
     args = parser.parse_args()
     if args.size % 14:
         raise ValueError("DINOv2 input must be a multiple of 14")
@@ -73,6 +90,18 @@ def main():
     manifest = json.loads(args.manifest.read_text())
     validate_manifest(manifest["rows"])
     digest = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
+    if bool(args.parent_manifest) != bool(args.parent_features):
+        raise ValueError("Both parent manifest and feature directory are required")
+    parent_digest = None
+    if args.parent_manifest:
+        parent_digest = hashlib.sha256(args.parent_manifest.read_bytes()).hexdigest()
+        parent = json.loads(args.parent_manifest.read_text())
+        for split, name, views in [("train", "train-features.pt", 2), ("validation", "validation-features.pt", 1)]:
+            destination = args.output / name
+            if not destination.exists():
+                cache = torch.load(args.parent_features / name, weights_only=True)
+                reuse_parent_features(parent, manifest, cache, args.size, views, split, parent_digest)
+                atomic_save({**cache, "manifest_sha256": digest}, destination)
     train = [row for row in manifest["rows"] if row["split"] == "train"]
     validation = [row for row in manifest["rows"] if row["split"] == "validation"]
     device = torch.device(args.device)
@@ -106,6 +135,7 @@ def main():
     contract = {"architecture": "dinov2_vits14_linear", "pipeline_version": 4,
                 "input_size": args.size, "preprocess": "center_crop", "crop_fraction": .902,
                 "classes": GENERA, "seed": 7042, "manifest_sha256": digest,
+                "parent_manifest_sha256": parent_digest,
                 "backbone_revision": DINOV2_REVISION, "backbone_license": "Apache-2.0",
                 "selection": "frozen backbone; train-only scaler/logistic fit; C selected on validation macro-F1",
                 "epoch": 0, "regularization_C": selected.C, "history": history,

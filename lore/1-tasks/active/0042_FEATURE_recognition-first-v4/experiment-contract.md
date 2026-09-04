@@ -145,3 +145,269 @@ Disk space fell below 600 MiB during training. Removed only the corrupt weights
 from `convnext-tiny-256` and interrupted `convnext-tiny-256-b4`, preserving their
 contracts/logs and every completed candidate. No user files or release artifacts
 were removed. Avoid concurrent heavyweight conversion until training finishes.
+
+## Candidate Selection, 2026-09-04 22:17 CEST
+
+ConvNeXt finished at epoch 20 under the declared early-stop rule. Its best
+macro-F1 was 0.59880 at epoch 12. Select DINOv2-S/14 with the 128-unit MLP,
+224 px, epoch 17, validation macro-F1 0.62053. The 336 px MLP scored 0.62028;
+both linear-head variants scored lower. Selection used validation only.
+
+Selected checkpoint SHA-256:
+`3abb9dd7a7b0ef51123385498b5d983d3b70c0b73fbc1f8e3e32432439a48cfb`.
+The first explicit candidate calibration/test/diagnostic/stress exposure is now
+authorized by this recorded selection. Preserve the output regardless of whether
+the gates pass; no candidate is approved for integration at this point.
+
+## First Holdout Exposure: Failed, Unpublished
+
+The selected frozen-backbone MLP did not pass. Group-aware test top-1 is
+75/123 (60.98%), only +4.07 percentage points versus the identical baseline
+rows; the paired 95% bootstrap interval is -5.69 to +13.82 points. Atlas
+accuracy fell from 17/30 to 15/30 and stress accuracy fell by 5.35 points.
+Cloud-only accepted precision and accepted count also failed. The full report
+and calibrated checkpoint remain in `.local/v4/dinov2-small-mlp-calibrated`.
+Do not call this a successful recognition upgrade or ship its weights.
+
+The raw 134-row counts earlier in this document are not interchangeable with
+the duplicate-aware 123-group test. Report like-for-like counts throughout.
+
+## Next Experiment: Visual Fine-Tuning
+
+Declare two bounded variants before training: fine-tune the last two or four
+DINO blocks plus final normalization and the existing 224 px MLP. Initialize
+from the selected, uncalibrated checkpoint above. Visual/head learning rates
+are 0.00002/0.0001; AdamW decay 0.02; the existing training-only augmentations,
+square-root class weighting and smoothing 0.05 are retained. Seed 7042,
+20 epochs maximum, minimum 10, patience 6, validation macro-F1 selects epochs
+and the variant. No test prediction is used for gradients or epoch selection.
+
+The first test exposure is now known. Later repeats on this same test are
+regression evidence, not a fresh independent confirmation. Preserve all
+reports and seek a separately sourced, duplicate-screened confirmatory set
+before making a stronger generalization claim. Existing gates are unchanged.
+Training recovery stores trainable parameters and optimizer/RNG state; frozen
+parameters come from the hash-checked initialization, reducing disk use.
+
+## Independent IMGW Source, Before Any Predictions
+
+Official public source (CC BY 4.0):
+<https://danepubliczne.imgw.pl/en/repository/Artificial-neural-networks-in-automatic-image-classifications-of-cloud-from-ground-based-observations-using-deep-learning-models>.
+Kopec, Duniec, Bochenek and Figurski, DOI `10.1002/qj.4865`. The released ZIP
+contains 1,298 examples in 11 classes, not all 200,000 images from the study.
+Its byte length is 2,163,944,712; ETag `"80fb2d08-622c81f0dad50"`;
+publisher MD5 `55372b6a0edc7ac1eb5798ff293324d6`. HTTP Range requests preserve
+that snapshot, ZIP CRC verifies each member, and original/artifact SHA256 plus
+original decoded-pixel and dHash fingerprints are retained. The complete ZIP
+is not stored; its publisher MD5 has therefore not been independently checked.
+
+Freeze before model predictions: remove overlap with every original V4 role,
+exclude ambiguous cross-label near-duplicates, then assign 25% to a new
+confirmatory set, 10% calibration, 15% validation and 50% training using fixed
+SHA256 seed7042 buckets. Capture dates parsed from filenames stay within one
+role, including transitive duplicate links. Require >=15 test cases per class.
+Preserve original V4 roles; its opened test remains regression evidence. No
+user/private photos enter these sets. Stored copies are oriented RGB, maximum
+640 px, JPEG quality92/no subsampling; report this transformation explicitly.
+
+The initial hash-bucket allocation failed the predeclared support check: only
+seven Nimbostratus examples reached the confirmatory set. No manifest was
+written and no IMGW model predictions were made. Replace that allocation with
+the first fold of StratifiedGroupKFold, shuffle seed7042: four folds for the
+confirmatory set; five folds for calibration from the remainder, then five
+for validation from what remains (approximately 25/15/12/48 percent). Keep
+the >=15 examples/class requirement and day/duplicate isolation unchanged.
+
+The two-block fine-tuning run completed at epoch18, selected epoch12 with
+validation macro-F1 0.63312, top-1 64.94%. The four-block trial is running.
+Only the completed two-block optimizer-recovery file was removed to recover
+41 MiB; selected weights, full history and contract remain. Disk constraints
+must not justify deleting user assets or weakening release checks.
+
+Visual-region prototype QA on ten already-used atlas photos failed product
+acceptance: generic DINO clustering also proposes ground and fragments broad
+cloud layers. Keep it outside the Xcode target. It needs sky-specific filtering
+and region-quality evidence, not merely passing synthetic geometry tests.
+
+## IMGW V2 Development Plan, Before Predictions
+
+Frozen V2 manifest SHA256:
+`d5b0ca33e0867bbb0d0fd25dbd08fc20cfeea316a89299e53f63a6bee5d0ea1c`.
+IMGW adds 574 training, 144 validation and 179 calibration photos. Reserve
+299 confirmatory photos (21-30 per class); exclude 102 overlapping images.
+Original roles are unchanged and checked as an exact parent-manifest prefix.
+
+Declare bounded candidates before using the new development data: the existing
+four-C linear probe, the fixed 128-unit MLP, then two-/four-block fine-tuning
+initialized from that V2 MLP using the unchanged settings above. Select the
+candidate and epoch by V2 validation macro-F1 only. Frozen DINO development
+features may be reused only with matching parent digest, image order, size,
+view count and backbone revision. Never extract confirmatory features in training.
+The new test must improve top-1 by >=5 percentage points and macro-F1 by >=.03
+against the shipped ensemble, with >=.85 accepted cloud precision on >=20
+accepted clouds; report paired intervals and group-aware metrics. Old regression
+gates remain unchanged. Record the selected checkpoint hash before opening it.
+
+The four-block V1 run stopped on disk exhaustion during an atomic recovery save.
+It resumed from the previous complete epoch after lossless deduplication of
+frozen 224/336 probe weights. Archives retain original hashes, metadata and
+changed tensors, reference a hash-checked shared backbone, and verify exact
+tensor reconstruction before removing duplicate originals. Selected V1 MLP is
+the retained shared source. Atomic-save failures now remove partial temporary
+files and keep the previous checkpoint; no user/release files are deleted.
+
+Read-only Apple Sales and Trends check at 2026-09-04 20:39 UTC: 75 first-time
+units through September 3, including 70 PL; August monthly report confirms one
+unit, September 2 has 34 and September 3 has 40. September 1 reports no sales;
+September 4 is explicitly not available yet. Three redownloads and nine updates
+are excluded. This does not measure active users.
+
+## Exact Native Baseline and Latest Development Results
+
+The compiled UIKit/Mac Catalyst harness now reproduces the shipped
+UIImage/UIGraphicsImageRenderer/Vision path on 737 original photos. Its report
+is `.local/v4/baseline-v3-native.json`. Forty-five top-1 predictions differ from
+the earlier PIL geometry approximation; retain the old report but use the
+native result for all subsequent comparisons. Group-aware test top-1 is
+68/123 (55.28%), macro-F1 .44379; cloud-only top-1 is 37/92 (40.22%).
+Only nine clouds are accepted, five correctly. Atlas is 19/30; stress is
+57/243. This corrects the baseline, not the predeclared improvement gates.
+
+V1 four-block fine-tuning completed 20 epochs, selected epoch15, validation
+macro-F1 .62714. Its interrupted/resumed MPS trajectory is not claimed to be
+bit-identical to an uninterrupted run. Selected tensors are losslessly archived.
+
+V2 linear probe selected C=.01, validation macro-F1 .60527. V2 MLP completed
+30 epochs, selected epoch5, macro-F1 .63164, top-1 63.72%. Its checkpoint SHA256
+is `d34d1f2d871ebaaed612c6132ee10575016e939f5072a289ff837520fc1cea87`.
+The declared V2 two-/four-block trials must finish before candidate selection.
+No V2 calibration/test/confirmatory predictions have been opened.
+
+The older Rosenberger/SYNOP dataset is not silently added: its labels describe
+four simultaneous camera directions and ambiguously map SYNOP codes to genera.
+It is already documented in the original training pipeline. These weak labels
+are not independent, single-photo truth for the new recognition benchmark.
+
+## Sky Mask Feasibility, Not Cloud Identification
+
+Pinned MIT sky-segmentation source:
+<https://github.com/xiongzhu666/Sky-Segmentation-and-Post-processing>, revision
+`1f7811b32b64ddc957269defff84bc87a3f0b74f`. This released small U2Net separates
+sky from foreground, not cloud instances or genera. Source weights are verified
+by hash; preserve the author's MIT notice if integrated.
+
+NCNN-to-PyTorch parity passed on ten previously seen atlas images. Core ML
+FP16 narrowly failed the fixed .01 probability-error gate on one of 30 images
+(maximum .010282). FP32 passed all 30 with maximum error approximately .000005
+and identical binary masks; warm inference is about .034-.057 seconds on this
+host, not measured on a user's iPhone. Results and both exports are retained.
+
+Visual region prototypes remain outside the app target. Adding sky masks
+removes much ground but DINO clustering still fragments layers; the alternative
+color/connected-component heuristic misses some cloud layers. Neither is an
+accepted automatic cloud selector. No fabricated localization score is reported.
+
+Ported the reviewed Mac SDK-signature build helper and its five passing tests
+from the existing dirty release worktree without changing that worktree. No
+distribution build, upload, App Store approval or model replacement occurred.
+
+## Conversion and Disk Recovery
+
+The declared V2 two-block trial completed at epoch11, best epoch5, validation
+macro-F1 .61597. Its best weights are losslessly archived; only its completed
+optimizer recovery was discarded. The four-block trial was interrupted at
+epoch4 by disk exhaustion while another conversion was running. Recovery from
+the complete epoch3 is retained; do not claim uninterrupted bitwise replay.
+
+DINO conversion first failed on bicubic positional interpolation, then on the
+TorchScript frontend's scalar cast. Fixed-resolution positions are now
+precomputed with a three-input eager equality check; the supported `torch.export`
+ATEN path converts successfully. The FP16 research export failed the unchanged
+.01 probability-error gate (max .02145 across 33 validation photos), with no
+non-tie top-1 mismatch. Its report remains; the reproducible 42 MiB package was
+removed after recording SHA256: weights
+`aa87d85ff5911b2f87d894d9630bbc8010a49d053451802a5d0500ac93442e78`,
+model specification
+`1923a17cf044ae249055060075cd1035b12c630c8b558770300c976863231782`.
+This is the previously failed V1 classifier used only to test deployability,
+not another classification candidate or exposure of the new confirmation set.
+
+FP32 conversion was also interrupted by insufficient disk space. Removed its
+three identified orphaned Core ML temporary directories, old CHMURNIK compiler
+module/index/intermediate caches, and no source, archive, dSYM, built application,
+test result, photograph, or social asset. Checked no compiler was running first.
+About 1.1 GiB became available. Export now skips eager model compilation; execute
+remaining heavyweight training/conversion stages sequentially.
+
+Current regression checks: 206 JavaScript tests pass; all nine learning modules
+pass the existing content-quality audit; 31 focused Python tests pass.
+
+## Private Video Feedback Review
+
+A local Whisper-base/int8 transcript of all three supplied videos is retained
+only under ignored `.local/v4/feedback-transcript.json`. It is automatic and
+not reliable as a verbatim quotation. No private audio, video or transcript was
+uploaded or added to training/Git. The consistent product points are:
+
+- Too much information precedes the useful answer.
+- Compare means retaining the owner's original photo beside atlas examples;
+  unexplained crops and replacement imagery break that expectation.
+- Improve the complete input/analysis pipeline and test realistic scenarios,
+  rather than assuming a larger/fine-tuned classifier solves the whole problem.
+- Analyze candidate regions automatically, show progress, then let the user
+  understand and select different parts of a potentially mixed sky.
+
+These support the existing task requirements. Do not treat an automatically
+transcribed suggestion as permission to weaken the held-out model checks.
+
+## V2 Selection Locked Before Confirmation
+
+All declared V2 trials are complete. Validation macro-F1 selects the frozen
+MLP at epoch5 (.6316373631) over the linear probe (.6052704), two-block
+fine-tuning (.6159683276) and four-block fine-tuning (.6305121777 at epoch19,
+20 epochs completed). There is no selection based on calibration, test,
+diagnostic, stress or confirmatory predictions.
+
+Selected uncalibrated checkpoint SHA256:
+`d34d1f2d871ebaaed612c6132ee10575016e939f5072a289ff837520fc1cea87`.
+Manifest SHA256 remains
+`d5b0ca33e0867bbb0d0fd25dbd08fc20cfeea316a89299e53f63a6bee5d0ea1c`.
+The unselected four-block checkpoint
+`395316179518630a7fc3cd61e55285842e6d7df4b07ea9ae1fc554c6eda61419`
+is losslessly archived against the hash-checked V2 MLP; its completed optimizer
+recovery was removed. Now unlock calibration and the declared paired native
+baseline/regression/299-photo confirmation evaluation. No gate has changed.
+
+## V2 Held-Out Result: Do Not Ship
+
+The frozen MLP was evaluated once against the exact native baseline, preserving
+`.local/v4/dinov2-imgw-mlp-calibrated/evaluation.json`. Group-aware old test:
+75/123 (60.98%) vs 68/123 (55.28%), paired difference +5.69pp, 95% bootstrap
+interval -2.44 to +13.82pp. Stress: 77/243 (31.69%) vs 57/243 (23.46%).
+Atlas: 16/30 vs 19/30, exceeding the allowed one-image regression.
+
+Fresh IMGW confirmation: 167/299 (55.85%) vs 89/299 (29.77%), macro-F1 .55979
+vs .27959. Paired improvement +26.09pp, capture-day-cluster bootstrap 95%
+interval +14.94 to +37.02pp. This is real evidence of improvement on that
+population, not proof of adequate field performance or release readiness.
+
+Calibration failed its .90 precision target. The inherited legacy selector
+returned a permissive best-effort policy despite target_met=false; the release
+gates correctly rejected the candidate. Preserve that original failed report.
+V4 calibration now fails closed when no supported threshold meets the target,
+with a regression test for confident-but-wrong outputs as well as flat outputs.
+This policy correction changes no classification accuracy and cannot turn the
+failed candidate into a passing one. No production model was replaced.
+
+The 299-image confirmation set is now exposed. Further development may use it
+only as regression evidence, never silently reclassify it as a fresh test or
+move its images into training. A future stronger generalization claim requires
+another independently reserved, duplicate-screened confirmation set.
+
+Normal V4 Core ML export now requires a passing paired evaluation, bound to
+the exact calibrated checkpoint and frozen manifest, and successful calibration.
+It recomputes classification gates instead of trusting a saved `passed` flag.
+Failed or incomplete candidates require explicit `--research-only`, recorded
+in package version/metadata; conversion alone never authorizes release.
+All 34 focused Python tests pass. Earlier failed research exports/reports are
+preserved, not backfilled with a fabricated approval or a revised outcome.

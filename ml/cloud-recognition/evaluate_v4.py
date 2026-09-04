@@ -14,7 +14,8 @@ from model import build_model
 from train_ccsn import softmax
 from train_v4 import TrainingImages
 from v4_checkpoint import atomic_save
-from v4_gate import classification_gates
+from v4_gate import classification_gates, confirmatory_gates
+from v4_data import validate_manifest
 from v4_metrics import balanced_temperature, choose_cloud_policy, metrics, paired_accuracy, unique_labeled_rows
 
 
@@ -28,7 +29,7 @@ def predict(model, rows, size, device):
 
 def prediction_rows(rows, logits, temperature):
     values = softmax(logits, temperature)
-    return [{**{key: row[key] for key in ("id", "label", "source", "split", "group") if key in row},
+    return [{**{key: row[key] for key in ("id", "label", "source", "split", "group", "split_group") if key in row},
              "probabilities": probability.tolist()}
             for row, probability in zip(rows, values, strict=True)]
 
@@ -40,13 +41,17 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--baseline", type=Path)
     parser.add_argument("--evaluate-holdouts", action="store_true")
+    parser.add_argument("--evaluate-confirmatory", action="store_true")
     parser.add_argument("--private-image", type=Path)
     parser.add_argument("--device", choices=["auto", "cpu", "mps"], default="auto")
     args = parser.parse_args()
+    if args.evaluate_confirmatory and not args.evaluate_holdouts:
+        raise ValueError("Fresh confirmation also requires calibration and regression evaluation")
     if args.output.exists():
         raise ValueError("Evaluation output already exists; preserve the previous result")
     torch.set_num_threads(4)
     manifest = json.loads(args.manifest.read_text())
+    validate_manifest(manifest["rows"])
     digest = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
     checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
     if checkpoint["manifest_sha256"] != digest or checkpoint["classes"] != GENERA:
@@ -61,6 +66,7 @@ def main():
     result = {"manifest_sha256": digest, "checkpoint_sha256": hashlib.sha256(args.checkpoint.read_bytes()).hexdigest(),
               "architecture": checkpoint["architecture"], "epoch": checkpoint["epoch"],
               "holdouts_evaluated": args.evaluate_holdouts,
+              "confirmatory_evaluated": args.evaluate_confirmatory,
               "validation": metrics(prediction_rows(validation, validation_logits, 1), policy)}
     if args.evaluate_holdouts:
         if args.baseline is None:
@@ -76,13 +82,20 @@ def main():
         temperature = balanced_temperature(calibration_logits, calibration_labels)
         policy = choose_cloud_policy(softmax(calibration_logits, temperature), calibration_labels, .9)
         result.update({"temperature": temperature, "policy": policy, "reports": {}, "baseline_reports": {}, "paired": {}})
-        rows = [row for row in manifest["rows"] if row["split"] in {"calibration", "test", "diagnostic", "stress", "outlier"}]
+        roles = {"calibration", "test", "diagnostic", "stress", "outlier"}
+        report_roles = ["calibration", "test", "diagnostic", "stress"]
+        if args.evaluate_confirmatory:
+            if not any(row["split"] == "confirmatory" for row in baseline_rows):
+                raise ValueError("Missing paired fresh confirmation baseline")
+            roles.add("confirmatory")
+            report_roles.append("confirmatory")
+        rows = [row for row in manifest["rows"] if row["split"] in roles]
         if args.private_image:
             rows.append({"id": "private-feedback-dark-sky", "path": str(args.private_image),
                          "label": -1, "source": "private-feedback", "split": "unlabeled", "group": "private"})
         logits = predict(model, rows, checkpoint["input_size"], device)
         predictions = prediction_rows(rows, logits, temperature)
-        for split in ("calibration", "test", "diagnostic", "stress"):
+        for split in report_roles:
             selected = [row for row in predictions if row["split"] == split]
             previous = [row for row in baseline_rows if row["split"] == split]
             result["reports"][split] = metrics(selected, policy)
@@ -90,6 +103,10 @@ def main():
             result["paired"][split] = paired_accuracy(selected, previous)
         result["rows"] = predictions
         result["classification_gates"] = classification_gates(result["reports"], result["baseline_reports"])
+        if args.evaluate_confirmatory:
+            result["confirmatory_gates"] = confirmatory_gates(result["reports"]["confirmatory"], result["baseline_reports"]["confirmatory"])
+        result["source_reports"] = {source: metrics([row for row in predictions if row["source"] == source and row["split"] in {"test", "confirmatory"}], policy)
+                                    for source in sorted({row["source"] for row in predictions if row["split"] in {"test", "confirmatory"}})}
         result["rejection_challenges"] = {}
         for source in ("ccsn", "project-outlier"):
             selected = [row for row in predictions if row["label"] == -1 and row["source"] == source]
@@ -100,6 +117,7 @@ def main():
         checkpoint.update({"temperature": temperature, "abstention_policy": policy})
         args.output.mkdir(parents=True)
         atomic_save(checkpoint, args.output / "cloud-genus-net.pt")
+        result["calibrated_checkpoint_sha256"] = hashlib.sha256((args.output / "cloud-genus-net.pt").read_bytes()).hexdigest()
     else:
         args.output.mkdir(parents=True)
     (args.output / "evaluation.json").write_text(json.dumps(result, indent=2) + "\n")

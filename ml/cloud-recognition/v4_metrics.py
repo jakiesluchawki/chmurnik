@@ -23,10 +23,16 @@ def choose_cloud_policy(probabilities, labels, target=.9):
     if int(clouds.sum()) < 25:
         raise ValueError("Too few cloud photographs to calibrate an acceptance policy")
     if int((probabilities[clouds].max(axis=1) >= .2).sum()) < 25:
-        return {"minimum_confidence": 1., "margin_threshold": 1., "precision": None,
+        return {"minimum_confidence": 1.01, "margin_threshold": 1., "precision": None,
                 "coverage": 0., "accepted_count": 0, "target_precision": target, "target_met": False,
                 "population": "cloud photographs only; insufficient confident calibration cases"}
     policy = choose_policy(probabilities[clouds], labels[clouds], target)
+    if not policy["target_met"]:
+        # A softmax can round to exactly 1.0; failed calibration must accept none.
+        return {"minimum_confidence": 1.01, "margin_threshold": 1., "precision": None,
+                "coverage": 0., "accepted_count": 0, "target_precision": target, "target_met": False,
+                "best_failed_attempt": policy,
+                "population": "cloud photographs only; no supported threshold meets the precision target"}
     policy["population"] = "cloud photographs only; clear-sky cases do not set the confidence threshold"
     return policy
 
@@ -97,16 +103,24 @@ def paired_accuracy(candidate, baseline, seed=9183):
     candidate, _ = unique_labeled_rows(candidate)
     baseline = {row["id"]: row for row in baseline}
     differences = []
+    clusters = defaultdict(list)
     for row in candidate:
         other = baseline.get(row["id"])
         if other is None or other["label"] != row["label"]:
             raise ValueError(f"Missing or mismatched paired baseline: {row['id']}")
-        differences.append(int(np.argmax(row["probabilities"]) == row["label"]) - int(np.argmax(other["probabilities"]) == row["label"]))
+        difference = int(np.argmax(row["probabilities"]) == row["label"]) - int(np.argmax(other["probabilities"]) == row["label"])
+        differences.append(difference)
+        clusters[row.get("split_group", row.get("group", row["id"]))].append(difference)
     if not differences:
         return {"sample_count": 0}
     values = np.asarray(differences)
     random = np.random.default_rng(seed)
-    means = np.mean(random.choice(values, size=(10000, len(values))), axis=1)
+    sums = np.asarray([sum(items) for items in clusters.values()])
+    counts = np.asarray([len(items) for items in clusters.values()])
+    indices = random.integers(0, len(clusters), size=(10000, len(clusters)))
+    means = sums[indices].sum(axis=1) / counts[indices].sum(axis=1)
     return {"sample_count": len(values), "top1_difference": float(values.mean()),
+            "bootstrap_cluster_count": len(clusters),
+            "bootstrap_unit": "capture-day group where known, otherwise duplicate-image group",
             "paired_bootstrap_interval_95": np.quantile(means, [0.025, 0.975]).tolist(),
             "corrected": int((values == 1).sum()), "regressed": int((values == -1).sum())}

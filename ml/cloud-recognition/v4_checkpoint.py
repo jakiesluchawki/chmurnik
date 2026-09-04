@@ -21,11 +21,14 @@ def cpu_tree(value):
 def atomic_save(payload, destination):
     destination = Path(destination)
     temporary = destination.with_suffix(".pending.pt")
-    with temporary.open("wb") as stream:
-        torch.save(payload, stream)
-        stream.flush()
-        os.fsync(stream.fileno())
-    temporary.replace(destination)
+    try:
+        with temporary.open("wb") as stream:
+            torch.save(payload, stream)
+            stream.flush()
+            os.fsync(stream.fileno())
+        temporary.replace(destination)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def random_state(generator, device):
