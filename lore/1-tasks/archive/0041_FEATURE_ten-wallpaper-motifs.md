@@ -2,7 +2,7 @@
 id: "0041"
 title: "Expand the wallpaper bonus to ten distinct motifs"
 type: FEATURE
-status: active
+status: done
 related_adr: []
 related_tasks: ["0040"]
 tags: ["social", "wallpapers", "4k"]
@@ -11,6 +11,15 @@ history:
     status: active
     who: codex
     note: "Owner clarified that ten wallpapers means ten distinct motifs, not three motifs exported in two orientations."
+  - date: "2026-09-04"
+    status: done
+    who: codex
+    note: >
+      Published ten motifs and twenty 4K PNG exports in 52 changed files.
+      All 190 tests pass (+2). Feature commit 6c4319b deployed successfully
+      in Pages run 33881421243. Live verification checked 33 links and hashes
+      for 41 PNGs, one PDF and six ZIPs. Large ZIPs are rebuilt deterministically
+      during CI; existing URLs and the original six wallpapers are preserved.
 ---
 
 # Ten Wallpaper Motifs
@@ -29,7 +38,7 @@ existing social assets, approved copy and public download URLs intact.
 - [x] 3840x2160 and 2160x3840 exports are visually verified without text.
 - [x] Gallery clearly distinguishes ten motifs from twenty image files.
 - [x] Bonus and full packages contain all twenty exports and instructions.
-- [ ] Public URLs and downloads are checked after deployment.
+- [x] Public URLs and downloads are checked after deployment.
 - [x] Record the motif-count rule in project instructions.
 
 ## Design Decisions
@@ -72,7 +81,14 @@ Browser QA at 14:00:42 UTC verified all twenty wallpaper exports, five ZIPs,
 unchanged original Stories, complete PDF text/links/renders, responsive
 390/768/1440 layouts, the share-link clipboard and twelve browser downloads.
 The complete twenty-image grid was loaded for screenshots and reviewed.
-Public deployment and live verification remain pending.
+Pages run 33881421243 deployed feature commit 6c4319b successfully. Fresh
+Linux CI rebuilt both large ZIPs with the expected hashes before publishing.
+Live verification at 14:06:33 UTC checked four campaign galleries, 33 public
+links, all 41 PNG hashes, one PDF hash, six ZIP hashes and three complete
+post texts. The live wallpaper gallery has ten motifs and twenty exports.
+
+Public delivery remains at https://jakiesluchawki.github.io/chmurnik/assetySM/
+and https://jakiesluchawki.github.io/chmurnik/premiera/astra/#tapety.
 
 No application code or unrelated worktree changes were made.
 

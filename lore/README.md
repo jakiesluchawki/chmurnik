@@ -1,6 +1,6 @@
 # Lore Index
 
-> Auto-generated on 2026-09-04 16:00. Do not edit manually.
+> Auto-generated on 2026-09-04 16:07. Do not edit manually.
 > Use `lore_generate-index` tool to regenerate.
 
 Quick reference for task dependencies, status, and ADR relationships.
@@ -9,7 +9,7 @@ Quick reference for task dependencies, status, and ADR relationships.
 
 | Active | Blocked | Backlog | Completed | ADRs |
 |:------:|:-------:|:-------:|:---------:|:----:|
-| 2 | 1 | 2 | 31 | 1 |
+| 1 | 1 | 2 | 32 | 1 |
 
 ## Ready to Start
 
@@ -17,14 +17,12 @@ These tasks have no blockers (or all blockers completed):
 
 - **Task 0032**: [Connect iOS capture to a private observation collection](lore/1-tasks/blocked/0032_FEATURE_ios-observation-collection.md) — blocks 0 tasks (low)
 - **Task 0033**: [Prepare and submit the first public App Store release](lore/1-tasks/active/0033_FEATURE_app-store-launch.md) — blocks 0 tasks (low)
-- **Task 0041**: [Expand the wallpaper bonus to ten distinct motifs](lore/1-tasks/active/0041_FEATURE_ten-wallpaper-motifs.md) — blocks 0 tasks (low)
 
 ## Task Status
 
 | ID | Title | Type | Status | Blocked By | Blocks | ADRs |
 |:---|:------|:-----|:-------|:-----------|:-------|:-----|
 | 0033 | [Prepare and submit the first public...](lore/1-tasks/active/0033_FEATURE_app-store-launch.md) | FEATURE | **active** | — | — | 0001 |
-| 0041 | [Expand the wallpaper bonus to ten d...](lore/1-tasks/active/0041_FEATURE_ten-wallpaper-motifs.md) | FEATURE | **active** | — | — | — |
 | 0032 | [Connect iOS capture to a private ob...](lore/1-tasks/blocked/0032_FEATURE_ios-observation-collection.md) | FEATURE | blocked | — | — | 0001 |
 | 0025 | [Lazy-load specialist workshops](lore/1-tasks/backlog/0025_PERFORMANCE_lazy-load-workshops.md) | PERFORMANCE | backlog | — | — | — |
 | 0026 | [Build an opt-in expert-reviewed fie...](lore/1-tasks/backlog/0026_RESEARCH_opt-in-field-benchmark.md) | RESEARCH | backlog | — | — | — |
@@ -59,6 +57,7 @@ These tasks have no blockers (or all blockers completed):
 | 0031 | [Explore an iOS-first field companio...](lore/1-tasks/archive/0031_RESEARCH_ios-field-companion/README.md) | RESEARCH | completed | — | — | — |
 | 0039 | [Produce the approved Astra static S...](lore/1-tasks/archive/0039_FEATURE_astra-static-stories.md) | FEATURE | completed | — | — | — |
 | 0040 | [Complete the Astra social campaign ...](lore/1-tasks/archive/0040_FEATURE_astra-social-platforms.md) | FEATURE | completed | — | — | — |
+| 0041 | [Expand the wallpaper bonus to ten d...](lore/1-tasks/archive/0041_FEATURE_ten-wallpaper-motifs.md) | FEATURE | completed | — | — | — |
 
 ## Architecture Decision Records
 
