@@ -148,3 +148,15 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   and acceptance criteria, and recorded reusable writing rules in AGENTS.md.
   Recognition remains the first priority. Current regression count is 206
   JavaScript and 31 focused Python tests, with all nine lesson audits passing.
+- Completed the declared V2 model trials and the fresh IMGW confirmation.
+  The selected MLP improves several accuracy measurements but fails atlas and
+  calibrated-precision release gates. Full results remain in the experiment
+  contract; no production model replacement is authorized by these results.
+- Serialized capture, crop preparation, inference and saves within the photo
+  dialog, ignoring results from unmounted screens and preventing rapid duplicate
+  operations. Added five tests including StrictMode remount and late completion.
+  Corrected a photo-loading layout shift that scrolled the answer behind its
+  header. Browser QA at 1280x720 and 390x844 confirms retained comparison,
+  keyboard selection and original-photo save; its classifier is a QA fixture.
+  All 211 JavaScript tests and the production web build pass. Native release
+  regression and the full copy edit remain outstanding.

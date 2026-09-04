@@ -1,30 +1,36 @@
-import { useId, useState } from "react";
-import { squarePhotoRegion, prepareRecognitionRegion, validatePhotoRegion } from "../lib/photo-frame.js";
+import { useEffect, useId, useState } from "react";
+import { squarePhotoRegion, validatePhotoRegion } from "../lib/photo-frame.js";
+import { createPhotoOperationScope } from "../lib/photo-operation.js";
 
 const regionStyle = (bounds) => ({ left: `${bounds.x * 100}%`, top: `${bounds.y * 100}%`,
   width: `${bounds.width * 100}%`, height: `${bounds.height * 100}%` });
 
-export function PhotoFrame({ source, onAnalyze, onSelectRegion, regions = [], disabled, analyzing }) {
+export function PhotoFrame({ source, onAnalyze, regions = [], disabled, analyzing }) {
   const id = useId();
   const [size, setSize] = useState(null);
   const [point, setPoint] = useState(null);
   const [fraction, setFraction] = useState(.55);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [operations] = useState(createPhotoOperationScope);
+  useEffect(() => operations.mount(), [operations, source]);
   const frame = size && point ? squarePhotoRegion(size.width, size.height, point, fraction) : null;
   const proposals = regions.filter((region) => {
     try { validatePhotoRegion(region.bounds); return Boolean(region.id); } catch { return false; }
   }).slice(0, 5);
   const apply = async (bounds, region) => {
     if (disabled || busy) return;
+    const operation = operations.begin();
+    if (!operation) return;
     setBusy(true); setError("");
     try {
-      const photo = await prepareRecognitionRegion(source, bounds);
-      if (region && onSelectRegion) await onSelectRegion(region, photo);
-      else await onAnalyze(photo, { bounds });
+      await onAnalyze(bounds, region);
     } catch {
-      setError("Nie udało się odczytać fragmentu. Całe zdjęcie pozostaje bez zmian.");
-    } finally { setBusy(false); }
+      if (operation.isCurrent()) setError("Nie udało się odczytać fragmentu. Całe zdjęcie pozostaje bez zmian.");
+    } finally {
+      if (operation.isCurrent()) setBusy(false);
+      operation.finish();
+    }
   };
   const selectPoint = (event) => {
     if (disabled || busy || !size) return;

@@ -5,6 +5,8 @@ import { FieldHome } from "./components/FieldHome.jsx";
 import { FieldPractice, PracticeLinks, FullLearningLinks } from "./components/FieldPractice.jsx";
 import { SkyCollection } from "./components/SkyCollection.jsx";
 import { PhotoFrame } from "./components/PhotoFrame.jsx";
+import { prepareRecognitionRegion } from "./lib/photo-frame.js";
+import { createPhotoOperationScope } from "./lib/photo-operation.js";
 import { PhotoRecognitionResult } from "./components/PhotoRecognitionResult.jsx";
 import { ApplicationInfo } from "./components/ApplicationInfo.jsx";
 import { observationFromRecognition } from "./lib/observations.js";
@@ -4897,6 +4899,8 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
   const [frameNote, setFrameNote] = useState("");
   const resultRef = useRef(null);
   const started = useRef(false);
+  const [operations] = useState(createPhotoOperationScope);
+  useEffect(() => operations.mount(), [operations]);
   const [feedbackCount, setFeedbackCount] = useState(() => loadPhotoFeedback().length);
   const dialogRef = useDialogFocus(() => { if (!saving) onClose(); }, false);
 
@@ -4907,10 +4911,13 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
 
   const analyze = async (source) => {
     if (saving || ["capturing", "analyzing"].includes(phase)) return;
+    const operation = operations.begin();
+    if (!operation) return;
     setError(null);
     setPhase("capturing");
     try {
       const photo = await captureCloudPhoto(source);
+      if (!operation.isCurrent()) return;
       setCaptured({ ...photo, capturedAt: Date.now(), observationId: crypto.randomUUID() });
       setFrameNote("");
       setResult(null);
@@ -4918,9 +4925,12 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       setPreviewUrl(photo.previewUrl);
       setAnalyzedPhotoUrl(photo.previewUrl);
       setPhase("analyzing");
-      setResult(await recognizeCloudPhoto(photo));
+      const value = await recognizeCloudPhoto(photo);
+      if (!operation.isCurrent()) return;
+      setResult(value);
       setPhase("result");
     } catch (failure) {
+      if (!operation.isCurrent()) return;
       if (isPhotoCaptureCancellation(failure)) {
         setPhase(result ? "result" : "idle");
         return;
@@ -4928,41 +4938,63 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       console.error("[CHMURNIK camera]", failure?.code || "unknown", failure?.message || failure);
       setError(photoCaptureErrorMessage(failure));
       setPhase("idle");
+    } finally {
+      operation.finish();
     }
   };
 
   useEffect(() => {
-    if (initialSource && !started.current && !import.meta.env.VITE_QA_PHOTO_RECOGNITION) {
+    let cancelled = false;
+    // StrictMode tears down its first effect before this microtask opens a camera.
+    queueMicrotask(() => {
+      if (cancelled || !initialSource || started.current || import.meta.env.VITE_QA_PHOTO_RECOGNITION) return;
       started.current = true;
       analyze(initialSource);
-    }
+    });
+    return () => { cancelled = true; };
   }, []);
 
   const saveCaptured = async () => {
     if (!captured || saving) return;
+    const operation = operations.begin();
+    if (!operation) return;
     setSaving(true); setError(null);
     try {
       const entry = observationFromRecognition(result, new Date(captured.capturedAt), captured.observationId);
       entry.evidence = frameNote;
       await saveObservation(entry, captured);
+      if (!operation.isCurrent()) return;
       onSaved(entry.id);
     } catch (failure) {
+      if (!operation.isCurrent()) return;
       console.error("[CHMURNIK observation save]", failure?.code || failure?.name || "unknown");
       setError("Nie udało się zachować obserwacji. Zdjęcie nadal jest tutaj. Sprawdź wolne miejsce i spróbuj ponownie.");
-      setSaving(false);
+    } finally {
+      if (operation.isCurrent()) setSaving(false);
+      operation.finish();
     }
   };
 
-  const analyzeFrame = async (photo, selection) => {
+  const analyzeFrame = async (bounds) => {
+    if (!captured) return;
+    const operation = operations.begin();
+    if (!operation) return;
     setPhase("analyzing"); setError(null); setResult(null); setFrameNote("");
     try {
+      const photo = await prepareRecognitionRegion(captured.previewUrl, bounds);
+      if (!operation.isCurrent()) return;
       const value = await recognizeCloudPhoto(photo);
+      if (!operation.isCurrent()) return;
       setResult(value);
       setAnalyzedPhotoUrl(photo.previewUrl);
-      const b = selection.bounds;
+      const b = bounds;
       setFrameNote(`Hipoteza dotyczy fragmentu kadru: lewy górny róg ${Math.round(b.x * 100)}% / ${Math.round(b.y * 100)}%, rozmiar ${Math.round(b.width * 100)}% × ${Math.round(b.height * 100)}%. Zachowano całe zdjęcie.`);
       setPhase("result");
-    } catch (error) { setPhase("idle"); setError("Nie udało się rozstrzygnąć fragmentu. Możesz zachować samą obserwację."); throw error; }
+    } catch (error) {
+      if (!operation.isCurrent()) return;
+      setPhase("idle"); setError("Nie udało się rozstrzygnąć fragmentu. Możesz zachować samą obserwację.");
+      throw error;
+    } finally { operation.finish(); }
   };
 
   const rememberFeedback = (helpful) => {
@@ -4993,12 +5025,15 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
   useEffect(() => {
     const qaMode = import.meta.env.VITE_QA_PHOTO_RECOGNITION;
     if (!['result', 'native'].includes(qaMode)) return;
+    const operation = operations.begin();
+    if (!operation) return;
+    const controller = new AbortController();
     const cloud = getCloud("cumulus");
     const source = publicAsset(cloud.images[0].src);
     setPreviewUrl(source);
     setAnalyzedPhotoUrl(source);
     setPhase("analyzing");
-    const encodedPhoto = fetch(source)
+    const encodedPhoto = fetch(source, { signal: controller.signal })
         .then((response) => response.blob())
         .then((blob) => qaMode === "result"
           ? compactObservationPhoto(blob).then((photo) => photo.split(",")[1])
@@ -5010,14 +5045,18 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
         }));
     encodedPhoto
       .then((base64) => {
+        if (!operation.isCurrent()) return;
         setCaptured({ base64, previewUrl: source, capturedAt: Date.now(), observationId: crypto.randomUUID() });
         return recognizeCloudPhoto(base64);
       })
       .then((value) => {
+        if (!operation.isCurrent()) return;
         setResult(value);
         setPhase("result");
       })
-      .catch(() => setPhase("idle"));
+      .catch(() => { if (operation.isCurrent()) setPhase("idle"); })
+      .finally(() => operation.finish());
+    return () => { controller.abort(); operation.finish(); };
   }, []);
 
   const clearSkyResult = result?.state === "clear";
