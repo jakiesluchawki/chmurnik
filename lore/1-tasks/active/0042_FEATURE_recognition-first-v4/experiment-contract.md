@@ -569,3 +569,92 @@ large opposing-coefficient sums, single/batched predictions, state restoration,
 exact evidence binding, and rejection of exposed data as fresh confirmation.
 No further fit or policy search will use these regression results. Normal
 export remains blocked by measured release gates; no production model changed.
+
+## Larger Encoder Study
+
+The previous goal turn made progress: a separately licensed binary cloud-mask
+model was trained, evaluated, converted and tested through native original-photo
+preprocessing. Segmentation success does not close genus recognition. Return
+to genus classification rather than spending another turn polishing failed
+proposal rectangles. The current kernel's validation errors remain concentrated
+in similar mid/low-layer genera; no evidence supports changing acceptance
+thresholds to make these errors disappear.
+
+Before fitting, declare one larger representation: official Apache-2.0 DINOv2
+ViT-B/14 without registers, pinned existing source revision
+`7764ea0f912e53c92e82eb78a2a1631e92725fc8`, 336x336 input. Use final normalized
+class token plus mean patch token, 1,536 features. Keep the same .902 center
+geometry and original/flip training views; no mask-selected training crops,
+input-view search or new labels. This changes capacity and resolution together;
+do not claim to isolate which caused any improvement.
+
+Official weight URL:
+<https://dl.fbaipublicfiles.com/dinov2/dinov2_vitb14/dinov2_vitb14_pretrain.pth>,
+346,378,731 bytes, S3 version `UgXoSvH_JJMe1OVbpL.ucwhEuZ6APOrb`. Record the
+complete downloaded SHA256 before fitting and bind feature caches to it.
+The pinned model card explicitly covers S/B/L/g under Apache-2.0; unrelated
+XRay/Cell model licenses do not apply. Larger parameters do not guarantee
+cloud accuracy, acceptable iPhone memory, Core ML parity or latency.
+
+Use unchanged V2 data and roles. Compare logistic heads at C {.01,.1,1,10}
+with balanced sample classes and train-only standardization, and one 128-unit
+GELU/dropout .2 MLP with the existing fixed recipe: train-only feature mean/std,
+sqrt inverse-frequency class weights, label smoothing .05, AdamW .001/weight
+decay .01, cosine 200 epochs/.00001 minimum, batch64, seed7042; stop after
+epoch30 once validation macro-F1 has not improved for20epochs. Choose maximum
+raw validation macro-F1 across those two families. Preserve all results.
+
+Only continue to calibration/regression if this exceeds the selected small
+kernel's raw .64303165 validation macro-F1. Calibration, old test, atlas,
+stress and exposed IMGW confirmation stay untouched during selection. Exposed
+sets remain regression evidence, never fresh confirmation or training data.
+All original accuracy, calibrated precision and coverage release gates remain
+unchanged. No production model replacement is authorized by a larger backbone
+or a validation-only win.
+
+Downloaded weight identity verified before feature extraction or fitting:
+SHA256 `0b8b82f85de91b424aded121c7e1dcc2b7bc6d0adeea651bf73a13307fad8c73`,
+346,378,731 bytes. Cache identities include this hash, the pinned source revision,
+architecture, 1,536-feature pooling, geometry, full manifest, view count, exact
+ordered image IDs and extraction-code hashes. A resume must reject any mismatch.
+
+All five Base trials completed in 648.1 seconds of the bounded runner. Linear
+validation macro-F1 for C {.01,.1,1,10} was {.59736010,.56525231,.56212280,
+.53094779}. Float32 folded-head parity passed for every fit; maximum logit
+errors ranged from .00001717 to .00007248, without changed validation labels.
+The fixed MLP selected epoch 6: 282/452 (62.39%) top-1, .62172039 macro-F1.
+It does not exceed the small kernel's .64303165. Per the contract, no calibration,
+old test, atlas, stress, exposed confirmation, native conversion or release
+evaluation was opened for this model. Do not report a larger encoder as an
+improvement. Capacity and resolution changed together; this negative trial
+does not isolate their individual effects.
+
+Results and every small fitted head are in `.local/v4/dinov2-base-336/`.
+The selected full checkpoint is losslessly archived against the hash-checked
+official raw backbone at `../dinov2-base-source/dinov2_vitb14_pretrain.pth`.
+The archive contains 201,233 changed tensor values (head/normalization), all
+metadata and the original checkpoint hash. Exact key order and every restored
+tensor were checked before removing the repeated full checkpoint. Keep the
+official raw source: the archive now depends on it. The archiver supports both
+the existing full-checkpoint format and explicit `dinov2-backbone` format;
+streamed hashing and mapped tensor reads avoid large duplicate allocations.
+
+The archive is 817,741 bytes, SHA256
+`5216e10caedc2da2adedc51deb721728fa04dc0144c5e92770c9f72001f740fe`;
+the original full checkpoint SHA256 was
+`bd51ac2377c35aac71b603d30d85fcb948d68279293f1a91ab2d125340965d78`.
+All 80 ML tests now pass, including exact interrupted/resumed MLP history and
+tensor parity, raw-backbone reconstruction, changed-source rejection and the
+new GLOBE CSV schema audit. The bounded training and archive processes both
+exited 0; no V4 MPS process remains running from this trial.
+
+During the trial host disk availability temporarily fell below400MiB while
+another same-owner CHMURNIK task needed an Android emulator. After ML ended,
+availability recovered above 8GiB; only this trial's verified duplicate was
+removed. Do not stop the Android emulator or alter another worktree. A resource
+coordination reply initially failed automatic review; a read then verified the
+same-owner CHMURNIK Android task and shared workspace. The minimal follow-up
+could not be delivered because the app tool became unavailable. Do not assume
+that another task received that message. Later command creation intermittently
+failed with `Too many open files`; this is an execution-service issue, not an
+unfinished training job or evidence that the model needs restarting.

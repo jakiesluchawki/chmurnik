@@ -201,3 +201,14 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   limitations. Sixty-four ML tests and native assertions pass. Full evidence
   and unreleased status are in `segmentation-contract.md`. Neither this work
   nor its segmentation score closes the genus-model or release requirements.
+- Completed a pinned DINOv2 Base/336px comparison on unchanged development
+  data. Four linear heads and one fixed MLP did not beat the small kernel;
+  best macro-F1 was .62172 versus .64303. No holdouts or production model were
+  touched. Preserved all heads/features and losslessly archived the selected
+  checkpoint against the official source. All 80 ML tests pass. Audited NASA
+  GLOBE metadata and implemented a tested parser for 810 broken CSV records;
+  excluded incomplete classification metadata and preserved union categories.
+  The corrected source has 3,099 observations and 15,333 photo URLs, but the
+  screened subset is imbalanced and covers only 11 dates. A fixed visual audit
+  and proper grouping must precede training. See `data-expansion-audit.md`.
+  No new Apple build or upload occurred; the full release remains open.

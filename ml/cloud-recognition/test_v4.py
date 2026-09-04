@@ -214,6 +214,24 @@ class CheckpointTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Shared checkpoint changed"):
                 restore_archive(root / "archived-checkpoint.pt")
 
+    def test_raw_dino_archive_restores_prefix_head_and_normalization(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            shared, candidate = root / "official.pth", root / "candidate.pt"
+            atomic_save({"block": torch.ones(1000)}, shared)
+            state = {"backbone.block": torch.ones(1000), "classifier.weight": torch.zeros(10),
+                     "image_mean": torch.ones(3)}
+            atomic_save({"state_dict": state, "architecture": "dinov2_vitb14_mlp"}, candidate)
+            with patch("sys.argv", ["archive", "--checkpoint", str(candidate), "--shared", str(shared),
+                                    "--shared-format", "dinov2-backbone", "--remove-duplicate"]):
+                archive_checkpoint()
+            self.assertFalse(candidate.exists())
+            restored = restore_archive(root / "archived-checkpoint.pt")
+            self.assertEqual(restored["architecture"], "dinov2_vitb14_mlp")
+            self.assertEqual(list(restored["state_dict"]), list(state))
+            for key, value in state.items():
+                torch.testing.assert_close(restored["state_dict"][key], value, atol=0, rtol=0)
+
     def test_v4_export_requires_hash_checked_training_attribution(self):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "manifest.json"

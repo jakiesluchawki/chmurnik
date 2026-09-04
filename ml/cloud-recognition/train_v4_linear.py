@@ -42,16 +42,37 @@ def reuse_parent_features(parent, manifest, cache, size, views, split, parent_di
     return cache
 
 
+def validate_feature_cache(saved, expected, ids, views, feature_count):
+    if any(saved.get(key) != value for key, value in expected.items()):
+        raise ValueError("Feature cache contract mismatch")
+    completed = saved.get("completed")
+    if type(completed) is not int or not 0 <= completed <= len(ids):
+        raise ValueError("Feature cache completion count mismatch")
+    if saved.get("ids") != ids[:completed]:
+        raise ValueError("Feature cache image order mismatch")
+    values = saved.get("features")
+    if (not isinstance(values, torch.Tensor) or values.dtype != torch.float32
+            or tuple(values.shape) != (completed * views, feature_count)
+            or not torch.isfinite(values).all()):
+        raise ValueError("Feature cache tensor mismatch")
+    return completed
+
+
 @torch.inference_mode()
-def cached_features(model, rows, size, device, path, digest, views):
+def cached_features(model, rows, size, device, path, digest, views, *, identity=None, feature_count=768):
+    if not rows or {row["split"] for row in rows} not in ({"train"}, {"validation"}):
+        raise ValueError("Frozen features require a nonempty, single development split")
+    if views not in {1, 2} or size <= 0 or size % 14 or feature_count <= 0:
+        raise ValueError("Invalid feature extraction geometry")
+    if feature_count != 768 and identity is None:
+        raise ValueError("A different backbone requires explicit feature identity")
+    expected = {"manifest_sha256": digest, "size": size, "views": views,
+                "revision": DINOV2_REVISION, "identity": identity}
+    ids = [row["id"] for row in rows]
     features, completed = [], 0
     if path.exists():
         saved = torch.load(path, weights_only=True)
-        if saved["manifest_sha256"] != digest or saved["size"] != size or saved["views"] != views or saved["revision"] != DINOV2_REVISION:
-            raise ValueError("Feature cache contract mismatch")
-        completed = saved["completed"]
-        if saved["ids"] != [row["id"] for row in rows[:completed]]:
-            raise ValueError("Feature cache image order mismatch")
+        completed = validate_feature_cache(saved, expected, ids, views, feature_count)
         features = [saved["features"]]
     loader = DataLoader(TrainingImages(rows[completed:], size), batch_size=4)
     for batch, (images, _) in enumerate(loader):
@@ -59,13 +80,15 @@ def cached_features(model, rows, size, device, path, digest, views):
         values = [model.features(images).cpu()]
         if views == 2:
             values.append(model.features(images.flip(3)).cpu())
-        features.append(torch.stack(values, dim=1).reshape(-1, 768))
+        if any(tuple(value.shape) != (len(images), feature_count) or value.dtype != torch.float32
+               or not torch.isfinite(value).all() for value in values):
+            raise ValueError("Backbone returned invalid feature tensors")
+        features.append(torch.stack(values, dim=1).reshape(-1, feature_count))
         completed += len(images)
         if (batch + 1) % 25 == 0 or completed == len(rows):
             merged = torch.cat(features)
-            atomic_save({"manifest_sha256": digest, "revision": DINOV2_REVISION,
-                         "size": size, "views": views, "completed": completed,
-                         "ids": [row["id"] for row in rows[:completed]], "features": merged}, path)
+            atomic_save({**expected, "completed": completed,
+                         "ids": ids[:completed], "features": merged}, path)
             features = [merged]
             print(f"features {path.name}: {completed}/{len(rows)}", flush=True)
     return torch.cat(features).numpy()
