@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { photoFrame } from "../src/lib/photo-frame.js";
+import { photoFrame, squarePhotoRegion, validatePhotoRegion } from "../src/lib/photo-frame.js";
 
 test("unzoomed framing preserves all original evidence", () => {
   assert.deepEqual(photoFrame(4032, 3024), {
@@ -50,4 +50,21 @@ test("invalid dimensions and frame coordinates are rejected before canvas proces
   ]) {
     assert.throws(() => photoFrame(...args), RangeError);
   }
+});
+
+test("tap regions are square in image pixels and fit at all four edges", () => {
+  for (const [width, height] of [[1200, 1600], [1600, 1200]]) {
+    for (const x of [0, .5, 1]) for (const y of [0, .5, 1]) {
+      const bounds = squarePhotoRegion(width, height, { x, y });
+      assert.equal(validatePhotoRegion(bounds), bounds);
+      assert.ok(Math.abs(bounds.width * width - bounds.height * height) < 1e-9);
+    }
+  }
+});
+
+test("invalid taps and native proposal rectangles are rejected", () => {
+  assert.throws(() => squarePhotoRegion(1200, 1600, { x: NaN, y: 0 }));
+  assert.throws(() => squarePhotoRegion(0, 1600, { x: .5, y: .5 }));
+  assert.throws(() => validatePhotoRegion({ x: .9, y: 0, width: .2, height: .3 }));
+  assert.throws(() => validatePhotoRegion({ x: 0, y: 0, width: -1, height: .3 }));
 });

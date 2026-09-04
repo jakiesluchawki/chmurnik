@@ -45,9 +45,14 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
     import.meta.url,
   ));
 
-  assert.match(app, /Najbliższa rodzina/);
-  assert.match(app, /Hipotezy do sprawdzenia/);
-  assert.match(app, /To podpowiedź, nie werdykt/);
+  const result = await read("src/components/PhotoRecognitionResult.jsx");
+  const messages = await read("src/lib/recognition-message.js");
+  assert.match(app, /<PhotoRecognitionResult/);
+  assert.match(messages, /Nie rozstrzygam rodzaju/);
+  assert.match(messages, /To hipoteza do sprawdzenia/);
+  assert.match(result, /Własne zdjęcie nieba/);
+  assert.match(result, /Szczegóły analizy i jej ograniczenia/);
+  assert.doesNotMatch(app, /Najbliższa rodzina.*% sygnału/);
   assert.match(app, /Zdjęcie nie opuszcza urządzenia/);
   assert.match(interpretation, /marginThreshold: 0\.68/);
   assert.match(interpretation, /low-layered/);

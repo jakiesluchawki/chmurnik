@@ -8,6 +8,7 @@ import { isMacWorkspace } from "./lib/native-workspace.js";
 import "./styles.css";
 import "./zgrywa.css";
 import "./field.css";
+import "./recognition.css";
 
 const isNative = Capacitor.isNativePlatform();
 

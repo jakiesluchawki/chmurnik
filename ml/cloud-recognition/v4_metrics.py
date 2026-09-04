@@ -7,6 +7,28 @@ import numpy as np
 
 from benchmark_ensemble import probability_report
 from labels import GENERA
+from train_ccsn import choose_policy, softmax
+
+
+def balanced_temperature(logits, labels):
+    counts = np.bincount(labels, minlength=len(GENERA))
+    weights = 1 / counts[labels]
+    options = np.linspace(.45, 3., 180)
+    losses = [np.average(-np.log(np.clip(softmax(logits, value)[np.arange(len(labels)), labels], 1e-12, 1)), weights=weights) for value in options]
+    return float(options[int(np.argmin(losses))])
+
+
+def choose_cloud_policy(probabilities, labels, target=.9):
+    clouds = (labels >= 0) & (labels < len(GENERA) - 1)
+    if int(clouds.sum()) < 25:
+        raise ValueError("Too few cloud photographs to calibrate an acceptance policy")
+    if int((probabilities[clouds].max(axis=1) >= .2).sum()) < 25:
+        return {"minimum_confidence": 1., "margin_threshold": 1., "precision": None,
+                "coverage": 0., "accepted_count": 0, "target_precision": target, "target_met": False,
+                "population": "cloud photographs only; insufficient confident calibration cases"}
+    policy = choose_policy(probabilities[clouds], labels[clouds], target)
+    policy["population"] = "cloud photographs only; clear-sky cases do not set the confidence threshold"
+    return policy
 
 
 def wilson(successes, count):
@@ -52,6 +74,17 @@ def metrics(rows, policy):
     correct = predicted == labels
     result["top1_interval_95"] = wilson(int(correct.sum()), len(labels))
     result["selective_precision_interval_95"] = wilson(int(correct[accepted].sum()), int(accepted.sum()))
+    clouds = labels < len(GENERA) - 1
+    accepted_clouds = clouds & accepted
+    cloud_count, accepted_cloud_count = int(clouds.sum()), int(accepted_clouds.sum())
+    result["cloud_only"] = {
+        "sample_count": cloud_count,
+        "top1_accuracy": float(correct[clouds].mean()) if cloud_count else None,
+        "accepted_count": accepted_cloud_count,
+        "selective_precision": float(correct[accepted_clouds].mean()) if accepted_cloud_count else None,
+        "selective_coverage": accepted_cloud_count / cloud_count if cloud_count else None,
+        "selective_precision_interval_95": wilson(int(correct[accepted_clouds].sum()), accepted_cloud_count),
+    }
     result["nll"] = float(-np.log(np.clip(probabilities[np.arange(len(labels)), labels], 1e-12, 1)).mean())
     expected = np.eye(len(GENERA))[labels]
     result["brier"] = float(np.mean(np.sum((probabilities - expected) ** 2, axis=1)))

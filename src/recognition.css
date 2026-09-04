@@ -1,0 +1,245 @@
+.photo-recognition-modal .photo-recognition-result {
+  display: block;
+  scroll-margin-top: 116px;
+}
+
+.photo-recognition-modal .photo-recognition-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  padding-block: 8px;
+  background: var(--paper);
+}
+
+.photo-recognition-modal .photo-recognition-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.photo-recognition-modal .photo-recognition-preview,
+.photo-recognition-modal .photo-recognition-preview img {
+  min-height: 0;
+  height: auto;
+}
+
+.photo-recognition-modal .photo-recognition-preview img {
+  max-height: 40svh;
+  object-fit: contain;
+}
+
+.photo-answer {
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.photo-answer h3 {
+  margin: 10px 0;
+  color: inherit;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.photo-answer p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.photo-evidence {
+  margin-top: 20px;
+}
+
+.photo-evidence h4 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.photo-evidence-options,
+.photo-evidence-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.photo-evidence-options {
+  margin-bottom: 14px;
+}
+
+.photo-evidence-options button {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 52px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+}
+
+.photo-evidence-options button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.photo-evidence-options span {
+  font-size: .75rem;
+}
+
+.photo-evidence-images figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.photo-evidence-images figcaption {
+  margin-bottom: 7px;
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.photo-evidence-images img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: var(--white);
+  border-radius: 10px;
+}
+
+.photo-evidence-prompt {
+  margin: 14px 0 8px;
+  line-height: 1.5;
+}
+
+.photo-evidence > small,
+.photo-technical > small {
+  display: block;
+  font-size: .75rem;
+  line-height: 1.5;
+}
+
+.photo-evidence .photo-result-actions {
+  margin-top: 14px;
+}
+
+.photo-technical {
+  margin: 22px 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: .84rem;
+}
+
+.photo-technical summary {
+  min-height: 30px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.photo-technical dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 6px 0;
+}
+
+.photo-technical dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.photo-recognition-modal .photo-save-observation {
+  margin-top: 20px;
+}
+
+.photo-region-image {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--ink);
+}
+
+.photo-region-image > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.photo-region-surface {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: crosshair;
+}
+
+.photo-region-surface:focus-visible {
+  outline: 3px solid white;
+  outline-offset: -6px;
+}
+
+.photo-region-proposal,
+.photo-region-selection {
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: 0 0 0 1px #262626;
+}
+
+.photo-region-proposal > span {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  min-width: 26px;
+  padding: 4px;
+  border-radius: 5px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.photo-region-selection {
+  pointer-events: none;
+  border-style: dashed;
+}
+
+.photo-region-picker > p {
+  margin: 12px 0;
+  font-size: .83rem;
+  line-height: 1.5;
+}
+
+.photo-region-controls,
+.photo-region-size {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.photo-region-size {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.photo-region-size button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.photo-region-size button[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
+}

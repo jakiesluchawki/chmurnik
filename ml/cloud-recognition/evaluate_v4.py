@@ -11,10 +11,11 @@ from torch.utils.data import DataLoader
 
 from labels import GENERA
 from model import build_model
-from train_ccsn import calibrate, choose_policy, softmax
+from train_ccsn import softmax
 from train_v4 import TrainingImages
 from v4_checkpoint import atomic_save
-from v4_metrics import metrics, paired_accuracy, unique_labeled_rows
+from v4_gate import classification_gates
+from v4_metrics import balanced_temperature, choose_cloud_policy, metrics, paired_accuracy, unique_labeled_rows
 
 
 @torch.inference_mode()
@@ -40,6 +41,7 @@ def main():
     parser.add_argument("--baseline", type=Path)
     parser.add_argument("--evaluate-holdouts", action="store_true")
     parser.add_argument("--private-image", type=Path)
+    parser.add_argument("--device", choices=["auto", "cpu", "mps"], default="auto")
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("Evaluation output already exists; preserve the previous result")
@@ -49,7 +51,7 @@ def main():
     checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
     if checkpoint["manifest_sha256"] != digest or checkpoint["classes"] != GENERA:
         raise ValueError("Checkpoint does not match the frozen manifest/classes")
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    device = torch.device(("mps" if torch.backends.mps.is_available() else "cpu") if args.device == "auto" else args.device)
     model = build_model(len(GENERA), architecture=checkpoint["architecture"])
     model.load_state_dict(checkpoint["state_dict"])
     model = model.eval().to(device)
@@ -70,8 +72,9 @@ def main():
         baseline_rows = [{**row, "group": by_id[row["id"]]["group"]} for row in baseline["rows"] if row["id"] in by_id]
         calibration, _ = unique_labeled_rows([row for row in manifest["rows"] if row["split"] == "calibration"])
         calibration_logits = predict(model, calibration, checkpoint["input_size"], device)
-        temperature = calibrate(calibration_logits, np.asarray([row["label"] for row in calibration]))
-        policy = choose_policy(softmax(calibration_logits, temperature), np.asarray([row["label"] for row in calibration]), .9)
+        calibration_labels = np.asarray([row["label"] for row in calibration])
+        temperature = balanced_temperature(calibration_logits, calibration_labels)
+        policy = choose_cloud_policy(softmax(calibration_logits, temperature), calibration_labels, .9)
         result.update({"temperature": temperature, "policy": policy, "reports": {}, "baseline_reports": {}, "paired": {}})
         rows = [row for row in manifest["rows"] if row["split"] in {"calibration", "test", "diagnostic", "stress", "outlier"}]
         if args.private_image:
@@ -86,6 +89,14 @@ def main():
             result["baseline_reports"][split] = metrics(previous, baseline["policy"])
             result["paired"][split] = paired_accuracy(selected, previous)
         result["rows"] = predictions
+        result["classification_gates"] = classification_gates(result["reports"], result["baseline_reports"])
+        result["rejection_challenges"] = {}
+        for source in ("ccsn", "project-outlier"):
+            selected = [row for row in predictions if row["label"] == -1 and row["source"] == source]
+            if selected:
+                ordered = np.sort(np.asarray([row["probabilities"] for row in selected]), axis=1)
+                accepted = (ordered[:, -1] >= policy["minimum_confidence"]) & (ordered[:, -1] - ordered[:, -2] >= policy["margin_threshold"])
+                result["rejection_challenges"][source] = {"sample_count": len(selected), "abstention_rate": float(1 - accepted.mean())}
         checkpoint.update({"temperature": temperature, "abstention_policy": policy})
         args.output.mkdir(parents=True)
         atomic_save(checkpoint, args.output / "cloud-genus-net.pt")

@@ -8,7 +8,9 @@ import torch
 
 from v4_checkpoint import atomic_save, random_state, restore_random_state, verify_contract
 from v4_data import assign_groups, group_fingerprints, validate_manifest
-from v4_metrics import metrics, paired_accuracy, unique_labeled_rows, wilson
+from v4_metrics import choose_cloud_policy, metrics, paired_accuracy, unique_labeled_rows, wilson
+from v4_gate import classification_gates
+from train_v4_linear import fold_scaler
 
 
 def record(identifier, label=0, role="available", digest=None, dhash=0):
@@ -55,6 +57,37 @@ class DataContractTests(unittest.TestCase):
 
 
 class MetricsTests(unittest.TestCase):
+    def test_flat_predictions_fail_closed_during_calibration(self):
+        policy = choose_cloud_policy(np.full((30, 11), 1 / 11), np.arange(30) % 10)
+        self.assertFalse(policy["target_met"])
+        self.assertEqual(policy["accepted_count"], 0)
+        self.assertEqual(policy["margin_threshold"], 1.)
+
+    def test_scaler_folding_preserves_raw_feature_logits(self):
+        rng = np.random.default_rng(3)
+        features, coefficients = rng.normal(size=(5, 12)), rng.normal(size=(11, 12))
+        intercept, mean, scale = rng.normal(size=11), rng.normal(size=12), rng.uniform(.5, 2, size=12)
+        weights, bias = fold_scaler(coefficients, intercept, mean, scale)
+        np.testing.assert_allclose(features @ weights.T + bias, ((features - mean) / scale) @ coefficients.T + intercept, atol=1e-12)
+
+    def test_better_abstention_alone_does_not_pass_model_gate(self):
+        previous = {"top1_accuracy": .6, "macro_f1": .5, "selective_precision": .85,
+                    "accepted_count": 30, "selective_coverage": .3, "sample_count": 100}
+        previous["cloud_only"] = previous.copy()
+        candidate = {**previous, "selective_precision": 1.}
+        result = classification_gates({split: candidate for split in ["test", "diagnostic", "stress"]},
+                                      {split: previous for split in ["test", "diagnostic", "stress"]})
+        self.assertFalse(result["passed"])
+        self.assertFalse(result["checks"]["test_top1_plus_5pp"])
+
+    def test_easy_clear_skies_do_not_select_the_cloud_threshold(self):
+        labels = np.arange(40) % 10
+        probabilities = np.full((40, 11), .01)
+        probabilities[np.arange(40), labels] = .9
+        clouds_only = choose_cloud_policy(probabilities, labels)
+        with_clear = choose_cloud_policy(np.concatenate([probabilities, np.eye(11)[[10] * 100]]), np.concatenate([labels, [10] * 100]))
+        self.assertEqual(clouds_only, with_clear)
+
     def test_conflicting_diagnostic_group_not_scored_twice(self):
         rows = [{"id": str(i), "group": "a", "label": label} for i, label in enumerate([0, 1])]
         unique, excluded = unique_labeled_rows(rows)

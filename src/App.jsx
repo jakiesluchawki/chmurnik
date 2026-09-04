@@ -2,9 +2,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Capacitor } from "@capacitor/core";
 import { isMacWorkspace, workspaceRoutes, workspaceShortcut } from "./lib/native-workspace.js";
 import { FieldHome } from "./components/FieldHome.jsx";
-import { FieldPractice, PracticeLinks } from "./components/FieldPractice.jsx";
+import { FieldPractice, PracticeLinks, FullLearningLinks } from "./components/FieldPractice.jsx";
 import { SkyCollection } from "./components/SkyCollection.jsx";
 import { PhotoFrame } from "./components/PhotoFrame.jsx";
+import { PhotoRecognitionResult } from "./components/PhotoRecognitionResult.jsx";
 import { ApplicationInfo } from "./components/ApplicationInfo.jsx";
 import { observationFromRecognition } from "./lib/observations.js";
 import { saveObservation } from "./lib/observation-store.js";
@@ -514,7 +515,7 @@ function HomePage({
         </figure>
       </section>
 
-      <section className="web-field-shortcuts"><span className="eyebrow">Pracownia terenowa · dla żeglarzy i pilotów</span><PracticeLinks navigate={navigate} /></section>
+      <section className="web-field-shortcuts"><span className="eyebrow">Pracownia terenowa · dla żeglarzy i pilotów</span><PracticeLinks navigate={navigate} /><FullLearningLinks navigate={navigate} /></section>
       {daily && (
         <section className="daily-sky" aria-labelledby="daily-sky-title">
           <figure>
@@ -3284,7 +3285,6 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
         />
       </header>
 
-      <PracticeLinks navigate={navigate} />
       <div className="segmented-control layers-tabs">
         {[["decoder", "Czytnik Windy"], ["lab", "Wysokość"], ["wind", "Wiatr z nieba"], ["metar", "METAR / TAF"], ["hazards", "Zagrożenia"], ["sounding", "Sondaż i Skew-T"]].map(([id, label]) => (
           <button key={id} className={tab === id ? "active" : ""} onClick={() => setTab(id)}>{label}</button>
@@ -4888,15 +4888,22 @@ function SourcesPage({ onSources }) {
 function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initialSource }) {
   const [phase, setPhase] = useState("idle");
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [analyzedPhotoUrl, setAnalyzedPhotoUrl] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [feedback, setFeedback] = useState(null);
   const [captured, setCaptured] = useState(null);
   const [saving, setSaving] = useState(false);
   const [frameNote, setFrameNote] = useState("");
+  const resultRef = useRef(null);
   const started = useRef(false);
   const [feedbackCount, setFeedbackCount] = useState(() => loadPhotoFeedback().length);
   const dialogRef = useDialogFocus(() => { if (!saving) onClose(); }, false);
+
+  useEffect(() => {
+    if (phase !== "result") return;
+    resultRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
+  }, [phase]);
 
   const analyze = async (source) => {
     if (saving || ["capturing", "analyzing"].includes(phase)) return;
@@ -4909,6 +4916,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       setResult(null);
       setFeedback(null);
       setPreviewUrl(photo.previewUrl);
+      setAnalyzedPhotoUrl(photo.previewUrl);
       setPhase("analyzing");
       setResult(await recognizeCloudPhoto(photo));
       setPhase("result");
@@ -4950,7 +4958,9 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     try {
       const value = await recognizeCloudPhoto(photo);
       setResult(value);
-      setFrameNote(`Hipoteza dotyczy fragmentu kadru: ${selection.zoom}×, pozycja ${selection.horizontal}% / ${selection.vertical}%. Zachowano całe zdjęcie.`);
+      setAnalyzedPhotoUrl(photo.previewUrl);
+      const b = selection.bounds;
+      setFrameNote(`Hipoteza dotyczy fragmentu kadru: lewy górny róg ${Math.round(b.x * 100)}% / ${Math.round(b.y * 100)}%, rozmiar ${Math.round(b.width * 100)}% × ${Math.round(b.height * 100)}%. Zachowano całe zdjęcie.`);
       setPhase("result");
     } catch (error) { setPhase("idle"); setError("Nie udało się rozstrzygnąć fragmentu. Możesz zachować samą obserwację."); throw error; }
   };
@@ -4986,6 +4996,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     const cloud = getCloud("cumulus");
     const source = publicAsset(cloud.images[0].src);
     setPreviewUrl(source);
+    setAnalyzedPhotoUrl(source);
     setPhase("analyzing");
     const encodedPhoto = fetch(source)
         .then((response) => response.blob())
@@ -5009,14 +5020,11 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       .catch(() => setPhase("idle"));
   }, []);
 
-  const clearSkyResult = result?.state === "clear" || result?.leadingFamily?.id === "clear";
+  const clearSkyResult = result?.state === "clear";
   const rankedClouds = (clearSkyResult ? [] : result?.ranked || [])
     .filter((item) => item.id !== "clear_sky")
     .map((item) => ({ ...item, cloud: getCloud(item.id) }))
     .filter((item) => item.cloud);
-  const leadingFamily = result?.leadingFamily;
-  const familyPercent = leadingFamily ? Math.round(leadingFamily.probability * 100) : 0;
-  const genusIsDecisive = result?.state === "hypothesis";
 
   return (
     <div className="modal-backdrop modal-backdrop--center" onMouseDown={() => { if (!saving) onClose(); }}>
@@ -5042,7 +5050,8 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
           <span><strong>Prywatnie.</strong> Analiza odbywa się na tym urządzeniu. Zdjęcie nie opuszcza urządzenia.</span>
         </div>
 
-        {previewUrl ? (
+        {captured ? <PhotoFrame key={captured.observationId} source={captured.previewUrl} onAnalyze={analyzeFrame}
+          analyzing={phase === "analyzing"} disabled={saving || phase === "analyzing" || phase === "capturing"} /> : previewUrl ? (
           <figure className="photo-recognition-preview">
             <img src={previewUrl} alt="Zdjęcie nieba wybrane do analizy" />
             {phase === "analyzing" && <figcaption>Analizuję zdjęcie na urządzeniu…</figcaption>}
@@ -5062,39 +5071,13 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
           </div>
         )}
 
-        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || phase === "analyzing"}>{saving ? "Zachowuję kadr…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Całe zdjęcie + hipoteza. Bez ponownego formularza.</small><PhotoFrame source={captured.previewUrl} onAnalyze={analyzeFrame} disabled={saving || phase === "analyzing"} /></div>}
-        {frameNote && <p className="photo-frame-note">{frameNote}</p>}
+        {frameNote && <p className="photo-frame-note">Wynik dotyczy zaznaczonego fragmentu. Całe zdjęcie pozostaje w obserwacji.</p>}
 
         {result && phase === "result" && (
-          <div className="photo-recognition-result" aria-live="polite">
-            <div className="photo-family-result">
-              <span className="eyebrow">Najbliższa rodzina · {familyPercent}% sygnału</span>
-              <h3>{leadingFamily.label}</h3>
-              <p>{leadingFamily.evidence}</p>
-            </div>
-
-            {rankedClouds.length > 0 ? <div className="photo-hypotheses">
-              <div>
-                <span className="eyebrow">Hipotezy do sprawdzenia</span>
-                <small>{genusIsDecisive ? "Pierwsza jest wyraźnie silniejsza" : "Kadr nie rozstrzyga jednego rodzaju"}</small>
-              </div>
-              <ol>
-                {rankedClouds.slice(0, 2).map((item, index) => (
-                  <li key={item.id}>
-                    <img className="photo-reference-thumb" src={publicAsset(item.cloud.images[0].src)} alt={`Atlas: ${item.cloud.name}`} />
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <div><strong><CloudName>{item.cloud.name}</CloudName></strong><small>{item.cloud.polish}</small></div>
-                    <b>{Math.round(item.probability * 100)}%</b>
-                  </li>
-                ))}
-              </ol>
-              <small>Fotografie porównawcze są prawdziwe. Autorzy i licencje dostępne po otwarciu porównania w atlasie.</small>
-            </div> : <p className="photo-recognition-caveat">Ten kadr nie daje podstaw do wskazania rodzaju chmury. Nie przypisujemy nazwy na siłę. Możesz zachować zdjęcie, wybrać fragment albo wrócić do cech w atlasie.</p>}
-
-            <aside className="photo-recognition-caveat">
-              <Info size={18} />
-              <p><strong>To podpowiedź, nie werdykt.</strong> Wynik zależy od światła, kadru i jakości zdjęcia. Jedna fotografia może pokazywać kilka rodzajów chmur.</p>
-            </aside>
+          <div className="photo-recognition-result" ref={resultRef}>
+            <PhotoRecognitionResult result={result} candidates={rankedClouds}
+              ownPhoto={analyzedPhotoUrl || previewUrl} isRegion={Boolean(frameNote)}
+              assetUrl={publicAsset} onExplore={onCompare} onObserve={onObserve} />
 
             <div className="photo-feedback" aria-label="Ocena wskazówki modelu">
               <span>Czy wskazówka była pomocna?</span>
@@ -5109,14 +5092,10 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
               {feedback && <small role="status">{feedback}</small>}
             </div>
 
-            <div className="photo-result-actions">
-              <button className="button button--coral" onClick={() => onCompare(rankedClouds.map((item) => item.id))} disabled={!rankedClouds.length}>
-                Porównaj w atlasie <ArrowRight size={18} />
-              </button>
-              <button className="button button--ghost" onClick={onObserve}>Sprawdź cechy</button>
-            </div>
           </div>
         )}
+
+        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || phase === "analyzing"}>{saving ? "Zachowuję kadr…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Całe zdjęcie + hipoteza. Bez ponownego formularza.</small></div>}
 
         {error && <p className="photo-recognition-error" role="alert"><Warning size={18} />{error}</p>}
 

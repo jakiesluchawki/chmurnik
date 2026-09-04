@@ -45,6 +45,8 @@ def main() -> None:
     )
     converted.author = "CHMURNIK / Mieszko Mahboob"
     converted.license = "Training data: CCSN CC0 1.0; clear-sky tensor supplement MIT."
+    if checkpoint.get("architecture", "").startswith("dinov2_"):
+        converted.license += " DINOv2 backbone: Meta AI, Apache-2.0."
     converted.short_description = "On-device WMO cloud-family and genus hypothesis model."
     converted.version = f"{checkpoint.get('pipeline_version', 2)}.0"
     metadata = converted.user_defined_metadata
@@ -62,6 +64,9 @@ def main() -> None:
         metadata["crop_fraction"] = str(checkpoint["crop_fraction"])
         metadata["validation_epoch"] = str(checkpoint["epoch"])
         metadata["calibration_temperature"] = str(checkpoint["temperature"])
+        if "backbone_revision" in checkpoint:
+            metadata["backbone_revision"] = checkpoint["backbone_revision"]
+            metadata["backbone_license"] = checkpoint["backbone_license"]
     if args.output.exists():
         shutil.rmtree(args.output)
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -52,4 +52,7 @@ def build_model(
     pretrained: bool = False,
     architecture: str = "mobilenet_v3_small",
 ) -> nn.Module:
+    if architecture in {"dinov2_vits14_linear", "dinov2_vits14_mlp"}:
+        from dinov2_model import DinoCloudNet
+        return DinoCloudNet(output_count, pretrained, head="mlp" if architecture.endswith("_mlp") else "linear")
     return CloudGenusNet(output_count, architecture, pretrained)

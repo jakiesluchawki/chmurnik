@@ -116,3 +116,15 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   paired comparisons and atomic training recovery. Thirteen focused tests pass.
 - The owner's computer restart interrupted the first reduced-memory run. A
   repeat is running; no candidate model has been accepted or shipped yet.
+- Added plain-language result states and own-photo/atlas comparison in the
+  same view, keeping uncertainty and technical scores separate. Removed manual
+  framing sliders in favor of tap/keyboard selection with context-size buttons.
+  Automatic proposal input is supported by the component, but the model-driven
+  proposal engine is not integrated yet; do not claim automatic detection works.
+- Added prominent full-course and layers-workspace links beside the three
+  short practice entries on native and web homes. The full layers page no
+  longer promotes the short modules above its own six workspace tabs.
+- Production web build and 201 JavaScript tests pass. Mobile browser QA with
+  synthetic classifier output verifies tap framing and retained photo comparison;
+  this is UI evidence only, not model-accuracy evidence. Native release remains
+  unmodified and unpublished.

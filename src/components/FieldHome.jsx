@@ -8,7 +8,7 @@ import {
 } from "@phosphor-icons/react";
 import { clouds } from "../data/clouds.js";
 import { selectDailyCloud } from "../lib/daily-cloud.js";
-import { PracticeLinks } from "./FieldPractice.jsx";
+import { PracticeLinks, FullLearningLinks } from "./FieldPractice.jsx";
 
 const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -67,6 +67,7 @@ export function FieldHome({
         </div>
         <h2>Przećwicz, zanim wyruszysz.</h2>
         <PracticeLinks navigate={navigate} />
+        <FullLearningLinks navigate={navigate} />
       </section>
       <section className="field-daily">
         <div className="field-section-label">

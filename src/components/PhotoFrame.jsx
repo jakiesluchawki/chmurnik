@@ -1,91 +1,79 @@
 import { useId, useState } from "react";
-import { photoFrame, prepareRecognitionFrame } from "../lib/photo-frame.js";
+import { squarePhotoRegion, prepareRecognitionRegion, validatePhotoRegion } from "../lib/photo-frame.js";
 
-export function PhotoFrame({ source, onAnalyze, disabled }) {
+const regionStyle = (bounds) => ({ left: `${bounds.x * 100}%`, top: `${bounds.y * 100}%`,
+  width: `${bounds.width * 100}%`, height: `${bounds.height * 100}%` });
+
+export function PhotoFrame({ source, onAnalyze, onSelectRegion, regions = [], disabled, analyzing }) {
   const id = useId();
-  const [selection, setSelection] = useState({
-    zoom: 1.5,
-    horizontal: 50,
-    vertical: 50,
-  });
+  const [size, setSize] = useState(null);
+  const [point, setPoint] = useState(null);
+  const [fraction, setFraction] = useState(.55);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const frame = photoFrame(
-    100,
-    100,
-    selection.zoom,
-    selection.horizontal,
-    selection.vertical,
-  );
-  const apply = async () => {
-    setBusy(true);
-    setError("");
+  const frame = size && point ? squarePhotoRegion(size.width, size.height, point, fraction) : null;
+  const proposals = regions.filter((region) => {
+    try { validatePhotoRegion(region.bounds); return Boolean(region.id); } catch { return false; }
+  }).slice(0, 5);
+  const apply = async (bounds, region) => {
+    if (disabled || busy) return;
+    setBusy(true); setError("");
     try {
-      await onAnalyze(
-        await prepareRecognitionFrame(source, selection),
-        selection,
-      );
+      const photo = await prepareRecognitionRegion(source, bounds);
+      if (region && onSelectRegion) await onSelectRegion(region, photo);
+      else await onAnalyze(photo, { bounds });
     } catch {
-      setError(
-        "Nie udało się odczytać fragmentu. Całe zdjęcie pozostaje bez zmian.",
-      );
-    } finally {
-      setBusy(false);
-    }
+      setError("Nie udało się odczytać fragmentu. Całe zdjęcie pozostaje bez zmian.");
+    } finally { setBusy(false); }
+  };
+  const selectPoint = (event) => {
+    if (disabled || busy || !size) return;
+    const box = event.currentTarget.getBoundingClientRect();
+    setPoint({ x: Math.max(0, Math.min(1, (event.clientX - box.left) / box.width)),
+      y: Math.max(0, Math.min(1, (event.clientY - box.top) / box.height)) });
+  };
+  const keyPoint = (event) => {
+    if (disabled || busy || !size) return;
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Enter", " "].includes(event.key)) return;
+    event.preventDefault();
+    const next = { ...(point || { x: .5, y: .5 }) };
+    if (event.key === "ArrowLeft") next.x -= .05;
+    if (event.key === "ArrowRight") next.x += .05;
+    if (event.key === "ArrowUp") next.y -= .05;
+    if (event.key === "ArrowDown") next.y += .05;
+    setPoint({ x: Math.max(0, Math.min(1, next.x)), y: Math.max(0, Math.min(1, next.y)) });
   };
   return (
-    <details className="photo-frame">
-      <summary>Wskaż fragment nieba</summary>
-      <p>
-        Wybierz jedną chmurę. Zapis do kolekcji zachowa cały kadr, nie tylko
-        wycinek.
-      </p>
-      <div className="photo-frame-image">
-        <img src={source} alt="Cały kadr z ramką fragmentu do analizy" />
-        <span
-          style={{
-            left: `${frame.x}%`,
-            top: `${frame.y}%`,
-            width: `${frame.width}%`,
-            height: `${frame.height}%`,
-          }}
-        />
+    <section className="photo-region-picker" aria-label="Wybór obszaru nieba" aria-busy={busy || analyzing}>
+      <div className="photo-region-image" style={size ? { maxWidth: `calc(40svh * ${size.width / size.height})` } : undefined}>
+        <img src={source} alt="Całe własne zdjęcie nieba, bez przycinania"
+          onLoad={(event) => setSize({ width: event.currentTarget.naturalWidth, height: event.currentTarget.naturalHeight })} />
+        <button type="button" className="photo-region-surface" aria-describedby={id}
+          aria-label="Wskaż miejsce na zdjęciu; strzałki przesuwają wybór" disabled={disabled || busy}
+          onClick={selectPoint} onKeyDown={keyPoint} />
+        {proposals.map((region, index) => (
+          <button type="button" className="photo-region-proposal" key={region.id}
+            style={regionStyle(region.bounds)} disabled={disabled || busy}
+            aria-label={`Sprawdź proponowany fragment ${index + 1}`}
+            onClick={() => apply(region.bounds, region)}><span>{index + 1}</span></button>
+        ))}
+        {frame && <span className="photo-region-selection" style={regionStyle(frame)} aria-hidden="true" />}
       </div>
-      {[
-        ["zoom", "Powiększenie", 1, 3, 0.1],
-        ["horizontal", "Położenie lewo–prawo", 0, 100, 5],
-        ["vertical", "Położenie góra–dół", 0, 100, 5],
-      ].map(([key, label, min, max, step]) => (
-        <label className="field-slider" htmlFor={`${id}-${key}`} key={key}>
-          <span>
-            {label}
-            <output htmlFor={`${id}-${key}`} aria-hidden="true">
-              {selection[key]}
-              {key === "zoom" ? "×" : "%"}
-            </output>
-          </span>
-          <input
-            id={`${id}-${key}`}
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            disabled={disabled || busy}
-            value={selection[key]}
-            onChange={(event) =>
-              setSelection({ ...selection, [key]: Number(event.target.value) })
-            }
-          />
-        </label>
-      ))}
-      <button
-        className="button button--secondary"
-        disabled={disabled || busy}
-        onClick={apply}
-      >
-        {busy ? "Analizuję fragment…" : "Sprawdź ten fragment"}
-      </button>
+      <p id={id}>{analyzing ? "Analizuję zdjęcie na urządzeniu…" : proposals.length
+        ? "Dotknij zaznaczonego obszaru albo wskaż inne miejsce na zdjęciu. Ramki są propozycją, nie dokładną granicą chmury."
+        : "Kilka chmur na jednym zdjęciu? Dotknij tej, którą chcesz sprawdzić. Możesz też użyć strzałek na klawiaturze."}</p>
+      {frame && <div className="photo-region-controls">
+        <div className="photo-region-size" aria-label="Rozmiar analizowanego fragmentu">
+          {[[.35, "Bliżej"], [.55, "Fragment"], [.85, "Więcej kontekstu"]].map(([value, label]) => (
+            <button type="button" key={value} disabled={disabled || busy} aria-pressed={fraction === value}
+              onClick={() => setFraction(value)}>{label}</button>
+          ))}
+        </div>
+        <button type="button" className="button button--secondary" disabled={disabled || busy}
+          onClick={() => apply(frame)}>{busy ? "Analizuję fragment…" : "Sprawdź zaznaczony fragment"}</button>
+        <button type="button" className="button button--ghost" disabled={disabled || busy} onClick={() => setPoint(null)}>Usuń zaznaczenie</button>
+      </div>}
       {error && <p role="alert">{error}</p>}
-    </details>
+    </section>
   );
 }

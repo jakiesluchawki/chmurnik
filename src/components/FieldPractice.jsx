@@ -81,6 +81,25 @@ export function PracticeLinks({ navigate }) {
   );
 }
 
+export function FullLearningLinks({ navigate }) {
+  return (
+    <nav className="full-learning-links" aria-label="Pełna nauka, nie tylko krótkie ćwiczenia">
+      <button onClick={() => navigate("layers")}>
+        <span className="eyebrow">Pełna pracownia</span>
+        <strong>Warstwy atmosfery i Windy</strong>
+        <span>Wysokość, mapy, wiatr i sondaże. Wszystkie zakładki w jednym miejscu.</span>
+        <ArrowRight size={20} />
+      </button>
+      <button onClick={() => navigate("learn")}>
+        <span className="eyebrow">Cała ścieżka nauki</span>
+        <strong>Od obserwacji do rozumienia nieba</strong>
+        <span>Pełne lekcje z przykładami i pytaniami. Możesz zacząć od dowolnego tematu.</span>
+        <ArrowRight size={20} />
+      </button>
+    </nav>
+  );
+}
+
 function SourceLink({ ids, onSources }) {
   return (
     <button
@@ -904,6 +923,9 @@ export function FieldPractice({ track = "metar", navigate, onSources }) {
         <span className="eyebrow">Pracownia terenowa · {audience}</span>
         <h1>{title}</h1>
         <p>{subtitle}</p>
+        <button className="field-source field-full-workshop" onClick={() => navigate(selected === "metar" ? "layers/metar" : selected === "maps" ? "layers/decoder" : "layers/wind")}>
+          Otwórz pełną pracownię atmosfery <ArrowRight size={17} />
+        </button>
       </header>
       <nav className="field-segments" aria-label="Pracownie">
         {[
