@@ -191,3 +191,13 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   release gates. Keep it experimental. Fifty-two ML tests pass; no native
   model replacement, new Apple build, or upload occurred. Additional details
   and immutable result hashes are recorded in the experiment contract.
+- Trained a compact binary cloud-mask model on newly audited CC-BY-4.0 DLR
+  data, with capture-day/duplicate split protection. Its 48-image test IoU is
+  .90080 versus .81778 for RGB rules; this is cloud-pixel segmentation, not
+  genus accuracy. A 4.5 MB float32 Core ML export passes 78-photo parity and
+  original-photo native tests, including all eight EXIF orientations. Added
+  tested Swift mask-to-region proposals and inspected 30 atlas examples;
+  thin/warm/dark clouds, elevated fog and overly broad rectangles remain
+  limitations. Sixty-four ML tests and native assertions pass. Full evidence
+  and unreleased status are in `segmentation-contract.md`. Neither this work
+  nor its segmentation score closes the genus-model or release requirements.

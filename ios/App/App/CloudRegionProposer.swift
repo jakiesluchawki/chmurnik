@@ -6,9 +6,69 @@ struct CloudRegionProposal {
     let patchCount: Int
 }
 
-/// Unsupervised visual regions, not cloud labels or pixel-accurate masks.
+/// Selectable regions, not cloud labels or individual-cloud identities.
 /// A classifier must assess each region before presenting a cloud hypothesis.
 enum CloudRegionProposer {
+    /// Connected cloud-mask areas are selectable proposals, not individual-cloud identities.
+    static func propose(cloudScores: [Float], skyScores: [Float], columns: Int, rows: Int,
+                        limit: Int = 5) throws -> [CloudRegionProposal] {
+        guard columns > 0, rows > 0, columns <= 512, rows <= 512,
+              cloudScores.count == columns * rows, skyScores.count == cloudScores.count,
+              cloudScores.allSatisfy({ $0.isFinite && $0 >= 0 && $0 <= 1 }),
+              skyScores.allSatisfy({ $0.isFinite && $0 >= 0 && $0 <= 1 }),
+              limit > 0, limit <= 8 else { throw ProposalError.invalidFeatures }
+        let eligible = skyScores.map { $0 >= 0.7 }
+        let skyCount = eligible.filter { $0 }.count
+        guard skyCount >= 32 else { return [] }
+        let minimumArea = max(16, Int(ceil(Double(skyCount) * 0.0015)))
+        var seen = Array(repeating: false, count: cloudScores.count)
+        var proposals: [CloudRegionProposal] = []
+        func skyCoverage(left: Int, top: Int, right: Int, bottom: Int) -> Double {
+            var count = 0
+            for y in top..<bottom { for x in left..<right {
+                if eligible[y * columns + x] { count += 1 }
+            } }
+            return Double(count) / Double((right - left) * (bottom - top))
+        }
+        for start in cloudScores.indices where !seen[start] && eligible[start] && cloudScores[start] >= 0.5 {
+            var members = [start], cursor = 0
+            seen[start] = true
+            var left = start % columns, right = left + 1, top = start / columns, bottom = top + 1
+            while cursor < members.count {
+                let cell = members[cursor], x = cell % columns, y = cell / columns
+                cursor += 1
+                left = min(left, x); right = max(right, x + 1)
+                top = min(top, y); bottom = max(bottom, y + 1)
+                for dy in -1...1 { for dx in -1...1 where dx != 0 || dy != 0 {
+                    let nx = x + dx, ny = y + dy
+                    guard nx >= 0, nx < columns, ny >= 0, ny < rows else { continue }
+                    let next = ny * columns + nx
+                    if !seen[next] && eligible[next] && cloudScores[next] >= 0.5 {
+                        seen[next] = true
+                        members.append(next)
+                    }
+                } }
+            }
+            guard members.count >= minimumArea, right - left >= 4, bottom - top >= 4 else { continue }
+            let rawCoverage = skyCoverage(left: left, top: top, right: right, bottom: bottom)
+            guard rawCoverage >= 0.7 else { continue }
+            let dx = max(2, Int(ceil(Double(right - left) * 0.1)))
+            let dy = max(2, Int(ceil(Double(bottom - top) * 0.1)))
+            let padded = (max(0, left - dx), max(0, top - dy), min(columns, right + dx), min(rows, bottom + dy))
+            if skyCoverage(left: padded.0, top: padded.1, right: padded.2, bottom: padded.3) >= max(0.7, rawCoverage - 0.05) {
+                (left, top, right, bottom) = padded
+            }
+            proposals.append(CloudRegionProposal(bounds: CGRect(x: Double(left) / Double(columns), y: Double(top) / Double(rows),
+                width: Double(right - left) / Double(columns), height: Double(bottom - top) / Double(rows)), patchCount: members.count))
+        }
+        proposals.sort {
+            if $0.patchCount != $1.patchCount { return $0.patchCount > $1.patchCount }
+            if $0.bounds.minY != $1.bounds.minY { return $0.bounds.minY < $1.bounds.minY }
+            return $0.bounds.minX < $1.bounds.minX
+        }
+        return Array(proposals.prefix(limit))
+    }
+
     static func propose(features: [Float], columns: Int, rows: Int, channels: Int,
                         content: CGRect, skyScores: [Float]? = nil, limit: Int = 5) throws -> [CloudRegionProposal] {
         guard columns > 0, rows > 0, columns <= 64, rows <= 64,

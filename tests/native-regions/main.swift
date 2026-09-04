@@ -8,11 +8,17 @@ func require(_ condition: @autoclosure () -> Bool, _ message: String) {
 if CommandLine.arguments.count == 3 {
     let data = try Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[1]))
     let input = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-    let bounds = input["content"] as! [Double]
-    let proposals = try CloudRegionProposer.propose(features: (input["features"] as! [NSNumber]).map(\.floatValue),
+    let proposals: [CloudRegionProposal]
+    if let cloud = input["cloudScores"] as? [NSNumber], let sky = input["skyScores"] as? [NSNumber] {
+        proposals = try CloudRegionProposer.propose(cloudScores: cloud.map(\.floatValue), skyScores: sky.map(\.floatValue),
+            columns: input["columns"] as! Int, rows: input["rows"] as! Int)
+    } else {
+        let bounds = input["content"] as! [Double]
+        proposals = try CloudRegionProposer.propose(features: (input["features"] as! [NSNumber]).map(\.floatValue),
         columns: input["columns"] as! Int, rows: input["rows"] as! Int, channels: input["channels"] as! Int,
         content: CGRect(x: bounds[0], y: bounds[1], width: bounds[2], height: bounds[3]),
-        skyScores: (input["skyScores"] as? [NSNumber])?.map(\.floatValue))
+            skyScores: (input["skyScores"] as? [NSNumber])?.map(\.floatValue))
+    }
     let output = proposals.map { ["bounds": [Double($0.bounds.minX), Double($0.bounds.minY), Double($0.bounds.width), Double($0.bounds.height)], "patchCount": $0.patchCount] as [String: Any] }
     try JSONSerialization.data(withJSONObject: output, options: [.prettyPrinted, .sortedKeys]).write(to: URL(fileURLWithPath: CommandLine.arguments[2]))
 } else {
@@ -41,6 +47,27 @@ if CommandLine.arguments.count == 3 {
     do {
         _ = try CloudRegionProposer.propose(features: [.nan], columns: 1, rows: 1, channels: 1, content: full)
         fatalError("Invalid model features were accepted")
+    } catch CloudRegionProposer.ProposalError.invalidFeatures { }
+    let sky = Array(repeating: Float(1), count: 64 * 64)
+    let blank = Array(repeating: Float(0), count: 64 * 64)
+    let clearRegions = try CloudRegionProposer.propose(cloudScores: blank, skyScores: sky, columns: 64, rows: 64)
+    require(clearRegions.isEmpty, "Clear sky must not become a cloud proposal")
+    let layer = try CloudRegionProposer.propose(cloudScores: sky, skyScores: sky, columns: 64, rows: 64)
+    require(layer.count == 1 && layer[0].bounds == full, "A continuous layer remains one full-frame proposal")
+    var clouds = blank
+    for y in 4..<20 { for x in 4..<20 { clouds[y * 64 + x] = 1 } }
+    for y in 40..<52 { for x in 40..<52 { clouds[y * 64 + x] = 1 } }
+    clouds[30 * 64 + 30] = 1
+    let masks = try CloudRegionProposer.propose(cloudScores: clouds, skyScores: sky, columns: 64, rows: 64)
+    require(masks.count == 2, "Two cloud areas remain separate; isolated noise is omitted")
+    require(masks.allSatisfy { full.contains($0.bounds) }, "Mask proposals stay within the photograph")
+    let limited = try CloudRegionProposer.propose(cloudScores: clouds, skyScores: sky, columns: 64, rows: 64, limit: 1)
+    require(limited.count == 1 && limited[0].patchCount == 256, "Proposal limit preserves the largest area first")
+    let excluded = try CloudRegionProposer.propose(cloudScores: sky, skyScores: blank, columns: 64, rows: 64)
+    require(excluded.isEmpty, "Cloud-colored foreground is not a sky proposal")
+    do {
+        _ = try CloudRegionProposer.propose(cloudScores: [.nan], skyScores: [1], columns: 1, rows: 1)
+        fatalError("Invalid cloud-mask probabilities were accepted")
     } catch CloudRegionProposer.ProposalError.invalidFeatures { }
     print("Native visual-region tests passed")
 }
