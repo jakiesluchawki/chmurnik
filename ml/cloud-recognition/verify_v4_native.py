@@ -40,7 +40,7 @@ def main():
     native = {row["id"]: row for row in json.loads(predictions.read_text())}
     if set(native) != {row["id"] for row in rows}:
         raise ValueError("Native output does not cover the requested sample")
-    model = build_model(len(GENERA), architecture=checkpoint["architecture"])
+    model = build_model(len(GENERA), architecture=checkpoint["architecture"], model_config=checkpoint.get("model_config"))
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
     dataset = TrainingImages(rows, checkpoint["input_size"])

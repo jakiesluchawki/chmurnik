@@ -486,3 +486,86 @@ Full cache/head/config/software-version/history evidence remains under
 ML tests pass. The large public backbone can be re-fetched from its immutable
 URL/hash if needed; preserving a failed trial does not require keeping a
 re-downloadable 372 MB copy on the nearly full system disk.
+
+## Shared-Backbone Pair Trial
+
+Previous goal turn made progress: entry-copy implementation/QA and completed
+negative geometry/SigLIP evidence changed the next action; it was not a wait.
+
+Before predictions on September 5, declare one fixed equal-probability mixture
+of the selected uncalibrated V1 and V2 DINO MLP heads. Verify every non-head
+tensor is identical, parent-manifest prefix/order is unchanged, and neither
+head trained on any V2 validation group. Reuse only the provenance-checked V2
+validation feature cache. No new head fit, weight search, temperature or
+calibration/test/atlas/stress/fresh-confirmation selection. Report both members,
+the pair, corrected/regressed cases and per-class metrics. Only continue to
+calibration/regression if paired validation macro-F1 exceeds both members.
+The feature extractor would run once with two small heads, not two backbones.
+This potential efficiency does not establish accuracy or Core ML compatibility.
+
+Pair result: 58.41% raw validation top-1 / .58619 macro-F1, versus V2 alone
+63.72% / .63164. On 449 unique groups it corrects 19 and regresses 43 cases;
+paired difference -5.35pp (95% interval -8.87 to -1.80pp). The pair is rejected
+before calibration/holdouts. No alternative mixing weights will be searched.
+
+## Bounded Nonlinear Kernel Head
+
+Before fitting, declare one RBF kernel-ridge family on the frozen V2 DINO
+features. This tests nonlinear local class boundaries without another encoder
+download or full-backbone training. Use original/flip training views, train-only
+standardization, inverse-frequency class-balanced sample weights, and one-hot
+targets scaled by 10 (a fixed output scale, not calibration). Fixed grid:
+gamma = {.25, 1, 4}/768; alpha = {.01, .1, 1}. Select maximum raw validation
+macro-F1; require improvement over V2 MLP before further evaluation. No input,
+label, data-role, policy, or release-gate changes. Keep all nine results.
+Check the selected float32 Torch kernel head against sklearn before treating
+its score as representative of a possible deployable candidate. A kernel head
+adds support-feature buffers, not a second DINO image tower. This is still an
+experiment; it does not promise Core ML performance or accepted release quality.
+
+All nine kernel trials completed. Gamma .25/768, alpha .1 was selected on
+validation only: 64.38% top-1 and .64303165 macro-F1 versus the MLP's .63163736.
+The first float32 conversion gave identical labels but .012636 maximum logit
+error, failing the declared .001 tolerance. Isolated numerical probes traced
+the error to accumulation of 4,650 opposing kernel coefficients, not feature
+normalization. Centering each kernel row, explicitly summing products, then
+restoring the constant term is algebraically equivalent and reduces maximum
+error to .00016184. All 452 validation outputs pass in batches 1, 4, 32 and 452,
+with no argmax mismatch. The selected fit, parameters and data roles did not
+change; the original failed report remains intact. The completed recovery
+duplicate was removed only after every tensor and the nine-trial history were
+verified against the preserved final head/report, following a host disk-full
+error. Unrelated projects, user files and shared archival bases were untouched.
+
+Freeze assembled checkpoint before calibration/regression:
+`b0f8062eb560f5b5471117ee190594d7485cd98e4e958997d992b3cef29115df`.
+Head SHA256: `abf3cb9050bdaf15c34b5fdd772a98175cd53c8962fd7c14bed9ea504e19f9f2`.
+This candidate uses the unchanged V2 backbone and frozen manifest. Evaluate
+the existing calibration/old test/atlas/stress and previously exposed 299 IMGW
+images against the native baseline, labeling the latter regression evidence.
+No fresh-confirmation claim or normal release export is allowed for this
+exposed set. All original accuracy, precision and coverage gates still apply.
+Do not ship merely because feature-level numerical parity passed; full-image
+inference, calibration, Core ML parity and native product QA remain separate.
+
+Full-image evaluation completed using MPS. Old test: 76/123 (61.79%) versus
+68/123 (55.28%) shipped, macro-F1 .49969 versus .44379; paired difference
++6.50pp, 95% interval -2.44 to +15.45pp. Atlas matches the shipped 19/30;
+stress improves to 86/243 (35.39%) versus 57/243 (23.46%). Previously exposed
+IMGW regression: 175/299 (58.53%) versus 89/299 (29.77%), macro-F1 .57969;
+paired difference +28.76pp with capture-day-cluster interval +18.69 to +38.76pp.
+These are improvements on the recorded populations, not adequate overall
+reliability or a new independent confirmation.
+
+Temperature 1.61815642 does not produce a supported calibration threshold
+meeting the .90 precision target. The fail-closed policy accepts zero; it is
+not a usable replacement and does not count as better accuracy. Raw accuracy
+and atlas/stress regression gates pass, but precision/coverage gates fail.
+Preserve `.local/v4/dinov2-kernel-calibrated/evaluation.json`; calibrated
+checkpoint SHA256 `f506eabd847eded51ff8db827761aad8c4b294548e9b9751cf4c330a09529af9`.
+The calibrated checkpoint is losslessly archived against the hash-checked V2
+MLP to conserve host disk space. Fifty-two focused ML tests pass, including
+large opposing-coefficient sums, single/batched predictions, state restoration,
+exact evidence binding, and rejection of exposed data as fresh confirmation.
+No further fit or policy search will use these regression results. Normal
+export remains blocked by measured release gates; no production model changed.

@@ -301,6 +301,14 @@ class ExportGateTests(unittest.TestCase):
             report = path.parent / "evaluation.json"
             report.write_text(json.dumps(evidence))
             self.assertIn("native parity", classification_export_evidence(checkpoint, path)["classification_approval"])
+            evidence["confirmatory_evidence"] = "previously_exposed_regression"
+            report.write_text(json.dumps(evidence))
+            with self.assertRaisesRegex(ValueError, "fresh confirmation"):
+                classification_export_evidence(checkpoint, path)
+            del evidence["confirmatory_evidence"]
+            report.write_text(json.dumps(evidence))
+            with self.assertRaisesRegex(ValueError, "fresh confirmation"):
+                classification_export_evidence({**checkpoint, "confirmatory_set_exposed": True}, path)
             evidence["reports"]["diagnostic"]["top1_accuracy"] = .3
             report.write_text(json.dumps(evidence))
             with self.assertRaisesRegex(ValueError, "gates failed"):

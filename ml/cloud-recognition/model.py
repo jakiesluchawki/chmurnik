@@ -51,8 +51,9 @@ def build_model(
     output_count: int,
     pretrained: bool = False,
     architecture: str = "mobilenet_v3_small",
+    model_config: dict | None = None,
 ) -> nn.Module:
-    if architecture in {"dinov2_vits14_linear", "dinov2_vits14_mlp"}:
+    if architecture in {"dinov2_vits14_linear", "dinov2_vits14_mlp", "dinov2_vits14_kernel"}:
         from dinov2_model import DinoCloudNet
-        return DinoCloudNet(output_count, pretrained, head="mlp" if architecture.endswith("_mlp") else "linear")
+        return DinoCloudNet(output_count, pretrained, head=architecture.rsplit("_", 1)[1], kernel_config=model_config)
     return CloudGenusNet(output_count, architecture, pretrained)

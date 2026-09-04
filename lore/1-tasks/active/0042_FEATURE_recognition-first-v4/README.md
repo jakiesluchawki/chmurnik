@@ -120,6 +120,15 @@ The previous Mac SDK signature repair was reviewed in chmurnik-finish and ported
 as f674f55 with five passing tests. No distribution build or upload has occurred;
 do not claim iPad/Mac review approval based on September 3 history alone.
 
+## Additional Deliverable Requested September 5
+
+- [ ] Create 20 more distinct wallpaper motifs in the approved CHMURNIK
+  felt/cloud/pink/olive/violet style. Each motif has separately composed
+  desktop 3840x2160 and phone 2160x3840 PNGs: 20 motifs, 40 files, not
+  recolors/crops counted as additional designs. No text or scientific-photo
+  claims. Preserve existing packs and expose individual/ZIP downloads through
+  the existing SM asset hub. This is supplementary; recognition remains first.
+
 ## Worklog
 
 Ongoing details and benchmark contracts belong in this task, not the wiki.
@@ -173,3 +182,12 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   DINO candidate. Preserved negative results and added ten focused tests, for
   44 passing ML tests total. No new held-out evaluation or production model
   replacement occurred. Full recognition/copy/native acceptance remains open.
+- Completed a fixed two-head ensemble (negative) and a nine-setting kernel
+  study (selected .64303 validation macro-F1). Corrected float32 cancellation
+  without changing the selected fit; all 452 validation cases match sklearn's
+  labels within the declared logit tolerance across four batch sizes. The
+  full-image kernel candidate improves old/fresh-exposed/stress raw accuracy
+  and restores atlas performance, but fails calibrated-precision and coverage
+  release gates. Keep it experimental. Fifty-two ML tests pass; no native
+  model replacement, new Apple build, or upload occurred. Additional details
+  and immutable result hashes are recorded in the experiment contract.

@@ -30,7 +30,7 @@ def main():
     manifest = json.loads(args.manifest.read_text())
     if checkpoint["manifest_sha256"] != hashlib.sha256(args.manifest.read_bytes()).hexdigest():
         raise ValueError("Manifest mismatch")
-    model = build_model(len(GENERA), architecture=checkpoint["architecture"])
+    model = build_model(len(GENERA), architecture=checkpoint["architecture"], model_config=checkpoint.get("model_config"))
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
     loaded = time.monotonic()

@@ -42,11 +42,15 @@ def main():
     parser.add_argument("--baseline", type=Path)
     parser.add_argument("--evaluate-holdouts", action="store_true")
     parser.add_argument("--evaluate-confirmatory", action="store_true")
+    parser.add_argument("--confirmatory-is-regression", action="store_true",
+                        help="Mark a previously exposed confirmation set as regression-only evidence")
     parser.add_argument("--private-image", type=Path)
     parser.add_argument("--device", choices=["auto", "cpu", "mps"], default="auto")
     args = parser.parse_args()
     if args.evaluate_confirmatory and not args.evaluate_holdouts:
         raise ValueError("Fresh confirmation also requires calibration and regression evaluation")
+    if args.confirmatory_is_regression and not args.evaluate_confirmatory:
+        raise ValueError("Regression labeling requires evaluating that set")
     if args.output.exists():
         raise ValueError("Evaluation output already exists; preserve the previous result")
     torch.set_num_threads(4)
@@ -54,10 +58,12 @@ def main():
     validate_manifest(manifest["rows"])
     digest = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
     checkpoint = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
+    if checkpoint.get("confirmatory_set_exposed") and args.evaluate_confirmatory and not args.confirmatory_is_regression:
+        raise ValueError("This candidate must label the exposed confirmation set as regression evidence")
     if checkpoint["manifest_sha256"] != digest or checkpoint["classes"] != GENERA:
         raise ValueError("Checkpoint does not match the frozen manifest/classes")
     device = torch.device(("mps" if torch.backends.mps.is_available() else "cpu") if args.device == "auto" else args.device)
-    model = build_model(len(GENERA), architecture=checkpoint["architecture"])
+    model = build_model(len(GENERA), architecture=checkpoint["architecture"], model_config=checkpoint.get("model_config"))
     model.load_state_dict(checkpoint["state_dict"])
     model = model.eval().to(device)
     validation = [row for row in manifest["rows"] if row["split"] == "validation"]
@@ -67,6 +73,8 @@ def main():
               "architecture": checkpoint["architecture"], "epoch": checkpoint["epoch"],
               "holdouts_evaluated": args.evaluate_holdouts,
               "confirmatory_evaluated": args.evaluate_confirmatory,
+              "confirmatory_evidence": ("previously_exposed_regression" if args.confirmatory_is_regression
+                                       else "fresh" if args.evaluate_confirmatory else "not_evaluated"),
               "validation": metrics(prediction_rows(validation, validation_logits, 1), policy)}
     if args.evaluate_holdouts:
         if args.baseline is None:

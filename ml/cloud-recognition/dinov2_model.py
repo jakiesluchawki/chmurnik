@@ -24,7 +24,7 @@ class FeatureMLP(nn.Module):
 
 
 class DinoCloudNet(nn.Module):
-    def __init__(self, output_count, pretrained=False, head="linear"):
+    def __init__(self, output_count, pretrained=False, head="linear", kernel_config=None):
         super().__init__()
         repository = Path(os.environ.get("CHMURNIK_DINOV2_REPO", Path(__file__).resolve().parents[2] / ".local/v4/vendor/dinov2"))
         if not repository.is_dir():
@@ -35,7 +35,13 @@ class DinoCloudNet(nn.Module):
         sys.path.insert(0, str(repository))
         from dinov2.hub.backbones import dinov2_vits14
         self.backbone = dinov2_vits14(pretrained=pretrained)
-        self.classifier = FeatureMLP(output_count) if head == "mlp" else nn.Linear(768, output_count)
+        if head == "kernel":
+            from kernel_model import StableFeatureRBF
+            if output_count != 11 or kernel_config is None:
+                raise ValueError("The RBF head requires its frozen support geometry")
+            self.classifier = StableFeatureRBF.empty(**kernel_config)
+        else:
+            self.classifier = FeatureMLP(output_count) if head == "mlp" else nn.Linear(768, output_count)
         self.register_buffer("image_mean", torch.tensor([.485, .456, .406]).view(1, 3, 1, 1))
         self.register_buffer("image_std", torch.tensor([.229, .224, .225]).view(1, 3, 1, 1))
 

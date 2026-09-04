@@ -28,6 +28,8 @@ def classification_export_evidence(checkpoint, checkpoint_path, research_only=Fa
     if (not evaluation.get("holdouts_evaluated") or not evaluation.get("confirmatory_evaluated")
             or not checkpoint.get("abstention_policy", {}).get("target_met")):
         raise ValueError("Classification evaluation/calibration is incomplete or failed")
+    if checkpoint.get("confirmatory_set_exposed") or evaluation.get("confirmatory_evidence") == "previously_exposed_regression":
+        raise ValueError("Previously exposed regression data cannot establish fresh confirmation")
     reports, baseline = evaluation["reports"], evaluation["baseline_reports"]
     if (not classification_gates(reports, baseline)["passed"]
             or not confirmatory_gates(reports["confirmatory"], baseline["confirmatory"])["passed"]):
@@ -109,6 +111,7 @@ def main() -> None:
     model = build_model(
         len(GENERA),
         architecture=checkpoint.get("architecture", "mobilenet_v3_small"),
+        model_config=checkpoint.get("model_config"),
     )
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
