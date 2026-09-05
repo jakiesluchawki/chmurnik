@@ -4,6 +4,13 @@ import Foundation
 struct CloudRegionProposal {
     let bounds: CGRect
     let patchCount: Int
+    let anchor: CGPoint?
+
+    init(bounds: CGRect, patchCount: Int, anchor: CGPoint? = nil) {
+        self.bounds = bounds
+        self.patchCount = patchCount
+        self.anchor = anchor
+    }
 }
 
 /// Selectable regions, not cloud labels or individual-cloud identities.
@@ -58,8 +65,20 @@ enum CloudRegionProposer {
             if skyCoverage(left: padded.0, top: padded.1, right: padded.2, bottom: padded.3) >= max(0.7, rawCoverage - 0.05) {
                 (left, top, right, bottom) = padded
             }
+            // The box center may be clear sky or foreground. Anchor only on a mask member.
+            let cx = Double(left + right) / 2, cy = Double(top + bottom) / 2
+            func centerDistance(_ cell: Int) -> Double {
+                pow(Double(cell % columns) + 0.5 - cx, 2) + pow(Double(cell / columns) + 0.5 - cy, 2)
+            }
+            let anchorCell = members.min { a, b in
+                let da = centerDistance(a), db = centerDistance(b)
+                return da == db ? a < b : da < db
+            }!
+            let anchor = CGPoint(x: (Double(anchorCell % columns) + 0.5) / Double(columns),
+                                 y: (Double(anchorCell / columns) + 0.5) / Double(rows))
             proposals.append(CloudRegionProposal(bounds: CGRect(x: Double(left) / Double(columns), y: Double(top) / Double(rows),
-                width: Double(right - left) / Double(columns), height: Double(bottom - top) / Double(rows)), patchCount: members.count))
+                width: Double(right - left) / Double(columns), height: Double(bottom - top) / Double(rows)),
+                patchCount: members.count, anchor: anchor))
         }
         proposals.sort {
             if $0.patchCount != $1.patchCount { return $0.patchCount > $1.patchCount }

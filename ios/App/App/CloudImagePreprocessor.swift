@@ -39,6 +39,12 @@ enum CloudImageError: Error {
 }
 
 enum CloudImagePreprocessor {
+    static func selectedRegion(data: Data) throws -> CGImage {
+        let image = try orientedImage(data: data)
+        guard image.width == image.height else { throw CloudImageError.invalidGeometry }
+        return image
+    }
+
     static func orientedImage(data: Data, maximumSide: Int = 1800) throws -> CGImage {
         guard !data.isEmpty, data.count <= 30 * 1024 * 1024,
               maximumSide > 0, maximumSide <= 4096,

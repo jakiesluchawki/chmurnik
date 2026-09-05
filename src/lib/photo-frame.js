@@ -84,6 +84,24 @@ export function squarePhotoRegion(width, height, point, fraction = .55) {
     y: Math.max(0, Math.min(1 - h, point.y - h / 2)), width: w, height: h };
 }
 
+export function squareRegionForProposal(width, height, bounds, anchor) {
+  validatePhotoRegion(bounds);
+  if (![width, height].every(Number.isFinite) || width <= 0 || height <= 0) {
+    throw new RangeError("Invalid photo dimensions");
+  }
+  // Show the actual square input, including context, not an invisible center crop.
+  const side = Math.min(Math.min(width, height), Math.max(width * bounds.width, height * bounds.height));
+  const w = side / width;
+  const h = side / height;
+  const point = anchor || { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 };
+  if (![point.x, point.y].every(Number.isFinite) || point.x < bounds.x || point.y < bounds.y
+    || point.x > bounds.x + bounds.width || point.y > bounds.y + bounds.height) {
+    throw new RangeError("Invalid cloud area anchor");
+  }
+  return { x: Math.max(0, Math.min(1 - w, point.x - w / 2)),
+    y: Math.max(0, Math.min(1 - h, point.y - h / 2)), width: w, height: h };
+}
+
 export async function prepareRecognitionRegion(source, bounds) {
   validatePhotoRegion(bounds);
   const image = await new Promise((resolve, reject) => {
@@ -94,14 +112,15 @@ export async function prepareRecognitionRegion(source, bounds) {
   });
   const width = image.naturalWidth * bounds.width;
   const height = image.naturalHeight * bounds.height;
+  if (Math.abs(width - height) > 1e-6) throw new RangeError("Recognition requires a visible square selection");
   const scale = Math.min(1, 1600 / Math.max(width, height));
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(width * scale));
-  canvas.height = Math.max(1, Math.round(height * scale));
+  canvas.height = canvas.width;
   const context = canvas.getContext("2d", { alpha: false });
   if (!context) throw new Error("Nie udało się przygotować fragmentu.");
   context.drawImage(image, image.naturalWidth * bounds.x, image.naturalHeight * bounds.y,
     width, height, 0, 0, canvas.width, canvas.height);
   const previewUrl = canvas.toDataURL("image/jpeg", .9);
-  return { previewUrl, base64: previewUrl.split(",")[1] };
+  return { previewUrl, base64: previewUrl.split(",")[1], selectedRegion: true };
 }

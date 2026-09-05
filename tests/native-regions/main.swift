@@ -61,6 +61,17 @@ if CommandLine.arguments.count == 3 {
     let masks = try CloudRegionProposer.propose(cloudScores: clouds, skyScores: sky, columns: 64, rows: 64)
     require(masks.count == 2, "Two cloud areas remain separate; isolated noise is omitted")
     require(masks.allSatisfy { full.contains($0.bounds) }, "Mask proposals stay within the photograph")
+    require(masks.allSatisfy {
+        guard let p = $0.anchor else { return false }
+        return $0.bounds.contains(p) && clouds[Int(p.y * 64) * 64 + Int(p.x * 64)] >= 0.5
+    }, "Tap markers must be on cloud-mask members")
+    var ring = blank
+    for y in 8..<56 { for x in 8..<56 where x < 16 || x >= 48 || y < 16 || y >= 48 { ring[y * 64 + x] = 1 } }
+    let ringRegions = try CloudRegionProposer.propose(cloudScores: ring, skyScores: sky, columns: 64, rows: 64)
+    require(ringRegions.count == 1, "A connected ring stays one proposal")
+    let ringAnchor = ringRegions[0].anchor!
+    require(ring[Int(ringAnchor.y * 64) * 64 + Int(ringAnchor.x * 64)] == 1,
+            "A clear hole in the middle of a cloud area must not receive its tap marker")
     let limited = try CloudRegionProposer.propose(cloudScores: clouds, skyScores: sky, columns: 64, rows: 64, limit: 1)
     require(limited.count == 1 && limited[0].patchCount == 256, "Proposal limit preserves the largest area first")
     let excluded = try CloudRegionProposer.propose(cloudScores: sky, skyScores: blank, columns: 64, rows: 64)

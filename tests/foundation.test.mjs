@@ -59,13 +59,15 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
   assert.match(interpretation, /low-layered/);
   assert.match(native, /VNCoreMLRequest/);
   assert.match(native, /private var cachedModels: \[String: VNCoreMLModel\]/);
-  assert.match(native, /let image = try self\.centerCrop/);
+  assert.match(native, /selectedRegion\(data: imageData\)/);
+  assert.match(native, /: self\.centerCrop\(imageData: imageData, fraction: self\.trainingCropFraction\)/);
+  assert.match(native, /minimumConfidence": selectedRegion \? 1\.01 : self\.minimumConfidence/);
   assert.match(native, /trainingCropFraction = 0\.902/);
   assert.match(native, /imageCropAndScaleOption = \.scaleFill/);
   assert.match(native, /baseWeight = 0\.4/);
   assert.match(native, /candidateWeight = 0\.6/);
   assert.match(native, /marginThreshold = 0\.51/);
-  assert.match(native, /modelVersion": "3\.0-ensemble"/);
+  assert.match(native, /modelVersion": selectedRegion \? "3\.0-ensemble-selected-region-experimental" : "3\.0-ensemble"/);
   assert.match(plist, /NSCameraUsageDescription/);
   assert.match(plist, /NSPhotoLibraryUsageDescription/);
   assert.ok(

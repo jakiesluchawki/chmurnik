@@ -159,6 +159,7 @@ import {
   isPhotoCaptureCancellation,
   isPhotoRecognitionSupported,
   photoCaptureErrorMessage,
+  proposeCloudPhotoRegions,
   recognizeCloudPhoto,
 } from "./lib/native-cloud-recognizer.js";
 
@@ -4873,6 +4874,7 @@ function SourcesPage({ onSources }) {
         <span className="eyebrow">Jawny warsztat</span>
         <h1>Biblioteka źródeł</h1>
         <p>Pełna lista materiałów wykorzystanych w encyklopedii. Fotografie mają dodatkowo osobne metryki na kartach atlasu.</p>
+        <p><a href={publicAsset("cloud-region-notices.txt")} target="_blank" rel="noreferrer">Autorzy i licencje modeli wyznaczających obszary chmur</a></p>
       </header>
       <div className="source-library">
         {sourceList.map((source) => (
@@ -4898,6 +4900,9 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
   const [captured, setCaptured] = useState(null);
   const [saving, setSaving] = useState(false);
   const [frameNote, setFrameNote] = useState("");
+  const [regions, setRegions] = useState([]);
+  const [proposalStatus, setProposalStatus] = useState("ready");
+  const working = ["capturing", "detecting", "analyzing"].includes(phase);
   const resultRef = useRef(null);
   const started = useRef(false);
   const [operations] = useState(createPhotoOperationScope);
@@ -4910,30 +4915,36 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     resultRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
   }, [phase]);
 
+  const selectPhoto = async (photo, operation) => {
+    if (!operation.isCurrent()) return;
+    setCaptured({ ...photo, capturedAt: Date.now(), observationId: crypto.randomUUID() });
+    setFrameNote(""); setResult(null); setFeedback(null); setRegions([]);
+    setPreviewUrl(photo.previewUrl); setAnalyzedPhotoUrl(null);
+    setProposalStatus("searching"); setPhase("detecting");
+    try {
+      const proposals = await proposeCloudPhotoRegions(photo);
+      if (!operation.isCurrent()) return;
+      setRegions(proposals); setProposalStatus("ready");
+    } catch {
+      if (!operation.isCurrent()) return;
+      setProposalStatus("unavailable");
+    }
+    if (operation.isCurrent()) setPhase("selecting");
+  };
+
   const analyze = async (source) => {
-    if (saving || ["capturing", "analyzing"].includes(phase)) return;
+    if (saving || working) return;
     const operation = operations.begin();
     if (!operation) return;
     setError(null);
     setPhase("capturing");
     try {
       const photo = await captureCloudPhoto(source);
-      if (!operation.isCurrent()) return;
-      setCaptured({ ...photo, capturedAt: Date.now(), observationId: crypto.randomUUID() });
-      setFrameNote("");
-      setResult(null);
-      setFeedback(null);
-      setPreviewUrl(photo.previewUrl);
-      setAnalyzedPhotoUrl(photo.previewUrl);
-      setPhase("analyzing");
-      const value = await recognizeCloudPhoto(photo);
-      if (!operation.isCurrent()) return;
-      setResult(value);
-      setPhase("result");
+      await selectPhoto(photo, operation);
     } catch (failure) {
       if (!operation.isCurrent()) return;
       if (isPhotoCaptureCancellation(failure)) {
-        setPhase(result ? "result" : "idle");
+        setPhase(result ? "result" : captured ? "selecting" : "idle");
         return;
       }
       console.error("[CHMURNIK camera]", failure?.code || "unknown", failure?.message || failure);
@@ -4956,7 +4967,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
   }, []);
 
   const saveCaptured = async () => {
-    if (!captured || saving) return;
+    if (!captured || saving || working) return;
     const operation = operations.begin();
     if (!operation) return;
     setSaving(true); setError(null);
@@ -4977,10 +4988,10 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
   };
 
   const analyzeFrame = async (bounds) => {
-    if (!captured) return;
+    if (!captured || saving || working) return;
     const operation = operations.begin();
     if (!operation) return;
-    setPhase("analyzing"); setError(null); setResult(null); setFrameNote("");
+    setPhase("analyzing"); setError(null); setResult(null); setFeedback(null); setFrameNote("");
     try {
       const photo = await prepareRecognitionRegion(captured.previewUrl, bounds);
       if (!operation.isCurrent()) return;
@@ -4993,7 +5004,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       setPhase("result");
     } catch (error) {
       if (!operation.isCurrent()) return;
-      setPhase("idle"); setError("Nie udało się rozstrzygnąć fragmentu. Możesz zachować samą obserwację.");
+      setPhase("selecting"); setError("Nie udało się przeanalizować fragmentu. Spróbuj ponownie lub zapisz samo zdjęcie.");
       throw error;
     } finally { operation.finish(); }
   };
@@ -5032,8 +5043,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     const cloud = getCloud("cumulus");
     const source = publicAsset(cloud.images[0].src);
     setPreviewUrl(source);
-    setAnalyzedPhotoUrl(source);
-    setPhase("analyzing");
+    setPhase("detecting");
     const encodedPhoto = fetch(source, { signal: controller.signal })
         .then((response) => response.blob())
         .then((blob) => qaMode === "result"
@@ -5047,13 +5057,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     encodedPhoto
       .then((base64) => {
         if (!operation.isCurrent()) return;
-        setCaptured({ base64, previewUrl: source, capturedAt: Date.now(), observationId: crypto.randomUUID() });
-        return recognizeCloudPhoto(base64);
-      })
-      .then((value) => {
-        if (!operation.isCurrent()) return;
-        setResult(value);
-        setPhase("result");
+        return selectPhoto({ base64, previewUrl: source }, operation);
       })
       .catch(() => { if (operation.isCurrent()) setPhase("idle"); })
       .finally(() => operation.finish());
@@ -5091,7 +5095,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
         </div>
 
         {captured ? <PhotoFrame key={captured.observationId} source={captured.previewUrl} onAnalyze={analyzeFrame}
-          analyzing={phase === "analyzing"} disabled={saving || phase === "analyzing" || phase === "capturing"} /> : previewUrl ? (
+          regions={regions} proposalStatus={proposalStatus} analyzing={phase === "analyzing"} disabled={saving || working} /> : previewUrl ? (
           <figure className="photo-recognition-preview">
             <img src={previewUrl} alt="Zdjęcie nieba wybrane do analizy" />
             {phase === "analyzing" && <figcaption>Analizuję zdjęcie na urządzeniu…</figcaption>}
@@ -5101,7 +5105,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
             <div>
               <CameraIcon size={34} weight="light" />
               <h3>Wybierz zdjęcie chmur</h3>
-              <p>Najlepszy będzie wyraźny kadr jednej chmury, bez budynków i szerokiego horyzontu.</p>
+              <p>CHMURNIK zaproponuje fragmenty do sprawdzenia. Wybierzesz jeden z nich lub wskażesz chmurę samodzielnie. Najlepsze będzie wyraźne zdjęcie zrobione za dnia.</p>
             </div>
             <picture className="photo-recognition-intro__art" aria-hidden="true">
               <source type="image/avif" srcSet={publicAsset("assets/observer-guide-still-life-720.avif")} />
@@ -5135,15 +5139,15 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
           </div>
         )}
 
-        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || phase === "analyzing"}>{saving ? "Zapisuję zdjęcie…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Zapiszesz całe zdjęcie wraz z dostępnym wynikiem analizy.</small></div>}
+        {captured && phase !== "capturing" && <div className="photo-save-observation"><button className="button button--primary" onClick={saveCaptured} disabled={saving || working}>{saving ? "Zapisuję zdjęcie…" : "Zapisz w Moim niebie"}<Check size={19} /></button><small>Zapiszesz całe zdjęcie wraz z dostępnym wynikiem analizy.</small></div>}
 
         {error && <p className="photo-recognition-error" role="alert"><Warning size={18} />{error}</p>}
 
         <footer className="photo-capture-actions">
-          {!macWorkspace && <button onClick={() => analyze("camera")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
+          {!macWorkspace && <button onClick={() => analyze("camera")} disabled={saving || working}>
             <CameraIcon size={20} /><span>{previewUrl ? "Zrób nowe" : "Zrób zdjęcie"}</span>
           </button>}
-          <button onClick={() => analyze("photos")} disabled={saving || phase === "capturing" || phase === "analyzing"}>
+          <button onClick={() => analyze("photos")} disabled={saving || working}>
             <ImageSquare size={20} /><span>{macWorkspace ? "Wybierz plik zdjęcia" : "Wybierz z biblioteki"}</span>
           </button>
         </footer>

@@ -242,3 +242,19 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   accepted-answer and coverage gates fail. Preserve the candidate as research,
   not a release. The owner acknowledged this outcome and continued integration
   scope. Restart is not currently needed and no restart was performed.
+- Integrated both local masks into the shared Apple plugin and selection-first
+  photo flow. Numbered targets are anchored on eligible cloud-mask pixels, not
+  arbitrary rectangle centers. The displayed square is passed without a second
+  hidden center crop; original-photo save and manual fallback remain available.
+  Uncalibrated selected-region scores cannot become accepted names. All 220
+  JavaScript tests, nine lesson audits, native geometry assertions and the
+  combined 86-input native probe pass. The iPhone/iPad simulator target builds.
+  Catalyst needs the project's existing isolated source-built SDK workflow,
+  not the official iOS-only binary packages. UI/screenshot service is unavailable,
+  so real interaction and visual QA are explicitly outstanding. Genus model
+  replacement, full copy review, Apple release and wallpapers remain incomplete.
+- The final marker-aware iPhone/iPad simulator and ad-hoc Mac Catalyst builds
+  both completed. The Mac staging copy matches the current detector, proposer
+  and plugin sources; its app is local development only, not a signed store
+  archive or a publication. The inference/UI feature still needs real-device
+  interaction, visual QA and its unchanged accuracy/calibration release gates.

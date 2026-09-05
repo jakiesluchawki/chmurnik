@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A40000010000000000000001 /* CloudImagePreprocessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40000020000000000000001; };
+		A40000010000000000000002 /* CloudRegionProposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40000020000000000000002; };
+		A40000010000000000000003 /* CloudRegionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40000020000000000000003; };
+		A40000010000000000000004 /* SkySegmentation.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = A40000020000000000000004; };
+		A40000010000000000000005 /* CloudMaskV4Research.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = A40000020000000000000005; };
 		A33000010000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A33000020000000000000001 /* PrivacyInfo.xcprivacy */; };
 		A33000030000000000000001 /* AppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33000040000000000000001 /* AppStoreUITests.swift */; };
 		A32000010000000000000001 /* ObservationVaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32000020000000000000001 /* ObservationVaultStore.swift */; };
@@ -26,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A40000020000000000000001 /* CloudImagePreprocessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudImagePreprocessor.swift; sourceTree = "<group>"; };
+		A40000020000000000000002 /* CloudRegionProposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudRegionProposer.swift; sourceTree = "<group>"; };
+		A40000020000000000000003 /* CloudRegionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudRegionDetector.swift; sourceTree = "<group>"; };
+		A40000020000000000000004 /* SkySegmentation.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlmodel; name = SkySegmentation.mlpackage; path = Models/SkySegmentation.mlpackage; sourceTree = "<group>"; };
+		A40000020000000000000005 /* CloudMaskV4Research.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlmodel; name = CloudMaskV4Research.mlpackage; path = Models/CloudMaskV4Research.mlpackage; sourceTree = "<group>"; };
 		A33000020000000000000001 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A33000040000000000000001 /* AppStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUITests.swift; sourceTree = "<group>"; };
 		A33000050000000000000001 /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +96,11 @@
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				A10000020000000000000001 /* BridgeViewController.swift */,
 				A10000040000000000000001 /* CloudRecognizerPlugin.swift */,
+				A40000020000000000000001 /* CloudImagePreprocessor.swift */,
+				A40000020000000000000002 /* CloudRegionProposer.swift */,
+				A40000020000000000000003 /* CloudRegionDetector.swift */,
+				A40000020000000000000004 /* SkySegmentation.mlpackage */,
+				A40000020000000000000005 /* CloudMaskV4Research.mlpackage */,
 				A32000020000000000000001 /* ObservationVaultStore.swift */,
 				A32000040000000000000001 /* ObservationVaultPlugin.swift */,
 				A10000060000000000000001 /* CloudGenusClassifier.mlpackage */,
@@ -214,6 +229,11 @@
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 				A10000010000000000000001 /* BridgeViewController.swift in Sources */,
 				A10000030000000000000001 /* CloudRecognizerPlugin.swift in Sources */,
+				A40000010000000000000001 /* CloudImagePreprocessor.swift in Sources */,
+				A40000010000000000000002 /* CloudRegionProposer.swift in Sources */,
+				A40000010000000000000003 /* CloudRegionDetector.swift in Sources */,
+				A40000010000000000000004 /* SkySegmentation.mlpackage in Sources */,
+				A40000010000000000000005 /* CloudMaskV4Research.mlpackage in Sources */,
 				A32000010000000000000001 /* ObservationVaultStore.swift in Sources */,
 				A32000030000000000000001 /* ObservationVaultPlugin.swift in Sources */,
 				A10000050000000000000001 /* CloudGenusClassifier.mlpackage in Sources */,

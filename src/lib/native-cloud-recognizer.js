@@ -2,6 +2,7 @@ import { Capacitor, registerPlugin } from "@capacitor/core";
 import { Camera, CameraDirection, MediaTypeSelection } from "@capacitor/camera";
 import { interpretCloudProbabilities } from "./photo-recognition.js";
 import { isMacWorkspace } from "./native-workspace.js";
+import { validatePhotoRegion } from "./photo-frame.js";
 
 const CloudRecognizer = registerPlugin("CloudRecognizer");
 
@@ -12,12 +13,42 @@ export function isPhotoRecognitionSupported() {
 }
 
 export function buildCloudRecognizerInput(photo) {
+  const selection = photo?.selectedRegion === true ? { selectedRegion: true } : {};
   if (typeof photo === "string" && photo) return { base64: photo };
-  if (photo?.uri) return { path: photo.uri };
-  if (photo?.path) return { path: photo.path };
-  if (photo?.base64) return { base64: photo.base64 };
-  if (photo?.base64String) return { base64: photo.base64String };
+  if (photo?.uri) return { path: photo.uri, ...selection };
+  if (photo?.path) return { path: photo.path, ...selection };
+  if (photo?.base64) return { base64: photo.base64, ...selection };
+  if (photo?.base64String) return { base64: photo.base64String, ...selection };
   throw new Error("Nie udało się odczytać danych zdjęcia.");
+}
+
+export function normalizeCloudRegions(native) {
+  if (!Array.isArray(native?.regions)) throw new Error("Brak prawidłowych propozycji obszarów.");
+  const ids = new Set();
+  const regions = [];
+  for (const region of native.regions.slice(0, 5)) {
+    try {
+      validatePhotoRegion(region?.bounds);
+      if (typeof region.id !== "string" || !/^[a-zA-Z0-9-]{1,64}$/.test(region.id) || ids.has(region.id)) continue;
+      const { x, y, width, height } = region.bounds;
+      const anchor = region.anchor;
+      if (anchor && (![anchor.x, anchor.y].every(Number.isFinite) || anchor.x < x || anchor.y < y
+        || anchor.x > x + width || anchor.y > y + height)) continue;
+      ids.add(region.id);
+      regions.push({ id: region.id, bounds: { x, y, width, height },
+        ...(anchor ? { anchor: { x: anchor.x, y: anchor.y } } : {}) });
+    } catch { /* Malformed native rectangles must never reach the photo controls. */ }
+  }
+  return regions;
+}
+
+export async function proposeCloudPhotoRegions(photo) {
+  if (import.meta.env.VITE_QA_PHOTO_RECOGNITION === "result") {
+    // Synthetic UI fixture only; never used as detection/accuracy evidence.
+    return [{ id: "qa-area-1", bounds: { x: .15, y: .2, width: .35, height: .4 } },
+      { id: "qa-area-2", bounds: { x: .6, y: .3, width: .3, height: .3 } }];
+  }
+  return normalizeCloudRegions(await CloudRecognizer.proposeRegions(buildCloudRecognizerInput(photo)));
 }
 
 export function normalizeCapturedPhoto(result) {

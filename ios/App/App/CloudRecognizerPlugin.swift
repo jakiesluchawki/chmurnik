@@ -12,6 +12,7 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumen
     public let jsName = "CloudRecognizer"
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "classify", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "proposeRegions", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "pickPhoto", returnType: CAPPluginReturnPromise)
     ]
 
@@ -22,6 +23,8 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumen
     private let marginThreshold = 0.51
     private let trainingCropFraction = 0.902
     private let modelLock = NSLock()
+    private let inferenceQueue = DispatchQueue(label: "cloud.chmurnik.recognition", qos: .userInitiated, autoreleaseFrequency: .workItem)
+    private var regionDetector: CloudRegionDetector?
     private var cachedModels: [String: VNCoreMLModel] = [:]
     private var pendingPhotoCall: CAPPluginCall?
 
@@ -79,19 +82,19 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumen
     @objc public func classify(_ call: CAPPluginCall) {
         let encoded = call.getString("base64")
         let path = call.getString("path")
+        let selectedRegion = call.getBool("selectedRegion") == true
         guard encoded != nil || path != nil else {
             call.reject("Nie udało się odczytać danych zdjęcia.")
             return
         }
 
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let self else { return }
+        inferenceQueue.async { [weak self] in
+            guard let self else { call.reject("Analiza została zamknięta."); return }
             do {
                 let imageData = try self.loadImageData(encoded: encoded, path: path)
-                let image = try self.centerCrop(
-                    imageData: imageData,
-                    fraction: self.trainingCropFraction
-                )
+                let image = try selectedRegion
+                    ? CloudImagePreprocessor.selectedRegion(data: imageData)
+                    : self.centerCrop(imageData: imageData, fraction: self.trainingCropFraction)
                 let base = try self.probabilities(
                     image: image,
                     model: self.loadModel(named: "CloudGenusClassifier")
@@ -108,12 +111,39 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumen
 #endif
                 call.resolve([
                     "probabilities": probabilities,
-                    "minimumConfidence": self.minimumConfidence,
+                    // Selected crops have not passed their own confidence calibration.
+                    "minimumConfidence": selectedRegion ? 1.01 : self.minimumConfidence,
                     "marginThreshold": self.marginThreshold,
-                    "modelVersion": "3.0-ensemble"
+                    "modelVersion": selectedRegion ? "3.0-ensemble-selected-region-experimental" : "3.0-ensemble"
                 ])
             } catch {
                 call.reject("Nie udało się przeanalizować zdjęcia.", nil, error)
+            }
+        }
+    }
+
+    @objc public func proposeRegions(_ call: CAPPluginCall) {
+        let encoded = call.getString("base64")
+        let path = call.getString("path")
+        inferenceQueue.async { [weak self] in
+            guard let self else { call.reject("Analiza została zamknięta."); return }
+            do {
+                let data = try self.loadImageData(encoded: encoded, path: path)
+                if self.regionDetector == nil { self.regionDetector = try CloudRegionDetector() }
+                guard let detector = self.regionDetector else { throw RecognitionError.modelMissing }
+                let regions = try detector.detect(imageData: data)
+                call.resolve([
+                    "regions": regions.enumerated().map { index, region in
+                        let anchor = region.anchor ?? CGPoint(x: region.bounds.midX, y: region.bounds.midY)
+                        return ["id": "cloud-area-\(index + 1)", "anchor": ["x": anchor.x, "y": anchor.y], "bounds": [
+                            "x": region.bounds.minX, "y": region.bounds.minY,
+                            "width": region.bounds.width, "height": region.bounds.height
+                        ]] as [String: Any]
+                    },
+                    "modelVersion": "4.0-cloud-areas-experimental"
+                ])
+            } catch {
+                call.reject("Nie udało się wyznaczyć obszarów. Wskaż miejsce na zdjęciu.", "regions-unavailable", error)
             }
         }
     }
@@ -126,12 +156,15 @@ public final class CloudRecognizerPlugin: CAPPlugin, CAPBridgedPlugin, UIDocumen
             } else {
                 url = URL(fileURLWithPath: path)
             }
-            guard let data = try? Data(contentsOf: url), !data.isEmpty else {
+            guard let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize,
+                  size > 0, size <= 30 * 1024 * 1024,
+                  let data = try? Data(contentsOf: url), !data.isEmpty, data.count <= 30 * 1024 * 1024 else {
                 throw RecognitionError.imageUnreadable
             }
             return data
         }
-        guard let encoded, let data = Data(base64Encoded: encoded), !data.isEmpty else {
+        guard let encoded, encoded.utf8.count <= 40 * 1024 * 1024,
+              let data = Data(base64Encoded: encoded), !data.isEmpty, data.count <= 30 * 1024 * 1024 else {
             throw RecognitionError.imageUnreadable
         }
         return data

@@ -1,0 +1,47 @@
+CHMURNIK: on-device cloud-region proposals (experimental)
+
+These two models locate areas for the user to inspect. They do not identify
+cloud genera, cloud altitude, flight conditions or individual cloud boundaries.
+No user photograph or private feedback was included in their training data.
+
+SkySegmentation
+Source: https://github.com/xiongzhu666/Sky-Segmentation-and-Post-processing
+Revision: 1f7811b32b64ddc957269defff84bc87a3f0b74f
+Changes: NCNN weights reconstructed in PyTorch and exported as float32 Core ML
+by CHMURNIK. Whole-image RGB input at 384x384; normalization inside the graph.
+
+MIT License
+
+Copyright (c) 2021 xiongzhu666
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+CloudMaskV4Research
+Architecture and training: CHMURNIK, MobileNetV3-Small encoder and compact decoder.
+Whole-image RGB input at 256x256; normalization inside the graph. Float32 Core ML.
+Training data: All-Sky Imager Cloud Segmentation Dataset Almeria, v1.0.1.
+Authors: Yann Fabel, David Magiera, Bijan Nouri, Niklas Blum, Luis F. Zarzalejo.
+Organizations: DLR and Research Centre for Energy, Environment and Technology.
+Source: https://doi.org/10.5281/zenodo.16647156
+Data license: Creative Commons Attribution 4.0 International (CC BY 4.0).
+License: https://creativecommons.org/licenses/by/4.0/
+Changes: images resized to 256x256; cloud categories merged into one binary
+mask; ignored pixels excluded from the loss. Capture days and duplicates
+separated across training, validation and test. Dataset images are not bundled.
+This attribution does not imply endorsement by the dataset authors.

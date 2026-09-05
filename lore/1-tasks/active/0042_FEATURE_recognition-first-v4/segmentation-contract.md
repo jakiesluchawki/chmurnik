@@ -200,3 +200,73 @@ untouched confirmation set for a future tuned model. They remain excluded from
 training. Sixty-four Python ML tests and the native region assertions pass.
 No application model was replaced, no V4 package was uploaded to Apple, and
 no wallpaper was generated during this recognition-first step.
+
+## Development Integration, September 5
+
+Added `CloudRegionDetector` to the shared Apple target, using the verified
+float32 SkySegmentation 384px and CloudMaskV4Research 256px packages. Their
+graphs, weights and manifests are byte-identical to the research exports.
+`tests/cloud-regions.test.mjs` pins both graph and weight hashes. The two
+compiled model resources add approximately 9 MB. Full source notices are
+bundled in `public/cloud-region-notices.txt` and linked from Sources.
+
+The bridge now exposes `proposeRegions` on a serial inference queue shared
+with classification. The full oriented image passes through both masks;
+bilinear pixel-center resampling aligns the sky grid with the cloud grid.
+Only connected cloud-mask members eligible as sky can anchor numbered tap
+targets. A hole in the center of a connected region must not receive its
+marker; synthetic ring and foreground tests enforce this. Neither a marker
+nor a rectangle establishes an individual cloud identity or a genus.
+
+Capture/import now precedes proposal selection rather than immediate genus
+classification. Selecting a number reveals the actual square analysis frame;
+the user confirms it or points elsewhere. An accessible numbered button list
+also reaches overlapping markers. Empty proposals and failed detection are
+distinct states, both retaining manual selection and original-photo save.
+All operations remain local, bounded and protected against late completion
+after the dialog closes. Native input is limited to 30 MB.
+
+Found and repaired a geometry mismatch: previously the classifier center-cropped
+an already selected region again. `selectedRegion: true` now requires square
+pixels and passes the entire displayed crop to Vision. Full-photo callers keep
+the original 0.902 preprocessing. The two shipped genus weight files are
+unchanged. **Selected-region scores have no validated calibration yet**, so
+this path sets minimumConfidence=1.01 and reports an experimental pipeline
+version; it must not produce accepted/confident names. This is explicitly not
+a calibration success or a deployable improvement in genus accuracy.
+
+Completed checks:
+
+- Native grid-resampling, input rejection, square preservation, connected-mask
+  geometry, marker placement and no-sky/no-cloud assertions pass.
+- Both masks and proposals ran together on all 86 original control inputs
+  (48 DLR, 30 atlas, eight EXIF fixtures). There were 51 nonempty outputs;
+  this is not an accuracy metric. Median warm combined inference on the host
+  was 0.219 seconds, excluding model construction, not a phone latency claim.
+- Final probe: `.local/v4/native-region-detector-anchors-results.json`, SHA256
+  `be5a679a538c5db7af5cff6390fbe9385b7fe619afc2be902ff9b29e158db570`.
+  The orientation fixtures yield empty proposals; this alone does not verify
+  positive-region alignment. Earlier pixel-level EXIF tests remain separate.
+- All 220 JavaScript tests, production web build and nine lesson audits pass.
+- The shared iPhone/iPad simulator target compiles with both mask resources.
+
+The first direct Catalyst build failed because the official Capacitor binary
+distribution lacks Catalyst slices. The existing `scripts/build-macos.mjs`
+isolated source-build workflow supplies those slices and produced an ad-hoc
+development app. No SDK signing bypass, host restart, installed app replacement,
+Apple submission or website deployment was performed. A final rebuild after
+the marker change is tracked in the task worklog.
+
+Visual and interactive QA is still open. The browser tool returned no available
+browser and then a computer-use startup failure; the temporary local preview
+server was stopped. Do not claim screenshots or successful phone/Mac interaction
+from a compile. Still needed: positive EXIF/portrait-region alignment, clutter,
+thin/dark clouds, overlapping taps, keyboard/VoiceOver, failed detection, close
+during processing, repeat selection and original-versus-crop save on real UI.
+Mobile segmentation/region labeling and genus-release gates remain unchanged.
+
+Reproduce the combined probe by compiling `CloudImagePreprocessor.swift`,
+`CloudRegionProposer.swift`, `CloudRegionDetector.swift` and
+`tests/native-region-detector/main.swift`; pass the two mlpackage paths,
+`.local/v4/dlr-cloud-mask-v1-native/request.json` and a new output JSON path.
+Do not overwrite previously recorded results.

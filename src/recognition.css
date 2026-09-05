@@ -188,7 +188,6 @@
   outline-offset: -6px;
 }
 
-.photo-region-proposal,
 .photo-region-selection {
   position: absolute;
   border: 2px solid white;
@@ -197,16 +196,24 @@
   box-shadow: 0 0 0 1px #262626;
 }
 
-.photo-region-proposal > span {
+.photo-region-marker {
   position: absolute;
-  left: 3px;
-  top: 3px;
-  min-width: 26px;
-  padding: 4px;
-  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  border: 2px solid white;
+  border-radius: 50%;
   background: var(--paper);
   color: var(--ink);
   font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 1px 6px #26262680;
+}
+
+.photo-region-marker[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
 }
 
 .photo-region-selection {
