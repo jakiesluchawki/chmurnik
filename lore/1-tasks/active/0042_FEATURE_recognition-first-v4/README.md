@@ -212,3 +212,9 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   screened subset is imbalanced and covers only 11 dates. A fixed visual audit
   and proper grouping must precede training. See `data-expansion-audit.md`.
   No new Apple build or upload occurred; the full release remains open.
+- Completed the predeclared 42-photo NASA visual audit: 41 downloads and one
+  preserved failure, with all selected observations marked development-only.
+  Mixed categories, framing and ambiguous Cb examples prevent treating this as
+  ordinary eleven-genus ground truth. Recorded findings without relabeling;
+  added hash-preserving resume and full JPEG decode checks. All 84 ML tests
+  pass. No GLOBE data entered training and no release model changed.

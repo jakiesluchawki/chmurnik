@@ -19,8 +19,8 @@ Fetched only the public record JSON and `GAZECloudTypeAll_20230328.csv` into
 `.local/v4/globe-gaze-audit/`. Its MD5 matches the published value
 `7029a6efd57e67b239f1b166a916aa08`. Initial CSV parsing found 3,909 physical
 data records, not 3,909 observations; the structural correction is below.
-No photographs have been downloaded from this source. Do not commit raw
-observation locations or identifiable metadata into public application assets.
+The later fixed photo audit is recorded below. Do not commit raw observation
+locations or identifiable metadata into public application assets.
 
 Each observation has North/East/South/West/Up image URLs and separate labels,
 agreement, classification count and retirement fields. The actual taxonomy is:
@@ -85,18 +85,53 @@ These counts are not a training approval or a quality score. They reveal both
 additional outdoor-photo supervision and substantial imbalance/partial labels.
 No Nimbostratus or individual members of union categories may be invented.
 
-### Next Bounded Check
+### Completed Fixed Visual Check
 
-Before fitting anything, inspect six deterministically selected photographs
-from each of the seven screened categories (42 total, seed7042 hash ordering,
-one photograph per observation). Mark all selected observations and their
-other views as development-only exposure, never a future fresh test set.
-Record a selection manifest before downloads; cap individual and aggregate
-download sizes, preserve failures instead of replacing inconvenient images.
-Inspect actual cloud visibility, framing, obvious label limitations and image
-quality without inventing expert labels. Later training requires an explicit
-partial-label strategy, photo deduplication and spatial/observation/day grouping.
-The unchanged eleven-output genus objective and existing release gates remain.
+Selected six photographs from each of the seven screened categories (42 total,
+seed7042 hash ordering, one photograph per observation). The saved selection
+manifest precedes the downloads; SHA256 is
+`6613a98f1c3e0ad5ab6756fc2285056a2866445e418ebe52b0762061c771e93b`.
+All 42 observations and their other views are development-only exposure, never
+a future fresh test set. The CLI is `audit_globe_photos.py`; local photographs,
+seven contact sheets and per-file hashes are in
+`.local/v4/globe-gaze-audit/visual-sample/` and are not public assets.
+
+41 files were downloaded (10,389,196 bytes). One As/St file, ID
+`gaze-e1b72f1afc4cb63fa0ca`, failed the JPEG/pixel-count check; it was not replaced.
+The combined error does not distinguish an unsupported format from excess
+resolution. Do not claim a more specific cause. The downloader rejects changed
+previously inspected files without discarding their recorded hashes; it also
+fully decodes JPEGs before declaring success.
+
+Inspected all seven sheets on September 5. These are visual observations and
+limitations, not expert relabeling or a measured source-label accuracy:
+
+- Clear: the sample contains blue sky with buildings, trees, glare, blur, and
+  a person at the edge of one frame. It is not all clean sky-only imagery.
+- Ci/Cs: wispy sheets/streaks appear, with contrail-like linear structures,
+  foreground obstructions and one blurred image. The union must stay a union.
+- Cc/Ac: small cloud elements appear at different scales/perspectives; some
+  occupy only part of the frame. A single label cannot locate those elements.
+- As/St: the five downloaded images show mostly gray/blue-gray sheets; one
+  has a bright break and visibly structured cloud texture. The photographs
+  alone do not establish a cloud height or a unique genus.
+- Sc: texture varies substantially, including backlighting and warm sunset
+  illumination. These resemble the app's difficult lighting conditions, but
+  that does not establish every consensus label as correct.
+- Cu: multiple cloud objects, dark bases, glare and foreground objects occur;
+  one photo has clouds predominantly at the left edge. Center cropping may
+  remove the labeled subject. Region work must preserve whole-photo context.
+- Cb: all six selected views are dominated by dark/cloudy bases or portions
+  of a cloud field, without an unambiguous full tower/anvil visible in the
+  contact sheet. These do not independently verify Cb. A dark base alone is
+  not sufficient genus evidence; do not turn these into certain Cb examples.
+
+Decision: do not append this source to the eleven-genus manifest as ordinary
+single-label truth. A later experimental use must preserve partial labels,
+exclude unresolvable Cb supervision, control the large clear/As-St imbalance,
+and deduplicate/group by observation, spatial context and capture day. Extra
+photos do not justify weakening the existing genus/release gates. No GLOBE
+training or confirmatory evaluation has occurred.
 
 ## Vienna WMO Multi-Label Study
 
