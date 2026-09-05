@@ -2,12 +2,15 @@
 
 Jeden dokument zawiera teksty startowe, oprowadzenia, wprowadzenia do pracowni,
 pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porównanie,
-nawigację nauki, powtórki, quiz, czytnik Windy oraz schemat wysokości.
+nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
+wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
+obserwacji, pocztówki, kopie i cały warsztat szkoleniowy METAR/TAF.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
-To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje, dziennik,
-indeks terminów i wszystkie ekrany narzędzi wymagają jeszcze osobnego przeglądu.
+To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje,
+indeks terminów i pozostałe ekrany narzędzi terenowych wymagają jeszcze
+osobnego przeglądu.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
 Dokument można odtworzyć poleceniem:
@@ -1590,3 +1593,1658 @@ się geopotencjał.
 - **850 hPa**, około 1460 m MSL: temperatura i adwekcja w dolnej troposferze.
 - **925 hPa**, około 760 m MSL: niska warstwa, inwersje i napływ.
 - **1000 hPa**, około 110 m MSL: warstwa przyziemna nad niskim terenem.
+
+---
+
+# Wiatr, zagrożenia i profile atmosfery
+
+Pełny zestaw po redakcji, 5 września 2026. Obejmuje także niezmienione
+przykłady, odpowiedzi i wyjaśnienia. Wartości na wykresach są szkoleniowe.
+Nie zmienia to skuteczności modelu rozpoznawania chmur.
+
+## Wiatr z ruchu chmur
+
+**Pracownia ruchu chmur**
+
+### Skąd wieje wiatr na wysokości chmury?
+
+Ustaw na kompasie, dokąd przesuwa się obserwowany fragment chmury.
+Jeśli niesie go wiatr, kierunek „skąd wieje” będzie przeciwny, czyli
+przesunięty o 180°. To przybliżenie dla wysokości chmury, nie pomiar
+wiatru przy ziemi. Ten schemat nie korzysta z czujników telefonu.
+
+Kompas: N, E, S, W. Suwak: **Chmura przemieszcza się na [kierunek]**.
+Obserwowane piętro chmur: **niskie / średnie / wysokie**.
+
+**Przybliżony kierunek na wysokości chmury**
+
+**wiatr z [kierunek] ([skrót])**
+
+Chmura przesuwa się na [kierunek]. Nazwa wiatru mówi, skąd on wieje.
+
+- Ruch na **N** (0°): wiatr z **S** (180°).
+- Ruch na **NE** (45°): wiatr z **SW** (225°).
+- Ruch na **E** (90°): wiatr z **W** (270°).
+- Ruch na **SE** (135°): wiatr z **NW** (315°).
+- Ruch na **S** (180°): wiatr z **N** (0°).
+- Ruch na **SW** (225°): wiatr z **NE** (45°).
+- Ruch na **W** (270°): wiatr z **E** (90°).
+- Ruch na **NW** (315°): wiatr z **SE** (135°).
+
+Wybór piętra opisuje obserwowaną chmurę, ale nie wyznacza jej wysokości ani prędkości wiatru.
+
+### Lenticularis: chmury soczewkowate
+
+Chmura może pozostawać w miejscu, choć powietrze przepływa przez falę. Jej nieruchomy kształt nie oznacza ciszy.
+
+### Virga: opad niedocierający do ziemi
+
+Smugi są znoszone przez wiatr, ale jednocześnie opadają i zanikają. Ich nachylenie nie jest prostym wskaźnikiem kierunku wiatru.
+
+### Cumulonimbus: chmura burzowa
+
+Nowe komórki mogą rozwijać się w innym kierunku niż przepływa powietrze. Ruch całej burzy nie musi odpowiadać wiatrowi na jednym poziomie.
+
+### Radiatus: układ pasm
+
+Prawie równoległe pasma pozornie zbiegają się ku horyzontowi. Sam ich układ nie mówi, w którą stronę płynie powietrze.
+
+Źródła: [WMO: ruch chmur](https://cloudatlas.wmo.int/en/direction-and-speed-of-movement.html),
+[FAA Aviation Weather Handbook](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+## Zagrożenia pogodowe
+
+### Co sprawdzić oprócz samych chmur?
+
+Wygląd nieba nie wystarcza do oceny oblodzenia, turbulencji ani burz.
+Poniżej znajdziesz wskazówki, jakie dane porównywać. To materiał do nauki,
+nie ocena bezpieczeństwa Twojej trasy.
+
+### Oblodzenie
+
+Porównaj temperaturę, obecność przechłodzonych kropel wody, grubość warstwy i czas przebywania w niej. Przechłodzone krople pozostają ciekłe poniżej 0°C. Sam wygląd chmury nie pozwala ocenić intensywności oblodzenia.
+
+### Turbulencja
+
+Może towarzyszyć konwekcji, przepływowi nad terenem i falom atmosferycznym, ale występuje też poza chmurami. Porównaj wiatr na kilku wysokościach; spokojny wiatr przy ziemi nie opisuje całego profilu.
+
+### Burze
+
+CAPE opisuje energię dostępną dla konwekcji, lecz samo nie oznacza, że powstanie burza. Sprawdź także wilgoć, mechanizm unoszenia, hamowanie konwekcji (CIN) i zmianę wiatru z wysokością, czyli uskok.
+
+Przed lotem korzystaj z aktualnej informacji meteorologicznej i obowiązujących
+procedur. Ten ekran nie pobiera ostrzeżeń ani bieżących danych.
+
+Źródła: FAA Aviation Weather Handbook, NWS Skew-T, EASA Aircrew.
+
+## Czytanie profilu atmosfery
+
+### Jak pogoda zmienia się z wysokością?
+
+Wybierz przykład i porównaj temperaturę, punkt rosy oraz wiatr na kolejnych
+poziomach. Linia parceli pokazuje temperaturę unoszonej porcji powietrza.
+Zestawienie jej z otoczeniem pomaga ocenić, czy unoszenie będzie podtrzymywane,
+czy hamowane. Możesz wyłączać linie, żeby przyjrzeć się każdej z osobna,
+a potem odpowiedzieć na pytanie.
+
+**01. Pomiar radiosondą**
+
+Przyrząd pod balonem zbiera dane podczas wznoszenia i jest znoszony przez wiatr.
+Pomiary z różnych wysokości pochodzą więc z nieco innych miejsc i chwil.
+
+**02. Profil prognozowany**
+
+Model pogody oblicza warunki na kolejnych wysokościach dla wybranego miejsca
+i terminu. Sprawdź, jaki to model, jak przedstawia teren i czy zgadza się
+z obserwacjami.
+
+**03. Profile w tej pracowni**
+
+To cztery uproszczone przykłady przygotowane do nauki. Nie są pomiarami ani
+prognozą bieżącej pogody.
+
+### Od czego zacząć: pięć kroków czytania profilu
+
+1. **Czas i źródło**: Sprawdź miejsce, termin oraz to, czy oglądasz pomiar, prognozę czy przykład szkoleniowy.
+
+2. **Temperatura i punkt rosy**: Porównaj linie T i Td na kolejnych poziomach. Zwróć uwagę na wilgotne warstwy i inwersje temperatury.
+
+3. **Unoszona porcja powietrza**: Porównaj jej temperaturę z otoczeniem. Skróty LCL, LFC i EL są wyjaśnione pod ćwiczeniem.
+
+4. **Wiatr**: Sprawdź, jak kierunek i prędkość zmieniają się z wysokością.
+
+5. **Ograniczenia**: Oddziel to, co widać w profilu, od informacji, które trzeba sprawdzić w innych danych.
+
+### Przyciski i legenda wykresu
+
+- Temperatura i punkt rosy
+- Unoszona porcja powietrza
+- Warstwy i poziomy
+- Profil wiatru
+
+Legenda: **T · temperatura otoczenia**, **Td · punkt rosy**,
+**temperatura unoszonej porcji powietrza**.
+
+Schemat zachowuje logarytmiczną oś ciśnienia i skośne izotermy.
+Linie profili są idealizowane; nie odczytuj z nich wartości operacyjnych.
+Zacienienie przedstawia rozważaną warstwę chmur, nie pomiar jej granic.
+
+Opis dostępności: Idealizowany diagram Skew-T przedstawiający temperaturę,
+punkt rosy, tor parceli, poziomy termodynamiczne oraz wiatr z wysokością.
+
+Oś ciśnienia: **hPa · log P**. Oś temperatury: stopnie Celsjusza.
+Profil wiatru: **wiatr z kierunku · kt**, zapis [kierunek]° / [prędkość].
+
+Pola podsumowania: **Skąd unosimy powietrze**, **LCL**, **LFC**, **EL**,
+**0°C**, **Różnica T–Td na najniższym poziomie**.
+
+Dla LCL bez wartości: **brak**. Dla LFC: **nie osiąga**.
+EL bez osiągniętego LFC: **Brak w tym przykładzie**.
+EL przy dodatniej wyporności do końca zakresu: **Nie wyznaczono w profilu**.
+Nie dopowiadamy brakującej wysokości ani nie rysujemy jej na brzegu wykresu.
+
+### Wyjaśnienie przykładu: co wynika z tego profilu?
+
+Sekcje: **Czy powietrze może się unosić?**, **Wilgoć i chmury**,
+**Wiatr z wysokością**, **Znaczenie lotnicze**, **Czego ten profil nie dowodzi**.
+
+### Sprawdź się: który wniosek pasuje do tego przykładu?
+
+Po poprawnej odpowiedzi: **To poprawna odpowiedź. Poniżej znajdziesz wyjaśnienie.**
+
+Po błędzie: **Nie. Poprawna odpowiedź: [litera].**
+
+Przycisk: **Przeanalizuj ponownie**.
+
+### Wszystkie cztery przykłady
+
+#### 01. Stratus uwięziony pod inwersją
+
+**Niska warstwa**
+
+T i Td są blisko przy ziemi, a temperatura rośnie w dolnej warstwie. Wilgoć nie ma łatwej drogi ku górze.
+
+Idealizowany profil dydaktyczny
+
+**Skąd unosimy powietrze:** powierzchnia
+
+LCL: 960 hPa · LFC: nie osiąga · EL: Brak w tym przykładzie · 0°C: 790 hPa.
+
+**Podpisy warstw:**
+
+- inwersja przyziemna
+
+- płytka warstwa nasycona
+
+**Stabilna, wilgotna warstwa graniczna**
+
+**Czy powietrze może się unosić?**
+
+Porcja chłodzi się szybciej niż otoczenie w warstwie inwersji, pozostaje więc ujemnie wyporna. Nie ma LFC.
+
+**Wilgoć i chmury**
+
+Mały odstęp T–Td od powierzchni do około 900 hPa wspiera niski Stratus, mgłę lub Stratocumulus.
+
+**Wiatr z wysokością**
+
+Wiatr nasila się stopniowo, lecz w najniższej warstwie nie ma gwałtownego skoku prędkości.
+
+**Znaczenie lotnicze**
+
+Najważniejsze mogą być niski pułap, widzialność i możliwe oblodzenie w przechłodzonej warstwie, a nie konwekcja.
+
+**Czego ten profil nie dowodzi**
+
+Profil punktowy nie pokazuje, gdzie warstwa styka się z terenem ani czy nasycenie utrzymuje się między stacją a trasą.
+
+**Ćwiczenie:** Który wniosek najlepiej łączy wszystkie sygnały tego profilu?
+
+- **A.** Duża energia konwekcji powierzchniowej gwarantuje burzę.
+
+- **B.** Wilgoć jest płytka i ograniczona inwersją, więc bardziej prawdopodobna jest niska warstwa niż głęboka konwekcja. (poprawna)
+
+- **C.** Szeroki odstęp T–Td przy ziemi wskazuje bardzo suche powietrze.
+
+- **D.** Brak LFC oznacza, że nie mogą wystąpić żadne chmury.
+
+Bliskość T i Td wskazuje nasycenie, ale inwersja i chłodniejsza od otoczenia parcela hamują pionowy rozwój. To środowisko niskiej warstwy, nie swobodnej głębokiej konwekcji.
+
+#### 02. Wilgotny dół pod ciepłą pokrywą
+
+**Pokrywa**
+
+Wilgotne powietrze przy ziemi napotyka cieplejszą warstwę na wysokości około 800 hPa. Ta warstwa hamuje jego unoszenie przed osiągnięciem LFC.
+
+Idealizowany profil dydaktyczny
+
+**Skąd unosimy powietrze:** powierzchnia
+
+LCL: 885 hPa · LFC: 610 hPa · EL: Nie wyznaczono w profilu · 0°C: 585 hPa.
+
+**Podpisy warstw:**
+
+- pokrywa hamująca
+
+- możliwa płytka chmura przy LCL
+
+**Chwiejność warunkowa z silnym hamowaniem**
+
+**Czy powietrze może się unosić?**
+
+Po osiągnięciu LCL unoszona porcja powietrza pozostaje wyraźnie chłodniejsza od warstwy około 800 hPa. Dopiero wyżej staje się cieplejsza od otoczenia. W pokazanym zakresie nie osiąga jeszcze górnego poziomu równowagi EL.
+
+**Wilgoć i chmury**
+
+Wilgoć jest duża nisko, ale powyżej 800 hPa odstęp T–Td rośnie. Sama wilgotna powierzchnia nie dowodzi głębokiej chmury.
+
+**Wiatr z wysokością**
+
+Prędkość i kierunek zmieniają się z wysokością, co może organizować konwekcję dopiero wtedy, gdy zostanie ona zainicjowana.
+
+**Znaczenie lotnicze**
+
+Najpierw może dominować spokojniejsza warstwa lub cumulus ograniczony pokrywą. Jej przełamanie może szybko zmienić charakter sytuacji.
+
+**Czego ten profil nie dowodzi**
+
+Siła wymuszenia, zmiana temperatury powierzchni i wybór parceli decydują, czy zaznaczony LFC jest osiągalny.
+
+**Ćwiczenie:** Dlaczego duży potencjał powyżej pokrywy nie oznacza jeszcze burzy?
+
+- **A.** Bo T i Td nigdy nie mogą spotkać się na diagramie.
+
+- **B.** Bo wiatr na 200 hPa jest zawsze zbyt silny dla chmur.
+
+- **C.** Bo parcela musi najpierw pokonać warstwę ujemnej wyporności i potrzebuje mechanizmu unoszenia. (poprawna)
+
+- **D.** Bo LCL zawsze znajduje się wyżej niż EL.
+
+Ciepła warstwa około 800 hPa hamuje unoszenie. Dopiero odpowiednio silne wymuszenie, ogrzewanie lub zmiana profilu może doprowadzić parcelę do LFC.
+
+#### 03. Wilgotna parcela z rozległą dodatnią wypornością
+
+**Głęboka konwekcja**
+
+Unoszona porcja powietrza jest cieplejsza od otoczenia w dużej części profilu. Sprzyja to silnemu rozwojowi pionowemu, ale nie wskazuje, gdzie rozpocznie się konwekcja.
+
+Idealizowany profil dydaktyczny
+
+**Skąd unosimy powietrze:** powierzchnia
+
+LCL: 900 hPa · LFC: 835 hPa · EL: Nie wyznaczono w profilu · 0°C: 625 hPa.
+
+**Podpisy warstw:**
+
+- możliwa głęboka chmura konwekcyjna
+
+**Głęboka chwiejność powierzchniowa**
+
+**Czy powietrze może się unosić?**
+
+Powyżej LFC unoszona porcja powietrza jest cieplejsza od otoczenia aż do górnej granicy wykresu. Profil nie sięga do górnego poziomu równowagi EL, więc nie podajemy jego wysokości.
+
+**Wilgoć i chmury**
+
+Niski poziom ma mały odstęp T–Td. Suchsze powietrze średnie może wzmacniać parowanie i prądy zstępujące, ale nie unieważnia potencjału konwekcji.
+
+**Wiatr z wysokością**
+
+Wyraźne skręcanie i wzrost prędkości z wysokością wskazują silny uskok głęboki, ważny dla organizacji komórek.
+
+**Znaczenie lotnicze**
+
+Jeśli konwekcja zostanie zainicjowana, możliwe są głębokie Cumulonimbus, silne prądy pionowe, grad, oblodzenie, turbulencja i wyładowania.
+
+**Czego ten profil nie dowodzi**
+
+Profil nie wskazuje, gdzie i kiedy powstanie burza. Potrzebne są wymuszenie, radar, satelita, wyładowania i aktualne ostrzeżenia.
+
+**Ćwiczenie:** Który element najbardziej odróżnia ten profil od samej wysokiej wartości CAPE na mapie?
+
+- **A.** Widać pionową relację T, Td, parceli i wiatru oraz poziomy, między którymi działa wyporność. (poprawna)
+
+- **B.** Diagram gwarantuje dokładną trasę każdej przyszłej burzy.
+
+- **C.** Profil usuwa potrzebę sprawdzania radaru i ostrzeżeń.
+
+- **D.** Każda linia na diagramie jest obserwacją z powierzchni.
+
+Profil pokazuje strukturę całej kolumny: wilgoć, pokrywę lub jej brak, głębokość wyporności i uskok. Nadal jest punktem w czasie i przestrzeni, a nie prognozą toru burzy.
+
+#### 04. Stabilna powierzchnia, chwiejna warstwa wyżej
+
+**Konwekcja wyniesiona**
+
+Stabilna warstwa przy ziemi hamuje unoszenie. Wilgotne powietrze powyżej inwersji może jednak stać się cieplejsze od otoczenia po wymuszonym uniesieniu.
+
+Idealizowany profil dydaktyczny
+
+**Skąd unosimy powietrze:** 850 hPa, nad inwersją
+
+LCL: 820 hPa · LFC: 760 hPa · EL: Nie wyznaczono w profilu · 0°C: 715 hPa.
+
+**Podpisy warstw:**
+
+- inwersja oddzielająca powierzchnię
+
+- możliwa konwekcja wyniesiona
+
+**Chwiejność wyniesiona ponad stabilnym dołem**
+
+**Czy powietrze może się unosić?**
+
+Przyziemna warstwa jest chłodna i stabilna. Powietrze unoszone z wilgotnej warstwy około 850 hPa osiąga natomiast własny LCL i LFC. Pozostaje cieplejsze od otoczenia przy górnej granicy wykresu, więc nie wyznaczamy tu górnego poziomu równowagi EL.
+
+**Wilgoć i chmury**
+
+T i Td zbliżają się nad inwersją, a nie przy powierzchni. To zmienia poziom podstawy i źródło powietrza dla chmury.
+
+**Wiatr z wysokością**
+
+Szybki wzrost prędkości oraz skręt przez dolne poziomy wskazują znaczny uskok, mimo słabego wiatru przy ziemi.
+
+**Znaczenie lotnicze**
+
+Burze lub oblodzenie mogą występować ponad stabilną warstwą, podczas gdy obserwacja powierzchniowa wygląda stosunkowo spokojnie.
+
+**Czego ten profil nie dowodzi**
+
+Wybór parceli jest częścią diagnozy. Automatyczny parametr liczony tylko od powierzchni może nie opisać tego przypadku.
+
+**Ćwiczenie:** Dlaczego analiza wyłącznie parceli powierzchniowej byłaby tu myląca?
+
+- **A.** Bo powierzchnia ciśnienia 850 hPa zawsze leży pod ziemią.
+
+- **B.** Bo wilgotna, chwiejna parcela zaczyna ruch nad stabilną inwersją, a nie przy gruncie. (poprawna)
+
+- **C.** Bo punkt rosy może być większy od temperatury.
+
+- **D.** Bo wiatr nie może zmieniać kierunku z wysokością.
+
+Źródłem konwekcji jest warstwa około 850 hPa. NWS podkreśla, że indeksy oparte wyłącznie na parceli powierzchniowej mogą pominąć konwekcję wyniesioną.
+
+### Objaśnienia: co oznaczają LCL, LFC, EL i poziom 0°C?
+
+**LCL: poziom kondensacji przy unoszeniu**
+
+Wysokość, na której unoszona porcja osiąga nasycenie. Jest wskazówką podstawy chmury tworzonej przez tę konkretną parcelę, nie uniwersalną podstawą wszystkich chmur.
+
+**LFC: poziom swobodnej konwekcji**
+
+Poziom, powyżej którego porcja staje się cieplejsza od otoczenia i może dalej wznosić się dzięki dodatniej wyporności.
+
+**EL: poziom równowagi**
+
+Górny poziom, przy którym wznosząca się porcja ponownie osiąga temperaturę otoczenia. Nie jest automatycznie rzeczywistym wierzchołkiem każdej chmury.
+
+**0°C: poziom temperatury zamarzania**
+
+Poziom, na którym temperatura otoczenia przecina 0°C. Mokry termometr, faza hydrometeorów i ruch pionowy nadal mają znaczenie dla oblodzenia i rodzaju opadu.
+
+Źródła: [NWS: czytanie Skew-T](https://www.weather.gov/source/zhu/ZHU_Training_Page/convective_parameters/skewt/skewtinfo.html),
+[NWS: obserwacja radiosondażowa](https://www.weather.gov/upperair/factsheet),
+[NWS Aviation: oblodzenie i uskok](https://www.weather.gov/media/aviation/afp/Using%20Skew-Ts%20to%20Assess%20Icing%20_and%20Wind%20Shear.pptx),
+FAA Aviation Weather Handbook.
+
+---
+
+# Moje niebo: zdjęcia, notatki i kopie
+
+Pełny przepływ po redakcji, 5 września 2026. Przechowywane obserwacje
+i wyniki modeli nie są przepisywane; zmienia się sposób ich objaśniania.
+
+## Kolekcja
+
+**Twoje zdjęcia i notatki**
+
+### Moje niebo
+
+Zapisuj zdjęcia nieba i to, co udało Ci się zauważyć. Możesz wracać do
+obserwacji, porównywać je i uzupełniać nazwy chmur, kiedy je rozpoznasz.
+
+Przyciski: **Rozpoznaj ze zdjęcia** (Apple), **Dodaj wpis**.
+
+Wczytywanie: **Otwieram Twoją kolekcję…**
+
+Nie udało się otworzyć kolekcji. Oryginalny dziennik nie został usunięty.
+Sprawdź wolne miejsce i spróbuj ponownie.
+
+Przycisk: **Spróbuj ponownie**.
+
+Brak wybranego wpisu: **Nie znaleziono tej obserwacji. Poniżej jest Twoja kolekcja.**
+
+### Rodzaje w Twoich obserwacjach
+
+**[liczba]/10 · według Twoich rozpoznań**
+
+Liczymy tylko rodzaje wybrane przez Ciebie, nie podpowiedzi modelu.
+
+- **Ci: Cirrus** · pierzaste
+- **Cc: Cirrocumulus** · kłębiasto-pierzaste
+- **Cs: Cirrostratus** · warstwowo-pierzaste
+- **Ac: Altocumulus** · średnie kłębiaste
+- **As: Altostratus** · średnie warstwowe
+- **Ns: Nimbostratus** · warstwowe deszczowe
+- **Sc: Stratocumulus** · kłębiasto-warstwowe
+- **St: Stratus** · warstwowe
+- **Cu: Cumulus** · kłębiaste
+- **Cb: Cumulonimbus** · kłębiasto-deszczowe
+
+Etykiety filtrów dostępności: **Filtr: [nazwa], masz obserwację** lub
+**Filtr: [nazwa], jeszcze brak**. Przycisk pokazuje kod rodzaju chmury.
+
+Filtry: **Ulubione**, **Data obserwacji**, **Wyczyść filtry · [rodzaj]**.
+Przycisk: **Pokaż kolejne obserwacje**.
+
+Brak obserwacji dla tych filtrów. Wyczyść je, żeby zobaczyć całą kolekcję.
+
+Karta: data, nazwa wybrana przez użytkownika lub opis wyniku modelu.
+Statusy: **Twoje rozpoznanie**, **Wynik modelu do sprawdzenia**, **Wpis z obserwacji**.
+
+Tytuł bez rozpoznania modelu: **Obserwacja bez rozpoznania**.
+Tytuł wyniku „clear”: **Bez wyraźnych chmur**.
+Tytuł ręcznego wpisu bez nazwy: **Moja obserwacja**.
+Własne rozpoznanie użytkownika ma pierwszeństwo w tytule. Przy hipotezie
+modelu pozostaje zapisana rodzina, a gdy jej brak: **Podpowiedź do sprawdzenia**.
+
+Ulubione, etykiety dostępności: **Dodaj do ulubionych: [tytuł]**,
+**Usuń z ulubionych: [tytuł]**.
+
+### Porównaj dwie obserwacje
+
+**Wybierz dwie obserwacje z kolekcji.**
+
+Po wybraniu pierwszej: **Wybierz drugą obserwację z kolekcji.**
+
+Po wybraniu obu: **Porównaj kształty chmur i oświetlenie na obu zdjęciach.
+Obserwacje mogą przedstawiać różne rodzaje chmur.**
+
+Pod każdym zdjęciem: data, tytuł i status rozpoznania.
+Przycisk: **Zakończ porównanie**.
+
+### Tu pojawią się Twoje obserwacje
+
+Dodaj pierwsze zdjęcie lub notatkę. Nie musisz znać nazwy chmury, żeby zachować
+to, co widzisz. Wpis nie zostanie opublikowany.
+
+Przycisk: **Rozpoznaj ze zdjęcia** lub **Dodaj pierwszą obserwację**.
+
+## Nowa obserwacja
+
+Dodaj zdjęcie, notatkę lub oba naraz. Nazwa chmury nie jest wymagana.
+Zdjęcie dodane w tym formularzu nie jest automatycznie analizowane.
+
+- **Zdjęcie nieba (opcjonalnie)**. Podgląd: „Zdjęcie do zapisania”.
+- **Data**.
+- **Miejsce (opcjonalnie)**. Przykład: „np. Gdynia”.
+- **Własne rozpoznanie**. Domyślnie: „Nie wiem, jaki to rodzaj”.
+- **Notatka**. Przykład: „Opisz kształt chmur, światło albo zmianę, którą udało Ci się zauważyć.”
+
+Nazwy w wyborze: [nazwa łacińska] · [nazwa polska], pełna lista powyżej.
+
+Jeśli zachowano wskazówkę z obserwatora:
+**Wcześniejsza wskazówka: [nazwa]. Potwierdź ją dopiero po sprawdzeniu cech.**
+
+Tekst formularza zachowuje się jako lokalny szkic. Żeby zapisać także zdjęcie
+i dodać wpis do kolekcji, wybierz „Zapisz obserwację”.
+
+Przyciski: **Zapisz obserwację**, podczas zapisu **Przygotowuję…**,
+zamknięcie: **Zamknij formularz**.
+
+## Szczegóły obserwacji
+
+Powrót: **Moje niebo**. Nagłówek: data, status, tytuł.
+
+Zdjęcie, tekst alternatywny: **Własne zdjęcie nieba, [data]**.
+Stany: **Wczytuję zdjęcie**, **Obserwacja bez zdjęcia**,
+**Nie można odczytać zdjęcia**.
+
+### Zapisany wynik analizy
+
+**Niebo głównie bez chmur**
+
+Model wskazał głównie niebo bez chmur. Nie wyklucza to cienkich pasm lub chmur słabo widocznych na zdjęciu.
+
+**Brak propozycji**
+
+Model nie podał rodzaju chmury do porównania. Zdjęcie możesz zachować bez nazwy i uzupełnić własne rozpoznanie później.
+
+**Hipoteza rodzaju**
+
+Model zaproponował rodzaj chmury. To podpowiedź, nie potwierdzone rozpoznanie; sprawdź jej cechy w atlasie.
+
+**Nierozstrzygnięte propozycje**
+
+Model nie rozstrzygnął, jaki to rodzaj chmury. Poniższe nazwy służą do porównania z atlasem, a nie jako potwierdzony wynik.
+
+Nazwy proponowane przez model pokazujemy bez procentów. Przy wyniku „clear”
+nie pokazujemy nazw chmur, nawet jeśli starszy zapis zawiera ich słabe wyniki.
+
+Przycisk dla jednej nazwy: **Otwórz opis w atlasie**.
+Przycisk dla kilku: **Porównaj opisy w atlasie**.
+Bez propozycji przycisk porównania nie występuje.
+
+### Szczegóły zapisanego wyniku
+
+Domyślnie zwinięte.
+
+Procenty to względne wyniki modelu, nie prawdopodobieństwo poprawnego
+rozpoznania. Zachowujemy je z chwili analizy; zapisanie obserwacji nie
+uruchamia jej ponownie.
+
+Lista: [nazwa] · [wynik]%. **Etykieta zapisana przy analizie: [etykieta].**
+
+**Wersja modelu: [wersja / brak informacji]. Wynik nie służy do oceny
+bezpieczeństwa lotu ani żeglugi.**
+
+### Twoje rozpoznanie i notatki
+
+Wybierz nazwę, jeśli potrafisz rozpoznać chmurę. Możesz też zostawić obserwację
+bez rozpoznania. Twoje zmiany nie zastąpią zapisanego wyniku modelu.
+
+- **Moje rozpoznanie**. Domyślnie: „Nie wiem, jaki to rodzaj”.
+- **Miejsce (opcjonalnie)**. Przykład: „np. Gdynia, brzeg morza”.
+- **Notatka**. Przykład: „Co widać? Co zmieniło się w ciągu kilku minut?”.
+- **Ulubiona obserwacja**.
+
+Przycisk: **Zapisz zmiany**. Podczas operacji: **Trwa operacja…**.
+
+Po zapisie: **Zmiany zapisane.** Jeśli był wynik modelu:
+**Zmiany zapisane. Oryginalny wynik modelu pozostał bez zmian.**
+
+## Pocztówka
+
+### Wyślij kawałek swojego nieba
+
+Przygotujemy podgląd z zapisanym zdjęciem, datą i opisem rozpoznania.
+Nie dodamy miejsca, prywatnych notatek ani metadanych EXIF.
+Zapisz zmiany w formularzu, zanim przygotujesz pocztówkę.
+
+Przyciski: **Zobacz pocztówkę**, **Udostępnij pocztówkę**, **Zamknij podgląd**.
+Opis podglądu: **Podgląd pocztówki przed udostępnieniem**.
+
+Podpis pocztówki zawiera tytuł, datę i jeden ze statusów:
+**Rozpoznanie autora obserwacji**, **Hipoteza do sprawdzenia**, **Własna obserwacja**.
+Bez lokalizacji, prywatnych notatek i metadanych modelu.
+
+## Usuwanie
+
+Przycisk: **Usuń obserwację…**
+
+Usunąć tę obserwację i jej zdjęcie z kolekcji? Tej operacji nie można cofnąć
+bez własnej kopii.
+
+Przyciski: **Zachowaj**, **Usuń tę obserwację**.
+
+## Prywatność i kopie kolekcji
+
+Zdjęcia i notatki zapisują się na tym urządzeniu. CHMURNIK nie wysyła ich
+na serwer ani nie używa do trenowania modelu. Usunięcie aplikacji lub danych
+witryny może usunąć kolekcję, dlatego warto eksportować kopię. Systemowe kopie
+urządzenia zależą od Twoich ustawień.
+
+Pełna kopia zawiera zdjęcia, miejsca i prywatne notatki, więc nie udostępniaj
+jej tak jak pocztówki. Jeśli dane przeniesiono ze starego dziennika, jego
+oryginał pozostaje zapisany lokalnie.
+
+Przyciski: **Eksportuj kopię**, **Importuj kopię**, podczas operacji **Przygotowuję…**.
+Przy dużej kopii: **Pobierz część [numer]/[liczba] · [rozmiar] MB**.
+
+**Kopia gotowa. Pobierz wszystkie części poniżej; zawierają zdjęcia, miejsca i notatki.**
+
+**Kopia przywrócona. Istniejące wpisy nie zostały nadpisane.**
+
+## Błędy i komunikaty
+
+- Nie udało się zapisać. Twoje zmiany nadal są w formularzu; sprawdź wolne miejsce.
+- Nie udało się usunąć obserwacji.
+- Nie udało się przygotować pocztówki. Spróbuj ponownie po wczytaniu zdjęcia.
+- Nie udało się udostępnić. Możesz spróbować ponownie.
+- Nie udało się odczytać zdjęcia. Wybierz obraz JPEG, PNG lub WebP.
+- Nie udało się zapisać. Formularz został zachowany; sprawdź datę i wolne miejsce.
+- Nie przywrócono kopii. [Przyczyna błędu lub: „Sprawdź plik i wolne miejsce.”]
+- Kopia ma więcej niż 50 MB. Wybierz pojedynczą część eksportu.
+- Nie udało się przygotować pełnej kopii. Nie usunięto żadnych danych.
+- Nie udało się zapisać ulubionej obserwacji.
+
+Odrzucenie pliku kopii: **Kopia jest zbyt duża (maks. 50 MB na część).**,
+**Nieznany format kopii.**, **Kopia zawiera powtórzone identyfikatory.**
+Walidacja danych odrzuca również niepoprawne daty, tekst, zdjęcia i identyfikatory.
+
+---
+
+# METAR i TAF: cały warsztat szkoleniowy
+
+Komplet po redakcji interfejsu, 5 września 2026. Wszystkie dotychczasowe
+depesze, pytania, błędne warianty odpowiedzi i wyjaśnienia są poniżej.
+Raporty i reguły naliczania wyników pozostają niezmienione. Korekta rzeczowa
+w słowniku: „+TSRA” to burza z silnym deszczem, nie „silna burza z deszczem”.
+
+## Wejście i wybór ćwiczeń
+
+**Ćwiczenia METAR i TAF**
+
+### Odczytaj depeszę i sprawdź, co oznacza
+
+Wybieraj fragmenty METAR, żeby poznać ich znaczenie, albo przejdź do pytań.
+W ćwiczeniach TAF porównasz prognozowane warunki w różnych godzinach.
+Wszystkie depesze tutaj są przykładami szkoleniowymi.
+
+Tryby: **Odczytaj METAR**, **Trening METAR**, **Trening 30 s**, **Oś czasu TAF**,
+**Porównaj 3 stacje**, **Powtórki · [liczba]**.
+
+Nawigacja przykładu: **Depesza edukacyjna [numer]/[liczba]**,
+**[stacja] · [tytuł]**, **Losuj inną**.
+
+## Odczytywanie fragmentów
+
+**Budowa depeszy**
+
+### Jak czytać METAR od początku do końca?
+
+Grupy pojawiają się w ustalonej kolejności, ale nie wszystkie występują
+w każdej depeszy. Na przykład CAVOK może zastąpić kilka osobnych grup.
+
+### 01. Kto i kiedy?
+
+METAR · EPWA · 161230Z
+
+Typ depeszy, czteroliterowy kod stacji i dokładny czas obserwacji w UTC.
+
+### 02. Co dzieje się przy stacji?
+
+24012KT · 9999 · -SHRA
+
+Wiatr, widzialność oraz zjawiska występujące w chwili obserwacji.
+
+### 03. Co jest w niebie?
+
+BKN018CB · OVC050
+
+Kolejne warstwy od najniższej, ich pokrycie, podstawa i ważne chmury konwekcyjne.
+
+### 04. Jaki jest stan powietrza?
+
+18/14 · Q1012
+
+Temperatura, punkt rosy i ciśnienie potrzebne m.in. do ustawienia wysokościomierza.
+
+**CAVOK · Ceiling And Visibility OK**
+
+Jeden skrót może zastąpić osobne grupy widzialności, aktualnych zjawisk i chmur,
+gdy wszystkie wymagane kryteria są spełnione.
+
+Przycisk: **Wyjaśnij dokładnie**. Nawigacja: **Słownik sekcji METAR**.
+
+Spróbuj odczytać fragment depeszy własnymi słowami, a następnie wybierz go,
+żeby zobaczyć wyjaśnienie. W słowniku znajdziesz również inne warianty tej
+samej części raportu.
+
+Przed wyborem: **Zadanie · Wybierz fragment depeszy albo temat ze słownika**.
+[Kontekst przykładu] Słownik powyżej pozwala też sprawdzić elementy, których
+akurat nie ma w tej depeszy.
+
+Po wyborze: nazwa grupy, pozycja w depeszy, kod i objaśnienie.
+Nagłówki: **Jak jest zbudowana ta sekcja?**, **Co jeszcze możesz tu spotkać**,
+**Uważaj:**. Przy właściwych grupach: **Ta grupa może tworzyć pułap.**
+
+### Typ i status depeszy
+
+**Typ** · Początek
+
+Mówi, czy czytasz regularną obserwację METAR, obserwację specjalną SPECI albo poprawioną depeszę.
+
+**Budowa:** Typ może być poprzedzony lub uzupełniony oznaczeniem korekty. Niektóre serwisy pomijają słowo METAR, bo typ produktu wynika już z nagłówka.
+
+- **METAR**: regularna obserwacja lotniskowa
+
+- **SPECI**: obserwacja specjalna wydana między terminami regularnymi
+
+- **COR**: skorygowana depesza
+
+- **AUTO**: raport wytworzony automatycznie, bez pełnej obserwacji człowieka
+
+**Uważaj:** Brak słowa METAR na ekranie nie musi oznaczać błędu. W wielu kanałach danych wyświetlany jest od razu kod stacji.
+
+### Stacja raportująca
+
+**Stacja** · Po typie
+
+Cztery litery ICAO identyfikują miejsce, którego dotyczy obserwacja.
+
+**Budowa:** To kod stacji, nie kierunek, godzina ani skrót nazwy miasta używany na bilecie lotniczym.
+
+- **EPWA**: Warszawa-Chopin
+
+- **EPGD**: Gdańsk
+
+- **EPKK**: Kraków-Balice
+
+- **EDDF**: Frankfurt
+
+**Uważaj:** METAR jest obserwacją punktową. Nie opisuje automatycznie całej trasy ani regionu wokół lotniska.
+
+### Dzień i czas obserwacji
+
+**Czas** · Po stacji
+
+Sześć cyfr i litera Z określają dzień miesiąca, godzinę i minutę w UTC.
+
+**Budowa:** DDGGMMZ: dzień, godzina, minuta, a Z oznacza czas Zulu, czyli UTC.
+
+- **161230Z**: 16. dzień miesiąca, 12:30 UTC
+
+- **010005Z**: 1. dzień miesiąca, 00:05 UTC
+
+- **312350Z**: 31. dzień miesiąca, 23:50 UTC
+
+**Uważaj:** Miesiąc i rok nie są zapisane w samej grupie. Trzeba je znać z kontekstu źródła danych.
+
+### Wiatr przy powierzchni
+
+**Wiatr** · Po czasie
+
+Podaje kierunek, z którego wieje wiatr, prędkość, możliwe porywy i jednostkę.
+
+**Budowa:** dddssKT; po literze G pojawia się prędkość porywu. VRB zastępuje kierunek, a 00000KT oznacza ciszę.
+
+- **24012KT**: z 240°, 12 węzłów
+
+- **22015G28KT**: z 220°, 15 węzłów, porywy do 28
+
+- **VRB03KT**: kierunek zmienny, 3 węzły
+
+- **00000KT**: wiatr spokojny
+
+- **180V260**: kierunek waha się od 180° do 260°
+
+**Uważaj:** Kierunek opisuje, skąd wiatr napływa. KT to węzły; w części krajów można spotkać inną jednostkę.
+
+### Widzialność, RVR i skrót CAVOK
+
+**Widzialność / CAVOK** · Po wietrze
+
+Opisuje widzialność przeważającą. Przy małej widzialności może dojść zasięg widzialności wzdłuż drogi startowej, czyli RVR.
+
+**Budowa:** W kodzie ICAO cztery cyfry oznaczają metry; 9999 oznacza 10 km lub więcej. RVR zaczyna się od litery R i numeru drogi startowej.
+
+- **9999**: widzialność co najmniej 10 km
+
+- **6000**: widzialność przeważająca 6000 m
+
+- **0800**: widzialność przeważająca 800 m
+
+- **R11/0600U**: RVR dla drogi 11: 600 m i tendencja rosnąca
+
+- **CAVOK**: zestaw dobrych kryteriów zastępujący widzialność, pogodę i część chmurową
+
+**CAVOK · Ceiling And Visibility OK**
+
+Widzialność wynosi co najmniej 10 km, nie ma istotnych zjawisk pogody, nie ma CB ani TCU, a poniżej 5000 ft lub wyższego minimum sektorowego nie ma chmur istotnych.
+
+To nie znaczy „bezchmurnie”, nie opisuje całego regionu i nie gwarantuje utrzymania warunków w przyszłości.
+
+**Uważaj:** CAVOK zastępuje kilka normalnych grup. Dlatego po wietrze możesz nie zobaczyć osobno 9999 ani kodów zachmurzenia.
+
+### Aktualne zjawiska pogody
+
+**Zjawiska** · Po widzialności
+
+Grupa łączy oznaczenie zjawiska z dodatkowymi informacjami, na przykład natężeniem opadu.
+
+**Budowa:** Przy opadzie minus oznacza słabe, a plus silne natężenie. SH to przelotność, TS burza, RA deszcz, SN śnieg, BR zamglenie, FG mgła. W +TSRA plus dotyczy deszczu, nie siły burzy.
+
+- **-RA**: słaby deszcz
+
+- **SHRA**: przelotny deszcz
+
+- **+TSRA**: burza z silnym deszczem
+
+- **BR**: zamglenie
+
+- **FG**: mgła
+
+- **FZFG**: mgła marznąca
+
+**Uważaj:** Brak grupy zjawisk oznacza brak zjawiska wymaganego do zakodowania w chwili obserwacji, a nie brak pogody w ogóle.
+
+### Warstwy chmur i widzialność pionowa
+
+**Chmury** · Po zjawiskach
+
+Każda grupa opisuje ilość chmur i wysokość podstawy w setkach stóp nad poziomem lotniska. Warstwy zapisuje się od najniższej.
+
+**Budowa:** FEW 1–2 oktanty, SCT 3–4, BKN 5–7, OVC 8. Trzy cyfry mnożysz przez 100 ft. CB i TCU wskazują ważny typ konwekcyjny.
+
+- **FEW020**: 1–2 oktanty, podstawa 2000 ft AGL
+
+- **SCT018TCU**: 3–4 oktanty TCU, podstawa 1800 ft AGL
+
+- **BKN018CB**: 5–7 oktantów CB, podstawa 1800 ft AGL
+
+- **OVC008**: pełne pokrycie, podstawa 800 ft AGL
+
+- **VV002**: niebo zasłonięte, widzialność pionowa 200 ft
+
+**Uważaj:** Pułap tworzy najniższa grupa BKN, OVC albo VV. Niższa warstwa FEW lub SCT nie staje się pułapem.
+
+### Temperatura i punkt rosy
+
+**Temperatura** · Po chmurach
+
+Pierwsza liczba to temperatura powietrza, druga punkt rosy. Mała różnica sugeruje powietrze bliskie nasycenia.
+
+**Budowa:** TT/TD: temperatura stoi przed ukośnikiem, a punkt rosy po nim. Litera M przed liczbą oznacza wartość ujemną, czyli minus.
+
+- **18/14**: temperatura 18°C, punkt rosy 14°C
+
+- **07/07**: obie wartości 7°C, powietrze bliskie nasycenia
+
+- **M02/M04**: temperatura −2°C, punkt rosy −4°C
+
+- **03/M01**: temperatura 3°C, punkt rosy −1°C
+
+**Uważaj:** Ta grupa nie podaje temperatury maksymalnej i minimalnej. Ukośnik rozdziela temperaturę od punktu rosy.
+
+### Nastawa ciśnienia
+
+**Ciśnienie** · Końcowa część rdzenia
+
+Podaje ciśnienie zredukowane do poziomu morza używane do nastawy wysokościomierza.
+
+**Budowa:** Q i cztery cyfry oznaczają QNH w hPa. W depeszach amerykańskich A i cztery cyfry oznaczają cale rtęci bez przecinka.
+
+- **Q1012**: QNH 1012 hPa
+
+- **Q0998**: QNH 998 hPa
+
+- **A2992**: nastawa 29,92 inHg
+
+**Uważaj:** QNH nie jest wysokością podstawy chmur ani ciśnieniem zmierzonym bezpośrednio na poziomie pasa.
+
+### Grupy uzupełniające i regionalne
+
+**Dodatki** · Po rdzeniu raportu
+
+Mogą doprecyzować niedawną pogodę, uskok wiatru, trend albo uwagi zależne od kraju i kanału danych.
+
+**Budowa:** Zakres i kolejność dodatków różnią się regionalnie. Zawsze sprawdzaj instrukcję źródła, z którego pochodzi depesza.
+
+- **RETSRA**: niedawna burza z deszczem
+
+- **WS R11**: raportowany uskok wiatru dla drogi 11
+
+- **NOSIG**: brak istotnej zmiany w krótkim trendzie
+
+- **RMK**: początek sekcji uwag, szczególnie częsty w raportach USA
+
+**Uważaj:** METAR nie ma identycznego końca w każdym kraju. Rdzeń jest standaryzowany, ale dodatki wymagają świadomości kontekstu.
+
+## Trening METAR, z zegarem lub bez
+
+**Pytanie [numer]/[liczba]**. Wynik: **[poprawne]/[próby] · poprawne**.
+Przy treningu czasowym: **średnio [liczba] s**. Zegar: **[liczba]s**,
+opis dostępności: **Pozostało [liczba] sekund**.
+
+Każde pytanie pokazuje temat, treść i cztery warianty A–D.
+Przed odpowiedzią wyjaśnienie jest ukryte.
+
+- Poprawnie: **To poprawna odpowiedź.**
+- Niepoprawnie: **Poprawna odpowiedź: [pełna odpowiedź]**.
+- Po czasie: **Czas minął. Sprawdź zaznaczoną odpowiedź i wyjaśnienie.**
+
+W każdym przypadku po odpowiedzi lub upływie czasu pokazujemy pełne wyjaśnienie.
+Przyciski: **Następne pytanie**, **Następna depesza**.
+
+### EPWA: Konwekcja i pułap
+
+Warstwy o różnym zachmurzeniu, Cumulonimbus i pułap tworzony przez niższą warstwę.
+
+`EPWA 161230Z 24012KT 9999 BKN018CB OVC050 18/14 Q1012`
+
+- **EPWA · Miejsce**: Lotnisko Chopina w Warszawie — identyfikator ICAO stacji raportującej.
+
+- **161230Z · Czas**: 16. dzień miesiąca, godzina 12:30 UTC. Litera Z oznacza czas UTC.
+
+- **24012KT · Wiatr**: Wiatr z kierunku 240° z prędkością 12 węzłów.
+
+- **9999 · Widzialność**: Widzialność przeważająca wynosi co najmniej 10 km.
+
+- **BKN018CB · Chmury**: 5–7 oktantów na 1800 ft AGL; warstwa zawiera Cumulonimbus. Ta grupa może tworzyć pułap.
+
+- **OVC050 · Chmury**: 8 oktantów, czyli pełne pokrycie, z podstawą 5000 ft AGL. Ta grupa może tworzyć pułap.
+
+- **18/14 · Temperatura**: Temperatura 18°C, punkt rosy 14°C.
+
+- **Q1012 · Ciśnienie**: QNH 1012 hPa.
+
+**1. Grupa kodu: Co dokładnie oznacza grupa 24012KT?**
+
+- **A.** Wiatr do 240° z prędkością 12 km/h
+
+- **B.** Wiatr z 240° z prędkością 12 węzłów (poprawna)
+
+- **C.** Wiatr z 240° z porywami do 12 węzłów
+
+- **D.** Widzialność 2400 m i wiatr 12 węzłów
+
+W METAR kierunek podaje, skąd wieje wiatr, a KT oznacza węzły. Poryw wymagałby litery G.
+
+**2. Chmury: Która interpretacja BKN018CB jest poprawna?**
+
+- **A.** Rozproszone CB na 1800 m nad poziomem morza
+
+- **B.** 5–7 oktantów Cumulonimbus z podstawą 1800 ft AGL (poprawna)
+
+- **C.** Pełne pokrycie Cumulonimbus na 18 000 ft AGL
+
+- **D.** Burza odległa o 18 km, bez informacji o zachmurzeniu
+
+BKN oznacza 5–7 oktantów, 018 to 18 × 100 ft, a CB identyfikuje Cumulonimbus.
+
+**3. Pułap: Jaki pułap wynika z tej depeszy?**
+
+- **A.** 1800 ft AGL (poprawna)
+
+- **B.** 5000 ft AGL
+
+- **C.** 6800 ft AGL
+
+- **D.** Pułapu nie da się wyznaczyć
+
+Pułap tworzy najniższa warstwa BKN, OVC albo widzialność pionowa VV. Tutaj pierwsza jest BKN018.
+
+**4. Wniosek operacyjny: Który wniosek jest w pełni zgodny z raportem?**
+
+- **A.** Widzialność jest poniżej 1 km, a pułap wynosi 5000 ft
+
+- **B.** Nie ma chmur konwekcyjnych, bo widzialność przekracza 10 km
+
+- **C.** Widzialność wynosi co najmniej 10 km, pułap 1800 ft, a w warstwie występuje CB (poprawna)
+
+- **D.** OVC050 unieważnia informację BKN018CB
+
+Trzeba połączyć trzy osobne grupy: 9999, BKN018CB i zasadę najniższej warstwy tworzącej pułap.
+
+### EPGD: Mgła i widzialność pionowa
+
+Niska warstwa niewidoczna z ziemi, ograniczona widzialność i nasycone powietrze.
+
+`EPGD 160530Z 09006KT 1200 BR VV002 07/07 Q1018`
+
+- **EPGD · Miejsce**: Port lotniczy Gdańsk — identyfikator ICAO stacji.
+
+- **160530Z · Czas**: 16. dzień miesiąca, 05:30 UTC.
+
+- **09006KT · Wiatr**: Wiatr ze wschodu, 090°, z prędkością 6 węzłów.
+
+- **1200 · Widzialność**: Widzialność przeważająca 1200 metrów.
+
+- **BR · Zjawisko**: Zamglenie; w kodzie METAR BR opisuje ograniczenie widzialności przez drobne krople wody.
+
+- **VV002 · Widzialność pionowa**: Niebo jest zasłonięte; widzialność pionowa wynosi 200 ft. Ta grupa może tworzyć pułap.
+
+- **07/07 · Temperatura**: Temperatura i punkt rosy po 7°C — powietrze jest bliskie nasycenia.
+
+- **Q1018 · Ciśnienie**: QNH 1018 hPa.
+
+**1. Widzialność: Jak odczytać grupę 1200?**
+
+- **A.** 1200 stóp widzialności pionowej
+
+- **B.** 12 km widzialności
+
+- **C.** 1200 metrów widzialności przeważającej (poprawna)
+
+- **D.** Widzialność nieograniczona
+
+Czterocyfrowa grupa widzialności w tym przykładzie jest podana w metrach.
+
+**2. Zjawisko: Co wnosi do raportu kod BR?**
+
+- **A.** Burzę z deszczem
+
+- **B.** Zamglenie (poprawna)
+
+- **C.** Zamieć śnieżną
+
+- **D.** Niską warstwę BKN
+
+BR to zamglenie. Nie opisuje zachmurzenia i nie jest kodem burzy.
+
+**3. Pułap: Jak potraktować VV002 przy wyznaczaniu pułapu?**
+
+- **A.** Jako widzialność pionową 200 ft i pułap 200 ft (poprawna)
+
+- **B.** Jako warstwę SCT na 2000 ft
+
+- **C.** Jako widzialność poziomą 200 m bez informacji o pułapie
+
+- **D.** Pominąć, bo tylko BKN i OVC tworzą pułap
+
+Gdy niebo jest zasłonięte, raport może podać VV. Znana widzialność pionowa jest traktowana jako pułap.
+
+**4. Wniosek operacyjny: Który zestaw danych najlepiej wspiera rozpoznanie bardzo wilgotnej, niskiej warstwy?**
+
+- **A.** 09006KT i Q1018
+
+- **B.** 1200, BR, VV002 oraz 07/07 (poprawna)
+
+- **C.** Samo EPWA
+
+- **D.** Wyłącznie litera Z w czasie obserwacji
+
+Ograniczona widzialność, zamglenie, mała widzialność pionowa oraz temperatura równa punktowi rosy tworzą spójny obraz.
+
+### EPKK: Warstwy bez pułapu
+
+Dwie warstwy chmur, ale żadna nie spełnia definicji pułapu.
+
+`EPKK 161400Z 31008KT 9999 FEW020 SCT045 22/11 Q1016`
+
+- **EPKK · Miejsce**: Kraków-Balice — identyfikator ICAO stacji.
+
+- **161400Z · Czas**: 16. dzień miesiąca, 14:00 UTC.
+
+- **31008KT · Wiatr**: Wiatr z 310° z prędkością 8 węzłów.
+
+- **9999 · Widzialność**: Widzialność przeważająca co najmniej 10 km.
+
+- **FEW020 · Chmury**: 1–2 oktanty z podstawą 2000 ft AGL.
+
+- **SCT045 · Chmury**: 3–4 oktanty z podstawą 4500 ft AGL.
+
+- **22/11 · Temperatura**: Temperatura 22°C, punkt rosy 11°C.
+
+- **Q1016 · Ciśnienie**: QNH 1016 hPa.
+
+**1. Chmury: Co oznacza FEW020?**
+
+- **A.** 1–2 oktanty na 2000 ft AGL (poprawna)
+
+- **B.** 3–4 oktanty na 2000 ft AGL
+
+- **C.** 5–7 oktantów na 20 000 ft
+
+- **D.** Pełne pokrycie na 200 ft
+
+FEW to 1–2 oktanty, a 020 oznacza 2000 ft nad poziomem lotniska.
+
+**2. Pułap: Jaki pułap raportuje ta depesza?**
+
+- **A.** 2000 ft AGL
+
+- **B.** 4500 ft AGL
+
+- **C.** 6500 ft AGL
+
+- **D.** Nie raportuje pułapu (poprawna)
+
+FEW i SCT nie tworzą pułapu. Raport może zawierać chmury, a jednocześnie nie raportować ceiling.
+
+**3. Temperatura: Jak odczytać 22/11?**
+
+- **A.** Temperatura 22°C i punkt rosy 11°C (poprawna)
+
+- **B.** Temperatura 11°C i punkt rosy 22°C
+
+- **C.** Maksimum 22°C i minimum 11°C
+
+- **D.** Wiatr 22 węzły z porywem do 11
+
+Pierwsza wartość to temperatura, druga to punkt rosy.
+
+**4. Granice wniosku: Którego stwierdzenia nie wolno wywnioskować z tej depeszy?**
+
+- **A.** Widzialność wynosi co najmniej 10 km
+
+- **B.** Występują warstwy FEW i SCT
+
+- **C.** Nie ma raportowanego pułapu
+
+- **D.** Całe niebo w promieniu setek kilometrów jest bezchmurne (poprawna)
+
+METAR jest obserwacją punktową i nie opisuje całego regionu. FEW i SCT dodatkowo potwierdzają obecność chmur.
+
+### EPKT: Porywy, przelotny deszcz i TCU
+
+Raport, w którym trzeba rozdzielić wiatr porywisty, opad, chmurę konwekcyjną i pułap.
+
+`EPKT 161600Z 22015G28KT 6000 -SHRA SCT018TCU BKN035 19/15 Q1008`
+
+- **EPKT · Miejsce**: Katowice-Pyrzowice — identyfikator ICAO stacji.
+
+- **161600Z · Czas**: 16. dzień miesiąca, 16:00 UTC.
+
+- **22015G28KT · Wiatr**: Wiatr z 220°: 15 węzłów, porywy do 28 węzłów.
+
+- **6000 · Widzialność**: Widzialność przeważająca 6000 metrów.
+
+- **-SHRA · Zjawisko**: Słaby przelotny deszcz: minus oznacza małą intensywność, SH przelotność, RA deszcz.
+
+- **SCT018TCU · Chmury**: 3–4 oktanty wypiętrzonego Cumulusa z podstawą 1800 ft AGL.
+
+- **BKN035 · Chmury**: 5–7 oktantów z podstawą 3500 ft AGL. Ta grupa może tworzyć pułap.
+
+- **19/15 · Temperatura**: Temperatura 19°C, punkt rosy 15°C.
+
+- **Q1008 · Ciśnienie**: QNH 1008 hPa.
+
+**1. Wiatr: Jak odczytać 22015G28KT?**
+
+- **A.** Wiatr z 220°, 15 węzłów, porywy do 28 węzłów (poprawna)
+
+- **B.** Wiatr do 220°, średnio 28 węzłów
+
+- **C.** Wiatr zmienny od 15° do 28°
+
+- **D.** Wiatr z 220°, widzialność 1528 m
+
+Liczba po G opisuje maksymalne porywy, a nie drugą warstwę wiatru.
+
+**2. Zjawisko: Co koduje grupa -SHRA?**
+
+- **A.** Silną burzę gradową
+
+- **B.** Słaby przelotny deszcz (poprawna)
+
+- **C.** Ciągły umiarkowany śnieg
+
+- **D.** Niską podstawę chmur deszczowych
+
+Minus oznacza małą intensywność, SH to opad przelotny, RA to deszcz.
+
+**3. Chmury: Co jest najważniejsze w grupie SCT018TCU?**
+
+- **A.** TCU tworzy pułap niezależnie od ilości chmur
+
+- **B.** To 3–4 oktanty wypiętrzonego Cumulusa na 1800 ft AGL (poprawna)
+
+- **C.** To pełne pokrycie Cumulonimbus na 18 000 ft
+
+- **D.** To prognoza TAF, nie obserwacja METAR
+
+TCU mówi o gatunku konwekcyjnym, ale SCT nadal nie tworzy pułapu.
+
+**4. Pułap: Która grupa wyznacza pułap?**
+
+- **A.** SCT018TCU
+
+- **B.** BKN035 (poprawna)
+
+- **C.** -SHRA
+
+- **D.** 6000
+
+Najniższa warstwa tworząca pułap to BKN035. Niższe SCT018TCU pozostaje ważne konwekcyjnie, ale nie jest ceiling.
+
+### EPPO: CAVOK bez nadinterpretacji
+
+Krótka depesza, która sprawdza, czy CAVOK nie jest mylone z obietnicą bezchmurnego nieba.
+
+`EPPO 161000Z 18007KT CAVOK 20/09 Q1020`
+
+- **EPPO · Miejsce**: Poznań-Ławica — identyfikator ICAO stacji.
+
+- **161000Z · Czas**: 16. dzień miesiąca, 10:00 UTC.
+
+- **18007KT · Wiatr**: Wiatr z południa, 180°, z prędkością 7 węzłów.
+
+- **CAVOK · Warunki**: Widzialność, istotne zjawiska i chmury spełniają kryteria pozwalające użyć skrótu CAVOK; nie znaczy to „zero chmur”.
+
+- **20/09 · Temperatura**: Temperatura 20°C, punkt rosy 9°C.
+
+- **Q1020 · Ciśnienie**: QNH 1020 hPa.
+
+**1. Skrót: Która interpretacja CAVOK jest najbezpieczniejsza?**
+
+- **A.** Na całej trasie nie ma żadnej chmury
+
+- **B.** Na stacji spełniono zestaw kryteriów widzialności, zjawisk i istotnych chmur (poprawna)
+
+- **C.** Widzialność wynosi dokładnie 10 km
+
+- **D.** Prognoza gwarantuje brak pogorszenia przez 24 godziny
+
+CAVOK jest skrótem obserwacyjnych kryteriów na stacji, nie regionalną ani czasową gwarancją pogody.
+
+**2. Wiatr: Z jakiego kierunku wieje wiatr?**
+
+- **A.** Z północy
+
+- **B.** Ze wschodu
+
+- **C.** Z południa (poprawna)
+
+- **D.** Z zachodu
+
+180° wskazuje kierunek południowy; wiatr nazywamy według kierunku, z którego napływa.
+
+**3. Ciśnienie: Co oznacza Q1020?**
+
+- **A.** Ciśnienie QNH 1020 hPa (poprawna)
+
+- **B.** Podstawę chmur 1020 ft
+
+- **C.** Widzialność 1020 m
+
+- **D.** Temperaturę 10,20°C
+
+Litera Q poprzedza QNH wyrażone w hektopaskalach.
+
+**4. Granice wniosku: Czego ten raport nie rozstrzyga?**
+
+- **A.** Kierunku wiatru na stacji
+
+- **B.** QNH na stacji
+
+- **C.** Temperatury i punktu rosy
+
+- **D.** Rozwoju chmur poza otoczeniem stacji w kolejnych godzinach (poprawna)
+
+METAR opisuje obserwację w określonym miejscu i czasie. Do zmian w przyszłości służy prognoza, np. TAF.
+
+### EPWR: Mróz, śnieg i wiatr zmienny
+
+Ujemne temperatury, opad śniegu i niski pełny pułap.
+
+`EPWR 160700Z VRB03KT 3000 -SN OVC008 M02/M04 Q1005`
+
+- **EPWR · Miejsce**: Wrocław-Strachowice — identyfikator ICAO stacji.
+
+- **160700Z · Czas**: 16. dzień miesiąca, 07:00 UTC.
+
+- **VRB03KT · Wiatr**: Wiatr o zmiennym kierunku, 3 węzły.
+
+- **3000 · Widzialność**: Widzialność przeważająca 3000 metrów.
+
+- **-SN · Zjawisko**: Słaby śnieg.
+
+- **OVC008 · Chmury**: Pełne pokrycie z podstawą 800 ft AGL. Ta grupa może tworzyć pułap.
+
+- **M02/M04 · Temperatura**: Temperatura −2°C, punkt rosy −4°C. M oznacza wartość ujemną.
+
+- **Q1005 · Ciśnienie**: QNH 1005 hPa.
+
+**1. Wiatr: Co oznacza VRB03KT?**
+
+- **A.** Wiatr z 003°
+
+- **B.** Wiatr zmienny, 3 węzły (poprawna)
+
+- **C.** Brak wiatru
+
+- **D.** Porywy do 3 węzłów
+
+VRB zastępuje konkretny kierunek, gdy jest on zmienny; prędkość nadal wynosi 3 węzły.
+
+**2. Temperatura: Jak odczytać M02/M04?**
+
+- **A.** Temperatura 2°C, punkt rosy 4°C
+
+- **B.** Temperatura −2°C, punkt rosy −4°C (poprawna)
+
+- **C.** Temperatura −4°C, punkt rosy −2°C
+
+- **D.** Minimalna widzialność 2–4 km
+
+M oznacza minus. Temperatura jest podana przed ukośnikiem, punkt rosy po nim.
+
+**3. Pułap: Jaki pułap wynika z OVC008?**
+
+- **A.** 80 ft AGL
+
+- **B.** 800 ft AGL (poprawna)
+
+- **C.** 8000 ft AGL
+
+- **D.** Nie tworzy pułapu
+
+008 oznacza 8 × 100 ft, czyli 800 ft AGL. OVC opisuje pełne pokrycie i dlatego ta warstwa tworzy raportowany pułap.
+
+**4. Synteza: Który opis najwierniej streszcza raport?**
+
+- **A.** Słaby śnieg, widzialność 3 km, pułap 800 ft i lekki wiatr zmienny (poprawna)
+
+- **B.** Burza śnieżna, widzialność 300 m i pułap 8000 ft
+
+- **C.** Bezchmurnie, mróz i wiatr z 030°
+
+- **D.** Prognoza poprawy pogody po 07:00
+
+Każdy element odpowiedzi pochodzi z osobnej grupy: -SN, 3000, OVC008 i VRB03KT.
+
+## Oś czasu TAF
+
+**Prognoza edukacyjna [numer]/[liczba]**, **[stacja] · [tytuł]**.
+
+Odpowiedz na podstawie prognozy. Po wybraniu odpowiedzi zobaczysz wyjaśnienie
+oraz oś czasu z warunkami w kolejnych godzinach.
+
+**Wyjaśnienie osi czasu**: godziny, nazwa okresu, pełny opis warunków.
+Przyciski: **Następne pytanie**, **Następna prognoza**.
+
+### EPWA: Okno przelotnych burz
+
+Prognoza bazowa, czasowe pogorszenie i zdecydowana zmiana od konkretnej godziny.
+
+`TAF EPWA 161100Z 1612/1712 24010KT 9999 SCT025 TEMPO 1612/1616 4000 SHRA BKN018CB FM161800 28008KT CAVOK`
+
+**16. 12:00–16:00 UTC · Warunki bazowe + TEMPO**
+
+Bazowo 9999 SCT025, ale okresami 4000 m, SHRA i BKN018CB.
+
+**16. 16:00–18:00 UTC · Warunki bazowe**
+
+Po końcu TEMPO pozostaje bazowa prognoza 24010KT 9999 SCT025.
+
+**od 16. 18:00 UTC · FM161800**
+
+Od 18:00 obowiązuje nowy zestaw: 28008KT CAVOK.
+
+**1. Oś czasu: Jaki wariant trzeba uwzględnić około 14:00 UTC?**
+
+- **A.** Wyłącznie CAVOK
+
+- **B.** Bazę 9999 SCT025 oraz czasowe 4000 SHRA BKN018CB (poprawna)
+
+- **C.** Wyłącznie 28008KT
+
+- **D.** Raport już nie obowiązuje
+
+14:00 mieści się w oknie TEMPO 1612/1616. TEMPO nie kasuje bazy, lecz dodaje okresowy wariant.
+
+**2. Zmiana: Jak rozumieć FM161800?**
+
+- **A.** Warunki mogą wystąpić chwilami między 16:00 a 18:00
+
+- **B.** Od 18:00 zaczyna obowiązywać nowy bazowy zestaw warunków (poprawna)
+
+- **C.** Prognozę wydano o 18:00
+
+- **D.** Widzialność spadnie do 1800 m
+
+FM wyznacza początek nowego zestawu dominujących warunków od podanego czasu.
+
+**3. Ważność: Jaki okres ważności zapisuje 1612/1712?**
+
+- **A.** Od 16. dnia 12:00 UTC do 17. dnia 12:00 UTC (poprawna)
+
+- **B.** Od 16:12 do 17:12 czasu lokalnego
+
+- **C.** Przez 16 godzin i 12 minut
+
+- **D.** Tylko 17. dnia między 12:00 a 16:00
+
+Pierwsza para dzień/godzina oznacza początek, druga koniec okresu ważności w UTC.
+
+### EPGD: Narastanie zamglenia i poranna poprawa
+
+Zmiana stopniowa, czasowy wariant gęstej mgły i późniejszy nowy zestaw warunków.
+
+`TAF EPGD 161100Z 1612/1712 10008KT 9999 SCT020 BECMG 1620/1622 3000 BR BKN006 TEMPO 1702/1707 0600 FG VV002 FM170900 18010KT 9999 SCT015`
+
+**16. 12:00–20:00 UTC · Warunki początkowe**
+
+10008KT, widzialność co najmniej 10 km i SCT020.
+
+**16. 20:00–22:00 UTC · BECMG**
+
+W tym przedziale warunki przechodzą do 3000 BR BKN006.
+
+**17. 02:00–07:00 UTC · TEMPO**
+
+Okresami możliwe 600 m w mgle oraz VV002, na tle warunków po BECMG.
+
+**od 17. 09:00 UTC · FM170900**
+
+Nowy zestaw: 18010KT, widzialność co najmniej 10 km i SCT015.
+
+**1. Zmiana: Co opisuje BECMG 1620/1622?**
+
+- **A.** Nagłą zmianę dokładnie o 20:00
+
+- **B.** Stopniową zmianę w przedziale 20:00–22:00 UTC (poprawna)
+
+- **C.** Warunki występujące tylko chwilami przez dwie godziny
+
+- **D.** Koniec ważności TAF
+
+BECMG oznacza przejście do nowych warunków w podanym przedziale, a nie pojedynczy moment.
+
+**2. Oś czasu: Co należy brać pod uwagę około 05:00 UTC 17. dnia?**
+
+- **A.** Tylko warunki początkowe 9999 SCT020
+
+- **B.** Warunki po BECMG oraz czasowy wariant 0600 FG VV002 (poprawna)
+
+- **C.** Wyłącznie warunki od FM170900
+
+- **D.** TAF nie obejmuje tej godziny
+
+05:00 leży w TEMPO 1702/1707. Tłem są warunki ustanowione wcześniej przez BECMG.
+
+**3. Oś czasu: Który zestaw obowiązuje około 10:00 UTC 17. dnia?**
+
+- **A.** 0600 FG VV002
+
+- **B.** 3000 BR BKN006
+
+- **C.** 18010KT 9999 SCT015 (poprawna)
+
+- **D.** 10008KT 9999 SCT020
+
+FM170900 ustanawia od 09:00 nowy bazowy zestaw warunków.
+
+## Porównaj 3 stacje
+
+Nagłówek przykładu, opis i trzy depesze z określeniem ich roli.
+**Pytanie [numer]/[liczba]**.
+
+Porównaj wszystkie trzy depesze i odpowiedz na pytanie. Potem wyróżnimy
+fragmenty, z których wynika poprawna odpowiedź.
+
+Przyciski: **Następne pytanie**, **Następne porównanie**.
+
+### Widzialność, pułap i granice CAVOK
+
+Odprawa porównawcza · trzy lotniska
+
+Porównaj trzy niezależne, fikcyjne obserwacje z jednego dnia szkoleniowego. Szukaj warunków ograniczających, nie najdłuższego raportu.
+
+**Niska widzialność · EPGD**
+
+Zamglenie łączy się tu z bardzo małą widzialnością pionową.
+
+`EPGD 160530Z 09006KT 1200 BR VV002 07/07 Q1018`
+
+**Warunki CAVOK · EPPO**
+
+Skrót nie oznacza całkowicie bezchmurnego regionu.
+
+`EPPO 161000Z 18007KT CAVOK 20/09 Q1020`
+
+**Zimowy pułap · EPWR**
+
+Śnieg, ujemna temperatura i pełne pokrycie.
+
+`EPWR 160700Z VRB03KT 3000 -SN OVC008 M02/M04 Q1005`
+
+**1. Priorytet odprawy: Która stacja raportuje najniższy pułap?**
+
+- **A.** EPGD (poprawna)
+
+- **B.** EPPO
+
+- **C.** EPWR
+
+- **D.** Wszystkie raportują ten sam pułap
+
+EPGD podaje VV002, czyli widzialność pionową 200 ft. EPWR ma OVC008, czyli 800 ft, a CAVOK w EPPO nie raportuje warstwy tworzącej pułap.
+
+**2. Synteza: Który raport łączy słaby śnieg, mróz i pełne pokrycie na 800 ft?**
+
+- **A.** EPGD
+
+- **B.** EPPO
+
+- **C.** EPWR (poprawna)
+
+- **D.** Żaden z raportów
+
+W EPWR grupy -SN, M02/M04 oraz OVC008 wspólnie opisują słaby śnieg, temperaturę poniżej zera i pułap 800 ft.
+
+**3. Granice wniosku: Którego wniosku nie wolno wyciągnąć z CAVOK w raporcie EPPO?**
+
+- **A.** Na stacji spełniono kryteria CAVOK
+
+- **B.** Nie raportuje się istotnej chmury w zakresie kryteriów CAVOK
+
+- **C.** Cała trasa pozostanie bezchmurna przez wiele godzin (poprawna)
+
+- **D.** Widzialność na stacji spełnia kryterium skrótu
+
+CAVOK jest skrótem obserwacji punktowej. Nie opisuje całej trasy i nie gwarantuje utrzymania warunków w przyszłości.
+
+**4. Porównanie: Który raport wymaga największej uwagi ze względu na jednocześnie niski pułap i widzialność?**
+
+- **A.** EPGD (poprawna)
+
+- **B.** EPPO
+
+- **C.** EPWR
+
+- **D.** Nie da się porównać żadnego elementu
+
+EPGD łączy 1200 m widzialności z VV002. EPWR ma 3000 m i OVC008, a EPPO używa CAVOK.
+
+### Konwekcja, porywy i warstwy bez pułapu
+
+Odprawa porównawcza · popołudniowa konwekcja
+
+Trzy fikcyjne obserwacje pokazują różne etapy rozwoju: spokojne warstwy, TCU z przelotnym opadem oraz CB w warstwie tworzącej pułap.
+
+**Warstwy bez pułapu · EPKK**
+
+FEW i SCT są ważne, ale nie tworzą ceiling.
+
+`EPKK 161400Z 31008KT 9999 FEW020 SCT045 22/11 Q1016`
+
+**TCU i porywy · EPKT**
+
+Porywy, opad przelotny i TCU wskazują rozwój konwekcyjny bez kodu CB.
+
+`EPKT 161600Z 22015G28KT 6000 -SHRA SCT018TCU BKN035 19/15 Q1008`
+
+**CB w warstwie BKN · EPWA**
+
+Niższa warstwa BKN zawiera CB i wyznacza raportowany pułap.
+
+`EPWA 161230Z 24012KT 9999 BKN018CB OVC050 18/14 Q1012`
+
+**1. Konwekcja: Która stacja jawnie raportuje Cumulonimbus w warstwie tworzącej pułap?**
+
+- **A.** EPKK
+
+- **B.** EPKT
+
+- **C.** EPWA (poprawna)
+
+- **D.** Żadna
+
+EPWA podaje BKN018CB. BKN tworzy pułap na 1800 ft, a dopisek CB jednoznacznie identyfikuje Cumulonimbus w tej warstwie.
+
+**2. Zjawiska: Gdzie występują jednocześnie porywy, słaby przelotny deszcz i TCU?**
+
+- **A.** EPKK
+
+- **B.** EPKT (poprawna)
+
+- **C.** EPWA
+
+- **D.** We wszystkich trzech raportach
+
+EPKT łączy 22015G28KT, -SHRA i SCT018TCU. Każda z tych informacji pochodzi z osobnej grupy.
+
+**3. Pułap: Który raport zawiera chmury, ale nie raportuje pułapu?**
+
+- **A.** EPKK (poprawna)
+
+- **B.** EPKT
+
+- **C.** EPWA
+
+- **D.** Każdy raport tworzy pułap
+
+EPKK podaje FEW020 i SCT045. Ani FEW, ani SCT nie spełnia definicji warstwy tworzącej pułap.
+
+**4. Porównanie: Która z dwóch stacji z raportowanym pułapem ma niższy ceiling?**
+
+- **A.** EPKT, 1800 ft
+
+- **B.** EPKT, 3500 ft
+
+- **C.** EPWA, 1800 ft (poprawna)
+
+- **D.** EPWA, 5000 ft
+
+EPWA ma BKN018CB, więc pułap wynosi 1800 ft. W EPKT niższe SCT018TCU nie tworzy pułapu; tworzy go BKN035 na 3500 ft.
+
+## Powtórki
+
+**Wyniki na tym urządzeniu**
+
+### Wróć do wcześniejszych pytań
+
+Pytania, w których pojawił się błąd, wracają wcześniej. Po kolejnych
+poprawnych odpowiedziach odstępy między powtórkami rosną.
+To plan ćwiczeń, nie ocena przygotowania do lotu.
+
+Podsumowanie: **pytań z zapisanym wynikiem**, **do powtórki**, **następna sesja**.
+Terminy: **teraz**, **za [liczba] godz.**, **za 1 dzień**, **za [liczba] dni**
+lub data. Brak kolejnego terminu: „—”.
+
+Pytanie pokazuje rodzaj **METAR / TAF / Porównanie stacji**, temat, tytuł
+przykładu i depeszę. To te same pełne pytania i wyjaśnienia, które zapisano powyżej.
+
+Po odpowiedzi: **Termin powtórki: następna próba [termin].** lub
+**Termin powtórki: pytanie pozostaje pilne i wróci w kolejnej sesji.**
+Dla TAF także **Oś czasu prognozy**. Przycisk: **Następna powtórka**.
+
+Po przejściu pytań: **Sesja zakończona**. Gdy nie było pytań:
+**Brak pytań na teraz**.
+
+Bez zapisanej historii: **Najpierw odpowiedz na kilka pytań w pracowni**.
+
+Odpowiedzi z ćwiczeń METAR, TAF i porównywania stacji tworzą plan powtórek
+na tym urządzeniu.
+
+Gdy na teraz wyczerpano pytania: **Na teraz nie ma więcej pytań**.
+
+**Najbliższa zaplanowana powtórka: [termin].** lub
+**Nowa sesja pojawi się po kolejnych odpowiedziach.**
+
+Przyciski: **Trening METAR**, **Porównaj 3 stacje**.
+
+### Co zapisano na tym urządzeniu
+
+Liczba zapisanych wyników: [liczba]. Możesz je usunąć poniżej.
+
+Przy każdym pytaniu: rodzaj, temat, tytuł i pola **dobrze**, **błędy**,
+**seria**, **termin**.
+
+Bez wyników: **Nie zapisano jeszcze żadnej odpowiedzi.**
+
+Przycisk: **Usuń wyniki i terminy powtórek**.
+
+Potwierdzenie: **Usunąć wszystkie lokalne wyniki i terminy powtórek?**
+Przyciski: **Potwierdź usunięcie**, **Anuluj**.
+
+## Ograniczenia i źródła
+
+Wszystkie depesze w pracowni są fikcyjnymi przykładami edukacyjnymi.
+Nie są aktualnymi raportami ani materiałem do podejmowania decyzji operacyjnych.
+
+Źródła: [NOAA Aviation Weather Center](https://aviationweather.gov/help/data/),
+[EASA Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).

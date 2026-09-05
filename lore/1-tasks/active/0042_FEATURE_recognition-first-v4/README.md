@@ -323,3 +323,16 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   all 116 tests. iPhone/iPad simulator and ad-hoc Catalyst builds both contain
   `index-DrDCQsbb.js`. These are local development builds, not store artifacts;
   current visual/native interaction QA and release acceptance remain open.
+- Reworked wind, hazards, sounding, saved-observation and METAR/TAF workshop
+  copy as complete journeys. Corrected unsupported EL labels in three synthetic
+  profiles instead of inventing equilibrium heights. Preserved profile arrays,
+  questions and answers; corrected +TSRA to thunderstorm with heavy rain, not
+  a severity classification of the thunderstorm. Saved model percentages are
+  now closed technical details, with own identifications kept distinct; legacy
+  records and backups remain unchanged. The full copy book includes all of
+  these screens and their source-driven dictionaries, scenarios and answers.
+  Added actual React static-render coverage. All 255 JavaScript tests, nine
+  lesson audits and the web build pass. iPhone/iPad simulator and local ad-hoc
+  Catalyst builds contain `index-B7o19ddB.js`. Current CUA still fails at startup;
+  static rendering/build success is not visual or physical-device acceptance.
+  No model replacement, installation, store archive or publication occurred.

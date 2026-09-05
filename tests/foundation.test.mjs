@@ -377,16 +377,16 @@ test("the METAR and TAF workshop preserves active recall and keyboard context", 
   const app = await read("src/App.jsx");
   const storage = await read("src/lib/storage.js");
 
-  assert.match(app, /Anatomia całej depeszy/);
-  assert.match(app, /METAR jest zdaniem czytanym od lewej do prawej/);
+  assert.match(app, /Budowa depeszy/);
+  assert.match(app, /Jak czytać METAR od początku do końca/);
   assert.match(app, /Słownik sekcji METAR/);
   assert.match(app, /Co jeszcze możesz tu spotkać/);
   assert.match(app, /Wyjaśnij dokładnie/);
   assert.match(app, /aria-pressed=\{mode === "taf"\}/);
   assert.match(app, /aria-pressed=\{mode === "briefing"\}/);
   assert.match(app, /aria-pressed=\{mode === "review"\}/);
-  assert.match(app, /Odprawa 3 stacji/);
-  assert.match(app, /Pamięć lokalna · bez konta/);
+  assert.match(app, /Porównaj 3 stacje/);
+  assert.match(app, /Wyniki na tym urządzeniu/);
   assert.match(app, /Co zapisano na tym urządzeniu/);
   assert.match(app, /Potwierdź usunięcie/);
   assert.match(app, /recordAviationAnswer\(metarReviewItem/);
@@ -395,7 +395,7 @@ test("the METAR and TAF workshop preserves active recall and keyboard context", 
   assert.match(storage, /clearAviationReview/);
   assert.match(app, /role="timer"/);
   assert.match(app, /feedbackDetail=\{tafAnswerIndex !== null/);
-  assert.match(app, /Pełny rozbiór osi czasu/);
+  assert.match(app, /Wyjaśnienie osi czasu/);
   assert.match(app, /trainingHeadingRef/);
   assert.match(app, /feedbackRef\.current\?\.focus/);
   assert.doesNotMatch(app, /className=\{`metar-timer[^`]+aria-live="polite"/s);
@@ -456,15 +456,15 @@ test("the Layers page includes a source-aware interactive sounding laboratory", 
   const projection = await read("src/lib/sounding.js");
   const styles = await read("src/styles.css");
 
-  assert.match(app, /Skew‑T czytaj jak argument, nie kolorowankę/);
-  assert.match(app, /Radiosonda obserwowana/);
+  assert.match(app, /Jak pogoda zmienia się z wysokością/);
+  assert.match(app, /Pomiar radiosondą/);
   assert.match(app, /Profil prognozowany/);
   assert.match(app, /Profile w tej pracowni/);
-  assert.match(app, /Pięć przejść przez ten sam diagram/);
-  assert.match(app, /Temperatura i Td/);
-  assert.match(app, /Tor parceli/);
+  assert.match(app, /Pięć kroków czytania profilu/);
+  assert.match(app, /Temperatura i punkt rosy/);
+  assert.match(app, /Unoszona porcja powietrza/);
   assert.match(app, /Czego ten profil nie dowodzi/);
-  assert.match(app, /Nie nazywaj jednej linii\. Zinterpretuj kolumnę\./);
+  assert.match(app, /Który wniosek pasuje do tego przykładu/);
   assert.match(app, /aria-pressed=\{visible\[id\]\}/);
   assert.match(app, /aria-live="polite"/);
   assert.match(data, /Stratus uwięziony pod inwersją/);

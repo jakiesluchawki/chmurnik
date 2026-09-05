@@ -103,6 +103,7 @@ export function soundingSummary(scenario) {
     lcl: scenario.levels.lcl,
     lfc: scenario.levels.lfc,
     el: scenario.levels.el,
+    elUnresolved: Boolean(scenario.levels.elUnresolved),
     maximumWind,
     hasInversion: Boolean(scenario.inversion),
     parcelOrigin: scenario.parcelOrigin,

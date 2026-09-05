@@ -4,6 +4,8 @@ import {
   confirmedGenera,
   normalizeObservation,
   observationFromRecognition,
+  observationTitle,
+  savedHypothesisMessage,
   parseObservationBackup,
   postcardCaption,
   serializeObservationBackup,
@@ -129,6 +131,26 @@ test("uncertain clear-leading results stay unnamed in the saved observation and 
   assert.deepEqual(entry.hypothesis.candidates, []);
   assert.equal(entry.hypothesis.family, "Rodzaj chmury nierozstrzygnięty");
   assert.equal(entry.confirmedCloudId, null);
-  assert.equal(postcardCaption(entry).title, "Rodzaj chmury nierozstrzygnięty");
+  assert.equal(postcardCaption(entry).title, "Obserwacja bez rozpoznania");
   assert.deepEqual(parseObservationBackup(serializeObservationBackup([entry])), [entry]);
+});
+
+test("old uncertain family labels stay in the backup but cannot become a confident title", () => {
+  const entry = normalizeObservation({ ...legacy, hypothesis: {
+    state: "uncertain", family: "Piętro średnie", modelVersion: "old-model",
+    candidates: [{ id: "altostratus", probability: .28 }],
+  } });
+  assert.equal(observationTitle(entry), "Obserwacja bez rozpoznania");
+  assert.match(savedHypothesisMessage(entry.hypothesis), /nie rozstrzygnął/);
+  assert.equal(entry.hypothesis.family, "Piętro średnie");
+  assert.deepEqual(parseObservationBackup(serializeObservationBackup([entry])), [entry]);
+  assert.equal(observationTitle({ ...entry, confirmedCloudId: "cumulus" }), "Cumulus");
+});
+
+test("saved messages distinguish clear sky, suggestions, abstention and empty manual entries", () => {
+  assert.match(savedHypothesisMessage({ state: "clear", candidates: [] }), /Nie wyklucza/);
+  assert.match(savedHypothesisMessage({ state: "ambiguous", candidates: [] }), /nie podał rodzaju/);
+  assert.match(savedHypothesisMessage({ state: "hypothesis", candidates: [{ id: "cumulus" }] }), /nie potwierdzone/);
+  assert.equal(observationTitle({ cloud: "Nierozpoznana", hypothesis: null }), "Moja obserwacja");
+  assert.equal(observationTitle({ hypothesis: { state: "clear", family: "stara etykieta" } }), "Bez wyraźnych chmur");
 });

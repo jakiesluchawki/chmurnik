@@ -22,6 +22,18 @@ export const sources = {
     scope: "Dodatek A: wektory wiatru. Pracownia upraszcza sytuację do wspólnego układu odniesienia bez prądu i dryfu; nie wyznacza osiągów ani bezpiecznego ożaglowania jachtu.",
     retrieved: "26 sierpnia 2026",
   },
+  wmoCloudMotion: {
+    id: "wmoCloudMotion",
+    organization: "World Meteorological Organization",
+    title: "Direction and speed of movement",
+    label: "WMO: ruch chmur",
+    url: "https://cloudatlas.wmo.int/en/direction-and-speed-of-movement.html",
+    kind: "Zasady obserwacji",
+    trust: "Oficjalna instrukcja obserwacji ruchu chmur w International Cloud Atlas.",
+    scope: "Kierunek i prędkość ruchu chmur, przybliżenie wiatru na ich wysokości oraz różnica między ruchem chmury i jej elementów.",
+    checkText: "Direction and speed of movement",
+    retrieved: "5 września 2026",
+  },
   wmoAtlas: {
     id: "wmoAtlas",
     organization: "World Meteorological Organization",

@@ -92,9 +92,22 @@ export function observationFromRecognition(
 export function observationTitle(entry) {
   if (entry.confirmedCloudId)
     return clouds.find((cloud) => cloud.id === entry.confirmedCloudId).name;
-  if (entry.hypothesis)
-    return entry.hypothesis.family || "Nierozstrzygnięte niebo";
-  return entry.cloud || "Moja obserwacja";
+  if (entry.hypothesis) {
+    if (entry.hypothesis.state === "clear") return "Bez wyraźnych chmur";
+    if (entry.hypothesis.state === "hypothesis") return entry.hypothesis.family || "Podpowiedź do sprawdzenia";
+    return "Obserwacja bez rozpoznania";
+  }
+  return entry.cloud && entry.cloud !== "Nierozpoznana" ? entry.cloud : "Moja obserwacja";
+}
+
+export function savedHypothesisMessage(hypothesis) {
+  if (hypothesis.state === "clear")
+    return "Model wskazał głównie niebo bez chmur. Nie wyklucza to cienkich pasm lub chmur słabo widocznych na zdjęciu.";
+  if (!hypothesis.candidates.length)
+    return "Model nie podał rodzaju chmury do porównania. Zdjęcie możesz zachować bez nazwy i uzupełnić własne rozpoznanie później.";
+  if (hypothesis.state === "hypothesis")
+    return "Model zaproponował rodzaj chmury. To podpowiedź, nie potwierdzone rozpoznanie; sprawdź jej cechy w atlasie.";
+  return "Model nie rozstrzygnął, jaki to rodzaj chmury. Poniższe nazwy służą do porównania z atlasem, a nie jako potwierdzony wynik.";
 }
 
 export function confirmedGenera(entries) {

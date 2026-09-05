@@ -4,12 +4,24 @@ import { fieldQuestions, fieldPrinciples, pairDiscriminators } from "../src/data
 import { comparisonDimensions, comparisonPresets } from "../src/data/comparison.js";
 import { observationVerdict } from "../src/lib/field-guide.js";
 import { learningModules, quizQuestions } from "../src/data/learning.js";
-import { layersHeadings, windyReadingSteps } from "../src/data/layers-copy.js";
+import { layersHeadings, windyReadingSteps, windCaveats, hazardCards, soundingReadingSteps } from "../src/data/layers-copy.js";
+import { soundingScenarios, soundingGlossary } from "../src/data/soundings.js";
+import { windFromCloudMotion } from "../src/lib/wind.js";
+import { clouds } from "../src/data/clouds.js";
+import { savedHypothesisMessage } from "../src/lib/observations.js";
+import { metarStructurePhases, metarDecodeSections, metarTrainingScenarios, tafTrainingScenarios, aviationBriefingSets } from "../src/data/metar-training.js";
 import { cloudBands, pressureLevels, weatherLayers } from "../src/data/weather-layers.js";
 import { weatherLayerReading } from "../src/lib/weather-layers.js";
 import { getSources } from "../src/data/sources.js";
 
 const root = new URL("../", import.meta.url);
+function trainingQuestions(items) {
+  return items.map((question, index) => [
+    `**${index + 1}. ${question.stage}: ${question.prompt}**`,
+    ...question.options.map((text, choice) => `- **${String.fromCharCode(65 + choice)}.** ${text}${choice === question.correct ? " (poprawna)" : ""}`),
+    question.explanation,
+  ].join("\n\n")).join("\n\n");
+}
 const questionCopy = fieldQuestions.map((question) => [
   `### ${question.eyebrow}`,
   `**${question.prompt}**`, question.help,
@@ -27,6 +39,39 @@ const comparisonCopy = [
     `**${ids.split("|").join(" / ")}**\n\n${text}`),
 ].join("\n\n");
 const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
+  "<!-- METAR_PHASES -->": metarStructurePhases.map((phase) => `### ${phase.number}. ${phase.title}\n\n${phase.pattern}\n\n${phase.detail}`).join("\n\n"),
+  "<!-- METAR_SECTIONS -->": metarDecodeSections.map((section) => [
+    `### ${section.title}`, `**${section.shortLabel}** · ${section.position}`,
+    section.purpose, `**Budowa:** ${section.syntax}`,
+    ...section.examples.map((example) => `- **${example.code}**: ${example.meaning}`),
+    ...(section.spotlight ? [`**${section.spotlight.code} · ${section.spotlight.expansion}**`, section.spotlight.meaning, section.spotlight.limits] : []),
+    `**Uważaj:** ${section.watchFor}`,
+  ].join("\n\n")).join("\n\n"),
+  "<!-- METAR_SCENARIOS -->": metarTrainingScenarios.map((scenario) => [
+    `### ${scenario.station}: ${scenario.title}`, scenario.context, `\`${scenario.report}\``,
+    ...scenario.groups.map((group) => `- **${group.token} · ${group.label}**: ${group.meaning}${group.ceiling ? " Ta grupa może tworzyć pułap." : ""}`),
+    trainingQuestions(scenario.questions),
+  ].join("\n\n")).join("\n\n"),
+  "<!-- TAF_SCENARIOS -->": tafTrainingScenarios.map((scenario) => [
+    `### ${scenario.station}: ${scenario.title}`, scenario.context, `\`${scenario.report}\``,
+    ...scenario.timeline.map((period) => `**${period.time} · ${period.label}**\n\n${period.detail}`),
+    trainingQuestions(scenario.questions),
+  ].join("\n\n")).join("\n\n"),
+  "<!-- BRIEFING_SCENARIOS -->": aviationBriefingSets.map((briefing) => [
+    `### ${briefing.title}`, briefing.kicker, briefing.context,
+    ...briefing.reports.map((report) => {
+      const scenario = metarTrainingScenarios.find((item) => item.id === report.scenarioId);
+      return `**${report.role} · ${scenario.station}**\n\n${report.note}\n\n\`${scenario.report}\``;
+    }),
+    trainingQuestions(briefing.questions),
+  ].join("\n\n")).join("\n\n"),
+  "<!-- COLLECTION_CLOUD_NAMES -->": clouds.map((cloud) => `- **${cloud.code}: ${cloud.name}** · ${cloud.polish}`).join("\n"),
+  "<!-- SAVED_HYPOTHESIS_MESSAGES -->": [
+    { label: "Niebo głównie bez chmur", state: "clear", candidates: [] },
+    { label: "Brak propozycji", state: "ambiguous", candidates: [] },
+    { label: "Hipoteza rodzaju", state: "hypothesis", candidates: [{ id: "cumulus" }] },
+    { label: "Nierozstrzygnięte propozycje", state: "uncertain", candidates: [{ id: "cumulus" }] },
+  ].map((item) => `**${item.label}**\n\n${savedHypothesisMessage(item)}`).join("\n\n"),
   "<!-- FIELD_VERDICTS -->": verdictCopy,
   "<!-- FIELD_PRINCIPLES -->": fieldPrinciples.map((text) => `- ${text}`).join("\n"),
   "<!-- COMPARISON_COPY -->": comparisonCopy,
@@ -40,6 +85,25 @@ const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
     `${number}. **${title}**: ${copy}`).join("\n\n"),
   "<!-- PRESSURE_LEVELS -->": Object.entries(pressureLevels).map(([pressure, level]) =>
     `- **${pressure} hPa**, około ${level.altitude} m MSL: ${level.use}.`).join("\n"),
+  "<!-- WIND_DIRECTIONS -->": Array.from({ length: 8 }, (_, i) => windFromCloudMotion(i * 45))
+    .map((value) => `- Ruch na **${value.towardLabel}** (${value.toward}°): wiatr z **${value.fromLabel}** (${value.from}°).`).join("\n"),
+  "<!-- WIND_CAVEATS -->": windCaveats.map(([title, copy]) => `### ${title}\n\n${copy}`).join("\n\n"),
+  "<!-- HAZARD_CARDS -->": hazardCards.map((item) => `### ${item.title}\n\n${item.text}`).join("\n\n"),
+  "<!-- SOUNDING_STEPS -->": soundingReadingSteps.map(([number, title, copy]) => `${number}. **${title}**: ${copy}`).join("\n\n"),
+  "<!-- SOUNDING_GLOSSARY -->": soundingGlossary.map((item) => `**${item.term}: ${item.polish}**\n\n${item.explanation}`).join("\n\n"),
+  "<!-- SOUNDING_SCENARIOS -->": soundingScenarios.map((item) => [
+    `#### ${item.number}. ${item.title}`, `**${item.label}**`, item.short, item.sourceType,
+    `**Skąd unosimy powietrze:** ${item.parcelOrigin}`,
+    `LCL: ${item.levels.lcl ?? "brak"} hPa · LFC: ${item.levels.lfc ? `${item.levels.lfc} hPa` : "nie osiąga"} · EL: ${item.levels.el ? `${item.levels.el} hPa` : item.levels.elUnresolved ? "Nie wyznaczono w profilu" : "Brak w tym przykładzie"} · 0°C: ${item.levels.freezing} hPa.`,
+    "**Podpisy warstw:**", ...[item.inversion, ...item.cloudLayers].filter(Boolean).map((layer) => `- ${layer.label}`),
+    `**${item.reading.verdict}**`,
+    ...Object.entries({ "Czy powietrze może się unosić?": item.reading.stability, "Wilgoć i chmury": item.reading.moisture,
+      "Wiatr z wysokością": item.reading.wind, "Znaczenie lotnicze": item.reading.aviation, "Czego ten profil nie dowodzi": item.reading.uncertainty })
+      .map(([title, copy]) => `**${title}**\n\n${copy}`),
+    `**Ćwiczenie:** ${item.check.prompt}`,
+    ...item.check.options.map((text, option) => `- **${String.fromCharCode(65 + option)}.** ${text}${option === item.check.correct ? " (poprawna)" : ""}`),
+    item.check.explanation,
+  ].join("\n\n")).join("\n\n"),
   "<!-- WEATHER_LAYERS -->": weatherLayers.map((layer) => {
     const cases = layer.supportsPressure ? [{ pressure: 850, terrain: 300 }, { pressure: 925, terrain: 700 }, { pressure: 1000, terrain: 300 }]
       : layer.supportsCloudBand ? Object.keys(cloudBands).map((cloudBand) => ({ cloudBand })) : [{}];
@@ -58,7 +122,7 @@ const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
   }).join("\n\n"),
 };
 const sections = [];
-for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md"]) {
+for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md"]) {
   let content = await readFile(new URL(`design/${name}`, root), "utf8");
   for (const [marker, value] of Object.entries(substitutions)) content = content.replace(marker, value);
   sections.push(content.trim());
@@ -67,12 +131,15 @@ const header = `# CHMURNIK V4: całość dotychczasowej redakcji
 
 Jeden dokument zawiera teksty startowe, oprowadzenia, wprowadzenia do pracowni,
 pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porównanie,
-nawigację nauki, powtórki, quiz, czytnik Windy oraz schemat wysokości.
+nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
+wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
+obserwacji, pocztówki, kopie i cały warsztat szkoleniowy METAR/TAF.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
-To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje, dziennik,
-indeks terminów i wszystkie ekrany narzędzi wymagają jeszcze osobnego przeglądu.
+To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje,
+indeks terminów i pozostałe ekrany narzędzi terenowych wymagają jeszcze
+osobnego przeglądu.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
 Dokument można odtworzyć poleceniem:

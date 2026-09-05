@@ -95,7 +95,7 @@ export const soundingScenarios = [
     label: "Pokrywa",
     title: "Wilgotny dół pod ciepłą pokrywą",
     short:
-      "Warstwa przyziemna ma wilgoć i potencjał, ale wyraźne ocieplenie aloft tworzy ujemną wyporność przed LFC.",
+      "Wilgotne powietrze przy ziemi napotyka cieplejszą warstwę na wysokości około 800 hPa. Ta warstwa hamuje jego unoszenie przed osiągnięciem LFC.",
     sourceType: "Idealizowany profil dydaktyczny",
     parcelOrigin: "powierzchnia",
     profile: [
@@ -112,7 +112,8 @@ export const soundingScenarios = [
     levels: {
       lcl: 885,
       lfc: 610,
-      el: 210,
+      el: null,
+      elUnresolved: true,
       freezing: 585,
     },
     inversion: { bottom: 850, top: 800, label: "pokrywa hamująca" },
@@ -122,7 +123,7 @@ export const soundingScenarios = [
     reading: {
       verdict: "Chwiejność warunkowa z silnym hamowaniem",
       stability:
-        "Parcel po LCL pozostaje wyraźnie chłodniejsza od ciepłej warstwy około 800 hPa. Swobodna konwekcja zaczyna się dopiero znacznie wyżej.",
+        "Po osiągnięciu LCL unoszona porcja powietrza pozostaje wyraźnie chłodniejsza od warstwy około 800 hPa. Dopiero wyżej staje się cieplejsza od otoczenia. W pokazanym zakresie nie osiąga jeszcze górnego poziomu równowagi EL.",
       moisture:
         "Wilgoć jest duża nisko, ale powyżej 800 hPa odstęp T–Td rośnie. Sama wilgotna powierzchnia nie dowodzi głębokiej chmury.",
       wind:
@@ -151,7 +152,7 @@ export const soundingScenarios = [
     label: "Głęboka konwekcja",
     title: "Wilgotna parcela z rozległą dodatnią wypornością",
     short:
-      "Niski LCL, wczesny LFC i wysoki EL tworzą głęboką przestrzeń dla prądu wstępującego, ale nadal nie wyznaczają miejsca inicjacji.",
+      "Unoszona porcja powietrza jest cieplejsza od otoczenia w dużej części profilu. Sprzyja to silnemu rozwojowi pionowemu, ale nie wskazuje, gdzie rozpocznie się konwekcja.",
     sourceType: "Idealizowany profil dydaktyczny",
     parcelOrigin: "powierzchnia",
     profile: [
@@ -168,17 +169,18 @@ export const soundingScenarios = [
     levels: {
       lcl: 900,
       lfc: 835,
-      el: 190,
+      el: null,
+      elUnresolved: true,
       freezing: 625,
     },
     inversion: null,
     cloudLayers: [
-      { bottom: 900, top: 190, label: "możliwa głęboka chmura konwekcyjna" },
+      { bottom: 900, top: 200, label: "możliwa głęboka chmura konwekcyjna" },
     ],
     reading: {
       verdict: "Głęboka chwiejność powierzchniowa",
       stability:
-        "Powyżej wczesnego LFC parcel pozostaje cieplejsza od otoczenia przez większość troposfery i zbliża się do równowagi dopiero wysoko.",
+        "Powyżej LFC unoszona porcja powietrza jest cieplejsza od otoczenia aż do górnej granicy wykresu. Profil nie sięga do górnego poziomu równowagi EL, więc nie podajemy jego wysokości.",
       moisture:
         "Niski poziom ma mały odstęp T–Td. Suchsze powietrze średnie może wzmacniać parowanie i prądy zstępujące, ale nie unieważnia potencjału konwekcji.",
       wind:
@@ -207,7 +209,7 @@ export const soundingScenarios = [
     label: "Konwekcja wyniesiona",
     title: "Stabilna powierzchnia, chwiejna warstwa wyżej",
     short:
-      "Parcel startująca przy ziemi jest bez szans, lecz wilgotne powietrze nad inwersją może stać się dodatnio wyporne po wymuszonym uniesieniu.",
+      "Stabilna warstwa przy ziemi hamuje unoszenie. Wilgotne powietrze powyżej inwersji może jednak stać się cieplejsze od otoczenia po wymuszonym uniesieniu.",
     sourceType: "Idealizowany profil dydaktyczny",
     parcelOrigin: "850 hPa, nad inwersją",
     profile: [
@@ -225,17 +227,18 @@ export const soundingScenarios = [
     levels: {
       lcl: 820,
       lfc: 760,
-      el: 230,
+      el: null,
+      elUnresolved: true,
       freezing: 715,
     },
     inversion: { bottom: 900, top: 850, label: "inwersja oddzielająca powierzchnię" },
     cloudLayers: [
-      { bottom: 825, top: 230, label: "możliwa konwekcja wyniesiona" },
+      { bottom: 825, top: 200, label: "możliwa konwekcja wyniesiona" },
     ],
     reading: {
       verdict: "Chwiejność wyniesiona ponad stabilnym dołem",
       stability:
-        "Przyziemna warstwa jest chłodna i stabilna. Dopiero parcela z wilgotnej warstwy około 850 hPa ma własny LCL, LFC i dodatnią wyporność.",
+        "Przyziemna warstwa jest chłodna i stabilna. Powietrze unoszone z wilgotnej warstwy około 850 hPa osiąga natomiast własny LCL i LFC. Pozostaje cieplejsze od otoczenia przy górnej granicy wykresu, więc nie wyznaczamy tu górnego poziomu równowagi EL.",
       moisture:
         "T i Td zbliżają się nad inwersją, a nie przy powierzchni. To zmienia poziom podstawy i źródło powietrza dla chmury.",
       wind:

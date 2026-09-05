@@ -6,7 +6,7 @@ import { FieldPractice, PracticeLinks, FullLearningLinks } from "./components/Fi
 import { SkyCollection } from "./components/SkyCollection.jsx";
 import { PhotoFrame } from "./components/PhotoFrame.jsx";
 import { PressureHeightLab } from "./components/PressureHeightLab.jsx";
-import { layersHeadings, windyReadingSteps } from "./data/layers-copy.js";
+import { layersHeadings, windyReadingSteps, windCaveats, hazardCards, soundingReadingSteps } from "./data/layers-copy.js";
 import { prepareRecognitionRegion } from "./lib/photo-frame.js";
 import { createPhotoOperationScope } from "./lib/photo-operation.js";
 import { PhotoRecognitionResult } from "./components/PhotoRecognitionResult.jsx";
@@ -3348,11 +3348,12 @@ function WindPanel({ onSources }) {
       </div>
       <div className="wind-controls">
         <span className="eyebrow">Pracownia ruchu chmur</span>
-        <h2>Najpierw „dokąd”, potem „skąd”</h2>
+        <h2>Skąd wieje wiatr na wysokości chmury?</h2>
         <p>
-          Ustaw kierunek, w którym przemieszcza się rozpoznawalny fragment
-          chmury. Dla prostego dryfu wynik odwracamy o 180°. To informacja o
-          przepływie na wysokości tej chmury, nie automatycznie o wietrze przy ziemi.
+          Ustaw na kompasie, dokąd przesuwa się obserwowany fragment chmury.
+          Jeśli niesie go wiatr, kierunek „skąd wieje” będzie przeciwny, czyli
+          przesunięty o 180°. To przybliżenie dla wysokości chmury, nie pomiar
+          wiatru przy ziemi. Ten schemat nie korzysta z czujników telefonu.
         </p>
         <label className="wind-range">
           <span>Chmura przemieszcza się na <strong>{towardNames[result.towardLabel]}</strong></span>
@@ -3365,7 +3366,7 @@ function WindPanel({ onSources }) {
             onChange={(event) => setMotion(Number(event.target.value))}
           />
         </label>
-        <div className="concept-switch wind-levels">
+        <div className="concept-switch wind-levels" role="group" aria-label="Obserwowane piętro chmur">
           {["niskie", "średnie", "wysokie"].map((item) => (
             <button
               key={item}
@@ -3380,18 +3381,16 @@ function WindPanel({ onSources }) {
         <div className="wind-result">
           <Wind size={30} />
           <div>
-            <span>Wniosek dla tej warstwy</span>
+            <span>Przybliżony kierunek na wysokości chmury</span>
             <strong>wiatr z {directionNames[result.fromLabel]} ({result.fromLabel})</strong>
-            <small>ruch chmury do {result.towardLabel} · kierunek wiatru podajemy „z”</small>
+            <small>Chmura przesuwa się na {towardNames[result.towardLabel]}. Nazwa wiatru mówi, skąd on wieje.</small>
           </div>
         </div>
-        <SourceButton ids={["faaWeather", "wmoAtlas"]} onOpen={onSources} />
+        <p>Wybór piętra opisuje obserwowaną chmurę, ale nie wyznacza jej wysokości ani prędkości wiatru.</p>
+        <SourceButton ids={["wmoCloudMotion", "faaWeather"]} onOpen={onSources} />
       </div>
       <div className="wind-caveats wind-caveats--wide">
-        <article><strong>Lenticularis</strong><p>Kształt może stać w miejscu, gdy powietrze szybko przepływa przez falę.</p></article>
-        <article><strong>Virga</strong><p>Nachylenie łączy znoszenie z opadaniem i parowaniem hydrometeorów.</p></article>
-        <article><strong>Cumulonimbus</strong><p>Nowe komórki mogą rozwijać się w innym kierunku niż przepływa samo powietrze.</p></article>
-        <article><strong>Radiatus</strong><p>Pasma pozornie zbiegają się przez perspektywę, choć są prawie równoległe.</p></article>
+        {windCaveats.map(([title, copy]) => <article key={title}><strong>{title}</strong><p>{copy}</p></article>)}
       </div>
     </section>
   );
@@ -3455,7 +3454,7 @@ function BriefingReportGrid({ briefing, question, revealed = false }) {
 const reviewKindLabels = {
   metar: "METAR",
   taf: "TAF",
-  briefing: "Odprawa",
+  briefing: "Porównanie stacji",
 };
 
 function formatReviewDue(dueAt, now = Date.now()) {
@@ -3463,7 +3462,7 @@ function formatReviewDue(dueAt, now = Date.now()) {
   const hours = Math.ceil((dueAt - now) / (60 * 60 * 1000));
   if (hours < 24) return `za ${hours} godz.`;
   const days = Math.ceil(hours / 24);
-  if (days <= 7) return `za ${days} dni`;
+  if (days <= 7) return `za ${days} ${days === 1 ? "dzień" : "dni"}`;
   return new Intl.DateTimeFormat("pl-PL", {
     day: "numeric",
     month: "short",
@@ -3549,9 +3548,9 @@ function TrainingQuestion({
         >
           <strong>
             {result.isCorrect
-              ? "Dobrze odczytane."
+              ? "To poprawna odpowiedź."
               : timedOut
-                ? "Czas minął."
+                ? "Czas minął. Sprawdź zaznaczoną odpowiedź i wyjaśnienie."
                 : `Poprawna odpowiedź: ${result.correct}`}
           </strong>
           <p>{result.explanation}</p>
@@ -3831,21 +3830,22 @@ function MetarPanel({ onSources }) {
       <div className="panel-heading">
         <span className="panel-icon"><AirplaneTilt size={27} /></span>
         <div>
-          <span className="eyebrow">Interaktywna pracownia kodu</span>
-          <h2>Najpierw odczytaj. Potem odsłoń rozwiązanie.</h2>
+          <span className="eyebrow">Ćwiczenia METAR i TAF</span>
+          <h2>Odczytaj depeszę i sprawdź, co oznacza</h2>
           <p className="panel-lead">
-            Uczysz się kolejności pracy: miejsce i czas, wiatr, widzialność,
-            zjawiska, chmury, temperatura, QNH, a na końcu pułap i wniosek.
+            Wybieraj fragmenty METAR, żeby poznać ich znaczenie, albo przejdź do
+            pytań. W ćwiczeniach TAF porównasz prognozowane warunki w różnych
+            godzinach. Wszystkie depesze tutaj są przykładami szkoleniowymi.
           </p>
         </div>
       </div>
 
       <div className="metar-mode-switch" aria-label="Tryb pracowni">
-        <button aria-pressed={mode === "decode"} className={mode === "decode" ? "active" : ""} onClick={() => startMode("decode")}>Rozbiór aktywny</button>
+        <button aria-pressed={mode === "decode"} className={mode === "decode" ? "active" : ""} onClick={() => startMode("decode")}>Odczytaj METAR</button>
         <button aria-pressed={mode === "practice"} className={mode === "practice" ? "active" : ""} onClick={() => startMode("practice")}>Trening METAR</button>
-        <button aria-pressed={mode === "sprint"} className={mode === "sprint" ? "active" : ""} onClick={() => startMode("sprint")}>Odprawa 30 s</button>
+        <button aria-pressed={mode === "sprint"} className={mode === "sprint" ? "active" : ""} onClick={() => startMode("sprint")}>Trening 30 s</button>
         <button aria-pressed={mode === "taf"} className={mode === "taf" ? "active" : ""} onClick={() => startMode("taf")}>Oś czasu TAF</button>
-        <button aria-pressed={mode === "briefing"} className={mode === "briefing" ? "active" : ""} onClick={() => startMode("briefing")}>Odprawa 3 stacji</button>
+        <button aria-pressed={mode === "briefing"} className={mode === "briefing" ? "active" : ""} onClick={() => startMode("briefing")}>Porównaj 3 stacje</button>
         <button aria-pressed={mode === "review"} className={mode === "review" ? "active" : ""} onClick={() => startMode("review")}>
           Powtórki {reviewSummary.due > 0 ? `· ${reviewSummary.due}` : ""}
         </button>
@@ -3874,12 +3874,13 @@ function MetarPanel({ onSources }) {
           <section className="metar-anatomy" aria-labelledby="metar-anatomy-title">
             <div className="metar-anatomy__heading">
               <div>
-                <span className="eyebrow">Anatomia całej depeszy</span>
-                <h3 id="metar-anatomy-title">METAR jest zdaniem czytanym od lewej do prawej</h3>
+                <span className="eyebrow">Budowa depeszy</span>
+                <h3 id="metar-anatomy-title">Jak czytać METAR od początku do końca?</h3>
               </div>
               <p>
-                Rdzeń ma stałą logikę, ale nie każda sekcja musi wystąpić.
-                Jedna grupa może też zastąpić kilka następnych, jak CAVOK.
+                Grupy pojawiają się w ustalonej kolejności, ale nie wszystkie
+                występują w każdej depeszy. Na przykład CAVOK może zastąpić
+                kilka osobnych grup.
               </p>
             </div>
             <div className="metar-structure-phases">
@@ -3930,8 +3931,9 @@ function MetarPanel({ onSources }) {
           </div>
 
           <p className="metar-instruction">
-            Teraz zastosuj mapę do konkretnego raportu. Kliknij grupę, nazwij
-            ją własnymi słowami, a potem sprawdź znaczenie i możliwe warianty tej sekcji.
+            Spróbuj odczytać fragment depeszy własnymi słowami, a następnie
+            wybierz go, żeby zobaczyć wyjaśnienie. W słowniku znajdziesz również
+            inne warianty tej samej części raportu.
           </p>
           <div className="metar-token-board">
             {scenario.groups.map((group) => (
@@ -4002,7 +4004,7 @@ function MetarPanel({ onSources }) {
             ) : (
               <>
                 <span>Zadanie</span>
-                <strong>Wybierz grupę raportu albo sekcję słownika</strong>
+                <strong>Wybierz fragment depeszy albo temat ze słownika</strong>
                 <p>
                   {scenario.context} Słownik powyżej pozwala też sprawdzić
                   elementy, których akurat nie ma w tej depeszy.
@@ -4064,8 +4066,8 @@ function MetarPanel({ onSources }) {
             revealed={tafAnswerIndex !== null}
           />
           <p className="taf-instruction">
-            Najpierw odczytaj depeszę i odpowiedz. Pełny rozbiór osi czasu
-            pojawi się w informacji zwrotnej po Twojej decyzji.
+            Odpowiedz na podstawie prognozy. Po wybraniu odpowiedzi zobaczysz
+            wyjaśnienie oraz oś czasu z warunkami w kolejnych godzinach.
           </p>
           <TrainingQuestion
             question={tafQuestion}
@@ -4073,7 +4075,7 @@ function MetarPanel({ onSources }) {
             headingRef={trainingHeadingRef}
             feedbackDetail={tafAnswerIndex !== null ? (
               <div className="taf-debrief">
-                <span className="eyebrow">Rozbiór osi czasu</span>
+                <span className="eyebrow">Wyjaśnienie osi czasu</span>
                 <div className="taf-timeline" aria-label="Oś czasu prognozy TAF">
                   {tafScenario.timeline.map((period) => (
                     <article key={period.time}>
@@ -4110,8 +4112,8 @@ function MetarPanel({ onSources }) {
             revealed={briefingAnswerIndex !== null}
           />
           <p className="taf-instruction">
-            Najpierw porównaj wszystkie trzy depesze. Wyróżnienie dowodów
-            pojawi się dopiero po odpowiedzi.
+            Porównaj wszystkie trzy depesze i odpowiedz na pytanie. Potem
+            wyróżnimy fragmenty, z których wynika poprawna odpowiedź.
           </p>
           <TrainingQuestion
             question={briefingQuestion}
@@ -4121,7 +4123,7 @@ function MetarPanel({ onSources }) {
             onNext={nextBriefingQuestion}
             nextLabel={briefingQuestionIndex < briefing.questions.length - 1
               ? "Następne pytanie"
-              : "Następna odprawa"}
+              : "Następne porównanie"}
           />
         </div>
       )}
@@ -4130,15 +4132,16 @@ function MetarPanel({ onSources }) {
         <div className="aviation-review">
           <header className="review-heading">
             <div>
-              <span className="eyebrow">Pamięć lokalna · bez konta</span>
-              <h3>Powtarzaj reguły, które rzeczywiście sprawiają trudność</h3>
+              <span className="eyebrow">Wyniki na tym urządzeniu</span>
+              <h3>Wróć do wcześniejszych pytań</h3>
               <p>
-                Błąd przywraca pytanie natychmiast i podnosi jego priorytet.
-                Kolejne poprawne odpowiedzi stopniowo wydłużają odstęp.
+                Pytania, w których pojawił się błąd, wracają wcześniej.
+                Po kolejnych poprawnych odpowiedziach odstępy między powtórkami
+                rosną. To plan ćwiczeń, nie ocena przygotowania do lotu.
               </p>
             </div>
             <div className="review-summary" aria-label="Stan powtórek">
-              <article><strong>{reviewSummary.tracked}</strong><span>śledzonych reguł</span></article>
+              <article><strong>{reviewSummary.tracked}</strong><span>pytań z zapisanym wynikiem</span></article>
               <article><strong>{reviewSummary.due}</strong><span>do powtórki</span></article>
               <article>
                 <strong>{reviewSummary.nextDueAt
@@ -4167,7 +4170,7 @@ function MetarPanel({ onSources }) {
                 feedbackDetail={reviewAnswerIndex !== null ? (
                   <div className="review-feedback-detail">
                     <p>
-                      <strong>Plan pamięci:</strong>{" "}
+                      <strong>Termin powtórki:</strong>{" "}
                       {activeReviewRecord?.lastResult === "correct"
                         ? `następna próba ${formatReviewDue(activeReviewRecord.dueAt)}`
                         : "pytanie pozostaje pilne i wróci w kolejnej sesji"}.
@@ -4203,11 +4206,11 @@ function MetarPanel({ onSources }) {
                 <h4 ref={trainingHeadingRef} tabIndex="-1">
                   {reviewSummary.tracked === 0
                     ? "Najpierw odpowiedz na kilka pytań w pracowni"
-                    : "Na tę chwilę wszystko zostało odtworzone"}
+                    : "Na teraz nie ma więcej pytań"}
                 </h4>
                 <p>
                   {reviewSummary.tracked === 0
-                    ? "Każda odpowiedź w METAR, TAF i odprawach tworzy prywatny plan powtórek na tym urządzeniu."
+                    ? "Odpowiedzi z ćwiczeń METAR, TAF i porównywania stacji tworzą plan powtórek na tym urządzeniu."
                     : reviewSummary.nextDueAt
                       ? `Najbliższa zaplanowana powtórka: ${formatReviewDue(reviewSummary.nextDueAt, reviewNow)}.`
                       : "Nowa sesja pojawi się po kolejnych odpowiedziach."}
@@ -4217,7 +4220,7 @@ function MetarPanel({ onSources }) {
                     Trening METAR <ArrowRight size={17} />
                   </button>
                   <button className="button button--secondary" onClick={() => startMode("briefing")}>
-                    Odprawa 3 stacji
+                    Porównaj 3 stacje
                   </button>
                 </div>
               </div>
@@ -4228,7 +4231,7 @@ function MetarPanel({ onSources }) {
             <summary>
               <span>
                 <strong>Co zapisano na tym urządzeniu</strong>
-                <small>{reviewRecords.length} rekordów · pełna kontrola i możliwość usunięcia</small>
+                <small>Liczba zapisanych wyników: {reviewRecords.length}. Możesz je usunąć poniżej.</small>
               </span>
               <CaretDown size={19} />
             </summary>
@@ -4270,7 +4273,7 @@ function MetarPanel({ onSources }) {
                   onClick={() => setReviewResetArmed(true)}
                   disabled={reviewRecords.length === 0}
                 >
-                  <Trash size={17} /> Wyczyść pamięć powtórek
+                  <Trash size={17} /> Usuń wyniki i terminy powtórek
                 </button>
               )}
             </div>
@@ -4291,19 +4294,19 @@ function MetarPanel({ onSources }) {
 }
 
 function HazardsPanel({ onSources }) {
-  const cards = [
-    { icon: CloudRain, title: "Oblodzenie", text: "Szukaj przechłodzonej wody, temperatury, zakresu pionowego i czasu ekspozycji. Sama obecność chmury nie określa intensywności." },
-    { icon: Wind, title: "Turbulencja", text: "Konwekcyjna, mechaniczna, falowa lub w czystym powietrzu. Porównuj wiatr na kilku poziomach, nie tylko przy ziemi." },
-    { icon: Lightning, title: "Burze", text: "CAPE jest paliwem warunkowym. Inicjacja, wilgoć, CIN i ścinanie decydują, czy i jak konwekcja się zorganizuje." },
-  ];
+  const icons = { icing: CloudRain, turbulence: Wind, storms: Lightning };
   return (
     <section className="knowledge-panel">
-      <div className="panel-heading"><span className="panel-icon"><Warning size={27} /></span><div><span className="eyebrow">Myślenie wieloparametrowe</span><h2>Nie szukaj jednej magicznej mapy</h2></div></div>
-      <p className="panel-lead">Warstwa chmur, temperatura, wilgotność, ruch pionowy i wiatr odpowiadają na inne pytania. Decyzję buduje ich zgodność albo konflikt.</p>
+      <div className="panel-heading"><span className="panel-icon"><Warning size={27} /></span><div><span className="eyebrow">Zagrożenia pogodowe</span><h2>Co sprawdzić oprócz samych chmur?</h2></div></div>
+      <p className="panel-lead">Wygląd nieba nie wystarcza do oceny oblodzenia, turbulencji ani burz. Poniżej znajdziesz wskazówki, jakie dane porównywać. To materiał do nauki, nie ocena bezpieczeństwa Twojej trasy.</p>
       <div className="hazard-grid">
-        {cards.map((card) => <article key={card.title}><card.icon size={28} /><h3>{card.title}</h3><p>{card.text}</p></article>)}
+        {hazardCards.map((card) => {
+          const Icon = icons[card.id];
+          return <article key={card.id}><Icon size={28} /><h3>{card.title}</h3><p>{card.text}</p></article>;
+        })}
       </div>
-      <SourceButton ids={["faaWeather", "easaAircrew"]} onOpen={onSources} />
+      <p>Przed lotem korzystaj z aktualnej informacji meteorologicznej i obowiązujących procedur. Ten ekran nie pobiera ostrzeżeń ani bieżących danych.</p>
+      <SourceButton ids={["faaWeather", "nwsSkewT", "easaAircrew"]} onOpen={onSources} />
     </section>
   );
 }
@@ -4339,12 +4342,14 @@ function SoundingPanel({ onSources }) {
     <section className="sounding-lab">
       <header className="sounding-intro">
         <div>
-          <span className="eyebrow">Pracownia pionowego profilu</span>
-          <h2>Skew‑T czytaj jak argument, nie kolorowankę</h2>
+          <span className="eyebrow">Czytanie profilu atmosfery</span>
+          <h2>Jak pogoda zmienia się z wysokością?</h2>
           <p>
-            Ciśnienie prowadzi od powierzchni ku górze. Temperatura i punkt rosy
-            pokazują stabilność oraz wilgoć, tor parceli ujawnia wyporność, a
-            wiatr dopowiada uskok i przepływ. Dopiero razem tworzą diagnozę.
+            Wybierz przykład i porównaj temperaturę, punkt rosy oraz wiatr na
+            kolejnych poziomach. Linia parceli pokazuje temperaturę unoszonej
+            porcji powietrza. Zestawienie jej z otoczeniem pomaga ocenić, czy
+            unoszenie będzie podtrzymywane, czy hamowane. Możesz wyłączać linie,
+            żeby przyjrzeć się każdej z osobna, a potem odpowiedzieć na pytanie.
           </p>
         </div>
         <SourceButton ids={["nwsSkewT", "nwsRadiosonde", "nwsSkewTAviation", "faaWeather"]} onOpen={onSources} />
@@ -4354,22 +4359,22 @@ function SoundingPanel({ onSources }) {
         <article>
           <span>01</span>
           <div>
-            <strong>Radiosonda obserwowana</strong>
-            <p>Balon mierzy kolumnę podczas trwającego lotu i dryfuje z wiatrem. To nie jest idealnie pionowy ani jednoczesny przekrój.</p>
+            <strong>Pomiar radiosondą</strong>
+            <p>Przyrząd pod balonem zbiera dane podczas wznoszenia i jest znoszony przez wiatr. Pomiary z różnych wysokości pochodzą więc z nieco innych miejsc i chwil.</p>
           </div>
         </article>
         <article>
           <span>02</span>
           <div>
             <strong>Profil prognozowany</strong>
-            <p>To kolumna modelu dla miejsca i terminu. Trzeba sprawdzić model, czas, reprezentację terenu i zgodność z obserwacjami.</p>
+            <p>Model pogody oblicza warunki na kolejnych wysokościach dla wybranego miejsca i terminu. Sprawdź, jaki to model, jak przedstawia teren i czy zgadza się z obserwacjami.</p>
           </div>
         </article>
         <article>
           <span>03</span>
           <div>
             <strong>Profile w tej pracowni</strong>
-            <p>Idealizowane, deterministyczne przykłady dydaktyczne. Uczą struktury rozumowania, ale nie opisują bieżącej pogody.</p>
+            <p>To cztery uproszczone przykłady przygotowane do nauki. Nie są pomiarami ani prognozą bieżącej pogody.</p>
           </div>
         </article>
       </section>
@@ -4395,16 +4400,10 @@ function SoundingPanel({ onSources }) {
 
       <section className="sounding-protocol" aria-label="Kolejność czytania profilu">
         <div>
-          <span className="eyebrow">Stała procedura</span>
-          <h3>Pięć przejść przez ten sam diagram</h3>
+          <span className="eyebrow">Od czego zacząć</span>
+          <h3>Pięć kroków czytania profilu</h3>
         </div>
-        {[
-          ["1", "Oś", "Czas, miejsce, źródło i ciśnienie."],
-          ["2", "T i Td", "Stabilność, wilgoć i warstwy nasycone."],
-          ["3", "Parcel", "LCL, hamowanie, LFC i EL."],
-          ["4", "Wiatr", "Zmiana kierunku i prędkości z wysokością."],
-          ["5", "Granice", "Co profil wspiera, a czego nie dowodzi."],
-        ].map(([number, title, copy]) => (
+        {soundingReadingSteps.map(([number, title, copy]) => (
           <article key={number}>
             <span>{number}</span>
             <strong>{title}</strong>
@@ -4417,8 +4416,8 @@ function SoundingPanel({ onSources }) {
         <div className="sounding-visual-column">
           <div className="sounding-toolbar" role="group" aria-label="Warstwy diagramu">
             {[
-              ["environment", "Temperatura i Td"],
-              ["parcel", "Tor parceli"],
+              ["environment", "Temperatura i punkt rosy"],
+              ["parcel", "Unoszona porcja powietrza"],
               ["layers", "Warstwy i poziomy"],
               ["wind", "Profil wiatru"],
             ].map(([id, label]) => (
@@ -4440,11 +4439,12 @@ function SoundingPanel({ onSources }) {
           <div className="sounding-legend">
             <span><i className="temperature" /> T · temperatura otoczenia</span>
             <span><i className="dewpoint" /> Td · punkt rosy</span>
-            <span><i className="parcel" /> tor wybranej parceli</span>
+            <span><i className="parcel" /> temperatura unoszonej porcji powietrza</span>
           </div>
           <p className="sounding-plot-note">
             Schemat zachowuje logarytmiczną oś ciśnienia i skośne izotermy.
             Linie profili są idealizowane; nie odczytuj z nich wartości operacyjnych.
+            Zacienienie przedstawia rozważaną warstwę chmur, nie pomiar jej granic.
           </p>
         </div>
 
@@ -4455,7 +4455,7 @@ function SoundingPanel({ onSources }) {
 
           <dl className="sounding-levels">
             <div>
-              <dt>Źródło parceli</dt>
+              <dt>Skąd unosimy powietrze</dt>
               <dd>{summary.parcelOrigin}</dd>
             </div>
             <div>
@@ -4468,14 +4468,14 @@ function SoundingPanel({ onSources }) {
             </div>
             <div>
               <dt>EL</dt>
-              <dd>{summary.el ? `${summary.el} hPa` : "brak"}</dd>
+              <dd>{summary.el ? `${summary.el} hPa` : summary.elUnresolved ? "Nie wyznaczono w profilu" : "Brak w tym przykładzie"}</dd>
             </div>
             <div>
               <dt>0°C</dt>
               <dd>{summary.freezing} hPa</dd>
             </div>
             <div>
-              <dt>T–Td przy dole</dt>
+              <dt>Różnica T–Td na najniższym poziomie</dt>
               <dd>{summary.surfaceSpread}°C</dd>
             </div>
           </dl>
@@ -4483,12 +4483,12 @@ function SoundingPanel({ onSources }) {
 
         <section className="sounding-interpretation">
           <header>
-            <span className="eyebrow">Argument z całej kolumny</span>
-            <h3>Co wspiera tę diagnozę</h3>
+            <span className="eyebrow">Wyjaśnienie przykładu</span>
+            <h3>Co wynika z tego profilu?</h3>
           </header>
           <div className="sounding-reading-list">
             {[
-              ["Stabilność i parcela", scenario.reading.stability],
+              ["Czy powietrze może się unosić?", scenario.reading.stability],
               ["Wilgoć i chmury", scenario.reading.moisture],
               ["Wiatr z wysokością", scenario.reading.wind],
               ["Znaczenie lotnicze", scenario.reading.aviation],
@@ -4512,8 +4512,8 @@ function SoundingPanel({ onSources }) {
 
       <section className="sounding-check">
         <div className="sounding-check__heading">
-          <span className="eyebrow">Sprawdź diagnozę</span>
-          <h3>Nie nazywaj jednej linii. Zinterpretuj kolumnę.</h3>
+          <span className="eyebrow">Sprawdź się</span>
+          <h3>Który wniosek pasuje do tego przykładu?</h3>
           <p>{scenario.check.prompt}</p>
         </div>
         <div className="sounding-check__options" role="group" aria-label="Wybierz interpretację profilu">
@@ -4543,7 +4543,7 @@ function SoundingPanel({ onSources }) {
           >
             <strong>
               {answerIsCorrect
-                ? "Tak. Wniosek wynika z kilku zgodnych warstw dowodu."
+                ? "To poprawna odpowiedź. Poniżej znajdziesz wyjaśnienie."
                 : `Nie. Poprawna odpowiedź: ${String.fromCharCode(65 + scenario.check.correct)}.`}
             </strong>
             <p>{scenario.check.explanation}</p>
@@ -4554,8 +4554,8 @@ function SoundingPanel({ onSources }) {
 
       <section className="sounding-glossary">
         <div>
-          <span className="eyebrow">Cztery skróty bez magii</span>
-          <h3>Poziomy opisują wybraną parcelę</h3>
+          <span className="eyebrow">Objaśnienia</span>
+          <h3>Co oznaczają LCL, LFC, EL i poziom 0°C?</h3>
         </div>
         <div>
           {soundingGlossary.map((item) => (

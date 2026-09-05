@@ -56,6 +56,11 @@ describe the actual learner activity present in the product.
 - Practical workshops need an observable decision, useful feedback, and a
   replay path. Use source-backed scenarios, clearly label synthetic reports,
   and reward correct reasoning rather than speed or unsafe risk-taking.
+- Introduce specialist terms in plain language before asking learners to use
+  them. Keep technical detail and explanations, not slogan-like instructions.
+- In synthetic diagrams, verify that labels and conclusions agree with the
+  plotted data. A level outside the supplied profile is unknown there, not a
+  value to invent or clamp to the chart edge.
 - When a workshop accepts external input, identify and teach its type before
   interpreting values. Test realistic copied inputs without optional headings;
   never silently turn forecasts, possibilities, or missing values into facts.

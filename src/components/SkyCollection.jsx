@@ -28,6 +28,7 @@ import {
   normalizeObservation,
   observationFromRecognition,
   observationTitle,
+  savedHypothesisMessage,
   parseObservationBackup,
 } from "../lib/observations.js";
 import {
@@ -53,9 +54,9 @@ const dateLabel = (date) =>
   });
 const statusLabel = (entry) =>
   entry.confirmedCloudId
-    ? "Rozpoznanie autora"
+    ? "Twoje rozpoznanie"
     : entry.hypothesis
-      ? "Hipoteza do sprawdzenia"
+      ? "Wynik modelu do sprawdzenia"
       : "Wpis z obserwacji";
 
 export function ObservationPhoto({ entry, className = "", onReady }) {
@@ -113,6 +114,7 @@ export function ObservationPhoto({ entry, className = "", onReady }) {
 }
 
 function ObservationDetail({ entry, onBack, onChange, navigate }) {
+  const candidates = entry.hypothesis?.state === "clear" ? [] : entry.hypothesis?.candidates || [];
   const [form, setForm] = useState(entry);
   const [photoUrl, setPhotoUrl] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -128,7 +130,7 @@ function ObservationDetail({ entry, onBack, onChange, navigate }) {
       await saveObservation(form);
       await onChange();
       setCard(null);
-      setNotice("Zmiany zapisane. Hipoteza modelu pozostała osobno.");
+      setNotice(entry.hypothesis ? "Zmiany zapisane. Oryginalny wynik modelu pozostał bez zmian." : "Zmiany zapisane.");
     } catch {
       setNotice(
         "Nie udało się zapisać. Twoje zmiany nadal są w formularzu; sprawdź wolne miejsce.",
@@ -192,37 +194,45 @@ function ObservationDetail({ entry, onBack, onChange, navigate }) {
       {entry.hypothesis && (
         <section className="sky-hypothesis">
           <span className="eyebrow">
-            Zachowany wynik modelu · {entry.hypothesis.modelVersion}
+            Zapisany wynik analizy
           </span>
-          <p>
-            {entry.hypothesis.family}. To podpowiedź, a nie potwierdzone
-            rozpoznanie.
-          </p>
+          <p>{savedHypothesisMessage(entry.hypothesis)}</p>
           <div>
-            {entry.hypothesis.candidates.map((candidate) => (
+            {candidates.map((candidate) => (
               <span key={candidate.id}>
-                {clouds.find((cloud) => cloud.id === candidate.id)?.name} ·{" "}
-                {Math.round(candidate.probability * 100)}% sygnału
+                {clouds.find((cloud) => cloud.id === candidate.id)?.name}
               </span>
             ))}
           </div>
-          {entry.hypothesis.candidates.length > 0 && <button
+          {candidates.length > 0 && <button
             className="field-source"
             onClick={() =>
               navigate(
-                `atlas/compare/${entry.hypothesis.candidates.map((candidate) => candidate.id).join(",")}`,
+                `atlas/compare/${candidates.map((candidate) => candidate.id).join(",")}`,
               )
             }
           >
-            Porównaj prawdziwe zdjęcia <ArrowRight size={16} />
+            {candidates.length === 1 ? "Otwórz opis w atlasie" : "Porównaj opisy w atlasie"} <ArrowRight size={16} />
           </button>}
+          <details className="photo-technical">
+            <summary>Szczegóły zapisanego wyniku</summary>
+            <p>Procenty to względne wyniki modelu, nie prawdopodobieństwo poprawnego rozpoznania. Zachowujemy je z chwili analizy; zapisanie obserwacji nie uruchamia jej ponownie.</p>
+            {entry.hypothesis.candidates.length > 0 && <dl>
+              {entry.hypothesis.candidates.map((candidate) => <div key={candidate.id}>
+                <dt>{clouds.find((cloud) => cloud.id === candidate.id)?.name}</dt>
+                <dd>{Math.round(candidate.probability * 100)}%</dd>
+              </div>)}
+            </dl>}
+            {entry.hypothesis.family && <p>Etykieta zapisana przy analizie: {entry.hypothesis.family}.</p>}
+            <small>Wersja modelu: {entry.hypothesis.modelVersion || "brak informacji"}. Wynik nie służy do oceny bezpieczeństwa lotu ani żeglugi.</small>
+          </details>
         </section>
       )}
       <form className="sky-edit-form" onSubmit={save}>
-        <h2>Co widzisz Ty?</h2>
+        <h2>Twoje rozpoznanie i notatki</h2>
         <p>
-          Własne rozpoznanie nie nadpisuje hipotezy modelu. Możesz zostawić je
-          nierozstrzygnięte.
+          Wybierz nazwę, jeśli potrafisz rozpoznać chmurę. Możesz też zostawić
+          obserwację bez rozpoznania. Twoje zmiany nie zastąpią zapisanego wyniku modelu.
         </p>
         <label>
           Moje rozpoznanie
@@ -236,7 +246,7 @@ function ObservationDetail({ entry, onBack, onChange, navigate }) {
               }));
             }}
           >
-            <option value="">Nie potwierdzam rodzaju</option>
+            <option value="">Nie wiem, jaki to rodzaj</option>
             {clouds.map((cloud) => (
               <option key={cloud.id} value={cloud.id}>
                 {cloud.name} · {cloud.polish}
@@ -257,7 +267,7 @@ function ObservationDetail({ entry, onBack, onChange, navigate }) {
           />
         </label>
         <label>
-          Notatka i cechy
+          Notatka
           <textarea
             value={form.evidence}
             maxLength={4000}
@@ -285,7 +295,7 @@ function ObservationDetail({ entry, onBack, onChange, navigate }) {
           className="button button--primary"
           disabled={busy}
         >
-          {busy ? "Chwila…" : "Zapisz zmiany"}
+          {busy ? "Trwa operacja…" : "Zapisz zmiany"}
           <Check size={18} />
         </button>
       </form>
@@ -298,8 +308,9 @@ function ObservationDetail({ entry, onBack, onChange, navigate }) {
         <section className="sky-share">
           <h2>Wyślij kawałek swojego nieba</h2>
           <p>
-            Pocztówka używa zapisanego zdjęcia i rozpoznania. Bez miejsca,
-            prywatnych notatek i metadanych EXIF.
+            Przygotujemy podgląd z zapisanym zdjęciem, datą i opisem rozpoznania.
+            Nie dodamy miejsca, prywatnych notatek ani metadanych EXIF.
+            Zapisz zmiany w formularzu, zanim przygotujesz pocztówkę.
           </p>
           {card ? (
             <>
@@ -427,6 +438,7 @@ function ObservationForm({ onSaved, onCancel }) {
           <X size={20} />
         </button>
       </div>
+      <p>Dodaj zdjęcie, notatkę lub oba naraz. Nazwa chmury nie jest wymagana. Zdjęcie dodane w tym formularzu nie jest automatycznie analizowane.</p>
       <label>
         Zdjęcie nieba (opcjonalnie)
         <input type="file" accept="image/*" onChange={attach} disabled={busy} />
@@ -476,7 +488,7 @@ function ObservationForm({ onSaved, onCancel }) {
             }));
           }}
         >
-          <option value="">Jeszcze nie rozstrzygam</option>
+          <option value="">Nie wiem, jaki to rodzaj</option>
           {clouds.map((cloud) => (
             <option key={cloud.id} value={cloud.id}>
               {cloud.name} · {cloud.polish}
@@ -494,7 +506,7 @@ function ObservationForm({ onSaved, onCancel }) {
             const value = event.target.value;
             setForm((current) => ({ ...current, evidence: value }));
           }}
-          placeholder="Kształt, skala, światło, ruch…"
+          placeholder="Opisz kształt chmur, światło albo zmianę, którą udało Ci się zauważyć."
         />
       </label>
       {form.cloud && form.cloud !== "Nierozpoznana" && (
@@ -504,8 +516,8 @@ function ObservationForm({ onSaved, onCancel }) {
         </p>
       )}
       <p className="field-safety">
-        Tekstowy szkic zostaje lokalnie. Zdjęcie zachowasz przyciskiem „Zapisz
-        obserwację”.
+        Tekst formularza zachowuje się jako lokalny szkic. Żeby zapisać także
+        zdjęcie i dodać wpis do kolekcji, wybierz „Zapisz obserwację”.
       </p>
       <button className="button button--primary" type="submit" disabled={busy}>
         {busy ? "Przygotowuję…" : "Zapisz obserwację"}
@@ -650,17 +662,17 @@ export function SkyCollection({
   return (
     <main className="page field-page sky-collection">
       <header className="field-page-heading">
-        <span className="eyebrow">Prywatny atlas Twoich obserwacji</span>
+        <span className="eyebrow">Twoje zdjęcia i notatki</span>
         <h1>Moje niebo</h1>
         <p>
-          Nie musisz od razu znać nazwy. Zachowaj kadr, wróć do niego, zobacz
-          więcej.
+          Zapisuj zdjęcia nieba i to, co udało Ci się zauważyć. Możesz wracać
+          do obserwacji, porównywać je i uzupełniać nazwy chmur, kiedy je rozpoznasz.
         </p>
       </header>
       <div className="sky-top-actions">
         {captureAvailable && (
           <button className="button button--primary" onClick={onCapture}>
-            <Camera size={20} /> Obserwuj
+            <Camera size={20} /> Rozpoznaj ze zdjęcia
           </button>
         )}
         <button
@@ -698,7 +710,7 @@ export function SkyCollection({
         <>
           <section className="sky-genera">
             <div>
-              <strong>Moje 10 rodzajów</strong>
+              <strong>Rodzaje w Twoich obserwacjach</strong>
               <span>{genera.length}/10 · według Twoich rozpoznań</span>
             </div>
             <div className="sky-genus-chips">
@@ -717,7 +729,7 @@ export function SkyCollection({
               ))}
             </div>
             <small>
-              Hipotezy modelu nie wypełniają kolekcji automatycznie.
+              Liczymy tylko rodzaje wybrane przez Ciebie, nie podpowiedzi modelu.
             </small>
           </section>
           {entries.length > 0 ? (
@@ -732,7 +744,7 @@ export function SkyCollection({
                   Ulubione
                 </button>
                 <label>
-                  Dzień w kalendarzu
+                  Data obserwacji
                   <input
                     type="date"
                     value={date}
@@ -748,7 +760,7 @@ export function SkyCollection({
                   }}
                 >
                   <SquaresFour size={18} />{" "}
-                  {compare ? "Zakończ porównanie" : "Porównaj 2 kadry"}
+                  {compare ? "Zakończ porównanie" : "Porównaj dwie obserwacje"}
                 </button>
               </div>
               {(date || filter || favorite) && (
@@ -771,8 +783,8 @@ export function SkyCollection({
                 <section className="sky-pair">
                   <p>
                     {pair.length < 2
-                      ? `Wybierz jeszcze ${2 - pair.length} ${pair.length === 1 ? "kadr" : "kadry"} z kolekcji.`
-                      : "Porównaj kształt, światło i zmianę. Dwa kadry nie muszą mieć tego samego rozpoznania."}
+                      ? pair.length === 1 ? "Wybierz drugą obserwację z kolekcji." : "Wybierz dwie obserwacje z kolekcji."
+                      : "Porównaj kształty chmur i oświetlenie na obu zdjęciach. Obserwacje mogą przedstawiać różne rodzaje chmur."}
                   </p>
                   <div>
                     {pair.map((id) => {
@@ -856,17 +868,17 @@ export function SkyCollection({
                 src={asset("assets/observer-guide-still-life-720.webp")}
                 alt=""
               />
-              <h2>Pierwsze niebo jest blisko.</h2>
+              <h2>Tu pojawią się Twoje obserwacje</h2>
               <p>
-                Zrób zdjęcie albo dodaj notatkę. Twoje obserwacje pojawią się
-                tutaj, nie w publicznym feedzie.
+                Dodaj pierwsze zdjęcie lub notatkę. Nie musisz znać nazwy chmury,
+                żeby zachować to, co widzisz. Wpis nie zostanie opublikowany.
               </p>
               <button
                 className="button button--primary"
                 onClick={captureAvailable ? onCapture : () => setFormOpen(true)}
               >
                 {captureAvailable
-                  ? "Zrób pierwsze zdjęcie"
+                  ? "Rozpoznaj ze zdjęcia"
                   : "Dodaj pierwszą obserwację"}
                 <ArrowRight size={18} />
               </button>
@@ -877,15 +889,15 @@ export function SkyCollection({
               <ShieldCheck size={19} /> Prywatność i kopie kolekcji
             </summary>
             <p>
-              Zdjęcia są lokalne. Aplikacja nie wysyła ich na serwer ani do
-              treningu. Usunięcie aplikacji lub danych witryny może usunąć
-              kolekcję. Regularnie eksportuj kopię; ustawienia kopii systemowych
-              urządzenia pozostają w Twojej kontroli.
+              Zdjęcia i notatki zapisują się na tym urządzeniu. CHMURNIK nie wysyła
+              ich na serwer ani nie używa do trenowania modelu. Usunięcie aplikacji
+              lub danych witryny może usunąć kolekcję, dlatego warto eksportować
+              kopię. Systemowe kopie urządzenia zależą od Twoich ustawień.
             </p>
             <p>
-              Pełna kopia zawiera także prywatne miejsca i notatki. Pocztówka
-              ich nie zawiera. Dawny dziennik zachowujemy lokalnie jako kopię
-              migracji.
+              Pełna kopia zawiera zdjęcia, miejsca i prywatne notatki, więc nie
+              udostępniaj jej tak jak pocztówki. Jeśli dane przeniesiono ze starego
+              dziennika, jego oryginał pozostaje zapisany lokalnie.
             </p>
             <div className="field-action-row">
               <button
