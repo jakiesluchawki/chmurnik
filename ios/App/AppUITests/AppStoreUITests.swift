@@ -1,7 +1,8 @@
 import XCTest
 
 final class AppStoreUITests: XCTestCase {
-    private let app = XCUIApplication()
+    private let app = ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4"
+        ? XCUIApplication(bundleIdentifier: "cloud.chmurnik.qa.v4") : XCUIApplication()
 
     override func setUpWithError() throws {
         continueAfterFailure = false
@@ -265,6 +266,50 @@ final class AppStoreUITests: XCTestCase {
         tap("Czytanie atmosfery w pionie", contains: true)
         assertChapter(2, of: 6)
         capture("qa-lesson-restored-chapter")
+        #endif
+    }
+
+    func test07IsolatedMacPhotoAndPersistence() throws {
+        #if targetEnvironment(macCatalyst)
+        let environment = ProcessInfo.processInfo.environment
+        guard environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4",
+              let photo = environment["CHMURNIK_QA_PHOTO"] else {
+            throw XCTSkip("Run only through the isolated macOS QA test plan")
+        }
+        defer { app.terminate() }
+        XCTAssertTrue(visibleText("Poznaj chmury nad sobą"))
+        capture("mac-qa-home")
+        tap("Wybierz zdjęcie nieba")
+        let open = app.buttons.matching(NSPredicate(format: "label IN %@", ["Otwórz", "Open"])).firstMatch
+        XCTAssertTrue(open.waitForExistence(timeout: 15), app.debugDescription)
+        app.typeKey("g", modifierFlags: [.command, .shift])
+        app.typeText(photo)
+        app.typeKey(.return, modifierFlags: [])
+        XCTAssertTrue(open.isEnabled, app.debugDescription)
+        open.tap()
+        let proposal = button("Zaznacz proponowany fragment 1")
+        XCTAssertTrue(proposal.waitForExistence(timeout: 90), app.debugDescription)
+        capture("mac-qa-proposals")
+        tap("Zaznacz proponowany fragment 1")
+        tap("Sprawdź zaznaczony fragment")
+        XCTAssertTrue(button("Szczegóły analizy i jej ograniczenia").waitForExistence(timeout: 90), app.debugDescription)
+        tap("Szczegóły analizy i jej ograniczenia")
+        XCTAssertTrue(visibleText("3.0-ensemble-selected-region-experimental"))
+        tap("Szczegóły analizy i jej ograniczenia")
+        capture("mac-qa-result")
+        tap("Zapisz w Moim niebie")
+        XCTAssertTrue(visibleText("Twoje rozpoznanie i notatki"))
+        app.terminate()
+        app.launch()
+        tap("Moje niebo")
+        let observation = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Obserwacja bez rozpoznania")).firstMatch
+        XCTAssertTrue(observation.waitForExistence(timeout: 15), app.debugDescription)
+        observation.tap()
+        tap("Szczegóły zapisanego wyniku")
+        XCTAssertTrue(visibleText("3.0-ensemble-selected-region-experimental"))
+        capture("mac-qa-restored-observation")
+        #else
+        throw XCTSkip("Isolated Mac test only")
         #endif
     }
 }

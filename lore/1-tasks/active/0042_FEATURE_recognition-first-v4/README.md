@@ -400,3 +400,10 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   No weights, calibration thresholds, source dependency pins, public deployment,
   distribution archive or Apple submission changed. The active goal, independent
   expert review and twenty-wallpaper deliverable remain unfinished.
+- Prepared a separate sandboxed `cloud.chmurnik.qa.v4` Catalyst app and a
+  public-photo import/inference/save/relaunch UI test; build-for-testing passes.
+  Execution fails before entering the test because the graphical-session
+  `testmanagerd.control` service is unavailable. CUA also fails at startup.
+  No user application/data, system service or privacy setting was changed;
+  no QA process remained. The prepared test is not a passed runtime check.
+  See `native-and-copy-qa.md` for exact evidence and isolation boundaries.

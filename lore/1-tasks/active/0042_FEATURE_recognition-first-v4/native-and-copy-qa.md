@@ -95,6 +95,28 @@ and submission. Earlier native logs include a startup JavaScript-evaluation
 warning before the WebView loads; successful interaction does not prove its
 root cause or justify claiming zero native JavaScript warnings.
 
+## Isolated Mac Runtime Attempt
+
+Added `scripts/prepare-macos-qa.mjs` and native test 07. The preparation script
+uses generated Mac sources, changes both app/test bundle IDs to
+`cloud.chmurnik.qa.v4`/`.uitests`, preserves App Sandbox without app groups,
+checks the built bundle ID, and injects only the public atlas Cumulus fixture
+into an isolated test plan. Original app/build data is not replaced. The
+runner's test deployment minimum is 17.0 without changing the application's
+deployment target. Build-for-testing passes; signed entitlements confirm
+App Sandbox and no shared app group. Test 07 explicitly selects the QA bundle,
+then is intended to import, propose, classify, save and reopen the fixture.
+
+The bounded execution attempt in `build/v4-isolated-mac-photo.xcresult` failed
+before test execution. Xcode could not look up `com.apple.testmanagerd.control`
+(connection error 3, no such process). Read-only `launchctl print` for the GUI
+service returned domain error 125. The system LaunchAgent is limited to
+LoginWindow/Aqua sessions. No existing application was launched, no QA process
+remained, and no daemon, privacy setting or user session was modified. CUA also
+failed at service startup. This is unavailable runtime-test infrastructure,
+not proof that the app's Mac file picker works or fails. Do not count test 07
+as passed. Retry the prepared plan only from a working graphical test session.
+
 ## Resource Cleanup
 
 Own iPhone simulator `D0FB0555-660E-46E9-A33F-CC07B4E1D068` and own iPad
