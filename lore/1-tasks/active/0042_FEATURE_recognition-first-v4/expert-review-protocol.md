@@ -93,3 +93,60 @@ selection changes. Preserve the original package; the current revision is
 - All 116 ML tests pass. This is package/UI verification, not independent
   annotation or evidence of improved classifier accuracy. No package was sent,
   no annotation was returned and no training label was changed.
+
+## Returned-Review Comparison, September 5
+
+`ml/cloud-recognition/compare_expert_reviews.py` now accepts the existing
+semicolon-separated CSV format. It re-creates the declared 33-photo selection
+from the pinned training manifest, checks the private/public mapping and both
+source/copy image hashes, and rejects any cross-role duplicate/capture group.
+Changed CSV identity columns, malformed rows, duplicate reviewer IDs and
+repeated files cannot become independent evidence.
+
+One completed review requires a second review. Two or more matching completed
+reviews record agreement, not verified truth. Any disagreement remains open,
+including a 2-to-1 majority; an outstanding submitted review is not ignored.
+Mixed, uncertain, unusable, clear and unreviewed outcomes stay distinct.
+Comments and alternatives are retained verbatim. Software cannot establish
+reviewer qualification or independence, and the report explicitly says so.
+
+The local JSON contains original source labels and must stay outside the
+blinded reviewer directory. Existing output is never overwritten. It is not
+an importable training manifest: `labels_applied` is always zero and
+`training_ready` is false. No application models, frozen data, holdouts or
+public packs are changed. Human adjudication and a separately frozen development
+manifest are prerequisites for training; this pilot cannot create fresh
+confirmation evidence or establish the whole dataset's label quality.
+
+Example after genuine responses arrive, using neutral reviewer aliases:
+
+```sh
+../chmurnik/.local/ml-venv/bin/python ml/cloud-recognition/compare_expert_reviews.py \
+  --manifest .local/v4/data-v2/manifest.json \
+  --pack .local/v4/expert-review-v1-layout2 \
+  --review observer-a=/path/to/returned-a.csv \
+  --review observer-b=/path/to/returned-b.csv \
+  --output .local/v4/returned-review-comparison.json
+```
+
+The existing blank template was checked through this CLI, explicitly named
+`blank-template`, not a fictitious expert. Result: all 33 not reviewed, zero
+labels applied, training not ready. The private diagnostic is retained at
+`.local/v4/expert-review-v1-layout2/blank-template-check.json`. No independent
+annotations have arrived. Twelve new tests cover parsing, provenance,
+non-mutation, agreement handling and output isolation.
+The full 128-test ML suite passes. Existing coremltools compatibility warnings
+remain; no Core ML conversion or new model training/evaluation was attempted.
+
+## Next Training Decision
+
+The completed backbone, head, fine-tuning, weighting and masked-pooling trials
+do not justify another ad hoc variant on the same repeatedly exposed sets.
+The current best model still fails its confidence/coverage gates. Do not claim
+that annotation noise is the sole cause, or that expert review will guarantee
+a particular gain. It is the next defensible data-quality step, not a promised
+fix. Resume the next model experiment after genuine independent annotations
+or another audited supervision source changes the evidence; predeclare the
+new development recipe and keep exposed regression sets distinct from a fresh
+confirmation set. Neither this pilot nor improved interface behavior satisfies
+the classifier release requirement.

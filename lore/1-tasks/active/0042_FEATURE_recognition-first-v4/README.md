@@ -407,3 +407,13 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   No user application/data, system service or privacy setting was changed;
   no QA process remained. The prepared test is not a passed runtime check.
   See `native-and-copy-qa.md` for exact evidence and isolation boundaries.
+- Added strict returned-review comparison for the predeclared training-only
+  33-photo pilot. It verifies frozen provenance and images, rejects duplicated
+  or malformed responses, preserves uncertainty/mixed frames and requires
+  adjudication rather than majority-vote relabeling. Original labels cannot
+  be written into the blinded reviewer folder; no training data is modified.
+  Checked the actual blank template: all 33 unreviewed, zero labels applied.
+  All 128 ML tests pass; no new accuracy measurement or release occurred.
+  No genuine annotations have arrived. More same-data classifier variants are
+  not justified by the completed negative experiments; the next training step
+  needs new independently reviewed supervision, with unchanged release gates.
