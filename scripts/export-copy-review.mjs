@@ -3,7 +3,8 @@ import { fileURLToPath } from "node:url";
 import { fieldQuestions, fieldPrinciples, pairDiscriminators } from "../src/data/field-guide.js";
 import { comparisonDimensions, comparisonPresets } from "../src/data/comparison.js";
 import { observationVerdict } from "../src/lib/field-guide.js";
-import { learningModules, quizQuestions } from "../src/data/learning.js";
+import { learningModules, quizQuestions, lessonPractices, moduleChecks } from "../src/data/learning.js";
+import { lessons } from "../src/data/lessons.js";
 import { layersHeadings, windyReadingSteps, windCaveats, hazardCards, soundingReadingSteps } from "../src/data/layers-copy.js";
 import { soundingScenarios, soundingGlossary } from "../src/data/soundings.js";
 import { windFromCloudMotion } from "../src/lib/wind.js";
@@ -41,6 +42,29 @@ const comparisonCopy = [
     `**${ids.split("|").join(" / ")}**\n\n${text}`),
 ].join("\n\n");
 const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
+  "<!-- FULL_LESSONS -->": learningModules.map((module) => {
+    const lesson = lessons[module.id];
+    const practice = lessonPractices[module.id];
+    const check = moduleChecks[module.id];
+    return [
+      `### ${module.number}. ${module.title}`, `${module.level} · ${module.minutes} min`, lesson.lead,
+      "**Po tej lekcji potrafisz:**", ...lesson.objectives.map((text) => `- ${text}`),
+      "**Plan czasu:**", ...lesson.timePlan.map((item) => `- ${item.label}: ${item.minutes} min`),
+      ...lesson.chapters.map((chapter) => [
+        `#### ${chapter.number}. ${chapter.title}`, `${chapter.minutes} min lektury i przypomnienia`,
+        ...chapter.paragraphs, ...(chapter.points || []).map((text) => `- ${text}`),
+        ...(chapter.example ? [`**${chapter.example.label}: ${chapter.example.title}**`, chapter.example.body] : []),
+        ...(chapter.callout ? [`**Ważne:** ${chapter.callout}`] : []),
+        `Źródła: ${getSources(chapter.sourceIds).map((source) => `[${source.title}](${source.url})`).join(", ")}.`,
+        `**Pytanie rozdziałowe:** ${chapter.checkpoint.prompt}`, `**Odpowiedź:** ${chapter.checkpoint.answer}`,
+      ].join("\n\n")),
+      "#### Najważniejsze informacje", ...lesson.recap.map((text) => `- ${text}`),
+      `#### Punkt kontrolny`, check.prompt,
+      ...check.options.map((text, index) => `- **${String.fromCharCode(65 + index)}.** ${text}${index === check.correct ? " (poprawna)" : ""}`),
+      check.explanation, `#### Ćwiczenie: ${practice.label}`, `**${practice.title}**`, practice.body,
+      ...practice.steps.map((text, index) => `${index + 1}. ${text}`), `**Warunek ukończenia:** ${practice.outcome}`,
+    ].join("\n\n");
+  }).join("\n\n"),
   "<!-- FIELD_REPORT_EXAMPLES -->": [...metarExamples, ...tafExamples].map((example) => {
     const result = decodeAviationReport(example.report);
     const groups = result.type === "TAF" ? [...result.groups, ...result.segments.flatMap((segment) => segment.conditions.groups)] : result.groups;
@@ -139,7 +163,7 @@ const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
   }).join("\n\n"),
 };
 const sections = [];
-for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md", "copy-v4-field-tools-review.md"]) {
+for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md", "copy-v4-field-tools-review.md", "copy-v4-lessons-review.md"]) {
   let content = await readFile(new URL(`design/${name}`, root), "utf8");
   for (const [marker, value] of Object.entries(substitutions)) content = content.replace(marker, value);
   sections.push(content.trim());
@@ -151,12 +175,13 @@ pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porówn
 nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
 wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
 obserwacji, pocztówki, kopie, cały warsztat szkoleniowy METAR/TAF, czytnik
-wklejanych depesz, symulator wiatru i ćwiczenia odczytu map.
+wklejanych depesz, symulator wiatru, ćwiczenia odczytu map oraz pełne dziewięć
+lekcji z rozdziałami, pytaniami, odpowiedziami i zadaniami.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
-To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje,
-indeks terminów i monografie poszczególnych chmur wymagają jeszcze osobnego
+To wersja robocza, nie opublikowane wydanie. Indeks terminów
+i monografie poszczególnych chmur wymagają jeszcze osobnego
 przeglądu.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 

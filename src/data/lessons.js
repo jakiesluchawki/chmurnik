@@ -1,12 +1,12 @@
 export const lessons = {
   obserwacja: {
     lead:
-      "Dobra identyfikacja nie zaczyna się od zgadywania nazwy. Zaczyna się od opisu, który inna osoba mogłaby sprawdzić i zakwestionować.",
+      "Zanim poszukasz nazwy w atlasie, przyjrzyj się budowie chmury i temu, jak się zmienia. Nauczysz się zapisywać obserwacje tak, żeby można było porównać je z opisem rodzaju, a w razie wątpliwości wrócić do konkretnych cech.",
     objectives: [
       "oddzielić obserwację od interpretacji",
       "opisać sylwetkę, skalę, światło, opad i zmianę",
       "zbudować zapis całego nieba zamiast oceniać pojedynczy fragment",
-      "wskazać dowód, którego nadal brakuje",
+      "wskazać cechę, której trzeba jeszcze poszukać",
     ],
     timePlan: [
       { label: "Czytanie i przypomnienia", minutes: 5 },
@@ -20,7 +20,7 @@ export const lessons = {
         minutes: 1,
         title: "Obserwacja nie jest jeszcze nazwą",
         paragraphs: [
-          "Zdanie „to jest Altocumulus” jest hipotezą. Zdanie „widzę ławicę członów z jasną i ciemną stroną, bez opadu, powoli gęstniejącą od zachodu” jest materiałem dowodowym. Drugi zapis można porównać z kryteriami nawet wtedy, gdy nazwa okaże się błędna.",
+          "Zdanie „to jest Altocumulus” jest propozycją rozpoznania. Zdanie „widzę ławicę zaokrąglonych elementów z jasną i ciemną stroną, bez opadu, powoli gęstniejącą od zachodu” opisuje to, co widzisz. Taki zapis można porównać z kryteriami w atlasie nawet wtedy, gdy pierwsza nazwa okaże się błędna.",
           "Najczęstszy błąd początkującego polega na bardzo wczesnym przywiązaniu do etykiety. Od tej chwili oko zaczyna wybierać cechy, które ją potwierdzają. Dlatego najpierw zapisujemy to, co da się zobaczyć, a dopiero później uruchamiamy atlas.",
         ],
         callout:
@@ -45,10 +45,10 @@ export const lessons = {
       {
         number: "03",
         minutes: 2,
-        title: "Pięć klas dowodu",
+        title: "Które cechy warto zanotować",
         paragraphs: [
-          "Sylwetka mówi, czy dominuje włókno, warstwa, człon czy wieża. Skala pomaga oddzielić drobne elementy wysokie od większych średnich i niskich. Światło ujawnia przejrzystość, cieniowanie, halo i ostrość tarczy Słońca. Opad rozróżnia virga od opadu docierającego do powierzchni. Czas pokazuje wzrost, zlodzenie, rozlewanie i przemianę.",
-          "Żadna z tych klas nie działa bez kontekstu. Mały element przy horyzoncie może być pozornie skurczony, brak halo nie wyklucza Cirrostratus, a ciemna podstawa nie oznacza automatycznie Nimbostratus. Siła rozpoznania bierze się z zgodności kilku niezależnych cech.",
+          "Zacznij od sylwetki: widzisz włókna, jednolitą warstwę, osobne kłęby czy wysokie wieże? Potem oceń wielkość elementów oraz to, czy mają własny cień i przepuszczają światło. Sprawdź też opad: czy dociera do ziemi, czy smugi zanikają w powietrzu, jak w przypadku virga. Ponowna obserwacja pokaże, czy chmura rośnie, rozlewa się albo zmienia fakturę wierzchołka.",
+          "Każdą cechę trzeba ocenić w kontekście. Mały element przy horyzoncie może być pozornie skurczony, brak halo nie wyklucza Cirrostratus, a ciemna podstawa nie oznacza automatycznie Nimbostratus. Rozpoznanie jest lepiej uzasadnione, gdy zgadza się kilka niezależnych cech.",
         ],
         example: {
           label: "Przykład zapisu",
@@ -63,7 +63,7 @@ export const lessons = {
         minutes: 1,
         title: "Niepewność jest wynikiem, nie porażką",
         paragraphs: [
-          "Jeżeli dwie hipotezy pozostają blisko siebie, nie wybieraj dłuższej nazwy ani tej, którą znasz lepiej. Zapisz prowadzącą parę i znajdź cechę rozstrzygającą. Dla Cirrocumulus i Altocumulus będzie nią przede wszystkim dominująca skala elementów oraz cieniowanie; dla Cumulus congestus i Cumulonimbus calvus — zmiana faktury wierzchołka związana ze zlodzeniem.",
+          "Jeżeli opis pasuje do dwóch rodzajów, nie wybieraj dłuższej nazwy ani tej, którą znasz lepiej. Zapisz obie możliwości i poszukaj różnicy. Dla Cirrocumulus i Altocumulus będzie nią przede wszystkim wielkość elementów oraz cieniowanie; dla Cumulus congestus i Cumulonimbus calvus — zmiana faktury wierzchołka związana ze zlodzeniem.",
           "Poprawna obserwacja może zakończyć się zdaniem „brak danych do rozstrzygnięcia”. To uczciwsze i bardziej użyteczne niż pewna odpowiedź oparta na słabym kadrze.",
         ],
         callout:
@@ -74,16 +74,16 @@ export const lessons = {
     recap: [
       "opisuj cechy przed nazwą",
       "obserwuj cały horyzont i kilka warstw",
-      "łącz niezależne dowody",
-      "zapisuj konkurencyjną hipotezę i brakujący test",
+      "porównuj kilka cech, nie tylko kolor lub kształt",
+      "zapisuj obie możliwe nazwy oraz cechę potrzebną do ich odróżnienia",
     ],
   },
   rodziny: {
     lead:
-      "Nazwy WMO są złożeniami, ale etymologia jest tylko mapą startową. Pełna klasyfikacja zawsze wraca do obserwowalnej budowy chmury.",
+      "Łacińskie nazwy chmur łatwiej zapamiętać, gdy rozumiesz ich części. Połączysz je z wysokością, budową i opadem, a potem sprawdzisz, dlaczego sama nazwa nie zastępuje uważnej obserwacji.",
     objectives: [
-      "rozumieć rdzenie cirro-, alto-, stratus, cumulus i nimbus",
-      "odróżniać poziom od budowy i funkcji opadowej",
+      "wyjaśnić znaczenie części nazw: cirro-, alto-, stratus, cumulus i nimbus",
+      "odróżniać wysokość chmury od jej budowy i związku z opadem",
       "umieścić dziesięć rodzajów w pamięci bez mechanicznej listy",
       "rozpoznawać miejsca, w których nazwa wymaga doprecyzowania",
     ],
@@ -117,7 +117,7 @@ export const lessons = {
       {
         number: "03",
         minutes: 1,
-        title: "stratus i cumulus opisują organizację",
+        title: "stratus i cumulus opisują budowę",
         paragraphs: [
           "Stratus oznacza warstwę lub zasłonę. Występuje samodzielnie jako niski Stratus, ale także w nazwach Cirrostratus, Altostratus i Nimbostratus. Cumulus wskazuje człony, kłęby albo rozwój konwekcyjny: Cirrocumulus, Altocumulus, Stratocumulus, Cumulus i Cumulonimbus.",
           "To nie jest prosty podział na „płaskie” i „puszyste”. Stratocumulus łączy warstwę z dużymi członami, a Cirrocumulus może tworzyć regularne fale. Liczy się dominująca organizacja całej obserwowanej części nieba.",
@@ -155,19 +155,19 @@ export const lessons = {
     ],
     recap: [
       "cirro- i alto- porządkują poziom",
-      "stratus i cumulus opisują organizację",
+      "stratus i cumulus opisują budowę",
       "nimbus wskazuje związek z opadem, ale nie zastępuje diagnozy",
       "rodzaj jest początkiem pełnej nazwy WMO",
     ],
   },
   procesy: {
     lead:
-      "Chmura pojawia się, gdy wilgotne powietrze osiąga nasycenie. Najczęściej prowadzi do tego unoszenie i ochładzanie, ale droga może być konwekcyjna, frontowa, orograficzna lub turbulentna.",
+      "Co sprawia, że w jednym miejscu powstaje płaska warstwa chmur, a w innym rosną wysokie wieże? Prześledzisz unoszenie i ochładzanie wilgotnego powietrza, a potem porównasz rolę ogrzanego podłoża, frontów, gór i mieszania powietrza.",
     objectives: [
       "wyjaśnić nasycenie bez mylenia go z maksymalną ilością pary",
       "rozróżnić stabilne i niestabilne unoszenie",
       "połączyć mechanizmy z budową warstwową, kłębiastą i falową",
-      "rozumieć rolę inwersji, mieszania i fazy wody",
+      "wyjaśnić rolę inwersji, mieszania oraz obecności kropli i lodu",
     ],
     timePlan: [
       { label: "Czytanie i przypomnienia", minutes: 6 },
@@ -191,7 +191,7 @@ export const lessons = {
         minutes: 1,
         title: "Unoszenie i chłodzenie adiabatyczne",
         paragraphs: [
-          "Porcja powietrza unoszona do niższego ciśnienia rozszerza się i ochładza. Przed nasyceniem zmiana temperatury jest zbliżona do gradientu suchoadiabatycznego; po rozpoczęciu kondensacji uwalniane ciepło utajone zmniejsza tempo chłodzenia. To dlatego pionowy profil temperatury otoczenia decyduje, czy porcja pozostanie cieplejsza i bardziej wyporna.",
+          "Porcja powietrza unoszona do niższego ciśnienia rozszerza się i ochładza. Jeżeli nie wymienia ciepła z otoczeniem, nazywamy to przemianą adiabatyczną. Przed nasyceniem tempo ochładzania z wysokością opisuje gradient suchoadiabatyczny. Gdy zaczyna się kondensacja, uwalniane ciepło zmniejsza to tempo. Porównanie temperatury unoszonej porcji z temperaturą otoczenia pokazuje, czy może ona zachować dodatnią wyporność i nadal się unosić.",
           "Źródłem unoszenia może być ogrzanie podłoża, front, przepływ nad terenem, zbieżność wiatru lub turbulencja. Ten sam stan nasycenia może więc prowadzić do zupełnie innej organizacji chmur.",
         ],
         points: [
@@ -205,7 +205,7 @@ export const lessons = {
       {
         number: "03",
         minutes: 1,
-        title: "Stabilność wybiera kształt",
+        title: "Dlaczego chmura rośnie w górę albo rozlewa się w warstwę",
         paragraphs: [
           "W atmosferze stabilnej wychylona porcja traci wyporność i ma tendencję do powrotu ku poziomowi równowagi. Unoszenie rozlewa się wtedy poziomo, co sprzyja warstwom i falom. W atmosferze niestabilnej porcja może pozostawać cieplejsza od otoczenia i przyspieszać ku górze, tworząc wieże Cumulus lub Cumulonimbus.",
           "Stabilność nie jest stałą etykietą całej atmosfery. Warstwa przy ziemi może być chwiejna, a wyżej zamknięta inwersją. W rezultacie Cumulus rośnie tylko do określonego poziomu i rozlewa się w Stratocumulus albo przestaje się rozwijać.",
@@ -221,7 +221,7 @@ export const lessons = {
       {
         number: "04",
         minutes: 1,
-        title: "Inwersja, mieszanie i chmury graniczne",
+        title: "Jak inwersja wpływa na niskie chmury",
         paragraphs: [
           "Inwersja to warstwa, w której temperatura rośnie z wysokością. Może tłumić pionowe mieszanie i zatrzymywać wilgoć poniżej. Jeżeli turbulencja miesza tę warstwę aż do nasycenia, powstaje Stratus lub Stratocumulus. Jeżeli ogrzewanie podłoża wzmacnia wyporność, warstwa może się przerwać albo zostać uniesiona.",
           "Niska chmura często nie jest tylko wynikiem „dużej wilgotności”. Potrzebne są również odpowiedni profil temperatury, chłodzenie, mieszanie i dopływ wilgoci. Nocne wypromieniowanie, adwekcja nad chłodną powierzchnię i unoszenie po zboczu to różne drogi do podobnego obrazu.",
@@ -234,7 +234,7 @@ export const lessons = {
         title: "Mikrofizyka zmienia wygląd i zagrożenie",
         paragraphs: [
           "Chmura może zawierać krople ciekłe, krople przechłodzone, kryształki lodu albo mieszaninę faz. Wysokie Cirrus są zwykle lodowe, ale wysokość nie jest jedynym kryterium fazy. W silnych prądach wstępujących duże ilości przechłodzonej wody mogą występować znacznie poniżej wierzchołka burzy.",
-          "Wzrost kropli i kryształków zależy od kondensacji, zderzeń, koalescencji oraz procesów lodowych. To, czy hydrometeory dotrą do ziemi, zależy też od warstwy pod chmurą: virga może całkowicie wyparować lub wysublimować przed powierzchnią.",
+          "Krople i kryształki rosną dzięki kondensacji i procesom lodowym, a krople mogą też zderzać się i łączyć. Łączenie kropli nazywa się koalescencją. Krople i cząstki lodu, określane wspólnie jako hydrometeory, nie zawsze docierają do ziemi. W suchszej warstwie pod chmurą opad może wyparować, a lód przejść bezpośrednio w parę, czyli wysublimować. Tak zanikają smugi virga.",
         ],
         callout:
           "Rodzaj chmury podpowiada środowisko, lecz fazę wody i zagrożenie trzeba oceniać z temperaturą, dynamiką i dodatkowymi danymi.",
@@ -253,7 +253,7 @@ export const lessons = {
       "Sekwencja Cirrus → Cirrostratus → Altostratus → Nimbostratus jest użytecznym modelem frontu ciepłego, ale rzeczywiste niebo może pomijać etapy, nakładać kilka układów lub rozwijać konwekcję wewnątrz warstwy.",
     objectives: [
       "rozumieć front jako strefę trójwymiarową, nie linię na mapie",
-      "czytać sekwencje chmur jako dowód warunkowy",
+      "wyjaśnić, dlaczego kolejność pojawiania się chmur jest tylko wskazówką",
       "odróżniać typowe sygnały frontu ciepłego, chłodnego i okluzji",
       "budować scenariusz oraz wskazywać dane, które mogą go obalić",
     ],
@@ -337,11 +337,11 @@ export const lessons = {
   },
   wiatr: {
     lead:
-      "Chmura nie mierzy wiatru jak anemometr. Pokazuje ruch i deformację na własnej wysokości, a wynik trzeba oddzielić od perspektywy, opadania hydrometeorów, propagacji fali i rozwoju samej chmury.",
+      "Ruch chmur pomaga przybliżyć kierunek wiatru na ich wysokości. Nauczysz się śledzić wybrany fragment i sprawdzać, czy rzeczywiście jest niesiony z wiatrem, czy przede wszystkim rośnie, zanika albo tworzy się w nieruchomej fali nad górami.",
     objectives: [
       "odwracać kierunek ruchu na meteorologiczny kierunek wiatru",
       "rozpoznawać uskok między warstwami",
-      "oddzielać adwekcję od fali, rozwoju i opadania",
+      "oddzielać przenoszenie chmury przez wiatr od fali, rozwoju i opadania",
       "opisywać wynik jako przybliżenie z poziomem i niepewnością",
     ],
     timePlan: [
@@ -354,10 +354,10 @@ export const lessons = {
       {
         number: "01",
         minutes: 1,
-        title: "Wiatr jest „z”, ruch jest „do”",
+        title: "Dokąd chmura płynie, a skąd nadchodzi",
         paragraphs: [
-          "Jeżeli element chmury przemieszcza się ku północnemu wschodowi, jego wektor ruchu wskazuje kierunek do NE. W meteorologii wiatr nazywa się od kierunku, z którego napływa, więc prosty dryf oznacza wiatr z południowego zachodu.",
-          "Najpierw nazwij obserwowany ruch, a dopiero potem odwróć go o 180°. Ten porządek ogranicza częsty błąd, w którym użytkownik mapy miesza strzałkę przepływu z nazwą wiatru.",
+          "Chmura płynąca ku północnemu wschodowi przemieszcza się do NE. Wiatr nazywamy od kierunku, skąd napływa: przy prostym dryfie przybliżamy go jako południowo-zachodni. Według konwencji WMO również ruch chmury zapisuje się jako kierunek, skąd nadchodzi.",
+          "W ćwiczeniu wskazujesz, dokąd płynie fragment. Odwracamy tę wartość o 180°, żeby otrzymać kierunek „z”. Nie odwracaj ponownie kierunku już zapisanego zgodnie z konwencją WMO. Przed użyciem strzałki lub liczby sprawdź, czy opisuje „do”, czy „z”.",
         ],
         example: {
           label: "Obliczenie",
@@ -365,14 +365,14 @@ export const lessons = {
           body:
             "Element przesuwa się do 070°. Po odwróceniu o 180° otrzymujesz przybliżony wiatr z 250°, czyli z kierunku zachodnio-południowo-zachodniego.",
         },
-        sourceIds: ["faaWeather"],
+        sourceIds: ["faaWeather", "wmoCloudMotion"],
       },
       {
         number: "02",
         minutes: 1,
         title: "Wybierz element, który można śledzić",
         paragraphs: [
-          "Krawędź rosnącego Cumulus zmienia położenie zarówno przez adwekcję, jak i rozwój. Lepszym znacznikiem jest niewielki, trwały fragment warstwy obserwowany przez kilkadziesiąt sekund względem komina, masztu albo kierunku kompasu.",
+          "Krawędź rosnącego Cumulus zmienia położenie, ponieważ wiatr przenosi chmurę, a ona sama się rozwija. Przenoszenie przez przepływ nazywamy adwekcją. Łatwiej śledzić niewielki fragment, który zachowuje kształt przez kilkadziesiąt sekund, niż szybko rosnący wierzchołek. Za punkt odniesienia może posłużyć komin, maszt albo ustalony kierunek kompasu.",
           "Elementy blisko zenitu dają mniejszy błąd perspektywy niż te przy horyzoncie. Powtórzenie pomiaru na drugim fragmencie tej samej warstwy pomaga wykryć, czy obserwujesz rzeczywisty przepływ, czy lokalną zmianę kształtu.",
         ],
         sourceIds: ["wmoObservation"],
@@ -397,8 +397,8 @@ export const lessons = {
         minutes: 1,
         title: "Fala może stać w silnym przepływie",
         paragraphs: [
-          "Altocumulus lenticularis często pozostaje niemal nieruchomy względem terenu. Powietrze unosi się po stronie napływu, osiąga nasycenie i tworzy krople, a po zawietrznej opada, ogrzewa się i chmura zanika. Materia przepływa przez kształt, choć sam kształt jest zakotwiczony w fali.",
-          "Podobnie pasma chmur falowych mogą wskazywać położenie grzbietów fali, a nie prędkość translacji całej struktury. Pozorna nieruchomość nie oznacza ciszy.",
+          "Altocumulus lenticularis często pozostaje niemal nieruchomy względem terenu. W unoszącej części fali powietrze osiąga nasycenie i tworzą się krople. Dalej powietrze opada, ogrzewa się, a krople wyparowują. Wciąż napływa nowe powietrze, ale chmura odtwarza się w podobnym miejscu.",
+          "Pasma chmur falowych mogą więc wskazywać położenie grzbietów fali, a nie przesuwanie się całego układu. Nieruchoma chmura nie oznacza, że na jej wysokości nie wieje wiatr.",
         ],
         sourceIds: ["faaWeather", "wmoAtlas"],
       },
@@ -407,18 +407,18 @@ export const lessons = {
         minutes: 1,
         title: "Virga łączy opadanie i znoszenie",
         paragraphs: [
-          "Smuga virga opada z prędkością zależną od hydrometeorów, jednocześnie jest znoszona przez przepływ i może parować. Jej nachylenie jest wynikiem wielu procesów, nie prostą strzałką wiatru.",
-          "Zagięcie smugi może sugerować zmianę wiatru z wysokością, ale bez wiedzy o prędkości opadania i ewaporacji nie przelicza się go na wiarygodny profil.",
+          "Smuga virga to opadające krople lub cząstki lodu, które zanikają przed dotarciem do ziemi. Wiatr jednocześnie znosi je w bok. Nachylenie smugi zależy zatem zarówno od prędkości opadania, jak i przepływu powietrza; nie działa jak prosta strzałka wiatru.",
+          "Zagięcie smugi może sugerować zmianę wiatru z wysokością. Bez danych o opadaniu i zanikaniu cząstek opadu nie pozwala jednak wiarygodnie wyliczyć kierunku i prędkości wiatru na kolejnych poziomach.",
         ],
         sourceIds: ["faaWeather"],
       },
       {
         number: "06",
         minutes: 1,
-        title: "Burza przemieszcza się i propaguje",
+        title: "Ruch burzy zależy też od powstawania nowych komórek",
         paragraphs: [
           "Komórka Cumulonimbus jest przenoszona przez przepływ w głębokiej warstwie, lecz nowe prądy wstępujące mogą powstawać po jednej stronie, a stare zanikać po drugiej. Obserwowany układ może więc przemieszczać się inaczej niż pojedyncza część chmury.",
-          "Wniosek terenowy powinien być skromny: chmury pomagają rozpoznać kierunek i uskok, ale nie zastępują danych wiatrowych potrzebnych do decyzji operacyjnej.",
+          "Przemieszczanie układu związane z powstawaniem i zanikaniem komórek nazywa się propagacją. Dlatego obserwacja chmur pomaga przybliżyć kierunek wiatru i zauważyć uskok, ale nie zastępuje aktualnych pomiarów i prognoz potrzebnych do planowania lotu lub żeglugi.",
         ],
         callout:
           "Zapisuj „ruch chmury wskazuje przybliżony wiatr z…” zamiast „wiatr wynosi…”.",
@@ -426,7 +426,7 @@ export const lessons = {
       },
     ],
     recap: [
-      "odwracaj ruch o 180°",
+      "odwracaj o 180° tylko kierunek „dokąd”, nie gotowy zapis kierunku „skąd”",
       "podawaj warstwę, której dotyczy obserwacja",
       "sprawdzaj falę, wzrost i opadanie jako alternatywy",
       "nie wyznaczaj prędkości ani bezpieczeństwa z samego obrazu chmur",
@@ -444,14 +444,14 @@ export const lessons = {
     timePlan: [
       { label: "Czytanie i przypomnienia", minutes: 7 },
       { label: "Dekodowanie przykładów", minutes: 5 },
-      { label: "Odczyt operacyjny", minutes: 11 },
+      { label: "Ćwiczenie odczytu depeszy", minutes: 11 },
       { label: "Punkt kontrolny", minutes: 3 },
     ],
     chapters: [
       {
         number: "01",
         minutes: 1,
-        title: "Najpierw określ produkt, miejsce i czas",
+        title: "Sprawdź rodzaj depeszy, lotnisko i czas",
         paragraphs: [
           "METAR jest rutynowym raportem obserwacyjnym dla lotniska. Zaczyna się od identyfikatora, dnia miesiąca i czasu UTC, a następnie podaje między innymi wiatr, widzialność, zjawiska, zachmurzenie, temperaturę, punkt rosy i ciśnienie. Raport może zawierać elementy automatyczne, korekty i uwagi zależne od systemu.",
           "TAF opisuje przewidywane warunki w okresie ważności dla obszaru lotniska. Nie jest prognozą całej trasy. Przed dekodowaniem sprawdź, czy patrzysz na obserwację czy prognozę i czy czas produktu odpowiada interesującemu momentowi.",
@@ -469,7 +469,7 @@ export const lessons = {
         minutes: 1,
         title: "Pokrycie nieba: FEW, SCT, BKN, OVC",
         paragraphs: [
-          "Grupy zachmurzenia opisują część kopuły nieba zajętą przez warstwę: FEW to 1–2 oktanty, SCT 3–4, BKN 5–7, a OVC 8 oktantów. SKC lub CLR w odpowiednim systemie wskazują brak raportowanego zachmurzenia według reguł produktu.",
+          "Grupy zachmurzenia opisują część nieba zajętą przez warstwę. Oktant to jedna ósma nieba: FEW oznacza 1–2 oktanty, SCT 3–4, BKN 5–7, a OVC 8 oktantów. SKC lub CLR w odpowiednim systemie wskazują brak raportowanego zachmurzenia według reguł danej depeszy.",
           "Po skrócie występuje wysokość podstawy w setkach stóp nad poziomem lotniska. SCT020 oznacza rozproszone zachmurzenie z podstawą około 2000 ft AGL. Grupy są uporządkowane od najniższej podstawy ku wyższym.",
         ],
         points: [
@@ -524,7 +524,7 @@ export const lessons = {
         title: "AGL, MSL i teren",
         paragraphs: [
           "Wysokości warstw zachmurzenia w METAR i TAF odnoszą się do poziomu lotniska, czyli są wartościami AGL dla tego punktu. Nie są wysokościami nad średnim poziomem morza i nie można ich bezpośrednio nanosić na trasę nad zmiennym terenem.",
-          "Aby uzyskać przybliżoną wysokość MSL podstawy nad lotniskiem, dodaje się elewację lotniska. To nadal nie mówi, jak wysoko ta sama warstwa leży nad sąsiednim wzgórzem ani czy jest przestrzennie ciągła.",
+          "Aby uzyskać przybliżoną wysokość MSL podstawy nad lotniskiem, dodaje się wysokość lotniska nad poziomem morza, nazywaną elewacją. To nadal nie mówi, jak wysoko ta sama warstwa leży nad sąsiednim wzgórzem ani czy jest przestrzennie ciągła.",
         ],
         sourceIds: ["awcCodes", "faaWeather"],
       },
@@ -646,14 +646,14 @@ export const lessons = {
     timePlan: [
       { label: "Czytanie i przypomnienia", minutes: 7 },
       { label: "Przypadki zagrożeń", minutes: 6 },
-      { label: "Macierz danych", minutes: 16 },
+      { label: "Tabela danych o zagrożeniach", minutes: 16 },
       { label: "Punkt kontrolny", minutes: 3 },
     ],
     chapters: [
       {
         number: "01",
         minutes: 1,
-        title: "Zagrożenie jest przecięciem kilku warunków",
+        title: "Do oceny zagrożenia potrzeba kilku rodzajów danych",
         paragraphs: [
           "Chmura mówi coś o nasyceniu i ruchu atmosfery, ale nie podaje bezpośrednio zawartości wody ciekłej, rozkładu temperatury, prędkości prądów pionowych ani czasu ekspozycji. Te wielkości decydują o tym, czy ta sama wizualna klasa jest łagodna czy niebezpieczna.",
           "Dobra analiza nie pyta tylko „jaka to chmura?”, lecz „jaki proces w niej zachodzi, w jakiej temperaturze, na jakiej trasie i przez jak długo?”.",
@@ -666,7 +666,7 @@ export const lessons = {
         title: "Oblodzenie wymaga wody ciekłej i ujemnej temperatury",
         paragraphs: [
           "Oblodzenie strukturalne powstaje, gdy przechłodzone krople uderzają w powierzchnię statku powietrznego i zamarzają. Sama temperatura poniżej zera nie wystarcza: chmura złożona głównie z kryształków lodu może mieć inną charakterystykę niż warstwa bogata w przechłodzoną wodę.",
-          "Rozmiar kropli, zawartość wody, temperatura, prędkość przepływu i czas ekspozycji wpływają na tempo oraz rodzaj akrecji. Silne prądy wstępujące mogą podtrzymywać duże krople, dlatego konwekcja wymaga szczególnej ostrożności.",
+          "Rozmiar kropli, zawartość wody, temperatura, prędkość przepływu i czas przebywania w tych warunkach wpływają na tempo narastania lodu. Narastanie to określa się jako akrecję. Silne prądy wstępujące mogą podtrzymywać duże krople, dlatego konwekcja wymaga szczególnej ostrożności.",
         ],
         sourceIds: ["faaWeather", "easaAircrew"],
       },
@@ -691,10 +691,10 @@ export const lessons = {
         minutes: 1,
         title: "CAPE nie jest prognozą burzy",
         paragraphs: [
-          "CAPE opisuje dodatnią wyporność parceli po osiągnięciu poziomu swobodnej konwekcji, przy określonych założeniach o parceli i profilu. Duża wartość oznacza potencjał silnych prądów wstępujących, ale nie gwarantuje inicjacji.",
+          "CAPE to energia dostępna dla unoszącej się porcji powietrza, nazywanej parcelą, tam, gdzie ma ona dodatnią wyporność względem otoczenia. Wynik zależy od przyjętej porcji i pionowego profilu atmosfery. Duża wartość wskazuje potencjał silnych prądów wstępujących, ale nie gwarantuje, że burza w ogóle zacznie się rozwijać.",
           "Potrzebne są wilgoć, mechanizm unoszenia i możliwość pokonania warstwy hamującej. Niewielkie CAPE w środowisku silnego uskoku nadal może wspierać zorganizowaną konwekcję, a duże CAPE pod mocną inwersją może pozostać niewykorzystane.",
         ],
-        sourceIds: ["faaWeather"],
+        sourceIds: ["faaWeather", "nwsSkewT"],
       },
       {
         number: "05",
@@ -721,12 +721,12 @@ export const lessons = {
       {
         number: "07",
         minutes: 1,
-        title: "Matryca decyzji: dowód, brak, źródło",
+        title: "Co już wiesz i jakich danych jeszcze brakuje",
         paragraphs: [
-          "Dla każdego zagrożenia zapisz trzy kolumny: co już wiem, czego nie wiem i skąd mogę uzyskać informację. Na przykład typ chmury jest obserwacją, profil temperatury pochodzi z modelu lub sondażu, a aktualne raporty pilotów i ostrzeżenia opisują rzeczywiste zdarzenia.",
+          "Dla każdego zagrożenia zapisz trzy kolumny: co już wiem, czego nie wiem i skąd mogę uzyskać informację. Typ chmury rozpoznajesz z obserwacji, a profil temperatury może pochodzić z modelu lub sondażu. Raporty pilotów dotyczą napotkanych warunków; ostrzeżenia mogą dotyczyć zarówno zjawisk obserwowanych, jak i przewidywanych. Zawsze sprawdź ich miejsce i czas ważności.",
           "Ta metoda przeciwdziała pokusie, by jeden efektowny parametr zastąpił pełną analizę.",
         ],
-        sourceIds: ["faaWeather", "easaAircrew"],
+        sourceIds: ["faaWeather", "easaAircrew", "awcCodes"],
       },
     ],
     recap: [
@@ -828,7 +828,7 @@ export const lessons = {
           "Rozstrzygnięcie wymaga doprecyzowania obiektu, czasu, dominującej struktury i historii. W klasyfikacji dynamicznej pytanie „która nazwa jest zawsze prawdziwa?” bywa gorzej postawione niż „co dokładnie klasyfikujemy i według jakiego kryterium?”.",
         ],
         callout:
-          "Eksperckość nie polega na najdłuższej nazwie. Polega na wskazaniu kryterium, dowodu, zakresu i uczciwej granicy pewności.",
+          "Użyj tylko tych części nazwy, które potrafisz uzasadnić widoczną cechą lub obserwacją rozwoju. Gdy czegoś nie da się rozstrzygnąć, zapisz wątpliwość zamiast dopisywać kolejne określenie.",
         sourceIds: ["wmoAtlas", "wmoObservation", "wmoPrinciples"],
       },
     ],
@@ -855,7 +855,7 @@ const chapterCheckpoints = {
         "Perspektywa i światło zmieniają wygląd elementów, a na niebie często współistnieje kilka poziomów. Pełny obrót pomaga oddzielić warstwy i ocenić zasięg struktury.",
     },
     {
-      prompt: "Dlaczego zgodność kilku klas dowodu jest silniejsza niż jedna charakterystyczna cecha?",
+      prompt: "Dlaczego warto sprawdzić kilka cech, zamiast rozpoznawać chmurę po jednej z nich?",
       answer:
         "Pojedyncza cecha może występować w różnych rodzajach albo zostać zniekształcona przez perspektywę. Niezależne sygnały ograniczają liczbę wiarygodnych hipotez.",
     },
@@ -950,7 +950,7 @@ const chapterCheckpoints = {
     {
       prompt: "Element chmury płynie do północnego wschodu. Z którego kierunku wieje przybliżony wiatr?",
       answer:
-        "Z południowego zachodu. Kierunek meteorologiczny mówi, skąd wiatr napływa, dlatego obserwowany wektor ruchu trzeba odwrócić o 180 stopni.",
+        "Z południowego zachodu. W pytaniu wskazano, dokąd płynie element, więc odwracamy ten kierunek o 180 stopni. Zapisu „skąd”, używanego już w obserwacji WMO, nie odwracamy ponownie.",
     },
     {
       prompt: "Dlaczego rosnąca krawędź Cumulus jest słabszym znacznikiem wiatru niż mały fragment warstwy?",
@@ -965,7 +965,7 @@ const chapterCheckpoints = {
     {
       prompt: "Dlaczego nieruchomy Altocumulus lenticularis może świadczyć o silnym wietrze?",
       answer:
-        "Kształt jest zakotwiczony w fali, ale powietrze stale przez niego przepływa: kondensuje po stronie wznoszącej i paruje po zawietrznej.",
+        "Powietrze stale przepływa przez falę. Para wodna kondensuje w jej wznoszącej części, a krople wyparowują w części opadającej. Chmura odtwarza się więc w podobnym miejscu mimo przepływu powietrza.",
     },
     {
       prompt: "Dlaczego nachylenia virga nie można bezpośrednio przeliczyć na kierunek i prędkość wiatru?",
@@ -1079,7 +1079,7 @@ const chapterCheckpoints = {
         "Wskazuje krawędź odpływu i wymuszone unoszenie, ale nie mierzy pełnej intensywności uskoku ani położenia całego niewidocznego przepływu zstępującego.",
     },
     {
-      prompt: "Jakie trzy kolumny powinna mieć matryca analizy zagrożenia?",
+      prompt: "Jakie trzy kolumny pomogą uporządkować dane potrzebne do oceny zagrożenia?",
       answer:
         "Zapisz: co już wiem, czego nadal nie wiem oraz z jakiego źródła uzyskam brakującą informację. To zapobiega dominacji jednego efektownego parametru.",
     },

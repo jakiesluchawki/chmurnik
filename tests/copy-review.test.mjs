@@ -11,6 +11,8 @@ import { savedHypothesisMessage } from "../src/lib/observations.js";
 import { clouds } from "../src/data/clouds.js";
 import { metarStructurePhases, metarDecodeSections, metarTrainingScenarios, tafTrainingScenarios, aviationBriefingSets } from "../src/data/metar-training.js";
 import { metarExamples, tafExamples, practiceCases } from "../src/data/field-practice.js";
+import { lessons } from "../src/data/lessons.js";
+import { lessonPractices, moduleChecks } from "../src/data/learning.js";
 
 test("the combined copy review retains every observation question and answer, not just edits", async () => {
   const text = await readFile(new URL("../design/copy-v4-review.md", import.meta.url), "utf8");
@@ -22,7 +24,7 @@ test("the combined copy review retains every observation question and answer, no
   }
   for (const value of [...fieldPrinciples, ...Object.values(pairDiscriminators)]) assert.ok(text.includes(value), value);
   assert.doesNotMatch(text, /<!-- (FIELD_|COMPARISON_COPY)/);
-  assert.ok(text.includes("Szczegółowe lekcje,"));
+  assert.ok(text.includes("Indeks terminów"));
   assert.ok(text.includes("monografie poszczególnych chmur wymagają jeszcze"));
 });
 
@@ -103,6 +105,22 @@ test("the field-tools review preserves all examples and every practice choice an
   for (const value of values) assert.ok(text.includes(value), value);
   assert.doesNotMatch(text, /<!-- FIELD_(REPORT_EXAMPLES|PRACTICE_CASES) -->/);
   assert.match(text, /monografie poszczególnych chmur wymagają jeszcze/);
+});
+
+test("the full lessons review includes every chapter, recall answer, example and practice", async () => {
+  const text = await readFile(new URL("../design/copy-v4-review.md", import.meta.url), "utf8");
+  for (const [id, lesson] of Object.entries(lessons)) {
+    const practice = lessonPractices[id];
+    const check = moduleChecks[id];
+    const values = [lesson.lead, ...lesson.objectives, ...lesson.recap,
+      ...lesson.chapters.flatMap((chapter) => [chapter.title, ...chapter.paragraphs,
+        ...(chapter.points || []), ...(chapter.example ? Object.values(chapter.example) : []),
+        ...(chapter.callout ? [chapter.callout] : []), chapter.checkpoint.prompt, chapter.checkpoint.answer]),
+      practice.label, practice.title, practice.body, ...practice.steps, practice.outcome,
+      check.prompt, ...check.options, check.explanation];
+    for (const value of values) assert.ok(text.includes(value), `${id}: ${value}`);
+  }
+  assert.doesNotMatch(text, /<!-- FULL_LESSONS -->/);
 });
 
 test("the combined copy review preserves complete comparison introductions and source review sets", async () => {

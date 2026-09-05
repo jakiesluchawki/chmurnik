@@ -360,7 +360,7 @@ test("lessons expose honest time plans, adaptive practice and keyboard-safe dial
   assert.match(app, /navigate\(`learn\/\$\{id\}`\)/);
   assert.match(app, /learningModules\.find\(\(module\) => module\.id === routeDetail\)/);
   assert.match(app, /Plan na około/);
-  assert.match(app, /Zatrzymaj się na 20 sekund/);
+  assert.match(app, /Spróbuj odpowiedzieć z pamięci/);
   assert.match(app, /lesson-mobile-progress/);
   assert.match(app, /saveLessonPosition/);
   assert.match(app, /Ten czas obejmuje czytanie, analizę przykładów, przypomnienia i ćwiczenia/);

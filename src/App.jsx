@@ -939,7 +939,7 @@ function LessonCheck({ check }) {
       {answer !== null && (
         <div className="lesson-check-feedback" aria-live="polite">
           <Info size={20} />
-          <p>{check.explanation}</p>
+          <p><strong>{answer === check.correct ? "Poprawna odpowiedź." : "Zaznaczona odpowiedź nie jest poprawna."}</strong> {check.explanation}</p>
         </div>
       )}
     </section>
@@ -951,7 +951,7 @@ function ChapterCheckpoint({ checkpoint }) {
 
   return (
     <aside className="chapter-checkpoint">
-      <span className="eyebrow">Zatrzymaj się na 20 sekund</span>
+      <span className="eyebrow">Spróbuj odpowiedzieć z pamięci</span>
       <h3>{checkpoint.prompt}</h3>
       <button
         type="button"
@@ -5430,6 +5430,7 @@ export function App() {
         )}
         {validRoute === "learn" && (
           <LearnPage
+            key={entryModule || routeDetail || "path"}
             completed={completed}
             onToggleCompleted={toggleCompleted}
             onSources={setSourceIds}

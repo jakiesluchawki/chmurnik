@@ -357,3 +357,19 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   photos, order, manifest and blank CSV. All gallery links, offline behavior,
   image decoding and ZIP integrity pass. See `expert-review-protocol.md` for
   the new hash. No independent ratings or changes to training data exist yet.
+- Edited all nine full lessons without removing their 52 chapters, examples,
+  recall answers, assessments or practices. Explain technical terms at use,
+  distinguish official WMO cloud-motion-from direction from this exercise's
+  movement-toward input, mark the METAR exercise as synthetic, and distinguish
+  observed pilot reports from observed/forecast warnings. The four-observation
+  front exercise explicitly needs at least 90 elapsed minutes; lesson duration
+  still measures active work. The complete copy book includes the full lessons.
+  The term index and cloud monographs remain outside the completed copy audit.
+- New real-browser lesson tests reproduced a blank-screen bug when switching
+  from the last chapter of a longer lesson to a shorter lesson. Key lesson
+  state by route and reject malformed saved positions without rewriting user
+  data. All 266 JavaScript tests, nine lesson audits and 156 chapter/viewport
+  checks pass, including full text, recall concealment, source drawers, resume,
+  completion and correct/incorrect feedback. Inspected phone and wide screenshots.
+  Web build and the iOS simulator build-for-testing contain `index-G_NsviLf.js`.
+  Native interaction QA is next; no classifier replacement or release occurred.

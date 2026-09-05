@@ -5,12 +5,13 @@ pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porówn
 nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
 wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
 obserwacji, pocztówki, kopie, cały warsztat szkoleniowy METAR/TAF, czytnik
-wklejanych depesz, symulator wiatru i ćwiczenia odczytu map.
+wklejanych depesz, symulator wiatru, ćwiczenia odczytu map oraz pełne dziewięć
+lekcji z rozdziałami, pytaniami, odpowiedziami i zadaniami.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
-To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje,
-indeks terminów i monografie poszczególnych chmur wymagają jeszcze osobnego
+To wersja robocza, nie opublikowane wydanie. Indeks terminów
+i monografie poszczególnych chmur wymagają jeszcze osobnego
 przeglądu.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
@@ -966,7 +967,7 @@ Ukończenie zapisuje się tylko na tym urządzeniu.
 
 Początek · 12 min
 
-Sześć pytań, które zamieniają „jakaś chmura” w uporządkowaną obserwację.
+Przyjrzyj się kształtowi, warstwom, wielkości elementów, światłu, opadowi i zmianom. Zapiszesz opis, który można porównać z atlasem.
 
 - kształt
 - warstwa
@@ -986,7 +987,7 @@ Czytaj rdzenie łacińskich nazw i łącz je z wysokością oraz budową chmury.
 
 Rozumienie · 20 min
 
-Wilgoć, unoszenie, ochładzanie i stabilność jako wspólny mechanizm wielu różnych obrazów nieba.
+Sprawdzisz, jak wilgotne powietrze się ochładza i dlaczego raz tworzy warstwę chmur, a innym razem wysokie kłęby.
 
 - punkt rosy
 - kondensacja
@@ -1006,7 +1007,7 @@ Sekwencje chmur są wskazówką, nie zegarkiem. Naucz się odróżniać sygnał 
 
 Obserwacja · 24 min
 
-Kierunek, uskoki, fale i pozorny ruch: jak wyciągać wnioski z nieba bez udawania, że chmura jest anemometrem.
+Przybliżysz kierunek wiatru, śledząc ruch wybranej chmury. Poznasz też sytuacje, w których jej ruch może wprowadzić w błąd.
 
 - wiatr z kierunku
 - dryf chmur
@@ -1016,10 +1017,10 @@ Kierunek, uskoki, fale i pozorny ruch: jak wyciągać wnioski z nieba bez udawan
 
 Lotnictwo · 26 min
 
-FEW, SCT, BKN i OVC; pułap, podstawa, widzialność i to, czego kod nie mówi.
+Odczytasz grupy zachmurzenia i odróżnisz najniższą podstawę od pułapu. Sprawdzisz, jakiej informacji nie daje pojedyncza depesza.
 
 - grupy zachmurzenia
-- ceiling
+- pułap
 - AGL
 
 ### 07. Czytanie atmosfery w pionie
@@ -1038,19 +1039,19 @@ Operacyjne · 32 min
 
 Połącz typ chmury, temperaturę, wodę przechłodzoną i dynamikę, nie wyciągając wniosku z jednej mapy.
 
-- icing
-- CAT
+- oblodzenie
+- turbulencja
 - konwekcja
 
 ### 09. Gatunki, odmiany i sporne granice
 
 Eksperckie · 35 min
 
-Pełna składnia nazwy WMO, rzadkie cechy oraz uczciwe rozumowanie, kiedy dwa odczytania są obronione.
+Złożysz pełną nazwę zgodnie z zasadami WMO. Nauczysz się uzasadniać jej części i rozstrzygać różnice między dwiema obserwacjami.
 
-- species
-- varietas
-- supplementary features
+- gatunki
+- odmiany
+- cechy dodatkowe
 
 ## W Lekcji
 
@@ -4058,3 +4059,1449 @@ pomiarów ani ograniczeń statku powietrznego, jachtu i załogi.
 Źródła przy narzędziach pozostają dostępne: AWC i FAA przy depeszach; ORC oraz
 Met Office przy wietrze na jachcie; Windy i ECMWF przy mapach. Przy każdym
 przypadku szkoleniowym są źródła dotyczące jego treści.
+
+---
+
+# CHMURNIK V4: pełne lekcje
+
+Ten zestaw obejmuje wszystkie dziewięć lekcji, ich rozdziały, przykłady,
+podpowiedzi, pytania rozdziałowe i odpowiedzi, ćwiczenia oraz sprawdziany.
+Treść, także niezmieniona, pochodzi bezpośrednio z danych aplikacji i jest
+rozwijana w `copy-v4-review.md`. Liczba rozdziałów i przydzielone minuty
+pozostają bez zmian. W ćwiczeniu frontowym odróżniamy aktywną pracę od
+co najmniej 90 minut potrzebnych na cztery rozłożone w czasie obserwacje.
+
+Redakcja wyjaśnia terminy przed użyciem, zamiast usuwać techniczną treść.
+Doprecyzowuje też kierunek „dokąd” używany w ćwiczeniu wiatrowym względem
+oficjalnego zapisu WMO „skąd”. Nie jest to zewnętrzna recenzja naukowa kursu
+ani potwierdzenie jakości modelu rozpoznawania.
+
+## Wspólna obsługa lekcji
+
+- Powrót: **Ścieżka nauki**.
+- Rozwijana sekcja: **Plan i cele lekcji**.
+- Czas: **Plan na około [liczba] minut**.
+- Cele: **Po tej lekcji potrafisz**.
+- Wyjaśnienie czasu: „Ten czas obejmuje czytanie, analizę przykładów,
+  przypomnienia i ćwiczenia. Możesz pracować we własnym tempie.”
+- Postęp na telefonie: **Rozdział [numer] z [liczba]**, z tytułem rozdziału.
+- Spis: **W tej lekcji**. Każdy rozdział można otworzyć od razu.
+- Przy rozdziale: **[liczba] min lektury i przypomnienia**.
+- Pytanie rozdziałowe: **Spróbuj odpowiedzieć z pamięci**.
+- Odpowiedź początkowo ukryta: **Sprawdź odpowiedź** / **Ukryj odpowiedź**.
+- Nawigacja: **Poprzedni**, **Następny**, **Podsumowanie**.
+- Podsumowanie: **Zapamiętaj przed ćwiczeniem** / **Najważniejsze informacje**.
+- Sprawdzian: **Punkt kontrolny**; cztery odpowiedzi A–D.
+- Po odpowiedzi: **Poprawna odpowiedź.** albo
+  **Zaznaczona odpowiedź nie jest poprawna.**, następnie pełne wyjaśnienie.
+- Ćwiczenie: **Ćwiczenie · [nazwa]**, opis i kroki.
+- Zakończenie: **Warunek ukończenia:** wraz z treścią właściwą dla lekcji.
+- Ręczne oznaczenie: **Oznacz jako ukończone** / **Ukończono**.
+
+## Wszystkie lekcje
+
+### 01. Najpierw patrz, potem nazywaj
+
+Początek · 12 min
+
+Zanim poszukasz nazwy w atlasie, przyjrzyj się budowie chmury i temu, jak się zmienia. Nauczysz się zapisywać obserwacje tak, żeby można było porównać je z opisem rodzaju, a w razie wątpliwości wrócić do konkretnych cech.
+
+**Po tej lekcji potrafisz:**
+
+- oddzielić obserwację od interpretacji
+
+- opisać sylwetkę, skalę, światło, opad i zmianę
+
+- zbudować zapis całego nieba zamiast oceniać pojedynczy fragment
+
+- wskazać cechę, której trzeba jeszcze poszukać
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 5 min
+
+- Przykłady: 2 min
+
+- Protokół terenowy: 4 min
+
+- Punkt kontrolny: 1 min
+
+#### 01. Obserwacja nie jest jeszcze nazwą
+
+1 min lektury i przypomnienia
+
+Zdanie „to jest Altocumulus” jest propozycją rozpoznania. Zdanie „widzę ławicę zaokrąglonych elementów z jasną i ciemną stroną, bez opadu, powoli gęstniejącą od zachodu” opisuje to, co widzisz. Taki zapis można porównać z kryteriami w atlasie nawet wtedy, gdy pierwsza nazwa okaże się błędna.
+
+Najczęstszy błąd początkującego polega na bardzo wczesnym przywiązaniu do etykiety. Od tej chwili oko zaczyna wybierać cechy, które ją potwierdzają. Dlatego najpierw zapisujemy to, co da się zobaczyć, a dopiero później uruchamiamy atlas.
+
+**Ważne:** Użyteczna notatka odpowiada na pytanie „co dokładnie widziałeś?”, a nie tylko „jak to nazwałeś?”.
+
+Źródła: [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html).
+
+**Pytanie rozdziałowe:** Co należy zapisać, zanim po raz pierwszy użyjesz nazwy chmury?
+
+**Odpowiedź:** Najpierw zapisz obserwowalne cechy: sylwetkę, skalę, cieniowanie, opad, zasięg i zmianę w czasie. Nazwa jest dopiero hipotezą zbudowaną na tym opisie.
+
+#### 02. Najpierw całe niebo, potem szczegół
+
+1 min lektury i przypomnienia
+
+Rodzaj chmury może wyglądać inaczej przy horyzoncie, nad głową i pod Słońce. Perspektywa ściska odległe elementy, a silne światło usuwa cieniowanie. Zanim skupisz się na interesującym fragmencie, wykonaj pełny obrót i sprawdź, czy ta sama struktura występuje w innych częściach nieba.
+
+Zwróć uwagę na warstwy. Drobne wysokie elementy mogą być widoczne przez przerwy w niskim Stratocumulus, a postrzępione chmury pod opadem nie muszą być główną chmurą systemu. Jedno zdjęcie często zawiera więcej niż jeden rodzaj.
+
+- zasięg warstwy i położenie względem horyzontu
+
+- liczba odrębnych poziomów
+
+- kierunek napływu oraz obszar wzrostu lub zaniku
+
+Źródła: [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html).
+
+**Pytanie rozdziałowe:** Dlaczego jeden efektowny fragment nieba może prowadzić do błędnej klasyfikacji?
+
+**Odpowiedź:** Perspektywa i światło zmieniają wygląd elementów, a na niebie często współistnieje kilka poziomów. Pełny obrót pomaga oddzielić warstwy i ocenić zasięg struktury.
+
+#### 03. Które cechy warto zanotować
+
+2 min lektury i przypomnienia
+
+Zacznij od sylwetki: widzisz włókna, jednolitą warstwę, osobne kłęby czy wysokie wieże? Potem oceń wielkość elementów oraz to, czy mają własny cień i przepuszczają światło. Sprawdź też opad: czy dociera do ziemi, czy smugi zanikają w powietrzu, jak w przypadku virga. Ponowna obserwacja pokaże, czy chmura rośnie, rozlewa się albo zmienia fakturę wierzchołka.
+
+Każdą cechę trzeba ocenić w kontekście. Mały element przy horyzoncie może być pozornie skurczony, brak halo nie wyklucza Cirrostratus, a ciemna podstawa nie oznacza automatycznie Nimbostratus. Rozpoznanie jest lepiej uzasadnione, gdy zgadza się kilka niezależnych cech.
+
+**Przykład zapisu: Trzy zgodne sygnały**
+
+Drobne białe ziarenka, prawie bez cienia, tworzą regularne fale wysoko na niebie. Taki zestaw wspiera Cirrocumulus mocniej niż sama etykieta „rybia łuska”.
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html).
+
+**Pytanie rozdziałowe:** Dlaczego warto sprawdzić kilka cech, zamiast rozpoznawać chmurę po jednej z nich?
+
+**Odpowiedź:** Pojedyncza cecha może występować w różnych rodzajach albo zostać zniekształcona przez perspektywę. Niezależne sygnały ograniczają liczbę wiarygodnych hipotez.
+
+#### 04. Niepewność jest wynikiem, nie porażką
+
+1 min lektury i przypomnienia
+
+Jeżeli opis pasuje do dwóch rodzajów, nie wybieraj dłuższej nazwy ani tej, którą znasz lepiej. Zapisz obie możliwości i poszukaj różnicy. Dla Cirrocumulus i Altocumulus będzie nią przede wszystkim wielkość elementów oraz cieniowanie; dla Cumulus congestus i Cumulonimbus calvus — zmiana faktury wierzchołka związana ze zlodzeniem.
+
+Poprawna obserwacja może zakończyć się zdaniem „brak danych do rozstrzygnięcia”. To uczciwsze i bardziej użyteczne niż pewna odpowiedź oparta na słabym kadrze.
+
+**Ważne:** Po każdej hipotezie dopisz jedno pytanie: co musiałbym zobaczyć, aby ją odrzucić?
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html).
+
+**Pytanie rozdziałowe:** Kiedy poprawnym wynikiem obserwacji jest brak rozstrzygnięcia?
+
+**Odpowiedź:** Gdy nie widać cechy, która odróżnia prowadzące hipotezy. Wtedy zapisujesz obie możliwości oraz dowód potrzebny do ich rozdzielenia, zamiast udawać pewność.
+
+#### Najważniejsze informacje
+
+- opisuj cechy przed nazwą
+
+- obserwuj cały horyzont i kilka warstw
+
+- porównuj kilka cech, nie tylko kolor lub kształt
+
+- zapisuj obie możliwe nazwy oraz cechę potrzebną do ich odróżnienia
+
+#### Punkt kontrolny
+
+Która notatka jest najlepszym początkiem identyfikacji?
+
+- **A.** To chyba Altocumulus.
+
+- **B.** Ławica drobnych, cieniowanych członów; bez opadu; powoli gęstnieje. (poprawna)
+
+- **C.** Ładna szara chmura przed deszczem.
+
+- **D.** Wysoka chmura, bo wygląda na daleką.
+
+Opis cech i zmiany można sprawdzić oraz porównać z kryteriami. Sama nazwa lub wrażenie od razu zamykają rozumowanie.
+
+#### Ćwiczenie: Protokół 90 sekund
+
+**Opisz niebo bez użycia nazwy chmury**
+
+Zbuduj zapis, który inna osoba mogłaby sprawdzić. Nie oceniaj jeszcze, jaki to rodzaj.
+
+1. Zapisz dominującą sylwetkę, wielkość elementów i stopień cieniowania.
+
+2. Sprawdź halo, prześwity, opad oraz relację podstawy do horyzontu.
+
+3. Po 90 sekundach zanotuj kierunek i rodzaj zmiany: wzrost, zanik, gęstnienie albo rozlewanie.
+
+**Warunek ukończenia:** Masz opis i zapis zmiany po 90 sekundach. Otwórz Pytania obserwatora i porównaj otrzymane propozycje z opisem. Jeśli odpowiedzi nie wystarczą do wskazania rodzaju, zanotuj, czego nie udało się ustalić.
+
+### 02. Dziesięć rodzajów bez wkuwania
+
+Podstawy · 18 min
+
+Łacińskie nazwy chmur łatwiej zapamiętać, gdy rozumiesz ich części. Połączysz je z wysokością, budową i opadem, a potem sprawdzisz, dlaczego sama nazwa nie zastępuje uważnej obserwacji.
+
+**Po tej lekcji potrafisz:**
+
+- wyjaśnić znaczenie części nazw: cirro-, alto-, stratus, cumulus i nimbus
+
+- odróżniać wysokość chmury od jej budowy i związku z opadem
+
+- umieścić dziesięć rodzajów w pamięci bez mechanicznej listy
+
+- rozpoznawać miejsca, w których nazwa wymaga doprecyzowania
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 5 min
+
+- Tabela rodzajów: 4 min
+
+- Dekoder nazw: 7 min
+
+- Punkt kontrolny: 2 min
+
+#### 01. Rodzaj jest pierwszą warstwą klasyfikacji
+
+1 min lektury i przypomnienia
+
+WMO wyróżnia dziesięć rodzajów chmur troposferycznych. Rodzaj jest kategorią podstawową: w danym momencie dana część chmury jest klasyfikowana jako jeden rodzaj, choć na niebie mogą współistnieć różne rodzaje, a chmura może przechodzić z jednego w drugi.
+
+Poziomy wysokie, średnie i niskie są użytecznym porządkiem, ale ich granice zależą od szerokości geograficznej i warunków atmosferycznych. Cumulus i Cumulonimbus dodatkowo rozwijają się pionowo, a Nimbostratus może zajmować kilka pięter.
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Dlaczego poziomy wysokie, średnie i niskie nie zastępują rodzaju chmury?
+
+**Odpowiedź:** Granice pięter zmieniają się z szerokością geograficzną i sytuacją, a część rodzajów rozwija się przez kilka poziomów. Rodzaj opisuje formalną klasę obserwowanej budowy.
+
+#### 02. cirro- i alto- mówią o poziomie
+
+1 min lektury i przypomnienia
+
+Człon cirro- prowadzi do rodzajów wysokich, w których dominują kryształki lodu: Cirrus, Cirrocumulus i Cirrostratus. Człon alto- prowadzi do Altocumulus i Altostratus na poziomie średnim. Alto nie oznacza najwyższej chmury; jest historycznym członem nazw tej grupy.
+
+Sam poziom nie rozstrzyga budowy. Cirrocumulus i Altocumulus są członowane, a Cirrostratus i Altostratus tworzą zasłony. Dlatego drugi człon nazwy jest równie ważny.
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Czy człon alto- oznacza najwyższe chmury? Uzasadnij odpowiedź.
+
+**Odpowiedź:** Nie. Alto- prowadzi do poziomu średniego, natomiast cirro- do wysokiego. Drugi człon nazwy nadal musi opisać, czy obserwujesz warstwę, czy człony.
+
+#### 03. stratus i cumulus opisują budowę
+
+1 min lektury i przypomnienia
+
+Stratus oznacza warstwę lub zasłonę. Występuje samodzielnie jako niski Stratus, ale także w nazwach Cirrostratus, Altostratus i Nimbostratus. Cumulus wskazuje człony, kłęby albo rozwój konwekcyjny: Cirrocumulus, Altocumulus, Stratocumulus, Cumulus i Cumulonimbus.
+
+To nie jest prosty podział na „płaskie” i „puszyste”. Stratocumulus łączy warstwę z dużymi członami, a Cirrocumulus może tworzyć regularne fale. Liczy się dominująca organizacja całej obserwowanej części nieba.
+
+**Czytanie nazwy: Altocumulus**
+
+Alto- sugeruje poziom średni, a -cumulus członowaną budowę. Nadal trzeba sprawdzić wielkość elementów, cieniowanie i relację do innych warstw.
+
+Źródła: [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Co mówi drugi człon nazwy w Cirrostratus i Altocumulus?
+
+**Odpowiedź:** W Cirrostratus człon stratus wskazuje zasłonową organizację, a w Altocumulus człon cumulus wskazuje budowę członowaną. Pierwszy człon porządkuje poziom.
+
+#### 04. nimbus wiąże nazwę z opadem
+
+1 min lektury i przypomnienia
+
+Wśród rodzajów człon opadowy pojawia się w nazwach Nimbostratus i Cumulonimbus. Nimbostratus jest rozległą chmurą opadu warstwowego. Cumulonimbus jest głęboką chmurą konwekcyjną, zdolną do gwałtownych zjawisk.
+
+Obecność deszczu nie wystarcza jednak do użycia jednej z tych nazw. Altostratus może dawać virga lub opad, Cumulus może przynosić przelotny deszcz, a Stratus mżawkę. Trzeba ocenić budowę i zasięg całego systemu.
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Dlaczego sam deszcz nie wystarcza do rozpoznania Nimbostratus lub Cumulonimbus?
+
+**Odpowiedź:** Opad może występować także z innych rodzajów. Trzeba ocenić rozległość, organizację warstwową albo konwekcyjną oraz charakter całego systemu.
+
+#### 05. Mapa dziesięciu rodzajów
+
+1 min lektury i przypomnienia
+
+Zapamiętaj układ, nie kolejność listy. Wysoko: włóknisty Cirrus, ziarnisty Cirrocumulus, zasłonowy Cirrostratus. Średnio: członowany Altocumulus i zasłonowy Altostratus. Nisko: warstwowy Stratus i członowana warstwa Stratocumulus. Pionowo: Cumulus i Cumulonimbus. Wielopoziomowo i opadowo: Nimbostratus.
+
+Ta mapa jest punktem startowym. W praktyce wysokość pozorna bywa myląca, a przejścia między rodzajami są procesem. Dlatego zawsze wracaj do cech diagnostycznych.
+
+**Ważne:** Jeżeli potrafisz odtworzyć mapę z osi „poziom” i „budowa”, nie musisz uczyć się dziesięciu nazw jako przypadkowej listy.
+
+Źródła: [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Jakie dwie osie pozwalają odtworzyć mapę dziesięciu rodzajów bez wkuwania listy?
+
+**Odpowiedź:** Użyj poziomu oraz dominującej budowy: włóknistej, zasłonowej, członowanej, warstwowej, pionowej lub wielopoziomowej i opadowej.
+
+#### Najważniejsze informacje
+
+- cirro- i alto- porządkują poziom
+
+- stratus i cumulus opisują budowę
+
+- nimbus wskazuje związek z opadem, ale nie zastępuje diagnozy
+
+- rodzaj jest początkiem pełnej nazwy WMO
+
+#### Punkt kontrolny
+
+Co najpewniej opisuje człon „-stratus”?
+
+- **A.** Opad gradu
+
+- **B.** Wyłącznie niski poziom
+
+- **C.** Warstwę lub zasłonę (poprawna)
+
+- **D.** Kryształki lodu
+
+Stratus wskazuje budowę warstwową. O poziomie i składzie trzeba wnioskować z pełnej nazwy oraz obserwacji.
+
+#### Ćwiczenie: Dekoder nazw
+
+**Rozłóż pięć nazw na części znaczeniowe**
+
+Nazwy mają być mapą cech, nie ciągiem łacińskich sylab do zapamiętania.
+
+1. Wybierz po jednym przykładzie z członami cirro-, alto-, stratus, cumulus i nimbus.
+
+2. Dla każdego członu zapisz, czy mówi o poziomie, budowie czy opadzie.
+
+3. Sprawdź w atlasie, gdzie dosłowne znaczenie pomaga, a gdzie nazwa historyczna wymaga doprecyzowania.
+
+**Warunek ukończenia:** Masz pięć nazw rozłożonych na części i przy każdej wyjaśnienie, co nazwa podpowiada, a co trzeba jeszcze sprawdzić na niebie.
+
+### 03. Dlaczego chmura powstaje
+
+Rozumienie · 20 min
+
+Co sprawia, że w jednym miejscu powstaje płaska warstwa chmur, a w innym rosną wysokie wieże? Prześledzisz unoszenie i ochładzanie wilgotnego powietrza, a potem porównasz rolę ogrzanego podłoża, frontów, gór i mieszania powietrza.
+
+**Po tej lekcji potrafisz:**
+
+- wyjaśnić nasycenie bez mylenia go z maksymalną ilością pary
+
+- rozróżnić stabilne i niestabilne unoszenie
+
+- połączyć mechanizmy z budową warstwową, kłębiastą i falową
+
+- wyjaśnić rolę inwersji, mieszania oraz obecności kropli i lodu
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 6 min
+
+- Schematy przyczynowe: 4 min
+
+- Mapa mechanizmu: 8 min
+
+- Punkt kontrolny: 2 min
+
+#### 01. Od pary wodnej do nasycenia
+
+1 min lektury i przypomnienia
+
+Powietrze zawiera parę wodną, a jej ciśnienie cząstkowe można porównywać z wartością nasycenia zależną przede wszystkim od temperatury. Gdy powietrze ochładza się bez utraty wilgoci, wilgotność względna rośnie. Po osiągnięciu nasycenia dalsze ochładzanie sprzyja kondensacji lub resublimacji na jądrze kondensacji albo lodowym.
+
+Punkt rosy jest temperaturą, do której należałoby ochłodzić powietrze przy zadanym ciśnieniu i zawartości pary, aby osiągnąć nasycenie. Nie jest wysokością podstawy chmury, choć różnica temperatury i punktu rosy przy powierzchni może pomagać w jej przybliżeniu w dobrze wymieszanej warstwie.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego punkt rosy nie jest po prostu wysokością podstawy chmury?
+
+**Odpowiedź:** Punkt rosy jest temperaturą nasycenia dla danych warunków. Wysokość podstawy zależy dodatkowo od pionowego profilu, mieszania i sposobu unoszenia powietrza.
+
+#### 02. Unoszenie i chłodzenie adiabatyczne
+
+1 min lektury i przypomnienia
+
+Porcja powietrza unoszona do niższego ciśnienia rozszerza się i ochładza. Jeżeli nie wymienia ciepła z otoczeniem, nazywamy to przemianą adiabatyczną. Przed nasyceniem tempo ochładzania z wysokością opisuje gradient suchoadiabatyczny. Gdy zaczyna się kondensacja, uwalniane ciepło zmniejsza to tempo. Porównanie temperatury unoszonej porcji z temperaturą otoczenia pokazuje, czy może ona zachować dodatnią wyporność i nadal się unosić.
+
+Źródłem unoszenia może być ogrzanie podłoża, front, przepływ nad terenem, zbieżność wiatru lub turbulencja. Ten sam stan nasycenia może więc prowadzić do zupełnie innej organizacji chmur.
+
+- konwekcja: lokalne, często komórkowe unoszenie
+
+- front: rozległe unoszenie związane z układem mas powietrza
+
+- orografia: wymuszenie przez teren i fale po zawietrznej
+
+- turbulencja: mieszanie wilgotnej warstwy do poziomu kondensacji
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Co wspólnego mają konwekcja, front, góry i turbulencja w procesie tworzenia chmur?
+
+**Odpowiedź:** Wszystkie mogą unosić wilgotne powietrze do niższego ciśnienia, powodując rozszerzanie, ochładzanie i osiągnięcie nasycenia.
+
+#### 03. Dlaczego chmura rośnie w górę albo rozlewa się w warstwę
+
+1 min lektury i przypomnienia
+
+W atmosferze stabilnej wychylona porcja traci wyporność i ma tendencję do powrotu ku poziomowi równowagi. Unoszenie rozlewa się wtedy poziomo, co sprzyja warstwom i falom. W atmosferze niestabilnej porcja może pozostawać cieplejsza od otoczenia i przyspieszać ku górze, tworząc wieże Cumulus lub Cumulonimbus.
+
+Stabilność nie jest stałą etykietą całej atmosfery. Warstwa przy ziemi może być chwiejna, a wyżej zamknięta inwersją. W rezultacie Cumulus rośnie tylko do określonego poziomu i rozlewa się w Stratocumulus albo przestaje się rozwijać.
+
+**Sytuacja: Kopuły zatrzymane na wspólnym poziomie**
+
+Wiele Cumulus ma płaskie podstawy i wierzchołki dochodzące do podobnej wysokości. Wspólny limit może wskazywać stabilną warstwę lub inwersję nad warstwą mieszaną.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego ta sama wilgotność może dać warstwę albo wysoką wieżę Cumulus?
+
+**Odpowiedź:** O kształcie decyduje stabilność pionowa. Stabilne środowisko ogranicza wyporność i sprzyja rozlewaniu, a niestabilne podtrzymuje przyspieszające unoszenie.
+
+#### 04. Jak inwersja wpływa na niskie chmury
+
+1 min lektury i przypomnienia
+
+Inwersja to warstwa, w której temperatura rośnie z wysokością. Może tłumić pionowe mieszanie i zatrzymywać wilgoć poniżej. Jeżeli turbulencja miesza tę warstwę aż do nasycenia, powstaje Stratus lub Stratocumulus. Jeżeli ogrzewanie podłoża wzmacnia wyporność, warstwa może się przerwać albo zostać uniesiona.
+
+Niska chmura często nie jest tylko wynikiem „dużej wilgotności”. Potrzebne są również odpowiedni profil temperatury, chłodzenie, mieszanie i dopływ wilgoci. Nocne wypromieniowanie, adwekcja nad chłodną powierzchnię i unoszenie po zboczu to różne drogi do podobnego obrazu.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Jak inwersja może jednocześnie sprzyjać niskiej chmurze i hamować jej wzrost?
+
+**Odpowiedź:** Zatrzymuje wilgoć i mieszanie poniżej swojej podstawy, co pomaga nasycić warstwę, ale cieplejsze powietrze wyżej ogranicza dalszy rozwój pionowy.
+
+#### 05. Mikrofizyka zmienia wygląd i zagrożenie
+
+2 min lektury i przypomnienia
+
+Chmura może zawierać krople ciekłe, krople przechłodzone, kryształki lodu albo mieszaninę faz. Wysokie Cirrus są zwykle lodowe, ale wysokość nie jest jedynym kryterium fazy. W silnych prądach wstępujących duże ilości przechłodzonej wody mogą występować znacznie poniżej wierzchołka burzy.
+
+Krople i kryształki rosną dzięki kondensacji i procesom lodowym, a krople mogą też zderzać się i łączyć. Łączenie kropli nazywa się koalescencją. Krople i cząstki lodu, określane wspólnie jako hydrometeory, nie zawsze docierają do ziemi. W suchszej warstwie pod chmurą opad może wyparować, a lód przejść bezpośrednio w parę, czyli wysublimować. Tak zanikają smugi virga.
+
+**Ważne:** Rodzaj chmury podpowiada środowisko, lecz fazę wody i zagrożenie trzeba oceniać z temperaturą, dynamiką i dodatkowymi danymi.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego rozpoznanie rodzaju chmury nie wystarcza do oceny oblodzenia?
+
+**Odpowiedź:** Potrzebne są faza wody, temperatura, zawartość przechłodzonej cieczy i dynamika. Ten sam rodzaj może mieć inną mikrofizykę oraz inny poziom zagrożenia.
+
+#### Najważniejsze informacje
+
+- ochładzanie do nasycenia uruchamia powstawanie chmury
+
+- mechanizm unoszenia organizuje obraz nieba
+
+- stabilność i inwersja ograniczają pionowy rozwój
+
+- mikrofizyka decyduje o opadzie i części zagrożeń
+
+#### Punkt kontrolny
+
+Co najczęściej odróżnia rozwój kłębiasty od rozległej warstwy?
+
+- **A.** Kolor nieba
+
+- **B.** Rodzaj aparatu
+
+- **C.** Stabilność i sposób unoszenia powietrza (poprawna)
+
+- **D.** Pora roku bez innych danych
+
+Niestabilność podtrzymuje pionowy ruch parceli, a stabilna atmosfera sprzyja rozlewaniu i warstwom, choć procesy mogą współwystępować.
+
+#### Ćwiczenie: Mapa mechanizmu
+
+**Połącz wygląd chmury z drogą unoszenia**
+
+Przećwicz wyjaśnianie genezy bez sprowadzania każdej chmury do jednego procesu.
+
+1. Znajdź przykład warstwy, oddzielnych kłębów i chmury związanej z terenem lub falą.
+
+2. Dla każdego przykładu nazwij prawdopodobne unoszenie: rozległe, konwekcyjne, orograficzne albo turbulentne.
+
+3. Dopisz, jaka informacja byłaby potrzebna, aby odróżnić główny mechanizm od współwystępującego.
+
+**Warunek ukończenia:** Przy każdym z trzech przykładów masz możliwy mechanizm powstania, obserwację, która go wspiera, oraz brakującą informację. Sama nazwa chmury nie wystarcza.
+
+### 04. Niebo przed i za frontem
+
+Synoptyka · 22 min
+
+Sekwencja Cirrus → Cirrostratus → Altostratus → Nimbostratus jest użytecznym modelem frontu ciepłego, ale rzeczywiste niebo może pomijać etapy, nakładać kilka układów lub rozwijać konwekcję wewnątrz warstwy.
+
+**Po tej lekcji potrafisz:**
+
+- rozumieć front jako strefę trójwymiarową, nie linię na mapie
+
+- wyjaśnić, dlaczego kolejność pojawiania się chmur jest tylko wskazówką
+
+- odróżniać typowe sygnały frontu ciepłego, chłodnego i okluzji
+
+- budować scenariusz oraz wskazywać dane, które mogą go obalić
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 5 min
+
+- Sekwencje i przypadki: 5 min
+
+- Dziennik zmian: 10 min
+
+- Punkt kontrolny: 2 min
+
+#### 01. Front jest strefą przejścia
+
+1 min lektury i przypomnienia
+
+Front rozdziela masy powietrza o różnych właściwościach i jest związany z polem temperatury, wilgoci, wiatru oraz ruchu pionowego. Linia na mapie jest uproszczonym śladem tej struktury przy powierzchni. Chmury mogą rozciągać się setki kilometrów przed lub za tym śladem.
+
+Wygląd frontu zależy od nachylenia strefy, prędkości przemieszczania, dostępnej wilgoci, stabilności i przepływu w środkowej troposferze. Dlatego jedna nazwa frontu nie gwarantuje jednego zestawu chmur.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego linia frontu na mapie nie wyznacza granicy całego zachmurzenia?
+
+**Odpowiedź:** Linia przedstawia uproszczony ślad strefy przy powierzchni, podczas gdy nachylona struktura i związane z nią chmury mogą rozciągać się setki kilometrów.
+
+#### 02. Model frontu ciepłego
+
+1 min lektury i przypomnienia
+
+Gdy cieplejsze powietrze wślizguje się nad chłodniejszą warstwę, rozległe i stosunkowo łagodne unoszenie może najpierw nasycić górną troposferę. Pojawiają się Cirrus i Cirrostratus, następnie grubszy Altostratus, a przy dostatecznej głębokości i opadzie Nimbostratus.
+
+W praktyce niebo może przejść bez wyraźnego etapu Cirrostratus, opad może zacząć się z Altostratus, a w warstwie może być osadzona konwekcja. Tempo gęstnienia zależy od prędkości układu i geometrii przepływu, więc nie wolno przeliczać odległości do frontu z jednego rodzaju chmury.
+
+**Sekwencja: Co wzmacnia hipotezę frontu ciepłego**
+
+Zasłona wysokich chmur systematycznie obejmuje większą część nieba, tarcza Słońca stopniowo blednie, ciśnienie spada, a niższe warstwy pojawiają się w tym samym kierunku napływu.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Jakie dodatkowe zmiany wzmacniają hipotezę zbliżania się frontu ciepłego?
+
+**Odpowiedź:** Systematyczne gęstnienie zasłony, blednięcie tarczy Słońca, spadek ciśnienia oraz zgodny kierunek napływu kolejnych, niższych warstw.
+
+#### 03. Front chłodny i wymuszona konwekcja
+
+1 min lektury i przypomnienia
+
+Chłodniejsze, gęstsze powietrze wsuwające się pod cieplejsze może dawać węższą strefę silniejszego unoszenia. Jeżeli środowisko jest chwiejne i wilgotne, powstają Cumulus congestus, Cumulonimbus, linie szkwału lub zorganizowane pasma opadowe.
+
+Słaby front chłodny w stabilnym środowisku może jednak przynieść tylko warstwy i zmianę kierunku wiatru. Brak burzy nie oznacza braku frontu. Z kolei lokalna linia konwekcyjna może powstać bez klasycznego frontu powierzchniowego.
+
+- szukaj zmiany wiatru, temperatury i charakteru opadu
+
+- oddziel ruch całej strefy od rozwoju pojedynczych komórek
+
+- nie utożsamiaj każdej chmury arcus z frontem synoptycznym
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego brak burzy nie wyklucza przejścia frontu chłodnego?
+
+**Odpowiedź:** W stabilnym lub suchym środowisku front może dać głównie warstwy, opad i zmianę wiatru. Silna konwekcja wymaga dodatkowo chwiejności oraz wilgoci.
+
+#### 04. Okluzja i układy złożone
+
+1 min lektury i przypomnienia
+
+Okluzja powstaje w rozwijającym się niżu, gdy front chłodny dogania ciepły, a ciepłe powietrze zostaje uniesione nad powierzchnię. Zachmurzenie może łączyć cechy rozległego systemu warstwowego z pasmami silniejszego opadu i konwekcją.
+
+Dla obserwatora naziemnego ważniejsze od próby nazwania okluzji na podstawie jednego kadru jest śledzenie kolejności warstw, kierunku wiatru, zmian ciśnienia i charakteru opadu. Klasyfikacja synoptyczna wymaga szerszych danych niż sam atlas chmur.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Jakich danych potrzebujesz, aby mówić o okluzji, a nie tylko o złożonym zachmurzeniu?
+
+**Odpowiedź:** Potrzebny jest szerszy obraz synoptyczny: układ frontów i niżu, wiatr, ciśnienie, kolejność warstw oraz przebieg opadu, nie pojedynczy kadr.
+
+#### 05. Po przejściu układu
+
+1 min lektury i przypomnienia
+
+Napływ chłodniejszego powietrza nad cieplejsze podłoże może zwiększyć chwiejność w dolnej troposferze. Typowym obrazem są pola Cumulus i Stratocumulus, przejaśnienia oraz przelotne opady. Kierunek pasm bywa związany z przepływem i zbieżnością w warstwie granicznej.
+
+Niebo po froncie jest częścią diagnozy: pomaga sprawdzić, czy wcześniejszy scenariusz był spójny z późniejszą zmianą masy powietrza.
+
+**Ważne:** Sekwencja jest argumentem wzmacnianym przez czas, wiatr, ciśnienie i opad. Pojedynczy rodzaj chmury nigdy nie jest samodzielnym dowodem frontu.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** W jaki sposób pogoda po przejściu układu sprawdza wcześniejszą hipotezę?
+
+**Odpowiedź:** Napływ chłodniejszej masy, zmiana wiatru, przejaśnienia i pola chmur kłębiastych powinny być spójne z zakładanym przejściem strefy frontowej.
+
+#### Najważniejsze informacje
+
+- front to rozległa strefa, a nie tylko linia
+
+- sekwencja wysokie → średnie → opadowe jest modelem, nie zegarem
+
+- front chłodny może, lecz nie musi, organizować konwekcję
+
+- scenariusz trzeba porównywać z późniejszym przebiegiem pogody
+
+#### Punkt kontrolny
+
+Jak traktować sekwencję Ci → Cs → As → Ns?
+
+- **A.** Jako dokładny zegar nadejścia deszczu
+
+- **B.** Jako model roboczy, który trzeba potwierdzać zmianą całego nieba (poprawna)
+
+- **C.** Jako regułę obowiązującą tylko latem
+
+- **D.** Jako dowód frontu chłodnego
+
+To klasyczny model rozwoju zachmurzenia frontu ciepłego, lecz rzeczywiste układy pomijają etapy, nakładają warstwy i zmieniają tempo.
+
+#### Ćwiczenie: Dziennik sekwencji
+
+**Porównaj cztery obserwacje tego samego nieba**
+
+Sprawdź, czy zmiany nieba pasują do poznanej sekwencji frontowej. Cztery obserwacje co pół godziny zajmują co najmniej 90 minut czasu kalendarzowego. Podany czas lekcji obejmuje aktywną pracę, nie czekanie między obserwacjami.
+
+1. Wykonaj cztery zapisy nieba w odstępie co najmniej 30 minut.
+
+2. W każdym zapisie oceń wysokość pozorną, grubość optyczną, opad i kierunek przemieszczania.
+
+3. Na końcu wskaż, które fakty wspierają zmianę frontową, a które mogły powstać lokalnie.
+
+**Warunek ukończenia:** Nie prognozuj godziny opadu z samego Cirrus. Zapisz scenariusz i obserwację, która mogłaby go obalić.
+
+### 05. Czytanie wiatru z ruchu chmur
+
+Obserwacja · 24 min
+
+Ruch chmur pomaga przybliżyć kierunek wiatru na ich wysokości. Nauczysz się śledzić wybrany fragment i sprawdzać, czy rzeczywiście jest niesiony z wiatrem, czy przede wszystkim rośnie, zanika albo tworzy się w nieruchomej fali nad górami.
+
+**Po tej lekcji potrafisz:**
+
+- odwracać kierunek ruchu na meteorologiczny kierunek wiatru
+
+- rozpoznawać uskok między warstwami
+
+- oddzielać przenoszenie chmury przez wiatr od fali, rozwoju i opadania
+
+- opisywać wynik jako przybliżenie z poziomem i niepewnością
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 6 min
+
+- Przykłady ruchu: 4 min
+
+- Pomiar terenowy: 12 min
+
+- Punkt kontrolny: 2 min
+
+#### 01. Dokąd chmura płynie, a skąd nadchodzi
+
+1 min lektury i przypomnienia
+
+Chmura płynąca ku północnemu wschodowi przemieszcza się do NE. Wiatr nazywamy od kierunku, skąd napływa: przy prostym dryfie przybliżamy go jako południowo-zachodni. Według konwencji WMO również ruch chmury zapisuje się jako kierunek, skąd nadchodzi.
+
+W ćwiczeniu wskazujesz, dokąd płynie fragment. Odwracamy tę wartość o 180°, żeby otrzymać kierunek „z”. Nie odwracaj ponownie kierunku już zapisanego zgodnie z konwencją WMO. Przed użyciem strzałki lub liczby sprawdź, czy opisuje „do”, czy „z”.
+
+**Obliczenie: Ruch 070°**
+
+Element przesuwa się do 070°. Po odwróceniu o 180° otrzymujesz przybliżony wiatr z 250°, czyli z kierunku zachodnio-południowo-zachodniego.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Direction and speed of movement](https://cloudatlas.wmo.int/en/direction-and-speed-of-movement.html).
+
+**Pytanie rozdziałowe:** Element chmury płynie do północnego wschodu. Z którego kierunku wieje przybliżony wiatr?
+
+**Odpowiedź:** Z południowego zachodu. W pytaniu wskazano, dokąd płynie element, więc odwracamy ten kierunek o 180 stopni. Zapisu „skąd”, używanego już w obserwacji WMO, nie odwracamy ponownie.
+
+#### 02. Wybierz element, który można śledzić
+
+1 min lektury i przypomnienia
+
+Krawędź rosnącego Cumulus zmienia położenie, ponieważ wiatr przenosi chmurę, a ona sama się rozwija. Przenoszenie przez przepływ nazywamy adwekcją. Łatwiej śledzić niewielki fragment, który zachowuje kształt przez kilkadziesiąt sekund, niż szybko rosnący wierzchołek. Za punkt odniesienia może posłużyć komin, maszt albo ustalony kierunek kompasu.
+
+Elementy blisko zenitu dają mniejszy błąd perspektywy niż te przy horyzoncie. Powtórzenie pomiaru na drugim fragmencie tej samej warstwy pomaga wykryć, czy obserwujesz rzeczywisty przepływ, czy lokalną zmianę kształtu.
+
+Źródła: [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html).
+
+**Pytanie rozdziałowe:** Dlaczego rosnąca krawędź Cumulus jest słabszym znacznikiem wiatru niż mały fragment warstwy?
+
+**Odpowiedź:** Jej położenie zmienia jednocześnie adwekcja i rozwój chmury. Trwały fragment warstwy łatwiej śledzić względem nieruchomego punktu odniesienia.
+
+#### 03. Każda warstwa może płynąć inaczej
+
+1 min lektury i przypomnienia
+
+Stratus, Altocumulus i Cirrus mogą jednocześnie poruszać się w różnych kierunkach i z różną prędkością. To wizualny sygnał pionowego uskoku wiatru. Nie należy uśredniać ich do jednego kierunku bez podania poziomu.
+
+Uskok może zmieniać organizację konwekcji, deformować wieże i rozciągać kowadło. Obserwacja chmur ujawnia geometrię przepływu, ale nie daje dokładnej wartości prędkości ani profilu bez dodatkowych pomiarów.
+
+- zapisuj rodzaj lub przybliżone piętro chmury
+
+- oddziel kierunek podstawy od ruchu wierzchołka
+
+- porównuj kilka minut, nie pojedynczą sekundę
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html).
+
+**Pytanie rozdziałowe:** Co oznaczają trzy warstwy chmur przemieszczające się w różnych kierunkach?
+
+**Odpowiedź:** To jakościowy sygnał pionowego uskoku wiatru. Każdy kierunek należy przypisać do własnego poziomu, zamiast uśredniać je do jednego przepływu.
+
+#### 04. Fala może stać w silnym przepływie
+
+1 min lektury i przypomnienia
+
+Altocumulus lenticularis często pozostaje niemal nieruchomy względem terenu. W unoszącej części fali powietrze osiąga nasycenie i tworzą się krople. Dalej powietrze opada, ogrzewa się, a krople wyparowują. Wciąż napływa nowe powietrze, ale chmura odtwarza się w podobnym miejscu.
+
+Pasma chmur falowych mogą więc wskazywać położenie grzbietów fali, a nie przesuwanie się całego układu. Nieruchoma chmura nie oznacza, że na jej wysokości nie wieje wiatr.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Dlaczego nieruchomy Altocumulus lenticularis może świadczyć o silnym wietrze?
+
+**Odpowiedź:** Powietrze stale przepływa przez falę. Para wodna kondensuje w jej wznoszącej części, a krople wyparowują w części opadającej. Chmura odtwarza się więc w podobnym miejscu mimo przepływu powietrza.
+
+#### 05. Virga łączy opadanie i znoszenie
+
+1 min lektury i przypomnienia
+
+Smuga virga to opadające krople lub cząstki lodu, które zanikają przed dotarciem do ziemi. Wiatr jednocześnie znosi je w bok. Nachylenie smugi zależy zatem zarówno od prędkości opadania, jak i przepływu powietrza; nie działa jak prosta strzałka wiatru.
+
+Zagięcie smugi może sugerować zmianę wiatru z wysokością. Bez danych o opadaniu i zanikaniu cząstek opadu nie pozwala jednak wiarygodnie wyliczyć kierunku i prędkości wiatru na kolejnych poziomach.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego nachylenia virga nie można bezpośrednio przeliczyć na kierunek i prędkość wiatru?
+
+**Odpowiedź:** Smuga łączy poziome znoszenie z opadaniem hydrometeorów oraz parowaniem. Bez znajomości tych składowych nie daje jednoznacznego profilu przepływu.
+
+#### 06. Ruch burzy zależy też od powstawania nowych komórek
+
+1 min lektury i przypomnienia
+
+Komórka Cumulonimbus jest przenoszona przez przepływ w głębokiej warstwie, lecz nowe prądy wstępujące mogą powstawać po jednej stronie, a stare zanikać po drugiej. Obserwowany układ może więc przemieszczać się inaczej niż pojedyncza część chmury.
+
+Przemieszczanie układu związane z powstawaniem i zanikaniem komórek nazywa się propagacją. Dlatego obserwacja chmur pomaga przybliżyć kierunek wiatru i zauważyć uskok, ale nie zastępuje aktualnych pomiarów i prognoz potrzebnych do planowania lotu lub żeglugi.
+
+**Ważne:** Zapisuj „ruch chmury wskazuje przybliżony wiatr z…” zamiast „wiatr wynosi…”.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Dlaczego ruch całej burzy może różnić się od ruchu jej widocznych części?
+
+**Odpowiedź:** Układ jest przenoszony przez przepływ, lecz jednocześnie nowe komórki powstają po jednej stronie, a stare zanikają po drugiej. To dodaje propagację do adwekcji.
+
+#### Najważniejsze informacje
+
+- odwracaj o 180° tylko kierunek „dokąd”, nie gotowy zapis kierunku „skąd”
+
+- podawaj warstwę, której dotyczy obserwacja
+
+- sprawdzaj falę, wzrost i opadanie jako alternatywy
+
+- nie wyznaczaj prędkości ani bezpieczeństwa z samego obrazu chmur
+
+#### Punkt kontrolny
+
+Element chmury dryfuje ku północnemu wschodowi. Przy prostym dryfie wiatr jest…
+
+- **A.** z północnego wschodu
+
+- **B.** z południowego zachodu (poprawna)
+
+- **C.** z południowego wschodu
+
+- **D.** z północnego zachodu
+
+W tym pytaniu podano, dokąd płynie element. Przybliżony wiatr jest z przeciwnego kierunku, więc odwracamy wartość o 180°. Kierunku już zapisanego jako „skąd”, zgodnie z konwencją WMO, nie odwracamy ponownie.
+
+#### Ćwiczenie: Śledzenie elementu
+
+**Oddziel dryf, rozwój i pozorny ruch**
+
+Jedna smuga lub krawędź może zmieniać kształt. Potrzebujesz kilku punktów odniesienia i czasu.
+
+1. Wybierz mały, trwały element wysoko nad głową i określ, dokąd się przesuwa względem kompasu.
+
+2. Po dwóch minutach powtórz pomiar na drugim elemencie tej samej warstwy.
+
+3. Odwróć wskazany kierunek „dokąd” o 180° i zapisz przybliżony kierunek wiatru „skąd”, wraz z poziomem chmury. Nie odwracaj ponownie gotowego kierunku „skąd” z raportu.
+
+**Warunek ukończenia:** Jeżeli element rośnie w miejscu, fala stoi albo virga opada, oznacz wynik jako niejednoznaczny zamiast wymuszać kierunek.
+
+### 06. Chmury w METAR i TAF
+
+Lotnictwo · 26 min
+
+METAR opisuje warunki obserwowane przy lotnisku w określonym czasie, a TAF jest prognozą dla jego otoczenia. Oba produkty mają precyzyjną składnię, lecz żaden nie jest pełnym obrazem trasy ani automatyczną decyzją o bezpieczeństwie.
+
+**Po tej lekcji potrafisz:**
+
+- odczytać grupy FEW, SCT, BKN, OVC i VV
+
+- wyznaczyć pułap oraz odróżnić go od podstawy dowolnej chmury
+
+- rozumieć AGL, czas UTC, CB/TCU i zmienność w TAF
+
+- wskazać ograniczenia raportu punktowego i prognozy lotniskowej
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 7 min
+
+- Dekodowanie przykładów: 5 min
+
+- Ćwiczenie odczytu depeszy: 11 min
+
+- Punkt kontrolny: 3 min
+
+#### 01. Sprawdź rodzaj depeszy, lotnisko i czas
+
+1 min lektury i przypomnienia
+
+METAR jest rutynowym raportem obserwacyjnym dla lotniska. Zaczyna się od identyfikatora, dnia miesiąca i czasu UTC, a następnie podaje między innymi wiatr, widzialność, zjawiska, zachmurzenie, temperaturę, punkt rosy i ciśnienie. Raport może zawierać elementy automatyczne, korekty i uwagi zależne od systemu.
+
+TAF opisuje przewidywane warunki w okresie ważności dla obszaru lotniska. Nie jest prognozą całej trasy. Przed dekodowaniem sprawdź, czy patrzysz na obserwację czy prognozę i czy czas produktu odpowiada interesującemu momentowi.
+
+**Nagłówek: EPWA 161200Z**
+
+EPWA identyfikuje lotnisko, 16 oznacza dzień miesiąca, a 1200Z czas 12:00 UTC. Data miesiąca i szerszy kontekst pochodzą z chwili pobrania produktu.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+**Pytanie rozdziałowe:** Jakie trzy rzeczy sprawdzasz przed rozwijaniem skrótów w depeszy?
+
+**Odpowiedź:** Najpierw określ, czy to obserwacja METAR czy prognoza TAF, którego lotniska dotyczy produkt oraz jaki moment UTC opisuje lub obejmuje.
+
+#### 02. Pokrycie nieba: FEW, SCT, BKN, OVC
+
+1 min lektury i przypomnienia
+
+Grupy zachmurzenia opisują część nieba zajętą przez warstwę. Oktant to jedna ósma nieba: FEW oznacza 1–2 oktanty, SCT 3–4, BKN 5–7, a OVC 8 oktantów. SKC lub CLR w odpowiednim systemie wskazują brak raportowanego zachmurzenia według reguł danej depeszy.
+
+Po skrócie występuje wysokość podstawy w setkach stóp nad poziomem lotniska. SCT020 oznacza rozproszone zachmurzenie z podstawą około 2000 ft AGL. Grupy są uporządkowane od najniższej podstawy ku wyższym.
+
+- FEW: 1–2/8
+
+- SCT: 3–4/8
+
+- BKN: 5–7/8
+
+- OVC: 8/8
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/).
+
+**Pytanie rozdziałowe:** Co dokładnie oznacza grupa SCT020?
+
+**Odpowiedź:** Rozproszone zachmurzenie zajmuje 3–4 oktanty, a jego podstawa znajduje się około 2000 stóp nad poziomem lotniska, czyli AGL.
+
+#### 03. Pułap nie jest najniższą dowolną chmurą
+
+1 min lektury i przypomnienia
+
+W praktyce lotniczej pułap tworzy najniższa warstwa BKN lub OVC albo widzialność pionowa VV w sytuacji zasłoniętego nieba. FEW i SCT mogą być meteorologicznie oraz operacyjnie ważne, ale nie tworzą ceiling w tym technicznym znaczeniu.
+
+Jeżeli raport zawiera SCT015 BKN035 OVC080, najniższa podstawa chmur to 1500 ft AGL, lecz pułap wynosi 3500 ft AGL. To rozróżnienie jest jednym z najczęstszych błędów osób uczących się kodu.
+
+**Pułap: SCT020 BKN060**
+
+Warstwa SCT ma podstawę 2000 ft AGL, ale pułap tworzy BKN060, czyli 6000 ft AGL.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+**Pytanie rozdziałowe:** W depeszy SCT015 BKN035 OVC080 jaka jest najniższa podstawa, a jaki pułap?
+
+**Odpowiedź:** Najniższa raportowana podstawa to 1500 ft AGL, natomiast pułap tworzy pierwsze BKN, czyli 3500 ft AGL.
+
+#### 04. CB, TCU i widzialność pionowa
+
+1 min lektury i przypomnienia
+
+Dopiski CB i TCU identyfikują Cumulonimbus lub wypiętrzony Cumulus przy danej warstwie. Są istotne, ponieważ wiążą zachmurzenie z konwekcją, ale brak dopisku nie jest dowodem, że poza strefą obserwacji nie występuje burza.
+
+VV oznacza widzialność pionową, gdy niebo jest zasłonięte i podstawy warstw nie da się wyznaczyć w zwykły sposób. VV002 oznacza widzialność pionową około 200 ft i tworzy pułap. Znaczenie operacyjne zawsze należy odnieść do pełnych procedur i aktualnych danych.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+**Pytanie rozdziałowe:** Co oznacza VV002 i dlaczego ta grupa tworzy pułap?
+
+**Odpowiedź:** Niebo jest zasłonięte, a widzialność pionowa wynosi około 200 ft. VV zastępuje możliwą do określenia podstawę i wchodzi do technicznej definicji pułapu.
+
+#### 05. TAF opisuje zmiany w czasie
+
+1 min lektury i przypomnienia
+
+TAF zawiera warunki bazowe oraz grupy zmian. FM wprowadza nowy zestaw warunków od określonego czasu. TEMPO opisuje przewidywane przejściowe wahania w podanym okresie, a PROB może wskazywać prawdopodobieństwo określonego scenariusza zgodnie z zasadami danego produktu.
+
+Nie wybieraj pojedynczej grupy bez osi czasu. Dla planowanego momentu trzeba ustalić warunki bazowe, aktywne grupy przejściowe i kolejny okres. Prognoza ma rozdzielczość i niepewność; nie opisuje każdej minuty ani każdego punktu wokół lotniska.
+
+**Ważne:** Najpierw narysuj linię czasu TAF, dopiero potem oceniaj zachmurzenie. Czytanie grup jako luźnej listy usuwa najważniejszy kontekst.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+**Pytanie rozdziałowe:** Dlaczego grup TAF nie wolno czytać jak niezależnej listy możliwości?
+
+**Odpowiedź:** Każda grupa działa na określonym odcinku osi czasu i może zmieniać warunki bazowe albo opisywać przejściowe wahanie. Najpierw trzeba ustalić aktywny okres.
+
+#### 06. AGL, MSL i teren
+
+1 min lektury i przypomnienia
+
+Wysokości warstw zachmurzenia w METAR i TAF odnoszą się do poziomu lotniska, czyli są wartościami AGL dla tego punktu. Nie są wysokościami nad średnim poziomem morza i nie można ich bezpośrednio nanosić na trasę nad zmiennym terenem.
+
+Aby uzyskać przybliżoną wysokość MSL podstawy nad lotniskiem, dodaje się wysokość lotniska nad poziomem morza, nazywaną elewacją. To nadal nie mówi, jak wysoko ta sama warstwa leży nad sąsiednim wzgórzem ani czy jest przestrzennie ciągła.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Jak przybliżyć wysokość MSL podstawy podanej w METAR i czego ten rachunek nie dowodzi?
+
+**Odpowiedź:** Dodaj elewację lotniska do wartości AGL. Wynik dotyczy punktu lotniska i nie dowodzi wysokości nad sąsiednim terenem ani ciągłości warstwy.
+
+#### 07. Czego kod nie mówi
+
+1 min lektury i przypomnienia
+
+Raport punktowy nie opisuje pełnej geometrii chmur poza otoczeniem lotniska, ich wierzchołków, wszystkich warstw po drodze ani dokładnej intensywności oblodzenia i turbulencji. TAF nie zastępuje obserwacji, ostrzeżeń, prognoz obszarowych i oceny sytuacji na trasie.
+
+Edukacyjny odczyt kończy się dwoma pytaniami: co produkt mówi wprost oraz jakich danych nadal potrzebuję? Ten nawyk jest ważniejszy niż szybkość rozwijania skrótów.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Jakie dwa pytania powinny zakończyć odczyt każdej depeszy lotniczej?
+
+**Odpowiedź:** Zapytaj, co produkt mówi wprost oraz jakich danych nadal brakuje. To chroni przed traktowaniem raportu punktowego lub TAF jako pełnego obrazu trasy.
+
+#### Najważniejsze informacje
+
+- sprawdź produkt, lotnisko i czas UTC
+
+- przelicz wysokość z setek stóp AGL
+
+- pułap tworzy najniższe BKN, OVC lub VV
+
+- TAF czytaj na osi czasu
+
+- raport lotniskowy nie opisuje całej trasy
+
+#### Punkt kontrolny
+
+Która grupa jako najniższa tworzy pułap?
+
+- **A.** FEW015
+
+- **B.** SCT020
+
+- **C.** BKN045 (poprawna)
+
+- **D.** CB bez podanej wysokości
+
+Pułap tworzy najniższa warstwa BKN lub OVC albo widzialność pionowa. FEW i SCT nie tworzą ceiling w tym znaczeniu.
+
+#### Ćwiczenie: Ćwiczenie odczytu depeszy
+
+**Znajdź pułap, nie sumuj warstw**
+
+Pracuj na przykładzie szkoleniowym, nie na bieżącej pogodzie: EPWA 161200Z 24012KT 9999 SCT020 BKN060 18/11 Q1016.
+
+1. Przelicz wysokości grup zachmurzenia z setek stóp na pełne wartości AGL.
+
+2. Wskaż najniższą warstwę tworzącą pułap i oddziel ją od warstwy SCT.
+
+3. Wypisz dwie ważne rzeczy, których ten pojedynczy raport nie mówi o pogodzie na trasie.
+
+**Warunek ukończenia:** W tym przykładzie pułap wynosi 6000 ft AGL; SCT020 jest ważną warstwą, ale nie tworzy ceiling.
+
+### 07. Czytanie atmosfery w pionie
+
+Modele · 28 min
+
+Mapa na poziomie 850 hPa nie pokazuje pogody „1500 metrów nad Tobą”. Pokazuje pole na powierzchni określonego ciśnienia, której wysokość zmienia się przestrzennie i w czasie.
+
+**Po tej lekcji potrafisz:**
+
+- odróżnić AGL, MSL i wysokość geopotencjalną
+
+- rozumieć poziomy ciśnienia jako powierzchnie, nie stałe półki
+
+- sprawdzać relację poziomu modelu do terenu
+
+- czytać warstwy Windy bez mieszania podstawy, wierzchołków i całkowitego zachmurzenia
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 6 min
+
+- Przykłady pionowe: 6 min
+
+- Rachunek AGL: 13 min
+
+- Punkt kontrolny: 3 min
+
+#### 01. Trzy różne pytania o wysokość
+
+1 min lektury i przypomnienia
+
+AGL odpowiada na pytanie „jak wysoko nad lokalnym gruntem?”. MSL odnosi wysokość do średniego poziomu morza. Wysokość geopotencjalna opisuje energię potencjalną i jest używana do przedstawiania położenia powierzchni ciśnienia w atmosferze.
+
+Te wartości mogą być podobne na nizinie, lecz bardzo różne w górach. Punkt na 1500 m MSL leży 1400 m AGL nad terenem 100 m MSL, ale tylko 200 m AGL nad przełęczą 1300 m MSL.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Is the cloud base layer in AGL or MSL?](https://community.windy.com/topic/7102/is-the-cloud-base-layer-in-agl-or-msl).
+
+**Pytanie rozdziałowe:** Punkt leży na 1500 m MSL nad terenem 1300 m MSL. Jaka jest jego wysokość AGL?
+
+**Odpowiedź:** Około 200 m AGL. Wysokość nad gruntem otrzymujesz przez odjęcie lokalnej elewacji terenu od wysokości odniesionej do poziomu morza.
+
+#### 02. Poziom ciśnienia jest falującą powierzchnią
+
+1 min lektury i przypomnienia
+
+Ciśnienie maleje z wysokością, ale tempo zależy od temperatury i rozkładu masy powietrza. Powierzchnia 850 hPa nie leży wszędzie na tej samej wysokości. Jej geopotencjał rośnie w cieplejszej, grubszej kolumnie i zmienia się wraz z układem barycznym.
+
+Popularne przeliczenia 850 hPa na około 1,5 km czy 500 hPa na około 5,5 km są orientacyjne. Zawsze sprawdzaj mapę geopotencjału lub opis interfejsu, a w górach także to, czy poziom nie przecina modelowego terenu.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Display wind at various altitudes instead of pressure](https://community.windy.com/topic/39492/how-to-configure-windy-web-and-ios-to-display-wind-at-various-altitudes-instead-of-pressure).
+
+**Pytanie rozdziałowe:** Dlaczego poziom 850 hPa nie znajduje się wszędzie około 1500 metrów MSL?
+
+**Odpowiedź:** Wysokość powierzchni ciśnienia zależy od temperatury i rozkładu masy całej kolumny. Powierzchnia faluje przestrzennie oraz zmienia się w czasie.
+
+#### 03. Model wygładza teren i atmosferę
+
+1 min lektury i przypomnienia
+
+Model numeryczny reprezentuje teren w komórkach siatki. Wysoki szczyt może być obniżony, a wąska dolina wypełniona. Wartość dla wybranego punktu opisuje modelową komórkę, nie dokładny profil nad konkretnym balkonem.
+
+Niektóre poziomy ciśnienia w wysokich górach znajdują się poniżej modelowej powierzchni i są maskowane albo ekstrapolowane. Odczyt wiatru z takiego poziomu może nie opisywać swobodnej atmosfery nad użytkownikiem.
+
+**Ważne:** Przed interpretacją poziomu zadaj trzy pytania: jaka to współrzędna, gdzie leży względem terenu i jaka jest rozdzielczość modelu?
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Display wind at various altitudes instead of pressure](https://community.windy.com/topic/39492/how-to-configure-windy-web-and-ios-to-display-wind-at-various-altitudes-instead-of-pressure).
+
+**Pytanie rozdziałowe:** Co może być nie tak z odczytem poziomu 850 hPa nad wysokim szczytem?
+
+**Odpowiedź:** Poziom może przecinać modelowy teren albo zostać ekstrapolowany. Dodatkowo wygładzona wysokość komórki modelu może znacznie różnić się od rzeczywistego szczytu.
+
+#### 04. Podstawa, wierzchołki i zachmurzenie to różne pola
+
+1 min lektury i przypomnienia
+
+Warstwa podstawy chmur może przedstawiać najniższą podstawę spełniającą określone kryterium zachmurzenia. Warstwa wierzchołków może koncentrować się na chmurach konwekcyjnych lub innym zdefiniowanym polu. Nie wolno zakładać, że obie mapy opisują dokładnie ten sam obiekt.
+
+Pozornie sprzeczne wartości mogą wynikać z różnych definicji, czasu modelu, interpolacji i współistnienia wielu warstw. Najpierw sprawdź opis produktu, a dopiero potem oceniaj, czy wynik jest fizycznie niemożliwy.
+
+Źródła: [Cloud tops lower than cloud base](https://community.windy.com/topic/43145/cloud-tops-lower-than-cloud-base), [Is the cloud base layer in AGL or MSL?](https://community.windy.com/topic/7102/is-the-cloud-base-layer-in-agl-or-msl).
+
+**Pytanie rozdziałowe:** Dlaczego mapa podstawy chmur i mapa wierzchołków mogą pokazywać pozornie sprzeczne liczby?
+
+**Odpowiedź:** Mogą używać innych definicji, progów zachmurzenia, warstw, czasu i interpolacji. Najpierw trzeba sprawdzić opis obu produktów.
+
+#### 05. Temperatura i wiatr na różnych poziomach
+
+1 min lektury i przypomnienia
+
+Porównanie wiatru przy powierzchni, na 850 hPa, 700 hPa i wyżej pokazuje zmianę kierunku oraz prędkości z wysokością. Jest to użyteczne dla oceny transportu mas powietrza, uskoku i organizacji chmur, lecz poziomy trzeba najpierw umieścić w rzeczywistej kolumnie nad terenem.
+
+Temperatura na poziomie ciśnienia nie jest temperaturą na stałej wysokości AGL. Na dwóch obszarach ta sama powierzchnia może leżeć na innych wysokościach, a lokalne warunki przy gruncie mogą być od niej oddzielone inwersją.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Display wind at various altitudes instead of pressure](https://community.windy.com/topic/39492/how-to-configure-windy-web-and-ios-to-display-wind-at-various-altitudes-instead-of-pressure).
+
+**Pytanie rozdziałowe:** Dlaczego temperatura na 700 hPa nie jest temperaturą na jednej stałej wysokości nad ziemią?
+
+**Odpowiedź:** Powierzchnia 700 hPa ma zmienną wysokość MSL, a odległość od gruntu dodatkowo zależy od lokalnego terenu i struktury dolnej atmosfery.
+
+#### 06. Procedura czytania aplikacji pogodowej
+
+1 min lektury i przypomnienia
+
+Zacznij od miejsca i czasu, następnie wybierz pole oraz poziom, odczytaj jednostkę i układ odniesienia. Sprawdź wysokość terenu, geopotencjał lub przybliżoną wysokość poziomu. Potem porównaj sąsiednie poziomy i kolejne terminy.
+
+Na końcu połącz model z obserwacją: chmurami, raportem lotniskowym, sondażem lub innymi danymi. Interfejs mapy jest narzędziem do stawiania hipotez, nie warstwowym zdjęciem rzeczywistej atmosfery.
+
+Źródła: [Display wind at various altitudes instead of pressure](https://community.windy.com/topic/39492/how-to-configure-windy-web-and-ios-to-display-wind-at-various-altitudes-instead-of-pressure), [Cloud tops lower than cloud base](https://community.windy.com/topic/43145/cloud-tops-lower-than-cloud-base), [Is the cloud base layer in AGL or MSL?](https://community.windy.com/topic/7102/is-the-cloud-base-layer-in-agl-or-msl).
+
+**Pytanie rozdziałowe:** Jaka kolejność czynności chroni przed błędnym odczytem warstwy w aplikacji pogodowej?
+
+**Odpowiedź:** Ustal miejsce i czas, pole, poziom, jednostkę i układ odniesienia; sprawdź teren oraz wysokość poziomu, porównaj sąsiednie warstwy i skonfrontuj model z obserwacją.
+
+#### Najważniejsze informacje
+
+- AGL zależy od lokalnego terenu, MSL od poziomu morza
+
+- poziom ciśnienia ma zmienną wysokość
+
+- modelowy teren jest wygładzony
+
+- różne warstwy interfejsu mogą używać różnych definicji
+
+- porównuj poziomy, czas i obserwacje
+
+#### Punkt kontrolny
+
+Dlaczego 850 hPa nie oznacza jednej stałej wysokości AGL?
+
+- **A.** Bo ciśnienie mierzy się wyłącznie nad morzem
+
+- **B.** Bo wysokość powierzchni ciśnienia i wysokość terenu zmieniają się przestrzennie (poprawna)
+
+- **C.** Bo 850 hPa zawsze leży pod ziemią
+
+- **D.** Bo AGL i MSL są tym samym
+
+Modelowa powierzchnia ciśnienia ma zmienny geopotencjał, a AGL dodatkowo zależy od lokalnego terenu.
+
+#### Ćwiczenie: Rachunek pionowy
+
+**Przelicz MSL na przybliżone AGL**
+
+Załóż, że powierzchnia 850 hPa leży na 1500 m MSL. Porównaj punkt nizinny 200 m MSL i przełęcz 1300 m MSL.
+
+1. Odejmij wysokość terenu od wysokości powierzchni ciśnienia w obu punktach.
+
+2. Oceń, gdzie poziom 850 hPa leży w swobodnej atmosferze, a gdzie bardzo blisko modelowego gruntu.
+
+3. Dopisz, dlaczego rzeczywisty model może dać inny wynik niż ten prosty rachunek.
+
+**Warunek ukończenia:** Otrzymasz około 1300 m AGL nad niziną i tylko 200 m AGL nad przełęczą. Ta sama warstwa mapy nie oznacza tej samej wysokości nad człowiekiem.
+
+### 08. Oblodzenie, turbulencja i burze
+
+Operacyjne · 32 min
+
+Niebezpieczeństwo wynika z połączenia fazy wody, temperatury, ruchu pionowego, uskoku wiatru i czasu ekspozycji. Sama nazwa chmury nie daje pełnej odpowiedzi.
+
+**Po tej lekcji potrafisz:**
+
+- łączyć warunki oblodzenia zamiast szukać jednej temperatury granicznej
+
+- odróżniać główne źródła turbulencji
+
+- rozumieć rolę CAPE, hamowania i inicjacji
+
+- czytać chmury jako wskazówki, nie zezwolenie operacyjne
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 7 min
+
+- Przypadki zagrożeń: 6 min
+
+- Tabela danych o zagrożeniach: 16 min
+
+- Punkt kontrolny: 3 min
+
+#### 01. Do oceny zagrożenia potrzeba kilku rodzajów danych
+
+1 min lektury i przypomnienia
+
+Chmura mówi coś o nasyceniu i ruchu atmosfery, ale nie podaje bezpośrednio zawartości wody ciekłej, rozkładu temperatury, prędkości prądów pionowych ani czasu ekspozycji. Te wielkości decydują o tym, czy ta sama wizualna klasa jest łagodna czy niebezpieczna.
+
+Dobra analiza nie pyta tylko „jaka to chmura?”, lecz „jaki proces w niej zachodzi, w jakiej temperaturze, na jakiej trasie i przez jak długo?”.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+**Pytanie rozdziałowe:** Dlaczego sama nazwa chmury nie określa poziomu zagrożenia?
+
+**Odpowiedź:** Nie podaje bezpośrednio fazy i zawartości wody, temperatury, prądów pionowych ani czasu ekspozycji. Te warunki trzeba połączyć z trasą i dodatkowymi danymi.
+
+#### 02. Oblodzenie wymaga wody ciekłej i ujemnej temperatury
+
+1 min lektury i przypomnienia
+
+Oblodzenie strukturalne powstaje, gdy przechłodzone krople uderzają w powierzchnię statku powietrznego i zamarzają. Sama temperatura poniżej zera nie wystarcza: chmura złożona głównie z kryształków lodu może mieć inną charakterystykę niż warstwa bogata w przechłodzoną wodę.
+
+Rozmiar kropli, zawartość wody, temperatura, prędkość przepływu i czas przebywania w tych warunkach wpływają na tempo narastania lodu. Narastanie to określa się jako akrecję. Silne prądy wstępujące mogą podtrzymywać duże krople, dlatego konwekcja wymaga szczególnej ostrożności.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+**Pytanie rozdziałowe:** Jakie dwa podstawowe warunki muszą współistnieć, aby możliwe było oblodzenie strukturalne?
+
+**Odpowiedź:** Potrzebne są przechłodzone krople ciekłe oraz ujemna temperatura powierzchni, na którą uderzają. Kryształki lodu same w sobie nie tworzą identycznego mechanizmu akrecji.
+
+#### 03. Turbulencja ma kilka różnych źródeł
+
+1 min lektury i przypomnienia
+
+Turbulencja konwekcyjna jest związana z prądami wstępującymi i zstępującymi. Mechaniczna powstaje przy przepływie nad nierównym terenem i przeszkodami. Falowa wiąże się z oscylacją przepływu po zawietrznej gór, a turbulencja w czystym powietrzu może występować przy silnym uskoku bez widocznej chmury.
+
+Wygląd Cumulus lub lenticularis może ostrzegać o dynamice, lecz brak charakterystycznej chmury nie wyklucza zagrożenia. Potrzebny jest profil wiatru, stabilność, teren i aktualne raporty.
+
+- konwekcyjna: silne ruchy pionowe
+
+- mechaniczna: tarcie i przeszkody
+
+- falowa: przepływ nad terenem w stabilnej warstwie
+
+- CAT: uskok i deformacja przepływu bez koniecznej chmury
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+**Pytanie rozdziałowe:** Który rodzaj turbulencji może wystąpić bez widocznej chmury i z czym jest związany?
+
+**Odpowiedź:** Turbulencja w czystym powietrzu może wystąpić przy silnym uskoku i deformacji przepływu, często bez chmury wyznaczającej jej położenie.
+
+#### 04. CAPE nie jest prognozą burzy
+
+1 min lektury i przypomnienia
+
+CAPE to energia dostępna dla unoszącej się porcji powietrza, nazywanej parcelą, tam, gdzie ma ona dodatnią wyporność względem otoczenia. Wynik zależy od przyjętej porcji i pionowego profilu atmosfery. Duża wartość wskazuje potencjał silnych prądów wstępujących, ale nie gwarantuje, że burza w ogóle zacznie się rozwijać.
+
+Potrzebne są wilgoć, mechanizm unoszenia i możliwość pokonania warstwy hamującej. Niewielkie CAPE w środowisku silnego uskoku nadal może wspierać zorganizowaną konwekcję, a duże CAPE pod mocną inwersją może pozostać niewykorzystane.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Skew-T Parameters and Indices](https://www.weather.gov/source/zhu/ZHU_Training_Page/convective_parameters/skewt/skewtinfo.html).
+
+**Pytanie rozdziałowe:** Dlaczego duże CAPE nie gwarantuje rozwoju burzy?
+
+**Odpowiedź:** Potencjał wyporności musi zostać uruchomiony. Potrzebne są wilgoć, mechanizm unoszenia i możliwość pokonania warstwy hamującej lub inwersji.
+
+#### 05. Cumulonimbus to układ wielu zagrożeń
+
+1 min lektury i przypomnienia
+
+W głębokiej konwekcji współistnieją silne prądy pionowe, duża zawartość wody i lodu, wyładowania, grad, turbulencja oraz gwałtowne zmiany wiatru. Zagrożenia występują także poza widocznym rdzeniem opadowym i pod kowadłem.
+
+Nie czekaj na klasyczny obraz incus. Cumulonimbus calvus może być aktywną burzą, a zorganizowana linia może być częściowo zasłonięta przez chmury warstwowe lub opad.
+
+**Ważne:** Aplikacja uczy rozpoznawać sygnały, ale nie wyznacza bezpiecznej odległości ani nie zastępuje procedur i bieżących produktów ostrzegawczych.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011), [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Dlaczego nie należy czekać na klasyczne kowadło, aby potraktować konwekcję poważnie?
+
+**Odpowiedź:** Cumulonimbus calvus może już zawierać silne prądy, wodę i lód, wyładowania oraz turbulencję. Aktywna część układu może być też zasłonięta opadem.
+
+#### 06. Uskok, szkwał i przepływ zstępujący
+
+1 min lektury i przypomnienia
+
+Silny gradient wiatru może wpływać na start, podejście i organizację burzy. Prąd zstępujący rozlewający się przy powierzchni może tworzyć gwałtowną zmianę kierunku i prędkości, wał arcus oraz strefę podnoszenia na krawędzi odpływu.
+
+Wał chmurowy jest wskazówką procesu, nie pełnym pomiarem. Niewidoczny odpływ może wyprzedzać chmurę, a intensywność zjawiska wymaga danych obserwacyjnych i ostrzeżeń.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Co mówi wał arcus, a czego nie pozwala dokładnie wyznaczyć?
+
+**Odpowiedź:** Wskazuje krawędź odpływu i wymuszone unoszenie, ale nie mierzy pełnej intensywności uskoku ani położenia całego niewidocznego przepływu zstępującego.
+
+#### 07. Co już wiesz i jakich danych jeszcze brakuje
+
+1 min lektury i przypomnienia
+
+Dla każdego zagrożenia zapisz trzy kolumny: co już wiem, czego nie wiem i skąd mogę uzyskać informację. Typ chmury rozpoznajesz z obserwacji, a profil temperatury może pochodzić z modelu lub sondażu. Raporty pilotów dotyczą napotkanych warunków; ostrzeżenia mogą dotyczyć zarówno zjawisk obserwowanych, jak i przewidywanych. Zawsze sprawdź ich miejsce i czas ważności.
+
+Ta metoda przeciwdziała pokusie, by jeden efektowny parametr zastąpił pełną analizę.
+
+Źródła: [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook), [Easy Access Rules for Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011), [METAR and TAF product information](https://aviationweather.gov/help/data/).
+
+**Pytanie rozdziałowe:** Jakie trzy kolumny pomogą uporządkować dane potrzebne do oceny zagrożenia?
+
+**Odpowiedź:** Zapisz: co już wiem, czego nadal nie wiem oraz z jakiego źródła uzyskam brakującą informację. To zapobiega dominacji jednego efektownego parametru.
+
+#### Najważniejsze informacje
+
+- oblodzenie wymaga przechłodzonej wody i ekspozycji
+
+- turbulencja może występować bez chmur
+
+- CAPE wymaga wilgoci, inicjacji i oceny hamowania
+
+- burza łączy wiele zagrożeń także poza widocznym rdzeniem
+
+- zawsze zapisuj brakujące dane
+
+#### Punkt kontrolny
+
+Który wniosek o oblodzeniu jest najbardziej poprawny?
+
+- **A.** Każda chmura przy temperaturze ujemnej daje silne oblodzenie
+
+- **B.** Brak opadu wyklucza oblodzenie
+
+- **C.** Potrzebne są m.in. temperatura, przechłodzona woda i czas ekspozycji (poprawna)
+
+- **D.** Rodzaj chmury sam wystarcza do decyzji
+
+Nazwa chmury jest wskazówką, ale zagrożenie zależy od fazy i zawartości wody, temperatury, rozmiaru kropli, ruchu pionowego oraz ekspozycji.
+
+#### Ćwiczenie: Tabela danych o zagrożeniach
+
+**Nie wyciągaj decyzji z jednego parametru**
+
+Zbuduj cztery kolumny: oblodzenie, turbulencja, konwekcja i uskok. Każda wymaga innych dowodów.
+
+1. Dla każdej kolumny wpisz co najmniej trzy potrzebne informacje, np. temperaturę, fazę wody, ruch pionowy lub profil wiatru.
+
+2. Zaznacz dane pochodzące z obserwacji, raportu lotniskowego i modelu.
+
+3. Wybierz jedną sytuację, w której brak chmury nie oznacza braku zagrożenia.
+
+**Warunek ukończenia:** Masz cztery kolumny, co najmniej trzy potrzebne informacje w każdej i przykład zagrożenia bez widocznej chmury. To ćwiczenie porządkowania danych, nie zgoda na lot.
+
+### 09. Gatunki, odmiany i sporne granice
+
+Eksperckie · 35 min
+
+Pełna nazwa może łączyć rodzaj, gatunek, odmianę, cechę dodatkową, chmurę towarzyszącą oraz informację o przemianie. Nie każda kombinacja jest dopuszczalna i nie każdy człon musi zostać użyty.
+
+**Po tej lekcji potrafisz:**
+
+- budować pełną nazwę we właściwej kolejności
+
+- odróżniać gatunek, odmianę, cechę i chmurę towarzyszącą
+
+- stosować genitus, mutatus i nazwy chmur specjalnych
+
+- rozumieć, dlaczego dwie klasyfikacje mogą opisywać różne chwile procesu
+
+**Plan czasu:**
+
+- Czytanie i przypomnienia: 7 min
+
+- Praca z indeksem: 8 min
+
+- Budowa nazwy: 17 min
+
+- Punkt kontrolny: 3 min
+
+#### 01. Rodzaj jest obowiązkowy, reszta opisuje szczegóły
+
+1 min lektury i przypomnienia
+
+Pełna klasyfikacja zaczyna się od jednego z dziesięciu rodzajów. Gatunek opisuje kształt lub strukturę i zwykle wybiera się jeden. Odmiany opisują układ elementów lub przejrzystość; niektóre mogą współwystępować. Cechy dodatkowe i chmury towarzyszące nazywają części lub obiekty związane z chmurą główną.
+
+Nie każda chmura ma gatunek, odmianę albo cechę. Brak dodatkowego członu nie oznacza niepełnej obserwacji. Poprawna krótka nazwa jest lepsza niż długa kombinacja niezgodna z tabelą WMO.
+
+Źródła: [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Dlaczego krótka nazwa może być bardziej ekspercka niż długa kombinacja łacińskich członów?
+
+**Odpowiedź:** Dodatkowe człony stosuje się tylko wtedy, gdy obserwacja je uzasadnia i tabela WMO dopuszcza kombinację. Nadmiar niepotwierdzonych określeń zmniejsza precyzję.
+
+#### 02. Gatunek opisuje dominującą postać
+
+1 min lektury i przypomnienia
+
+Gatunki takie jak fibratus, lenticularis, congestus czy calvus odnoszą się do morfologii. Ten sam gatunek może występować w kilku rodzajach, jeśli formalna tabela na to pozwala, a jego znaczenie trzeba czytać w kontekście rodzaju.
+
+Przy granicy rozwoju liczy się dominujący stan w chwili obserwacji. Cumulus congestus ma ostre, kalafiorowe wypukłości, a Cumulonimbus calvus zaczyna tracić tę fakturę wskutek zlodzenia. Zmiana może nastąpić między dwoma zdjęciami.
+
+**Granica: congestus → calvus**
+
+Wielkość wieży nie rozstrzyga. Dowodem przejścia jest wygładzanie i utrata ostrych konturów w górnej części związana z fazą lodową.
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Co rozstrzyga przejście od Cumulus congestus do Cumulonimbus calvus?
+
+**Odpowiedź:** Nie sama wysokość wieży, lecz utrata ostrych kalafiorowych konturów i wygładzanie górnej części związane z postępującym zlodzeniem.
+
+#### 03. Odmiana mówi o układzie lub przejrzystości
+
+1 min lektury i przypomnienia
+
+Undulatus opisuje fale, radiatus pozorne zbieganie równoległych pasm, duplicatus wielowarstwowość tego samego rodzaju, a translucidus, perlucidus i opacus różne własności przejrzystości. Odmiana nie zmienia rodzaju.
+
+Niektóre odmiany są wzajemnie wykluczające, a inne mogą wystąpić razem. Dlatego składnię należy sprawdzać w tabeli klasyfikacji, a nie budować przez swobodne łączenie łacińskich nazw.
+
+Źródła: [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Czy odmiana może zmienić rodzaj chmury? Wyjaśnij na przykładzie.
+
+**Odpowiedź:** Nie. Undulatus może opisać falowy układ w kilku dopuszczonych rodzajach, ale rodzaj nadal wynika z podstawowej budowy chmury.
+
+#### 04. Cecha dodatkowa nie jest osobną chmurą
+
+1 min lektury i przypomnienia
+
+Incus, mamma, arcus, virga, praecipitatio czy cavum opisują szczególną część chmury albo zjawisko bezpośrednio z nią związane. Mogą mieć duże znaczenie wizualne i operacyjne, lecz nie zastępują rodzaju ani gatunku.
+
+Chmury towarzyszące, takie jak pileus, velum i pannus, są odrębnymi mniejszymi chmurami związanymi z chmurą główną. Pannus pod Nimbostratus nie powinien przesłonić klasyfikacji rozległego systemu opadowego powyżej.
+
+Źródła: [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html), [International Cloud Atlas](https://cloudatlas.wmo.int/).
+
+**Pytanie rozdziałowe:** Czym różni się cecha dodatkowa virga od chmury towarzyszącej pannus?
+
+**Odpowiedź:** Virga opisuje opad z chmury, który nie dociera do powierzchni. Pannus jest odrębną, postrzępioną chmurą związaną z głównym systemem.
+
+#### 05. genitus i mutatus zapisują historię
+
+1 min lektury i przypomnienia
+
+Genitus stosuje się, gdy chmura rozwija się z innej chmury, ale ta macierzysta nadal istnieje. Mutatus opisuje sytuację, w której cała lub znaczna część chmury macierzystej przekształciła się w inny rodzaj. Oba człony wymagają obserwacji procesu, nie tylko podobieństwa wyglądu.
+
+Na przykład Cirrus może powstać z górnej części Cumulonimbus. Sam włóknisty obłok po burzy nie wystarcza jednak do wpisania pochodzenia, jeżeli obserwator nie zna historii rozwoju.
+
+Źródła: [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+**Pytanie rozdziałowe:** Dlaczego nie można dopisać genitus lub mutatus na podstawie pojedynczego zdjęcia?
+
+**Odpowiedź:** Oba człony opisują historię przemiany. Trzeba obserwować chmurę macierzystą i wiedzieć, czy nadal istnieje, czy została w znacznym stopniu przekształcona.
+
+#### 06. Chmury specjalne i wpływ człowieka
+
+1 min lektury i przypomnienia
+
+WMO wyróżnia nazwy związane z lokalnym źródłem powstania, między innymi homogenitus dla chmur wynikających z działalności człowieka oraz cataractagenitus, flammagenitus, silvagenitus i homomutatus w odpowiednich sytuacjach.
+
+Smuga kondensacyjna może rozwinąć się w Cirrus homogenitus, a następnie ulec dalszej przemianie. Pochodzenie antropogeniczne nie usuwa jej z klasyfikacji chmur; dodaje informację o genezie.
+
+Źródła: [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html).
+
+**Pytanie rozdziałowe:** Jak klasyfikacja traktuje chmurę powstałą z działalności człowieka?
+
+**Odpowiedź:** Nadal klasyfikuje jej rodzaj i budowę, a informację o pochodzeniu dodaje odpowiednim członem, na przykład homogenitus dla chmury antropogenicznej.
+
+#### 07. Spór klasyfikacyjny może dotyczyć czasu i skali
+
+1 min lektury i przypomnienia
+
+Dwie osoby mogą patrzeć z różnych miejsc, w innym momencie albo na inną część układu. Jedna widzi oddzielne włókna Cirrus, druga ciągłą zasłonę Cirrostratus. Obie obserwacje mogą być poprawne dla swoich zakresów.
+
+Rozstrzygnięcie wymaga doprecyzowania obiektu, czasu, dominującej struktury i historii. W klasyfikacji dynamicznej pytanie „która nazwa jest zawsze prawdziwa?” bywa gorzej postawione niż „co dokładnie klasyfikujemy i według jakiego kryterium?”.
+
+**Ważne:** Użyj tylko tych części nazwy, które potrafisz uzasadnić widoczną cechą lub obserwacją rozwoju. Gdy czegoś nie da się rozstrzygnąć, zapisz wątpliwość zamiast dopisywać kolejne określenie.
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+**Pytanie rozdziałowe:** Jak dwie różne nazwy tej samej sytuacji mogą być jednocześnie obronione?
+
+**Odpowiedź:** Obserwatorzy mogą klasyfikować inną część układu, skalę lub moment przemiany. Trzeba najpierw uzgodnić obiekt, czas i dominujące kryterium.
+
+#### Najważniejsze informacje
+
+- rodzaj jest podstawą pełnej nazwy
+
+- gatunek, odmiana i cecha pełnią różne role
+
+- genitus i mutatus wymagają historii rozwoju
+
+- nie każda formalnie brzmiąca kombinacja jest dopuszczalna
+
+- spór rozwiązuj przez doprecyzowanie czasu, miejsca i kryterium
+
+#### Punkt kontrolny
+
+Kiedy końcówka „mutatus” jest uzasadniona?
+
+- **A.** Gdy chmura wygląda niezwykle
+
+- **B.** Gdy cała lub znaczna część chmury przekształciła się z innego rodzaju (poprawna)
+
+- **C.** Gdy chmura powstała nad miastem
+
+- **D.** Gdy obserwator nie zna gatunku
+
+Mutatus zapisuje przemianę rodzaju i wymaga dowodu historii rozwoju. Nie jest ogólną etykietą nietypowego wyglądu.
+
+#### Ćwiczenie: Pełna składnia WMO
+
+**Zbuduj nazwę i uzasadnij każdą jej warstwę**
+
+Długa nazwa jest poprawna tylko wtedy, gdy każdy człon opisuje obserwowalną cechę i jest dopuszczony dla danego rodzaju.
+
+1. Wybierz rodzaj z atlasu i jeden zgodny z nim gatunek.
+
+2. Dodaj odmianę lub cechę dodatkową, po czym sprawdź jej relację taksonomiczną w encyklopedii.
+
+3. Jeśli widzisz przemianę, rozważ genitus lub mutatus i zapisz dowód historyczny, którego wymaga ta końcówka.
+
+**Warunek ukończenia:** Jeżeli nie potrafisz wskazać dowodu dla członu nazwy, pomiń go. Krótsza klasyfikacja z dobrym uzasadnieniem jest lepsza od efektownej nadinterpretacji.

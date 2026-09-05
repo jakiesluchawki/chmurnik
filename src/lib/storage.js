@@ -46,7 +46,9 @@ export function saveProgress(progress) {
 
 export function loadLessonPosition(lessonId) {
   const positions = read(KEYS.lessonPositions, {});
-  return Number.isInteger(positions[lessonId]) ? positions[lessonId] : 0;
+  const index = positions && typeof positions === "object" && !Array.isArray(positions)
+    ? positions[lessonId] : null;
+  return Number.isInteger(index) && index >= 0 ? index : 0;
 }
 
 export function saveLessonPosition(lessonId, chapterIndex) {

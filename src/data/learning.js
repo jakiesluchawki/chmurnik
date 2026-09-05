@@ -6,7 +6,7 @@ export const learningModules = [
     title: "Najpierw patrz, potem nazywaj",
     minutes: 12,
     summary:
-      "Sześć pytań, które zamieniają „jakaś chmura” w uporządkowaną obserwację.",
+      "Przyjrzyj się kształtowi, warstwom, wielkości elementów, światłu, opadowi i zmianom. Zapiszesz opis, który można porównać z atlasem.",
     outcomes: ["kształt", "warstwa", "skala", "światło", "opad", "zmiana w czasie"],
     sourceIds: ["wmoAtlas"],
   },
@@ -28,7 +28,7 @@ export const learningModules = [
     title: "Dlaczego chmura powstaje",
     minutes: 20,
     summary:
-      "Wilgoć, unoszenie, ochładzanie i stabilność jako wspólny mechanizm wielu różnych obrazów nieba.",
+      "Sprawdzisz, jak wilgotne powietrze się ochładza i dlaczego raz tworzy warstwę chmur, a innym razem wysokie kłęby.",
     outcomes: ["punkt rosy", "kondensacja", "inwersja", "konwekcja"],
     sourceIds: ["faaWeather"],
   },
@@ -50,9 +50,9 @@ export const learningModules = [
     title: "Czytanie wiatru z ruchu chmur",
     minutes: 24,
     summary:
-      "Kierunek, uskoki, fale i pozorny ruch: jak wyciągać wnioski z nieba bez udawania, że chmura jest anemometrem.",
+      "Przybliżysz kierunek wiatru, śledząc ruch wybranej chmury. Poznasz też sytuacje, w których jej ruch może wprowadzić w błąd.",
     outcomes: ["wiatr z kierunku", "dryf chmur", "uskok", "fala górska", "perspektywa"],
-    sourceIds: ["faaWeather", "wmoAtlas"],
+    sourceIds: ["faaWeather", "wmoAtlas", "wmoCloudMotion"],
   },
   {
     id: "lotnictwo",
@@ -61,8 +61,8 @@ export const learningModules = [
     title: "Chmury w METAR i TAF",
     minutes: 26,
     summary:
-      "FEW, SCT, BKN i OVC; pułap, podstawa, widzialność i to, czego kod nie mówi.",
-    outcomes: ["grupy zachmurzenia", "ceiling", "AGL", "CB/TCU"],
+      "Odczytasz grupy zachmurzenia i odróżnisz najniższą podstawę od pułapu. Sprawdzisz, jakiej informacji nie daje pojedyncza depesza.",
+    outcomes: ["grupy zachmurzenia", "pułap", "AGL", "CB/TCU"],
     sourceIds: ["awcCodes", "easaAircrew"],
   },
   {
@@ -84,7 +84,7 @@ export const learningModules = [
     minutes: 32,
     summary:
       "Połącz typ chmury, temperaturę, wodę przechłodzoną i dynamikę, nie wyciągając wniosku z jednej mapy.",
-    outcomes: ["icing", "CAT", "konwekcja", "CAPE", "wind shear"],
+    outcomes: ["oblodzenie", "turbulencja", "konwekcja", "CAPE", "uskok wiatru"],
     sourceIds: ["faaWeather", "easaAircrew"],
   },
   {
@@ -94,8 +94,8 @@ export const learningModules = [
     title: "Gatunki, odmiany i sporne granice",
     minutes: 35,
     summary:
-      "Pełna składnia nazwy WMO, rzadkie cechy oraz uczciwe rozumowanie, kiedy dwa odczytania są obronione.",
-    outcomes: ["species", "varietas", "supplementary features", "mother-clouds"],
+      "Złożysz pełną nazwę zgodnie z zasadami WMO. Nauczysz się uzasadniać jej części i rozstrzygać różnice między dwiema obserwacjami.",
+    outcomes: ["gatunki", "odmiany", "cechy dodatkowe", "chmury macierzyste"],
     sourceIds: ["wmoAtlas", "wmoSummary"],
   },
 ];
@@ -255,7 +255,7 @@ export const lessonPractices = {
       "Po 90 sekundach zanotuj kierunek i rodzaj zmiany: wzrost, zanik, gęstnienie albo rozlewanie.",
     ],
     outcome:
-      "Dopiero po zapisie otwórz Obserwatora i porównaj jego trzy hipotezy z własnym opisem.",
+      "Masz opis i zapis zmiany po 90 sekundach. Otwórz Pytania obserwatora i porównaj otrzymane propozycje z opisem. Jeśli odpowiedzi nie wystarczą do wskazania rodzaju, zanotuj, czego nie udało się ustalić.",
   },
   rodziny: {
     label: "Dekoder nazw",
@@ -268,7 +268,7 @@ export const lessonPractices = {
       "Sprawdź w atlasie, gdzie dosłowne znaczenie pomaga, a gdzie nazwa historyczna wymaga doprecyzowania.",
     ],
     outcome:
-      "Powinieneś umieć przewidzieć ogólną budowę nieznanej nazwy, ale nie udawać, że sama etymologia rozstrzyga klasyfikację.",
+      "Masz pięć nazw rozłożonych na części i przy każdej wyjaśnienie, co nazwa podpowiada, a co trzeba jeszcze sprawdzić na niebie.",
   },
   procesy: {
     label: "Mapa mechanizmu",
@@ -281,13 +281,13 @@ export const lessonPractices = {
       "Dopisz, jaka informacja byłaby potrzebna, aby odróżnić główny mechanizm od współwystępującego.",
     ],
     outcome:
-      "Poprawna odpowiedź zawiera mechanizm, dowód i warunek niepewności, a nie tylko nazwę chmury.",
+      "Przy każdym z trzech przykładów masz możliwy mechanizm powstania, obserwację, która go wspiera, oraz brakującą informację. Sama nazwa chmury nie wystarcza.",
   },
   fronty: {
     label: "Dziennik sekwencji",
-    title: "Obserwuj zmianę nieba jak proces, nie zegarek",
+    title: "Porównaj cztery obserwacje tego samego nieba",
     body:
-      "Sekwencja frontowa jest modelem roboczym. Ćwiczenie ma ujawnić etapy pominięte, nakładające się lub odwrócone.",
+      "Sprawdź, czy zmiany nieba pasują do poznanej sekwencji frontowej. Cztery obserwacje co pół godziny zajmują co najmniej 90 minut czasu kalendarzowego. Podany czas lekcji obejmuje aktywną pracę, nie czekanie między obserwacjami.",
     steps: [
       "Wykonaj cztery zapisy nieba w odstępie co najmniej 30 minut.",
       "W każdym zapisie oceń wysokość pozorną, grubość optyczną, opad i kierunek przemieszczania.",
@@ -304,16 +304,16 @@ export const lessonPractices = {
     steps: [
       "Wybierz mały, trwały element wysoko nad głową i określ, dokąd się przesuwa względem kompasu.",
       "Po dwóch minutach powtórz pomiar na drugim elemencie tej samej warstwy.",
-      "Odwróć kierunek ruchu o 180° i zapisz wynik jako przybliżony wiatr z kierunku, wraz z poziomem chmury.",
+      "Odwróć wskazany kierunek „dokąd” o 180° i zapisz przybliżony kierunek wiatru „skąd”, wraz z poziomem chmury. Nie odwracaj ponownie gotowego kierunku „skąd” z raportu.",
     ],
     outcome:
       "Jeżeli element rośnie w miejscu, fala stoi albo virga opada, oznacz wynik jako niejednoznaczny zamiast wymuszać kierunek.",
   },
   lotnictwo: {
-    label: "Odczyt operacyjny",
+    label: "Ćwiczenie odczytu depeszy",
     title: "Znajdź pułap, nie sumuj warstw",
     body:
-      "Pracuj na przykładzie: EPWA 161200Z 24012KT 9999 SCT020 BKN060 18/11 Q1016.",
+      "Pracuj na przykładzie szkoleniowym, nie na bieżącej pogodzie: EPWA 161200Z 24012KT 9999 SCT020 BKN060 18/11 Q1016.",
     steps: [
       "Przelicz wysokości grup zachmurzenia z setek stóp na pełne wartości AGL.",
       "Wskaż najniższą warstwę tworzącą pułap i oddziel ją od warstwy SCT.",
@@ -336,7 +336,7 @@ export const lessonPractices = {
       "Otrzymasz około 1300 m AGL nad niziną i tylko 200 m AGL nad przełęczą. Ta sama warstwa mapy nie oznacza tej samej wysokości nad człowiekiem.",
   },
   zagrozenia: {
-    label: "Macierz zagrożeń",
+    label: "Tabela danych o zagrożeniach",
     title: "Nie wyciągaj decyzji z jednego parametru",
     body:
       "Zbuduj cztery kolumny: oblodzenie, turbulencja, konwekcja i uskok. Każda wymaga innych dowodów.",
@@ -346,7 +346,7 @@ export const lessonPractices = {
       "Wybierz jedną sytuację, w której brak chmury nie oznacza braku zagrożenia.",
     ],
     outcome:
-      "Gotowa macierz ma pokazywać łączenie danych i ograniczenia, nie wydawać operacyjnej zgody na lot.",
+      "Masz cztery kolumny, co najmniej trzy potrzebne informacje w każdej i przykład zagrożenia bez widocznej chmury. To ćwiczenie porządkowania danych, nie zgoda na lot.",
   },
   ekspert: {
     label: "Pełna składnia WMO",
@@ -412,7 +412,7 @@ export const moduleChecks = {
     options: ["z północnego wschodu", "z południowego zachodu", "z południowego wschodu", "z północnego zachodu"],
     correct: 1,
     explanation:
-      "Ruch opisujemy jako kierunek „do”, a wiatr meteorologiczny jako kierunek „z”. Trzeba więc odwrócić kierunek o 180°.",
+      "W tym pytaniu podano, dokąd płynie element. Przybliżony wiatr jest z przeciwnego kierunku, więc odwracamy wartość o 180°. Kierunku już zapisanego jako „skąd”, zgodnie z konwencją WMO, nie odwracamy ponownie.",
   },
   lotnictwo: {
     prompt: "Która grupa jako najniższa tworzy pułap?",
