@@ -68,7 +68,7 @@ export const nomenclaturePresets = [
   {
     id: "mother-cloud",
     label: "Historia przemiany",
-    hint: "formalna nazwa potrzebuje dowodu pochodzenia",
+    hint: "sprawdź, z jakiej chmury powstał Cirrus",
     selection: {
       cloudId: "cirrus",
       speciesId: "spissatus",
@@ -82,7 +82,7 @@ export const nomenclaturePresets = [
   {
     id: "contrail",
     label: "Wyjątek smugi",
-    hint: "trwała świeża smuga ma nazwę bez dodatków morfologicznych",
+    hint: "świeżej trwałej smugi nie opisujemy gatunkiem ani odmianą",
     selection: {
       cloudId: "cirrus",
       speciesId: null,
@@ -130,15 +130,15 @@ export function getNomenclatureOrigins(cloudId) {
       mode: "genitus",
       name,
       label: `${name} · część chmury macierzystej`,
-      sourceIds: ["wmoMotherClouds"],
+      sourceIds: ["wmoMotherClouds", "wmoMotherNames"],
     })),
     ...profile.motherClouds.mutatus.map((name) => ({
       id: `mother:mutatus:${name}`,
       type: "mother",
       mode: "mutatus",
       name,
-      label: `${name} · przemiana całej chmury`,
-      sourceIds: ["wmoMotherClouds"],
+      label: `${name} · przemiana całej chmury lub jej większej części`,
+      sourceIds: ["wmoMotherClouds", "wmoMotherNames"],
     })),
   ];
   const specialClouds = specialCloudRules
@@ -260,9 +260,9 @@ export function evaluateNomenclature(selection) {
     explanation: status === "conflict"
       ? "Nazwa zawiera elementy, których reguły WMO nie pozwalają użyć razem."
       : status === "needs-evidence"
-        ? "Składnia jest dopuszczalna, ale końcówka opisuje historię lub przyczynę powstania, której zwykle nie da się ustalić z pojedynczego kadru."
+        ? "Te określenia można połączyć, ale pochodzenia zwykle nie da się ustalić z jednego zdjęcia. Potwierdź obserwację przemiany lub informację o tym, jak chmura powstała."
         : requiresEvidence
-          ? "Nazwa jest spójna, a obserwacja historii lub źródła powstania została świadomie potwierdzona."
+          ? "Nazwa jest spójna. Zaznaczyłeś, że znasz pochodzenie chmury; aplikacja nie weryfikuje tej informacji."
           : "Nazwa jest spójna z tabelą zgodności rodzaju i wybranych określeń WMO.",
     layers: [
       { label: "Rodzaj", value: cloud.name },

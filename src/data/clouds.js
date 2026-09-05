@@ -11,13 +11,13 @@ export const clouds = [
     headline: "Włókna, haczyki i pasma z kryształków lodu.",
     observe: [
       "delikatne włókna albo białe smugi",
-      "brak własnego cienia na ziemi",
+      "zwykle na tyle cienkie, że światło słoneczne nadal dociera do ziemi",
       "często haczykowate zakończenia i wyraźny kierunek przepływu",
     ],
     meaning:
       "Same nie muszą oznaczać pogorszenia, ale ich systematyczne gęstnienie może wyprzedzać strefę frontową.",
     trap:
-      "Smugi kondensacyjne mogą z czasem przejść w Cirrus homogenitus; pochodzenie antropogeniczne nie unieważnia klasyfikacji WMO.",
+      "Smuga samolotowa trwająca co najmniej 10 minut to Cirrus homogenitus. Jeśli dalej się rozprzestrzenia i zmienia wygląd, może otrzymać określenie homomutatus. Samego pochodzenia nie ustalisz z każdego zdjęcia.",
     species: ["fibratus", "uncinus", "spissatus", "castellanus", "floccus"],
     varieties: ["intortus", "radiatus", "vertebratus", "duplicatus"],
     features: ["mamma", "fluctus"],
@@ -62,7 +62,7 @@ export const clouds = [
     altitude: "zwykle 5–13 km",
     headline: "Bardzo drobne ziarenka i fale bez wyraźnego cienia.",
     observe: [
-      "drobne elementy pozornie mniejsze niż szerokość małego palca",
+      "drobne elementy wysoko nad horyzontem, zwykle mniejsze niż mały palec przy wyprostowanej ręce",
       "regularne fale, ławice albo „rybia łuska”",
       "elementy prawie bez szarego cieniowania",
     ],
@@ -92,7 +92,7 @@ export const clouds = [
         license: "CC BY-SA 3.0",
         page: "https://commons.wikimedia.org/wiki/File:Cirrocumulus_at_Tallinn.JPG",
         note: "Drobne pole Cirrocumulus sfotografowane nad Tallinnem.",
-        diagnostic: "O wyniku decyduje mała skala członów i brak silnego cieniowania, nie samo określenie „baranki”.",
+        diagnostic: "Porównaj wielkość drobnych kłębków i ich słabe cieniowanie; samo określenie „baranki” nie odróżnia rodzajów chmur.",
       },
       {
         id: "cirrocumulus-bergsfjorden",
@@ -112,7 +112,7 @@ export const clouds = [
     code: "Cs",
     level: "wysokie",
     altitude: "zwykle 5–13 km",
-    headline: "Przejrzysta zasłona, która często zdradza się halo.",
+    headline: "Cienka zasłona, przy której może być widoczny świetlny pierścień: halo.",
     observe: [
       "mleczna lub włóknista zasłona na dużej części nieba",
       "Słońce nadal rzuca cienie",
@@ -166,7 +166,7 @@ export const clouds = [
     altitude: "zwykle 2–7 km",
     headline: "Ławice średnich kłębów z cieniem i strukturą.",
     observe: [
-      "elementy pozornie szerokości około 1–3 palców",
+      "elementy wysoko nad horyzontem, pozornie szerokości około 1–3 palców przy wyprostowanej ręce",
       "często jasna i ciemna strona każdego kłębu",
       "ławice, soczewki, wieżyczki albo rozsypane płaty",
     ],
@@ -331,14 +331,14 @@ export const clouds = [
     altitude: "od powierzchni do około 2 km",
     headline: "Duże, połączone wały lub płaty na niskim poziomie.",
     observe: [
-      "duże elementy, często szersze niż trzy palce",
+      "duże elementy wysoko nad horyzontem, często szersze niż trzy palce przy wyprostowanej ręce",
       "ciemne podstawy i jasne kopuły",
       "warstwa ma przerwy albo wyraźne człony",
     ],
     meaning:
       "Często tworzy się pod inwersją, gdy mieszanie jest płytkie; bywa rozległy, ale opad zwykle jest słaby.",
     trap:
-      "Z góry może przypominać pole Cumulus. Perspektywa jest częścią dowodu: oceń, czy elementy tworzą wspólną warstwę.",
+      "Z góry może przypominać pole Cumulus. Sprawdź, czy kłęby są oddzielne, czy łączą się we wspólną warstwę; widok z samolotu różni się od widoku z ziemi.",
     species: ["stratiformis", "lenticularis", "castellanus", "floccus", "volutus"],
     varieties: [
       "translucidus",
@@ -389,7 +389,7 @@ export const clouds = [
     code: "St",
     level: "niskie",
     altitude: "od powierzchni do około 2 km",
-    headline: "Niska, jednolita warstwa: mgła, która uniosła się nad grunt.",
+    headline: "Niska, zwykle szara warstwa bez wyraźnych kłębów.",
     observe: [
       "prawie brak członów i pionowego rozwoju",
       "jednolita szarość albo postrzępione fractus",
@@ -429,8 +429,8 @@ export const clouds = [
         author: "Famartin",
         license: "CC BY-SA 3.0",
         page: "https://commons.wikimedia.org/wiki/File:2014-03-10_08_47_44_Stratus_clouds_and_virga_in_Elko%2C_Nevada.JPG",
-        note: "Stratus z pasmami virga nad Elko w Nevadzie.",
-        diagnostic: "Virga jest cechą dodatkową; o rodzaju nadal decyduje niska, warstwowa budowa chmury.",
+        note: "Stratus i smugi opadu nad Elko w Nevadzie, zgodnie z opisem autora zdjęcia.",
+        diagnostic: "Oceń niską warstwę osobno od smug opadu. Ten kadr nie rozstrzyga, z której chmury pochodzą smugi; virga nie jest cechą przypisaną Stratus w tabeli WMO.",
       },
     ],
   },
@@ -448,7 +448,7 @@ export const clouds = [
       "oddzielne komórki zamiast wspólnej warstwy",
     ],
     meaning:
-      "Humilis wskazuje płytką konwekcję, a congestus silny rozwój, który może poprzedzać Cumulonimbus.",
+      "Niski humilis ma niewielki rozwój pionowy. Wysoki, rosnący congestus może poprzedzać chmurę burzową Cumulonimbus.",
     trap:
       "Granica congestus–Cumulonimbus nie zależy wyłącznie od wielkości. Szukaj włóknistego lub gładkiego, lodowego wierzchołka.",
     species: ["humilis", "mediocris", "congestus", "fractus"],
@@ -473,7 +473,7 @@ export const clouds = [
         license: "domena publiczna",
         page: "https://commons.wikimedia.org/wiki/File:Cumulus_mediocris_3.JPG",
         note: "Cumulus mediocris z umiarkowanym rozwojem pionowym.",
-        diagnostic: "Kopuły są wyższe niż u humilis, ale wierzchołek pozostaje wyraźnie kłębiasty i nie wykazuje oblodzenia.",
+        diagnostic: "Kopuły są wyższe niż u humilis, ale wierzchołek pozostaje wyraźnie kłębiasty. Wygładzanie lub włóknienie jego konturów wymaga porównania z Cumulonimbus.",
       },
       {
         id: "cumulus-humilis-schwarzwald",
@@ -493,7 +493,7 @@ export const clouds = [
     code: "Cb",
     level: "pionowe",
     altitude: "od niskiej podstawy do górnej troposfery",
-    headline: "Głęboka konwekcja z lodowym wierzchołkiem i groźną pogodą.",
+    headline: "Wysoka chmura burzowa z wygładzonym lub włóknistym wierzchołkiem.",
     observe: [
       "ogromny rozwój pionowy",
       "gładki lub włóknisty wierzchołek, często kowadło incus",

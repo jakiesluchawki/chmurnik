@@ -9,6 +9,7 @@ import { layersHeadings, windyReadingSteps, windCaveats, hazardCards, soundingRe
 import { soundingScenarios, soundingGlossary } from "../src/data/soundings.js";
 import { savedHypothesisMessage } from "../src/lib/observations.js";
 import { clouds } from "../src/data/clouds.js";
+import { cloudProfiles, taxonomyTerms, taxonomyCategories } from "../src/data/encyclopedia.js";
 import { metarStructurePhases, metarDecodeSections, metarTrainingScenarios, tafTrainingScenarios, aviationBriefingSets } from "../src/data/metar-training.js";
 import { metarExamples, tafExamples, practiceCases } from "../src/data/field-practice.js";
 import { lessons } from "../src/data/lessons.js";
@@ -25,7 +26,7 @@ test("the combined copy review retains every observation question and answer, no
   for (const value of [...fieldPrinciples, ...Object.values(pairDiscriminators)]) assert.ok(text.includes(value), value);
   assert.doesNotMatch(text, /<!-- (FIELD_|COMPARISON_COPY)/);
   assert.ok(text.includes("Indeks terminów"));
-  assert.ok(text.includes("monografie poszczególnych chmur wymagają jeszcze"));
+  assert.ok(text.includes("nie jest niezależną recenzją meteorologiczną"));
 });
 
 test("the complete learning review retains every card and quiz answer", async () => {
@@ -104,7 +105,7 @@ test("the field-tools review preserves all examples and every practice choice an
   ];
   for (const value of values) assert.ok(text.includes(value), value);
   assert.doesNotMatch(text, /<!-- FIELD_(REPORT_EXAMPLES|PRACTICE_CASES) -->/);
-  assert.match(text, /monografie poszczególnych chmur wymagają jeszcze/);
+  assert.match(text, /monografie wszystkie 10 rodzajów/);
 });
 
 test("the full lessons review includes every chapter, recall answer, example and practice", async () => {
@@ -134,4 +135,20 @@ test("the combined copy review preserves complete comparison introductions and s
     const source = await readFile(new URL(`../design/copy-v4-${name}-review.md`, import.meta.url), "utf8");
     assert.ok(text.includes(source.trim()), name);
   }
+});
+
+test("the copy review includes all ten monographs, thirty photo captions and forty-nine terms", async () => {
+  const text = await readFile(new URL("../design/copy-v4-review.md", import.meta.url), "utf8");
+  const strings = (value) => typeof value === "string" ? [value]
+    : Array.isArray(value) ? value.flatMap(strings) : Object.values(value).flatMap(strings);
+  for (const cloud of clouds) {
+    const values = [cloud.headline, cloud.meaning, cloud.trap, ...cloud.observe, ...strings(cloudProfiles[cloud.id]),
+      ...cloud.images.flatMap((photo) => [photo.note, photo.diagnostic, photo.author, photo.license, photo.page])];
+    for (const value of values) assert.ok(text.includes(value), `${cloud.id}: ${value}`);
+  }
+  for (const category of taxonomyCategories) assert.ok(text.includes(category.description));
+  for (const term of taxonomyTerms) {
+    for (const value of [term.name, term.polish, term.definition, term.diagnostic]) assert.ok(text.includes(value), `${term.id}: ${value}`);
+  }
+  assert.doesNotMatch(text, /<!-- (CLOUD_MONOGRAPHS|TAXONOMY_TERMS) -->/);
 });

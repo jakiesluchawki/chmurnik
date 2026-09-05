@@ -7,7 +7,7 @@ export const taxonomyCategories = [
     singular: "Gatunek",
     count: 15,
     description:
-      "Opisują kształt i strukturę chmury. Jeden rodzaj może mieć kilka gatunków, ale nie każdy rodzaj ma gatunki.",
+      "Opisują kształt i budowę chmury. Na przykład Cumulus humilis jest niski i płaski, a Cumulus congestus silnie wypiętrzony. Nie każdy rodzaj dzieli się na gatunki.",
   },
   {
     id: "varieties",
@@ -15,7 +15,7 @@ export const taxonomyCategories = [
     singular: "Odmiana",
     count: 9,
     description:
-      "Doprecyzowują układ elementów albo stopień przejrzystości. Niektóre odmiany mogą występować jednocześnie.",
+      "Opisują układ chmur albo to, ile światła przepuszcza warstwa. Jedna chmura może mieć kilka odmian, o ile ich cechy się nie wykluczają.",
   },
   {
     id: "features",
@@ -23,7 +23,7 @@ export const taxonomyCategories = [
     singular: "Cecha dodatkowa",
     count: 11,
     description:
-      "Nazwy szczególnych części chmury lub zjawisk bezpośrednio z nią związanych, takich jak kowadło, wał czy virga.",
+      "Nazywają charakterystyczne części chmury i związane z nią zjawiska, na przykład kowadło, wał szkwałowy lub virga: opad, który nie dociera do ziemi.",
   },
   {
     id: "accessory",
@@ -126,9 +126,9 @@ export const taxonomyTerms = [
     name: "stratiformis",
     polish: "warstwowy",
     definition:
-      "Rozległa ławica lub warstwa złożona z połączonych albo regularnie rozmieszczonych członów.",
+      "Rozległa ławica lub warstwa złożona z połączonych albo regularnie rozmieszczonych kłębów, płatów czy wałów.",
     diagnostic:
-      "Dominuje układ poziomy i duży zasięg. Rozmiar elementów oraz cieniowanie rozstrzygają między Cc, Ac i Sc.",
+      "Chmury rozciągają się przede wszystkim na boki. Wielkość elementów i ich cieniowanie pomagają odróżnić Cirrocumulus (Cc), Altocumulus (Ac) i Stratocumulus (Sc).",
     genera: ["cirrocumulus", "altocumulus", "stratocumulus"],
     sourceIds: wmoSources,
   },
@@ -166,7 +166,7 @@ export const taxonomyTerms = [
     definition:
       "Jednolita zasłona lub warstwa bez wyraźnych członów, włókien i charakterystycznej struktury.",
     diagnostic:
-      "Wysoko położona, często halo-twórcza zasłona wskazuje Cs; bardzo niska szara warstwa prowadzi do St.",
+      "Wysoka, cienka zasłona, czasem z halo, może być Cirrostratus (Cs). Bardzo niska, szara warstwa częściej odpowiada Stratus (St).",
     genera: ["cirrostratus", "stratus"],
     sourceIds: wmoSources,
   },
@@ -178,7 +178,7 @@ export const taxonomyTerms = [
     definition:
       "Nieregularne, poszarpane fragmenty chmur, które szybko zmieniają kształt i mogą powstawać pod opadem lub w turbulentnej warstwie.",
     diagnostic:
-      "Stratus fractus jest bardziej warstwowy i wilgotny; Cumulus fractus zdradza konwekcyjne kłębienie mimo niepełnego rozwoju.",
+      "W Cumulus fractus widać zalążki kłębiastych kopuł. Stratus fractus ma mniej wypukłą budowę. Sam postrzępiony brzeg nie wystarcza do ich rozróżnienia.",
     genera: ["stratus", "cumulus"],
     sourceIds: wmoSources,
   },
@@ -214,7 +214,7 @@ export const taxonomyTerms = [
     definition:
       "Silnie rozwinięty Cumulus z ostrymi, kalafiorowymi wieżami i wysokością znacznie większą od szerokości podstawy.",
     diagnostic:
-      "Dopóki wierzchołek pozostaje wyraźnie kłębiasty i ciekłowodny, klasyfikacja nie przechodzi jeszcze w Cumulonimbus.",
+      "Porównaj ostre, kłębiaste kopuły z wygładzającym się lub włóknistym wierzchołkiem Cumulonimbus. Nie określaj składu chmury wyłącznie na podstawie jej wielkości.",
     genera: ["cumulus"],
     sourceIds: wmoSources,
   },
@@ -332,7 +332,7 @@ export const taxonomyTerms = [
     definition:
       "Między elementami ławicy pozostają wyraźne szczeliny, przez które widać niebo, Słońce, Księżyc lub wyższą warstwę.",
     diagnostic:
-      "Prześwity znajdują się między członami; w translucidus światło przechodzi przez samą chmurę.",
+      "Prześwity znajdują się między kłębami lub płatami; w translucidus światło przechodzi przez samą chmurę.",
     genera: ["altocumulus", "stratocumulus"],
     sourceIds: wmoSources,
   },
@@ -344,7 +344,7 @@ export const taxonomyTerms = [
     definition:
       "Warstwa jest wystarczająco gruba, aby całkowicie zasłonić położenie Słońca lub Księżyca.",
     diagnostic:
-      "Opacus opisuje własność optyczną, dlatego nie rozstrzyga samodzielnie między Ac, As, Sc i St.",
+      "Ta odmiana mówi o zasłanianiu światła, nie o wysokości. Może dotyczyć Altocumulus, Altostratus, Stratocumulus lub Stratus.",
     genera: ["altocumulus", "altostratus", "stratocumulus", "stratus"],
     sourceIds: wmoSources,
   },
@@ -379,9 +379,10 @@ export const taxonomyTerms = [
     name: "virga",
     polish: "smugi opadu niedochodzące do ziemi",
     definition:
-      "Pionowe lub ukośne smugi opadu parujące albo sublimujące przed dotarciem do powierzchni.",
+      "Pionowe lub ukośne smugi opadu, które zanikają przed dotarciem do ziemi. Krople parują, a kryształki lodu mogą przechodzić bezpośrednio w parę wodną, czyli sublimować.",
     diagnostic:
       "Śledź, czy smuga zanika w powietrzu. Gdy opad dociera do gruntu, właściwym terminem jest praecipitatio.",
+    searchTerms: ["parujące przed dotarciem", "opad nie dociera do ziemi"],
     genera: ["cirrocumulus", "altocumulus", "altostratus", "nimbostratus", "stratocumulus", "cumulus", "cumulonimbus"],
     sourceIds: wmoSources,
   },
@@ -391,7 +392,7 @@ export const taxonomyTerms = [
     name: "praecipitatio",
     polish: "opad docierający do powierzchni",
     definition:
-      "Deszcz, śnieg, krupa lub inny hydrometeor wypadający z chmury i osiągający powierzchnię Ziemi.",
+      "Opad, na przykład deszcz, śnieg lub krupa, który wypada z chmury i dociera do powierzchni Ziemi.",
     diagnostic:
       "Termin dotyczy widocznego związku opadu z chmurą, nie jego intensywności ani czasu trwania.",
     genera: ["altostratus", "nimbostratus", "stratocumulus", "stratus", "cumulus", "cumulonimbus"],
@@ -416,11 +417,11 @@ export const taxonomyTerms = [
     name: "tuba",
     polish: "lej",
     definition:
-      "Lej lub stożek zwisający z podstawy chmury, wskazujący skoncentrowany wir. Po kontakcie z powierzchnią może być tornadem albo trąbą wodną.",
+      "Lej lub stożek zwisający z podstawy chmury i związany z wirującym powietrzem. O tornadzie decyduje kontakt wiru z powierzchnią, nie długość widocznego leja.",
     diagnostic:
-      "Sam wygląd na zdjęciu nie potwierdza kontaktu z gruntem; pył lub rozbryzg przy powierzchni jest osobnym dowodem.",
+      "Widoczny lej nie musi sięgać ziemi, choć wir już do niej dociera. Wirujące szczątki, pył lub rozbryzg u podstawy mogą być dodatkową wskazówką; nie podchodź bliżej, żeby to sprawdzić.",
     genera: ["cumulus", "cumulonimbus"],
-    sourceIds: wmoSources,
+    sourceIds: [...wmoSources, "nwsSpotterGlossary"],
   },
   {
     id: "asperitas",
@@ -465,7 +466,7 @@ export const taxonomyTerms = [
     name: "fluctus",
     polish: "fala Kelvina–Helmholtza",
     definition:
-      "Krótkotrwałe grzebienie fal przypominające załamujące się fale morskie, powstające przy silnym uskoku prędkości wiatru.",
+      "Krótkotrwałe grzebienie przypominające załamujące się fale morskie. Powstają przy uskoku wiatru, gdy sąsiednie warstwy powietrza poruszają się z różną prędkością.",
     diagnostic:
       "Regularne zawijające się grzebienie odróżniają fluctus od zwykłego pofalowania undulatus.",
     searchTerms: ["turbulencja", "uskok wiatru", "Kelvin Helmholtz", "fala"],
@@ -480,7 +481,7 @@ export const taxonomyTerms = [
     definition:
       "Lokalne, trwałe obniżenie podstawy Cumulonimbus, zwykle pod bezdeszczową częścią silnego prądu wstępującego.",
     diagnostic:
-      "Rotacja murus podnosi znaczenie operacyjne obserwacji, ale sama obecność obniżenia nie potwierdza tornada.",
+      "Obracająca się chmura ścienna jest niepokojącym objawem w burzy. Samo obniżenie podstawy nie potwierdza jednak tornada; sprawdź aktualne ostrzeżenia.",
     searchTerms: ["wall cloud", "superkomórka", "tornado"],
     genera: ["cumulonimbus"],
     sourceIds: wmoSources,
@@ -553,7 +554,7 @@ export const taxonomyTerms = [
     definition:
       "Cała chmura lub jej większa część przechodzi w nowy rodzaj. Nazwa pierwotnego rodzaju otrzymuje końcówkę -mutatus.",
     diagnostic:
-      "Przykład: Stratocumulus stratusmutatus oznacza, że warstwa Stratus rozwinęła członowaną strukturę Stratocumulus.",
+      "Przykład: Stratocumulus stratomutatus oznacza, że warstwa Stratus przekształciła się w chmurę z wyraźnymi kłębami lub wałami.",
     genera: ["cirrus", "cirrocumulus", "cirrostratus", "altocumulus", "altostratus", "nimbostratus", "stratocumulus", "stratus", "cumulus", "cumulonimbus"],
     sourceIds: wmoSources,
   },
@@ -600,9 +601,9 @@ export const taxonomyTerms = [
     name: "homomutatus",
     polish: "przekształcony z homogenitus",
     definition:
-      "Trwała chmura antropogeniczna, która rozwinęła wygląd jednego z naturalnych rodzajów, na przykład rozległego Cirrus.",
+      "Trwała smuga kondensacyjna, która rozprzestrzeniła się i zmieniła w Cirrus, Cirrocumulus lub Cirrostratus o wyglądzie podobnym do chmur powstałych naturalnie.",
     diagnostic:
-      "Termin zachowuje informację o pochodzeniu nawet wtedy, gdy morfologia odpowiada już zwykłej klasyfikacji rodzaju.",
+      "Nazwa zachowuje informację o pochodzeniu od samolotu, nawet gdy smuga nie jest już rozpoznawalna. Potrzebna jest obserwacja jej przemiany, nie tylko końcowego wyglądu.",
     genera: ["cirrus", "cirrocumulus", "cirrostratus"],
     sourceIds: ["wmoSpecialClouds"],
   },
@@ -612,7 +613,7 @@ export const taxonomyTerms = [
     name: "silvagenitus",
     polish: "powstały nad lasem",
     definition:
-      "Chmura powstająca lokalnie nad lasem wskutek zwiększonej wilgotności i parowania lub ewapotranspiracji.",
+      "Chmura powstająca lokalnie nad lasem dzięki wilgoci oddawanej przez rośliny i parującej z mokrych powierzchni. Parowanie połączone z oddawaniem wody przez rośliny to ewapotranspiracja.",
     diagnostic:
       "Związek przestrzenny i proces nad obszarem leśnym są istotniejsze niż sam kłębiasty wygląd.",
     genera: ["stratus"],
@@ -688,14 +689,14 @@ export const taxonomyTerms = [
 export const cloudProfiles = {
   cirrus: {
     essence:
-      "Cirrus jest zapisem przepływu w górnej troposferze: cienkim, lodowym i często silnie deformowanym przez wiatr. Jego znaczenie wynika bardziej z ewolucji całego pola niż z pojedynczego włókna.",
+      "Cirrus tworzy wysoko na niebie włókna i smugi z kryształków lodu, rozciągane przez wiatr. Obserwuj, czy pojedyncze pasma zanikają, czy stopniowo łączą się w coraz gęstszą zasłonę.",
     composition:
-      "Prawie wyłącznie kryształki lodu. Kształt smug zależy od opadania kryształków, uskoku wiatru i różnic wilgotności w kolejnych warstwach.",
+      "Prawie wyłącznie kryształki lodu. Opadające kryształki trafiają do warstw o różnej wilgotności i wietrze. Zmiana prędkości lub kierunku wiatru z wysokością, czyli uskok wiatru, rozciąga smugi.",
     formation: [
       "łagodne unoszenie wilgotnego powietrza przy strefach frontowych",
       "rozciąganie resztek kowadła Cumulonimbus",
       "lokalne fale i turbulencja w pobliżu prądu strumieniowego",
-      "trwałe smugi kondensacyjne przechodzące w homogenitus lub homomutatus",
+      "smugi samolotowe trwające co najmniej 10 minut (Cirrus homogenitus), które po dalszej przemianie mogą otrzymać określenie homomutatus",
     ],
     weather: [
       "Izolowany Cirrus może nie zapowiadać istotnej zmiany pogody.",
@@ -717,7 +718,7 @@ export const cloudProfiles = {
       "Silny uskok rozciąga włókna i może tworzyć radiatus, vertebratus lub fluctus.",
     ],
     lookAlikes: [
-      { name: "Smuga kondensacyjna", rule: "Sprawdź liniowy początek i rozszerzanie zgodne z ruchem samolotu; później klasyfikacja WMO nadal może prowadzić do Cirrus homogenitus." },
+      { name: "Smuga kondensacyjna", rule: "Obserwuj jej powstanie za samolotem. Smuga trwająca co najmniej 10 minut to Cirrus homogenitus; po rozprzestrzenieniu i przemianie może stać się Cirrus homomutatus." },
       { name: "Cirrostratus fibratus", rule: "Cirrostratus tworzy bardziej ciągłą zasłonę obejmującą dużą część nieba." },
       { name: "Virga z Altocumulus", rule: "Znajdź wyżej właściwą ławicę Ac i oceń większą skalę oraz cieniowanie elementów." },
     ],
@@ -729,12 +730,12 @@ export const cloudProfiles = {
     namingExamples: ["Cirrus fibratus", "Cirrus uncinus", "Cirrus spissatus cumulonimbogenitus", "Cirrus vertebratus"],
     motherClouds: {
       genitus: ["cirrocumulogenitus", "altocumulogenitus", "cumulonimbogenitus"],
-      mutatus: ["cirrostratomutatus", "altocumulomutatus", "cumulonimbomutatus"],
+      mutatus: ["cirrostratomutatus"],
     },
   },
   cirrocumulus: {
     essence:
-      "Cirrocumulus jest wysoką chmurą członowaną. Jego drobne elementy zdradzają małą skalę struktur na dużej wysokości, ale perspektywa i brak cienia muszą być oceniane razem.",
+      "Cirrocumulus tworzy wysoko położone ławice bardzo drobnych kłębków, ziaren lub fal. Przy rozpoznawaniu porównaj ich pozorną wielkość i cieniowanie; same „baranki” nie wystarczą do odróżnienia go od Altocumulus.",
     composition:
       "Głównie kryształki lodu, czasem silnie przechłodzone krople w krótkotrwałych fragmentach. Elementy często szybko zmieniają się wskutek przemian fazowych.",
     formation: [
@@ -750,10 +751,10 @@ export const cloudProfiles = {
       "Znajduje się zwykle na poziomach przelotowych i może współwystępować z falami oraz zmianami wiatru.",
       "Sam widok z ziemi nie pozwala określić głębokości warstwy ani intensywności turbulencji.",
     ],
-    optics: ["korona wokół Słońca lub Księżyca", "iridescencja w świeżych, cienkich elementach"],
+    optics: ["korona: niewielkie barwne pierścienie wokół Słońca lub Księżyca", "iryzacja: pastelowe barwy w cienkich fragmentach"],
     evolution: [
       "Może tworzyć się z Cirrus lub Cirrostratus i ponownie tracić członowaną strukturę.",
-      "Virga z drobnych elementów może prowadzić do floccus lub cavum.",
+      "Pod kępkami floccus może być widoczna virga, czyli opad zanikający przed dotarciem do ziemi. Cavum to otwór w warstwie, często ze smugą opadu pośrodku.",
     ],
     lookAlikes: [
       { name: "Altocumulus", rule: "Cc ma drobniejsze elementy i zwykle nie wykazuje własnego szarego cienia; sama reguła palca nie wystarcza." },
@@ -766,13 +767,13 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Cirrocumulus stratiformis undulatus", "Cirrocumulus lenticularis", "Cirrocumulus cavum"],
     motherClouds: {
-      genitus: ["cirrusgenitus", "cirrostratusgenitus"],
-      mutatus: ["cirrusmutatus", "cirrostratusmutatus", "altocumulomutatus"],
+      genitus: [],
+      mutatus: ["cirromutatus", "cirrostratomutatus", "altocumulomutatus"],
     },
   },
   cirrostratus: {
     essence:
-      "Cirrostratus jest wysoką lodową zasłoną. Może być niemal niewidoczny, dlatego ocena halo, kontrastu nieba i ostrości cieni jest ważniejsza od koloru.",
+      "Cirrostratus tworzy wysoko położoną zasłonę z kryształków lodu. Bywa tak cienki, że łatwiej dostrzec halo, czyli pierścień wokół Słońca lub Księżyca, niż samą chmurę. Brak halo jej nie wyklucza.",
     composition:
       "Kryształki lodu rozłożone w rozległej, zwykle cienkiej warstwie, często związanej z łagodnym wznoszeniem na dużej skali.",
     formation: [
@@ -790,7 +791,7 @@ export const cloudProfiles = {
     ],
     optics: ["halo 22°", "słońca poboczne", "górny i dolny łuk styczny", "słup słoneczny"],
     evolution: [
-      "Może gęstnieć i obniżać optycznie obraz nieba przed przejściem w Altostratus.",
+      "Gdy warstwa grubieje i sięga niżej, Cirrostratus może przekształcić się w Altostratus.",
       "Może powstać z Cirrus, Cirrocumulus lub lodowej części Cumulonimbus.",
     ],
     lookAlikes: [
@@ -798,25 +799,25 @@ export const cloudProfiles = {
       { name: "Jednolita mgiełka", rule: "Zanieczyszczenie lub wilgotna mgiełka zmniejsza kontrast blisko horyzontu, ale nie tworzy spójnej lodowej zasłony i halo." },
     ],
     fieldChecklist: [
-      "sprawdź halo i ostrość cieni rzucanych przez przedmioty",
+      "szukaj halo, zasłaniając samą tarczę Słońca przeszkodą; nie patrz w Słońce. Porównaj też ostrość cieni na ziemi",
       "oceń, czy zasłona obejmuje większość nieba",
       "obserwuj, czy warstwa grubieje i czy pojawiają się niższe chmury",
     ],
     namingExamples: ["Cirrostratus fibratus", "Cirrostratus nebulosus", "Cirrostratus duplicatus"],
     motherClouds: {
-      genitus: ["cirrusgenitus", "cirrocumulusgenitus", "cumulonimbogenitus"],
-      mutatus: ["cirrusmutatus", "cirrocumulomutatus", "altostratusmutatus"],
+      genitus: ["cirrocumulogenitus", "cumulonimbogenitus"],
+      mutatus: ["cirromutatus", "cirrocumulomutatus", "altostratomutatus"],
     },
   },
   altocumulus: {
     essence:
-      "Altocumulus obejmuje wyjątkowo różnorodne chmury średnie: od spokojnych ławic, przez fale orograficzne, po wieżyczki zapowiadające głębszą niestabilność.",
+      "Altocumulus występuje zwykle na średnich wysokościach, w ławicach kłębów, soczewkach lub wieżyczkach. Jego elementy często mają jasną i ciemną stronę. To jedna ze wskazówek odróżniających go od drobniejszego Cirrocumulus.",
     composition:
-      "Głównie krople wody, często przechłodzone; przy niższych temperaturach także kryształki lodu. Virga i cavum ujawniają przemiany fazowe.",
+      "Głównie krople wody, także przechłodzone, czyli wciąż ciekłe mimo temperatury poniżej 0°C. Może zawierać również lód. Smugi zanikającego opadu to virga, a otwór w warstwie ze smugą pośrodku nazywamy cavum.",
     formation: [
       "falowanie i kondensacja w stabilnej wilgotnej warstwie średniej",
       "płytka konwekcja ponad stabilną warstwą",
-      "unoszenie orograficzne tworzące lenticularis",
+      "falowy przepływ nad górami, w którym mogą powstawać soczewki lenticularis",
       "rozpad lub rozprzestrzenianie chmur konwekcyjnych",
     ],
     weather: [
@@ -827,7 +828,7 @@ export const cloudProfiles = {
     aviation: [
       "Przechłodzone krople mogą powodować oblodzenie, szczególnie w grubszych partiach i chmurach falowych.",
       "Lenticularis oraz równoległe ławice mogą wskazywać falę górską i silną turbulencję w pobliżu rotorów, mimo gładkiego wyglądu.",
-      "Castellanus jest ważnym sygnałem profilu termodynamicznego, lecz wymaga zestawienia z sondażem i prognozą.",
+      "Wieżyczki castellanus wskazują na niestabilność na ich wysokości. Porównaj je z sondażem, czyli pomiarem temperatury, wilgotności i wiatru w pionie, oraz z prognozą.",
     ],
     optics: ["korona", "iryzacja", "gloria obserwowana z góry", "cienie promieniste między ławicami"],
     evolution: [
@@ -846,8 +847,8 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Altocumulus stratiformis perlucidus", "Altocumulus castellanus", "Altocumulus lenticularis duplicatus", "Altocumulus cavum"],
     motherClouds: {
-      genitus: ["cumulusgenitus", "cumulonimbusgenitus"],
-      mutatus: ["cirrocumulomutatus", "altostratusmutatus", "nimbostratusmutatus", "stratocumulusmutatus", "cumulusmutatus"],
+      genitus: ["cumulogenitus", "cumulonimbogenitus"],
+      mutatus: ["cirrocumulomutatus", "altostratomutatus", "nimbostratomutatus", "stratocumulomutatus"],
     },
   },
   altostratus: {
@@ -862,21 +863,21 @@ export const cloudProfiles = {
     ],
     weather: [
       "Często poprzedza długotrwały opad i może przechodzić w Nimbostratus.",
-      "Virga może nie docierać do ziemi przy suchej warstwie pod chmurą, powodując ochłodzenie i lokalne porywy.",
+      "Virga to opad, który zanika przed dotarciem do ziemi. Parowanie kropli ochładza powietrze pod chmurą i może sprzyjać prądom zstępującym oraz porywom wiatru.",
     ],
     aviation: [
       "Może obejmować szeroki zakres wysokości i zawierać przechłodzoną wodę, dlatego potencjał oblodzenia zależy od temperatury i struktury warstwy.",
       "Jednolity wygląd z ziemi nie ujawnia liczby warstw ani intensywności oblodzenia.",
       "Opad i niższy pannus mogą znacząco pogarszać widzialność oraz ocenę właściwej podstawy.",
     ],
-    optics: ["Słońce jak przez matowe szkło w translucidus", "rzadko wyraźne halo; jego obecność przemawia raczej za Cirrostratus"],
+    optics: ["Słońce jak przez matowe szkło w odmianie translucidus", "halo przemawia raczej za współwystępującym Cirrostratus niż za samym Altostratus"],
     evolution: [
       "Grubieje w Nimbostratus, gdy opad staje się rozległy i ciągły.",
       "Może rozpadać się na Altocumulus albo powstawać z niego przez zlewanie elementów.",
     ],
     lookAlikes: [
       { name: "Cirrostratus", rule: "Halo i ostrzejsza tarcza Słońca wspierają Cs; As daje bardziej matowe, szare światło." },
-      { name: "Nimbostratus", rule: "Ns ma całkowicie zasłonięte Słońce i jest związany z rozległym opadem docierającym do powierzchni." },
+      { name: "Nimbostratus", rule: "Ns całkowicie zasłania Słońce, a jego podstawa jest rozmyta przez rozległy, niemal ciągły opad. Opad zwykle dociera do ziemi, ale nie musi." },
       { name: "Stratus", rule: "St jest znacznie niższy, ma wyraźniejszy kontakt z rzeźbą terenu i częściej daje mżawkę." },
     ],
     fieldChecklist: [
@@ -886,15 +887,15 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Altostratus translucidus", "Altostratus opacus praecipitatio", "Altostratus undulatus"],
     motherClouds: {
-      genitus: ["altocumulusgenitus", "cumulonimbusgenitus"],
-      mutatus: ["cirrostratusmutatus", "altocumulomutatus", "nimbostratusmutatus"],
+      genitus: ["altocumulogenitus", "cumulonimbogenitus"],
+      mutatus: ["cirrostratomutatus", "nimbostratomutatus"],
     },
   },
   nimbostratus: {
     essence:
       "Nimbostratus jest głęboką, rozległą chmurą opadu warstwowego. Jego klasyfikacja opiera się na całym systemie: ciągłym opadzie, zasłoniętym Słońcu i słabo określonej podstawie.",
     composition:
-      "Wielofazowa chmura o dużej grubości: krople, przechłodzona woda, kryształki lodu i opadające hydrometeory współistnieją na różnych poziomach.",
+      "Gruba chmura zawierająca na różnych poziomach krople, kryształki lodu, śnieg i inne cząstki opadu. Część kropli może pozostawać ciekła poniżej 0°C: to woda przechłodzona.",
     formation: [
       "grubienie Altostratus w rozległym ruchu wstępującym",
       "zlewanie i rozprzestrzenianie innych chmur w systemie frontowym",
@@ -902,7 +903,7 @@ export const cloudProfiles = {
     ],
     weather: [
       "Daje długotrwały deszcz lub śnieg obejmujący duży obszar.",
-      "Nie wyklucza wbudowanej konwekcji; wyładowania lub gwałtowne komórki wskazują na dodatkowe struktury Cumulonimbus.",
+      "W rozległej warstwie mogą być ukryte chmury Cumulonimbus. Wyładowania lub gwałtowne nasilenie opadu wymagają sprawdzenia, czy nie rozwija się burza.",
       "Pannus i parowanie opadu mogą stopniowo obniżać widzialną podstawę.",
     ],
     aviation: [
@@ -927,19 +928,19 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Nimbostratus praecipitatio", "Nimbostratus pannus", "Nimbostratus altostratomutatus"],
     motherClouds: {
-      genitus: ["cumulusgenitus", "cumulonimbusgenitus"],
-      mutatus: ["altocumulomutatus", "altostratusmutatus", "stratocumulusmutatus"],
+      genitus: ["cumulogenitus", "cumulonimbogenitus"],
+      mutatus: ["altocumulomutatus", "altostratomutatus", "stratocumulomutatus"],
     },
   },
   stratocumulus: {
     essence:
-      "Stratocumulus jest niską warstwą zbudowaną z dużych członów, wałów lub płatów. Często ujawnia granicę mieszania i inwersję w dolnej troposferze.",
+      "Stratocumulus tworzy niską warstwę dużych, często połączonych kłębów, wałów lub płatów. Może rozciągać się pod inwersją: warstwą, w której temperatura rośnie z wysokością i ogranicza dalsze unoszenie powietrza.",
     composition:
       "Głównie krople wody, przy ujemnej temperaturze często przechłodzone; w chłodniejszych i grubszych partiach możliwy jest lód.",
     formation: [
       "rozlewanie Cumulus pod inwersją",
       "turbulentne mieszanie w wilgotnej warstwie granicznej",
-      "adwekcja chłodnego powietrza nad cieplejszą powierzchnię",
+      "napływ chłodnego powietrza nad cieplejszą powierzchnię",
       "transformacja Stratus albo pozostałości systemu opadowego",
     ],
     weather: [
@@ -948,7 +949,7 @@ export const cloudProfiles = {
       "Castellanus lub rozwijające się człony wskazują na większą niestabilność niż płaski stratiformis.",
     ],
     aviation: [
-      "Może tworzyć rozległy niski pułap i warunki IMC.",
+      "Może tworzyć niski pułap i warunki IMC, czyli warunki meteorologiczne niespełniające minimów dla lotu z widocznością.",
       "Przechłodzona warstwa jest potencjalnym środowiskiem oblodzenia; intensywność nie wynika z samego rodzaju.",
       "W pobliżu terenu górskiego lenticularis i fluctus mogą wskazywać przepływ falowy i turbulencję.",
     ],
@@ -963,35 +964,35 @@ export const cloudProfiles = {
       { name: "Pole Cumulus z góry", rule: "Sprawdź, czy elementy są połączone wspólną warstwą i czy obserwujesz je z samolotu." },
     ],
     fieldChecklist: [
-      "oceń wielkość członów i procent szczelin",
+      "porównaj wielkość kłębów i oszacuj, ile nieba widać między nimi",
       "sprawdź, czy podstawa jest wspólna dla całego pola",
-      "obserwuj kierunek transformacji: warstwa zamyka się czy rozpada",
+      "obserwuj, czy przerwy w warstwie się zamykają, czy powiększają",
     ],
     namingExamples: ["Stratocumulus stratiformis perlucidus", "Stratocumulus volutus", "Stratocumulus asperitas"],
     motherClouds: {
-      genitus: ["altostratusgenitus", "nimbostratusgenitus", "cumulusgenitus", "cumulonimbusgenitus"],
-      mutatus: ["altocumulomutatus", "nimbostratusmutatus", "stratusmutatus", "cumulusmutatus"],
+      genitus: ["altostratogenitus", "nimbostratogenitus", "cumulogenitus", "cumulonimbogenitus"],
+      mutatus: ["altocumulomutatus", "nimbostratomutatus", "stratomutatus"],
     },
   },
   stratus: {
     essence:
-      "Stratus jest bardzo niską, prawie bezstrukturalną warstwą. Fizycznie jest bliski mgle; rozróżnienie zależy od tego, czy chmura styka się z powierzchnią w miejscu obserwacji.",
+      "Stratus to niska, zwykle szara warstwa bez wyraźnych kłębów. Może powstać z unoszącej się mgły, ale nie jest to jedyna droga. Obserwator zanurzony w tej samej warstwie na wzgórzu widzi mgłę, a osoba w dolinie chmurę nad sobą.",
     composition:
-      "Drobne krople wody, często w płytkiej warstwie przyziemnej; przy temperaturach ujemnych możliwe przechłodzone krople i ziarna lodowe.",
+      "Zwykle drobne krople wody, także przechłodzone, czyli ciekłe poniżej 0°C. Przy niskiej temperaturze może zawierać drobne cząstki lodu, a w grubszej warstwie także cząstki opadu.",
     formation: [
-      "radiacyjne lub adwekcyjne ochłodzenie wilgotnej warstwy",
+      "ochładzanie wilgotnego powietrza nad stygnącym podłożem lub podczas napływu nad chłodniejszą powierzchnię",
       "unoszenie mgły lub obniżenie warstwy chmurowej ku terenowi",
       "mieszanie chłodnego powietrza z wilgocią nad wodą lub mokrym gruntem",
       "nasycenie powietrza chłodzonego przez opad",
     ],
     weather: [
-      "Może dawać mżawkę, drobny śnieg lub ziarna lodowe, ale nie typowy silny opad konwekcyjny.",
+      "Może dawać mżawkę, śnieg lub śnieg ziarnisty, ale nie typową ulewę z chmury burzowej.",
       "Nawet bez opadu znacząco ogranicza widzialność i dopływ promieniowania słonecznego.",
       "Rozrywanie warstwy zależy od ogrzewania podłoża, mieszania i napływu suchszego powietrza.",
     ],
     aviation: [
-      "Bardzo niski pułap i słaba widzialność mogą być ważniejsze operacyjnie niż intensywność opadu.",
-      "Kontakt z terenem tworzy zasłonięte wzniesienia i ryzyko CFIT.",
+      "Dla pilota bardzo niski pułap i słaba widzialność mogą mieć większe znaczenie niż siła opadu.",
+      "Chmura może zasłaniać wzniesienia. Zwiększa to ryzyko CFIT: zderzenia sterowanego, sprawnego samolotu z terenem.",
       "Zimą przechłodzony Stratus może powodować oblodzenie w płytkiej, ale rozległej warstwie.",
     ],
     optics: ["korona w jednorodnych drobnych kroplach", "łuk mgłowy i gloria przy obserwacji z góry"],
@@ -1011,13 +1012,13 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Stratus nebulosus opacus", "Stratus fractus", "Stratus undulatus praecipitatio"],
     motherClouds: {
-      genitus: ["cumulusgenitus", "cumulonimbusgenitus"],
+      genitus: ["nimbostratogenitus", "cumulogenitus", "cumulonimbogenitus"],
       mutatus: ["stratocumulomutatus"],
     },
   },
   cumulus: {
     essence:
-      "Cumulus jest widzialnym przekrojem prądów wstępujących w warstwie granicznej. Płaska podstawa pokazuje poziom kondensacji, a kształt wierzchołka tempo i głębokość konwekcji.",
+      "Cumulus rośnie tam, gdzie unoszące się powietrze ochładza się na tyle, że powstają krople. Płaska podstawa często wyznacza ten poziom, a kopuły pozwalają śledzić dalszy wzrost chmury. Porównuj je w kolejnych obserwacjach.",
     composition:
       "W niższych i cieplejszych częściach krople wody; w silnie wypiętrzonych i zimnych partiach mogą pojawiać się przechłodzone krople i pierwsze kryształki lodu.",
     formation: [
@@ -1032,7 +1033,7 @@ export const cloudProfiles = {
     ],
     aviation: [
       "Wewnątrz aktywnych wież występują silne prądy pionowe i turbulencja.",
-      "Congestus może zawierać przechłodzoną wodę oraz intensywny opad; brak wyładowań nie czyni go obojętnym.",
+      "Congestus może zawierać przechłodzoną wodę oraz intensywny opad. Brak wyładowań nie oznacza bezpiecznych warunków do lotu.",
       "Podstawa Cumulus pomaga szacować poziom kondensacji, ale jest lokalną obserwacją, nie pełną prognozą pułapu.",
     ],
     optics: ["jasne srebrne obwódki przy Słońcu za chmurą", "promienie i cienie między komórkami"],
@@ -1053,22 +1054,22 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Cumulus humilis", "Cumulus mediocris", "Cumulus congestus praecipitatio", "Cumulus fractus"],
     motherClouds: {
-      genitus: ["altocumulusgenitus", "stratocumulusgenitus", "stratusgenitus"],
-      mutatus: ["altocumulomutatus", "stratocumulomutatus"],
+      genitus: ["altocumulogenitus", "stratocumulogenitus"],
+      mutatus: ["stratocumulomutatus", "stratomutatus"],
     },
   },
   cumulonimbus: {
     essence:
-      "Cumulonimbus jest głębokim układem konwekcyjnym, nie tylko efektowną chmurą. Jego pełna ocena obejmuje rdzeń wstępujący, opad, wypływ, kowadło i otoczenie burzy.",
+      "Cumulonimbus to silnie wypiętrzona chmura, w której gwałtowne ruchy powietrza mogą przynosić burzę, grad i szkwały. Zagrożenia nie kończą się na jej widocznym brzegu; ważne są też opad, kowadło i wypływ powietrza pod chmurą.",
     composition:
       "Wielofazowa mieszanina kropli, dużych przechłodzonych kropel, kryształków lodu, śniegu, krupy i gradu w silnych prądach pionowych.",
     formation: [
-      "głęboka konwekcja przy odpowiedniej wilgoci, niestabilności i mechanizmie inicjacji",
-      "rozwój Cumulus congestus po przekroczeniu poziomu zlodzenia",
+      "silne unoszenie wilgotnego powietrza w warunkach sprzyjających dalszemu wzrostowi chmury",
+      "rozwój Cumulus congestus, gdy wierzchołek zaczyna się wygładzać i nabierać lodowej struktury",
       "organizacja komórek przez uskok wiatru, granice wypływu lub wymuszanie frontowe",
     ],
     weather: [
-      "Może powodować ulewny opad, grad, wyładowania, porywy, downburst, trąby i gwałtowne powodzie.",
+      "Może powodować ulewę, grad, wyładowania, trąby i gwałtowne powodzie. Downburst to silny prąd zstępujący, który po dotarciu do ziemi rozchodzi się na boki i wywołuje niszczące porywy.",
       "Zagrożenia mogą występować daleko od widocznego rdzenia: wyładowania z kowadła, silny wypływ i turbulencja.",
       "Brak klasycznego kowadła nie wyklucza aktywnego Cumulonimbus calvus.",
     ],
@@ -1095,8 +1096,8 @@ export const cloudProfiles = {
     ],
     namingExamples: ["Cumulonimbus calvus", "Cumulonimbus capillatus incus", "Cumulonimbus capillatus mamma", "Cumulonimbus murus cauda"],
     motherClouds: {
-      genitus: ["altocumulusgenitus", "altostratusgenitus", "nimbostratusgenitus", "stratocumulusgenitus", "cumulusgenitus"],
-      mutatus: ["altocumulomutatus", "stratocumulomutatus", "cumulusmutatus"],
+      genitus: ["altocumulogenitus", "altostratogenitus", "nimbostratogenitus", "stratocumulogenitus", "cumulogenitus"],
+      mutatus: ["cumulomutatus"],
     },
   },
 };

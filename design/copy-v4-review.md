@@ -6,13 +6,14 @@ nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
 wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
 obserwacji, pocztówki, kopie, cały warsztat szkoleniowy METAR/TAF, czytnik
 wklejanych depesz, symulator wiatru, ćwiczenia odczytu map oraz pełne dziewięć
-lekcji z rozdziałami, pytaniami, odpowiedziami i zadaniami.
+lekcji z rozdziałami, pytaniami, odpowiedziami i zadaniami. Indeks terminów
+obejmuje wszystkie 49 haseł, a monografie wszystkie 10 rodzajów i opisy 30 zdjęć.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
-To wersja robocza, nie opublikowane wydanie. Indeks terminów
-i monografie poszczególnych chmur wymagają jeszcze osobnego
-przeglądu.
+To wersja robocza, nie opublikowane wydanie. Redakcja atlasu i indeksu obejmuje
+także korektę nazw pochodzenia według WMO. Przegląd języka i wskazanych błędów
+nie jest niezależną recenzją meteorologiczną całej aplikacji.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
 Dokument można odtworzyć poleceniem:
@@ -918,8 +919,8 @@ Sprawdź głębokość układu i charakter opadu. Mżawka z jednolitej bardzo ni
 Szukaj członów i przerw. Stratocumulus zachowuje duże wały lub płaty, podczas gdy Stratus jest bardziej jednolity i może dawać mżawkę.
 
 Treść kolumn pochodzi z opisów poszczególnych chmur; fotografie, autorzy,
-licencje i źródła pozostają bez zmian. Opisy wszystkich dziesięciu rodzajów
-wymagają jeszcze osobnego przeglądu języka, nie są automatycznie uznane za gotowe.
+licencje i źródła pozostają widoczne. Pełny przegląd języka opisów wszystkich
+dziesięciu rodzajów jest dołączony w sekcji monografii, także z niezmienionymi treściami.
 
 Ograniczenie:
 
@@ -936,7 +937,7 @@ z którymi rodzajami się łączy.
 
 Zobacz, które chmury łatwo pomylić i jakie obserwacje pomagają je odróżnić.
 
-Szczegółowe podstrony indeksu, ćwiczeń i opisy gatunków nadal wymagają przeglądu.
+Wszystkie hasła indeksu i opisy rodzajów są dołączone w dalszej części dokumentu.
 Nowe teksty i obsługa braku danych wymagają wizualnego sprawdzenia na telefonie,
 iPadzie, Macu oraz w WWW. Testy automatyczne nie zastępują tej kontroli.
 
@@ -5505,3 +5506,1812 @@ Długa nazwa jest poprawna tylko wtedy, gdy każdy człon opisuje obserwowalną 
 3. Jeśli widzisz przemianę, rozważ genitus lub mutatus i zapisz dowód historyczny, którego wymaga ta końcówka.
 
 **Warunek ukończenia:** Jeżeli nie potrafisz wskazać dowodu dla członu nazwy, pomiń go. Krótsza klasyfikacja z dobrym uzasadnieniem jest lepsza od efektownej nadinterpretacji.
+
+---
+
+# CHMURNIK V4: wszystkie opisy chmur i hasła indeksu
+
+Stan: 5 września 2026. Całość, łącznie z niezmienionymi opisami, jest pobierana
+z danych aplikacji do `copy-v4-review.md`. Zachowano 10 rodzajów, 30 fotografii,
+49 haseł, autorów, licencje i ostrzeżenia lotnicze. Zmieniono język wprowadzeń,
+objaśniono trudne określenia i usunięto niepoprawne nazwy pochodzenia.
+Nie jest to potwierdzenie trafności modelu ani niezależna recenzja całego atlasu.
+
+## Karta rodzaju
+
+**Porównaj z własną obserwacją:** Odpowiedz na pytania o wygląd chmury.
+
+**Porównaj z podobną chmurą:** Obejrzyj zdjęcia i różnice obok siebie.
+
+Sekcje: **Na co patrzeć**, **Co może mówić o pogodzie**,
+**Na co uważać przy rozpoznawaniu**, **Z czego jest zbudowana**,
+**Najczęstsze mechanizmy powstawania**, **Pogoda i zmiany chmury**,
+**Typowe przemiany**, **Co ta nazwa mówi, a czego nie mówi**,
+**Z czego składa się nazwa WMO**, **Przykłady pełnych nazw**,
+**Genitus i mutatus**, **Z czym najłatwiej pomylić**, **Zjawiska optyczne**,
+**Co sprawdzić podczas obserwacji**, **Metryka fotografii**.
+
+Ograniczenie lotnicze:
+
+> Materiał edukacyjny. Nie zastępuje odprawy, prognoz, depesz, ostrzeżeń ani procedur operacyjnych.
+
+Pochodzenie:
+
+> To najczęściej spotykane przykłady pochodzenia z tabeli WMO, nie wszystkie możliwe przemiany. Dodaj pochodzenie do nazwy tylko wtedy, gdy znasz historię chmury.
+
+Przy braku przykładów:
+
+> Tabela nie wymienia typowych przykładów genitus dla tego rodzaju.
+
+### Galeria zdjęć
+
+**Porównaj zdjęcia · 3 przykłady**
+
+**Ten sam rodzaj nie zawsze wygląda tak samo**
+
+Obejrzyj chmurę w różnym świetle i na różnych etapach rozwoju.
+Spróbuj wskazać jej charakterystyczne cechy, a potem porównaj je z opisem.
+
+**Najpierw obserwacja:** Po czym poznajesz, że to [nazwa rodzaju]?
+
+Przyjrzyj się kształtom i cieniom. Czy widzisz pojedyncze kłęby, włókna czy
+rozległą warstwę? Nie każde zdjęcie pokaże wszystkie cechy rodzaju.
+
+**Pokaż opis zdjęcia** odsłania **Cechy widoczne na zdjęciu**, komentarz oraz
+autora i licencję. **Ukryj opis zdjęcia** wraca do pytania.
+Wybranie kolejnego zdjęcia ponownie chowa komentarz.
+Sterowanie: **Poprzedni kadr**, **Następny kadr**, trzy numerowane miniatury.
+
+## Dziesięć pełnych opisów
+
+### Cirrus: pierzaste
+
+Ci · wysokie · zwykle 5–13 km w umiarkowanych szerokościach
+
+Włókna, haczyki i pasma z kryształków lodu.
+
+Cirrus tworzy wysoko na niebie włókna i smugi z kryształków lodu, rozciągane przez wiatr. Obserwuj, czy pojedyncze pasma zanikają, czy stopniowo łączą się w coraz gęstszą zasłonę.
+
+**Na co patrzeć:**
+
+- delikatne włókna albo białe smugi
+
+- zwykle na tyle cienkie, że światło słoneczne nadal dociera do ziemi
+
+- często haczykowate zakończenia i wyraźny kierunek przepływu
+
+**Co może mówić o pogodzie:** Same nie muszą oznaczać pogorszenia, ale ich systematyczne gęstnienie może wyprzedzać strefę frontową.
+
+**Na co uważać przy rozpoznawaniu:** Smuga samolotowa trwająca co najmniej 10 minut to Cirrus homogenitus. Jeśli dalej się rozprzestrzenia i zmienia wygląd, może otrzymać określenie homomutatus. Samego pochodzenia nie ustalisz z każdego zdjęcia.
+
+**Z czego jest zbudowana:**
+
+Prawie wyłącznie kryształki lodu. Opadające kryształki trafiają do warstw o różnej wilgotności i wietrze. Zmiana prędkości lub kierunku wiatru z wysokością, czyli uskok wiatru, rozciąga smugi.
+
+**Jak powstaje:**
+
+- łagodne unoszenie wilgotnego powietrza przy strefach frontowych
+- rozciąganie resztek kowadła Cumulonimbus
+- lokalne fale i turbulencja w pobliżu prądu strumieniowego
+- smugi samolotowe trwające co najmniej 10 minut (Cirrus homogenitus), które po dalszej przemianie mogą otrzymać określenie homomutatus
+
+**Pogoda i zmiany chmury:**
+
+- Izolowany Cirrus może nie zapowiadać istotnej zmiany pogody.
+- Narastanie pokrycia, przejście w Cirrostratus i obniżanie kolejnych warstw wspiera interpretację zbliżania się rozległego systemu frontowego.
+- Spissatus pochodzenia burzowego może pozostawać długo po zaniku głównego rdzenia konwekcyjnego.
+
+**Typowe przemiany:**
+
+- Cirrus może gęstnieć i rozszerzać się w Cirrostratus.
+- Fragmenty kowadła mogą odrywać się jako Cirrus spissatus cumulonimbogenitus.
+- Silny uskok rozciąga włókna i może tworzyć radiatus, vertebratus lub fluctus.
+
+**Znaczenie lotnicze:**
+
+- Zwykle nie tworzy klasycznego oblodzenia strukturalnego z przechłodzonych kropli, lecz wskazuje środowisko kryształków lodu.
+- Gęsty Cirrus i kowadła mogą wiązać się z turbulencją, ograniczeniem widzialności z kokpitu oraz kryształkami lodu niebezpiecznymi dla części silników.
+- Nie wolno traktować jasnej, cienkiej postaci jako dowodu bezpiecznej odległości od głębokiej konwekcji.
+
+**Zjawiska optyczne:**
+
+- halo, słońca poboczne i łuki przy uporządkowanych kryształkach
+- subtelne barwy iryzacyjne w cienkich, świeżych fragmentach
+
+**Co sprawdzić podczas obserwacji:**
+
+- zanotuj kierunek włókien i ich zmianę w 10–20 minut
+- sprawdź, czy rośnie pokrycie całego nieba
+- szukaj halo oraz niższych warstw na horyzoncie
+
+**Przykłady pełnych nazw:**
+
+- Cirrus fibratus
+- Cirrus uncinus
+- Cirrus spissatus cumulonimbogenitus
+- Cirrus vertebratus
+
+**Z czym najłatwiej pomylić:**
+
+- **Smuga kondensacyjna:** Obserwuj jej powstanie za samolotem. Smuga trwająca co najmniej 10 minut to Cirrus homogenitus; po rozprzestrzenieniu i przemianie może stać się Cirrus homomutatus.
+
+- **Cirrostratus fibratus:** Cirrostratus tworzy bardziej ciągłą zasłonę obejmującą dużą część nieba.
+
+- **Virga z Altocumulus:** Znajdź wyżej właściwą ławicę Ac i oceń większą skalę oraz cieniowanie elementów.
+
+**Gatunki:** fibratus, uncinus, spissatus, castellanus, floccus
+
+**Odmiany:** intortus, radiatus, vertebratus, duplicatus
+
+**Cechy dodatkowe:** mamma, fluctus
+
+**Chmury towarzyszące:** brak w zestawieniu
+
+**Genitus:** cirrocumulogenitus, altocumulogenitus, cumulonimbogenitus
+
+**Mutatus:** cirrostratomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Rozległe pole Cirrus; w kadrze mogą współwystępować różne postacie.
+
+Szukaj cienkich, włóknistych smug, które wskazują kierunek przepływu na dużej wysokości.
+
+Fot. PiccoloNamek · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:CirrusField-color.jpg).
+
+#### Kadr 2
+
+Cirrus uncinus nad Elko w Nevadzie; pojedynczy kadr terenowy.
+
+Haczykowate końcówki i delikatne, opadające włókna są typowe dla Cirrus uncinus.
+
+Fot. Famartin · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2013-09-10_06_47_39_Cirrus_in_Elko%2C_Nevada.jpg).
+
+#### Kadr 3
+
+Cirrus uncinus oglądany z poziomu ziemi w New Jersey.
+
+Porównaj wygięte głowy włókien z długimi smugami kryształków lodu ciągnącymi się za nimi.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2023-08-31_11_37_51_Cirrus_uncinus_(mares'_tails)_viewed_from_Aquetong_Lane_in_the_Mountainview_section_of_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Cirrocumulus: kłębiasto-pierzaste
+
+Cc · wysokie · zwykle 5–13 km
+
+Bardzo drobne ziarenka i fale bez wyraźnego cienia.
+
+Cirrocumulus tworzy wysoko położone ławice bardzo drobnych kłębków, ziaren lub fal. Przy rozpoznawaniu porównaj ich pozorną wielkość i cieniowanie; same „baranki” nie wystarczą do odróżnienia go od Altocumulus.
+
+**Na co patrzeć:**
+
+- drobne elementy wysoko nad horyzontem, zwykle mniejsze niż mały palec przy wyprostowanej ręce
+
+- regularne fale, ławice albo „rybia łuska”
+
+- elementy prawie bez szarego cieniowania
+
+**Co może mówić o pogodzie:** Ujawnia falowanie lub niestabilność w wysokiej troposferze; sama nazwa nie jest prostą prognozą opadu.
+
+**Na co uważać przy rozpoznawaniu:** Najczęstszy spór dotyczy Altocumulus. Rozmiar kłębów oceniaj przy wyciągniętej ręce i razem z cieniem, nie osobno.
+
+**Z czego jest zbudowana:**
+
+Głównie kryształki lodu, czasem silnie przechłodzone krople w krótkotrwałych fragmentach. Elementy często szybko zmieniają się wskutek przemian fazowych.
+
+**Jak powstaje:**
+
+- falowanie w wilgotnej warstwie górnej troposfery
+- konwekcyjne komórki o niewielkiej rozciągłości w warstwie wysokiej
+- przemiana Cirrus lub Cirrostratus w członowaną strukturę
+
+**Pogoda i zmiany chmury:**
+
+- Wskazuje wilgoć i ruch falowy lub niestabilność wysoko, lecz nie jest prostym zwiastunem opadu przy powierzchni.
+- W połączeniu z narastającym Cirrostratus może być elementem większej zmiany synoptycznej.
+
+**Typowe przemiany:**
+
+- Może tworzyć się z Cirrus lub Cirrostratus i ponownie tracić członowaną strukturę.
+- Pod kępkami floccus może być widoczna virga, czyli opad zanikający przed dotarciem do ziemi. Cavum to otwór w warstwie, często ze smugą opadu pośrodku.
+
+**Znaczenie lotnicze:**
+
+- Znajduje się zwykle na poziomach przelotowych i może współwystępować z falami oraz zmianami wiatru.
+- Sam widok z ziemi nie pozwala określić głębokości warstwy ani intensywności turbulencji.
+
+**Zjawiska optyczne:**
+
+- korona: niewielkie barwne pierścienie wokół Słońca lub Księżyca
+- iryzacja: pastelowe barwy w cienkich fragmentach
+
+**Co sprawdzić podczas obserwacji:**
+
+- porównaj rozmiar elementów z małym palcem przy wyciągniętej ręce
+- sprawdź własne cieniowanie i regularność fal
+- wykonaj drugą obserwację po kilku minutach, bo Cc bywa krótkotrwały
+
+**Przykłady pełnych nazw:**
+
+- Cirrocumulus stratiformis undulatus
+- Cirrocumulus lenticularis
+- Cirrocumulus cavum
+
+**Z czym najłatwiej pomylić:**
+
+- **Altocumulus:** Cc ma drobniejsze elementy i zwykle nie wykazuje własnego szarego cienia; sama reguła palca nie wystarcza.
+
+- **Cirrus floccus:** Cirrus floccus tworzy bardziej odrębne kępki z włóknistymi smugami, a nie rozległą ławicę ziaren.
+
+**Gatunki:** stratiformis, lenticularis, castellanus, floccus
+
+**Odmiany:** undulatus, lacunosus
+
+**Cechy dodatkowe:** virga, mamma, cavum
+
+**Chmury towarzyszące:** brak w zestawieniu
+
+**Genitus:** brak w zestawieniu
+
+**Mutatus:** cirromutatus, cirrostratomutatus, altocumulomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Drobna ławica elementów oglądana z powierzchni ziemi.
+
+Bardzo małe elementy tworzą ławicę i niemal nie pokazują własnego szarego cienia.
+
+Fot. autor niepodany w metadanych pliku · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cirrocumulus_20040830.jpg).
+
+#### Kadr 2
+
+Drobne pole Cirrocumulus sfotografowane nad Tallinnem.
+
+Porównaj wielkość drobnych kłębków i ich słabe cieniowanie; samo określenie „baranki” nie odróżnia rodzajów chmur.
+
+Fot. Jüri Kamenik · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cirrocumulus_at_Tallinn.JPG).
+
+#### Kadr 3
+
+Główne pole to Cirrocumulus; niżej po lewej współwystępuje Altocumulus lenticularis.
+
+Oddziel drobne, wysokie ziarna od większej soczewki niżej: jeden kadr może zawierać kilka rodzajów.
+
+Fot. Ximonic (Simo Räsänen) · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cirrocumulus_clouds_over_Bergsfjorden%2C_Senja%2C_Troms%2C_Norway%2C_2015_September.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Cirrostratus: warstwowo-pierzaste
+
+Cs · wysokie · zwykle 5–13 km
+
+Cienka zasłona, przy której może być widoczny świetlny pierścień: halo.
+
+Cirrostratus tworzy wysoko położoną zasłonę z kryształków lodu. Bywa tak cienki, że łatwiej dostrzec halo, czyli pierścień wokół Słońca lub Księżyca, niż samą chmurę. Brak halo jej nie wyklucza.
+
+**Na co patrzeć:**
+
+- mleczna lub włóknista zasłona na dużej części nieba
+
+- Słońce nadal rzuca cienie
+
+- halo 22° jest silną wskazówką, ale nie warunkiem koniecznym
+
+**Co może mówić o pogodzie:** Rozległy Cirrostratus często pojawia się przed frontem ciepłym, kiedy wilgoć dociera najpierw wysoko.
+
+**Na co uważać przy rozpoznawaniu:** Altostratus silniej tłumi tarczę Słońca i zwykle nie daje halo. Cienki Cirrus fibratus może natomiast wyglądać jak fragment zasłony.
+
+**Z czego jest zbudowana:**
+
+Kryształki lodu rozłożone w rozległej, zwykle cienkiej warstwie, często związanej z łagodnym wznoszeniem na dużej skali.
+
+**Jak powstaje:**
+
+- rozszerzanie i zagęszczanie pola Cirrus
+- unoszenie przed rozległą strefą frontową
+- rozprzestrzenianie lodowej części kowadła Cumulonimbus
+
+**Pogoda i zmiany chmury:**
+
+- Rozległy, gęstniejący Cirrostratus często wyprzedza układ frontowy, ale odstęp czasowy nie jest stały.
+- Brak halo nie wyklucza Cirrostratus; orientacja i kształt kryształków mogą nie sprzyjać zjawisku.
+
+**Typowe przemiany:**
+
+- Gdy warstwa grubieje i sięga niżej, Cirrostratus może przekształcić się w Altostratus.
+- Może powstać z Cirrus, Cirrocumulus lub lodowej części Cumulonimbus.
+
+**Znaczenie lotnicze:**
+
+- Może ograniczać kontrast i widzialność Słońca na poziomach przelotowych.
+- Jest sygnałem wilgoci w górnej troposferze, lecz nie określa samodzielnie pułapu niższych warstw ani zagrożenia oblodzeniem.
+
+**Zjawiska optyczne:**
+
+- halo 22°
+- słońca poboczne
+- górny i dolny łuk styczny
+- słup słoneczny
+
+**Co sprawdzić podczas obserwacji:**
+
+- szukaj halo, zasłaniając samą tarczę Słońca przeszkodą; nie patrz w Słońce. Porównaj też ostrość cieni na ziemi
+- oceń, czy zasłona obejmuje większość nieba
+- obserwuj, czy warstwa grubieje i czy pojawiają się niższe chmury
+
+**Przykłady pełnych nazw:**
+
+- Cirrostratus fibratus
+- Cirrostratus nebulosus
+- Cirrostratus duplicatus
+
+**Z czym najłatwiej pomylić:**
+
+- **Altostratus translucidus:** As zwykle rozmywa tarczę Słońca jak matowe szkło i nie wytwarza typowego halo.
+
+- **Jednolita mgiełka:** Zanieczyszczenie lub wilgotna mgiełka zmniejsza kontrast blisko horyzontu, ale nie tworzy spójnej lodowej zasłony i halo.
+
+**Gatunki:** fibratus, nebulosus
+
+**Odmiany:** duplicatus, undulatus
+
+**Cechy dodatkowe:** brak w zestawieniu
+
+**Chmury towarzyszące:** brak w zestawieniu
+
+**Genitus:** cirrocumulogenitus, cumulonimbogenitus
+
+**Mutatus:** cirromutatus, cirrocumulomutatus, altostratomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Zasłona Cirrostratus z wyraźnym rozświetleniem wokół Słońca.
+
+Przejrzysta zasłona i zjawisko optyczne wskazują na kryształki lodu, choć halo nie jest obowiązkowe.
+
+Fot. The Great Cloudwatcher · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg).
+
+#### Kadr 2
+
+Cirrostratus nebulosus ze słabo widocznym halo.
+
+Nie szukaj wyraźnych kłębów: ważniejsza jest cienka, rozległa zasłona i subtelne halo.
+
+Fot. Rollcloud · domena publiczna · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cs_nebulosus_with_faint_halo.jpg).
+
+#### Kadr 3
+
+Wysoki Cirrostratus nasuwający się nad Elko w Nevadzie.
+
+Rozległość i półprzezroczystość warstwy odróżniają ją od gęstszego Altostratus.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2014-12-09_15_06_39_High_cirrostratus_clouds_moving_into_Elko%2C_Nevada.JPG).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Altocumulus: średnie kłębiaste
+
+Ac · średnie · zwykle 2–7 km
+
+Ławice średnich kłębów z cieniem i strukturą.
+
+Altocumulus występuje zwykle na średnich wysokościach, w ławicach kłębów, soczewkach lub wieżyczkach. Jego elementy często mają jasną i ciemną stronę. To jedna ze wskazówek odróżniających go od drobniejszego Cirrocumulus.
+
+**Na co patrzeć:**
+
+- elementy wysoko nad horyzontem, pozornie szerokości około 1–3 palców przy wyprostowanej ręce
+
+- często jasna i ciemna strona każdego kłębu
+
+- ławice, soczewki, wieżyczki albo rozsypane płaty
+
+**Co może mówić o pogodzie:** Forma castellanus może sygnalizować niestabilność na poziomie średnim, ważną w ocenie potencjału burzowego.
+
+**Na co uważać przy rozpoznawaniu:** Nie każda „barankowa” chmura to Altocumulus. Sprawdź skalę elementów, cieniowanie i poziom względem innych warstw.
+
+**Z czego jest zbudowana:**
+
+Głównie krople wody, także przechłodzone, czyli wciąż ciekłe mimo temperatury poniżej 0°C. Może zawierać również lód. Smugi zanikającego opadu to virga, a otwór w warstwie ze smugą pośrodku nazywamy cavum.
+
+**Jak powstaje:**
+
+- falowanie i kondensacja w stabilnej wilgotnej warstwie średniej
+- płytka konwekcja ponad stabilną warstwą
+- falowy przepływ nad górami, w którym mogą powstawać soczewki lenticularis
+- rozpad lub rozprzestrzenianie chmur konwekcyjnych
+
+**Pogoda i zmiany chmury:**
+
+- Castellanus obserwowany rano może wskazywać niestabilność poziomu średniego, ale nie gwarantuje popołudniowej burzy.
+- Lenticularis wskazuje fale i silny przepływ przez przeszkodę, nie nadchodzący front.
+- Rozległy stratiformis może być częścią strefy frontowej albo warstwy pod inwersją.
+
+**Typowe przemiany:**
+
+- Może przechodzić w Altostratus, Stratocumulus lub rozwijać wieże prowadzące do głębszej konwekcji.
+- Cavum może pojawić się po zainicjowaniu lodu w przechłodzonej ławicy.
+
+**Znaczenie lotnicze:**
+
+- Przechłodzone krople mogą powodować oblodzenie, szczególnie w grubszych partiach i chmurach falowych.
+- Lenticularis oraz równoległe ławice mogą wskazywać falę górską i silną turbulencję w pobliżu rotorów, mimo gładkiego wyglądu.
+- Wieżyczki castellanus wskazują na niestabilność na ich wysokości. Porównaj je z sondażem, czyli pomiarem temperatury, wilgotności i wiatru w pionie, oraz z prognozą.
+
+**Zjawiska optyczne:**
+
+- korona
+- iryzacja
+- gloria obserwowana z góry
+- cienie promieniste między ławicami
+
+**Co sprawdzić podczas obserwacji:**
+
+- zanotuj wielkość, cień i organizację elementów
+- sprawdź, czy ławica stoi względem terenu i czy występują góry
+- obserwuj rozwój wieżyczek oraz pojawienie się virga
+
+**Przykłady pełnych nazw:**
+
+- Altocumulus stratiformis perlucidus
+- Altocumulus castellanus
+- Altocumulus lenticularis duplicatus
+- Altocumulus cavum
+
+**Z czym najłatwiej pomylić:**
+
+- **Cirrocumulus:** Ac ma zwykle większe człony i własne cieniowanie; ocena wymaga całej ławicy, nie pojedynczego fragmentu.
+
+- **Stratocumulus:** Sc jest zwykle niższy, ma większe elementy i mocniejszą fakturę podstawy.
+
+- **Altostratus:** As jest przede wszystkim ciągłą zasłoną, nawet jeśli ma fale; Ac zachowuje członowaną strukturę.
+
+**Gatunki:** stratiformis, lenticularis, castellanus, floccus, volutus
+
+**Odmiany:** translucidus, perlucidus, opacus, duplicatus, undulatus, radiatus, lacunosus
+
+**Cechy dodatkowe:** virga, mamma, cavum, fluctus, asperitas
+
+**Chmury towarzyszące:** brak w zestawieniu
+
+**Genitus:** cumulogenitus, cumulonimbogenitus
+
+**Mutatus:** cirrocumulomutatus, altostratomutatus, nimbostratomutatus, stratocumulomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Altocumulus z czytelnym cieniowaniem elementów.
+
+Średniej wielkości człony mają jasne i ciemne strony, co pomaga odróżnić je od Cirrocumulus.
+
+Fot. Bidgee · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Altocumulus.jpg).
+
+#### Kadr 2
+
+Ławica Altocumulus tworząca obraz potocznie nazywany „rybią łuską”.
+
+Nazwa potoczna nie rozstrzyga klasyfikacji; sprawdź średnią skalę elementów i ich cieniowanie.
+
+Fot. Famartin · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2013-09-11_06_58_52_Mackeral_sky_in_Elko%2C_Nevada.jpg).
+
+#### Kadr 3
+
+Altocumulus lenticularis nad Nyons we Francji.
+
+Gładka soczewka pozostaje Altocumulus: kształt wynika z fali atmosferycznej, a nie z osobnego rodzaju chmury.
+
+Fot. sylvboisse · CC BY 2.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:01_Altocumulus_lenticulaire_au-dessus_de_Nyons.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Altostratus: średnie warstwowe
+
+As · średnie · zwykle 2–7 km
+
+Szara lub niebieskawa warstwa, przez którą Słońce blednie.
+
+Altostratus jest rozległą warstwą średnią, której grubość może zmieniać się od przeświecającej zasłony do niemal całkowitego zasłonięcia Słońca.
+
+**Na co patrzeć:**
+
+- jednolita zasłona bez halo
+
+- Słońce wygląda jak przez matowe szkło albo znika
+
+- warstwa może mieć wyraźne fale i stopniowo grubieć
+
+**Co może mówić o pogodzie:** Często stanowi etap rozwoju rozległego systemu frontowego i może przechodzić w Nimbostratus.
+
+**Na co uważać przy rozpoznawaniu:** Jeśli Słońce jest ostre i pojawia się halo, rozważ Cirrostratus. Jeśli opad stał się ciągły i podstawa całkiem nieczytelna, rozważ Nimbostratus.
+
+**Z czego jest zbudowana:**
+
+Mieszanina kropelek wody, przechłodzonych kropli i kryształków lodu, zależnie od wysokości i głębokości warstwy.
+
+**Jak powstaje:**
+
+- rozległe łagodne unoszenie wilgotnego powietrza
+- grubienie i obniżanie Cirrostratus
+- rozlewanie średnich chmur i pozostałości rozległej konwekcji
+
+**Pogoda i zmiany chmury:**
+
+- Często poprzedza długotrwały opad i może przechodzić w Nimbostratus.
+- Virga to opad, który zanika przed dotarciem do ziemi. Parowanie kropli ochładza powietrze pod chmurą i może sprzyjać prądom zstępującym oraz porywom wiatru.
+
+**Typowe przemiany:**
+
+- Grubieje w Nimbostratus, gdy opad staje się rozległy i ciągły.
+- Może rozpadać się na Altocumulus albo powstawać z niego przez zlewanie elementów.
+
+**Znaczenie lotnicze:**
+
+- Może obejmować szeroki zakres wysokości i zawierać przechłodzoną wodę, dlatego potencjał oblodzenia zależy od temperatury i struktury warstwy.
+- Jednolity wygląd z ziemi nie ujawnia liczby warstw ani intensywności oblodzenia.
+- Opad i niższy pannus mogą znacząco pogarszać widzialność oraz ocenę właściwej podstawy.
+
+**Zjawiska optyczne:**
+
+- Słońce jak przez matowe szkło w odmianie translucidus
+- halo przemawia raczej za współwystępującym Cirrostratus niż za samym Altostratus
+
+**Co sprawdzić podczas obserwacji:**
+
+- zanotuj, czy położenie Słońca jest rozpoznawalne
+- sprawdź ciągłość opadu i obecność pannus
+- porównaj dolną krawędź z terenem i niższymi chmurami
+
+**Przykłady pełnych nazw:**
+
+- Altostratus translucidus
+- Altostratus opacus praecipitatio
+- Altostratus undulatus
+
+**Z czym najłatwiej pomylić:**
+
+- **Cirrostratus:** Halo i ostrzejsza tarcza Słońca wspierają Cs; As daje bardziej matowe, szare światło.
+
+- **Nimbostratus:** Ns całkowicie zasłania Słońce, a jego podstawa jest rozmyta przez rozległy, niemal ciągły opad. Opad zwykle dociera do ziemi, ale nie musi.
+
+- **Stratus:** St jest znacznie niższy, ma wyraźniejszy kontakt z rzeźbą terenu i częściej daje mżawkę.
+
+**Gatunki:** brak w zestawieniu
+
+**Odmiany:** translucidus, opacus, duplicatus, undulatus, radiatus
+
+**Cechy dodatkowe:** virga, praecipitatio, mamma
+
+**Chmury towarzyszące:** pannus
+
+**Genitus:** altocumulogenitus, cumulonimbogenitus
+
+**Mutatus:** cirrostratomutatus, nimbostratomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Altostratus o falistej podstawie.
+
+Szara warstwa ma strukturę falową, ale nie rozpada się na osobne kłęby i nie tworzy halo.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2020-12-31_16_06_58_Altostratus_with_a_wavy_undulating_base_above_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg).
+
+#### Kadr 2
+
+Główna warstwa to Altostratus; poniżej występuje kilka niskich Cumulus.
+
+Klasyfikuj dominującą rozległą zasłonę osobno od małych chmur niskich widocznych pod nią.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2016-07-03_17_42_07_Altostratus_and_a_few_low_cumulus_above_a_field_of_grass_along_Old_Ox_Road_(Virginia_State_Secondary_Route_606)_in_Sterling%2C_Loudoun_County%2C_Virginia.jpg).
+
+#### Kadr 3
+
+Altostratus undulatus oglądany w rejonie Dulles.
+
+Równoległe fale są odmianą warstwy Altostratus, nie automatycznie ławicą Altocumulus.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2021-12-28_15_28_08_Altostratus_undulatus_viewed_from_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Nimbostratus: warstwowe deszczowe
+
+Ns · wielopoziomowe · gruba warstwa od niskich do średnich poziomów
+
+Rozległa ciemna warstwa z długotrwałym opadem.
+
+Nimbostratus jest głęboką, rozległą chmurą opadu warstwowego. Jego klasyfikacja opiera się na całym systemie: ciągłym opadzie, zasłoniętym Słońcu i słabo określonej podstawie.
+
+**Na co patrzeć:**
+
+- Słońce niewidoczne
+
+- ciągły opad obejmujący duży obszar
+
+- pod podstawą często postrzępione chmury pannus
+
+**Co może mówić o pogodzie:** Typowa chmura rozległego opadu warstwowego; może mocno obniżać podstawę i widzialność.
+
+**Na co uważać przy rozpoznawaniu:** Niska poszarpana warstwa pod opadem nie musi być główną chmurą. Oddziel pannus od rozległego Nimbostratus powyżej.
+
+**Z czego jest zbudowana:**
+
+Gruba chmura zawierająca na różnych poziomach krople, kryształki lodu, śnieg i inne cząstki opadu. Część kropli może pozostawać ciekła poniżej 0°C: to woda przechłodzona.
+
+**Jak powstaje:**
+
+- grubienie Altostratus w rozległym ruchu wstępującym
+- zlewanie i rozprzestrzenianie innych chmur w systemie frontowym
+- transformacja rozległych warstw opadowych
+
+**Pogoda i zmiany chmury:**
+
+- Daje długotrwały deszcz lub śnieg obejmujący duży obszar.
+- W rozległej warstwie mogą być ukryte chmury Cumulonimbus. Wyładowania lub gwałtowne nasilenie opadu wymagają sprawdzenia, czy nie rozwija się burza.
+- Pannus i parowanie opadu mogą stopniowo obniżać widzialną podstawę.
+
+**Typowe przemiany:**
+
+- Najczęściej rozwija się z Altostratus i może po przejściu układu rozpadać się na Stratocumulus lub Stratus.
+- Cumulus i Cumulonimbus mogą wnosić materiał do rozległej warstwy opadowej.
+
+**Znaczenie lotnicze:**
+
+- Rozległość, wielowarstwowość, oblodzenie, opad i niska widzialność mogą utrudniać omijanie oraz ocenę warunków.
+- Podstawa obserwowana z ziemi może należeć do pannus, a nie do głównej masy Ns.
+- Nazwa rodzaju nie opisuje pełnego profilu temperatury ani intensywności oblodzenia.
+
+**Zjawiska optyczne:**
+
+- zwykle brak bezpośredniej tarczy Słońca
+- rozproszone, płaskie oświetlenie pod grubą warstwą
+
+**Co sprawdzić podczas obserwacji:**
+
+- oceń zasięg i ciągłość opadu, nie tylko ciemność chmury
+- oddziel niskie pannus od głównej warstwy
+- sprawdź radar i wyładowania pod kątem wbudowanej konwekcji
+
+**Przykłady pełnych nazw:**
+
+- Nimbostratus praecipitatio
+- Nimbostratus pannus
+- Nimbostratus altostratomutatus
+
+**Z czym najłatwiej pomylić:**
+
+- **Altostratus opacus:** Jeśli opad nie jest jeszcze rozległy i ciągły, a struktura pozostaje cieńsza, bardziej właściwy może być As.
+
+- **Cumulonimbus zasłonięty opadem:** Nagłe zmiany, wyładowania, grad i wyraźna konwekcja wskazują na Cb ukryty w systemie.
+
+- **Stratus z mżawką:** St jest płytszy i zwykle nie produkuje rozległego umiarkowanego lub silnego opadu.
+
+**Gatunki:** brak w zestawieniu
+
+**Odmiany:** brak w zestawieniu
+
+**Cechy dodatkowe:** praecipitatio, virga
+
+**Chmury towarzyszące:** pannus
+
+**Genitus:** cumulogenitus, cumulonimbogenitus
+
+**Mutatus:** altocumulomutatus, altostratomutatus, stratocumulomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Niska, opadowa sytuacja o słabo czytelnej podstawie.
+
+Rozległa ciemna warstwa i zasłonięta podstawa są ważniejsze niż pojedyncze postrzępione fragmenty pod opadem.
+
+Fot. autor niepodany w metadanych pliku · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Ns1.jpg).
+
+#### Kadr 2
+
+Rozległa chmura opadowa nad Hockenheim; kadr terenowy.
+
+Brak wyraźnych komórek konwekcyjnych i szeroki charakter opadu przemawiają za Nimbostratus.
+
+Fot. AnRo0002 · CC0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:20151123Hockenheim1.jpg).
+
+#### Kadr 3
+
+Ciemna, wielowarstwowa sytuacja opadowa nad Hockenheim.
+
+W niejednorodnym kadrze szukaj rozległej warstwy odpowiedzialnej za opad, a nie jednej efektownej krawędzi.
+
+Fot. AnRo0002 · CC0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:20160208Hockenheim5.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Stratocumulus: kłębiasto-warstwowe
+
+Sc · niskie · od powierzchni do około 2 km
+
+Duże, połączone wały lub płaty na niskim poziomie.
+
+Stratocumulus tworzy niską warstwę dużych, często połączonych kłębów, wałów lub płatów. Może rozciągać się pod inwersją: warstwą, w której temperatura rośnie z wysokością i ogranicza dalsze unoszenie powietrza.
+
+**Na co patrzeć:**
+
+- duże elementy wysoko nad horyzontem, często szersze niż trzy palce przy wyprostowanej ręce
+
+- ciemne podstawy i jasne kopuły
+
+- warstwa ma przerwy albo wyraźne człony
+
+**Co może mówić o pogodzie:** Często tworzy się pod inwersją, gdy mieszanie jest płytkie; bywa rozległy, ale opad zwykle jest słaby.
+
+**Na co uważać przy rozpoznawaniu:** Z góry może przypominać pole Cumulus. Sprawdź, czy kłęby są oddzielne, czy łączą się we wspólną warstwę; widok z samolotu różni się od widoku z ziemi.
+
+**Z czego jest zbudowana:**
+
+Głównie krople wody, przy ujemnej temperaturze często przechłodzone; w chłodniejszych i grubszych partiach możliwy jest lód.
+
+**Jak powstaje:**
+
+- rozlewanie Cumulus pod inwersją
+- turbulentne mieszanie w wilgotnej warstwie granicznej
+- napływ chłodnego powietrza nad cieplejszą powierzchnię
+- transformacja Stratus albo pozostałości systemu opadowego
+
+**Pogoda i zmiany chmury:**
+
+- Często przynosi jedynie słaby opad lub mżawkę, ale grubsze komórki mogą dawać przelotny deszcz albo śnieg.
+- Rozległe pola nad oceanem silnie wpływają na bilans promieniowania, mimo pozornie spokojnej pogody.
+- Castellanus lub rozwijające się człony wskazują na większą niestabilność niż płaski stratiformis.
+
+**Typowe przemiany:**
+
+- Może powstać z rozlewających się Cumulus i ponownie rozpadać na komórki konwekcyjne.
+- Przy osłabieniu mieszania może przejść w Stratus; przy ogrzewaniu podłoża warstwa może się rozrywać.
+
+**Znaczenie lotnicze:**
+
+- Może tworzyć niski pułap i warunki IMC, czyli warunki meteorologiczne niespełniające minimów dla lotu z widocznością.
+- Przechłodzona warstwa jest potencjalnym środowiskiem oblodzenia; intensywność nie wynika z samego rodzaju.
+- W pobliżu terenu górskiego lenticularis i fluctus mogą wskazywać przepływ falowy i turbulencję.
+
+**Zjawiska optyczne:**
+
+- promienie zmierzchowe przez szczeliny
+- sporadyczna korona w cienkich jednorodnych fragmentach
+
+**Co sprawdzić podczas obserwacji:**
+
+- porównaj wielkość kłębów i oszacuj, ile nieba widać między nimi
+- sprawdź, czy podstawa jest wspólna dla całego pola
+- obserwuj, czy przerwy w warstwie się zamykają, czy powiększają
+
+**Przykłady pełnych nazw:**
+
+- Stratocumulus stratiformis perlucidus
+- Stratocumulus volutus
+- Stratocumulus asperitas
+
+**Z czym najłatwiej pomylić:**
+
+- **Altocumulus:** Sc ma większe elementy, niższą podstawę i zwykle mocniejszy kontrast między jasną kopułą a ciemną podstawą.
+
+- **Stratus:** St nie ma dominującej członowanej struktury, choć fragmenty mogą być postrzępione.
+
+- **Pole Cumulus z góry:** Sprawdź, czy elementy są połączone wspólną warstwą i czy obserwujesz je z samolotu.
+
+**Gatunki:** stratiformis, lenticularis, castellanus, floccus, volutus
+
+**Odmiany:** translucidus, perlucidus, opacus, duplicatus, undulatus, radiatus, lacunosus
+
+**Cechy dodatkowe:** virga, mamma, praecipitatio, fluctus, asperitas, cavum
+
+**Chmury towarzyszące:** brak w zestawieniu
+
+**Genitus:** altostratogenitus, nimbostratogenitus, cumulogenitus, cumulonimbogenitus
+
+**Mutatus:** altocumulomutatus, nimbostratomutatus, stratomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Widok z góry na rozległą, członowaną warstwę; perspektywa lotnicza.
+
+Połączone duże człony tworzą wspólną warstwę; widok z góry zmienia cieniowanie, lecz nie budowę.
+
+Fot. Arun Kulshreshtha · CC BY 3.0 US · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Above_the_Clouds.jpg).
+
+#### Kadr 2
+
+Niska warstwa z falistą, wyboistą podstawą w New Jersey.
+
+Wyraźne duże człony we wspólnej niskiej warstwie odróżniają Stratocumulus od gładkiego Stratus.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2018-05-18_18_27_24_Low_stratiform_clouds_(base_near_3%2C000_feet_AGL)_with_wavy%2C_bumpy_base_viewed_from_Mercer_County_Route_622_(North_Olden_Avenue)_in_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg).
+
+#### Kadr 3
+
+Rozległy Stratocumulus nad Jastrzębiem-Zdrojem.
+
+Zwróć uwagę na ciemne podstawy i szerokie, połączone wały zamiast oddzielnych kopuł Cumulus.
+
+Fot. Marcin Konsek · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2012_Jastrz%C4%99bie-Zdr%C3%B3j%2C_Zachmurzone_niebo_przy_ulicy_Hugona_Ko%C5%82%C5%82%C4%85taja_(01).jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Stratus: warstwowe
+
+St · niskie · od powierzchni do około 2 km
+
+Niska, zwykle szara warstwa bez wyraźnych kłębów.
+
+Stratus to niska, zwykle szara warstwa bez wyraźnych kłębów. Może powstać z unoszącej się mgły, ale nie jest to jedyna droga. Obserwator zanurzony w tej samej warstwie na wzgórzu widzi mgłę, a osoba w dolinie chmurę nad sobą.
+
+**Na co patrzeć:**
+
+- prawie brak członów i pionowego rozwoju
+
+- jednolita szarość albo postrzępione fractus
+
+- mżawka jest możliwa, lecz nie silny opad konwekcyjny
+
+**Co może mówić o pogodzie:** Sygnalizuje nasycenie chłodnej warstwy przy powierzchni; dla lotnictwa może oznaczać bardzo niski pułap.
+
+**Na co uważać przy rozpoznawaniu:** Mgła i Stratus to podobny proces, ale inna relacja do obserwatora: mgła styka się z gruntem w miejscu obserwacji.
+
+**Z czego jest zbudowana:**
+
+Zwykle drobne krople wody, także przechłodzone, czyli ciekłe poniżej 0°C. Przy niskiej temperaturze może zawierać drobne cząstki lodu, a w grubszej warstwie także cząstki opadu.
+
+**Jak powstaje:**
+
+- ochładzanie wilgotnego powietrza nad stygnącym podłożem lub podczas napływu nad chłodniejszą powierzchnię
+- unoszenie mgły lub obniżenie warstwy chmurowej ku terenowi
+- mieszanie chłodnego powietrza z wilgocią nad wodą lub mokrym gruntem
+- nasycenie powietrza chłodzonego przez opad
+
+**Pogoda i zmiany chmury:**
+
+- Może dawać mżawkę, śnieg lub śnieg ziarnisty, ale nie typową ulewę z chmury burzowej.
+- Nawet bez opadu znacząco ogranicza widzialność i dopływ promieniowania słonecznego.
+- Rozrywanie warstwy zależy od ogrzewania podłoża, mieszania i napływu suchszego powietrza.
+
+**Typowe przemiany:**
+
+- Może unieść się z mgły, rozpaść na fractus albo rozwinąć człony Stratocumulus.
+- Nad stokiem ta sama warstwa może być Stratus dla obserwatora w dolinie i mgłą dla obserwatora na grzbiecie.
+
+**Znaczenie lotnicze:**
+
+- Dla pilota bardzo niski pułap i słaba widzialność mogą mieć większe znaczenie niż siła opadu.
+- Chmura może zasłaniać wzniesienia. Zwiększa to ryzyko CFIT: zderzenia sterowanego, sprawnego samolotu z terenem.
+- Zimą przechłodzony Stratus może powodować oblodzenie w płytkiej, ale rozległej warstwie.
+
+**Zjawiska optyczne:**
+
+- korona w jednorodnych drobnych kroplach
+- łuk mgłowy i gloria przy obserwacji z góry
+
+**Co sprawdzić podczas obserwacji:**
+
+- zanotuj wysokość podstawy względem lokalnego terenu
+- sprawdź kontakt warstwy ze wzgórzami i kierunek napływu
+- rozróżnij mżawkę od opadu pochodzącego z wyższej warstwy
+
+**Przykłady pełnych nazw:**
+
+- Stratus nebulosus opacus
+- Stratus fractus
+- Stratus undulatus praecipitatio
+
+**Z czym najłatwiej pomylić:**
+
+- **Mgła:** Mgła styka się z gruntem w miejscu obserwacji; ten sam obłok może być chmurą dla osoby patrzącej z innej wysokości.
+
+- **Nimbostratus pannus:** Sprawdź obecność głównej rozległej warstwy opadowej powyżej i ciągłego opadu.
+
+- **Stratocumulus:** Sc ma wyraźne człony, wały lub szczeliny, a nie niemal jednolitą podstawę.
+
+**Gatunki:** nebulosus, fractus
+
+**Odmiany:** opacus, translucidus, undulatus
+
+**Cechy dodatkowe:** praecipitatio, fluctus
+
+**Chmury towarzyszące:** brak w zestawieniu
+
+**Genitus:** nimbostratogenitus, cumulogenitus, cumulonimbogenitus
+
+**Mutatus:** stratocumulomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Morze niskiej chmury widziane z wyżej położonego terenu.
+
+Gładka, niska warstwa wypełnia obniżenia terenu i nie pokazuje odrębnych kłębiastych członów.
+
+Fot. kallerna · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Stratus_clouds_Vodno_4.jpg).
+
+#### Kadr 2
+
+Niski Stratus nad polem przy stacji meteorologicznej w Sterling.
+
+Jednolita, bardzo niska podstawa bez wyraźnych komórek jest podstawowym sygnałem Stratus.
+
+Fot. Famartin · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2016-10-01_18_00_40_Low_stratus_over_a_field_at_the_National_Weather_Service's_Baltimore-Washington_Weather_Forecast_Office_on_Old_Ox_Road_(Virginia_State_Secondary_Route_606)_in_Sterling%2C_Loudoun_County%2C_Virginia.jpg).
+
+#### Kadr 3
+
+Stratus i smugi opadu nad Elko w Nevadzie, zgodnie z opisem autora zdjęcia.
+
+Oceń niską warstwę osobno od smug opadu. Ten kadr nie rozstrzyga, z której chmury pochodzą smugi; virga nie jest cechą przypisaną Stratus w tabeli WMO.
+
+Fot. Famartin · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:2014-03-10_08_47_44_Stratus_clouds_and_virga_in_Elko%2C_Nevada.JPG).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Cumulus: kłębiaste
+
+Cu · pionowe · podstawa zwykle niska; wierzchołek zależy od rozwoju
+
+Oddzielne kopuły o płaskiej podstawie i kalafiorowym wzroście.
+
+Cumulus rośnie tam, gdzie unoszące się powietrze ochładza się na tyle, że powstają krople. Płaska podstawa często wyznacza ten poziom, a kopuły pozwalają śledzić dalszy wzrost chmury. Porównuj je w kolejnych obserwacjach.
+
+**Na co patrzeć:**
+
+- wyraźna płaska podstawa na poziomie kondensacji
+
+- jasne, ostre kopuły rosnące ku górze
+
+- oddzielne komórki zamiast wspólnej warstwy
+
+**Co może mówić o pogodzie:** Niski humilis ma niewielki rozwój pionowy. Wysoki, rosnący congestus może poprzedzać chmurę burzową Cumulonimbus.
+
+**Na co uważać przy rozpoznawaniu:** Granica congestus–Cumulonimbus nie zależy wyłącznie od wielkości. Szukaj włóknistego lub gładkiego, lodowego wierzchołka.
+
+**Z czego jest zbudowana:**
+
+W niższych i cieplejszych częściach krople wody; w silnie wypiętrzonych i zimnych partiach mogą pojawiać się przechłodzone krople i pierwsze kryształki lodu.
+
+**Jak powstaje:**
+
+- termiki nad nierównomiernie ogrzaną powierzchnią
+- unoszenie na zbieżności, bryzie, froncie lub stoku
+- rozpad warstwy Stratocumulus albo Altocumulus na odrębne komórki
+
+**Pogoda i zmiany chmury:**
+
+- Humilis często oznacza płytką konwekcję ograniczoną stabilną warstwą.
+- Mediocris i congestus wymagają obserwacji tempa wzrostu, opadu i zlodzenia wierzchołka.
+- Congestus może dawać intensywny przelotny opad nawet przed formalnym przejściem w Cumulonimbus.
+
+**Typowe przemiany:**
+
+- Humilis może zaniknąć wieczorem albo przejść przez mediocris do congestus.
+- Zlodzenie i wygładzenie wierzchołka oznacza przejście do Cumulonimbus calvus.
+- Pod inwersją Cumulus może rozlewać się w Stratocumulus cumulogenitus.
+
+**Znaczenie lotnicze:**
+
+- Wewnątrz aktywnych wież występują silne prądy pionowe i turbulencja.
+- Congestus może zawierać przechłodzoną wodę oraz intensywny opad. Brak wyładowań nie oznacza bezpiecznych warunków do lotu.
+- Podstawa Cumulus pomaga szacować poziom kondensacji, ale jest lokalną obserwacją, nie pełną prognozą pułapu.
+
+**Zjawiska optyczne:**
+
+- jasne srebrne obwódki przy Słońcu za chmurą
+- promienie i cienie między komórkami
+
+**Co sprawdzić podczas obserwacji:**
+
+- porównuj wysokość wieży z szerokością podstawy
+- obserwuj ostrość konturów i tempo odbudowy kopuł
+- szukaj opadu, pileus, arcus i pierwszych oznak zlodzenia
+
+**Przykłady pełnych nazw:**
+
+- Cumulus humilis
+- Cumulus mediocris
+- Cumulus congestus praecipitatio
+- Cumulus fractus
+
+**Z czym najłatwiej pomylić:**
+
+- **Cumulonimbus calvus:** Szukaj utraty ostrych kalafiorowych konturów i wygładzenia lodowego wierzchołka.
+
+- **Stratocumulus castellanus:** Sc zachowuje wspólną warstwę lub wał, z którego wyrastają wieżyczki.
+
+- **Pannus:** Pannus rozwija się pod opadem i jest związany z główną chmurą powyżej, a nie niezależnym termikiem.
+
+**Gatunki:** humilis, mediocris, congestus, fractus
+
+**Odmiany:** radiatus
+
+**Cechy dodatkowe:** virga, praecipitatio, arcus, fluctus, tuba
+
+**Chmury towarzyszące:** pileus, velum, pannus
+
+**Genitus:** altocumulogenitus, stratocumulogenitus
+
+**Mutatus:** stratocumulomutatus, stratomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Pole Cumulus o ograniczonym rozwoju pionowym.
+
+Oddzielne białe kopuły wyrastają ze zbliżonego poziomu płaskich podstaw.
+
+Fot. PiccoloNamek · CC BY-SA 3.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:GoldenMedows.jpg).
+
+#### Kadr 2
+
+Cumulus mediocris z umiarkowanym rozwojem pionowym.
+
+Kopuły są wyższe niż u humilis, ale wierzchołek pozostaje wyraźnie kłębiasty. Wygładzanie lub włóknienie jego konturów wymaga porównania z Cumulonimbus.
+
+Fot. Janne Naukkarinen · domena publiczna · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cumulus_mediocris_3.JPG).
+
+#### Kadr 3
+
+Płytki Cumulus humilis nad Schwarzwaldem.
+
+Szerokość wyraźnie przewyższa wysokość, co wskazuje na płytką konwekcję ograniczoną stabilną warstwą.
+
+Fot. Uoaei1 · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cumulus_humilis_Sch%C3%B6nwald_im_Schwarzwald_20180810.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Cumulonimbus: kłębiasto-deszczowe
+
+Cb · pionowe · od niskiej podstawy do górnej troposfery
+
+Wysoka chmura burzowa z wygładzonym lub włóknistym wierzchołkiem.
+
+Cumulonimbus to silnie wypiętrzona chmura, w której gwałtowne ruchy powietrza mogą przynosić burzę, grad i szkwały. Zagrożenia nie kończą się na jej widocznym brzegu; ważne są też opad, kowadło i wypływ powietrza pod chmurą.
+
+**Na co patrzeć:**
+
+- ogromny rozwój pionowy
+
+- gładki lub włóknisty wierzchołek, często kowadło incus
+
+- strefy opadu, szkwał, wyładowania lub wał arcus
+
+**Co może mówić o pogodzie:** Może nieść wyładowania, grad, silne prądy pionowe, oblodzenie, turbulencję i gwałtowne zmiany wiatru.
+
+**Na co uważać przy rozpoznawaniu:** Nie czekaj na klasyczne kowadło. Cumulonimbus calvus już ma gładkawy lodowy wierzchołek i może być aktywną burzą.
+
+**Z czego jest zbudowana:**
+
+Wielofazowa mieszanina kropli, dużych przechłodzonych kropel, kryształków lodu, śniegu, krupy i gradu w silnych prądach pionowych.
+
+**Jak powstaje:**
+
+- silne unoszenie wilgotnego powietrza w warunkach sprzyjających dalszemu wzrostowi chmury
+- rozwój Cumulus congestus, gdy wierzchołek zaczyna się wygładzać i nabierać lodowej struktury
+- organizacja komórek przez uskok wiatru, granice wypływu lub wymuszanie frontowe
+
+**Pogoda i zmiany chmury:**
+
+- Może powodować ulewę, grad, wyładowania, trąby i gwałtowne powodzie. Downburst to silny prąd zstępujący, który po dotarciu do ziemi rozchodzi się na boki i wywołuje niszczące porywy.
+- Zagrożenia mogą występować daleko od widocznego rdzenia: wyładowania z kowadła, silny wypływ i turbulencja.
+- Brak klasycznego kowadła nie wyklucza aktywnego Cumulonimbus calvus.
+
+**Typowe przemiany:**
+
+- Calvus przechodzi w capillatus wraz ze wzrostem udziału lodu i włóknienia wierzchołka.
+- Dojrzała komórka może wytworzyć incus, mamma, arcus, murus, cauda, tuba i flumen.
+- Pozostałości kowadła mogą przekształcić się w Cirrus, Cirrostratus lub Altostratus pochodzenia cumulonimbogenitus.
+
+**Znaczenie lotnicze:**
+
+- Silna lub skrajna turbulencja, oblodzenie, grad, wyładowania, uskoki i mikroporywy czynią aktywną komórkę obszarem do omijania, nie do penetracji na podstawie oceny wzrokowej.
+- Radar pokładowy ma ograniczenia geometrii, tłumienia i interpretacji; atlas nie zastępuje procedur operacyjnych.
+- Kowadło i obszar pod nim mogą zawierać kryształki lodu, turbulencję i wyładowania poza głównym echem opadowym.
+
+**Zjawiska optyczne:**
+
+- częste wyładowania wewnątrzchmurowe
+- tęcza w strefie opadu
+- barwy zachodu na kowadle
+
+**Co sprawdzić podczas obserwacji:**
+
+- nie oceniaj odległości i ruchu burzy wyłącznie wzrokiem
+- szukaj zlodzenia wierzchołka, opadu, wypływu i nowych komórek
+- łącz obserwację z radarami, wyładowaniami, ostrzeżeniami i procedurami operacyjnymi
+
+**Przykłady pełnych nazw:**
+
+- Cumulonimbus calvus
+- Cumulonimbus capillatus incus
+- Cumulonimbus capillatus mamma
+- Cumulonimbus murus cauda
+
+**Z czym najłatwiej pomylić:**
+
+- **Cumulus congestus:** Congestus zachowuje ostre kalafiorowe kopuły; calvus zaczyna się wygładzać i lodowieć.
+
+- **Nimbostratus z wbudowaną konwekcją:** Wyładowania, szybkie zmiany i silne echa radarowe wskazują Cb ukryty w rozległej warstwie.
+
+- **Cirrus spissatus:** Gęsta pozostałość kowadła nie musi już mieć aktywnego głębokiego rdzenia, ale jej pochodzenie pozostaje ważne.
+
+**Gatunki:** calvus, capillatus
+
+**Odmiany:** brak w zestawieniu
+
+**Cechy dodatkowe:** praecipitatio, virga, incus, mamma, arcus, murus, cauda, tuba
+
+**Chmury towarzyszące:** pileus, velum, pannus, flumen
+
+**Genitus:** altocumulogenitus, altostratogenitus, nimbostratogenitus, stratocumulogenitus, cumulogenitus
+
+**Mutatus:** cumulomutatus
+
+**Wszystkie fotografie:**
+
+#### Kadr 1
+
+Cumulonimbus z rozległym kowadłem oglądany z powietrza.
+
+Ogromna głębokość i rozlewające się kowadło pokazują, że prąd wstępujący dotarł do górnej troposfery.
+
+Fot. NOAA/AOML/Hurricane Research Division · domena publiczna · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg).
+
+#### Kadr 2
+
+Cumulonimbus calvus bez klasycznego, rozwiniętego kowadła.
+
+Gładkawiejący masywny wierzchołek odróżnia calvus od Cumulus congestus, zanim pojawi się kowadło.
+
+Fot. Janne Naukkarinen · domena publiczna · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:Cumulonimbus_calvus_a4.JPG).
+
+#### Kadr 3
+
+Cumulonimbus incus nad Krakowem.
+
+Włókniste, poziomo rozlane kowadło nad głęboką wieżą jest charakterystyczne dla dojrzałego Cumulonimbus.
+
+Fot. Jakub Hałun · CC BY-SA 4.0 · [Źródło fotografii](https://commons.wikimedia.org/wiki/File:20200607_Chmura_cumulonimbus_incus_nad_Krakowem_1407_0252.jpg).
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification: mother-clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-mother-clouds.html), [Mother-clouds and special clouds: abbreviations](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+## Indeks terminów
+
+Każde hasło zachowuje kategorię, nazwę, polskie objaśnienie, definicję,
+**Jak rozpoznać tę cechę**, zgodne rodzaje oraz źródła.
+
+### Gatunki · 15
+
+Opisują kształt i budowę chmury. Na przykład Cumulus humilis jest niski i płaski, a Cumulus congestus silnie wypiętrzony. Nie każdy rodzaj dzieli się na gatunki.
+
+#### fibratus: włóknisty
+
+Cienkie włókna albo pasma, zwykle proste lub łagodnie zakrzywione, które nie kończą się haczykami ani gęstymi kępkami.
+
+**Jak rozpoznać tę cechę:** Szukaj delikatnej, równoległej struktury. W Cirrostratus włókna mogą być wtopione w rozległą zasłonę.
+
+**Rodzaje:** Cirrus, Cirrostratus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### uncinus: haczykowaty
+
+Cirrus zakończony haczykiem lub przecinkiem, często z długim włóknistym ogonem opadających kryształków lodu.
+
+**Jak rozpoznać tę cechę:** Zgrubienie znajduje się na jednym końcu włókna, a nie na całej jego długości. Kształt bywa nazywany końskim ogonem.
+
+**Rodzaje:** Cirrus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### spissatus: gęsty
+
+Cirrus na tyle optycznie gruby, że przy patrzeniu ku Słońcu może wyglądać szarawo. Często powstaje z pozostałości kowadła Cumulonimbus.
+
+**Jak rozpoznać tę cechę:** Wciąż ma włóknistą, lodową budowę Cirrus, ale jest wyraźnie gęstszy od typowych cienkich smug.
+
+**Rodzaje:** Cirrus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### castellanus: wieżyczkowaty
+
+Chmura z szeregiem pionowych wypukłości przypominających blanki, wyrastających ze wspólnej poziomej podstawy.
+
+**Jak rozpoznać tę cechę:** Wieżyczki są szczególnie czytelne z boku. W Altocumulus mogą wskazywać niestabilność na poziomie średnim.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### floccus: kłaczkowaty
+
+Małe kępki o kłębiastym wierzchu i postrzępionej podstawie, często z opadającymi smugami kryształków lub kropli.
+
+**Jak rozpoznać tę cechę:** Elementy są bardziej odrębne i kępkowate niż w stratiformis; nie tworzą regularnych wieżyczek castellanus.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### stratiformis: warstwowy
+
+Rozległa ławica lub warstwa złożona z połączonych albo regularnie rozmieszczonych kłębów, płatów czy wałów.
+
+**Jak rozpoznać tę cechę:** Chmury rozciągają się przede wszystkim na boki. Wielkość elementów i ich cieniowanie pomagają odróżnić Cirrocumulus (Cc), Altocumulus (Ac) i Stratocumulus (Sc).
+
+**Rodzaje:** Cirrocumulus, Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### lenticularis: soczewkowaty
+
+Gładkie soczewki lub migdały, często wydłużone i wyraźnie odcięte, tworzące się w falowym przepływie powietrza.
+
+**Jak rozpoznać tę cechę:** Pozornie stoją w miejscu mimo silnego wiatru. Kilka soczewek może układać się jedna nad drugą.
+
+**Rodzaje:** Cirrocumulus, Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### volutus: walcowaty
+
+Długi, poziomy, odizolowany wał chmurowy obracający się wokół osi poziomej i przemieszczający się jako spójna struktura.
+
+**Jak rozpoznać tę cechę:** W przeciwieństwie do arcus jest oddzielony od chmury macierzystej i nie stanowi jej przyczepionej krawędzi szkwałowej.
+
+**Rodzaje:** Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### nebulosus: mglisty
+
+Jednolita zasłona lub warstwa bez wyraźnych członów, włókien i charakterystycznej struktury.
+
+**Jak rozpoznać tę cechę:** Wysoka, cienka zasłona, czasem z halo, może być Cirrostratus (Cs). Bardzo niska, szara warstwa częściej odpowiada Stratus (St).
+
+**Rodzaje:** Cirrostratus, Stratus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### fractus: postrzępiony
+
+Nieregularne, poszarpane fragmenty chmur, które szybko zmieniają kształt i mogą powstawać pod opadem lub w turbulentnej warstwie.
+
+**Jak rozpoznać tę cechę:** W Cumulus fractus widać zalążki kłębiastych kopuł. Stratus fractus ma mniej wypukłą budowę. Sam postrzępiony brzeg nie wystarcza do ich rozróżnienia.
+
+**Rodzaje:** Stratus, Cumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### humilis: niski, płaski
+
+Cumulus o małej rozciągłości pionowej, płaskiej podstawie i szerokości wyraźnie większej niż wysokość.
+
+**Jak rozpoznać tę cechę:** Kopuły są dobrze zarysowane, lecz wzrost szybko zatrzymuje stabilna warstwa lub słaba wyporność.
+
+**Rodzaje:** Cumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### mediocris: średnio rozwinięty
+
+Cumulus o umiarkowanym rozwoju pionowym, którego wysokość jest zbliżona do szerokości.
+
+**Jak rozpoznać tę cechę:** To etap między płaskim humilis a silnie wypiętrzonym congestus; obserwacja tempa wzrostu jest ważniejsza niż jeden kadr.
+
+**Rodzaje:** Cumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### congestus: wypiętrzony
+
+Silnie rozwinięty Cumulus z ostrymi, kalafiorowymi wieżami i wysokością znacznie większą od szerokości podstawy.
+
+**Jak rozpoznać tę cechę:** Porównaj ostre, kłębiaste kopuły z wygładzającym się lub włóknistym wierzchołkiem Cumulonimbus. Nie określaj składu chmury wyłącznie na podstawie jej wielkości.
+
+**Rodzaje:** Cumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### calvus: łysy, wygładzony
+
+Cumulonimbus, którego górne wypukłości zaczynają tracić ostre kontury i stają się gładkawe wskutek zlodzenia.
+
+**Jak rozpoznać tę cechę:** Brak klasycznego kowadła nie wyklucza burzy. Przejście z kalafiorowej faktury do gładkiej jest cechą graniczną z congestus.
+
+**Rodzaje:** Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### capillatus: włóknisty
+
+Dojrzały Cumulonimbus z wyraźnie włóknistą, pierzastą lub pasiastą górną częścią zbudowaną z kryształków lodu.
+
+**Jak rozpoznać tę cechę:** Często, lecz nie zawsze, tworzy kowadło incus. Włóknisty wierzchołek odróżnia go od calvus.
+
+**Rodzaje:** Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+### Odmiany · 9
+
+Opisują układ chmur albo to, ile światła przepuszcza warstwa. Jedna chmura może mieć kilka odmian, o ile ich cechy się nie wykluczają.
+
+#### intortus: splątany
+
+Włókna Cirrus są nieregularnie zakrzywione i splątane, bez uporządkowania typowego dla radiatus lub vertebratus.
+
+**Jak rozpoznać tę cechę:** Oceniaj układ całej grupy włókien, nie pojedyncze zagięcie.
+
+**Rodzaje:** Cirrus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### vertebratus: kręgowy
+
+Elementy układają się jak kręgosłup, żebra albo szkielet ryby: główna oś z bocznymi odgałęzieniami.
+
+**Jak rozpoznać tę cechę:** Wzór musi być czytelny w organizacji wielu włókien Cirrus.
+
+**Rodzaje:** Cirrus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### undulatus: pofalowany
+
+Elementy lub warstwa układają się w fale, często jako jeden albo dwa systemy równoległych pasm.
+
+**Jak rozpoznać tę cechę:** Fale wskazują organizację przepływu; nie określają samodzielnie wysokości ani rodzaju chmury.
+
+**Rodzaje:** Cirrocumulus, Cirrostratus, Altocumulus, Altostratus, Stratocumulus, Stratus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### radiatus: promienisty
+
+Równoległe pasma pozornie zbiegają się ku jednemu lub dwóm punktom horyzontu wskutek perspektywy.
+
+**Jak rozpoznać tę cechę:** Pasma są w rzeczywistości prawie równoległe. Zbieżność nie oznacza, że fizycznie spotykają się nad horyzontem.
+
+**Rodzaje:** Cirrus, Altocumulus, Altostratus, Stratocumulus, Cumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### lacunosus: perforowany
+
+Cienka ławica z regularnymi, zaokrąglonymi otworami o postrzępionych krawędziach, często przypominająca plaster miodu.
+
+**Jak rozpoznać tę cechę:** Otwory należą do układu warstwy. Pojedynczy cavum jest cechą dodatkową o innej skali i genezie.
+
+**Rodzaje:** Cirrocumulus, Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### duplicatus: podwójny, wielowarstwowy
+
+Dwie lub więcej warstw albo ławic tego samego rodzaju występuje na nieco różnych wysokościach i może częściowo się nakładać.
+
+**Jak rozpoznać tę cechę:** Nie każda wielowarstwowa sytuacja to duplicatus; warstwy muszą należeć do tego samego rodzaju.
+
+**Rodzaje:** Cirrus, Cirrostratus, Altocumulus, Altostratus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### translucidus: przeświecający
+
+Warstwa jest na tyle cienka, że położenie Słońca lub Księżyca można wyraźnie rozpoznać.
+
+**Jak rozpoznać tę cechę:** To kategoria przejrzystości, nie synonim cienkiej chmury wysokiej. Występuje także w niskich i średnich rodzajach.
+
+**Rodzaje:** Altocumulus, Altostratus, Stratocumulus, Stratus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### perlucidus: z prześwitami
+
+Między elementami ławicy pozostają wyraźne szczeliny, przez które widać niebo, Słońce, Księżyc lub wyższą warstwę.
+
+**Jak rozpoznać tę cechę:** Prześwity znajdują się między kłębami lub płatami; w translucidus światło przechodzi przez samą chmurę.
+
+**Rodzaje:** Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### opacus: nieprzeświecający
+
+Warstwa jest wystarczająco gruba, aby całkowicie zasłonić położenie Słońca lub Księżyca.
+
+**Jak rozpoznać tę cechę:** Ta odmiana mówi o zasłanianiu światła, nie o wysokości. Może dotyczyć Altocumulus, Altostratus, Stratocumulus lub Stratus.
+
+**Rodzaje:** Altocumulus, Altostratus, Stratocumulus, Stratus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+### Cechy dodatkowe · 11
+
+Nazywają charakterystyczne części chmury i związane z nią zjawiska, na przykład kowadło, wał szkwałowy lub virga: opad, który nie dociera do ziemi.
+
+#### incus: kowadło
+
+Górna część Cumulonimbus rozlana w kształt kowadła wskutek dojścia prądu wstępującego do stabilnej warstwy i silnego przepływu wysokościowego.
+
+**Jak rozpoznać tę cechę:** Kowadło jest włókniste i lodowe. Może rozciągać się daleko poza rdzeń opadowy.
+
+**Rodzaje:** Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### mamma: wymiona
+
+Workowate wypukłości zwisające z dolnej powierzchni chmury, szczególnie efektowne pod kowadłem, lecz niewyłączne dla burz.
+
+**Jak rozpoznać tę cechę:** Ich obecność nie dowodzi tornada ani automatycznie skrajnej pogody przy powierzchni.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Altocumulus, Altostratus, Stratocumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### virga: smugi opadu niedochodzące do ziemi
+
+Pionowe lub ukośne smugi opadu, które zanikają przed dotarciem do ziemi. Krople parują, a kryształki lodu mogą przechodzić bezpośrednio w parę wodną, czyli sublimować.
+
+**Jak rozpoznać tę cechę:** Śledź, czy smuga zanika w powietrzu. Gdy opad dociera do gruntu, właściwym terminem jest praecipitatio.
+
+**Rodzaje:** Cirrocumulus, Altocumulus, Altostratus, Nimbostratus, Stratocumulus, Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### praecipitatio: opad docierający do powierzchni
+
+Opad, na przykład deszcz, śnieg lub krupa, który wypada z chmury i dociera do powierzchni Ziemi.
+
+**Jak rozpoznać tę cechę:** Termin dotyczy widocznego związku opadu z chmurą, nie jego intensywności ani czasu trwania.
+
+**Rodzaje:** Altostratus, Nimbostratus, Stratocumulus, Stratus, Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### arcus: wał szkwałowy
+
+Gęsty poziomy wał przy przedniej dolnej części chmury konwekcyjnej, związany z czołem wypływu chłodnego powietrza.
+
+**Jak rozpoznać tę cechę:** Jest przyczepiony do układu burzowego lub konwekcyjnego; odizolowany walec może być volutus.
+
+**Rodzaje:** Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### tuba: lej
+
+Lej lub stożek zwisający z podstawy chmury i związany z wirującym powietrzem. O tornadzie decyduje kontakt wiru z powierzchnią, nie długość widocznego leja.
+
+**Jak rozpoznać tę cechę:** Widoczny lej nie musi sięgać ziemi, choć wir już do niej dociera. Wirujące szczątki, pył lub rozbryzg u podstawy mogą być dodatkową wskazówką; nie podchodź bliżej, żeby to sprawdzić.
+
+**Rodzaje:** Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html), [Weather Glossary for Storm Spotters](https://www.weather.gov/oun/spotterglossary).
+
+#### asperitas: wzburzona powierzchnia
+
+Wyraźne, chaotyczne fale na spodzie chmury, oglądane od dołu jak wzburzone ciemne morze.
+
+**Jak rozpoznać tę cechę:** Struktura jest bardziej nieregularna i dramatyczna niż undulatus; nie oznacza, że chmura jest burzowa.
+
+**Rodzaje:** Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### cavum: otwór opadowy
+
+Wyraźna okrągła lub wydłużona dziura w cienkiej warstwie chmury, często z virga opadającą z jej środka.
+
+**Jak rozpoznać tę cechę:** Zwykle powstaje po zainicjowaniu kryształków lodu w przechłodzonej warstwie; bywa związany z przelotem samolotu.
+
+**Rodzaje:** Cirrocumulus, Altocumulus, Stratocumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### cauda: ogon
+
+Niska pozioma smuga chmurowa połączona z murus i skierowana ku strefie opadu, związana z dopływem powietrza do burzy.
+
+**Jak rozpoznać tę cechę:** Nie należy mylić jej z lejem tuba; cauda jest pozioma i połączona z chmurą ścienną.
+
+**Rodzaje:** Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### fluctus: fala Kelvina–Helmholtza
+
+Krótkotrwałe grzebienie przypominające załamujące się fale morskie. Powstają przy uskoku wiatru, gdy sąsiednie warstwy powietrza poruszają się z różną prędkością.
+
+**Jak rozpoznać tę cechę:** Regularne zawijające się grzebienie odróżniają fluctus od zwykłego pofalowania undulatus.
+
+**Rodzaje:** Cirrus, Altocumulus, Stratocumulus, Stratus, Cumulus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### murus: chmura ścienna
+
+Lokalne, trwałe obniżenie podstawy Cumulonimbus, zwykle pod bezdeszczową częścią silnego prądu wstępującego.
+
+**Jak rozpoznać tę cechę:** Obracająca się chmura ścienna jest niepokojącym objawem w burzy. Samo obniżenie podstawy nie potwierdza jednak tornada; sprawdź aktualne ostrzeżenia.
+
+**Rodzaje:** Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+### Chmury towarzyszące · 4
+
+Mniejsze chmury związane z główną chmurą, odrębne albo częściowo z nią złączone.
+
+#### pileus: czapeczka
+
+Mała, gładka chmura soczewkowata nad szybko rosnącą wieżą konwekcyjną, tworzona przez unoszenie wilgotnej warstwy nad wierzchołkiem.
+
+**Jak rozpoznać tę cechę:** Wieża może szybko przebić pileus. Jest sygnałem silnego wzrostu, lecz nie osobnym dowodem burzy.
+
+**Rodzaje:** Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### velum: welon
+
+Rozległa pozioma zasłona ponad lub wokół środkowej albo górnej części chmury konwekcyjnej.
+
+**Jak rozpoznać tę cechę:** Jest większa i trwalsza niż pileus, a rosnąca wieża może ją częściowo przebić.
+
+**Rodzaje:** Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### pannus: strzępy opadowe
+
+Postrzępione niskie fragmenty pod główną chmurą, często tworzące się w wilgotnym powietrzu chłodzonym przez opad.
+
+**Jak rozpoznać tę cechę:** Pannus może zasłaniać właściwą podstawę i sprawiać wrażenie niższego rodzaju chmury.
+
+**Rodzaje:** Altostratus, Nimbostratus, Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### flumen: pas dopływowy
+
+Niski szeroki pas chmur układający się wzdłuż przepływu ku superkomórce, związany z dopływem wilgotnego powietrza.
+
+**Jak rozpoznać tę cechę:** Jest powiązany z układem burzowym, ale nie łączy się z murus w taki sposób jak cauda.
+
+**Rodzaje:** Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+### Chmury macierzyste · 2
+
+Końcówki genitus i mutatus zapisują pochodzenie albo przemianę chmury. To informacja o historii rozwoju.
+
+#### genitus: powstały z części innej chmury
+
+Nowy rodzaj rozwija się z części chmury macierzystej, która nadal istnieje. Nazwa źródłowego rodzaju otrzymuje końcówkę -genitus.
+
+**Jak rozpoznać tę cechę:** Przykład: Cirrus cumulonimbogenitus rozwija się z górnej części Cumulonimbus, podczas gdy chmura burzowa nadal jest rozpoznawalna.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Cirrostratus, Altocumulus, Altostratus, Nimbostratus, Stratocumulus, Stratus, Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+#### mutatus: przekształcony z innej chmury
+
+Cała chmura lub jej większa część przechodzi w nowy rodzaj. Nazwa pierwotnego rodzaju otrzymuje końcówkę -mutatus.
+
+**Jak rozpoznać tę cechę:** Przykład: Stratocumulus stratomutatus oznacza, że warstwa Stratus przekształciła się w chmurę z wyraźnymi kłębami lub wałami.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Cirrostratus, Altocumulus, Altostratus, Nimbostratus, Stratocumulus, Stratus, Cumulus, Cumulonimbus
+
+Źródła: [International Cloud Atlas](https://cloudatlas.wmo.int/), [Cloud classification summary](https://cloudatlas.wmo.int/en/cloud-classification-summary.html), [Principles of cloud classification](https://cloudatlas.wmo.int/en/principles-of-cloud-classification.html).
+
+### Chmury specjalne · 5
+
+Nazwy związane z lokalnym źródłem powstania, takim jak pożar, wodospad, las lub działalność człowieka.
+
+#### cataractagenitus: powstały przy wodospadzie
+
+Chmura tworzona przez rozbryzg dużego wodospadu, gdy unoszona wilgoć prowadzi do lokalnego nasycenia.
+
+**Jak rozpoznać tę cechę:** Pochodzenie musi być bezpośrednio związane z pyłem wodnym i przepływem przy wodospadzie.
+
+**Rodzaje:** Cumulus, Stratus
+
+Źródła: [Principles of cloud classification: special clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-special-clouds.html).
+
+#### flammagenitus: powstały wskutek intensywnego ciepła
+
+Chmura konwekcyjna rozwinięta nad pożarem lub erupcją wulkaniczną wskutek silnego lokalnego ogrzewania i unoszenia.
+
+**Jak rozpoznać tę cechę:** Źródło termiczne jest częścią pełnej nazwy; rozwój może prowadzić do głębokiej, niebezpiecznej konwekcji.
+
+**Rodzaje:** Cumulus, Cumulonimbus
+
+Źródła: [Principles of cloud classification: special clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-special-clouds.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+#### homogenitus: powstały wskutek działalności człowieka
+
+Chmura powstała bezpośrednio wskutek działalności człowieka, najczęściej smuga kondensacyjna rozwijająca się za samolotem.
+
+**Jak rozpoznać tę cechę:** Jeśli chmura później upodobni się do naturalnego rodzaju, jej dalszą historię może opisywać termin homomutatus.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Cirrostratus, Altocumulus, Altostratus, Nimbostratus, Stratocumulus, Stratus, Cumulus, Cumulonimbus
+
+Źródła: [Principles of cloud classification: special clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-special-clouds.html), [Aircraft condensation trails](https://cloudatlas.wmo.int/en/aircraft-condensation-trails.html).
+
+#### homomutatus: przekształcony z homogenitus
+
+Trwała smuga kondensacyjna, która rozprzestrzeniła się i zmieniła w Cirrus, Cirrocumulus lub Cirrostratus o wyglądzie podobnym do chmur powstałych naturalnie.
+
+**Jak rozpoznać tę cechę:** Nazwa zachowuje informację o pochodzeniu od samolotu, nawet gdy smuga nie jest już rozpoznawalna. Potrzebna jest obserwacja jej przemiany, nie tylko końcowego wyglądu.
+
+**Rodzaje:** Cirrus, Cirrocumulus, Cirrostratus
+
+Źródła: [Principles of cloud classification: special clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-special-clouds.html).
+
+#### silvagenitus: powstały nad lasem
+
+Chmura powstająca lokalnie nad lasem dzięki wilgoci oddawanej przez rośliny i parującej z mokrych powierzchni. Parowanie połączone z oddawaniem wody przez rośliny to ewapotranspiracja.
+
+**Jak rozpoznać tę cechę:** Związek przestrzenny i proces nad obszarem leśnym są istotniejsze niż sam kłębiasty wygląd.
+
+**Rodzaje:** Stratus
+
+Źródła: [Principles of cloud classification: special clouds](https://cloudatlas.wmo.int/en/principles-of-cloud-classification-special-clouds.html).
+
+### Górna atmosfera · 3
+
+Rzadkie chmury polarnej stratosfery i mezosfery, klasyfikowane poza dziesięcioma rodzajami troposferycznymi.
+
+#### Nacreous clouds: chmury perłowe
+
+Bardzo rzadkie, soczewkowate chmury polarnej stratosfery na wysokości około 20–30 km, intensywnie iryzujące przed wschodem lub po zachodzie Słońca.
+
+**Jak rozpoznać tę cechę:** Jasne barwy perłowe utrzymują się przy Słońcu kilka stopni pod horyzontem; zwykłe chmury troposferyczne są wtedy ciemne.
+
+**Rodzaje:** Rzadkie chmury polarnej stratosfery i mezosfery, klasyfikowane poza dziesięcioma rodzajami troposferycznymi.
+
+Fotografia: Iryzujące chmury perłowe nad stacją McMurdo na Antarktydzie. Fot. Alan Light · CC BY 2.0 · [Źródło](https://commons.wikimedia.org/wiki/File:Nacreous_clouds_Antarctica.jpg).
+
+Źródła: [Upper atmospheric clouds](https://cloudatlas.wmo.int/en/upper-atmospheric-clouds.html), [Nacreous clouds Antarctica.jpg](https://commons.wikimedia.org/wiki/File:Nacreous_clouds_Antarctica.jpg).
+
+#### Polar stratospheric clouds: polarne chmury stratosferyczne
+
+Chmury powstające zimą w bardzo zimnej polarnej stratosferze, obejmujące różne składy cząstek i mające znaczenie dla chemii ozonu.
+
+**Jak rozpoznać tę cechę:** Nie wszystkie polarne chmury stratosferyczne są efektownie perłowe; typ optyczny i skład nie są tym samym podziałem.
+
+**Rodzaje:** Rzadkie chmury polarnej stratosfery i mezosfery, klasyfikowane poza dziesięcioma rodzajami troposferycznymi.
+
+Fotografia: Polarna chmura stratosferyczna typu I ponad Cirrus o wschodzie Słońca. Fot. François Guerraz · CC BY-SA 3.0 · [Źródło](https://commons.wikimedia.org/wiki/File:Polar_Stratospheric_Cloud_type_I_above_Cirrus.jpg).
+
+Źródła: [Upper atmospheric clouds](https://cloudatlas.wmo.int/en/upper-atmospheric-clouds.html), [Polar Stratospheric Cloud type I above Cirrus.jpg](https://commons.wikimedia.org/wiki/File:Polar_Stratospheric_Cloud_type_I_above_Cirrus.jpg).
+
+#### Noctilucent clouds: obłoki srebrzyste
+
+Najwyższe obserwowane chmury, zwykle około 80–85 km w mezosferze, złożone z drobnych kryształków lodu i widoczne podczas zmierzchu.
+
+**Jak rozpoznać tę cechę:** Świecą srebrzyście lub niebieskawo po zachodzie, gdy mezosfera jest jeszcze oświetlona, a dolna atmosfera pozostaje w cieniu.
+
+**Rodzaje:** Rzadkie chmury polarnej stratosfery i mezosfery, klasyfikowane poza dziesięcioma rodzajami troposferycznymi.
+
+Fotografia: Obłoki srebrzyste nad wodą w Laboe po zachodzie Słońca. Fot. Matthias Süßen · CC BY-SA 4.0 · [Źródło](https://commons.wikimedia.org/wiki/File:Noctilucent-clouds-msu-6817.jpg).
+
+Źródła: [Upper atmospheric clouds](https://cloudatlas.wmo.int/en/upper-atmospheric-clouds.html), [Noctilucent-clouds-msu-6817.jpg](https://commons.wikimedia.org/wiki/File:Noctilucent-clouds-msu-6817.jpg).
+
+## Pracownia nazw
+
+**Sprawdź, jak połączyć nazwy chmur**
+
+Wybierz to, co rzeczywiście widzisz, a pochodzenie dodaj tylko wtedy, gdy znasz
+historię rozwoju. Ćwiczenie sprawdza, czy wybrane określenia można połączyć według
+WMO, ale nie potwierdza rozpoznania chmury.
+
+**Wypróbuj przykład** prowadzi do istniejących czterech ćwiczeń.
+
+### Wiele odmian
+
+perlucidus może współistnieć z translucidus
+
+**Altocumulus stratiformis perlucidus translucidus**
+
+Nazwa jest spójna z tabelą zgodności rodzaju i wybranych określeń WMO.
+
+### Znajdź sprzeczność
+
+dwie odmiany opisują przeciwne własności optyczne
+
+**Altocumulus stratiformis translucidus opacus**
+
+Nazwa zawiera elementy, których reguły WMO nie pozwalają użyć razem.
+
+- translucidus i opacus wzajemnie się wykluczają: warstwa nie może jednocześnie odsłaniać i całkowicie zasłaniać tarczy Słońca lub Księżyca.
+
+### Historia przemiany
+
+sprawdź, z jakiej chmury powstał Cirrus
+
+**Cirrus spissatus cumulonimbogenitus**
+
+Te określenia można połączyć, ale pochodzenia zwykle nie da się ustalić z jednego zdjęcia. Potwierdź obserwację przemiany lub informację o tym, jak chmura powstała.
+
+**Po potwierdzeniu pochodzenia:** Nazwa jest spójna. Zaznaczyłeś, że znasz pochodzenie chmury; aplikacja nie weryfikuje tej informacji.
+
+### Wyjątek smugi
+
+świeżej trwałej smugi nie opisujemy gatunkiem ani odmianą
+
+**Cirrus homogenitus**
+
+Nazwa jest spójna. Zaznaczyłeś, że znasz pochodzenie chmury; aplikacja nie weryfikuje tej informacji.
+
+**Po potwierdzeniu pochodzenia:** Nazwa jest spójna. Zaznaczyłeś, że znasz pochodzenie chmury; aplikacja nie weryfikuje tej informacji.
+
+Pola wyboru:
+
+- **Rodzaj:** Każda obserwowana chmura należy do jednego rodzaju.
+- **Gatunek:** Opisuje budowę. W pełnej nazwie wybierasz najwyżej jeden.
+- **Odmiany:** Możesz wybrać kilka. Sprzeczności pozostają widoczne, żeby dało się je przeanalizować.
+- **Cechy i chmury towarzyszące:** Może występować ich kilka jednocześnie.
+- **Pochodzenie:** Określa, z jakiej chmury lub w jaki sposób powstała obserwowana chmura.
+
+Puste kategorie: **Ten rodzaj nie ma formalnie wyróżnianych gatunków.**,
+**Ten rodzaj nie ma formalnie wyróżnianych odmian.**,
+**WMO nie przypisuje temu rodzajowi takich określeń.**
+
+Pole pochodzenia: **Pochodzenie, jeśli je znasz**. Początkowo:
+**Bez określenia pochodzenia**. Grupy: **Chmura macierzysta**, **Chmura specjalna**.
+
+Potwierdzenie: **Mam podstawę do opisania pochodzenia**.
+Widziałem przemianę lub mam wiarygodną informację o tym, jak chmura powstała.
+
+Wynik: **Pełna nazwa robocza**. Statusy: **Nazwa spójna**,
+**Potwierdź, skąd znasz pochodzenie**, **Sprzeczność w nazwie**.
+Podsumowanie pokazuje rodzaj, gatunek, odmiany, cechy i pochodzenie.
+Brak wyboru: **nie wybrano**, **nie podano**. Przycisk: **Zacznij od nowa**.
+
+## Wprowadzenie do trudnych przypadków
+
+**Gdy pasuje więcej niż jedna nazwa**
+
+Podobne chmury łatwo pomylić. Sprawdź, czego brakuje do rozpoznania: skali kłębów,
+widoku całej warstwy czy obserwacji jej zmian.
+
+## Podstawa korekt
+
+- [WMO: tabela klasyfikacji](https://cloudatlas.wmo.int/en/cloud-classification-summary.html)
+  i [pisownia nazw pochodzenia](https://cloudatlas.wmo.int/en/abbr-and-symbols-of-clouds-table-mother-special.html).
+  Użyto najczęstszych kombinacji z tabeli, nie dorobionych końcówek ani
+  deklaracji, że lista wyczerpuje wszystkie zjawiska.
+- [WMO: Stratus](https://cloudatlas.wmo.int/en/stratus-st.html) oraz
+  [powstawanie Stratus](https://cloudatlas.wmo.int/en/stratus-may-form.html).
+  Uniesiona mgła jest jednym z mechanizmów, nie definicją rodzaju.
+- [WMO: budowa Stratus](https://cloudatlas.wmo.int/en/physical-constitution-stratus.html).
+  Śnieg ziarnisty nie jest tym samym co ziarna lodowe.
+- [WMO: smugi samolotowe](https://cloudatlas.wmo.int/en/aircraft-condensation-trails.html).
+  Rozróżniono trwałą smugę homogenitus i jej dalszą przemianę homomutatus.
+- [WMO: Nimbostratus](https://cloudatlas.wmo.int/en/nimbostratus-ns.html).
+  Opad zwykle dociera do ziemi, ale nie jest to bezwarunkowy wymóg.
+- [NWS: słownik obserwatora burz](https://www.weather.gov/oun/spotterglossary).
+  Rozróżniono widoczny lej i kontakt wiru z powierzchnią.

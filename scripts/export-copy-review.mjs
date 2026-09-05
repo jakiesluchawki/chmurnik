@@ -9,6 +9,8 @@ import { layersHeadings, windyReadingSteps, windCaveats, hazardCards, soundingRe
 import { soundingScenarios, soundingGlossary } from "../src/data/soundings.js";
 import { windFromCloudMotion } from "../src/lib/wind.js";
 import { clouds } from "../src/data/clouds.js";
+import { cloudProfiles, taxonomyTerms, taxonomyCategories } from "../src/data/encyclopedia.js";
+import { nomenclaturePresets, evaluateNomenclature } from "../src/lib/nomenclature.js";
 import { savedHypothesisMessage } from "../src/lib/observations.js";
 import { metarStructurePhases, metarDecodeSections, metarTrainingScenarios, tafTrainingScenarios, aviationBriefingSets } from "../src/data/metar-training.js";
 import { cloudBands, pressureLevels, weatherLayers } from "../src/data/weather-layers.js";
@@ -42,6 +44,47 @@ const comparisonCopy = [
     `**${ids.split("|").join(" / ")}**\n\n${text}`),
 ].join("\n\n");
 const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
+  "<!-- NOMENCLATURE_CASES -->": nomenclaturePresets.map((preset) => {
+    const result = evaluateNomenclature(preset.selection);
+    return [`### ${preset.label}`, preset.hint, `**${result.name}**`, result.explanation,
+      ...result.conflicts.map((text) => `- ${text}`),
+      ...(result.requiresEvidence ? [`**Po potwierdzeniu pochodzenia:** ${evaluateNomenclature({ ...preset.selection, evidenceConfirmed: true }).explanation}`] : []),
+    ].join("\n\n");
+  }).join("\n\n"),
+  "<!-- CLOUD_MONOGRAPHS -->": clouds.map((cloud) => {
+    const profile = cloudProfiles[cloud.id];
+    return [
+      `### ${cloud.name}: ${cloud.polish}`, `${cloud.code} · ${cloud.level} · ${cloud.altitude}`,
+      cloud.headline, profile.essence, "**Na co patrzeć:**", ...cloud.observe.map((value) => `- ${value}`),
+      `**Co może mówić o pogodzie:** ${cloud.meaning}`, `**Na co uważać przy rozpoznawaniu:** ${cloud.trap}`,
+      "**Z czego jest zbudowana:**", profile.composition,
+      ...Object.entries({ "Jak powstaje": profile.formation, "Pogoda i zmiany chmury": profile.weather,
+        "Typowe przemiany": profile.evolution, "Znaczenie lotnicze": profile.aviation,
+        "Zjawiska optyczne": profile.optics, "Co sprawdzić podczas obserwacji": profile.fieldChecklist,
+        "Przykłady pełnych nazw": profile.namingExamples })
+        .map(([label, values]) => `**${label}:**\n\n${values.map((value) => `- ${value}`).join("\n")}`),
+      "**Z czym najłatwiej pomylić:**", ...profile.lookAlikes.map((item) => `- **${item.name}:** ${item.rule}`),
+      ...Object.entries({ Gatunki: cloud.species, Odmiany: cloud.varieties,
+        "Cechy dodatkowe": cloud.features, "Chmury towarzyszące": cloud.accessoryClouds,
+        Genitus: profile.motherClouds.genitus, Mutatus: profile.motherClouds.mutatus })
+        .map(([label, values]) => `**${label}:** ${values.join(", ") || "brak w zestawieniu"}`),
+      "**Wszystkie fotografie:**", ...cloud.images.map((photo, index) => [
+        `#### Kadr ${index + 1}`, photo.note, photo.diagnostic,
+        `Fot. ${photo.author} · ${photo.license} · [Źródło fotografii](${photo.page}).`,
+      ].join("\n\n")),
+      `Źródła: ${getSources([...cloud.sourceIds, "wmoMotherClouds", "wmoMotherNames", "faaWeather"]).map((source) => `[${source.title}](${source.url})`).join(", ")}.`,
+    ].join("\n\n");
+  }).join("\n\n"),
+  "<!-- TAXONOMY_TERMS -->": taxonomyCategories.map((category) => [
+    `### ${category.label} · ${category.count}`, category.description,
+    ...taxonomyTerms.filter((term) => term.category === category.id).map((term) => [
+      `#### ${term.name}: ${term.polish}`, term.definition,
+      `**Jak rozpoznać tę cechę:** ${term.diagnostic}`,
+      `**Rodzaje:** ${term.genera.map((id) => clouds.find((cloud) => cloud.id === id).name).join(", ") || category.description}`,
+      ...(term.image ? [`Fotografia: ${term.image.alt}. Fot. ${term.image.author} · ${term.image.license} · [Źródło](${term.image.page}).`] : []),
+      `Źródła: ${getSources(term.sourceIds).map((source) => `[${source.title}](${source.url})`).join(", ")}.`,
+    ].join("\n\n")),
+  ].join("\n\n")).join("\n\n"),
   "<!-- FULL_LESSONS -->": learningModules.map((module) => {
     const lesson = lessons[module.id];
     const practice = lessonPractices[module.id];
@@ -163,7 +206,7 @@ const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
   }).join("\n\n"),
 };
 const sections = [];
-for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md", "copy-v4-field-tools-review.md", "copy-v4-lessons-review.md"]) {
+for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md", "copy-v4-field-tools-review.md", "copy-v4-lessons-review.md", "copy-v4-cloud-details-review.md"]) {
   let content = await readFile(new URL(`design/${name}`, root), "utf8");
   for (const [marker, value] of Object.entries(substitutions)) content = content.replace(marker, value);
   sections.push(content.trim());
@@ -176,13 +219,14 @@ nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
 wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
 obserwacji, pocztówki, kopie, cały warsztat szkoleniowy METAR/TAF, czytnik
 wklejanych depesz, symulator wiatru, ćwiczenia odczytu map oraz pełne dziewięć
-lekcji z rozdziałami, pytaniami, odpowiedziami i zadaniami.
+lekcji z rozdziałami, pytaniami, odpowiedziami i zadaniami. Indeks terminów
+obejmuje wszystkie 49 haseł, a monografie wszystkie 10 rodzajów i opisy 30 zdjęć.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
-To wersja robocza, nie opublikowane wydanie. Indeks terminów
-i monografie poszczególnych chmur wymagają jeszcze osobnego
-przeglądu.
+To wersja robocza, nie opublikowane wydanie. Redakcja atlasu i indeksu obejmuje
+także korektę nazw pochodzenia według WMO. Przegląd języka i wskazanych błędów
+nie jest niezależną recenzją meteorologiczną całej aplikacji.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
 Dokument można odtworzyć poleceniem:

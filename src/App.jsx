@@ -2299,18 +2299,18 @@ function NomenclatureWorkshop({ onSources }) {
       <header className="nomenclature-workshop__header">
         <div>
           <span className="eyebrow">Pracownia nazewnictwa WMO</span>
-          <h3 id="nomenclature-title">Zbuduj nazwę. Sprawdź jej granice.</h3>
+          <h3 id="nomenclature-title">Sprawdź, jak połączyć nazwy chmur</h3>
           <p>
             Wybierz to, co rzeczywiście widzisz, a pochodzenie dodaj tylko
-            wtedy, gdy znasz historię rozwoju. Walidator pokazuje zgodność
-            formalną osobno od siły dowodu.
+            wtedy, gdy znasz historię rozwoju. Ćwiczenie sprawdza, czy wybrane
+            określenia można połączyć według WMO, ale nie potwierdza rozpoznania chmury.
           </p>
         </div>
         <SourceButton ids={result.sourceIds} onOpen={onSources} />
       </header>
 
       <div className="nomenclature-presets" aria-label="Przykładowe przypadki">
-        <span>Przypadki do rozebrania</span>
+        <span>Wypróbuj przykład</span>
         <div>
           {nomenclaturePresets.map((preset) => (
             <button
@@ -2383,7 +2383,7 @@ function NomenclatureWorkshop({ onSources }) {
               </div>
             </legend>
             {!options.features.length && !options.accessory.length ? (
-              <p className="nomenclature-empty">Brak formalnych określeń w tej warstwie.</p>
+              <p className="nomenclature-empty">WMO nie przypisuje temu rodzajowi takich określeń.</p>
             ) : (
               <>
                 {!!options.features.length && (
@@ -2433,11 +2433,11 @@ function NomenclatureWorkshop({ onSources }) {
               <span>5</span>
               <div>
                 <strong>Pochodzenie</strong>
-                <small>To zapis historii lub przyczyny, nie ozdobny przyrostek.</small>
+                <small>Określa, z jakiej chmury lub w jaki sposób powstała obserwowana chmura.</small>
               </div>
             </legend>
             <label>
-              <span>Wybierz tylko przy znanym kontekście</span>
+              <span>Pochodzenie, jeśli je znasz</span>
               <select
                 value={selection.originId || ""}
                 onChange={(event) => setSelection((current) => ({
@@ -2474,7 +2474,7 @@ function NomenclatureWorkshop({ onSources }) {
                 />
                 <span>
                   <strong>Mam podstawę do opisania pochodzenia</strong>
-                  <small>Obserwowałem przemianę albo znam wiarygodny kontekst procesu.</small>
+                  <small>Widziałem przemianę lub mam wiarygodną informację o tym, jak chmura powstała.</small>
                 </span>
               </label>
             )}
@@ -2491,7 +2491,7 @@ function NomenclatureWorkshop({ onSources }) {
             <div>
               <strong>
                 {result.status === "valid" && "Nazwa spójna"}
-                {result.status === "needs-evidence" && "Potrzebny dowód historii"}
+                {result.status === "needs-evidence" && "Potwierdź, skąd znasz pochodzenie"}
                 {result.status === "conflict" && "Sprzeczność w nazwie"}
               </strong>
               <p>{result.explanation}</p>
@@ -2547,7 +2547,7 @@ function EncyclopediaIndex({ onSelectTerm, onSelectCloud, onSources }) {
           </p>
         </div>
         <aside className="naming-formula">
-          <span>Składnia obserwacji</span>
+          <span>Kolejność określeń</span>
           <strong>rodzaj + gatunek + odmiana + cecha + pochodzenie</strong>
           <small>Nie każda kombinacja jest dopuszczalna. Zgodność wynika z tabel WMO.</small>
         </aside>
@@ -2587,7 +2587,7 @@ function EncyclopediaIndex({ onSelectTerm, onSelectCloud, onSources }) {
       <div className="index-context">
         <div>
           <span className="eyebrow">{activeCategory ? activeCategory.label : "Cała klasyfikacja"}</span>
-          <p>{activeCategory?.description || "Formalne warstwy klasyfikacji WMO oraz trzy klasy chmur górnej atmosfery."}</p>
+          <p>{activeCategory?.description || "Znaczenie nazw opisujących wygląd i pochodzenie chmur oraz hasła dotyczące chmur górnej atmosfery."}</p>
         </div>
         <strong>{formatResultCount(filtered.length)}</strong>
       </div>
@@ -2638,8 +2638,8 @@ function HardCases({ onCompareClouds, onSources }) {
     <section className="hard-cases">
       <div className="cases-intro">
         <span className="eyebrow">Niepewność jest częścią obserwacji</span>
-        <h2>Spór może być informacją</h2>
-        <p>Klasyfikacja ma kryteria, ale chmury płynnie się rozwijają, a pojedynczy kadr może ukrywać wysokość, skalę i historię.</p>
+        <h2>Gdy pasuje więcej niż jedna nazwa</h2>
+        <p>Podobne chmury łatwo pomylić. Sprawdź, czego brakuje do rozpoznania: skali kłębów, widoku całej warstwy czy obserwacji jej zmian.</p>
       </div>
       <div className="case-list">
         {hardCases.map((item, index) => (
@@ -2693,12 +2693,12 @@ function DiagnosticPhotoGallery({ cloud }) {
     <section className="diagnostic-gallery" aria-labelledby={galleryTitleId}>
       <header className="diagnostic-gallery__heading">
         <div>
-          <span className="eyebrow">Galeria diagnostyczna · {cloud.images.length} kadry</span>
+          <span className="eyebrow">Porównaj zdjęcia · {cloud.images.length} przykłady</span>
           <h3 id={galleryTitleId}>Ten sam rodzaj nie zawsze wygląda tak samo</h3>
         </div>
         <p>
-          Zmieniaj perspektywę, światło i stadium rozwoju. Najpierw nazwij
-          dowód widoczny w kadrze, dopiero potem odsłoń komentarz.
+          Obejrzyj chmurę w różnym świetle i na różnych etapach rozwoju.
+          Spróbuj wskazać jej charakterystyczne cechy, a potem porównaj je z opisem.
         </p>
       </header>
 
@@ -2721,16 +2721,16 @@ function DiagnosticPhotoGallery({ cloud }) {
               <>
                 <span className="eyebrow">Najpierw obserwacja</span>
                 <h4>
-                  Co w tym kadrze podtrzymuje hipotezę „<CloudName>{cloud.name}</CloudName>”?
+                  Po czym poznajesz, że to <CloudName>{cloud.name}</CloudName>?
                 </h4>
                 <p>
-                  Zatrzymaj się na 15 sekund. Oceń kształt, skalę elementów,
-                  cieniowanie, warstwowość i rozwój pionowy.
+                  Przyjrzyj się kształtom i cieniom. Czy widzisz pojedyncze kłęby,
+                  włókna czy rozległą warstwę? Nie każde zdjęcie pokaże wszystkie cechy rodzaju.
                 </p>
               </>
             ) : (
               <>
-                <span className="eyebrow">Co rozstrzyga</span>
+                <span className="eyebrow">Cechy widoczne na zdjęciu</span>
                 <h4>{image.diagnostic}</h4>
                 <p>{image.note}</p>
                 <div className="diagnostic-gallery__credit">
@@ -2749,7 +2749,7 @@ function DiagnosticPhotoGallery({ cloud }) {
             aria-expanded={revealed}
             aria-controls={`${galleryTitleId}-analysis`}
           >
-            {revealed ? <>Ukryj analizę</> : <>Pokaż analizę <Eye size={17} /></>}
+            {revealed ? <>Ukryj opis zdjęcia</> : <>Pokaż opis zdjęcia <Eye size={17} /></>}
           </button>
         </div>
       </div>
@@ -2830,7 +2830,7 @@ function CloudDetail({
               <Eye size={20} />
               <span>
                 <strong>Porównaj z własną obserwacją</strong>
-                <small>Wróć do cech i sprawdź konkurencyjne hipotezy</small>
+                <small>Odpowiedz na pytania o wygląd chmury</small>
               </span>
               <ArrowRight size={18} />
             </button>
@@ -2838,7 +2838,7 @@ function CloudDetail({
               <Stack size={20} />
               <span>
                 <strong>Porównaj z podobną chmurą</strong>
-                <small>Zobacz te same kryteria obok siebie</small>
+                <small>Obejrzyj zdjęcia i różnice obok siebie</small>
               </span>
               <ArrowRight size={18} />
             </button>
@@ -2849,12 +2849,12 @@ function CloudDetail({
             <ul>{cloud.observe.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
           </section>
           <div className="detail-notes">
-            <article><span>Pogodowo</span><p>{cloud.meaning}</p></article>
-            <article className="detail-trap"><span>Pułapka</span><p>{cloud.trap}</p></article>
+            <article><span>Co może mówić o pogodzie</span><p>{cloud.meaning}</p></article>
+            <article className="detail-trap"><span>Na co uważać przy rozpoznawaniu</span><p>{cloud.trap}</p></article>
           </div>
           <section className="encyclopedic-section">
             <span className="eyebrow">Budowa i geneza</span>
-            <h3>Mikrofizyka</h3>
+            <h3>Z czego jest zbudowana</h3>
             <p>{profile.composition}</p>
             <h4>Najczęstsze mechanizmy powstawania</h4>
             <ul>{profile.formation.map((item) => <li key={item}><CaretRight size={15} />{item}</li>)}</ul>
@@ -2862,7 +2862,7 @@ function CloudDetail({
           <div className="knowledge-columns">
             <section>
               <span className="eyebrow">Interpretacja</span>
-              <h3>Pogoda i ewolucja</h3>
+              <h3>Pogoda i zmiany chmury</h3>
               <ul>{profile.weather.map((item) => <li key={item}><CaretRight size={15} />{item}</li>)}</ul>
               <h4>Typowe przemiany</h4>
               <ul>{profile.evolution.map((item) => <li key={item}><CaretRight size={15} />{item}</li>)}</ul>
@@ -2876,7 +2876,7 @@ function CloudDetail({
           </div>
           <section className="taxonomy">
             <span className="eyebrow">Formalna klasyfikacja</span>
-            <h3>Warstwy nazwy WMO</h3>
+            <h3>Z czego składa się nazwa WMO</h3>
             <p className="section-intro">Każdy termin jest osobnym hasłem. Otwórz go, aby zobaczyć definicję i wszystkie zgodne rodzaje.</p>
             <TaxonomyRow label="Gatunki" values={cloud.species} onOpen={onOpenTerm} />
             <TaxonomyRow label="Odmiany" values={cloud.varieties} onOpen={onOpenTerm} />
@@ -2890,10 +2890,11 @@ function CloudDetail({
           <section className="mother-clouds">
             <span className="eyebrow">Historia chmury</span>
             <h3>Genitus i mutatus</h3>
+            <p>To najczęściej spotykane przykłady pochodzenia z tabeli WMO, nie wszystkie możliwe przemiany. Dodaj pochodzenie do nazwy tylko wtedy, gdy znasz historię chmury.</p>
             <div>
               <article>
                 <button onClick={() => onOpenTerm("genitus")}>genitus <ArrowRight size={14} /></button>
-                <p>{profile.motherClouds.genitus.join(" · ")}</p>
+                <p>{profile.motherClouds.genitus.join(" · ") || "Tabela nie wymienia typowych przykładów genitus dla tego rodzaju."}</p>
               </article>
               <article>
                 <button onClick={() => onOpenTerm("mutatus")}>mutatus <ArrowRight size={14} /></button>
@@ -2902,7 +2903,7 @@ function CloudDetail({
             </div>
           </section>
           <section className="look-alikes">
-            <span className="eyebrow">Diagnostyka różnicowa</span>
+            <span className="eyebrow">Podobne chmury</span>
             <h3>Z czym najłatwiej pomylić</h3>
             <div>
               {profile.lookAlikes.map((item) => (
@@ -2916,7 +2917,7 @@ function CloudDetail({
               <ul>{profile.optics.map((item) => <li key={item}><Eye size={16} />{item}</li>)}</ul>
             </section>
             <section>
-              <span className="eyebrow">Protokół terenowy</span>
+              <span className="eyebrow">Co sprawdzić podczas obserwacji</span>
               <ul>{profile.fieldChecklist.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
             </section>
           </div>
@@ -2926,7 +2927,7 @@ function CloudDetail({
             <p><strong>{leadImage.author}</strong> · {leadImage.license}</p>
             <a href={leadImage.page} target="_blank" rel="noreferrer">Strona pliku i licencja <ArrowSquareOut size={15} /></a>
           </section>
-          <SourceButton ids={[...cloud.sourceIds, "wmoPrinciples", "faaWeather", "commons"]} onOpen={onSources} />
+          <SourceButton ids={[...cloud.sourceIds, "wmoPrinciples", "wmoMotherClouds", "wmoMotherNames", "faaWeather", "commons"]} onOpen={onSources} />
         </div>
       </article>
     </div>
@@ -2987,7 +2988,7 @@ function TermDetail({ term, onClose, onOpenCloud, onSources }) {
           <p className="term-definition">{term.definition}</p>
           <aside>
             <Eye size={24} />
-            <div><strong>Cecha diagnostyczna</strong><p>{term.diagnostic}</p></div>
+            <div><strong>Jak rozpoznać tę cechę</strong><p>{term.diagnostic}</p></div>
           </aside>
           <section>
             <h3>{term.genera.length ? "W jakich rodzajach występuje" : "Miejsce w klasyfikacji"}</h3>

@@ -1,5 +1,32 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-05: Recognition-First V4 In Progress
+
+- Approved pink/olive/violet, Romie/Roobert, felt artwork and licensed atlas
+  photos remain. New photo proposals use numbered targets, not framing sliders;
+  users can point at a missed region and retain the original photo. Targets
+  indicate analysis areas, not exact cloud outlines or confirmed cloud types.
+- Five phone simulator flows and one final iPad rotation flow pass. Inspected
+  native proposal, photo/atlas comparison, collection, lesson-resume and tablet
+  screenshots. Landscape visual evidence uses full-screen XCTest capture;
+  earlier application-only attachments were cropped and are not accepted.
+- All ten monographs, thirty photo comments and 49 terms pass 354 browser
+  card/viewport checks across native-layout and WWW at 320, 390 and 1100 pixels.
+  Photo recall still conceals the explanation until requested. WMO origin names
+  and selected scientific errors are corrected with reviewable sources.
+- All nine complete lessons pass content audits and 156 chapter/viewport checks
+  per browser variant. A last-chapter/shorter-lesson blank-screen regression is
+  fixed and tested; saved chapter navigation also passes native relaunch.
+- 270 JavaScript tests and production WWW flows with deployment CSP pass.
+  Final Apple development builds use `index-Da02l6Kr.js`. The full phone suite
+  predates the final atlas copy; final iPad and browser checks include it.
+- Current Mac runtime/file picker, physical cameras, VoiceOver and large-text
+  acceptance are still outstanding. A simulator or ad-hoc build is not a store
+  release. Recognition accuracy/precision still fail the release gate; neither
+  the copy edit nor segmentation quality is a classifier-accuracy improvement.
+- Full evidence and residual warnings:
+  `lore/1-tasks/active/0042_FEATURE_recognition-first-v4/native-and-copy-qa.md`.
+
 ## 2026-09-03: iPad And Mac Implementation
 
 - Universal iPhone/iPad target, scene lifecycle, iPad orientations and indirect

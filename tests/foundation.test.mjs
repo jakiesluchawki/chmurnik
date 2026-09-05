@@ -122,7 +122,7 @@ test("scientific cloud names stay intact in display text", async () => {
   const styles = await read("src/styles.css");
 
   assert.match(app, /function CloudName\(\{ children \}\)/);
-  assert.match(app, /hipotezę „<CloudName>\{cloud\.name\}<\/CloudName>”/);
+  assert.match(app, /Po czym poznajesz, że to <CloudName>\{cloud\.name\}<\/CloudName>\?/);
   assert.match(styles, /\.scientific-name\s*\{[^}]*white-space: nowrap/s);
   assert.match(styles, /\.scientific-name\s*\{[^}]*hyphens: none/s);
   assert.match(styles, /\.diagnostic-gallery__analysis h4\s*\{[^}]*text-wrap: pretty/s);
@@ -340,8 +340,8 @@ test("cloud monographs teach visual variation through active recall", async () =
   assert.match(app, /function DiagnosticPhotoGallery/);
   assert.match(app, /Ten sam rodzaj nie zawsze wygląda tak samo/);
   assert.match(app, /Najpierw obserwacja/);
-  assert.match(app, /Pokaż analizę/);
-  assert.match(app, /Co rozstrzyga/);
+  assert.match(app, /Pokaż opis zdjęcia/);
+  assert.match(app, /Cechy widoczne na zdjęciu/);
   assert.match(app, /cloud\.images\.map/);
   assert.match(app, /setRevealed\(false\)/);
   assert.match(app, /aria-label="Poprzedni kadr"/);
@@ -405,7 +405,7 @@ test("the encyclopedia exposes formation, differential diagnosis and aviation co
   const app = await read("src/App.jsx");
 
   assert.match(app, /Najczęstsze mechanizmy powstawania/);
-  assert.match(app, /Diagnostyka różnicowa/);
+  assert.match(app, /Z czym najłatwiej pomylić/);
   assert.match(app, /Znaczenie lotnicze/);
   assert.match(app, /Wiatr z nieba/);
 });
@@ -416,9 +416,9 @@ test("the encyclopedia teaches complete WMO names with an evidence-aware validat
   const styles = await read("src/styles.css");
 
   assert.match(app, /function NomenclatureWorkshop/);
-  assert.match(app, /Zbuduj nazwę\. Sprawdź jej granice\./);
-  assert.match(app, /Przypadki do rozebrania/);
-  assert.match(app, /Potrzebny dowód historii/);
+  assert.match(app, /Sprawdź, jak połączyć nazwy chmur/);
+  assert.match(app, /Wypróbuj przykład/);
+  assert.match(app, /Potwierdź, skąd znasz pochodzenie/);
   assert.match(app, /Mam podstawę do opisania pochodzenia/);
   assert.match(app, /aria-live="polite"/);
   assert.match(app, /aria-pressed=\{isSelected\}/);

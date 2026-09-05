@@ -373,3 +373,30 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   completion and correct/incorrect feedback. Inspected phone and wide screenshots.
   Web build and the iOS simulator build-for-testing contain `index-G_NsviLf.js`.
   Native interaction QA is next; no classifier replacement or release occurred.
+- Completed five native phone flows on an isolated iPhone 17 Pro Max simulator:
+  tools, privacy, real photo picker/local region proposals/classification,
+  whole-photo save/relaunch, and long-to-short lesson navigation/resume.
+  Public atlas fixtures are functional evidence, not an independent accuracy
+  test. Fixed off-screen XCTest hit testing and waited for asynchronous storage.
+  Full web lessons also pass all 156 chapter/viewport checks.
+- Finished the atlas copy review, retaining ten monographs, thirty attributed
+  photographs and all 49 terms in the complete copy book. Corrected Latin
+  mother-cloud names and common origin combinations against WMO; clarified
+  visual limits, Stratus precipitation, contrails and funnel/vortex distinction.
+  An independent meteorological review is still outstanding. All 270 JS tests,
+  nine lesson audits and 354 atlas browser checks pass across native-layout
+  and web variants; photo recall concealment and source navigation are tested.
+- Final native iPad rotation/route test passes with the current web bundle.
+  Full-screen captures resolve the earlier application's cropped landscape
+  screenshot; inspected portrait/landscape and phone evidence. Current
+  production web checks pass with deployment CSP headers. iPhone/iPad simulator,
+  Catalyst development and Catalyst build-for-testing all contain
+  `index-Da02l6Kr.js`; the full phone suite predates the atlas-only copy changes.
+  Evidence and remaining physical-device/Mac interaction gaps are listed in
+  `native-and-copy-qa.md`. Removed only our own isolated simulators after export
+  to recover disk space. No host/Remote restart or other user task was affected.
+- Reverified the calibrated candidate hash and failed release policy: 77/123
+  versus 68/123, zero accepted predictions under the unchanged precision rule.
+  No weights, calibration thresholds, source dependency pins, public deployment,
+  distribution archive or Apple submission changed. The active goal, independent
+  expert review and twenty-wallpaper deliverable remain unfinished.

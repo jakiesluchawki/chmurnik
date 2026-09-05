@@ -166,8 +166,8 @@ Przy trzech rodzajach:
 <!-- COMPARISON_COPY -->
 
 Treść kolumn pochodzi z opisów poszczególnych chmur; fotografie, autorzy,
-licencje i źródła pozostają bez zmian. Opisy wszystkich dziesięciu rodzajów
-wymagają jeszcze osobnego przeglądu języka, nie są automatycznie uznane za gotowe.
+licencje i źródła pozostają widoczne. Pełny przegląd języka opisów wszystkich
+dziesięciu rodzajów jest dołączony w sekcji monografii, także z niezmienionymi treściami.
 
 Ograniczenie:
 
@@ -184,6 +184,6 @@ z którymi rodzajami się łączy.
 
 Zobacz, które chmury łatwo pomylić i jakie obserwacje pomagają je odróżnić.
 
-Szczegółowe podstrony indeksu, ćwiczeń i opisy gatunków nadal wymagają przeglądu.
+Wszystkie hasła indeksu i opisy rodzajów są dołączone w dalszej części dokumentu.
 Nowe teksty i obsługa braku danych wymagają wizualnego sprawdzenia na telefonie,
 iPadzie, Macu oraz w WWW. Testy automatyczne nie zastępują tej kontroli.
