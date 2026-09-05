@@ -1,13 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { createRequire } from "node:module";
-import { fileURLToPath } from "node:url";
 import test from "node:test";
-import { buildSync } from "esbuild";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { atlasDestination } from "../src/lib/atlas-navigation.js";
 import { clouds } from "../src/data/clouds.js";
+import { loadJsx } from "./helpers/load-jsx.mjs";
 
 const ids = ["cu", "sc", "as", "ns"];
 
@@ -46,19 +44,9 @@ test("the atlas receives and opens the validated single-cloud destination", asyn
 });
 
 test("the real atlas renders a single hypothesis description without a default pair or state type error", async () => {
-  const appUrl = new URL("../src/App.jsx", import.meta.url);
-  const source = await readFile(appUrl, "utf8");
-  const bundle = buildSync({
-    stdin: { contents: `${source}\nexport { AtlasPage };`, sourcefile: "App.jsx", loader: "jsx",
-      resolveDir: fileURLToPath(new URL("../src", import.meta.url)) },
-    bundle: true, write: false, format: "cjs", platform: "node", jsx: "automatic",
-    external: ["react", "react-dom"], mainFields: ["module", "main"],
-    define: { "import.meta.env": JSON.stringify({ BASE_URL: "/", VITE_QA_NATIVE_LAYOUT: "0" }) },
-  });
-  const module = { exports: {} };
-  new Function("require", "module", "exports", bundle.outputFiles[0].text)(createRequire(appUrl), module, module.exports);
+  const { AtlasPage } = await loadJsx(new URL("../src/App.jsx", import.meta.url), ["AtlasPage"]);
   const target = atlasDestination("compare", "nimbostratus", clouds.map((cloud) => cloud.id));
-  const markup = renderToStaticMarkup(createElement(module.exports.AtlasPage, {
+  const markup = renderToStaticMarkup(createElement(AtlasPage, {
     initialTab: target.tab, initialCloudId: target.cloudId, initialComparisonIds: target.comparisonIds,
     onSources() {}, onSaveObservation() {},
   }));

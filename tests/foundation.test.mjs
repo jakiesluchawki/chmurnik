@@ -436,11 +436,11 @@ test("the Layers page exposes a practical, assessed Windy decoder", async () => 
   const styles = await read("src/styles.css");
 
   assert.match(app, /Czytnik Windy/);
-  assert.match(app, /Nie patrz na kolor bez pytania/);
+  assert.match(app, /Co pokazuje wybrana warstwa/);
   assert.match(app, /Ta mapa odpowiada na pytanie/);
-  assert.match(app, /Poprawne zdanie interpretacyjne/);
-  assert.match(app, /Porównaj obok/);
-  assert.match(app, /Jedno pole, cztery interpretacje/);
+  assert.match(app, /Jak odczytać wybrane ustawienia/);
+  assert.match(app, /Co jeszcze warto sprawdzić/);
+  assert.match(app, /Która odpowiedź pasuje do mapy/);
   assert.match(app, /weatherLayerReading/);
   assert.match(data, /cloud-base/);
   assert.match(data, /cloud-tops/);

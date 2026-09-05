@@ -5,6 +5,8 @@ import { FieldHome } from "./components/FieldHome.jsx";
 import { FieldPractice, PracticeLinks, FullLearningLinks } from "./components/FieldPractice.jsx";
 import { SkyCollection } from "./components/SkyCollection.jsx";
 import { PhotoFrame } from "./components/PhotoFrame.jsx";
+import { PressureHeightLab } from "./components/PressureHeightLab.jsx";
+import { layersHeadings, windyReadingSteps } from "./data/layers-copy.js";
 import { prepareRecognitionRegion } from "./lib/photo-frame.js";
 import { createPhotoOperationScope } from "./lib/photo-operation.js";
 import { PhotoRecognitionResult } from "./components/PhotoRecognitionResult.jsx";
@@ -3053,20 +3055,14 @@ function WindyDecoderPanel({
     <section className="windy-decoder">
       <div className="decoder-protocol">
         <div className="decoder-protocol__intro">
-          <span className="eyebrow">Protokół czytania mapy</span>
-          <h2>Nie patrz na kolor bez pytania</h2>
+          <span className="eyebrow">Czytanie mapy krok po kroku</span>
+          <h2>Co pokazuje wybrana warstwa?</h2>
           <p>
-            Każdą warstwę czytaj w tej samej kolejności. Dzięki temu mapa
-            przestaje być zbiorem efektownych plam, a zaczyna być argumentem,
-            który można sprawdzić.
+            Kolor na mapie ma znaczenie dopiero razem z legendą, czasem i wysokością.
+            Poniżej wybierzesz warstwę i sprawdzisz na przykładzie, jak ją odczytać.
           </p>
         </div>
-        {[
-          ["01", "Miejsce i czas", "Który termin, model i punkt naprawdę oglądasz?"],
-          ["02", "Pole i jednostka", "Co oblicza kolor, liczba i legenda?"],
-          ["03", "Poziom i odniesienie", "AGL, MSL, hPa, warstwa czy cała kolumna?"],
-          ["04", "Porównanie", "Która druga warstwa lub obserwacja może obalić wniosek?"],
-        ].map(([number, title, copy]) => (
+        {windyReadingSteps.map(([number, title, copy]) => (
           <article key={number}>
             <span>{number}</span>
             <strong>{title}</strong>
@@ -3112,7 +3108,7 @@ function WindyDecoderPanel({
           <blockquote className="decoder-reading">
             <Eye size={24} />
             <div>
-              <span>Poprawne zdanie interpretacyjne</span>
+              <span>Jak odczytać wybrane ustawienia</span>
               <p>{reading}</p>
             </div>
           </blockquote>
@@ -3194,7 +3190,7 @@ function WindyDecoderPanel({
 
           <section className="decoder-compare">
             <span className="eyebrow">Zanim wyciągniesz wniosek</span>
-            <h3>Porównaj obok</h3>
+            <h3>Co jeszcze warto sprawdzić</h3>
             <ol>
               {layer.compare.map((item) => <li key={item}>{item}</li>)}
             </ol>
@@ -3212,8 +3208,8 @@ function WindyDecoderPanel({
         </article>
 
         <aside className="decoder-check">
-          <span className="eyebrow">Sprawdź rozumowanie</span>
-          <h2>Jedno pole, cztery interpretacje</h2>
+          <span className="eyebrow">Sprawdź się</span>
+          <h2>Która odpowiedź pasuje do mapy?</h2>
           <p>{layer.check.prompt}</p>
           <div role="group" aria-label="Wybierz jedną interpretację">
             {layer.check.options.map((option, index) => {
@@ -3241,7 +3237,7 @@ function WindyDecoderPanel({
             >
               <strong>
                 {isCorrect
-                  ? "Tak. To wniosek, który dane rzeczywiście podtrzymują."
+                  ? "To poprawna odpowiedź. Poniżej znajdziesz wyjaśnienie."
                   : `Nie. Poprawna odpowiedź: ${String.fromCharCode(65 + layer.check.correct)}.`}
               </strong>
               <p>{layer.check.explanation}</p>
@@ -3260,18 +3256,7 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
   const [tab, setTab] = useState(["decoder", "lab", "wind", "metar", "hazards", "sounding"].includes(initialTab) ? initialTab : "decoder");
   const [terrain, setTerrain] = useState(300);
   const [pressure, setPressure] = useState(850);
-  const selected = pressureLevels[pressure];
-  const agl = Math.max(0, selected.altitude - terrain);
-  const terrainPercent = Math.min(74, (terrain / 10000) * 100);
-  const levelPercent = Math.min(96, (selected.altitude / 10000) * 100);
-  const heading = {
-    decoder: ["Warstwy atmosfery", "Czytnik Windy", "Wybierz warstwę i od razu zobacz, co oznacza dla wysokości, ciśnienia i terenu."],
-    lab: ["Wysokość i ciśnienie", "Ten sam poziom, inna wysokość", "Przesuwaj teren i poziom hPa, aby zobaczyć różnicę między MSL i AGL."],
-    wind: ["Ruch widoczny na niebie", "Wiatr z obserwacji", "Połącz kierunek ruchu chmur z zasadą, skąd wieje wiatr."],
-    metar: ["Język pogody lotniczej", "METAR i TAF", "Czytaj depeszę grupami i sprawdzaj znaczenie bez pamięciówki."],
-    hazards: ["Świadome granice", "Zagrożenia", "Rozpoznaj sygnały, których nie wolno interpretować bez danych operacyjnych."],
-    sounding: ["Profil pionowy", "Sondaż i Skew-T", "Czytaj stabilność, wilgoć i wiatr na wspólnym przekroju atmosfery."],
-  }[tab];
+  const heading = layersHeadings[tab];
 
   return (
     <main className="page layers-page">
@@ -3310,45 +3295,7 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
       )}
 
       {tab === "lab" && (
-        <div className="atmosphere-lab">
-          <section className="atmosphere-visual">
-            <div className="atmosphere-label atmosphere-label--top">górna troposfera</div>
-            <div className="pressure-line" style={{ bottom: `${levelPercent}%` }}>
-              <span>{pressure} hPa</span>
-              <strong>≈ {selected.altitude.toLocaleString("pl-PL")} m MSL*</strong>
-            </div>
-            <div className="terrain-line" style={{ height: `${terrainPercent}%` }}>
-              <span>teren {terrain} m MSL</span>
-            </div>
-            <div className="agl-bracket" style={{ bottom: `${terrainPercent}%`, height: `${Math.max(2, levelPercent - terrainPercent)}%` }}>
-              <span>{agl.toLocaleString("pl-PL")} m AGL</span>
-            </div>
-            <div className="atmosphere-label atmosphere-label--bottom">powierzchnia</div>
-          </section>
-          <section className="lab-controls">
-            <span className="eyebrow">Eksperyment 01</span>
-            <h2>Ten sam poziom, inna odległość od ziemi</h2>
-            <p>Przesuń teren. Zobacz, dlaczego powietrze na 850 hPa nad morzem i nad wysokim płaskowyżem nie jest „tak samo wysoko nad Tobą”.</p>
-            <label>
-              <span>Wysokość terenu <strong>{terrain} m MSL</strong></span>
-              <input type="range" min="0" max="2200" step="50" value={terrain} onChange={(event) => setTerrain(Number(event.target.value))} />
-            </label>
-            <div className="pressure-picker" aria-label="Poziom ciśnienia">
-              {Object.keys(pressureLevels).map((value) => (
-                <button key={value} className={pressure === Number(value) ? "active" : ""} onClick={() => setPressure(Number(value))}>{value}</button>
-              ))}
-            </div>
-            <div className="lab-reading">
-              <Gauge size={26} />
-              <div><span>Wybrana powierzchnia</span><strong>{pressure} hPa · {selected.use}</strong></div>
-            </div>
-            <div className="lab-reading">
-              <MapPin size={26} />
-              <div><span>Przybliżona odległość nad terenem</span><strong>{agl.toLocaleString("pl-PL")} m AGL</strong></div>
-            </div>
-            <p className="lab-footnote">* Wartości wysokości są przybliżeniem atmosfery standardowej. W realnym modelu sprawdza się pole geopotencjału; powierzchnia hPa faluje.</p>
-          </section>
-        </div>
+        <PressureHeightLab terrain={terrain} setTerrain={setTerrain} pressure={pressure} setPressure={setPressure} />
       )}
 
       {tab === "wind" && <WindPanel onSources={onSources} />}

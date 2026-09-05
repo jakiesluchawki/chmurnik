@@ -2,7 +2,7 @@
 
 Jeden dokument zawiera teksty startowe, oprowadzenia, wprowadzenia do pracowni,
 pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porównanie,
-nawigację nauki, powtórki i quiz.
+nawigację nauki, powtórki, quiz, czytnik Windy oraz schemat wysokości.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
@@ -1141,3 +1141,452 @@ Wszystkie lekcje pozostają dostępne niezależnie od wyniku. Możesz wrócić d
 wybranego tematu i spróbować ponownie.
 
 Przycisk: **Wróć do nauki**.
+
+---
+
+# CHMURNIK V4: pracownia warstw i wysokości
+
+Pełny zestaw wprowadzeń do sześciu zakładek oraz tekstów czytnika Windy
+i schematu wysokości. Zawiera również niezmienione definicje ośmiu warstw,
+wszystkie odpowiedzi ćwiczeń i objaśnienia. Szczegółowe wnętrza zakładek
+wiatru, METAR/TAF, zagrożeń i sondażu wymagają jeszcze osobnej redakcji.
+
+## Wprowadzenia Zakładek
+
+### Jak czytać Windy
+
+Mapy pogodowe
+
+Wybierz warstwę, sprawdź jej jednostki i przećwicz odczytywanie mapy. To objaśnienie narzędzi, nie podgląd aktualnej pogody.
+
+### Wysokość nad morzem i nad ziemią
+
+Wysokość i ciśnienie
+
+Zmień wysokość terenu i wybierz poziom ciśnienia. Schemat pokaże różnicę między wysokością nad poziomem morza (MSL) a wysokością nad gruntem (AGL).
+
+### Co mówi ruch chmur?
+
+Kierunek wiatru
+
+Ustaw obserwowany kierunek ruchu chmury i sprawdź, jak wiąże się z kierunkiem wiatru. To ćwiczenie nie mierzy prędkości wiatru.
+
+### METAR i TAF
+
+Depesze lotnicze
+
+Przećwicz odczytywanie depesz: METAR opisuje obserwację, a TAF prognozę. Wybieraj odpowiedzi i sprawdzaj objaśnienia.
+
+### Zagrożenia pogodowe
+
+Ograniczenia obserwacji
+
+Sprawdź, czego nie da się ocenić na podstawie samego wyglądu chmury i dlaczego potrzebne są aktualne dane pogodowe.
+
+### Sondaż i Skew-T
+
+Przekrój atmosfery
+
+Przejrzyj szkoleniowe profile temperatury, wilgoci i wiatru. Porównaj przykłady i przećwicz czytanie wykresu.
+
+Nawigacja pozostaje dostępna od początku: **Czytnik Windy**, **Wysokość**,
+**Wiatr z nieba**, **METAR / TAF**, **Zagrożenia**, **Sondaż i Skew-T**.
+
+## Czytnik Windy
+
+Czytanie mapy krok po kroku
+
+**Co pokazuje wybrana warstwa?**
+
+Kolor na mapie ma znaczenie dopiero razem z legendą, czasem i wysokością.
+Poniżej wybierzesz warstwę i sprawdzisz na przykładzie, jak ją odczytać.
+
+01. **Miejsce i czas**: Sprawdź punkt na mapie, termin prognozy i wybrany model.
+
+02. **Wielkość i jednostka**: Przeczytaj nazwę warstwy oraz legendę, zanim zinterpretujesz kolor.
+
+03. **Wysokość**: Sprawdź, czy warstwa dotyczy wysokości nad gruntem, nad morzem, poziomu ciśnienia czy całej kolumny atmosfery.
+
+04. **Sprawdzenie wniosku**: Porównaj wynik z inną warstwą lub obserwacją. Zwróć uwagę na rozbieżności.
+
+**Warstwy do przećwiczenia**: lista ośmiu warstw poniżej.
+
+Po wyborze warstwy:
+
+- **Ta mapa odpowiada na pytanie**: pytanie właściwe dla warstwy.
+- **Jak odczytać wybrane ustawienia**: opis uwzględniający wybrany poziom
+  ciśnienia i teren albo pasmo wysokości chmur.
+- **Poziom ciśnienia / [wartość] hPa**.
+- **Orientacyjnie nad terenem / [wartość] m AGL** lub **poziom przecina teren**.
+- **Modelowy teren / [wartość] m MSL**.
+- Dla zachmurzenia: **Wybierz pasmo wysokości** z etykietą i zakresem pasma.
+- **Jednostka** i **Układ odniesienia**: definicje danej warstwy.
+- **Zanim wyciągniesz wniosek / Co jeszcze warto sprawdzić**: lista porównań.
+- **Najczęstsza pułapka**: ograniczenie interpretacji.
+- Przycisk do źródeł.
+
+Ćwiczenie:
+
+**Sprawdź się / Która odpowiedź pasuje do mapy?**
+
+Pytanie i cztery odpowiedzi A–D. Po wyborze:
+
+- Poprawna: **To poprawna odpowiedź. Poniżej znajdziesz wyjaśnienie.**
+- Niepoprawna: **Nie. Poprawna odpowiedź: [litera].**
+- Pełne wyjaśnienie oraz **Spróbuj jeszcze raz**.
+
+### Wiatr
+
+Pole na wybranym poziomie
+
+**Pytanie:** Jak model prognozuje poziomy ruch powietrza na wybranej powierzchni?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Wiatr na 850 hPa opisuje falującą powierzchnię około 1460 m MSL. Nad terenem 300 m MSL daje to orientacyjnie 1160 m AGL, a nie stałą wysokość nad każdym miejscem.
+
+Wiatr na 925 hPa opisuje falującą powierzchnię około 760 m MSL. Nad terenem 700 m MSL daje to orientacyjnie 60 m AGL, a nie stałą wysokość nad każdym miejscem. To bardzo blisko modelowego gruntu, więc rzeźba i parametryzacja warstwy przyziemnej mają duże znaczenie.
+
+Wybrano 1000 hPa, orientacyjnie 110 m MSL, przy modelowym terenie 300 m MSL. Ta powierzchnia może przecinać teren: nie interpretuj koloru jak wartości w swobodnej atmosferze dokładnie nad punktem.
+
+**Jednostka:** kt, m/s lub km/h; kierunek podaje, skąd wieje wiatr
+
+**Układ odniesienia:** Dla poziomu hPa jest to powierzchnia ciśnienia o zmiennej wysokości MSL, a nie stała odległość nad lokalnym gruntem.
+
+**Co jeszcze warto sprawdzić:**
+
+- wiatr przy powierzchni i co najmniej jeden sąsiedni poziom hPa
+
+- wysokość geopotencjalną poziomu oraz modelową rzeźbę terenu
+
+- obserwowany ruch chmur, METAR lub sondaż, jeśli decyzja jest operacyjna
+
+**Najczęstsza pułapka:** Animowane cząstki są wizualizacją prognozy modelu. Nie są pomiarem i nie pokazują automatycznie porywów ani lokalnego przepływu w dolinie.
+
+**Ćwiczenie:** Co najuczciwiej oznacza wiatr 30 kt na poziomie 850 hPa nad górzystym obszarem?
+
+- **A.** Przy ziemi w każdym punkcie wieje dokładnie 30 kt.
+
+- **B.** Model prognozuje 30 kt na falującej powierzchni 850 hPa, którą trzeba umieścić względem terenu. (poprawna)
+
+- **C.** Na wysokości dokładnie 1500 m AGL wieje 30 kt.
+
+- **D.** Każda chmura niska będzie poruszać się z prędkością 30 kt.
+
+Poziom 850 hPa jest powierzchnią ciśnienia, nie stałą wysokością AGL. Nad wysokim terenem może leżeć bardzo blisko modelowego gruntu albo nawet go przecinać, dlatego potrzebujesz geopotencjału i porównania z warstwą przyziemną.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Display wind at various altitudes instead of pressure](https://community.windy.com/topic/39492/how-to-configure-windy-web-and-ios-to-display-wind-at-various-altitudes-instead-of-pressure), [Pressure on model levels](https://confluence.ecmwf.int/plugins/viewsource/viewpagesrc.action?pageId=158636068), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Temperatura
+
+Pole na wybranym poziomie
+
+**Pytanie:** Jaka jest prognozowana temperatura powietrza w wybranej warstwie?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Temperatura na 850 hPa opisuje falującą powierzchnię około 1460 m MSL. Nad terenem 300 m MSL daje to orientacyjnie 1160 m AGL, a nie stałą wysokość nad każdym miejscem.
+
+Temperatura na 925 hPa opisuje falującą powierzchnię około 760 m MSL. Nad terenem 700 m MSL daje to orientacyjnie 60 m AGL, a nie stałą wysokość nad każdym miejscem. To bardzo blisko modelowego gruntu, więc rzeźba i parametryzacja warstwy przyziemnej mają duże znaczenie.
+
+Wybrano 1000 hPa, orientacyjnie 110 m MSL, przy modelowym terenie 300 m MSL. Ta powierzchnia może przecinać teren: nie interpretuj koloru jak wartości w swobodnej atmosferze dokładnie nad punktem.
+
+**Jednostka:** °C lub °F na wysokości lub poziomie wskazanym w interfejsie
+
+**Układ odniesienia:** Na powierzchni hPa kolor opisuje temperaturę tej powierzchni, nie temperaturę przy gruncie ani na jednej stałej wysokości AGL.
+
+**Co jeszcze warto sprawdzić:**
+
+- temperaturę przy powierzchni oraz temperaturę na poziomach wyżej i niżej
+
+- punkt rosy lub wilgotność, jeśli oceniasz nasycenie i chmury
+
+- wysokość geopotencjalną i profil sondażowy, jeśli szukasz inwersji
+
+**Najczęstsza pułapka:** Izoterma 0°C na jednym poziomie nie wyznacza sama wysokości zamarzania w całej kolumnie. Profil może przecinać 0°C więcej niż raz.
+
+**Ćwiczenie:** Dlaczego temperatura na 700 hPa nie jest po prostu temperaturą na stałej wysokości nad Twoim domem?
+
+- **A.** Bo aplikacje pogodowe zawsze zaokrąglają temperaturę do pełnych stopni.
+
+- **B.** Bo poziom 700 hPa jest używany wyłącznie nad morzem.
+
+- **C.** Bo wysokość powierzchni 700 hPa zmienia się, a odległość od gruntu zależy dodatkowo od terenu. (poprawna)
+
+- **D.** Bo temperatura powyżej 850 hPa nie ma związku z chmurami.
+
+Ciśnienie zależy od masy i temperatury całej kolumny powietrza. Powierzchnia 700 hPa faluje w przestrzeni i czasie, a AGL otrzymujesz dopiero po odniesieniu jej wysokości do lokalnego, modelowego terenu.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Windy Weather Academy](https://www.windy.com/articles/38548), [Pressure on model levels](https://confluence.ecmwf.int/plugins/viewsource/viewpagesrc.action?pageId=158636068), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Wilgotność
+
+Pole na wybranym poziomie
+
+**Pytanie:** Jak blisko nasycenia jest powietrze w wybranej warstwie modelu?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Wilgotność na 850 hPa opisuje falującą powierzchnię około 1460 m MSL. Nad terenem 300 m MSL daje to orientacyjnie 1160 m AGL, a nie stałą wysokość nad każdym miejscem.
+
+Wilgotność na 925 hPa opisuje falującą powierzchnię około 760 m MSL. Nad terenem 700 m MSL daje to orientacyjnie 60 m AGL, a nie stałą wysokość nad każdym miejscem. To bardzo blisko modelowego gruntu, więc rzeźba i parametryzacja warstwy przyziemnej mają duże znaczenie.
+
+Wybrano 1000 hPa, orientacyjnie 110 m MSL, przy modelowym terenie 300 m MSL. Ta powierzchnia może przecinać teren: nie interpretuj koloru jak wartości w swobodnej atmosferze dokładnie nad punktem.
+
+**Jednostka:** % wilgotności względnej dla wybranego poziomu
+
+**Układ odniesienia:** Wilgotność względna zależy od temperatury. Wysoka wartość na jednym poziomie nie opisuje automatycznie całej grubości chmury.
+
+**Co jeszcze warto sprawdzić:**
+
+- wilgotność na poziomach wyżej i niżej, aby ocenić głębokość wilgotnej warstwy
+
+- temperaturę i punkt rosy lub pełny profil sondażowy
+
+- zachmurzenie modelowe oraz obserwacje satelitarne i powierzchniowe
+
+**Najczęstsza pułapka:** Wysoka wilgotność względna nie jest równoznaczna z opadem. Potrzebne są kondensacja, dostateczna grubość chmury i proces wzrostu hydrometeorów.
+
+**Ćwiczenie:** Mapa pokazuje 95% wilgotności na 700 hPa. Jaki wniosek jest obroniony?
+
+- **A.** Powietrze na tej powierzchni jest blisko nasycenia; trzeba sprawdzić pionową ciągłość wilgoci. (poprawna)
+
+- **B.** Na pewno pada przy powierzchni.
+
+- **C.** Podstawa każdej chmury znajduje się dokładnie na 700 hPa.
+
+- **D.** Wilgotność przy ziemi również wynosi 95%.
+
+To informacja o jednej powierzchni modelu. Może wskazywać wilgotną warstwę lub chmurę, ale dopiero sąsiednie poziomy, temperatura, ruch pionowy i obserwacje pokażą jej głębokość oraz znaczenie dla opadu.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Pressure on model levels](https://confluence.ecmwf.int/plugins/viewsource/viewpagesrc.action?pageId=158636068), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Pasma chmur
+
+Pokrycie w szerokiej strefie wysokości
+
+**Pytanie:** Jak duża część nieba lub komórki modelu jest pokryta chmurami w danej strefie wysokości?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Niskie chmury obejmują szeroką strefę od powierzchni do około 2 km. Kolor pokazuje prognozowane pokrycie w tej strefie, nie dokładną podstawę, grubość chmury ani prawdopodobieństwo opadu.
+
+Średnie chmury obejmują szeroką strefę około 2–6,5 km. Kolor pokazuje prognozowane pokrycie w tej strefie, nie dokładną podstawę, grubość chmury ani prawdopodobieństwo opadu.
+
+Wysokie chmury obejmują szeroką strefę od około 6,5 km wzwyż. Kolor pokazuje prognozowane pokrycie w tej strefie, nie dokładną podstawę, grubość chmury ani prawdopodobieństwo opadu.
+
+**Jednostka:** % prognozowanego pokrycia chmurami w wybranym paśmie
+
+**Układ odniesienia:** To trzy szerokie pasma, nie trzy dokładne poziomy. Granice są przybliżone, a procent nie jest wysokością podstawy ani prawdopodobieństwem opadu.
+
+**Co jeszcze warto sprawdzić:**
+
+- pozostałe dwa pasma oraz zachmurzenie całkowite
+
+- podstawę i wierzchołki chmur, jeśli ważna jest geometria pionowa
+
+- satelitę, METAR i widzialność, jeśli liczy się stan obserwowany
+
+**Najczęstsza pułapka:** 100% chmur niskich nie oznacza, że chmura wypełnia całą strefę od ziemi do 2 km ani że jej podstawa znajduje się przy powierzchni.
+
+**Ćwiczenie:** Co oznacza 80% w warstwie „chmury niskie”?
+
+- **A.** Podstawa chmur znajduje się na 80% wysokości troposfery.
+
+- **B.** Prawdopodobieństwo deszczu wynosi 80%.
+
+- **C.** Około 80% prognozowanego pokrycia dotyczy niskiego pasma; nie znamy z tego dokładnej podstawy. (poprawna)
+
+- **D.** Chmura ma grubość równą 80% przedziału od 0 do 2 km.
+
+Procent opisuje pokrycie chmurami w szerokiej strefie wysokości. Nie koduje dokładnej podstawy, grubości ani opadu, dlatego trzeba zestawić go z podstawą, wierzchołkami, innymi pasmami i obserwacjami.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Clouds layer base](https://community.windy.com/topic/36010/clouds-layer-base), [Windy Weather Academy](https://www.windy.com/articles/38548).
+
+### Podstawa chmur
+
+Wysokość nad modelowym gruntem
+
+**Pytanie:** Jak wysoko nad modelowym terenem znajduje się najniższa prognozowana podstawa chmur?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Podstawa chmur jest podawana nad modelowym gruntem (AGL). W górach najpierw sprawdź, jak model wygładza teren, a następnie porównaj wynik z METAR, widzialnością i obserwacją.
+
+**Jednostka:** m, ft lub FL zgodnie z legendą; w Windy pole podstawy jest odnoszone do gruntu (AGL)
+
+**Układ odniesienia:** AGL oznacza wysokość nad terenem reprezentowanym przez siatkę modelu. Wąska dolina lub szczyt mogą być w tej siatce wygładzone.
+
+**Co jeszcze warto sprawdzić:**
+
+- elewację rzeczywistego i modelowego terenu, szczególnie w górach
+
+- zachmurzenie niskie, widzialność, mgłę oraz METAR najbliższej stacji
+
+- wierzchołki chmur tylko jako osobne pole, a nie drugi koniec tej samej bryły
+
+**Najczęstsza pułapka:** Nie dodawaj ani nie odejmuj automatycznie rzeczywistej elewacji bez sprawdzenia definicji produktu. Modelowa podstawa AGL może różnić się od obserwowanej nad konkretnym zboczem.
+
+**Ćwiczenie:** Dlaczego mapa podstawy chmur może być zawodna w wąskiej górskiej dolinie?
+
+- **A.** Bo chmury nie mają podstawy nad górami.
+
+- **B.** Bo model wygładza teren, więc jego AGL może odnosić się do innej wysokości gruntu niż rzeczywista. (poprawna)
+
+- **C.** Bo każda wartość AGL jest w rzeczywistości wartością MSL.
+
+- **D.** Bo podstawa chmur jest zawsze liczona od poziomu morza.
+
+AGL jest poprawnym układem odniesienia dla tego pola, ale gruntem jest powierzchnia modelu. Przy ograniczonej rozdzielczości szczyty są obniżane, a doliny spłycane, więc lokalna różnica może być operacyjnie ważna.
+
+Źródła: [Is the cloud base layer in AGL or MSL?](https://community.windy.com/topic/7102/is-the-cloud-base-layer-in-agl-or-msl), [Cloud tops lower than cloud base](https://community.windy.com/topic/43145/cloud-tops-lower-than-cloud-base), [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Wierzchołki chmur
+
+Górna granica prognozowanego zachmurzenia
+
+**Pytanie:** Do jakiej wysokości model prowadzi górną granicę chmur w danym miejscu?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Wierzchołki pokazują górną granicę według definicji tej warstwy i legendy. Nie odejmuj od niej automatycznie podstawy: oba pola mogą opisywać inne elementy zachmurzenia i mieć inne odniesienie.
+
+**Jednostka:** m, ft lub FL zgodnie z legendą i ustawieniami interfejsu
+
+**Układ odniesienia:** Pole wierzchołków ma inną definicję i odniesienie niż pole podstawy. Nie wolno traktować obu map jak dwóch końców jednej, identycznej chmury.
+
+**Co jeszcze warto sprawdzić:**
+
+- podstawę chmur, pamiętając o odmiennym układzie odniesienia
+
+- pasmowe i całkowite zachmurzenie, aby sprawdzić, jaka część nieba tworzy sygnał
+
+- temperaturę wierzchołków satelitarnych, radar i informacje konwekcyjne
+
+**Najczęstsza pułapka:** Proste odjęcie wartości z mapy podstawy od mapy wierzchołków może dać pozornie ujemną grubość, ponieważ pola opisują różne elementy i mogą używać różnych odniesień.
+
+**Ćwiczenie:** Mapa pokazuje lokalnie wierzchołek niżej niż podstawa. Co zrobić najpierw?
+
+- **A.** Uznać, że model dowiódł istnienia chmury o ujemnej grubości.
+
+- **B.** Uśrednić obie liczby i użyć wyniku jako pułapu.
+
+- **C.** Sprawdzić definicje, jednostki i odniesienie obu warstw oraz to, czy opisują ten sam element zachmurzenia. (poprawna)
+
+- **D.** Zignorować wierzchołki i zawsze ufać wyłącznie podstawie.
+
+Warstwy mogą wybierać różne elementy zachmurzenia i używać różnych odniesień pionowych. Najpierw trzeba odtworzyć definicję produktu, a następnie porównać pasma chmur i obserwacje zamiast liczyć grubość automatycznie.
+
+Źródła: [Cloud tops lower than cloud base](https://community.windy.com/topic/43145/cloud-tops-lower-than-cloud-base), [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Windy Weather Academy](https://www.windy.com/articles/38548).
+
+### Deszcz i burze
+
+Akumulacja i sygnał konwekcyjny
+
+**Pytanie:** Ile opadu model prognozuje w danym oknie czasu i gdzie sygnalizuje konwekcję?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+Kolor opisuje prognozowaną akumulację opadu w oknie czasu widocznym na osi oraz sygnał konwekcyjny produktu. To nie jest chwilowe natężenie ani obraz radarowy.
+
+**Jednostka:** mm lub in dla wskazanego kroku czasu; sygnał burzowy zależy od warstwy i modelu
+
+**Układ odniesienia:** To prognoza dla przedziału czasu na osi, nie chwilowe natężenie i nie obserwacja radarowa. Dokładne okno trzeba odczytać z interfejsu.
+
+**Co jeszcze warto sprawdzić:**
+
+- oś czasu, model i sąsiednie terminy, aby zrozumieć akumulację
+
+- radar i detekcję wyładowań dla tego, co dzieje się teraz
+
+- CAPE, wilgoć, ruch pionowy i wiatr, aby ocenić środowisko burz
+
+**Najczęstsza pułapka:** Kolor opadu modelowego łatwo pomylić z radarem. Jedno pokazuje prognozowaną akumulację, drugie zdalną obserwację hydrometeorów w określonym czasie.
+
+**Ćwiczenie:** Co trzeba sprawdzić przed porównaniem koloru opadu z dwóch terminów?
+
+- **A.** Tylko nazwę miasta.
+
+- **B.** Okno akumulacji, model, jednostkę i dokładny czas prognozy. (poprawna)
+
+- **C.** Wyłącznie wysokość terenu w metrach.
+
+- **D.** Czy mapa ma włączoną animację wiatru.
+
+Suma opadu ma sens dopiero razem z przedziałem czasu i modelem. Identyczny kolor może reprezentować inną akumulację lub inne okno, a stan bieżący należy dodatkowo konfrontować z radarem i obserwacjami.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Windy Weather Academy](https://www.windy.com/articles/38548), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### CAPE
+
+Potencjał konwekcyjny kolumny
+
+**Pytanie:** Jak duży potencjał dodatniej wyporności ma przyjęta porcja powietrza w profilu modelu?
+
+**Przykłady opisu ustawień** (liczby zmieniają się z suwakami):
+
+CAPE opisuje energię potencjalnie dostępną dla unoszącej się porcji w profilu modelu. To warunek sprzyjający silnym prądom wstępującym, nie procentowa prognoza burzy.
+
+**Jednostka:** J/kg energii potencjalnie dostępnej dla unoszącej się porcji
+
+**Układ odniesienia:** CAPE jest wynikiem obliczenia dla określonej parceli i profilu. Nie jest prawdopodobieństwem burzy ani miarą siły wszystkich możliwych zagrożeń.
+
+**Co jeszcze warto sprawdzić:**
+
+- CIN lub warstwę hamującą oraz realny mechanizm unoszenia
+
+- wilgoć, uskoki wiatru i organizację przepływu
+
+- radar, satelitę, wyładowania i ostrzeżenia dla bieżącej sytuacji
+
+**Najczęstsza pułapka:** Duże CAPE może pozostać niewykorzystane pod silną inwersją, a mniejsze CAPE przy silnym uskoku i wymuszeniu może towarzyszyć groźnej, zorganizowanej konwekcji.
+
+**Ćwiczenie:** Mapa pokazuje bardzo duże CAPE. Który wniosek jest poprawny?
+
+- **A.** Burza wystąpi na pewno w każdym miejscu o tym kolorze.
+
+- **B.** Prawdopodobieństwo gradu jest równe wartości CAPE podzielonej przez sto.
+
+- **C.** Atmosfera ma potencjał silnych prądów wstępujących, ale potrzebne są jeszcze inicjacja, wilgoć i ocena hamowania oraz uskoku. (poprawna)
+
+- **D.** CAPE zastępuje radar, satelitę i ostrzeżenia.
+
+CAPE opisuje możliwą energię dodatniej wyporności po uruchomieniu konwekcji. Nie mówi samo, czy porcja przebije warstwę hamującą, czy jest dostatecznie wilgotna i jak uskok zorganizuje rozwijające się komórki.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Windy Weather Academy](https://www.windy.com/articles/38548), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+## Schemat Wysokości
+
+Schemat szkoleniowy
+
+**Wysokość nad morzem a wysokość nad ziemią**
+
+Zmień wysokość terenu i wybierz poziom ciśnienia. Zobaczysz, jak zmienia się
+odległość między ziemią a wybranym poziomem.
+
+- **Wysokość terenu / [wartość] m MSL**, suwak od 0 do 2200 m co 50 m.
+- Przyciski poziomów ciśnienia z jednostką **hPa**.
+- Schemat: **górna troposfera**, **[ciśnienie] hPa**,
+  **≈ [wysokość] m MSL***, **teren [wysokość] m MSL**, **powierzchnia**.
+- **Wybrany poziom / [ciśnienie] hPa · [zastosowanie poziomu]**.
+- **Wysokość względem terenu w tym schemacie** z jednym z trzech wyników:
+  **[wysokość] m AGL**, **Na wysokości terenu** albo **Poniżej terenu**.
+
+Dla poziomu na wysokości terenu lub pod nim:
+
+> Wybrany poziom nie znajduje się ponad terenem. W tym miejscu nie przedstawia warstwy swobodnego powietrza nad ziemią.
+
+Miarka AGL pojawia się tylko dla dodatniej wysokości nad terenem. Położenie
+pod ziemią nie jest zastępowane zerem.
+
+MSL to wysokość nad średnim poziomem morza, a AGL nad gruntem. * Wysokości
+poziomów ciśnienia są przybliżeniem atmosfery standardowej, nie aktualnym
+pomiarem. W rzeczywistej atmosferze zmieniają się; w modelu pogody sprawdza
+się geopotencjał.
+
+- **300 hPa**, około 9160 m MSL: prąd strumieniowy i górna troposfera.
+- **500 hPa**, około 5570 m MSL: zatoki, niże górne i sterowanie przepływem.
+- **700 hPa**, około 3010 m MSL: wilgoć i ruch pionowy poziomu średniego.
+- **850 hPa**, około 1460 m MSL: temperatura i adwekcja w dolnej troposferze.
+- **925 hPa**, około 760 m MSL: niska warstwa, inwersje i napływ.
+- **1000 hPa**, około 110 m MSL: warstwa przyziemna nad niskim terenem.

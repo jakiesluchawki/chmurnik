@@ -312,3 +312,14 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   disclosed upscaling as in the previous pack; no response or upscaling is
   assumed. No portrait/final exports/new gallery exist. The requested 20 new
   motifs and 40 final files remain incomplete; previous packs are unchanged.
+- Clarified all six layers-workshop introductions and the Windy walkthrough.
+  The complete copy book retains every weather-layer definition, question,
+  answer, explanation and source. Fixed the height diagram's below-terrain
+  case: it no longer clamps negative AGL to zero or draws a false above-ground
+  bracket. Uses the existing signed pressure-surface context and adds real
+  React static-render tests for below/equal/above terrain. Existing approximate
+  ISA heights and scientific references are unchanged. All 239 JavaScript tests,
+  nine lesson audits and the web build pass; the unchanged ML suite last passed
+  all 116 tests. iPhone/iPad simulator and ad-hoc Catalyst builds both contain
+  `index-DrDCQsbb.js`. These are local development builds, not store artifacts;
+  current visual/native interaction QA and release acceptance remain open.
