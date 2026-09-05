@@ -54,9 +54,9 @@ export const comparisonDimensions = [
     id: "appearance",
     number: "01",
     eyebrow: "Obraz",
-    title: "Sylwetka i cechy widoczne",
+    title: "Kształt i widoczne cechy",
     description:
-      "Najpierw porównaj geometrię, skalę i światło. To najsilniejsza obrona przed zgadywaniem po kolorze.",
+      "Porównaj kształt, wielkość elementów i sposób przepuszczania światła. Sam kolor nie wystarcza do rozpoznania.",
     value: ({ cloud }) => cloud.observe,
   },
   {
@@ -74,7 +74,7 @@ export const comparisonDimensions = [
     eyebrow: "Geneza",
     title: "Jak najczęściej powstaje",
     description:
-      "Ten sam wygląd może mieć różne przyczyny. Mechanizm powstania jest hipotezą sprawdzaną w czasie i w całej sytuacji pogodowej.",
+      "Podobne chmury mogą powstawać w różny sposób. Żeby ocenić przyczynę, trzeba uwzględnić ich zmiany i szerszą sytuację pogodową.",
     value: ({ profile }) => profile.formation,
   },
   {
@@ -83,16 +83,16 @@ export const comparisonDimensions = [
     eyebrow: "Czas",
     title: "Jak zwykle się rozwija",
     description:
-      "Przemiana bywa bardziej diagnostyczna niż pojedynczy kadr. Obserwuj grubienie, rozpad, wzrost i zmianę fazy.",
+      "Obserwuj, czy chmura grubieje, rozpada się, rośnie lub zaczyna tworzyć włóknisty wierzchołek. Zmiany w czasie pomagają odróżnić podobne rodzaje.",
     value: ({ profile }) => profile.evolution,
   },
   {
     id: "weather",
     number: "05",
     eyebrow: "Interpretacja",
-    title: "Co może znaczyć pogodowo",
+    title: "Co mówi o sytuacji pogodowej",
     description:
-      "Nazwa chmury jest jednym dowodem, nie samodzielną prognozą. Liczy się układ, zasięg i kierunek zmian.",
+      "Rodzaj chmury jest jedną ze wskazówek, nie samodzielną prognozą. Ważne są też zasięg zachmurzenia i kierunek zmian.",
     value: ({ profile }) => profile.weather,
   },
   {
@@ -107,10 +107,10 @@ export const comparisonDimensions = [
   {
     id: "trap",
     number: "07",
-    eyebrow: "Diagnostyka",
-    title: "Najważniejsza pułapka",
+    eyebrow: "Podobne cechy",
+    title: "Co łatwo pomylić",
     description:
-      "Dobra identyfikacja nie tylko zbiera cechy zgodne. Aktywnie szuka powodu, dla którego pierwsza nazwa może być błędna.",
+      "Sprawdź również, co nie pasuje do wybranego rodzaju. Podobieństwo na pierwszy rzut oka może być mylące.",
     value: ({ cloud }) => [cloud.trap],
     tone: "warning",
   },

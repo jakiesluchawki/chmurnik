@@ -854,3 +854,66 @@ variant of this weighting experiment is justified by this result. Genus
 supervision and reliable region-specific evidence still need improvement;
 automatic-region integration is a separate requirement, not a replacement
 for a better classifier or permission to release.
+
+## Segmentation-Guided Pooling, Declared Before Extraction
+
+One structural trial connects the existing masks to genus features. The
+hypothesis is that background and clear-sky patches dilute the final average
+DINO representation. This does not assume segmentation masks identify genera,
+and does not assign whole-image training labels to individual user selections.
+
+Use the exact frozen Small backbone from the IMGW MLP checkpoint (SHA256
+`d34d1f2d871ebaaed612c6132ee10575016e939f5072a289ff837520fc1cea87`),
+the selected DLR cloud mask (SHA256
+`33363342726c34dae0c0ea0f05e3c7ff1f9ed08b1710413db7e14d84b33cffb2`)
+and the pinned MIT sky mask, with no fine-tuning. Preserve the V2 224px/.902
+input and all existing train/validation IDs, labels and image/flip views.
+Verify development-image pixel hashes against the frozen manifest; for IMGW,
+verify the separate `artifact_sha256` because `pixel_sha256` belongs to the
+full-resolution original before the documented 640px/JPEG preparation.
+The initial preflight correctly stopped on this distinction; no fitting or
+prediction occurred. All 718 IMGW development artifacts match their hashes.
+
+Keep the 384-dimensional normalized CLS token. Replace the 384-dimensional
+ordinary patch mean with one weighted by soft cloud probability times soft
+sky probability. Masks see the same 224px crop, bilinearly resized to their
+256px/384px inputs. Multiply at 256px, then average to the 16x16 token grid.
+Every patch retains a .1 weight floor: `.1 + .9 * joint_probability`. Empty
+and uniform masks reduce to ordinary averaging; context is not erased.
+
+Fit one train-only standardized, class-balanced RBF head at alpha .1 and
+gamma .25/768. No weighting/grid/floor search. Require validation macro-F1
+at least .6545474034701404, .01 above the previous selected candidate, plus
+float32 logit parity <=.001 with no label changes in four batch sizes.
+Preserve negative results without opening calibration/holdouts. If this passes,
+the original, unchanged confidence and release gates still apply. It cannot
+serve as fresh confirmation or selected-region calibration by itself.
+
+Output `.local/v4/dinov2-masked-pooling/`. Save the recipe/code/model hashes
+before extraction, resumable ordered feature caches, head, logits, per-source
+metrics and confusion matrix. No bundled Apple model change is part of this
+trial. Existing app/UX improvements remain separately verified requirements.
+
+### Segmentation-Guided Pooling Result: Rejected
+
+The fixed trial completed in 287.2 seconds. Validation is 281/452 correct
+(62.1681%), macro-F1 .6232889561198935, below both the previous 290/452
+reliability candidate and the predeclared .65455 selection bar. By source:
+CCSN 180/288, IMGW 81/144, clear 20/20. Four-batch float32 parity passes with
+zero changed labels and maximum logit error .0001657233410889969. Numerical
+parity does not compensate for worse classification. No calibration, holdout
+evaluation, export, or production model replacement followed this trial.
+
+Artifact SHA256 values:
+
+- Recipe: `6238ea605a8ccba453ee276287b853f0fb6e622d4402fc0864bda9d398b25304`.
+- Evaluation: `461fc318fe09f80688369ab8685543d2bc465545dd0f8a10bfb3ce40e5708214`.
+- Head: `bd61afb717e855ef03e5475a10320e5fc898051dd4de1914ac6bd683bcb3f0d9`.
+- Train features: `fcd8a250f7d6d7c22eb3d81fceb3df15a924c08b6cad8618c5fb52b683bc5b4f`.
+- Validation features: `c0cface0ca7106bd30f8c376f5e2aafd6f81cddfc6ee38657bf9a0ee72cac15a`.
+
+This negative result does not invalidate the separate segmentation/selection
+feature. It does rule out this particular mask-weighted genus representation
+under the frozen protocol. The next data-quality step should expose ambiguous
+or mixed observations to independent human review, without treating model
+disagreement as proof that the original labels are wrong.

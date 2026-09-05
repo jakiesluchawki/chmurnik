@@ -97,11 +97,11 @@ export function recognitionMastery(cloudIds, stats = {}) {
     const accuracy = attempts ? correct / attempts : null;
 
     let state = "new";
-    let label = "Nowa";
+    let label = "Bez prób";
 
     if (attempts > 0) {
       state = "learning";
-      label = "W toku";
+      label = "Ćwiczysz";
     }
     if (wrong > correct || (attempts >= 2 && accuracy < 0.6)) {
       state = "focus";
@@ -109,7 +109,7 @@ export function recognitionMastery(cloudIds, stats = {}) {
     }
     if (attempts >= 3 && accuracy >= 0.75) {
       state = "steady";
-      label = "Utrwalona";
+      label = "Dobre wyniki";
     }
 
     return {

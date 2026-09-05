@@ -359,12 +359,12 @@ test("lessons expose honest time plans, adaptive practice and keyboard-safe dial
 
   assert.match(app, /navigate\(`learn\/\$\{id\}`\)/);
   assert.match(app, /learningModules\.find\(\(module\) => module\.id === routeDetail\)/);
-  assert.match(app, /Skąd bierze się/);
+  assert.match(app, /Plan na około/);
   assert.match(app, /Zatrzymaj się na 20 sekund/);
   assert.match(app, /lesson-mobile-progress/);
   assert.match(app, /saveLessonPosition/);
-  assert.match(app, /Czas obejmuje czytanie, krótkie przypomnienia, analizę przykładów/);
-  assert.match(app, /Pamięć rozpoznawania/);
+  assert.match(app, /Ten czas obejmuje czytanie, analizę przykładów, przypomnienia i ćwiczenia/);
+  assert.match(app, /Twoje powtórki/);
   assert.match(app, /Dlaczego nie/);
   assert.match(app, /function useDialogFocus/);
   assert.match(app, /event\.key === "Escape"/);
@@ -489,7 +489,7 @@ test("the cloud atlas exposes a prominent evidence-aware search", async () => {
   assert.match(app, /Wyniki w całej klasyfikacji/);
   assert.match(app, /Hasła WMO/);
   assert.match(app, /Rodzaje chmur/);
-  assert.match(app, /Cała klasyfikacja · filtry poziomu są pomijane/);
+  assert.match(app, /Wyszukiwanie obejmuje wszystkie wysokości/);
   assert.match(app, /if \(nextQuery\.trim\(\)\) setLevel\("wszystkie"\)/);
   assert.match(app, /searchCloudAtlas/);
   assert.match(app, /searchTaxonomyTerms/);
@@ -502,11 +502,13 @@ test("the field observer replaces the shallow binary key with transparent hypoth
   const app = await read("src/App.jsx");
 
   assert.match(app, /function FieldObserver/);
-  assert.match(app, /Trzy hipotezy, nie jeden werdykt/);
+  assert.match(app, /Co pasuje do Twoich odpowiedzi\?/);
   assert.match(app, /Co pasuje/);
-  assert.match(app, /Co osłabia/);
-  assert.match(app, /Najbardziej wartościowy kolejny dowód/);
-  assert.match(app, /Porównanie prowadzącej pary/);
+  assert.match(app, /Co nie pasuje/);
+  assert.match(app, /Co jeszcze sprawdzić/);
+  assert.match(app, /Dwie pierwsze propozycje/);
+  assert.match(app, /fieldHypotheses\(ranked\)/);
+  assert.match(app, /first && second &&/);
   assert.doesNotMatch(app, /function DecisionKey/);
 });
 
@@ -515,12 +517,13 @@ test("the atlas includes a full differential comparison laboratory", async () =>
   const comparison = await read("src/data/comparison.js");
 
   assert.match(app, /function CloudComparison/);
-  assert.match(app, /Laboratorium różnic/);
-  assert.match(app, /Te same pytania\. Różne chmury\./);
-  assert.match(app, /Mikrofizyka, geneza, ewolucja, pogoda i lotnictwo/);
-  assert.match(app, /routeDetail === "compare"/);
+  assert.match(app, /Porównanie rodzajów/);
+  assert.match(app, /Sprawdź, czym się różnią/);
+  assert.match(app, /Sprawdź też, jak powstają, zmieniają się i wiążą z pogodą/);
+  assert.match(app, /atlasDestination\(routeDetail, routePayload/);
+  assert.match(app, /initialComparisonIds=\{atlasTarget.comparisonIds\}/);
   assert.match(comparison, /Znaczenie operacyjne i ograniczenia/);
-  assert.match(comparison, /Najważniejsza pułapka/);
+  assert.match(comparison, /Co łatwo pomylić/);
 });
 
 test("authoritative source links use verified current destinations", async () => {

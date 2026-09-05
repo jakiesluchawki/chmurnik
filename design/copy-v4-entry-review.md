@@ -253,10 +253,11 @@ Zdjęcie zostaje na urządzeniu. Analiza działa lokalnie i nie wysyła fotograf
 
 **Wybierz zdjęcie chmur**
 
-Najlepszy będzie wyraźny kadr jednej chmury, bez budynków i szerokiego horyzontu.
+CHMURNIK zaproponuje fragmenty do sprawdzenia. Wybierzesz jeden z nich lub
+wskażesz chmurę samodzielnie. Najlepsze będzie wyraźne zdjęcie zrobione za dnia.
 
-To ograniczenie obecnego modelu, nie docelowa obietnica V4. Treść musi być
-ponownie zweryfikowana po wdrożeniu rozpoznawania wielu obszarów.
+To obecny tekst wersji roboczej po integracji propozycji obszarów. Nie oznacza
+zatwierdzenia jakości klasyfikatora ani gotowości wydania.
 
 Przycisk zapisu: **Zapisz w Moim niebie**, podczas pracy **Zapisuję zdjęcie…**.
 

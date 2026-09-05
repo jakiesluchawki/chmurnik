@@ -1,8 +1,19 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { recognitionMastery } from "../src/lib/recognition.js";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
+
+test("practice progress is not advertised as field recognition mastery", async () => {
+  const app = await read("src/App.jsx");
+  assert.match(app, /nie oceny rozpoznawania w terenie/);
+  assert.doesNotMatch(app, /Ćwicz najsłabszy rodzaj|Wiesz, co wymaga powtórki/);
+  assert.equal(recognitionMastery(["cu"])[0].label, "Bez prób");
+  assert.equal(recognitionMastery(["cu"], { cu: { correct: 1, wrong: 0 } })[0].label, "Ćwiczysz");
+  assert.equal(recognitionMastery(["cu"], { cu: { correct: 0, wrong: 2 } })[0].label, "Do powtórki");
+  assert.equal(recognitionMastery(["cu"], { cu: { correct: 3, wrong: 0 } })[0].label, "Dobre wyniki");
+});
 
 test("entry screens explain actions without the rejected slogans or time promises", async () => {
   const app = await read("src/App.jsx");

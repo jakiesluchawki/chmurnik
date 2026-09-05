@@ -35,30 +35,49 @@ export function observationVerdict(results) {
   const [first, second] = results;
   const gap = (first?.score || 0) - (second?.score || 0);
 
+  if (!first || first.score <= 0) {
+    return {
+      level: "none",
+      label: "Za mało informacji",
+      explanation: "Te odpowiedzi nie wskazują rodzaju chmury. Możesz wrócić do pytań, kiedy zobaczysz jej cechy wyraźniej.",
+    };
+  }
+  if (!second) {
+    return {
+      level: "moderate",
+      label: "Jedna propozycja do sprawdzenia",
+      explanation: "Zaznaczone cechy wskazują tę możliwość, ale nie potwierdzają rozpoznania. Sprawdź zdjęcia i opis w atlasie.",
+    };
+  }
+
   if (gap >= 7) {
     return {
       level: "leading",
-      label: "Wyraźnie prowadząca hipoteza",
+      label: "Pierwsza propozycja pasuje najlepiej",
       explanation:
-        "Zebrane cechy układają się spójniej dla pierwszego rodzaju, ale nadal warto sprawdzić wskazany dowód rozstrzygający.",
+        "Twoje odpowiedzi pasują najlepiej do pierwszego rodzaju. Porównaj jednak jego opis i zdjęcia z obserwowaną chmurą; to nadal propozycja, nie potwierdzone rozpoznanie.",
     };
   }
 
   if (gap >= 3) {
     return {
       level: "moderate",
-      label: "Umiarkowana przewaga",
+      label: "Warto porównać podobne rodzaje",
       explanation:
-        "Pierwsza hipoteza ma przewagę, lecz część obrazu pozostaje zgodna także z drugim rodzajem.",
+        "Pierwsza propozycja pasuje trochę lepiej, ale część zaznaczonych cech występuje też u innych rodzajów. Sprawdź różnice w ich opisach.",
     };
   }
 
   return {
     level: "close",
-    label: "Przypadek sporny",
+    label: "Nie ma wyraźnego rozstrzygnięcia",
     explanation:
-      "Dwie hipotezy są podobnie zgodne z obserwacją. To nie błąd: chmura może być przejściowa albo brakuje rozstrzygającej cechy.",
+      "Podobne rodzaje pasują do zaznaczonych cech. Zwróć uwagę na opisane niżej różnice; same odpowiedzi nie wystarczają do wyboru jednej nazwy.",
   };
+}
+
+export function fieldHypotheses(results) {
+  return results.filter((result) => Number.isFinite(result.score) && result.score > 0 && result.matches?.length > 0).slice(0, 3);
 }
 
 export function nextDiscriminatingObservation(results) {
@@ -81,20 +100,21 @@ export function evidenceCoverage(answers) {
 }
 
 export function createObservationDraft(answers, results, cloudLabel = (cloudId) => cloudId) {
-  const verdict = observationVerdict(results);
+  const supported = fieldHypotheses(results);
+  if (supported.length === 0) return null;
+  const verdict = observationVerdict(supported);
   const evidence = fieldQuestions
     .map((question) => {
       const option = selectedOption(question, answers[question.id]);
       return option ? `${question.eyebrow.split("·").at(-1).trim()}: ${option.label}` : null;
     })
     .filter(Boolean);
-  const hypotheses = results
-    .slice(0, 3)
+  const hypotheses = supported
     .map((result) => cloudLabel(result.cloudId))
     .join(", ");
 
   return {
-    cloudId: results[0]?.cloudId || "",
+    cloudId: supported[0].cloudId,
     confidence:
       verdict.level === "leading" ? "wysoka" : verdict.level === "moderate" ? "średnia" : "niska",
     evidence: `${evidence.join("; ")}. Hipotezy asystenta: ${hypotheses}.`,

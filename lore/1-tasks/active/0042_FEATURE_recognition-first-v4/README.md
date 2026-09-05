@@ -277,3 +277,38 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   versions; the source lockfile is unchanged. Local ad-hoc Catalyst build also
   passes. No UI interaction or screenshots were available from CUA, no app
   was installed/published, and model/release/full-copy acceptance stays open.
+- Completed the fixed segmentation-guided genus-feature trial. It is worse:
+  281/452 validation correct, macro-F1 .62329 versus .64455 for the previous
+  candidate. Four-batch numerical parity passes, but selection fails; no
+  calibration/holdouts/export followed. Preserved recipe and artifact hashes
+  in the experiment contract. Five focused tests raise the then-total to 111.
+- Added honest unknown answers to all manual observation questions. A lack of
+  supported evidence no longer selects the first array entry or saves a made-up
+  genus. Existing weights are unchanged. Rewrote atlas/search/comparison and
+  learning-navigation copy, with one complete generated review book at
+  `design/copy-v4-review.md`, including unchanged choices, lesson cards and quiz
+  answers. Detailed lessons, journal and remaining tool screens still need
+  copy review; this is not a completed full-app language audit.
+- Fixed photo-result navigation for one candidate: open its own atlas card,
+  not the default unrelated comparison. Added a real React static-render test
+  to cover the selected-ID state contract, alongside destination tests. The
+  static render does not verify browser layout or interactive behavior.
+- Prepared a blinded, training-only expert-review pilot: 33 IMGW photos from
+  33 capture days, neutral IDs, blank CSV, offline index and instructions.
+  The original labels/key remain outside the reviewer ZIP. Source licensing,
+  image hashes, ZIP integrity, exact contents and blank-response handling are
+  verified. Five tests cover reproducibility, leakage, blinding and invalid
+  labels; no reviewer has responded and nothing was shared or applied to
+  training. See `expert-review-protocol.md` for immutable selection and hashes.
+- Final checkpoint regression: 235 JavaScript tests, 116 ML tests, nine lesson
+  audits and the production web build pass. The iPhone/iPad simulator and local
+  ad-hoc Mac Catalyst builds both succeed; both contain `index-Dx__Azdf.js`.
+  Root dependency pins remain unchanged. CUA still fails at service startup,
+  so no current visual/native interaction QA, app installation, distribution
+  archive, upload or publication occurred. Genus-model/release gates stay open.
+- Built-in wallpaper generation recovered and produced one new sailing-motif
+  landscape draft. Copied it into `social/2026-09-05-wallpapers/art/`; actual
+  size is 1672x941, despite requested native 4K. Asked whether to accept clearly
+  disclosed upscaling as in the previous pack; no response or upscaling is
+  assumed. No portrait/final exports/new gallery exist. The requested 20 new
+  motifs and 40 final files remain incomplete; previous packs are unchanged.

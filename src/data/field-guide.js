@@ -1,9 +1,9 @@
 export const fieldQuestions = [
   {
     id: "shape",
-    eyebrow: "Dowód 1 · budowa",
-    prompt: "Jaki porządek dominuje w obserwowanym fragmencie nieba?",
-    help: "Najpierw nazwij geometrię. Kolor zostaw na później, bo silnie zależy od oświetlenia.",
+    eyebrow: "Pytanie 1 · budowa",
+    prompt: "Jaki kształt ma chmura, którą obserwujesz?",
+    help: "Wybierz opis najbliższy temu, co widzisz. Na razie zwróć uwagę na kształt, bo kolor zależy także od oświetlenia.",
     options: [
       {
         id: "fibres",
@@ -28,7 +28,7 @@ export const fieldQuestions = [
       },
       {
         id: "cells",
-        label: "Ławica członów lub fal",
+        label: "Powtarzające się kłębki, płaty lub fale",
         description: "Powtarzalne ziarenka, płaty, wały albo soczewki.",
         signal: "widoczna jest ławica powtarzalnych członów",
         weights: { cirrocumulus: 7, altocumulus: 7, stratocumulus: 6, cirrus: -2, stratus: -2 },
@@ -42,7 +42,7 @@ export const fieldQuestions = [
       },
       {
         id: "tower",
-        label: "Wieża o dużej głębokości",
+        label: "Wysoka wieża chmurowa",
         description: "Rozwój pionowy dominuje nad szerokością i szybko się zmienia.",
         signal: "dominuje silny rozwój pionowy",
         weights: {
@@ -54,13 +54,20 @@ export const fieldQuestions = [
           stratus: -4,
         },
       },
+      {
+        id: "unknown",
+        label: "Nie potrafię określić kształtu",
+        description: "Chmura jest słabo widoczna albo kilka warstw nakłada się na siebie.",
+        signal: "kształt chmury pozostaje nierozstrzygnięty",
+        weights: {},
+      },
     ],
   },
   {
     id: "scale",
-    eyebrow: "Dowód 2 · skala",
+    eyebrow: "Pytanie 2 · skala",
     prompt: "Jak duże są powtarzalne elementy przy wyciągniętej ręce?",
-    help: "Skala kątowa pomaga rozdzielić podobne ławice. Jeśli nie ma członów, wybierz warstwę bez elementów.",
+    help: "Wyciągnij rękę i porównaj wielkość kłębków z szerokością palców, patrząc wysoko nad horyzont. Jeśli masz tylko zdjęcie, bez znajomości jego pola widzenia wybierz „Nie umiem ocenić”.",
     options: [
       {
         id: "tiny",
@@ -101,7 +108,7 @@ export const fieldQuestions = [
   },
   {
     id: "light",
-    eyebrow: "Dowód 3 · światło",
+    eyebrow: "Pytanie 3 · światło",
     prompt: "Co dzieje się ze światłem i cieniem?",
     help: "Patrz bezpiecznie w pobliże Słońca, nigdy bezpośrednio w jego tarczę. Halo i sposób tłumienia światła bywają rozstrzygające.",
     options: [
@@ -140,12 +147,19 @@ export const fieldQuestions = [
         signal: "elementy są jasne i prawie bez własnego cienia",
         weights: { cirrus: 6, cirrocumulus: 5, cirrostratus: 2, nimbostratus: -4 },
       },
+      {
+        id: "unknown",
+        label: "Nie potrafię ocenić światła",
+        description: "Jest ciemno, Słońce jest poza kadrem albo zdjęcie nie pokazuje tych cech.",
+        signal: "światło i cieniowanie pozostają nierozstrzygnięte",
+        weights: {},
+      },
     ],
   },
   {
     id: "precipitation",
-    eyebrow: "Dowód 4 · opad",
-    prompt: "Jaki związek z opadem naprawdę widzisz?",
+    eyebrow: "Pytanie 4 · opad",
+    prompt: "Czy z tej chmury widać opad?",
     help: "Oddziel smugi, które wyparowują przed ziemią, od opadu ciągłego i przelotnego.",
     options: [
       {
@@ -183,11 +197,18 @@ export const fieldQuestions = [
         signal: "występuje mżawka z niskiej warstwy",
         weights: { stratus: 9, stratocumulus: 3, nimbostratus: 2, cirrostratus: -4 },
       },
+      {
+        id: "unknown",
+        label: "Nie wiem, czy występuje opad",
+        description: "Nie widać podstawy chmury lub obszaru pod nią. To nie oznacza, że opadu nie ma.",
+        signal: "występowanie opadu nie zostało sprawdzone",
+        weights: {},
+      },
     ],
   },
   {
     id: "evolution",
-    eyebrow: "Dowód 5 · czas",
+    eyebrow: "Pytanie 5 · czas",
     prompt: "Co zmieniło się w ciągu ostatnich 10–15 minut?",
     help: "WMO podkreśla ciągłą obserwację. Jeden kadr może ukryć przemianę między rodzajami.",
     options: [

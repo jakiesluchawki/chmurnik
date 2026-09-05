@@ -94,6 +94,7 @@ import {
 import {
   createObservationDraft,
   evidenceCoverage,
+  fieldHypotheses,
   nextDiscriminatingObservation,
   observationVerdict,
   pairDiscriminator,
@@ -144,6 +145,7 @@ import {
   updateAviationReview,
 } from "./lib/metar-training.js";
 import { searchCloudAtlas, searchTaxonomyTerms } from "./lib/cloud-search.js";
+import { atlasDestination } from "./lib/atlas-navigation.js";
 import {
   pressureSurfaceContext,
   weatherLayerReading,
@@ -1055,7 +1057,7 @@ function LearnPage({
           </summary>
           <section className="lesson-orientation" aria-label="Plan lekcji">
             <div className="lesson-time-plan">
-              <span className="eyebrow">Skąd bierze się {module.minutes} minut</span>
+              <span className="eyebrow">Plan na około {module.minutes} minut</span>
               <div>
                 {content.timePlan.map((item) => (
                   <span key={item.label}>
@@ -1076,7 +1078,7 @@ function LearnPage({
           </section>
           <div className="lesson-source-row">
             <SourceButton ids={module.sourceIds} onOpen={onSources} />
-            <p>Czas obejmuje czytanie, krótkie przypomnienia, analizę przykładów, zadanie i sprawdzenie — nie sam tekst.</p>
+            <p>Ten czas obejmuje czytanie, analizę przykładów, przypomnienia i ćwiczenia. Możesz pracować we własnym tempie.</p>
           </div>
         </details>
         <div className="lesson-mobile-progress" aria-label={`Rozdział ${activeChapter + 1} z ${content.chapters.length}`}>
@@ -1174,7 +1176,7 @@ function LearnPage({
         </div>
         <section className="lesson-recap" id={`lesson-recap-${selected}`}>
           <span className="eyebrow">Zapamiętaj przed ćwiczeniem</span>
-          <h2>Krótka mapa lekcji</h2>
+          <h2>Najważniejsze informacje</h2>
           <ol>
             {content.recap.map((item) => <li key={item}>{item}</li>)}
           </ol>
@@ -1204,7 +1206,7 @@ function LearnPage({
   return (
     <main className="page">
       <header className="page-heading workbench-heading">
-        <span className="eyebrow">Od obserwatora do analityka</span>
+        <span className="eyebrow">Nauka rozpoznawania chmur</span>
         <h1>Twoja ścieżka nauki</h1>
         <p>Możesz iść po kolei albo wejść od razu w temat, którego potrzebujesz. Ukończenie zapisuje się tylko na tym urządzeniu.</p>
       </header>
@@ -1214,7 +1216,7 @@ function LearnPage({
           <span style={{ width: `${(completed.length / learningModules.length) * 100}%` }} />
         </div>
         <strong>{completed.length} z {learningModules.length} modułów</strong>
-        <span>Dane prywatne · zapis lokalny</span>
+        <span>Postęp zapisany na tym urządzeniu</span>
       </div>
 
       <div className="learning-path">
@@ -1247,16 +1249,17 @@ function LearnPage({
       <section className="recognition-dashboard">
         <div className="recognition-dashboard-heading">
           <div>
-            <span className="eyebrow">Pamięć rozpoznawania</span>
-            <h2>Wiesz, co wymaga powtórki</h2>
+            <span className="eyebrow">Ćwiczenia ze zdjęciami</span>
+            <h2>Twoje powtórki</h2>
             <p>
-              Liczymy osobno każdą z dziesięciu chmur. Błąd zwiększa częstotliwość
-              powrotu danego rodzaju, a odpowiedzi zostają tylko na tym urządzeniu.
+              Zobacz wyniki dla każdego rodzaju chmur i wybierz, co chcesz poćwiczyć.
+              Rodzaje, przy których częściej się mylisz, wracają częściej w pytaniach.
+              Te wyniki dotyczą ćwiczeń w aplikacji, nie oceny rozpoznawania w terenie.
             </p>
           </div>
           <div className="recognition-dashboard-summary" aria-label="Podsumowanie treningu">
             <span><strong>{masteryAttempts}</strong> odpowiedzi</span>
-            <span><strong>{steadyCount}</strong> utrwalonych</span>
+            <span><strong>{steadyCount}</strong> rodzajów z dobrym wynikiem</span>
           </div>
         </div>
         <div className="mastery-grid">
@@ -1283,11 +1286,11 @@ function LearnPage({
         </div>
         <div className="recognition-dashboard-action">
           <p>
-            Następna rekomendacja: <strong>{weakestCloud.name}</strong>.
-            Priorytet uwzględnia błędy i zbyt małą liczbę prób.
+            Propozycja na teraz: <strong>{weakestCloud.name}</strong>.
+            Wybór uwzględnia błędy oraz rodzaje, które ćwiczysz rzadziej.
           </p>
           <button className="button button--coral" onClick={() => onOpenRecognition(weakestCloudId)}>
-            Ćwicz najsłabszy rodzaj <ArrowRight size={18} />
+            Rozpocznij powtórkę <ArrowRight size={18} />
           </button>
         </div>
       </section>
@@ -1296,7 +1299,7 @@ function LearnPage({
         <div>
           <span className="eyebrow">Przekrojowy sprawdzian</span>
           <h2>Trzy pytania, bez rankingu</h2>
-          <p>Każda odpowiedź od razu wyjaśnia tok rozumowania.</p>
+          <p>Po każdym pytaniu zobaczysz poprawną odpowiedź i jej wyjaśnienie.</p>
         </div>
         <button className="button button--primary" onClick={() => setQuizOpen(true)}>
           Otwórz quiz <ArrowRight size={18} />
@@ -1365,9 +1368,9 @@ function QuizModal({ onClose }) {
         ) : (
           <div className="placement-result">
             <span className="result-icon"><GraduationCap size={34} /></span>
-            <span className="eyebrow">Koniec rundy</span>
+            <span className="eyebrow">Poprawne odpowiedzi</span>
             <h2>{score} / {quizQuestions.length}</h2>
-            <p>Wynik nie blokuje treści. Wróć do wyjaśnień wtedy, gdy konkretny trop nadal nie jest intuicyjny.</p>
+            <p>Wszystkie lekcje pozostają dostępne niezależnie od wyniku. Możesz wrócić do wybranego tematu i spróbować ponownie.</p>
             <button className="button button--primary" onClick={onClose}>Wróć do nauki</button>
           </div>
         )}
@@ -1380,30 +1383,33 @@ function AtlasPage({
   onSources,
   onSaveObservation,
   initialTab = "atlas",
+  initialCloudId = null,
   initialComparisonIds = null,
 }) {
   const [tab, setTab] = useState(initialTab);
   const [level, setLevel] = useState("wszystkie");
   const [query, setQuery] = useState("");
   const [offlineState, setOfflineState] = useState("idle");
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(initialCloudId);
   const [selectedTerm, setSelectedTerm] = useState(null);
   const [comparisonIds, setComparisonIds] = useState(
     initialComparisonIds?.length >= 2 ? initialComparisonIds : comparisonPresets[1].cloudIds,
   );
   const hasAtlasQuery = Boolean(query.trim());
   const heading = {
-    atlas: ["Klasyfikacja WMO", "Atlas chmur", "Dziesięć rodzajów, prawdziwe zdjęcia i widoczne cechy."],
-    observer: ["Mobilny notes obserwatora", "Najpierw dowody", "Pięć krótkich pytań zamienia spojrzenie w hipotezę, którą możesz sprawdzić w atlasie."],
-    compare: ["Diagnostyka różnicowa", "Porównaj dowody", "Zestaw podobne chmury obok siebie i zobacz kryteria, które naprawdę je rozdzielają."],
-    encyclopedia: ["Formalne warstwy nazwy", "Indeks WMO", "Gatunki, odmiany, cechy dodatkowe oraz pochodzenie w jednym przeszukiwalnym indeksie."],
-    cases: ["Najczęstsze pomyłki", "Trudne przypadki", "Ćwicz granice klasyfikacji na zestawach, w których pierwszy odruch często zawodzi."],
+    atlas: ["Klasyfikacja WMO", "Atlas chmur", "Wybierz jeden z dziesięciu rodzajów, obejrzyj prawdziwe zdjęcia i sprawdź cechy, po których możesz go poznać."],
+    observer: ["Rozpoznawanie po cechach", "Opisz chmurę, którą widzisz", "Odpowiedz na pięć pytań, a otrzymasz propozycje do porównania z atlasem. Jeśli czegoś nie widzisz, nie musisz zgadywać."],
+    compare: ["Podobne rodzaje", "Porównaj chmury", "Wybierz dwa lub trzy rodzaje i obejrzyj ich zdjęcia obok siebie. Opisy pomogą Ci zauważyć różnice."],
+    encyclopedia: ["Nazewnictwo chmur", "Indeks WMO", "Znajdź znaczenie nazwy gatunku, odmiany lub cechy chmury i sprawdź, z którymi rodzajami się łączy."],
+    cases: ["Najczęstsze pomyłki", "Trudne przypadki", "Zobacz, które chmury łatwo pomylić i jakie obserwacje pomagają je odróżnić."],
   }[tab];
 
   useEffect(() => {
     setTab(initialTab);
+    setSelected(initialCloudId);
+    setSelectedTerm(null);
     if (initialComparisonIds?.length >= 2) setComparisonIds(initialComparisonIds);
-  }, [initialComparisonIds?.join(","), initialTab]);
+  }, [initialComparisonIds?.join(","), initialCloudId, initialTab]);
 
   const filtered = searchCloudAtlas(clouds, {
     query,
@@ -1415,10 +1421,6 @@ function AtlasPage({
     query,
     cloudList: clouds,
   });
-
-  useEffect(() => {
-    setTab(initialTab);
-  }, [initialTab]);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return undefined;
@@ -1526,7 +1528,7 @@ function AtlasPage({
                   : "10 rodzajów · 49 haseł WMO"}
               </span>
               {hasAtlasQuery
-                ? <small>Cała klasyfikacja · filtry poziomu są pomijane</small>
+                ? <small>Wyszukiwanie obejmuje wszystkie wysokości.</small>
                 : level !== "wszystkie" && <small>Filtr wysokości: {level}</small>}
             </div>
           </section>
@@ -1655,7 +1657,7 @@ function CloudCardGrid({ items, onSelect }) {
             <span className="cloud-card-count">
               {cloud.species.length + cloud.varieties.length + cloud.features.length + cloud.accessoryClouds.length} powiązanych terminów
             </span>
-            <span className="card-link">Otwórz monografię <ArrowRight size={16} /></span>
+            <span className="card-link">Zdjęcia i opis <ArrowRight size={16} /></span>
           </span>
         </button>
       ))}
@@ -1694,8 +1696,8 @@ function AtlasSearchResults({
             <div>
               <h3 id="term-results-title">Hasła WMO</h3>
               <p>
-                To formalne elementy klasyfikacji. Otwórz hasło, aby zobaczyć
-                cechę diagnostyczną i wszystkie zgodne rodzaje.
+                Otwórz hasło, żeby poznać jego znaczenie oraz rodzaje chmur,
+                do których można zastosować tę nazwę.
               </p>
             </div>
           </header>
@@ -1733,7 +1735,7 @@ function AtlasSearchResults({
             <div>
               <h3 id="cloud-results-title">Rodzaje chmur</h3>
               <p>
-                Monografie rodzajów, których nazwa, kod, wygląd albo
+                Opisy rodzajów, których nazwa, kod, wygląd albo
                 powiązane hasła odpowiadają zapytaniu.
               </p>
             </div>
@@ -1745,8 +1747,8 @@ function AtlasSearchResults({
       {!hasResults && (
         <div className="empty-state atlas-results__empty">
           <BookOpen size={32} />
-          <h2>Nie znaleźliśmy tego w klasyfikacji</h2>
-          <p>Spróbuj nazwy łacińskiej, polskiej cechy albo opisu wyglądu.</p>
+          <h2>Brak wyników w atlasie</h2>
+          <p>Spróbuj krótszego opisu, nazwy chmury lub jednej cechy, na przykład „smugi”.</p>
           <button onClick={onClear}>Pokaż cały atlas</button>
         </div>
       )}
@@ -1769,7 +1771,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
     () => scoreFieldObservation(clouds.map((cloud) => cloud.id), answers),
     [answers],
   );
-  const topResults = ranked.slice(0, 3);
+  const topResults = fieldHypotheses(ranked);
   const verdict = observationVerdict(topResults);
   const discriminator = nextDiscriminatingObservation(topResults);
   const leadingScore = Math.max(topResults[0]?.score || 1, 1);
@@ -1800,18 +1802,18 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
   };
 
   if (resultsOpen) {
-    const first = getCloud(topResults[0].cloudId);
-    const second = getCloud(topResults[1].cloudId);
+    const first = topResults[0] && getCloud(topResults[0].cloudId);
+    const second = topResults[1] && getCloud(topResults[1].cloudId);
 
     return (
       <section className="field-observer field-observer--results">
         <header className="field-results-heading">
           <div>
-            <span className="eyebrow">Asystent obserwacji · wynik heurystyczny</span>
-            <h2 ref={resultsHeadingRef} tabIndex="-1">Trzy hipotezy, nie jeden werdykt</h2>
+            <span className="eyebrow">Rozpoznawanie po cechach</span>
+            <h2 ref={resultsHeadingRef} tabIndex="-1">Co pasuje do Twoich odpowiedzi?</h2>
             <p>
-              Ranking pokazuje zgodność z zaznaczonymi cechami. Nie mierzy
-              prawdopodobieństwa i nie zastępuje obserwacji całego nieba.
+              Propozycje wynikają z zaznaczonych cech, a nie z analizy zdjęcia.
+              Ich kolejność nie jest miarą pewności rozpoznania.
             </p>
           </div>
           <div className={`field-verdict field-verdict--${verdict.level}`}>
@@ -1851,7 +1853,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
                   <span>{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <div className="hypothesis-body">
-                  <span className="eyebrow">{index === 0 ? verdict.label : "Hipoteza alternatywna"}</span>
+                  <span className="eyebrow">{index === 0 ? verdict.label : "Inna możliwość"}</span>
                   <h3><CloudName>{cloud.name}</CloudName></h3>
                   <p className="hypothesis-polish">{cloud.polish}</p>
                   <div className="hypothesis-meter" aria-label={`Wynik zgodności ${result.score}`}>
@@ -1862,13 +1864,13 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
                     <ul>{matches.map((item) => <li key={item}><Check size={15} />{item}</li>)}</ul>
                     {conflicts.length > 0 && (
                       <>
-                        <strong>Co osłabia</strong>
+                        <strong>Co nie pasuje</strong>
                         <ul className="conflicts">{conflicts.map((item) => <li key={item}><X size={15} />{item}</li>)}</ul>
                       </>
                     )}
                   </div>
                   <button className="card-link" onClick={() => onOpenCloud(cloud.id)}>
-                    Otwórz monografię <ArrowRight size={16} />
+                    Zdjęcia i opis <ArrowRight size={16} />
                   </button>
                 </div>
               </article>
@@ -1876,11 +1878,11 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
           })}
         </div>
 
-        <section className="field-next-observation">
+        {first && second && <><section className="field-next-observation">
           <div>
-            <span className="eyebrow">Najbardziej wartościowy kolejny dowód</span>
+            <span className="eyebrow">Co jeszcze sprawdzić</span>
             <h3>
-              Jak rozdzielić <CloudName>{first.name}</CloudName> i <CloudName>{second.name}</CloudName>
+              Jak odróżnić <CloudName>{first.name}</CloudName> od <CloudName>{second.name}</CloudName>
             </h3>
           </div>
           <p>{discriminator}</p>
@@ -1889,8 +1891,8 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
         <section className="field-comparison">
           <div className="field-comparison-heading">
             <div>
-              <span className="eyebrow">Porównanie prowadzącej pary</span>
-              <h3>Patrz na różnicę, nie na podobieństwo</h3>
+              <span className="eyebrow">Dwie pierwsze propozycje</span>
+              <h3>Porównaj zdjęcia i cechy</h3>
             </div>
             <SourceButton ids={["wmoObservation", "wmoAtlas"]} onOpen={onSources} />
           </div>
@@ -1915,11 +1917,11 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
             <Stack size={19} />
             <span>
               <strong>Otwórz pełne porównanie</strong>
-              <small>Mikrofizyka, geneza, ewolucja, pogoda i lotnictwo</small>
+              <small>Sprawdź też, jak powstają, zmieniają się i wiążą z pogodą.</small>
             </span>
             <ArrowRight size={17} />
           </button>
-        </section>
+        </section></>}
 
         {saveNotice && (
           <p className="journal-notice journal-notice--error" role="alert">
@@ -1927,7 +1929,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
           </p>
         )}
         <div className="field-results-actions">
-          <button
+          {topResults.length > 0 && <button
             className="button button--coral"
             onClick={() => {
               const saved = onSaveObservation(createObservationDraft(
@@ -1940,8 +1942,8 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
               }
             }}
           >
-            <Notebook size={18} /> Zapisz dowody w dzienniku
-          </button>
+            <Notebook size={18} /> Zapisz obserwację w dzienniku
+          </button>}
           <button className="button button--primary" onClick={() => {
             hasNavigatedRef.current = true;
             setStep(0);
@@ -1958,16 +1960,17 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
   return (
     <section className="field-observer">
       <aside className="field-method">
-        <span className="eyebrow">Mobilny notes obserwatora</span>
-        <h2>Najpierw dowody</h2>
+        <span className="eyebrow">Pięć pytań o chmurę</span>
+        <h2>Przyjrzyj się jej cechom</h2>
         <p>
-          Pięć krótkich kroków porządkuje to, co widzisz. Możesz wracać do
-          odpowiedzi; wynik pozostaje hipotezą do sprawdzenia w atlasie.
+          Wybierz odpowiedzi na podstawie tego, co widzisz. Możesz je zmienić
+          albo zaznaczyć, że nie umiesz ocenić danej cechy. Propozycje rodzajów
+          pojawią się po ostatnim pytaniu.
         </p>
         <div className="field-coverage">
           <span style={{ width: `${(coverage / fieldQuestions.length) * 100}%` }} />
         </div>
-        <strong>{coverage} z {fieldQuestions.length} dowodów zapisanych</strong>
+        <strong>Udzielone odpowiedzi: {coverage} z {fieldQuestions.length}</strong>
         <ul>
           {fieldPrinciples.map((item) => <li key={item}><Eye size={17} />{item}</li>)}
         </ul>
@@ -2031,7 +2034,7 @@ function FieldObserver({ onOpenCloud, onCompareClouds, onSaveObservation, onSour
             <ArrowLeft size={17} /> Wstecz
           </button>
           <button className="button button--coral" onClick={next} disabled={!selectedId}>
-            {step === fieldQuestions.length - 1 ? "Zobacz hipotezy" : "Następny dowód"}
+            {step === fieldQuestions.length - 1 ? "Zobacz propozycje" : "Następne pytanie"}
             <ArrowRight size={17} />
           </button>
         </footer>
@@ -2071,16 +2074,16 @@ function CloudComparison({ initialIds, onOpenCloud, onSources }) {
     <section className="cloud-comparison">
       <header className="comparison-intro">
         <div>
-          <span className="eyebrow">Laboratorium różnic</span>
-          <h2>Te same pytania. Różne chmury.</h2>
+          <span className="eyebrow">Porównanie rodzajów</span>
+          <h2>Sprawdź, czym się różnią</h2>
           <p>
-            Wybierz dwa lub trzy rodzaje. Każdy zostanie opisany w tym samym
-            porządku, dzięki czemu podobieństwo nie przesłoni cechy rozstrzygającej.
+            Zdjęcia i opisy wybranych rodzajów są ułożone obok siebie.
+            Możesz porównać ich wygląd, sposób powstawania i związek z pogodą.
           </p>
         </div>
         <aside>
           <strong>{selectedIds.length} / 3</strong>
-          <span>hipotezy w porównaniu</span>
+          <span>wybrane rodzaje</span>
           <SourceButton ids={["wmoAtlas", "wmoObservation", "faaWeather"]} onOpen={onSources} />
         </aside>
       </header>
@@ -2101,7 +2104,7 @@ function CloudComparison({ initialIds, onOpenCloud, onSources }) {
       <div className="comparison-picker">
         <div>
           <span className="eyebrow">Własny zestaw</span>
-          <p>Minimum dwie, maksimum trzy chmury. Kolejność wyboru ustala kolejność kolumn.</p>
+          <p>Wybierz dwa lub trzy rodzaje. Aby wymienić jeden z pary, najpierw dodaj trzeci, a potem odznacz niepotrzebny.</p>
         </div>
         <div>
           {clouds.map((cloud) => {
@@ -2146,14 +2149,14 @@ function CloudComparison({ initialIds, onOpenCloud, onSources }) {
             <p>{cloud.polish}</p>
             <small>{cloud.altitude}</small>
             <button className="card-link" onClick={() => onOpenCloud(cloud.id)}>
-              Otwórz monografię <ArrowRight size={16} />
+              Zdjęcia i opis <ArrowRight size={16} />
             </button>
           </article>
         ))}
       </div>
 
       <section className="comparison-next-evidence">
-        <span className="eyebrow">Najbardziej wartościowy kolejny dowód</span>
+        <span className="eyebrow">Co jeszcze zaobserwować</span>
         <p>{nextEvidence}</p>
       </section>
 
@@ -5378,12 +5381,7 @@ export function App() {
     () => [...navItems.map((item) => item.id), "sources", "practice", "support", "privacy"].includes(routeName) ? routeName : "home",
     [routeName],
   );
-  const routeComparisonIds = routeDetail === "compare"
-    ? (routePayload || "")
-      .split(",")
-      .filter((id, index, values) => getCloud(id) && values.indexOf(id) === index)
-      .slice(0, 3)
-    : [];
+  const atlasTarget = atlasDestination(routeDetail, routePayload, clouds.map((cloud) => cloud.id));
 
   const chooseProfile = (result) => {
     setProfile(result);
@@ -5506,14 +5504,9 @@ export function App() {
           <AtlasPage
             onSources={setSourceIds}
             onSaveObservation={saveFieldObservation}
-            initialComparisonIds={routeComparisonIds}
-            initialTab={
-              routeDetail === "observer"
-                ? "observer"
-                : routeDetail === "compare"
-                  ? "compare"
-                  : "atlas"
-            }
+            initialComparisonIds={atlasTarget.comparisonIds}
+            initialCloudId={atlasTarget.cloudId}
+            initialTab={atlasTarget.tab}
           />
           </>
         )}
