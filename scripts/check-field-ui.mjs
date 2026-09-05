@@ -110,6 +110,12 @@ try {
   };
   const screenshot = async (name) => {
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    await page.waitForFunction(() => [...document.images].every((image) => {
+      const rect = image.getBoundingClientRect();
+      const visible = rect.width > 0 && rect.height > 0 &&
+        rect.bottom > 0 && rect.right > 0 && rect.top < innerHeight && rect.left < innerWidth;
+      return !visible || (image.complete && image.naturalWidth > 0);
+    }), undefined, { timeout: 45000 });
     await page.screenshot({ path: path.join(output, `${name}-viewport.png`) });
     await page.screenshot({
       path: path.join(output, `${name}.png`),

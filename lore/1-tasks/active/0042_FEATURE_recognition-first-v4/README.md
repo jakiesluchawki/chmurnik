@@ -117,8 +117,10 @@ subset; treat dataset versions separately and audit label/provenance quality.
 ## Release Integration Note
 
 The previous Mac SDK signature repair was reviewed in chmurnik-finish and ported
-as f674f55 with five passing tests. No distribution build or upload has occurred;
-do not claim iPad/Mac review approval based on September 3 history alone.
+as f674f55 with five passing tests. No V4 distribution build or upload has occurred.
+On September 5 fresh App Store Connect GETs confirmed READY_FOR_SALE for the
+previously submitted iOS and macOS 1.1 releases, with VALID September 3 builds.
+That earlier approval does not establish recognition-first V4 acceptance.
 
 ## Additional Deliverable Requested September 5
 
@@ -424,3 +426,17 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   checks pass. Hashes, screenshots and deployment boundaries are recorded in
   `native-and-copy-qa.md`; the complete handoff is `design/web-v4-handoff.md`.
   No host, public deployment, Apple submission or classifier state changed.
+- Published the independently tested web changes through the existing Pages
+  workflow at `40c2e71` (run 33944547635, successful). All 42 public browser
+  checks pass, including a repeat that waits for visible illustrations before
+  screenshots. Seventeen live files match the candidate byte-for-byte;
+  five existing social archives pass availability/length checks. The isolated
+  old-to-new profile retains progress, lesson position, note, favorite and
+  exact photo bytes, including offline use; the old cache is removed. The
+  transition was profile reopen, not a proven in-page refresh-button test.
+  Privately delivered the 22,777,757-byte root-hosting ZIP to the owner's Google
+  Drive and verified owner-only permissions. `chmurnik.cloud` still serves the
+  older `index-BpdEVwM6.js`; its hosting deployment belongs to the owner.
+  Confirmed previous iOS/macOS 1.1 READY_FOR_SALE via read-only Apple API calls.
+  No new classifier weights, native distribution build or Apple submission
+  occurred. Evidence and precise release boundaries are in `native-and-copy-qa.md`.

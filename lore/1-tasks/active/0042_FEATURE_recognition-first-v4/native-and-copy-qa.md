@@ -154,8 +154,70 @@ Both ZIPs pass CRC and relative-path/privacy-boundary checks (88 root entries,
 - `build/CHMURNIK-WWW-V4-GITHUB-PAGES-face674.zip`: 678,135,934 bytes,
   SHA256 `a4334a11c94fe689847d60fe4da76688ef578b43950c54888763566e0bf8aece`.
 
-See `design/web-v4-handoff.md` for the complete Polish handoff. Neither package
-was uploaded/deployed. Live-host and existing-service-worker update checks
-remain outstanding. This web deliverable does not close classifier, native
-runtime, Apple submission or wallpaper requirements. Do not rebuild the same
-unchanged candidates on each continuation; preserve the verified artifacts.
+See `design/web-v4-handoff.md` for the complete Polish handoff. At preparation,
+neither package was uploaded/deployed; subsequent delivery is recorded below.
+This web deliverable does not close classifier, native runtime, Apple submission
+or wallpaper requirements. Do not rebuild unchanged candidates on each
+continuation; preserve the verified artifacts.
+
+## Verified Web Publication And Private Delivery
+
+On September 5 pushed `40c2e7165701d37b3b4996afed5f00ba2b474f5a` as an ordinary
+fast-forward to `chmurnik/main`, after confirming the remote still matched
+`57bda4c2c930769015d8c5cba538bd061be395ed`. No unrelated remote was used.
+Existing Pages workflow [33944547635](https://github.com/jakiesluchawki/chmurnik/actions/runs/33944547635)
+completed successfully (build 1m7s, deploy 25s), including 270 JS tests and
+nine lesson audits. No Apple workflow runs from this push.
+
+- Public main bundle remains `index-CP55UqG5.js`, service-worker cache
+  `chmurnik-68d49a8d27f4`. Seventeen response bodies match the tested candidate,
+  including five gallery/library entry points, all three Astra manifests and
+  the LinkedIn PDF. Five existing social ZIPs return HTTP 200 and the exact
+  manifest content length; this HEAD check is not an independent ZIP rehash.
+  Receipt: `build/v4-pages-live-files.json`.
+- All 42 public route/viewport checks pass with journal CRUD/backup, METAR/TAF,
+  wind/maps and information pages. Initial screenshots could precede visible
+  image loading, so the harness now explicitly waits for loaded in-viewport
+  images. The complete repeated run also passes. Evidence:
+  `build/v4-pages-live-images-qa/`; inspected mobile learning and desktop home.
+- Before deployment, a new isolated persistent browser profile stored a
+  synthetic observation, public atlas photo, favorite, note, completed lesson
+  and reading position under the old `chmurnik-8edd806ab016` worker. After the
+  live update, records/progress and photo SHA256 match exactly; the photo and
+  note reopen offline and the old cache is gone. Evidence:
+  `build/v4-pages-live-upgrade/{before,after}.json` and screenshots.
+  Two initial probe assertions ran too early: the cache is created during
+  install, and this installed Playwright implementation does not poll async
+  predicate results as intended. Fixed the local harness with awaited Node
+  polling, not application/cache manipulation. The final transition was
+  persistent-profile reopen (`updateButtonClicked: false`); do not report the
+  in-page refresh button as tested. No user browser profile or data was used.
+- Root ZIP delivered through the existing owner-authorized Google Drive
+  route. Read-back metadata confirms its exact 22,777,757-byte size and only
+  the owner's user permission (`shared: false`). The connector does not expose
+  a remote checksum; the local SHA256 remains the one above. Private receipt
+  and download URL: `.local/v4/web-delivery-20260905.json`. No expert-review ZIP,
+  private feedback, photos or credentials were uploaded.
+- `https://chmurnik.cloud/` responds HTTP 200 but still references
+  `index-BpdEVwM6.js`, not the new root candidate. Do not claim Cyber_Folks
+  deployment from Drive delivery. The owner retains hosting installation.
+
+The workflow emitted deprecation notices for Node-20-targeting actions forced
+to Node 24 by the existing configuration; both jobs succeeded. No workflow or
+application change was needed for publication.
+
+## Fresh Apple Status, September 5
+
+Read-only App Store Connect requests confirm the earlier releases, not V4:
+
+| Platform/version | State | Attached build | Processing |
+| --- | --- | --- | --- |
+| iOS/iPadOS 1.1 | READY_FOR_SALE | 20260903104330 | VALID, not expired |
+| macOS 1.1 | READY_FOR_SALE | 20260903133712 | VALID, not expired |
+
+Version and build receipts are `.local/v4/apple-status-20260905.json` and
+`.local/v4/apple-version-builds-20260905.json`. Existing release credentials
+were used in memory only; no new keys, agreement changes, submissions or
+publication settings were created. Previously submitted 1.1 approval does not
+clear V4's classifier quality gates, isolated Mac runtime test or physical
+device acceptance. The public storefront was not separately verified here.

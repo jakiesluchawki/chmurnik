@@ -1,8 +1,11 @@
 # CHMURNIK: paczki WWW V4
 
-Przygotowane 5 września 2026 z commitu `face674`. To lokalne, przetestowane
-paczki. Nie zostały wdrożone na chmurnik.cloud ani GitHub Pages. Nie są nową
-wersją aplikacji w App Store i nie zawierają poprawionego klasyfikatora chmur.
+Przygotowane 5 września 2026 z commitu `face674`. Przetestowana wersja WWW
+jest już opublikowana na [GitHub Pages](https://jakiesluchawki.github.io/chmurnik/).
+Paczka dla chmurnik.cloud została dostarczona na prywatny Dysk Google właściciela;
+link do pobrania jest w zadaniu. Domena nadal wymaga osobnego wdrożenia.
+Paczki nie są nową wersją aplikacji w App Store i nie zawierają poprawionego
+klasyfikatora chmur.
 
 ## Pobieranie
 
@@ -50,6 +53,18 @@ Wszystkie 255 plików galerii porównano bajt po bajcie ze źródłami. Nie doda
 nowych tapet, nie zmieniono opublikowanych tekstów, grafik, filmów ani PDF-a.
 Paczka jest artefaktem do wdrożenia, nie archiwum kodu źródłowego.
 
+Publikacja commitu `40c2e71` zakończyła się poprawnie:
+[wynik GitHub Actions](https://github.com/jakiesluchawki/chmurnik/actions/runs/33944547635).
+Z publicznymi odpowiedziami porównano bajt po bajcie 17 plików, w tym kod
+aplikacji, service worker, wejścia do wszystkich pięciu galerii/biblioteki,
+manifesty Astry i dokument LinkedIn. Pięć archiwów SM odpowiada HTTP 200
+z rozmiarem zgodnym z manifestami; nie jest to ponowne pobranie i hashowanie
+całych archiwów. Nie publikowano nowego pakietu dwudziestu tapet.
+
+Kontrola chmurnik.cloud z 5 września: HTTP 200, nadal `index-BpdEVwM6.js`,
+a nie nowy `index-Da02l6Kr.js`. Przesłanie ZIP-a na Dysk Google nie zmieniło
+tej domeny. Paczka na Dysku jest prywatna, z jednym uprawnieniem właściciela.
+
 ## Weryfikacja
 
 270 testów aplikacji i audyt dziewięciu lekcji przeszły. Wszystkie 61 linków
@@ -59,6 +74,14 @@ bezpieczeństwa z `.htaccess`. Sprawdzono m.in. dziennik i kopię zapasową,
 dekoder i oś czasu TAF, narzędzia wiatru, mapy oraz publiczne strony informacyjne.
 Trzynaście plików/tras statycznych porównano także z odpowiedziami serwera.
 Oba archiwa ZIP przeszły kontrolę CRC i struktury katalogów.
+
+Po publikacji komplet 42 kontroli przeszedł także na publicznym GitHub Pages,
+również po dodaniu czekania na widoczne ilustracje przed zrzutami. W osobnym
+profilu przeglądarki zachowano ze starej strony wpis ze zdjęciem, notatką,
+oznaczeniem ulubionego, ukończoną lekcją i pozycją czytania. Po aktualizacji
+dane oraz SHA-256 zdjęcia są identyczne. Wpis i zdjęcie działają offline,
+stary cache usunięto. Zweryfikowano przejście przez ponowne otwarcie profilu;
+test nie potwierdza kliknięcia przycisku aktualizacji w otwartej karcie.
 
 Build domeny: `index-Da02l6Kr.js`. Build Pages: `index-CP55UqG5.js`.
 Wspólna treść naukowa: `cloud-knowledge-D6Z4Kt1b.js`.
