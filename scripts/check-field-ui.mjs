@@ -130,16 +130,46 @@ try {
           .isVisible())
       ) {
         await page
-          .getByRole("button", { name: "Obserwuj niebo", exact: true })
+          .getByRole("button", { name: "Zrób zdjęcie", exact: true })
           .click();
       }
       await page
         .getByRole("button", { name: "Zapisz w Moim niebie" })
         .waitFor();
-      await page.locator(".photo-frame summary").click();
-      await page.getByRole("slider", { name: "Powiększenie" }).press("End");
-      await page.getByRole("button", { name: "Sprawdź ten fragment" }).click();
-      await page.getByText(/Hipoteza dotyczy fragmentu kadru:/).waitFor();
+      const picker = page.getByRole("region", { name: "Wybór obszaru nieba" });
+      const marker = picker.getByRole("button", { name: `Zaznacz proponowany fragment ${attempt + 1}`, exact: true });
+      await marker.click();
+      assert.equal(await marker.getAttribute("aria-pressed"), "true");
+      assert.equal(await picker.getByRole("slider").count(), 0, "No mandatory crop sliders");
+      const bounds = async () => picker.locator(".photo-region-selection").evaluate((element) => ({
+        x: parseFloat(element.style.left), y: parseFloat(element.style.top),
+        width: parseFloat(element.style.width), height: parseFloat(element.style.height),
+      }));
+      const proposed = await bounds();
+      assert.ok(proposed.width > 0 && proposed.height > 0);
+      if (attempt === 1) {
+        const surface = picker.getByRole("button", { name: "Wskaż miejsce na zdjęciu; strzałki przesuwają wybór", exact: true });
+        await surface.focus();
+        await surface.press("ArrowLeft");
+        const moved = await bounds();
+        assert.equal(moved.width, proposed.width, "Keyboard retains proposal width");
+        assert.equal(moved.height, proposed.height, "Keyboard retains proposal height");
+        assert.ok(moved.x < proposed.x, "Keyboard moves the existing selection");
+        await picker.getByRole("button", { name: "Więcej kontekstu", exact: true }).click();
+        assert.ok((await bounds()).width > moved.width);
+      }
+      await screenshot(`capture-${attempt + 1}-selection`);
+      await picker.getByRole("button", { name: "Sprawdź zaznaczony fragment", exact: true }).click();
+      await page.getByText("Wynik dotyczy zaznaczonego fragmentu. Całe zdjęcie pozostaje w obserwacji.", { exact: true }).waitFor();
+      await page.getByRole("region", { name: "Porównanie własnego zdjęcia z atlasem" }).waitFor();
+      const imageSizes = await page.locator(".photo-region-image img, .photo-evidence-images img").evaluateAll((images) =>
+        Promise.all(images.map(async (image) => {
+          await image.decode();
+          return { width: image.naturalWidth, height: image.naturalHeight, src: image.src };
+        })));
+      assert.equal(imageSizes.length, 3, "Full photo, selected crop and atlas reference are retained");
+      assert.equal(imageSizes[1].width, imageSizes[1].height, "Analyzed selection is the shown square");
+      assert.notEqual(imageSizes[1].src, imageSizes[2].src, "Own photo is distinct from atlas evidence");
       await screenshot(`capture-${attempt + 1}-frame`);
       await page.getByRole("button", { name: "Zapisz w Moim niebie" }).click();
       await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).waitFor();
@@ -159,6 +189,9 @@ try {
       await page.waitForFunction(
         () => document.querySelector("img.sky-detail-photo")?.naturalWidth > 0,
       );
+      const savedSize = await page.locator("img.sky-detail-photo").evaluate((image) => ({ width: image.naturalWidth, height: image.naturalHeight }));
+      const scaledHeight = savedSize.width * imageSizes[0].height / imageSizes[0].width;
+      assert.ok(Math.abs(savedSize.height - scaledHeight) <= 1, "Saved full photo retains its aspect ratio within one resize pixel");
       assert.match(
         await page.locator(".sky-hypothesis").textContent(),
         /qa-fixture/,
@@ -177,7 +210,7 @@ try {
         .getByRole("button", { name: "Usuń tę obserwację", exact: true })
         .click();
       await page
-        .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
+        .getByRole("heading", { name: "Tu pojawią się Twoje obserwacje" })
         .waitFor();
     }
     assert.equal(observationRoutes.size, 2);
@@ -187,7 +220,7 @@ try {
   } else {
     await navigate("home");
     if (values.native)
-      assert.equal(await page.locator("h1").textContent(), "Zauważ niebo.");
+      assert.equal(await page.locator("h1").textContent(), "Poznaj chmury nad sobą");
     if (!values.native) {
       const store = page.getByRole("link", { name: "Bezpłatnie w App Store" });
       assert.equal(await store.getAttribute("href"), "https://apps.apple.com/pl/app/chmurnik/id6782159027");
@@ -200,7 +233,7 @@ try {
 
     await navigate("journal");
     await page
-      .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
+      .getByRole("heading", { name: "Tu pojawią się Twoje obserwacje" })
       .waitFor();
     await page.getByRole("button", { name: "Dodaj wpis", exact: true }).click();
     await page
@@ -227,7 +260,7 @@ try {
       .getByRole("button", { name: "Zapisz zmiany", exact: true })
       .click();
     await page
-      .getByText("Zmiany zapisane. Hipoteza modelu pozostała osobno.")
+      .getByText("Zmiany zapisane.", { exact: true })
       .waitFor();
     await page.getByRole("button", { name: "Zobacz pocztówkę" }).click();
     const card = page.getByAltText("Podgląd pocztówki przed udostępnieniem");
@@ -243,7 +276,7 @@ try {
       true,
     );
     assert.match(
-      await page.getByLabel("Notatka i cechy").inputValue(),
+      await page.getByRole("textbox", { name: /^Notatka/ }).inputValue(),
       /QA: obserwacja/,
     );
 
@@ -268,7 +301,7 @@ try {
       .getByRole("button", { name: "Usuń tę obserwację", exact: true })
       .click();
     await page
-      .getByRole("heading", { name: "Pierwsze niebo jest blisko." })
+      .getByRole("heading", { name: "Tu pojawią się Twoje obserwacje" })
       .waitFor();
     await page.locator(".sky-backups summary").click();
     await page.locator('.sky-backups input[type="file"]').setInputFiles({
@@ -286,19 +319,19 @@ try {
     await page
       .getByLabel("Wklej jeden METAR, SPECI lub TAF")
       .fill("METAR EPGD 261200Z VRB04KT CAVOK 22/13 Q1015 NOSIG=");
-    await page.getByRole("button", { name: "Rozczytaj raport" }).click();
+    await page.getByRole("button", { name: "Wyjaśnij depeszę" }).click();
     await page
-      .getByText("Wklejony raport · nie live", { exact: true })
+      .getByText("Wklejona depesza, bez sprawdzania aktualności", { exact: true })
       .waitFor();
     await page.getByRole("button", { name: "CAVOK", exact: true }).click();
     assert.equal(await page.locator(".field-wind-workbench").count(), 0);
     assert.match(
       await page.locator(".field-metar-result").textContent(),
-      /VRB: brak jednego kierunku/,
+      /VRB: kierunek wiatru jest zmienny/,
     );
     const readReport = async (report) => {
       await page.getByLabel("Wklej jeden METAR, SPECI lub TAF").fill(report);
-      await page.getByRole("button", { name: "Rozczytaj raport" }).click();
+      await page.getByRole("button", { name: "Wyjaśnij depeszę" }).click();
     };
     await readReport(tafExamples[0].report);
     await page
@@ -310,7 +343,7 @@ try {
       /dzień 26, 18:00 UTC.*dzień 27, 18:00 UTC/,
     );
     assert.equal(
-      await page.getByText("Temperatura / rosa", { exact: true }).count(),
+      await page.getByText("Temperatura / punkt rosy", { exact: true }).count(),
       0,
     );
     assert.equal(
@@ -457,7 +490,7 @@ try {
     await navigate("practice/maps");
     await page.getByRole("combobox", { name: /^Poziom/ }).selectOption("upper");
     await page.getByLabel("Model szkoleniowy").selectOption("B");
-    await page.getByRole("slider", { name: /Horyzont prognozy/ }).press("End");
+    await page.getByRole("slider", { name: /Za ile godzin/ }).press("End");
     assert.match(
       await page.locator(".field-map-readout").textContent(),
       /45.*850.*za 6 h/,

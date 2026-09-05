@@ -4,13 +4,14 @@ Jeden dokument zawiera teksty startowe, oprowadzenia, wprowadzenia do pracowni,
 pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porównanie,
 nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
 wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
-obserwacji, pocztówki, kopie i cały warsztat szkoleniowy METAR/TAF.
+obserwacji, pocztówki, kopie, cały warsztat szkoleniowy METAR/TAF, czytnik
+wklejanych depesz, symulator wiatru i ćwiczenia odczytu map.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
 To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje,
-indeks terminów i pozostałe ekrany narzędzi terenowych wymagają jeszcze
-osobnego przeglądu.
+indeks terminów i monografie poszczególnych chmur wymagają jeszcze osobnego
+przeglądu.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
 Dokument można odtworzyć poleceniem:
@@ -23,8 +24,9 @@ Dokument można odtworzyć poleceniem:
 
 Stan: 5 września 2026. Robocza wersja w kodzie, jeszcze nieopublikowana.
 To pełny zestaw wprowadzeń objętych tym etapem redakcji, a nie lista samych
-zmienionych wyrazów. Opisy poszczególnych chmur, treści lekcji, dziennik oraz
-wszystkie stany analizy zdjęć wymagają jeszcze osobnego przeglądu.
+zmienionych wyrazów. Dalsze sekcje zbiorczego dokumentu zawierają pełne
+przepływy analizy, dziennika i pracowni. Opisy poszczególnych chmur oraz
+szczegółowe treści lekcji pozostają do osobnego przeglądu.
 Opublikowane materiały społecznościowe pozostają bez zmian.
 
 ## Start w aplikacji Apple
@@ -213,7 +215,7 @@ znaczenie jej skrótów i grup, albo wybierz przykład do ćwiczeń.
 
 Opis rozwijanej pomocy: **Czym różni się METAR od TAF?**
 
-Nad grupami depeszy: **Dotknij grupy, żeby zobaczyć jej znaczenie**.
+Nad grupami depeszy: **Wybierz fragment depeszy, żeby zobaczyć wyjaśnienie**.
 
 Gotowy przykład otrzymuje etykietę **Przykładowa depesza, nie bieżąca pogoda**.
 Wyjaśnienia METAR/TAF, nieobsługiwane grupy i obliczenia pozostają bez zmian.
@@ -3248,3 +3250,811 @@ Nie są aktualnymi raportami ani materiałem do podejmowania decyzji operacyjnyc
 
 Źródła: [NOAA Aviation Weather Center](https://aviationweather.gov/help/data/),
 [EASA Aircrew](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-aircrew-regulation-eu-no-11782011).
+
+---
+
+# CHMURNIK V4: czytnik depesz i narzędzia terenowe
+
+Pełny zestaw tego etapu, razem z niezmienionymi przykładami i pytaniami.
+Obliczenia i dekodowanie pozostają bez zmian. Wprowadzenia do trzech pracowni
+znajdują się również w pierwszej części dokumentu zbiorczego.
+
+## Czytnik METAR, SPECI i TAF
+
+**Czytnik depesz na urządzeniu**
+
+Wklej depeszę, a potem wybieraj jej fragmenty, żeby przeczytać wyjaśnienia.
+Czytnik działa bez internetu i nie pobiera aktualnej pogody.
+
+### Czym różni się METAR od TAF?
+
+**METAR / SPECI: Co zaobserwowano?**
+
+METAR opisuje pogodę zaobserwowaną w określonej chwili. SPECI to obserwacja
+specjalna. Do METAR może być dołączona krótka prognoza zmian, nazywana trendem.
+Pokazujemy ją osobno od obserwacji.
+
+**TAF: Czego się spodziewamy?**
+
+Prognoza dla lotniska w przedziale czasu, np. `2618/2718`. `FM262300` rozpoczyna
+nowe warunki od konkretnej chwili. Skopiowany TAF może nie mieć nagłówka.
+
+Samo `TEMPO` nie rozstrzyga: występuje też w trendzie METAR. Czytamy strukturę
+całej depeszy, nie tylko jeden skrót.
+
+Przycisk: **Przećwicz różnicę**.
+
+Pole: **Wklej jeden METAR, SPECI lub TAF**. Przycisk: **Wyjaśnij depeszę**.
+Lista: **Przykłady do ćwiczeń · nie aktualna pogoda**.
+
+### Wynik i pochodzenie
+
+- METAR/SPECI: **Obserwacja: dzień [dzień], [czas UTC]**.
+- TAF: **Wydano: dzień [dzień], [czas] UTC**.
+- **Przykład szkoleniowy** albo **Przykładowa depesza, nie bieżąca pogoda**.
+- Dla własnego tekstu: **Wklejona depesza, bez sprawdzania aktualności**.
+- **Rozpoznano TAF · prognoza, nie obserwacja** albo **METAR / SPECI · obserwacja, nie prognoza TAF**.
+
+Dane wymyślone do ćwiczeń, nie opisują obecnej pogody.
+
+Dla pozostałych depesz: Nie sprawdziliśmy źródła ani aktualności. Depesza nie
+zawiera miesiąca i roku. Zweryfikuj datę i pełny oryginał w oficjalnym serwisie.
+
+### Obserwacja
+
+Poniżej odczyt pomiaru. Ewentualny trend pokazujemy osobno i nie podmieniamy nim
+obserwacji.
+
+Pola: **Widzialność**, **Raportowany pułap**, **Temperatura / punkt rosy**,
+**Nastawa wysokościomierza**. Brakujące dane nie stają się zerem.
+
+Warianty pułapu: **Brak danych o niebie**, **Nieznany / niepełny**,
+**[wysokość] ft nad lotniskiem**, **Brak określonego pułapu**.
+
+**Wybierz fragment depeszy, żeby zobaczyć wyjaśnienie**.
+Nieobsługiwane fragmenty pozostają widoczne jako **Nieodczytane grupy**.
+
+**Trend, oddzielony od obserwacji**:
+
+- NOSIG: nie przewiduje się istotnych zmian w okresie trendu. To nie gwarancja niezmiennych warunków.
+- Nie wliczamy tych grup do bieżącego pułapu ani widzialności. Interpretację trendów przećwicz w module METAR / TAF.
+
+**RMK: uwagi w oryginale**: Ta wersja czytnika nie dekoduje uwag. Nie traktuj
+ich jako nieistotnych.
+
+**NIL: brak obserwacji.**
+
+**VRB: kierunek wiatru jest zmienny. Bez jednego kierunku nie obliczamy składowej bocznej.**
+
+### Prognoza TAF
+
+**Okres ważności prognozy**. Grupa ważności to przedział czasu, a grupa wydania
+to osobna informacja.
+
+**Warunki w kolejnych godzinach**
+
+Wybierz przedział czasu. Może on pokrywać się z innym przedziałem: PROB opisuje
+możliwy wariant, a TEMPO warunki przejściowe. Pokazujemy je osobno od podstawowych
+warunków prognozy.
+
+Pola: **Przewidywany wiatr**, **Przewidywana widzialność**, **Pułap w tej grupie
+prognozy**, **Przewidywane zjawiska**.
+
+Warianty: **Nie odczytano · sprawdź oryginał**, **Bez zmiany w tej grupie**,
+**Brak danych w grupie**, **Wysokość nieznana / niepełna**, **Nie wskazano warstwy
+wyznaczającej pułap**, **Brak istotnych zjawisk według kodu**, **Nie wymieniono
+istotnych zjawisk**.
+
+Pokazujemy tylko elementy zapisane w tej grupie. „Bez zmiany” odsyła do tła
+prognozy, nie oznacza ciszy, bezchmurnego nieba ani wartości zero.
+
+**Warstwy**: kod zachmurzenia i wysokość w stopach nad lotniskiem. Przy braku
+wysokości: **wysokość nieznana**.
+
+**Uskok wiatru LLWS**: na podanej wysokości wiatr z podanego kierunku o podanej
+prędkości. Nie myl go z wiatrem przy powierzchni.
+
+**Nieodczytane elementy tej grupy** pozostają w oryginale.
+
+**Temperatura w prognozie**: **Maksimum** i **Minimum** z terminem.
+TX/TN to prognozowane ekstremum, nie temperatura ani punkt rosy zmierzone teraz.
+
+**RMK: uwagi w oryginale**: Nie dekodujemy uwag automatycznie. Nie pomijaj ich
+w pełnym raporcie.
+
+- CNL: prognoza została odwołana. Nie używaj wcześniejszych warunków jako nadal obowiązującej prognozy.
+- NIL: prognoza nie jest dostępna. Nie oznacza to dobrej pogody.
+
+### Wszystkie przykłady i ich wyjaśnienia
+
+### Porywy i niski pułap
+
+`METAR EPWA 261200Z 24015G25KT 6000 -RA SCT012 BKN025 17/15 Q1012 NOSIG`
+
+Przykład szkoleniowy.
+
+- **EPWA · Stacja**: Kod ICAO miejsca obserwacji. Warunki w innym miejscu mogą być inne.
+
+- **261200Z · Czas obserwacji**: Dzień 26, 12:00 UTC. W raporcie nie ma miesiąca ani roku; ten czytnik nie potwierdza aktualności.
+
+- **24015G25KT · Wiatr**: Z 240° względem północy geograficznej (T), 15 KT, porywy 25 KT.
+
+- **6000 · Widzialność**: 6000 m
+
+- **-RA · Zjawiska**: słabe: deszcz
+
+- **SCT012 · Niebo**: 3–4/8 nieba; 1200 ft nad lotniskiem.
+
+- **BKN025 · Niebo**: 5–7/8 nieba; 2500 ft nad lotniskiem.
+
+- **17/15 · Temperatura / punkt rosy**: 17 / 15 °C.
+
+- **Q1012 · Ciśnienie**: Nastawa wysokościomierza: 1012 hPa.
+
+### CAVOK i kierunek zmienny
+
+`METAR EPGD 261230Z VRB03KT CAVOK 21/13 Q1016`
+
+Przykład szkoleniowy.
+
+- **EPGD · Stacja**: Kod ICAO miejsca obserwacji. Warunki w innym miejscu mogą być inne.
+
+- **261230Z · Czas obserwacji**: Dzień 26, 12:30 UTC. W raporcie nie ma miesiąca ani roku; ten czytnik nie potwierdza aktualności.
+
+- **VRB03KT · Wiatr**: Kierunek zmienny, 03 KT.
+
+- **CAVOK · CAVOK**: Widzialność co najmniej 10 km, brak istotnych zjawisk i chmur istotnych operacyjnie według definicji kodu. To nie znaczy: niebo bez chmur.
+
+- **21/13 · Temperatura / punkt rosy**: 21 / 13 °C.
+
+- **Q1016 · Ciśnienie**: Nastawa wysokościomierza: 1016 hPa.
+
+### Mgła i nieznana VV
+
+`SPECI EPKK 260500Z 00000KT 0300 FG VV/// 10/10 Q1019`
+
+Przykład szkoleniowy.
+
+- **EPKK · Stacja**: Kod ICAO miejsca obserwacji. Warunki w innym miejscu mogą być inne.
+
+- **260500Z · Czas obserwacji**: Dzień 26, 05:00 UTC. W raporcie nie ma miesiąca ani roku; ten czytnik nie potwierdza aktualności.
+
+- **00000KT · Wiatr**: Cisza.
+
+- **0300 · Widzialność**: 300 m
+
+- **FG · Zjawiska**: mgła
+
+- **VV/// · Niebo**: widzialność pionowa; wysokość nieznana.
+
+- **10/10 · Temperatura / punkt rosy**: 10 / 10 °C.
+
+- **Q1019 · Ciśnienie**: Nastawa wysokościomierza: 1019 hPa.
+
+### Raport z USA
+
+`METAR KJFK 261251Z 18012KT 1 1/2SM -RA BKN008 OVC020 18/17 A2992 RMK AO2`
+
+Przykład szkoleniowy.
+
+- **KJFK · Stacja**: Kod ICAO miejsca obserwacji. Warunki w innym miejscu mogą być inne.
+
+- **261251Z · Czas obserwacji**: Dzień 26, 12:51 UTC. W raporcie nie ma miesiąca ani roku; ten czytnik nie potwierdza aktualności.
+
+- **18012KT · Wiatr**: Z 180° względem północy geograficznej (T), 12 KT.
+
+- **1 1/2SM · Widzialność**: 1.5 SM (≈ 2.41 km)
+
+- **-RA · Zjawiska**: słabe: deszcz
+
+- **BKN008 · Niebo**: 5–7/8 nieba; 800 ft nad lotniskiem.
+
+- **OVC020 · Niebo**: 8/8 nieba; 2000 ft nad lotniskiem.
+
+- **18/17 · Temperatura / punkt rosy**: 18 / 17 °C.
+
+- **A2992 · Ciśnienie**: Nastawa wysokościomierza: 29.92 inHg (≈ 1013 hPa).
+
+### TAF: KLVM bez nagłówka
+
+`KLVM 261730Z 2618/2718 29008KT P6SM FEW090 BKN200 FM262300 VRB06KT P6SM VCSH SCT100 BKN140 PROB30 2623/2704 VRB25G40KT 6SM -TSRA BKN080CB FM270700 30008KT P6SM SCT100 BKN160`
+
+Przykładowa depesza, nie bieżąca pogoda.
+
+- **KLVM · Lotnisko**: Kod ICAO lotniska, którego dotyczy prognoza. Nie jest to prognoza całej trasy.
+
+- **261730Z · Czas wydania**: dzień 26, 17:30 UTC. To czas wydania, nie początek okresu ważności ani czas pomiaru. Miesiąc i rok nie są tu zapisane.
+
+- **2618/2718 · Okres ważności prognozy**: Od dzień 26, 18:00 UTC do dzień 27, 18:00 UTC. 24:00 to koniec wskazanego dnia. To okres prognozy, a nie czas obserwacji.
+
+- **29008KT · Wiatr**: Z 290° względem północy geograficznej (T), 08 KT.
+
+- **P6SM · Widzialność**: więcej niż 6 SM (≈ 9.66 km)
+
+- **FEW090 · Niebo**: 1–2/8 nieba; 9000 ft nad lotniskiem.
+
+- **BKN200 · Niebo**: 5–7/8 nieba; 20000 ft nad lotniskiem.
+
+- **VRB06KT · Wiatr**: Kierunek zmienny, 06 KT.
+
+- **P6SM · Widzialność**: więcej niż 6 SM (≈ 9.66 km)
+
+- **VCSH · Zjawiska**: w pobliżu: przelotne
+
+- **SCT100 · Niebo**: 3–4/8 nieba; 10000 ft nad lotniskiem.
+
+- **BKN140 · Niebo**: 5–7/8 nieba; 14000 ft nad lotniskiem.
+
+- **VRB25G40KT · Wiatr**: Kierunek zmienny, 25 KT, porywy 40 KT.
+
+- **6SM · Widzialność**: 6 SM (≈ 9.66 km)
+
+- **-TSRA · Zjawiska**: burza · deszcz (natężenie opadu: słabe)
+
+- **BKN080CB · Niebo**: 5–7/8 nieba; 8000 ft nad lotniskiem; Cumulonimbus.
+
+- **30008KT · Wiatr**: Z 300° względem północy geograficznej (T), 08 KT.
+
+- **P6SM · Widzialność**: więcej niż 6 SM (≈ 9.66 km)
+
+- **SCT100 · Niebo**: 3–4/8 nieba; 10000 ft nad lotniskiem.
+
+- **BKN160 · Niebo**: 5–7/8 nieba; 16000 ft nad lotniskiem.
+
+### TAF: BECMG i TEMPO
+
+`TAF EPWA 261130Z 2612/2712 24010KT 9999 SCT030 BECMG 2616/2618 6000 -RA BKN020 TEMPO 2618/2622 25018G28KT 3000 RA BKN010 PROB40 TEMPO 2620/2622 1500 TSRA BKN008CB FM270000 27008KT CAVOK TX24/2614Z TN12/2705Z`
+
+Przykład szkoleniowy.
+
+- **EPWA · Lotnisko**: Kod ICAO lotniska, którego dotyczy prognoza. Nie jest to prognoza całej trasy.
+
+- **261130Z · Czas wydania**: dzień 26, 11:30 UTC. To czas wydania, nie początek okresu ważności ani czas pomiaru. Miesiąc i rok nie są tu zapisane.
+
+- **2612/2712 · Okres ważności prognozy**: Od dzień 26, 12:00 UTC do dzień 27, 12:00 UTC. 24:00 to koniec wskazanego dnia. To okres prognozy, a nie czas obserwacji.
+
+- **24010KT · Wiatr**: Z 240° względem północy geograficznej (T), 10 KT.
+
+- **9999 · Widzialność**: co najmniej 10 km
+
+- **SCT030 · Niebo**: 3–4/8 nieba; 3000 ft nad lotniskiem.
+
+- **6000 · Widzialność**: 6000 m
+
+- **-RA · Zjawiska**: słabe: deszcz
+
+- **BKN020 · Niebo**: 5–7/8 nieba; 2000 ft nad lotniskiem.
+
+- **25018G28KT · Wiatr**: Z 250° względem północy geograficznej (T), 18 KT, porywy 28 KT.
+
+- **3000 · Widzialność**: 3000 m
+
+- **RA · Zjawiska**: deszcz
+
+- **BKN010 · Niebo**: 5–7/8 nieba; 1000 ft nad lotniskiem.
+
+- **1500 · Widzialność**: 1500 m
+
+- **TSRA · Zjawiska**: burza · deszcz
+
+- **BKN008CB · Niebo**: 5–7/8 nieba; 800 ft nad lotniskiem; Cumulonimbus.
+
+- **27008KT · Wiatr**: Z 270° względem północy geograficznej (T), 08 KT.
+
+- **CAVOK · CAVOK**: Widzialność co najmniej 10 km, brak istotnych zjawisk i chmur istotnych operacyjnie według definicji kodu. To nie znaczy: niebo bez chmur.
+
+### TAF: północ i uskok wiatru
+
+`TAF AMD KJFK 312030Z 3121/0124 18012KT P6SM SCT025 WS020/24040KT TEMPO 3122/0102 2SM -RA BKN008 FM010300 24010KT P6SM SCT040`
+
+Przykład szkoleniowy.
+
+- **KJFK · Lotnisko**: Kod ICAO lotniska, którego dotyczy prognoza. Nie jest to prognoza całej trasy.
+
+- **312030Z · Czas wydania**: dzień 31, 20:30 UTC. To czas wydania, nie początek okresu ważności ani czas pomiaru. Miesiąc i rok nie są tu zapisane.
+
+- **AMD · Zmiana prognozy**: Zmieniona prognoza zastępuje wcześniejszą. Sprawdź pełną, najnowszą depeszę w oficjalnym źródle.
+
+- **3121/0124 · Okres ważności prognozy**: Od dzień 31, 21:00 UTC do dzień 1, 24:00 UTC. 24:00 to koniec wskazanego dnia. To okres prognozy, a nie czas obserwacji.
+
+- **18012KT · Wiatr**: Z 180° względem północy geograficznej (T), 12 KT.
+
+- **P6SM · Widzialność**: więcej niż 6 SM (≈ 9.66 km)
+
+- **SCT025 · Niebo**: 3–4/8 nieba; 2500 ft nad lotniskiem.
+
+- **WS020/24040KT · Uskok wiatru · LLWS**: Prognozowany uskok wiatru: wiatr na 2000 ft nad lotniskiem z 240°T, 40 kt. To nie wiatr przy powierzchni ani zmierzona składowa boczna.
+
+- **2SM · Widzialność**: 2 SM (≈ 3.22 km)
+
+- **-RA · Zjawiska**: słabe: deszcz
+
+- **BKN008 · Niebo**: 5–7/8 nieba; 800 ft nad lotniskiem.
+
+- **24010KT · Wiatr**: Z 240° względem północy geograficznej (T), 10 KT.
+
+- **P6SM · Widzialność**: więcej niż 6 SM (≈ 9.66 km)
+
+- **SCT040 · Niebo**: 3–4/8 nieba; 4000 ft nad lotniskiem.
+
+**Uwaga:** Prognoza przechodzi przez koniec miesiąca. Nie przypisujemy miesiąca ani roku; sprawdź datę w źródle.
+
+**Baza prognozy**
+
+Warunki przewidywane na początek okresu ważności. To prognoza, nie pomiar wykonany przy wydaniu raportu.
+
+**Nowa baza · FM**
+
+Od wskazanej chwili zaczyna się nowy zestaw warunków bazowych. FM zastępuje poprzednią bazę; brakującej wartości nie dopisujemy z wcześniejszej grupy.
+
+**Stopniowa zmiana · BECMG**
+
+Zmiana nastąpi w podanym przedziale, niekoniecznie na jego początku. Po jego końcu zmienione elementy należą do bazy. Niewymienione elementy pozostają z tła prognozy.
+
+**Przejściowo · TEMPO**
+
+Krótkie epizody w podanym oknie: każdy krótszy niż godzina, łącznie krócej niż połowa okna. Nie zastępują na stałe bazy. Niewymienione elementy pozostają z tła prognozy.
+
+**Możliwy wariant · PROB**
+
+Osobny wariant z zakodowanym prawdopodobieństwem 30% lub 40%. Procent nie opisuje części czasu. Nie zastępuje prognozy bazowej.
+
+## Symulator wiatru
+
+Tryby: **Na pokładzie**, **Na drodze startowej**.
+
+### Wiatr na pokładzie
+
+Ustaw wiatr, kierunek dziobu i prędkość jachtu. Zobaczysz wiatr pozorny, czyli
+wiatr odczuwany przez poruszającą się załogę. Zmieniaj jedno ustawienie naraz
+i porównuj wynik.
+
+### Wiatr względem drogi startowej
+
+Ustaw wiatr i geograficzny kierunek drogi startowej. Wynik pokaże składową
+boczną oraz czołową lub tylną. Te obliczenia nie określają dopuszczalnych limitów
+dla samolotu.
+
+W czytniku depesz: Wiatr pochodzi z wklejonej depeszy. Ustaw geograficzny kierunek
+drogi startowej, żeby obliczyć składową boczną oraz czołową lub tylną. Nie są to
+dopuszczalne limity dla samolotu.
+
+Kierunki °T odnoszą się do północy geograficznej. Prędkości podajemy w węzłach
+(kt). To obliczenia z podanych ustawień, nie pomiar telefonem.
+
+Pola: **Kierunek, z którego wieje wiatr**, **Prędkość wiatru rzeczywistego**,
+**Kierunek dziobu** / **Geograficzny kierunek drogi startowej**, **Prędkość jachtu**.
+
+Wynik na jachcie: **wiatr pozorny** oraz kąt **od dziobu**, **od rufy**,
+**od prawej burty, licząc od dziobu** lub **od lewej burty, licząc od dziobu**.
+Przy zerowej prędkości wiatru pozornego: **brak kierunku przy ciszy**.
+
+Wynik na pasie: **brak składowej bocznej**, **boczny z prawej** / **boczny z lewej**,
+**składowa czołowa** / **składowa tylna**.
+
+Przy raportowanym porywie podajemy osobno składową boczną, zakładając ten sam kierunek.
+
+### Co zakładamy i czego to nie mierzy?
+
+Model wektorowy bez prądu i dryfu: kurs jest równy kierunkowi dziobu, a obie
+prędkości mają wspólny układ odniesienia. Wiatr pozorny to ruch powietrza minus
+ruch jachtu. Telefon nie mierzy tu wiatru.
+
+Wszystkie kierunki są względem północy geograficznej (T), jak kierunek w METAR.
+Nie wpisuj numeru pasa ani kierunku magnetycznego bez właściwego przeliczenia.
+Boczny = prędkość × sin(różnicy kierunków), czołowy = prędkość × cos(różnicy).
+To nie ocena możliwości statku powietrznego ani zgoda na lot.
+
+Odczyt skali Beauforta dotyczy zaokrąglonych węzłów. To nie prognoza wysokości
+fali: znaczenie mają też czas, rozbieg, prąd i osłona akwenu.
+
+Przy zmienności kierunku w depeszy: wynik dotyczy kierunku średniego, nie
+największej możliwej składowej.
+
+## Ćwiczenie odczytu mapy
+
+**Co zmienia odczyt na mapie?**
+
+Wybierz poziom atmosfery, termin i model A lub B. Porównasz prędkości wiatru
+w jednym punkcie. Wszystkie liczby są wymyślone do ćwiczenia; modele A i B nie
+są prawdziwymi modelami pogody ani danymi Windy.
+
+**Punkt ćwiczeniowy**, wynik w **kt**, **10 m przy powierzchni** albo **850 hPa,
+poziom ciśnienia**. Pod wynikiem model A/B i czas za 0/3/6 h.
+
+Pola: **Poziom**, **Model szkoleniowy**, **Za ile godzin**.
+Warianty poziomu: **10 m · przy powierzchni**, **850 hPa · powierzchnia ciśnienia**.
+
+Drugi model dla tego samego czasu i poziomu: [wynik] kt. Różnica nie mówi,
+który model ma rację.
+
+W rzeczywistym Windy sprawdź model, poziom, legendę, czas ważności i czas
+aktualizacji. Powierzchnia 850 hPa nie leży zawsze na stałej wysokości; w górach
+może przecinać teren.
+
+Przycisk: **Otwórz Windy w przeglądarce**.
+
+## Trening w trzech pracowniach
+
+**Ćwiczenia na wymyślonych sytuacjach**. Licznik: **[wynik]/[liczba pytań]
+ostatnio poprawnych**; dotyczy ostatnich odpowiedzi, nie opanowania tematu.
+
+Po wyborze: **Poprawna odpowiedź** albo **Zaznaczona odpowiedź nie jest poprawna**.
+Poprawny wariant jest wyróżniony, a pod nim pozostają pełne wyjaśnienie, wniosek
+i źródła.
+
+Przyciski: **Kolejny przypadek**, **Podsumowanie**, **Powtórz trudniejsze ([liczba])**,
+**Jeszcze jedna runda**.
+
+W tej rundzie: [wynik] z [liczba pytań] poprawnych odpowiedzi za pierwszym razem.
+Możesz wrócić do trudniejszych pytań i przeczytać ich wyjaśnienia.
+
+Przy braku zapisu: Wynik działa w tej sesji, ale nie udało się go zapisać na później.
+
+### Raport bez tytułu
+
+**Pracownia:** metar
+
+KLVM 261730Z 2618/2718 29008KT P6SM FEW090 BKN200 FM262300 VRB06KT P6SM SCT100
+
+Nie ma słowa TAF. Co mówi struktura tego przykładu?
+
+- **A.** To pomiar METAR z 17:30
+
+- **B.** To prognoza TAF z okresem ważności i zmianą FM (poprawna)
+
+- **C.** To SPECI, bo nie ma nagłówka
+
+- **D.** Nie ma nagłówka, więc można pominąć czas
+
+261730Z to czas wydania, a 2618/2718 to ważność od dnia 26 o 18:00 do dnia 27 o 18:00 UTC. FM262300 zaczyna nową bazę prognozy. Sam brak skopiowanego nagłówka nie czyni z TAF obserwacji.
+
+**Wniosek:** Najpierw rozpoznaj rodzaj depeszy, dopiero potem interpretuj liczby.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aeronautical Information Manual: ICAO Weather Formats](https://www.faa.gov/air_traffic/publications/aim_html/chap7_section_1.html).
+
+### Która warstwa wyznacza pułap?
+
+**Pracownia:** metar
+
+FEW008 SCT015 BKN030 OVC070
+
+Wskaż raportowany pułap, nie najniższą pojedynczą chmurę.
+
+- **A.** 800 ft
+
+- **B.** 1500 ft
+
+- **C.** 3000 ft (poprawna)
+
+- **D.** 7000 ft
+
+BKN030 jest najniższą warstwą BKN/OVC. FEW i SCT nie wyznaczają pułapu. Wysokości METAR odnoszą się do lotniska, nie do poziomu morza.
+
+**Wniosek:** Najniższa chmura ≠ pułap.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Z której strony wieje?
+
+**Pracownia:** metar
+
+Wiatr 240°T / 20 kt · oś drogi startowej 270°T
+
+Jaka jest składowa boczna dla kierunku średniego?
+
+- **A.** 10 kt z lewej (poprawna)
+
+- **B.** 10 kt z prawej
+
+- **C.** 20 kt z lewej
+
+- **D.** Nie ma składowej bocznej
+
+Różnica wynosi −30°. Składowa boczna to 20 × sin(−30°) = −10 kt, czyli z lewej. Obie wartości są geograficzne (T); numer pasa nie zastępuje jego dokładnego kierunku.
+
+**Wniosek:** Najpierw wspólna północ, potem obliczenie.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Teraz czy za chwilę?
+
+**Pracownia:** metar
+
+8000 SCT020 BKN045 TEMPO 2000 SHRA BKN010
+
+Co opisuje bieżącą obserwację, przed grupą TEMPO?
+
+- **A.** 2000 m i pułap 1000 ft
+
+- **B.** 8000 m i pułap 4500 ft (poprawna)
+
+- **C.** 8000 m i pułap 2000 ft
+
+- **D.** Średnia obu widzialności
+
+TEMPO rozpoczyna prognozę przejściowych zmian. Nie podmienia bieżącej obserwacji. W tym ćwiczeniu obserwacja to 8000 m i BKN045, a pogorszenie wymaga osobnej uwagi.
+
+**Wniosek:** Oddziel obserwację od trendu.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/).
+
+### Brak liczby też jest informacją
+
+**Pracownia:** metar
+
+0300 FG VV///
+
+Jak zapisać wysokość pułapu?
+
+- **A.** 0 ft
+
+- **B.** 300 ft
+
+- **C.** Nieznana; VV nie została określona (poprawna)
+
+- **D.** Nieograniczona
+
+Ukośniki oznaczają brak określonej wartości. 0300 to widzialność pozioma 300 m, a nie wysokość. Braku danych nie wolno zamieniać w dobrą pogodę ani liczbę zero.
+
+**Wniosek:** Nieznane pozostaje nieznane.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### 30% czego?
+
+**Pracownia:** metar
+
+PROB30 2623/2704 VRB25G40KT 6SM -TSRA BKN080CB
+
+Jak odczytać PROB30 w tym ćwiczeniu?
+
+- **A.** Burza zajmie dokładnie 30% tego czasu
+
+- **B.** Przez całe okno na pewno będzie wiało 40 kt
+
+- **C.** Zakodowano 30% prawdopodobieństwa tego wariantu warunków (poprawna)
+
+- **D.** Prognoza jest poprawna tylko w 30%
+
+PROB30 dotyczy prawdopodobieństwa wariantu w określonym oknie, nie odsetka godzin. VRB25G40KT oznacza zmienny kierunek, 25 kt z porywami 40 kt w tym wariancie. To nie potwierdzony pomiar i nie stała baza prognozy.
+
+**Wniosek:** Prawdopodobieństwo, czas trwania i poryw to trzy różne informacje.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aeronautical Information Manual: ICAO Weather Formats](https://www.faa.gov/air_traffic/publications/aim_html/chap7_section_1.html).
+
+### Od tej chwili nowa baza
+
+**Pracownia:** metar
+
+26010KT 4000 -RA BKN012 FM270700 30008KT P6SM SCT100 BKN160
+
+Który opis należy do prognozy od dnia 27 o 07:00 UTC?
+
+- **A.** Nowa baza: z 300°T, 8 kt, ponad 6 SM, pułap 16000 ft (poprawna)
+
+- **B.** Nadal pułap 1200 ft, bo chmury się sumują
+
+- **C.** Średnia dwóch widzialności i dwóch wiatrów
+
+- **D.** Zmierzono bezchmurne niebo o 07:00
+
+FM270700 zastępuje poprzednią bazę nowym zestawem. SCT100 nie wyznacza pułapu; BKN160 to prognozowane 16000 ft nad lotniskiem. Nie uśredniamy obu okresów i nie nazywamy tej prognozy obserwacją.
+
+**Wniosek:** FM wyznacza nową bazę, nie kolejną warstwę starej.
+
+Źródła: [METAR and TAF product information](https://aviationweather.gov/help/data/), [Aeronautical Information Manual: ICAO Weather Formats](https://www.faa.gov/air_traffic/publications/aim_html/chap7_section_1.html).
+
+### Kiedy kończy się zmiana?
+
+**Pracownia:** metar
+
+9999 SCT030 BECMG 2616/2618 6000 -RA BKN020
+
+Co wiemy o początku nowych warunków?
+
+- **A.** Zaczną się dokładnie o 16:00 UTC
+
+- **B.** Wystąpią tylko przez połowę okna
+
+- **C.** To już zmierzona pogoda o 18:00
+
+- **D.** Zmiana nastąpi w oknie 16–18 UTC; po nim zmienione elementy są bazą (poprawna)
+
+BECMG nie podaje dokładnej minuty przejścia. Zmienione elementy mają ustalić się do końca okna; niewymienione pozostają z tła prognozy. To różni BECMG od krótkich epizodów TEMPO i wariantów PROB.
+
+**Wniosek:** Nie zamieniaj przedziału niepewnej zmiany w dokładny moment.
+
+Źródła: [Aeronautical Information Manual: ICAO Weather Formats](https://www.faa.gov/air_traffic/publications/aim_html/chap7_section_1.html).
+
+### Przyspieszasz na północ
+
+**Pracownia:** wind
+
+Wiatr rzeczywisty z E: 10 kt · jacht płynie na N: 6 kt · bez prądu
+
+Co poczujesz na pokładzie względem postoju?
+
+- **A.** Słabszy wiatr bardziej od rufy
+
+- **B.** Ten sam wiatr z boku
+
+- **C.** Silniejszy wiatr bardziej od dziobu (poprawna)
+
+- **D.** Wiatr wyłącznie od dziobu
+
+Od wektora ruchu powietrza odejmujemy prędkość jachtu. Wynik ma około 11,7 kt i przychodzi około 59° od prawej strony dziobu. Żagle reagują na wiatr pozorny.
+
+**Wniosek:** Ruch jachtu zmienia to, co czujesz.
+
+Źródła: [ORC Speed Guide Explanation: Appendix A, Mathematical Relations](https://orc.org/uploads/files/Rules-Regulations/2023/Speed-Guide-Explanation-2023.pdf).
+
+### Płyniesz z wiatrem
+
+**Pracownia:** wind
+
+Wiatr z N: 12 kt · kurs S: 5 kt · bez prądu i dryfu
+
+Ile wynosi wiatr pozorny w tym prostym modelu?
+
+- **A.** 17 kt od dziobu
+
+- **B.** 7 kt od rufy (poprawna)
+
+- **C.** 12 kt z lewej
+
+- **D.** 5 kt od rufy
+
+Powietrze i jacht przemieszczają się na południe. Względem pokładu powietrze ma prędkość 12 − 5 = 7 kt. To model bez prądu, a nie pomiar z telefonu.
+
+**Wniosek:** Z wiatrem: prędkości mogą się odejmować.
+
+Źródła: [ORC Speed Guide Explanation: Appendix A, Mathematical Relations](https://orc.org/uploads/files/Rules-Regulations/2023/Speed-Guide-Explanation-2023.pdf).
+
+### Średnia nie opowiada całej historii
+
+**Pracownia:** wind
+
+Prognoza przy powierzchni: wiatr 16 kt, porywy 28 kt
+
+Co warto zrobić przed wyjściem na wodę?
+
+- **A.** Patrzeć wyłącznie na 16 kt
+
+- **B.** Przyjąć stałe 28 kt przez cały dzień
+
+- **C.** Uznać porywy za błąd modelu
+
+- **D.** Sprawdzić też porywy, akwen, ostrzeżenia i własne ograniczenia (poprawna)
+
+Poryw jest krótkim wzrostem prędkości, nie średnią. Liczba Beauforta sama nie opisuje osłony brzegu, rozbiegu fali ani możliwości załogi. Trening nie podejmuje decyzji za sternika.
+
+**Wniosek:** Patrz na zakres warunków i swoje ograniczenia.
+
+Źródła: [Beaufort wind force scale](https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale), [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays).
+
+### Chmury idą na wschód
+
+**Pracownia:** wind
+
+Przez kilka minut śledzisz tę samą warstwę chmur przesuwającą się ku E.
+
+Jaki ostrożny wniosek możesz zapisać?
+
+- **A.** Wiatr na tej wysokości jest z W; przy wodzie może być inny (poprawna)
+
+- **B.** Przy wodzie na pewno jest z E
+
+- **C.** Przy wodzie ma 20 kt
+
+- **D.** Cała atmosfera porusza się jednakowo
+
+Kierunek wiatru nazywamy stroną, z której nadchodzi. Śledzony ruch chmur pomaga oszacować wiatr na ich wysokości, ale nie podaje prędkości ani wiatru przy wodzie.
+
+**Wniosek:** Dokąd idzie chmura ≠ skąd wieje wiatr.
+
+Źródła: [Identifying clouds](https://cloudatlas.wmo.int/en/identifying-clouds.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Dwie mapy, dwa poziomy
+
+**Pracownia:** maps
+
+Ta sama godzina: 10 m → 12 kt · 850 hPa → 35 kt
+
+Który odczyt jest bliższy pytaniu o wiatr przy powierzchni akwenu?
+
+- **A.** 850 hPa, bo mapa ma więcej koloru
+
+- **B.** Średnia obu liczb
+
+- **C.** 10 m, z uwzględnieniem lokalnych warunków (poprawna)
+
+- **D.** Oba opisują dokładnie to samo
+
+10 m jest poziomem przy powierzchni. 850 hPa to powierzchnia ciśnienia wyżej w atmosferze, nie wysokość 850 m. Model nie zastępuje lokalnego pomiaru.
+
+**Wniosek:** Najpierw poziom, dopiero potem kolor.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays), [Pressure on model levels](https://confluence.ecmwf.int/plugins/viewsource/viewpagesrc.action?pageId=158636068).
+
+### Ten sam kolor, inne okno czasu
+
+**Pracownia:** maps
+
+Mapa A: suma 6 mm / 3 h · mapa B: suma 6 mm / 24 h
+
+Czy można powiedzieć, że natężenie deszczu będzie takie samo?
+
+- **A.** Tak, 6 to zawsze 6
+
+- **B.** Nie; to sumy w różnych przedziałach, nie chwilowe natężenie (poprawna)
+
+- **C.** Tak, jeśli wybrano ten sam model
+
+- **D.** Mapa B zawsze oznacza silniejszy deszcz
+
+Suma opadu opisuje cały przedział. Nie mówi, czy woda spadnie równomiernie czy w krótkiej ulewie. Przed porównaniem sprawdź jednostkę, okno i czas ważności.
+
+**Wniosek:** Czytaj legendę i przedział czasu.
+
+Źródła: [Description of weather overlays](https://community.windy.com/topic/3361/description-of-weather-overlays).
+
+### CAPE nie jest procentem
+
+**Pracownia:** maps
+
+Model pokazuje CAPE 1800 J/kg. W pobliżu nie ma jeszcze echa radarowego.
+
+Co z tego wynika?
+
+- **A.** Burza na pewno powstanie tutaj
+
+- **B.** Brak echa wyklucza rozwój burzy
+
+- **C.** To 18% prawdopodobieństwa burzy
+
+- **D.** Jest potencjał wyporności; potrzeba też oceny uruchomienia konwekcji (poprawna)
+
+CAPE jest miarą energii, nie prawdopodobieństwem. Hamowanie, wilgoć, wymuszenie i zmiana w czasie mają znaczenie. Sprawdź radar, obserwacje, ostrzeżenia i prognozę specjalistyczną.
+
+**Wniosek:** Potencjał ≠ zdarzenie.
+
+Źródła: [Skew-T Parameters and Indices](https://www.weather.gov/source/zhu/ZHU_Training_Page/convective_parameters/skewt/skewtinfo.html), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+### Modele się nie zgadzają
+
+**Pracownia:** maps
+
+Dla tego samego miejsca, poziomu i godziny: model A 12 kt, model B 24 kt.
+
+Jak potraktować tę różnicę?
+
+- **A.** Wybrać niższą liczbę, bo jest wygodniejsza
+
+- **B.** Zawsze zaufać droższemu modelowi
+
+- **C.** Zbadać niepewność, aktualność przebiegów i lokalne obserwacje (poprawna)
+
+- **D.** Uśrednić i uznać 18 kt za pewnik
+
+Rozbieżność jest informacją o niepewności. Sprawdź porównywalność danych i najnowsze pomiary. Średnia arytmetyczna nie staje się przez to zweryfikowaną prognozą.
+
+**Wniosek:** Niepewność warto zobaczyć, nie ukrywać.
+
+Źródła: [Windy Weather Academy](https://www.windy.com/articles/38548), [Aviation Weather Handbook FAA-H-8083-28B](https://www.faa.gov/regulationspolicies/handbooksmanuals/aviation/faa-h-8083-28b-aviation-weather-handbook).
+
+## Pełna pracownia i ograniczenia
+
+**Poznaj pełną pracownię atmosfery**
+
+Znajdziesz w niej opisy warstw Windy, trening depesz, ćwiczenia porównywania
+raportów ze stacji i sondaże pokazujące zmiany pogody wraz z wysokością.
+
+Przycisk: **Pełna pracownia**.
+
+Narzędzia edukacyjne. Nie zastępują oficjalnego briefingu, ostrzeżeń, aktualnych
+pomiarów ani ograniczeń statku powietrznego, jachtu i załogi.
+
+Źródła przy narzędziach pozostają dostępne: AWC i FAA przy depeszach; ORC oraz
+Met Office przy wietrze na jachcie; Windy i ECMWF przy mapach. Przy każdym
+przypadku szkoleniowym są źródła dotyczące jego treści.

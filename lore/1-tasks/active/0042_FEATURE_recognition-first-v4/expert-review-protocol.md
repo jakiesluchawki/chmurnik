@@ -66,9 +66,30 @@ CSV, an offline HTML index and the label-free image manifest. The original
 label/key JSON is outside the ZIP. All image hashes and index links validate;
 `unzip -t` reports no errors. Five unit/integration tests cover selection,
 cross-role leakage rejection, blinding, preservation and annotation validation.
-The HTML has not been visually verified because the UI service is unavailable.
+The initial HTML had not yet been visually verified at this checkpoint.
 
 - ZIP SHA256: `8fb113e8c2debc220961e4e0f2d4f93e464a5d99d9e715f1b7b7dab30df4ae10`.
 - Public manifest SHA256: `464e1318aaf914bb221ec53b3d211a64f83fdb21ee45c7b353d0f86bf162b799`.
 
 No expert rating exists, no pack has been sent and no label has been changed.
+
+## Layout-Only Revision and Browser Verification
+
+An isolated local Playwright browser made visual verification possible without
+using the unavailable CUA service or connecting to the owner's browser. The
+initial package overflowed horizontally at 320px because of a long URL in the
+instructions. Added wrapping to the instruction block, with no content or
+selection changes. Preserve the original package; the current revision is
+`.local/v4/expert-review-v1-layout2/CHMURNIK-OCENA-ZDJEC-33.zip`.
+
+- ZIP SHA256: `ff271af197fe1b239379ee95fe4b4d03a281564b763dbf03984d6ff830a67254`.
+- Public manifest and blank CSV are byte-identical to V1. The manifest hash
+  above is unchanged; all 33 photo files and their order remain unchanged.
+- ZIP integrity passes. `scripts/check-expert-review-ui.mjs` verifies all
+  complete photos at 320, 390 and 1100px, neutral labels, links to original
+  images, the CSV link, no horizontal overflow, no JavaScript errors and no
+  network requests. Screenshots are in `build/v4-expert-review-qa/`; inspected
+  the narrow instructions and desktop photo gallery.
+- All 116 ML tests pass. This is package/UI verification, not independent
+  annotation or evidence of improved classifier accuracy. No package was sent,
+  no annotation was returned and no training label was changed.

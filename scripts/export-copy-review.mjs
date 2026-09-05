@@ -13,6 +13,8 @@ import { metarStructurePhases, metarDecodeSections, metarTrainingScenarios, tafT
 import { cloudBands, pressureLevels, weatherLayers } from "../src/data/weather-layers.js";
 import { weatherLayerReading } from "../src/lib/weather-layers.js";
 import { getSources } from "../src/data/sources.js";
+import { metarExamples, tafExamples, practiceCases } from "../src/data/field-practice.js";
+import { decodeAviationReport, tafGroupMeaning } from "../src/lib/taf-reader.js";
 
 const root = new URL("../", import.meta.url);
 function trainingQuestions(items) {
@@ -39,6 +41,21 @@ const comparisonCopy = [
     `**${ids.split("|").join(" / ")}**\n\n${text}`),
 ].join("\n\n");
 const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
+  "<!-- FIELD_REPORT_EXAMPLES -->": [...metarExamples, ...tafExamples].map((example) => {
+    const result = decodeAviationReport(example.report);
+    const groups = result.type === "TAF" ? [...result.groups, ...result.segments.flatMap((segment) => segment.conditions.groups)] : result.groups;
+    return [`### ${example.label}`, `\`${example.report}\``,
+      example.synthetic === false ? "Przykładowa depesza, nie bieżąca pogoda." : "Przykład szkoleniowy.",
+      ...groups.map((group) => `- **${group.code} · ${group.label}**: ${group.detail}`),
+      ...(result.warnings || []).map((warning) => `**Uwaga:** ${warning}`),
+    ].join("\n\n");
+  }).join("\n\n") + "\n\n" + Object.values(tafGroupMeaning).map((group) => `**${group.label}**\n\n${group.detail}`).join("\n\n"),
+  "<!-- FIELD_PRACTICE_CASES -->": practiceCases.map((item) => [
+    `### ${item.title}`, `**Pracownia:** ${item.track}`, item.context, item.question,
+    ...item.choices.map((text, choice) => `- **${String.fromCharCode(65 + choice)}.** ${text}${choice === item.answer ? " (poprawna)" : ""}`),
+    item.explanation, `**Wniosek:** ${item.takeaway}`,
+    `Źródła: ${getSources(item.sources).map((source) => `[${source.title}](${source.url})`).join(", ")}.`,
+  ].join("\n\n")).join("\n\n"),
   "<!-- METAR_PHASES -->": metarStructurePhases.map((phase) => `### ${phase.number}. ${phase.title}\n\n${phase.pattern}\n\n${phase.detail}`).join("\n\n"),
   "<!-- METAR_SECTIONS -->": metarDecodeSections.map((section) => [
     `### ${section.title}`, `**${section.shortLabel}** · ${section.position}`,
@@ -122,7 +139,7 @@ const substitutions = { "<!-- FIELD_QUESTIONS -->": questionCopy,
   }).join("\n\n"),
 };
 const sections = [];
-for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md"]) {
+for (const name of ["copy-v4-entry-review.md", "copy-v4-recognition-review.md", "copy-v4-atlas-review.md", "copy-v4-learning-review.md", "copy-v4-layers-review.md", "copy-v4-weather-workshops-review.md", "copy-v4-collection-review.md", "copy-v4-metar-review.md", "copy-v4-field-tools-review.md"]) {
   let content = await readFile(new URL(`design/${name}`, root), "utf8");
   for (const [marker, value] of Object.entries(substitutions)) content = content.replace(marker, value);
   sections.push(content.trim());
@@ -133,13 +150,14 @@ Jeden dokument zawiera teksty startowe, oprowadzenia, wprowadzenia do pracowni,
 pełny przepływ analizy zdjęcia oraz atlas, pięć pytań obserwatora, porównanie,
 nawigację nauki, powtórki, quiz, czytnik Windy, schemat wysokości,
 wiatr z ruchu chmur, zagrożenia, wszystkie cztery profile atmosfery oraz kolekcję
-obserwacji, pocztówki, kopie i cały warsztat szkoleniowy METAR/TAF.
+obserwacji, pocztówki, kopie, cały warsztat szkoleniowy METAR/TAF, czytnik
+wklejanych depesz, symulator wiatru i ćwiczenia odczytu map.
 Zachowuje też niezmienione odpowiedzi i komunikaty potrzebne do oceny całości.
 Pytania, warianty odpowiedzi i opisy porównań są pobierane bezpośrednio z kodu.
 
 To wersja robocza, nie opublikowane wydanie. Szczegółowe lekcje,
-indeks terminów i pozostałe ekrany narzędzi terenowych wymagają jeszcze
-osobnego przeglądu.
+indeks terminów i monografie poszczególnych chmur wymagają jeszcze osobnego
+przeglądu.
 Teksty nie stanowią potwierdzenia jakości klasyfikatora ani testu układu ekranów.
 
 Dokument można odtworzyć poleceniem:

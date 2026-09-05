@@ -138,7 +138,7 @@ def build_pack(manifest_path, output):
 <style>body{{font:17px/1.5 system-ui;margin:24px auto;max-width:1100px;padding:0 20px;background:#fff9f5;color:#343024}}
 h1{{font-size:30px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px}}
 figure{{margin:0;background:white;border:1px solid #bbb;padding:12px}}img{{width:100%;height:240px;object-fit:contain}}
-figcaption{{font-weight:700}}pre{{white-space:pre-wrap;font:inherit}}a{{color:#483080}}</style>
+figcaption{{font-weight:700}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}}a{{color:#483080}}</style>
 <h1>Niezależna ocena zdjęć nieba</h1><p>Kliknij zdjęcie, żeby otworzyć cały plik.
 Odpowiedzi wpisz w <a href="ocena.csv" download>ocena.csv</a>. Nic nie jest wysyłane przez tę stronę.</p>
 <details open><summary>Instrukcja i pochodzenie zdjęć</summary><pre>{html.escape(instructions)}</pre></details>

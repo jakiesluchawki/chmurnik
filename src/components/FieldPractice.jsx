@@ -158,7 +158,7 @@ export function PracticeChallenge({ track, onSources }) {
         <span className="eyebrow">Ćwiczenia na wymyślonych sytuacjach</span>
         <span>
           {all.filter((value) => records[value.id]?.lastCorrect).length}/
-          {all.length} opanowane
+          {all.length} ostatnio poprawnych
         </span>
       </div>
       <h2 id={`challenge-${track}`} ref={heading} tabIndex={-1}>
@@ -204,8 +204,8 @@ export function PracticeChallenge({ track, onSources }) {
             <div className="field-explanation" role="status">
               <span className="eyebrow">
                 {answer === item.answer
-                  ? "Trafnie. Oto dlaczego"
-                  : "Sprawdźmy ten krok"}
+                  ? "Poprawna odpowiedź"
+                  : "Zaznaczona odpowiedź nie jest poprawna"}
               </span>
               <p>{item.explanation}</p>
               <strong>{item.takeaway}</strong>
@@ -440,6 +440,12 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
         </div>
       )}
       <h2>{sailing ? "Wiatr na pokładzie" : "Wiatr względem drogi startowej"}</h2>
+      <p>{sailing
+        ? "Ustaw wiatr, kierunek dziobu i prędkość jachtu. Zobaczysz wiatr pozorny, czyli wiatr odczuwany przez poruszającą się załogę. Zmieniaj jedno ustawienie naraz i porównuj wynik."
+        : fixed
+          ? "Wiatr pochodzi z wklejonej depeszy. Ustaw geograficzny kierunek drogi startowej, żeby obliczyć składową boczną oraz czołową lub tylną. Nie są to dopuszczalne limity dla samolotu."
+          : "Ustaw wiatr i geograficzny kierunek drogi startowej. Wynik pokaże składową boczną oraz czołową lub tylną. Te obliczenia nie określają dopuszczalnych limitów dla samolotu."}</p>
+      <p>Kierunki °T odnoszą się do północy geograficznej. Prędkości podajemy w węzłach (kt). To obliczenia z podanych ustawień, nie pomiar telefonem.</p>
       <div className="field-wind-layout">
         <div className="field-wind-picture">
           <WindRose
@@ -466,14 +472,14 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
           {!fixed && (
             <>
               <Slider
-                label="Wiatr przychodzi z"
+                label="Kierunek, z którego wieje wiatr"
                 value={from}
                 onChange={setFrom}
                 max={359}
                 unit="°T"
               />
               <Slider
-                label="Wiatr rzeczywisty"
+                label="Prędkość wiatru rzeczywistego"
                 value={speed}
                 onChange={setSpeed}
                 max={50}
@@ -482,7 +488,7 @@ export function WindWorkbench({ reportWind = null, fixed = false, onSources }) {
             </>
           )}
           <Slider
-            label={sailing ? "Kierunek dziobu" : "Kierunek osi (geograficzny)"}
+            label={sailing ? "Kierunek dziobu" : "Geograficzny kierunek drogi startowej"}
             value={heading}
             onChange={setHeading}
             max={359}
@@ -607,9 +613,10 @@ function AviationReader({ onSources, onTraining }) {
   return (
     <section className="field-metar-reader">
       <div className="field-section-label">
-        <span className="eyebrow">Czytnik · działa bez internetu</span>
+        <span className="eyebrow">Czytnik depesz na urządzeniu</span>
         <SourceLink ids={["awcCodes", "faaTaf"]} onSources={onSources} />
       </div>
+      <p>Wklej depeszę, a potem wybieraj jej fragmenty, żeby przeczytać wyjaśnienia. Czytnik działa bez internetu i nie pobiera aktualnej pogody.</p>
       <details className="field-report-guide">
         <summary>Czym różni się METAR od TAF?</summary>
         <div className="field-report-comparison">
@@ -617,9 +624,9 @@ function AviationReader({ onSources, onTraining }) {
             <span className="eyebrow">METAR / SPECI</span>
             <h3>Co zaobserwowano?</h3>
             <p>
-              Obserwacja w określonej chwili. SPECI to obserwacja specjalna. Do
-              METAR może być dołączony krótki trend, ale nie zamienia on pomiaru
-              w prognozę TAF.
+              METAR opisuje pogodę zaobserwowaną w określonej chwili. SPECI to
+              obserwacja specjalna. Do METAR może być dołączona krótka prognoza
+              zmian, nazywana trendem. Pokazujemy ją osobno od obserwacji.
             </p>
           </div>
           <div>
@@ -658,7 +665,7 @@ function AviationReader({ onSources, onTraining }) {
           }}
         />
         <button className="button button--primary" type="submit">
-          Rozczytaj raport <ArrowRight size={18} />
+          Wyjaśnij depeszę <ArrowRight size={18} />
         </button>
       </form>
       <div className="field-example-picker">
@@ -697,10 +704,10 @@ function AviationReader({ onSources, onTraining }) {
             </div>
             <span className="field-badge">
               {example === "synthetic"
-                ? "Syntetyczny przykład"
+                ? "Przykład szkoleniowy"
                 : example === "provided"
                   ? "Przykładowa depesza, nie bieżąca pogoda"
-                  : "Wklejony raport · nie live"}
+                  : "Wklejona depesza, bez sprawdzania aktualności"}
             </span>
           </div>
           <div
@@ -748,7 +755,7 @@ function AviationReader({ onSources, onTraining }) {
                   </strong>
                 </div>
                 <div>
-                  <span>Temperatura / rosa</span>
+                  <span>Temperatura / punkt rosy</span>
                   <strong>
                     {result.temperature ?? "?"} / {result.dewpoint ?? "?"} °C
                   </strong>
@@ -768,7 +775,7 @@ function AviationReader({ onSources, onTraining }) {
               )}
               {result.unsupported.length > 0 && (
                 <p>
-                  <strong>Nierozkodowane:</strong>{" "}
+                  <strong>Nieodczytane grupy:</strong>{" "}
                   <code>{result.unsupported.join(" ")}</code>
                 </p>
               )}
@@ -805,8 +812,8 @@ function AviationReader({ onSources, onTraining }) {
                 )}
               {result.wind?.variable && (
                 <p className="field-caution">
-                  VRB: brak jednego kierunku. Czytnik nie pokazuje pozornie
-                  dokładnej składowej bocznej.
+                  VRB: kierunek wiatru jest zmienny. Bez jednego kierunku
+                  nie obliczamy składowej bocznej.
                 </p>
               )}
             </>
@@ -829,7 +836,7 @@ function MapWorkbench({ onSources }) {
   return (
     <section className="field-map-workbench">
       <div className="field-section-label">
-        <span className="eyebrow">Laboratorium map · fikcyjne dane</span>
+        <span className="eyebrow">Ćwiczenie odczytu mapy</span>
         <SourceLink
           ids={["windyOverlays", "windyAcademy", "ecmwfModelLevels"]}
           onSources={onSources}
@@ -837,8 +844,9 @@ function MapWorkbench({ onSources }) {
       </div>
       <h2>Co zmienia odczyt na mapie?</h2>
       <p>
-        Zmień jeden parametr i obserwuj odczyt. To schemat edukacyjny, nie mapa
-        ani dane Windy.
+        Wybierz poziom atmosfery, termin i model A lub B. Porównasz prędkości
+        wiatru w jednym punkcie. Wszystkie liczby są wymyślone do ćwiczenia;
+        modele A i B nie są prawdziwymi modelami pogody ani danymi Windy.
       </p>
       <div className="field-map-grid">
         <div className="field-map-readout">
@@ -851,7 +859,7 @@ function MapWorkbench({ onSources }) {
           <span>
             {level === "surface"
               ? "10 m przy powierzchni"
-              : "850 hPa, wyżej w atmosferze"}
+              : "850 hPa, poziom ciśnienia"}
           </span>
           <small>
             model {model} · za {[0, 3, 6][hour]} h
@@ -879,7 +887,7 @@ function MapWorkbench({ onSources }) {
             </select>
           </label>
           <Slider
-            label="Horyzont prognozy"
+            label="Za ile godzin"
             value={hour * 3}
             onChange={(value) => setHour(value / 3)}
             max={6}
@@ -904,7 +912,7 @@ function MapWorkbench({ onSources }) {
         target="_blank"
         rel="noreferrer"
       >
-        Otwórz prawdziwe Windy <ArrowSquareOut size={17} />
+        Otwórz Windy w przeglądarce <ArrowSquareOut size={17} />
       </a>
     </section>
   );
@@ -987,7 +995,8 @@ export function FieldPractice({ track = "metar", navigate, onSources }) {
           <strong>Poznaj pełną pracownię atmosfery</strong>
           <p>
             Znajdziesz w niej opisy warstw Windy, trening depesz, ćwiczenia
-            briefingu i sondaże pokazujące zmiany pogody wraz z wysokością.
+            porównywania raportów ze stacji i sondaże pokazujące zmiany pogody
+            wraz z wysokością.
           </p>
         </div>
         <button

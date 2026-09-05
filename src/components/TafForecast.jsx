@@ -8,7 +8,7 @@ export function ReportGroups({ groups }) {
   const [active, setActive] = useState(0);
   return (
     <>
-      <h3>Dotknij grupy, żeby zobaczyć jej znaczenie</h3>
+      <h3>Wybierz fragment depeszy, żeby zobaczyć wyjaśnienie</h3>
       <div className="field-metar-tokens" aria-label="Grupy raportu">
         {groups.map((group, index) => (
           <button
@@ -99,10 +99,11 @@ export function TafForecast({ result }) {
           <code>{result.groups[1].code}</code> to czas wydania.
         </p>
       </div>
-      <h3>Oś prognozy</h3>
+      <h3>Warunki w kolejnych godzinach</h3>
       <p className="field-taf-hint">
-        Wybierz grupę. Okna mogą się nakładać; wariantów PROB i epizodów TEMPO
-        nie łączymy z bazą w jedną pogodę.
+        Wybierz przedział czasu. Może on pokrywać się z innym przedziałem:
+        PROB opisuje możliwy wariant, a TEMPO warunki przejściowe. Pokazujemy
+        je osobno od podstawowych warunków prognozy.
       </p>
       <ol className="field-taf-timeline" aria-label="Okresy prognozy TAF">
         {result.segments.map((item, index) => (
@@ -194,7 +195,7 @@ export function TafForecast({ result }) {
         )}
         {conditions.unsupported.length > 0 && (
           <p>
-            <strong>Nierozkodowane w tej grupie:</strong>{" "}
+            <strong>Nieodczytane elementy tej grupy:</strong>{" "}
             <code>{conditions.unsupported.join(" ")}</code>
           </p>
         )}

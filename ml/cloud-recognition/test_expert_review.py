@@ -84,6 +84,7 @@ class ExpertReviewTests(unittest.TestCase):
                 self.assertFalse(any("PRIVATE" in name or "secret" in name for name in archive.namelist()))
                 public = json.loads(archive.read("CHMURNIK-ocena/images.json"))
                 self.assertEqual(public["attribution"]["license"], "CC BY 4.0")
+                self.assertIn("overflow-wrap:anywhere", archive.read("CHMURNIK-ocena/index.html").decode())
                 for item in public["items"]:
                     self.assertEqual(set(item), {"photo_id", "image_file", "image_sha256"})
                 answers = list(csv.DictReader(io.StringIO(archive.read("CHMURNIK-ocena/ocena.csv").decode("utf-8-sig")), delimiter=";"))

@@ -10,6 +10,7 @@ import { soundingScenarios, soundingGlossary } from "../src/data/soundings.js";
 import { savedHypothesisMessage } from "../src/lib/observations.js";
 import { clouds } from "../src/data/clouds.js";
 import { metarStructurePhases, metarDecodeSections, metarTrainingScenarios, tafTrainingScenarios, aviationBriefingSets } from "../src/data/metar-training.js";
+import { metarExamples, tafExamples, practiceCases } from "../src/data/field-practice.js";
 
 test("the combined copy review retains every observation question and answer, not just edits", async () => {
   const text = await readFile(new URL("../design/copy-v4-review.md", import.meta.url), "utf8");
@@ -22,7 +23,7 @@ test("the combined copy review retains every observation question and answer, no
   for (const value of [...fieldPrinciples, ...Object.values(pairDiscriminators)]) assert.ok(text.includes(value), value);
   assert.doesNotMatch(text, /<!-- (FIELD_|COMPARISON_COPY)/);
   assert.ok(text.includes("Szczegółowe lekcje,"));
-  assert.ok(text.includes("narzędzi terenowych wymagają jeszcze"));
+  assert.ok(text.includes("monografie poszczególnych chmur wymagają jeszcze"));
 });
 
 test("the complete learning review retains every card and quiz answer", async () => {
@@ -91,6 +92,17 @@ test("the METAR review retains all reports, dictionary examples, timelines and f
   ];
   for (const value of values) assert.ok(text.includes(value), value);
   assert.doesNotMatch(text, /<!-- (METAR_|TAF_|BRIEFING_)/);
+});
+
+test("the field-tools review preserves all examples and every practice choice and explanation", async () => {
+  const text = await readFile(new URL("../design/copy-v4-review.md", import.meta.url), "utf8");
+  const values = [
+    ...[...metarExamples, ...tafExamples].flatMap((item) => [item.label, item.report]),
+    ...practiceCases.flatMap((item) => [item.title, item.context, item.question, ...item.choices, item.explanation, item.takeaway]),
+  ];
+  for (const value of values) assert.ok(text.includes(value), value);
+  assert.doesNotMatch(text, /<!-- FIELD_(REPORT_EXAMPLES|PRACTICE_CASES) -->/);
+  assert.match(text, /monografie poszczególnych chmur wymagają jeszcze/);
 });
 
 test("the combined copy review preserves complete comparison introductions and source review sets", async () => {

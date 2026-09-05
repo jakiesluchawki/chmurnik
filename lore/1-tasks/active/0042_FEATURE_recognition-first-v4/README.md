@@ -336,3 +336,24 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   Catalyst builds contain `index-B7o19ddB.js`. Current CUA still fails at startup;
   static rendering/build success is not visual or physical-device acceptance.
   No model replacement, installation, store archive or publication occurred.
+- Clarified the field report reader, TAF timeline, wind inputs and fictional
+  map exercise. Practice progress now describes recent correct answers rather
+  than mastery. The full copy book includes every report, decoded group,
+  practice question, choice and explanation. Parsers, formulas and scheduling
+  are unchanged. All 260 JavaScript tests, 116 ML tests, nine lesson audits
+  and the web build pass. iPhone/iPad simulator and local ad-hoc Catalyst
+  builds both contain `index-BvJ5toNW.js`; these are not store releases.
+- Recovered browser QA with the already installed Playwright/Chromium in an
+  isolated temporary profile, without restarting services or touching user
+  tabs. Forty-two route/viewport combinations pass. Current production web
+  interactions pass with deployment CSP headers and no JavaScript errors.
+  The capture fixture verifies proposed-region selection, keyboard movement,
+  full-photo/crop/atlas comparison, aspect-preserving save and restoration.
+  Its probabilities and proposals are controlled test data, not an accuracy
+  benchmark or native-camera test. Inspected phone and wide screenshots;
+  physical-device interaction and recognition/release gates remain open.
+- Browser-checked the blinded 33-photo review pilot and fixed a 320px overflow
+  in its instruction block. A separate layout-only ZIP preserves original
+  photos, order, manifest and blank CSV. All gallery links, offline behavior,
+  image decoding and ZIP integrity pass. See `expert-review-protocol.md` for
+  the new hash. No independent ratings or changes to training data exist yet.

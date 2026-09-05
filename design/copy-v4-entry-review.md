@@ -2,8 +2,9 @@
 
 Stan: 5 września 2026. Robocza wersja w kodzie, jeszcze nieopublikowana.
 To pełny zestaw wprowadzeń objętych tym etapem redakcji, a nie lista samych
-zmienionych wyrazów. Opisy poszczególnych chmur, treści lekcji, dziennik oraz
-wszystkie stany analizy zdjęć wymagają jeszcze osobnego przeglądu.
+zmienionych wyrazów. Dalsze sekcje zbiorczego dokumentu zawierają pełne
+przepływy analizy, dziennika i pracowni. Opisy poszczególnych chmur oraz
+szczegółowe treści lekcji pozostają do osobnego przeglądu.
 Opublikowane materiały społecznościowe pozostają bez zmian.
 
 ## Start w aplikacji Apple
@@ -192,7 +193,7 @@ znaczenie jej skrótów i grup, albo wybierz przykład do ćwiczeń.
 
 Opis rozwijanej pomocy: **Czym różni się METAR od TAF?**
 
-Nad grupami depeszy: **Dotknij grupy, żeby zobaczyć jej znaczenie**.
+Nad grupami depeszy: **Wybierz fragment depeszy, żeby zobaczyć wyjaśnienie**.
 
 Gotowy przykład otrzymuje etykietę **Przykładowa depesza, nie bieżąca pogoda**.
 Wyjaśnienia METAR/TAF, nieobsługiwane grupy i obliczenia pozostają bez zmian.
