@@ -5,9 +5,11 @@ from sklearn.kernel_ridge import KernelRidge
 from sklearn.metrics.pairwise import rbf_kernel
 import torch
 
-from assemble_v4_kernel import checked_precision
+from assemble_v4_kernel import checked_precision, checked_reliability
 from kernel_model import StableFeatureRBF
 from train_v4_kernel import FeatureRBF, development_cache
+from train_v4_dinob import MANIFEST_SHA256
+from labels import GENERA
 
 
 class KernelHeadTests(unittest.TestCase):
@@ -67,6 +69,21 @@ class KernelHeadTests(unittest.TestCase):
         report["variants"]["stable_head_batch_1"]["max_error"] = float("nan")
         with self.assertRaisesRegex(ValueError, "parity"):
             checked_precision(report, saved, "head", "code")
+
+    def test_reliability_assembly_rejects_changed_provenance_and_failed_precision(self):
+        recipe = {"manifest_sha256": MANIFEST_SHA256, "classes": GENERA, "code_sha256": {"kernel_model.py": "code"},
+                  "validation_bar": .6437451661744025, "gamma": .25 / 768, "alpha": .1}
+        saved = {"recipe_sha256": "recipe", "validation": {"macro_f1": .645}, "train_ids": list(range(2325)),
+                 "validation_ids": list(range(452)), "gamma": .25 / 768, "state": {"support": torch.zeros(4650, 768)}}
+        report = {"recipe_sha256": "recipe", "head_sha256": "head", "validation": saved["validation"],
+                  "eligible_for_further_evaluation": True,
+                  "parity": {str(n): {"max_error": .0002, "label_mismatches": 0} for n in (1, 4, 32, 452)}}
+        checked_reliability(report, saved, recipe, "recipe", "head", "code")
+        with self.assertRaisesRegex(ValueError, "provenance"):
+            checked_reliability(report, saved, recipe, "other", "head", "code")
+        report["parity"]["1"]["max_error"] = float("nan")
+        with self.assertRaisesRegex(ValueError, "parity"):
+            checked_reliability(report, saved, recipe, "recipe", "head", "code")
 
 
 if __name__ == "__main__":

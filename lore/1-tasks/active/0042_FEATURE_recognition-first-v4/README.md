@@ -218,3 +218,27 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   ordinary eleven-genus ground truth. Recorded findings without relabeling;
   added hash-preserving resume and full JPEG decode checks. All 84 ML tests
   pass. No GLOBE data entered training and no release model changed.
+- Completed the fixed cross-backbone kernel and SVC comparisons. The larger
+  pair does not improve the number of correct validation photos; SVC is worse.
+  Completed grouped training-only reliability weighting: 290/452 correct and
+  .64455 macro-F1, a marginal F1 gain, not a release claim. Preserved all trials
+  and froze the assembled candidate before calibration/regression evaluation.
+  All 93 ML tests pass; no production model or Apple release changed.
+- Command execution repeatedly failed with `Too many open files`, including
+  the approval reviewer's initialization. Read-only diagnostics found a low
+  inherited soft descriptor limit and a Codex process near it; this suggests
+  per-process exhaustion but is not a proven permanent root cause. Execution
+  recovered intermittently without restarting the host/Remote or stopping
+  other tasks. A failed elevated read was not executed. Later bounded tests,
+  patch and model-assembly requests passed approval and finished. The existing
+  candidate was reverified and its CPU evaluation finally started. This is
+  operational recovery, not a durable system repair. Restart remains unapproved.
+- Tried the independent wallpaper deliverable during the execution outage;
+  the first built-in ImageGen request failed to connect and created no image.
+  No CLI/API fallback was used and no wallpaper was counted as completed.
+- The reliability candidate's CPU evaluation finished: 77/123 original-test
+  correct versus 68/123 shipped, atlas 19/30, stress 87/243, exposed IMGW
+  175/299. No calibration policy meets the unchanged confidence requirement;
+  accepted-answer and coverage gates fail. Preserve the candidate as research,
+  not a release. The owner acknowledged this outcome and continued integration
+  scope. Restart is not currently needed and no restart was performed.

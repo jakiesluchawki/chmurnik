@@ -658,3 +658,171 @@ could not be delivered because the app tool became unavailable. Do not assume
 that another task received that message. Later command creation intermittently
 failed with `Too many open files`; this is an execution-service issue, not an
 unfinished training job or evidence that the model needs restarting.
+
+## Fixed Cross-Backbone Kernel Trial, Declared Before Fitting
+
+The Base encoder was compared only with linear/MLP heads. Compare it with the
+nonlinear head that improved Small, and test complementary features without a
+new parameter grid or new image collection. CPU only, two worker threads;
+reuse the completed frozen features and preserve the Android GPU window.
+
+- Unchanged V2 2,325 training photos with original/flip views, and 452 validation
+  photos. Check manifest/revision/backbone identity, exact IDs/order, completion,
+  dimensions and finite float32 values before using either cache.
+- Fit train-only standardization separately for each representation. Scale each
+  group by sqrt(feature dimension * number of groups), so Small's 768 features
+  and Base's 1,536 features have equal normalized distance contributions.
+- Fixed RBF gamma .25 in this normalized space, ridge alpha .1, class-balanced
+  sample weights and one-hot targets times 10. These reuse the already selected
+  Small settings; no additional gamma, alpha or mixture-weight search.
+- First reproduce the Small control's .64303164872 validation macro-F1. Then
+  fit exactly two new heads: Base alone, and equal Small/Base concatenation.
+- Select the better new head by raw validation macro-F1. Require > .64303164872
+  and float32/sklearn logit error <= .001 with zero changed labels at validation
+  batch sizes 1/4/32/452 before any later evaluation. Preserve negative results.
+- No calibration, test, atlas, stress or exposed-confirmatory access in the
+  runner. Native assembly, footprint/latency, calibration, fresh confirmation
+  and all unchanged release gates remain separate requirements.
+
+Code: `probe_v4_cross_backbone.py`; output directory:
+`.local/v4/dinov2-cross-backbone-kernel/`. Three new tests cover aligned cache
+identity, train-only balanced normalization and float32 inference/serialization
+for the combined 2,304-feature head. Existing 768-feature state remains compatible.
+
+### Cross-Backbone Result
+
+All three fits and four numerical batch checks completed successfully. Small
+reproduces .6430316487205148 macro-F1. Base alone is .6215739033725114. The equal
+pair reaches .6437451661744025, but its top-1 remains exactly 291/452, the same
+as Small. Maximum float32 logit error is .00028719, with no changed labels.
+The paired head SHA256 is
+`f1853060650c6e889c246eb1449f12dac32ace3a72b5c7b6b01d7fee9b81aae2`;
+recipe SHA256 `38c51663886c8c9fd42ddbcbc35dbef4c27c40bef6e8aa0f330a93e6a5265fa8`.
+
+The numerical/validation eligibility check passes literally, but a .000714 F1
+gain with no extra correct photos is not a compelling reason to add the entire
+346 MB Base encoder to the app. Do not portray it as a practical improvement.
+Defer native assembly and holdout exposure; retain this result for comparison.
+All 87 ML tests pass. No production model or release changed.
+
+## Fixed Maximum-Margin Head Trial, Declared Before Fitting
+
+Test one alternative learning objective on the existing Small features: RBF
+support-vector classification instead of squared-error kernel ridge. This tests
+a different classifier loss without another encoder, extra photo collection,
+or a larger on-device backbone. It does not presume incorrect labels are fixed.
+
+Unchanged V2 train/validation IDs and two/one feature views, train-only standard
+scaler, RBF gamma .25/768, class-balanced SVC. Compare exactly C {.1, 1, 10, 100};
+no gamma or input search. Use deterministic one-vs-one training and one-vs-rest
+decision scores with `break_ties=True`, `probability=False`; these scores are
+not probabilities. Confirm reconstructed pairwise/OVR scores and predictions
+against the installed sklearn implementation. Select validation macro-F1 only;
+must beat .6437451661744025 before further calibration/evaluation is considered.
+Save every fit and its validation predictions. Never read holdout/cache rows.
+
+Primary API semantics: <https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html>.
+Native/Core ML score parity, confidence calibration, independent confirmation
+and unchanged release gates remain outstanding even if validation improves.
+
+### Maximum-Margin Result
+
+All four trials completed with reconstructed score errors <= 6.31e-13.
+Validation macro-F1 for C {.1,1,10,100} was {.49957,.58733,.61268,.61353};
+the selected C100 head scored 276/452 (61.06%) top-1. None beats the declared
+bar. Preserve `.local/v4/dinov2-svc-v2/`, including all heads, predictions and
+the recipe. Selected head SHA256:
+`9ff141a810b1f6b512b08f1be917bedb65537ac47960d162f84203b3c940d813`.
+No float32/native export or holdout/calibration exposure is warranted.
+
+## Training-Only Reliability Weighting, Declared Before Fitting
+
+Known CCSN label conflicts and weak gains from extra capacity motivate one
+bounded supervision experiment, not another architecture search. An out-of-fold
+disagreement is only a suspicion, not proof of a wrong label. Keep every original
+label and photograph; do not relabel or permanently delete examples.
+
+Use five StratifiedGroupKFold partitions (shuffle, seed7042) of V2 training
+observations. Keep image/flip, duplicate groups and named IMGW capture-day groups
+together. Fit the Small RBF head at the already selected gamma .25/768, alpha .1
+inside each fold, including a fold-training-only scaler and balanced weights.
+Average the two withheld views' logits for each training photo. No validation,
+calibration or test photos enter these fold fits or reliability decisions.
+
+Set a training reliability factor .25 only for CCSN photos whose original label
+is outside the three highest OOF scores; all other factors remain 1. This targets
+the audited source and retains difficult examples. Do not search thresholds,
+weight factors, folds or affected sources after seeing results. Normalize final
+sample weights so every class retains equal total influence. Fit one final
+Small RBF on all training rows, select only by unchanged validation macro-F1
+against .6437451661744025, and require four-batch float32 parity. Record flags,
+fold membership and per-source/class counts without labeling them verified errors.
+
+Output `.local/v4/dinov2-reliability-v2/`; no change to public model, original
+manifest or release gates. This is a classifier-reliability hypothesis, not a
+substitute for expert annotation or independent evaluation.
+
+### Reliability Result and Frozen Evaluation Candidate
+
+All five grouped folds completed with 465 withheld training photos each. The
+fixed rule downweights 287 CCSN photos; these remain suspected disagreements,
+not verified label corrections. Validation is 290/452 (64.1593%) top-1 and
+.6445474034701404 macro-F1. That narrowly clears the declared F1 bar but is
+one fewer correct photo than the unweighted Small control. Do not describe
+this as a proven practical improvement. Four-batch float32 parity has zero
+changed labels and maximum logit error .000174265.
+
+Recipe SHA256:
+`547ab5366117416f9ee49e8e55ff74d6552c952e64a497d3de7d17324cdba21f`.
+Head SHA256:
+`671382d070d721e4e31d699516264ceffc60bf8231129b24d73b96a8b25a4dbe`.
+The unchanged frozen Small backbone was bound to that head only after checking
+the manifest, exact ordered IDs, training-code identity and numerical evidence.
+The assembled research checkpoint is
+`.local/v4/dinov2-reliability-assembled/cloud-genus-net.pt`, SHA256
+`d63fd93f1c5dc6eb35935ebc4b3d5b11d230703a17ea62fbd923d16d31ef2f86`.
+All 93 ML tests pass. No application model was replaced.
+
+That identity was saved in the assembly contract and verified before starting
+evaluation; recording it here was delayed by the execution-service failure.
+CPU calibration/regression evaluation now runs with the existing balanced
+temperature and cloud-policy procedures, without threshold changes. Compare
+with the V2-manifest paired native shipped baseline. The 299 already exposed
+IMGW cases remain regression-only, not fresh confirmation. No further fitting
+or recipe changes may follow these holdout results under this experiment.
+Precision/coverage and all release gates remain unchanged.
+
+### Reliability Evaluation: Not Release-Eligible
+
+The CPU evaluator completed with exit 0. On unique labeled photographs:
+
+| Split | Correct / total | Top-1 | Macro-F1 |
+|---|---:|---:|---:|
+| Calibration | 172/301 | .57143 | .55359 |
+| Original test | 77/123 | .62602 | .48180 |
+| Atlas diagnostic | 19/30 | .63333 | .59071 |
+| Stress | 87/243 | .35802 | .19835 |
+| Exposed IMGW regression | 175/299 | .58528 | .58132 |
+
+Original-test improvement versus the shipped native model is 9 additional
+correct photos, +7.317 percentage points, with paired 95% interval -0.813 to
+15.447 points. Cloud-only original-test accuracy is 46/92 (50%), versus 37/92
+for the shipped model. These are measured dataset results, not a general
+real-world accuracy promise. The 452-row validation selection contains three
+duplicate groups; the evaluator reports 449 unique cases and .64297 macro-F1.
+This distinction was not used to reselect or refit the candidate.
+
+Balanced temperature is 1.689385474860335. No supported cloud-only calibration
+threshold meets the unchanged 90% precision requirement. The policy therefore
+fails closed (minimum confidence 1.01; zero accepted predictions). Accuracy
+gates pass, but accepted precision, minimum accepted counts and coverage fail.
+Do not ship this model or lower the release thresholds to make it pass.
+
+Results: `.local/v4/dinov2-reliability-calibrated/evaluation.json`.
+Calibrated checkpoint SHA256:
+`1b8c30b1c319abf259e99ed1a27387c451863a6cd158533ea5431bdbaf2c2195`.
+Both saved checkpoints and all head/fold results are retained. No further
+variant of this weighting experiment is justified by this result. Genus
+supervision and reliable region-specific evidence still need improvement;
+automatic-region integration is a separate requirement, not a replacement
+for a better classifier or permission to release.

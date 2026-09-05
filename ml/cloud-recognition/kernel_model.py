@@ -12,8 +12,10 @@ class StableFeatureRBF(nn.Module):
         parameters = {name: torch.as_tensor(value, dtype=torch.float32)
                       for name, value in (("mean", mean), ("scale", scale),
                                           ("support", support), ("coefficients", coefficients))}
-        if (parameters["mean"].shape != (768,) or parameters["scale"].shape != (768,)
-                or parameters["support"].ndim != 2 or parameters["support"].shape[1] != 768
+        feature_count = parameters["mean"].numel()
+        if (not 1 <= feature_count <= 4096 or parameters["mean"].shape != (feature_count,)
+                or parameters["scale"].shape != (feature_count,)
+                or parameters["support"].ndim != 2 or parameters["support"].shape[1] != feature_count
                 or not 1 <= len(parameters["support"]) <= 20000
                 or parameters["coefficients"].shape != (len(parameters["support"]), 11)):
             raise ValueError("Invalid RBF support or class geometry")
@@ -37,8 +39,10 @@ class StableFeatureRBF(nn.Module):
         return products.sum(1) + center * self.coefficient_sum
 
     @classmethod
-    def empty(cls, support_count, gamma):
+    def empty(cls, support_count, gamma, feature_count=768):
         if type(support_count) is not int or not 1 <= support_count <= 20000:
             raise ValueError("Invalid RBF support count")
-        return cls(torch.zeros(768), torch.ones(768), torch.zeros(support_count, 768),
+        if type(feature_count) is not int or not 1 <= feature_count <= 4096:
+            raise ValueError("Invalid RBF feature count")
+        return cls(torch.zeros(feature_count), torch.ones(feature_count), torch.zeros(support_count, feature_count),
                    torch.zeros(support_count, 11), gamma)

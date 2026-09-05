@@ -11,6 +11,7 @@ from dinov2_model import DINOV2_REVISION
 from kernel_model import StableFeatureRBF
 from labels import GENERA
 from model import build_model
+from train_v4_dinob import MANIFEST_SHA256, sha256
 from v4_checkpoint import atomic_save, cpu_tree
 
 
@@ -27,6 +28,24 @@ def checked_precision(report, saved, head_digest, implementation_digest):
             raise ValueError("Float32 kernel parity failed")
 
 
+def checked_reliability(report, saved, recipe, recipe_digest, head_digest, implementation_digest):
+    if (report["head_sha256"] != head_digest or report["recipe_sha256"] != recipe_digest
+            or saved["recipe_sha256"] != recipe_digest or recipe["manifest_sha256"] != MANIFEST_SHA256
+            or recipe["classes"] != GENERA or report["validation"] != saved["validation"]
+            or recipe["code_sha256"]["kernel_model.py"] != implementation_digest
+            or not report["eligible_for_further_evaluation"]):
+        raise ValueError("Reliability study provenance mismatch")
+    if (not recipe["validation_bar"] < saved["validation"]["macro_f1"] <= 1
+            or len(saved["train_ids"]) != 2325 or len(saved["validation_ids"]) != 452
+            or saved["state"]["support"].shape != (4650, 768)
+            or recipe["gamma"] != saved["gamma"] or recipe["gamma"] != .25 / 768 or recipe["alpha"] != .1):
+        raise ValueError("Unexpected reliability head geometry or selection")
+    for size in (1, 4, 32, 452):
+        evidence = report["parity"][str(size)]
+        if not 0 <= evidence["max_error"] <= .001 or evidence["label_mismatches"] != 0:
+            raise ValueError("Reliability float32 parity failed")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--trial", type=Path, required=True)
@@ -34,6 +53,7 @@ def main():
     parser.add_argument("--backbone-checkpoint", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--study", choices=["kernel", "reliability"], default="kernel")
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("Preserve previous assembled models")
@@ -41,8 +61,23 @@ def main():
     saved = torch.load(head_path, weights_only=True)
     head_digest = hashlib.sha256(head_path.read_bytes()).hexdigest()
     precision = json.loads(args.precision.read_text())
-    checked_precision(precision, saved, head_digest,
-                      hashlib.sha256(Path(__file__).with_name("kernel_model.py").read_bytes()).hexdigest())
+    implementation_digest = sha256(Path(__file__).with_name("kernel_model.py"))
+    if args.study == "reliability":
+        recipe_path = args.trial / "recipe.json"
+        recipe = json.loads(recipe_path.read_text())
+        checked_reliability(precision, saved, recipe, sha256(recipe_path), head_digest, implementation_digest)
+        if recipe["code_sha256"]["probe_v4_reliability.py"] != sha256(Path(__file__).with_name("probe_v4_reliability.py")):
+            raise ValueError("Reliability training implementation changed")
+        if sha256(args.backbone_checkpoint) != "d34d1f2d871ebaaed612c6132ee10575016e939f5072a289ff837520fc1cea87":
+            raise ValueError("Reliability trial requires its pinned frozen Small backbone")
+        manifest_rows = json.loads(args.manifest.read_text())["rows"]
+        if any(saved[f"{split}_ids"] != [row["id"] for row in manifest_rows if row["split"] == split]
+               for split in ("train", "validation")):
+            raise ValueError("Reliability training/validation order changed")
+        saved["contract"] = {**recipe, "validation_count": 452,
+                             "selection": "fixed training-only group-held-out reliability weighting; validation macro-F1"}
+    else:
+        checked_precision(precision, saved, head_digest, implementation_digest)
     source = torch.load(args.backbone_checkpoint, weights_only=True)
     digest = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
     if (source["manifest_sha256"] != digest or saved["contract"]["manifest_sha256"] != digest

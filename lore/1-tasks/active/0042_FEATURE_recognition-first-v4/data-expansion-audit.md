@@ -156,3 +156,20 @@ genus/absence ground truth. Download/use is subject to `GCD Agreement.pdf`;
 public availability alone does not establish product-training permission.
 No dataset files were downloaded or agreement accepted. Lower priority than
 auditing NASA's directional photo labels and explicit reuse statement.
+
+## Other Sources Checked September 5
+
+The current [CCAiM card](https://huggingface.co/datasets/serbekun/CCAiM-CloudsDataset)
+still reports 916 images, ten classes and MIT licensing; the listed file size is
+2.58 GB. It is not the previously exposed local snapshot. New membership,
+annotations and overlap would need auditing before use; it was not downloaded.
+
+[WEBCAM repository](https://github.com/MarcusCoteFIT/webcam-ground-based-cloud-image-dataset)
+reports over 15,500 images and nine aviation-oriented categories, including fog,
+precipitation and towering cumulus rather than all ten genera. The repository
+currently exposes a notebook and README, not an explicit dataset license.
+The [associated paper](https://doi.org/10.1109/ACCESS.2025.3634057) has a
+CC-BY-NC-ND notice; this does not establish a reusable dataset/model license.
+Neither public availability nor the article's reported accuracy authorizes
+product training. No data downloaded or reuse terms accepted. This is a possible
+source only after verifying access, reuse rights, labeling and split independence.
