@@ -258,3 +258,22 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   and plugin sources; its app is local development only, not a signed store
   archive or a publication. The inference/UI feature still needs real-device
   interaction, visual QA and its unchanged accuracy/calibration release gates.
+- Audited the new Montenegro multi-observer labels with pinned source hashes.
+  Under a conservative exact-genus screen, only Cu, Ci, one Ac and clear sky
+  have support. No photos entered training or a new confirmation benchmark.
+  A fixed five-member group-bagged kernel trial fails validation selection:
+  290/452 correct, macro-F1 .63730. Preserve this negative result without
+  opening holdouts. All 106 ML tests pass. Asked the owner about access to an
+  independent expert for a blinded image review; no answer or review is assumed.
+- Fixed uncertain clear-leading results so tiny remaining scores do not become
+  displayed or saved cloud candidates. Uncertain saved observations no longer
+  inherit a misleading clear-sky/family title. Raw scores and model weights
+  are unchanged. Keyboard movement now retains a proposed frame's size and
+  position instead of jumping to a default center selection. Added a complete
+  recognition-journey copy review in `design/copy-v4-recognition-review.md`.
+  All 224 JavaScript tests, production web build and nine lesson audits pass.
+  Refreshed the native web bundle with `cap copy`, not dependency-changing sync.
+  iPhone/iPad simulator build passes using only the existing Package.resolved
+  versions; the source lockfile is unchanged. Local ad-hoc Catalyst build also
+  passes. No UI interaction or screenshots were available from CUA, no app
+  was installed/published, and model/release/full-copy acceptance stays open.

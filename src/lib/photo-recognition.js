@@ -118,6 +118,15 @@ export function recognitionClassIds() {
   return [...CLOUD_CLASSES];
 }
 
+export function cloudComparisonCandidates(result) {
+  if (result?.state === "clear" || result?.quality?.status === "low_light"
+    || result?.ranked?.[0]?.id === "clear_sky") return [];
+  return (result?.ranked || [])
+    .filter((item) => item.id !== "clear_sky" && CLOUD_CLASSES.includes(item.id)
+      && Number.isFinite(item.probability) && item.probability > 0)
+    .slice(0, 2);
+}
+
 export function cloudFamilyDefinitions() {
   return FAMILY_DEFINITIONS.map((family) => ({ ...family, classIds: [...family.classIds] }));
 }

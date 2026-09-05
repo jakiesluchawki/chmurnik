@@ -1,5 +1,5 @@
 import { useEffect, useId, useState } from "react";
-import { squarePhotoRegion, squareRegionForProposal, validatePhotoRegion } from "../lib/photo-frame.js";
+import { movePhotoRegion, squarePhotoRegion, squareRegionForProposal, validatePhotoRegion } from "../lib/photo-frame.js";
 import { createPhotoOperationScope } from "../lib/photo-operation.js";
 
 const regionStyle = (bounds) => ({ left: `${bounds.x * 100}%`, top: `${bounds.y * 100}%`,
@@ -8,7 +8,7 @@ const regionStyle = (bounds) => ({ left: `${bounds.x * 100}%`, top: `${bounds.y 
 export function PhotoFrame({ source, onAnalyze, regions = [], proposalStatus = "ready", disabled, analyzing }) {
   const id = useId();
   const [size, setSize] = useState(null);
-  const [point, setPoint] = useState(null);
+  const [manualFrame, setManualFrame] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [fraction, setFraction] = useState(.55);
   const [busy, setBusy] = useState(false);
@@ -24,10 +24,10 @@ export function PhotoFrame({ source, onAnalyze, regions = [], proposalStatus = "
   }).slice(0, 5);
   const selected = proposals.find((region) => region.id === selectedId);
   const frame = size && selected ? squareRegionForProposal(size.width, size.height, selected.bounds, selected.anchor)
-    : size && point ? squarePhotoRegion(size.width, size.height, point, fraction) : null;
+    : manualFrame;
   const selectProposal = (region) => {
     if (disabled || busy || !size) return;
-    setSelectedId(region.id); setPoint(null); setError("");
+    setSelectedId(region.id); setManualFrame(null); setError("");
   };
   const apply = async (bounds, region) => {
     if (disabled || busy) return;
@@ -47,20 +47,26 @@ export function PhotoFrame({ source, onAnalyze, regions = [], proposalStatus = "
     if (disabled || busy || !size) return;
     setSelectedId(null);
     const box = event.currentTarget.getBoundingClientRect();
-    setPoint({ x: Math.max(0, Math.min(1, (event.clientX - box.left) / box.width)),
-      y: Math.max(0, Math.min(1, (event.clientY - box.top) / box.height)) });
+    setManualFrame(squarePhotoRegion(size.width, size.height,
+      { x: Math.max(0, Math.min(1, (event.clientX - box.left) / box.width)),
+        y: Math.max(0, Math.min(1, (event.clientY - box.top) / box.height)) }, fraction));
+    setError("");
   };
   const keyPoint = (event) => {
     if (disabled || busy || !size) return;
     if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Enter", " "].includes(event.key)) return;
     event.preventDefault();
     setSelectedId(null);
-    const next = { ...(point || { x: .5, y: .5 }) };
-    if (event.key === "ArrowLeft") next.x -= .05;
-    if (event.key === "ArrowRight") next.x += .05;
-    if (event.key === "ArrowUp") next.y -= .05;
-    if (event.key === "ArrowDown") next.y += .05;
-    setPoint({ x: Math.max(0, Math.min(1, next.x)), y: Math.max(0, Math.min(1, next.y)) });
+    const current = frame || squarePhotoRegion(size.width, size.height, { x: .5, y: .5 }, fraction);
+    const dx = event.key === "ArrowLeft" ? -.05 : event.key === "ArrowRight" ? .05 : 0;
+    const dy = event.key === "ArrowUp" ? -.05 : event.key === "ArrowDown" ? .05 : 0;
+    setManualFrame(movePhotoRegion(current, dx, dy)); setError("");
+  };
+  const resize = (value) => {
+    if (!frame || !size || disabled || busy) return;
+    setFraction(value);
+    setManualFrame(squarePhotoRegion(size.width, size.height,
+      { x: frame.x + frame.width / 2, y: frame.y + frame.height / 2 }, value));
   };
   return (
     <section className="photo-region-picker" aria-label="Wybór obszaru nieba" aria-busy={busy || analyzing || proposalStatus === "searching"}>
@@ -92,14 +98,15 @@ export function PhotoFrame({ source, onAnalyze, regions = [], proposalStatus = "
       {frame && <div className="photo-region-controls">
         {!selected && <div className="photo-region-size" aria-label="Rozmiar analizowanego fragmentu">
           {[[.35, "Bliżej"], [.55, "Fragment"], [.85, "Więcej kontekstu"]].map(([value, label]) => (
-            <button type="button" key={value} disabled={disabled || busy} aria-pressed={fraction === value}
-              onClick={() => setFraction(value)}>{label}</button>
+            <button type="button" key={value} disabled={disabled || busy}
+              aria-pressed={Math.abs(frame.width * size.width / Math.min(size.width, size.height) - value) < 1e-6}
+              onClick={() => resize(value)}>{label}</button>
           ))}
         </div>}
         <button type="button" className="button button--secondary" disabled={disabled || busy}
           onClick={() => apply(frame, selected)}>{busy ? "Analizuję fragment…" : "Sprawdź zaznaczony fragment"}</button>
         <button type="button" className="button button--ghost" disabled={disabled || busy}
-          onClick={() => { setPoint(null); setSelectedId(null); }}>Usuń zaznaczenie</button>
+          onClick={() => { setManualFrame(null); setSelectedId(null); }}>Usuń zaznaczenie</button>
       </div>}
       {error && <p role="alert">{error}</p>}
     </section>

@@ -48,7 +48,7 @@ test("the iOS photo assistant bundles a small local model and honest uncertainty
   const result = await read("src/components/PhotoRecognitionResult.jsx");
   const messages = await read("src/lib/recognition-message.js");
   assert.match(app, /<PhotoRecognitionResult/);
-  assert.match(messages, /Nie rozstrzygam rodzaju/);
+  assert.match(messages, /Nie udało się rozpoznać rodzaju chmury/);
   assert.match(messages, /To hipoteza do sprawdzenia/);
   assert.match(result, /Własne zdjęcie nieba/);
   assert.match(result, /Szczegóły analizy i jej ograniczenia/);

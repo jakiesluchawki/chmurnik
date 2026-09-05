@@ -1,5 +1,33 @@
 # V4 Experiment Contract
 
+## Fixed Group-Bagged Kernel Trial, September 5 03:12 CEST
+
+Declared before computing any committee predictions. Test one equal-weight
+five-member committee, using the existing seed7042 stratified capture/duplicate
+group folds. Each member fits on four folds of the unchanged V2 training set,
+with its own training-only normalization, class-balanced samples, gamma .25/768,
+alpha .1 and targets times ten. Average logits from all five members, not a
+selected subset. No new backbone, source data, sample relabeling or grid.
+
+Rationale: investigate sensitivity to noisy training subsets after the single
+kernel's confidently wrong predictions, rather than treating a high softmax as
+verified reliability. Reproduce the original .6430316487 validation control.
+Only continue if committee validation macro-F1 exceeds the best existing
+.6445474035 candidate and float32 score/label parity passes. All existing
+calibration, coverage, cloud-only, fresh-evidence and release gates remain.
+Implementation: `probe_v4_bagged_kernel.py`; no holdouts opened by that script.
+
+Completed negative result: 290/452 correct, macro-F1 .6372959743, below the
+.6445474035 existing candidate. The original single-kernel control reproduces
+291/452 and .6430316487. The committee corrects four control mistakes but
+introduces five. Float32 combined max logit error is .000091609 with no label
+change. Reject this variant without calibration or holdout exposure. Recipe
+SHA256 `eefaa27263e4ae5839829c74461097e6018593fbda6db0bb16d4a2c1590aa2e9`;
+evaluation SHA256 `887cd6546e435ea6fc7b310850610c488714f9b14e08f2eeeda61c764216a890`.
+Retain all five member states and predictions in `.local/v4/dinov2-bagged-kernel`.
+All 106 ML tests pass, including source-audit and committee tests. No production
+classification weights or acceptance gates changed.
+
 ## Frozen Data
 
 Manifest SHA-256:

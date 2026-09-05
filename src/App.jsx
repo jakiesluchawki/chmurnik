@@ -10,6 +10,7 @@ import { createPhotoOperationScope } from "./lib/photo-operation.js";
 import { PhotoRecognitionResult } from "./components/PhotoRecognitionResult.jsx";
 import { ApplicationInfo } from "./components/ApplicationInfo.jsx";
 import { observationFromRecognition } from "./lib/observations.js";
+import { cloudComparisonCandidates } from "./lib/photo-recognition.js";
 import { saveObservation } from "./lib/observation-store.js";
 import {
   AirplaneTilt,
@@ -5064,9 +5065,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     return () => { controller.abort(); operation.finish(); };
   }, []);
 
-  const clearSkyResult = result?.state === "clear";
-  const rankedClouds = (clearSkyResult ? [] : result?.ranked || [])
-    .filter((item) => item.id !== "clear_sky")
+  const rankedClouds = cloudComparisonCandidates(result)
     .map((item) => ({ ...item, cloud: getCloud(item.id) }))
     .filter((item) => item.cloud);
 

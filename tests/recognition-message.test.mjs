@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { recognitionMessage } from "../src/lib/recognition-message.js";
+import { cloudComparisonCandidates, interpretCloudProbabilities } from "../src/lib/photo-recognition.js";
 
 const candidate = { name: "Cumulus", headline: "Chmury kłębiaste." };
 
@@ -28,4 +29,30 @@ test("clear-sky output does not display contradictory cloud hypotheses", () => {
   const message = recognitionMessage({ state: "clear" }, candidate);
   assert.equal(message.kind, "clear");
   assert.equal(message.showComparison, false);
+});
+
+test("uncalibrated clear-leading scores neither claim clear sky nor promote tiny cloud alternatives", () => {
+  const result = interpretCloudProbabilities([.001, .001, .001, .001, .001, .001, .001, .001, .008, .004, .98],
+    { minimumConfidence: 1.01, marginThreshold: .51 });
+  assert.equal(result.state, "ambiguous");
+  assert.deepEqual(cloudComparisonCandidates(result), []);
+  const message = recognitionMessage(result, candidate);
+  assert.equal(message.kind, "ambiguous");
+  assert.equal(message.showComparison, false);
+  assert.match(message.text, /nie wystarcza/);
+  assert.match(message.text, /po cechach/);
+  assert.doesNotMatch(message.title, /Bez wyraźnych chmur/);
+  assert.equal(result.ranked[0].id, "clear_sky");
+});
+
+test("comparison retains real cloud alternatives without changing uncertain scores", () => {
+  const result = { state: "ambiguous", ranked: [{ id: "cumulus", probability: .5 },
+    { id: "clear_sky", probability: .3 }, { id: "stratocumulus", probability: .2 }] };
+  assert.deepEqual(cloudComparisonCandidates(result), [result.ranked[0], result.ranked[2]]);
+  assert.equal(recognitionMessage(result, candidate).showComparison, true);
+  assert.deepEqual(cloudComparisonCandidates({ ...result, quality: { status: "low_light" } }), []);
+  assert.deepEqual(cloudComparisonCandidates(), []);
+  const message = recognitionMessage({ state: "ambiguous" });
+  assert.equal(message.showComparison, false);
+  assert.doesNotMatch(message.text, /Poniżej/);
 });

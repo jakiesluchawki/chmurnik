@@ -1,6 +1,7 @@
 import { clouds } from "../data/clouds.js";
 import { normalizeJournalEntry, parseJournalBackup } from "./journal.js";
 import { localDateKey } from "./daily-cloud.js";
+import { cloudComparisonCandidates } from "./photo-recognition.js";
 
 export const OBSERVATION_BACKUP_VERSION = 2;
 export const MAX_OBSERVATIONS = 500;
@@ -74,15 +75,11 @@ export function observationFromRecognition(
     hypothesis: result
       ? {
           modelVersion: result.modelVersion || "nieznana",
-          family: result.leadingFamily?.label || "Nierozstrzygnięta",
+          family: result.state === "clear" ? "Bez wyraźnych chmur"
+            : result.state === "hypothesis" ? result.leadingFamily?.label || "Hipoteza do sprawdzenia"
+              : "Rodzaj chmury nierozstrzygnięty",
           state: result.state,
-          candidates: (result.state === "clear" ||
-          result.leadingFamily?.id === "clear"
-            ? []
-            : result.ranked || []
-          )
-            .filter((item) => ids.has(item.id))
-            .slice(0, 2)
+          candidates: cloudComparisonCandidates(result)
             .map(({ id: cloudId, probability }) => ({
               id: cloudId,
               probability,

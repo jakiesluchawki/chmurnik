@@ -45,6 +45,10 @@ export function PhotoRecognitionResult({ result, candidates, ownPhoto, isRegion,
         </section>
       )}
 
+      {!message.showComparison && <div className="photo-result-actions">
+        <button className="button button--secondary" onClick={onObserve}>Rozpoznaj po cechach chmury</button>
+      </div>}
+
       <details className="photo-technical">
         <summary>Szczegóły analizy i jej ograniczenia</summary>
         <p>To względne wyniki modelu, nie gwarancja poprawnego rozpoznania. Jedno zdjęcie może pokazywać kilka rodzajów chmur. Światło, perspektywa i kadr zmieniają wynik.</p>

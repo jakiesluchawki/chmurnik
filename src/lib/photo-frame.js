@@ -102,6 +102,13 @@ export function squareRegionForProposal(width, height, bounds, anchor) {
     y: Math.max(0, Math.min(1 - h, point.y - h / 2)), width: w, height: h };
 }
 
+export function movePhotoRegion(bounds, dx, dy) {
+  validatePhotoRegion(bounds);
+  if (![dx, dy].every(Number.isFinite)) throw new RangeError("Invalid photo selection movement");
+  return { ...bounds, x: Math.max(0, Math.min(1 - bounds.width, bounds.x + dx)),
+    y: Math.max(0, Math.min(1 - bounds.height, bounds.y + dy)) };
+}
+
 export async function prepareRecognitionRegion(source, bounds) {
   validatePhotoRegion(bounds);
   const image = await new Promise((resolve, reject) => {

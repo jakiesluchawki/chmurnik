@@ -159,6 +159,31 @@ auditing NASA's directional photo labels and explicit reuse statement.
 
 ## Other Sources Checked September 5
 
+### Montenegro Multi-Observer Dataset
+
+Source: <https://zenodo.org/records/21787669>, Plamenac and Tomovic,
+version1.0.0, CC-BY-4.0. Fetched only inventory, annotations, code book and
+documentation, with all five published MD5 checksums verified. No photos,
+training, calibration or confirmation were performed. Reproducible audit:
+`montenegro_data.py`; local `montenegro-audit/profile.json` under V4 research.
+
+Verified 2,522 images, 11,191 unique image/observer pairs, nine observers and
+69 local capture dates. The code book uses SYNOP levels, not one genus per
+image. Unions, multiple levels, missing cells and explicit unobservable codes
+remain distinct. The parser found and records 3,055 trailing-space zero codes
+and 1,425 trailing-space slash codes; it never coerces slash to absence.
+
+A strict metadata screen requiring at least four agreeing exact-genus votes
+and >=80% of all observers leaves 346 images before pixel deduplication:
+216 clear, 105 Cu, 24 Ci and one Ac. These cover respectively16,14,6,1 dates.
+The other seven cloud genera have no support under this screen. Counts are
+not accuracy evidence. Correlated images and observer rows cannot be treated
+as independent samples or randomly split. The documentation retains unresolved
+camera, resolution, privacy-verification and citation placeholders; do not
+infer those fields or a fixed UTC offset. This is not a ready eleven-class
+training/confirmation set. Any future partial-label or uncertainty research
+requires a fixed visual/provenance audit first. Eleven focused tests pass.
+
 The current [CCAiM card](https://huggingface.co/datasets/serbekun/CCAiM-CloudsDataset)
 still reports 916 images, ten classes and MIT licensing; the listed file size is
 2.58 GB. It is not the previously exposed local snapshot. New membership,

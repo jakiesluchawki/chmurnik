@@ -119,3 +119,16 @@ test("clear-sky refusal never stores tiny cloud scores as proposed identificatio
   assert.deepEqual(entry.hypothesis.candidates, []);
   assert.equal(entry.confirmedCloudId, null);
 });
+
+test("uncertain clear-leading results stay unnamed in the saved observation and postcard", () => {
+  const entry = observationFromRecognition({
+    state: "ambiguous", modelVersion: "selected-region-experimental",
+    leadingFamily: { id: "clear", label: "Bezchmurne niebo" },
+    ranked: [{ id: "clear_sky", probability: .98 }, { id: "cumulus", probability: .01 }],
+  });
+  assert.deepEqual(entry.hypothesis.candidates, []);
+  assert.equal(entry.hypothesis.family, "Rodzaj chmury nierozstrzygnięty");
+  assert.equal(entry.confirmedCloudId, null);
+  assert.equal(postcardCaption(entry).title, "Rodzaj chmury nierozstrzygnięty");
+  assert.deepEqual(parseObservationBackup(serializeObservationBackup([entry])), [entry]);
+});

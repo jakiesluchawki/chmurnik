@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { photoFrame, squarePhotoRegion, squareRegionForProposal, prepareRecognitionRegion, validatePhotoRegion } from "../src/lib/photo-frame.js";
+import { movePhotoRegion, photoFrame, squarePhotoRegion, squareRegionForProposal, prepareRecognitionRegion, validatePhotoRegion } from "../src/lib/photo-frame.js";
 
 test("unzoomed framing preserves all original evidence", () => {
   assert.deepEqual(photoFrame(4032, 3024), {
@@ -111,4 +111,23 @@ test("selected-region JPEG preserves every visible crop edge and flags native no
   assert.deepEqual(result, { previewUrl: "data:image/jpeg;base64,fixture", base64: "fixture", selectedRegion: true });
   await assert.rejects(prepareRecognitionRegion("local-photo", { x: 0, y: 0, width: 1, height: 1 }), RangeError);
   assert.equal(draws.length, 1);
+});
+
+test("keyboard movement keeps the selected proposal size and position, including small regions", () => {
+  for (const [width, height] of [[1200, 1600], [1600, 1200]]) {
+    const original = squareRegionForProposal(width, height, { x: .1, y: .2, width: .05, height: .05 });
+    const right = movePhotoRegion(original, .05, 0);
+    assert.ok(Math.abs(right.x - original.x - .05) < 1e-9);
+    assert.equal(right.y, original.y);
+    assert.equal(right.width, original.width);
+    assert.equal(right.height, original.height);
+    assert.deepEqual(movePhotoRegion(original, 0, 0), original);
+    for (const dx of [-1, 1]) for (const dy of [-1, 1]) {
+      const moved = movePhotoRegion(original, dx, dy);
+      validatePhotoRegion(moved);
+      assert.equal(moved.width, original.width);
+      assert.equal(moved.height, original.height);
+    }
+  }
+  assert.throws(() => movePhotoRegion({ x: 0, y: 0, width: 1, height: 1 }, NaN, 0));
 });

@@ -3,7 +3,7 @@ export function recognitionMessage(result, candidate) {
     return {
       kind: "limited",
       title: "Za mało światła na rozpoznanie",
-      text: "Na tym zdjęciu trudno odczytać strukturę chmur. Zachowaj obserwację albo spróbuj wyraźniejszego ujęcia. Nie przypisuję nazwy na siłę.",
+      text: "Na tym zdjęciu trudno odczytać strukturę chmur. Możesz zachować obserwację bez rozpoznania albo spróbować wyraźniejszego ujęcia zrobionego za dnia.",
       showComparison: false,
     };
   }
@@ -12,6 +12,14 @@ export function recognitionMessage(result, candidate) {
       kind: "clear",
       title: "Bez wyraźnych chmur",
       text: "Model wskazuje głównie niebo bez chmur. Cienkie pasma mogą jednak umknąć analizie. Jeśli je widzisz, wskaż ten fragment.",
+      showComparison: false,
+    };
+  }
+  if (result?.ranked?.[0]?.id === "clear_sky") {
+    return {
+      kind: "ambiguous",
+      title: "Brak wiarygodnej podpowiedzi",
+      text: "Ten wynik nie wystarcza, żeby wskazać rodzaj chmury ani potwierdzić bezchmurne niebo. Jeśli widzisz chmurę, zaznacz ją na zdjęciu albo przejdź do rozpoznawania po cechach.",
       showComparison: false,
     };
   }
@@ -25,8 +33,10 @@ export function recognitionMessage(result, candidate) {
   }
   return {
     kind: "ambiguous",
-    title: "Nie rozstrzygam rodzaju",
-    text: "Ten kadr nie daje modelowi wystarczająco wyraźnej odpowiedzi. Poniżej są możliwości do porównania, nie rozpoznane chmury. Możesz też wskazać inną część nieba.",
+    title: "Nie udało się rozpoznać rodzaju chmury",
+    text: candidate
+      ? "Model nie potrafi wybrać jednej nazwy. Poniżej możesz porównać swoje zdjęcie z propozycjami z atlasu. Żadna z nich nie jest potwierdzonym rozpoznaniem."
+      : "Model nie podał propozycji do porównania. Możesz zaznaczyć inny fragment zdjęcia, rozpoznać chmurę po jej cechach albo zapisać obserwację bez nazwy.",
     showComparison: Boolean(candidate),
   };
 }
