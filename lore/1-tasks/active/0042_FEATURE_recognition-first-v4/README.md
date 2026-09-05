@@ -417,3 +417,10 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   No genuine annotations have arrived. More same-data classifier variants are
   not justified by the completed negative experiments; the next training step
   needs new independently reviewed supervision, with unchanged release gates.
+- Prepared separate, not-deployed root-hosting and complete GitHub Pages web
+  ZIPs, preserving all 255 existing social files byte-for-byte. Both exact
+  builds pass 42 production browser route/viewport checks with deployment CSP;
+  270 JS tests, nine lesson audits, 61 external links and both ZIP integrity
+  checks pass. Hashes, screenshots and deployment boundaries are recorded in
+  `native-and-copy-qa.md`; the complete handoff is `design/web-v4-handoff.md`.
+  No host, public deployment, Apple submission or classifier state changed.

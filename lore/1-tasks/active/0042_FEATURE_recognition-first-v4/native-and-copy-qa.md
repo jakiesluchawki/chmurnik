@@ -125,3 +125,37 @@ results. The earlier own iPad and generated Mac module cache were removed after
 disk exhaustion. No user simulator, research model, source photo, release file,
 other task or host/Remote process was deleted or restarted. The failed/incomplete
 test evidence remains distinguishable from successful runs.
+
+## Separate Web Handoff, September 5
+
+Prepared immutable local web candidates from commit `face674`, outside `dist`
+and the native app bundles. Root build contains `index-Da02l6Kr.js`; Pages
+under `/chmurnik/` contains `index-CP55UqG5.js`. Both use
+`cloud-knowledge-D6Z4Kt1b.js`. No new recognition model is included.
+
+Both exact candidates pass the existing production browser harness with
+deployment CSP headers: 42 route/viewport combinations each, storage/backup,
+METAR/TAF, wind, maps and public information. Compared 13 static responses to
+their local bytes. Inspected the desktop home and mobile learning screenshots;
+evidence is in `build/v4-www-{root,pages}-candidate-qa`. The temporary servers
+and browsers exited normally. All 270 JS tests, nine lesson audits and 61
+external source/attribution links pass.
+
+The Pages candidate includes all five existing social galleries/library,
+255 files verified byte-for-byte. No published assets were regenerated. The
+root-hosting archive is an application update, not a replacement for an entire
+document root; preserve any existing media galleries and unrelated host files.
+
+Both ZIPs pass CRC and relative-path/privacy-boundary checks (88 root entries,
+366 Pages entries). Artifacts:
+
+- `build/CHMURNIK-WWW-V4-CYBERFOLKS-face674.zip`: 22,777,757 bytes,
+  SHA256 `17ddcea2267e98f41f5d716ed502e1d08f8a29709a84b3d98e8550ba15bd6baf`.
+- `build/CHMURNIK-WWW-V4-GITHUB-PAGES-face674.zip`: 678,135,934 bytes,
+  SHA256 `a4334a11c94fe689847d60fe4da76688ef578b43950c54888763566e0bf8aece`.
+
+See `design/web-v4-handoff.md` for the complete Polish handoff. Neither package
+was uploaded/deployed. Live-host and existing-service-worker update checks
+remain outstanding. This web deliverable does not close classifier, native
+runtime, Apple submission or wallpaper requirements. Do not rebuild the same
+unchanged candidates on each continuation; preserve the verified artifacts.
