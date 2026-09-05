@@ -59,11 +59,11 @@ separate release requirement, not a substitute for model improvement.
   photos; document any limitations or failed candidates honestly.
 - [ ] Verify exported Core ML predictions against the selected training model
   and the native image preprocessing on representative inputs.
-- [ ] Automatic region proposals and tap selection replace compulsory sliders;
+- [x] Automatic region proposals and tap selection replace compulsory sliders;
   no fabricated detection masks or claims of a labeled segmentation benchmark.
-- [ ] Results show a short explanation and retain optional technical detail.
-- [ ] Comparison clearly shows own selected photo and real licensed atlas photo.
-- [ ] Full learning and layers module are discoverable without completing teasers.
+- [x] Results show a short explanation and retain optional technical detail.
+- [x] Comparison clearly shows own selected photo and real licensed atlas photo.
+- [x] Full learning and layers module are discoverable without completing teasers.
 - [ ] Edit the complete Apple interface and applicable web copy: users can tell
   what each feature does, how to proceed, and what the result means. Remove
   empty slogans and unnecessary sentence fragments; retain technical accuracy,
@@ -98,6 +98,12 @@ separate release requirement, not a substitute for model improvement.
    Apple platform commit. Leave dirty release/Android worktrees untouched.
 5. Evaluate bundled Core ML models directly when the matching training checkpoints
    are unavailable; older checkpoints must not masquerade as the shipped baseline.
+6. Preserve contradictory source labels as review exclusions, never silently
+   relabel them. Current CCAiM overlaps the old exposed source; byte-distinct
+   candidates still require near-duplicate and independent annotation review.
+7. Use development-signed, separately sandboxed Mac QA artifacts. Fail before
+   launch on an incorrect test-plan identifier; never weaken library validation
+   or grant UI-automation permission merely to make the test appear green.
 
 ## Initial Evidence
 
@@ -440,3 +446,34 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   Confirmed previous iOS/macOS 1.1 READY_FOR_SALE via read-only Apple API calls.
   No new classifier weights, native distribution build or Apple submission
   occurred. Evidence and precise release boundaries are in `native-and-copy-qa.md`.
+- Completed manual Mac runtime verification in the isolated QA app: native
+  public-photo import, three local proposals, selected-region inference,
+  whole-photo save and persistence after quit/relaunch. Unconfirmed status
+  and automatic crop notes survived; an extra manually typed note was not
+  verified. Full learning and layers entry points are reachable. This is not
+  a passed XCTest or an independent genus benchmark. The production app and
+  all unrelated tasks remained untouched. Recording the evidence was delayed
+  by disk exhaustion and approval-initialization failures; after the owner
+  freed space, the host reported 13 GiB available and commands worked again.
+  Exact boundaries and first-launch limitations are in `native-and-copy-qa.md`.
+- Completed a pinned current-CCAiM metadata audit: 917 JPEG records, 916 labels,
+  834 unique LFS hashes, 83 duplicate pairs including 28 conflicting-label pairs.
+  Verified all 251 old source rows against frozen pixel fingerprints and raw
+  hashes; all match current inventory. A deterministic exclusion screen leaves
+  560 metadata-only review candidates, with only two St and three Ns. No new
+  photos, labels, training or classifier replacement occurred. Provenance,
+  class counts and hashes are in `data-expansion-audit.md`; expert feedback on
+  the existing 33-photo blinded pilot remains outstanding.
+- Fixed QA signing and stale-plan isolation, then manually verified the exact
+  development-signed Mac app through import/proposals/inference/save/relaunch,
+  including an additional edited note. Initially automated XCTest reached an
+  OS authentication requirement for Enable UI Automation and timed out before
+  its test body. The owner subsequently confirmed availability and subsequent
+  runs passed that gate, reaching import, proposals, inference and save.
+  Corrected Mac picker identifiers, window geometry, mouse/wheel events and
+  label/value queries. The latest automatic attempt still fails in native
+  keyboard-event synthesis; no passed XCTest is claimed. A separate direct
+  CUA check of that exact build verifies the same saved record, full photo,
+  model metadata and complete additional Polish note after quit/relaunch.
+  Slow first launch remains a recorded limitation, not a claimed system fix.
+  Production user data, host/Remote services and Apple releases are untouched.

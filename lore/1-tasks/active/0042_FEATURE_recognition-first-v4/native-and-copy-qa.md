@@ -40,10 +40,11 @@ Screenshots and manifests:
 
 The phone suite predates only the subsequent atlas/nomenclature copy changes.
 The final iPad test uses the final copy bundle. Mac Catalyst development and
-build-for-testing succeed with that same bundle. Mac UI tests were compiled,
-not run against the user's existing application or photo collection. XCTest
-emits a Mac test-target deployment warning (test framework requires 17.0 while
-the target declares 15.0); this is not an app deployment compatibility result.
+build-for-testing succeed with that same bundle. Later isolated Mac runs are
+recorded below; none use the production application or photo collection. The
+early Mac test-target deployment warning (framework requires 17.0 while the
+target declared 15.0) was addressed for QA only, not by changing application
+deployment compatibility.
 
 ## Browser And Content Evidence
 
@@ -88,8 +89,8 @@ target is not met. The saved policy rejects all predictions and the evaluation
 explicitly labels confirmation as previously exposed regression. No new model
 trial, weights or threshold change occurred during UI/copy verification.
 
-Remaining: independent labeled evidence, classifier release gates, current Mac
-runtime/file-picker verification in an isolated data container, physical camera
+Remaining: independent labeled evidence, classifier release gates, a complete
+automated Mac persistence run, physical camera
 and device/background/large-text/VoiceOver acceptance, plus distribution signing
 and submission. Earlier native logs include a startup JavaScript-evaluation
 warning before the WebView loads; successful interaction does not prove its
@@ -221,3 +222,201 @@ were used in memory only; no new keys, agreement changes, submissions or
 publication settings were created. Previously submitted 1.1 approval does not
 clear V4's classifier quality gates, isolated Mac runtime test or physical
 device acceptance. The public storefront was not separately verified here.
+
+## Manual Isolated Mac Runtime Check
+
+After the owner unlocked the graphical session on September 5, completed a
+manual smoke test through CUA using the already built
+`build/macos-qa/Build/Products/Debug-maccatalyst/App.app`. The bundle identifier
+is `cloud.chmurnik.qa.v4`, with its own sandbox container. The production app
+and its observations were not opened or changed.
+
+- Completed the three onboarding panels and imported the existing public
+  `public/assets/clouds/cumulus.jpg` through the native file picker. The actual
+  successful picker action was double-clicking the selected JPEG; this does
+  not establish the automated Open-button sequence as passing.
+- Local processing produced three numbered region proposals. Selected the
+  first and ran analysis on that frame. The frame and the explanation that
+  it is an analysis rectangle, not an exact cloud outline, were visible.
+- The result explicitly said it could not identify the cloud genus. Cumulus
+  and Stratus were offered for comparison, with the selected crop and an
+  attributed atlas photo displayed together. This is the current fail-closed
+  selected-region behavior, not a verified classifier improvement.
+- Saved the observation, quit only the QA app, relaunched it, and reopened
+  the saved record. The whole original photo, unconfirmed identification and
+  automatically generated crop note survived. An attempted extra manually
+  typed note failed because of a clipboard timeout; edited-note persistence
+  is not claimed from this check.
+- Opened all nine lesson modules and the complete maps/layers workspace,
+  including its Windy, height, wind, METAR/TAF, hazards and sounding entries.
+  This checks entry-point availability, not every exercise or accessibility
+  configuration.
+- Quit the QA app again and verified that it no longer appeared among
+  running applications. No host, Remote, Codex or unrelated process was
+  restarted or stopped.
+
+The first launch was unusually slow and outlasted the CUA launch request.
+The app subsequently opened without a forced stop; the next launch was fast.
+A native Activity Monitor sample was saved as
+`build/v4-mac-qa-startup-20260905-0916.txt`. The short sample is insufficient
+to establish the cause or a permanent resource fix. Later command execution
+briefly recovered, then again failed with `Too many open files`. Free disk
+space subsequently fell to about 100 MiB; approval initialization failed with
+`No space left on device` even for recording these results and removing our
+own generated caches. Neither refused action was performed. On the owner's
+next continuation, 13 GiB was available and normal command execution returned.
+These observations do not establish a permanent descriptor-limit repair.
+
+This is manual runtime evidence, not a passed XCTest run. It uses a known
+atlas fixture, not independent recognition ground truth. No model weights,
+thresholds, private-photo permissions, traffic captures, store archives or
+Apple submissions changed. Physical camera, background behavior, large text,
+VoiceOver and independent classifier acceptance remain open.
+
+## Development-Signed Mac QA And Automation Boundary
+
+After disk recovery, the existing ad-hoc XCTest attempt failed before its test
+body with different/missing Team IDs during test-bundle loading. Evidence:
+`build/v4-isolated-mac-photo-resume-20260905.xcresult`. Switched only QA builds
+to the owner's existing Apple Development identity. Verify app, runner and
+test-bundle signatures and the common team after building; do not disable
+library validation or weaken system security. Release signing is unchanged.
+
+The first signed runner, in the old QA container, stalled before main in
+`_libsecinit_appsandbox`. Its two-second sample is
+`build/v4-mac-qa-signed-startup-sample.txt`. That is a sampled wait location,
+not a proven root cause. Interrupted only that test; after its runner exited,
+terminated its own remaining xcodebuild process. No host/Remote restart.
+
+The new isolated bundle ID is `cloud.chmurnik.qa.v4.development`; the derived
+directory is `build/macos-qa-development`. Reusing the old derived directory
+initially produced a stale `.xctestrun` bundle ID, which the preparation
+assertion rejected. A fresh derived directory builds successfully, with
+matching app/runner/test Team IDs. Source setup now skips every Catalyst UI
+test before application launch unless the explicit QA identifier is supplied.
+
+The fresh runner reached XCTest initialization but not the test body:
+`build/v4-isolated-mac-fresh-container-20260905.xcresult`, exit65. Narrow system
+logs at 11:16:04 show `Writer daemon requires authentication to enable
+automation mode` followed by a local-authentication request for `Enable UI
+Automation`. At 11:17:04 it timed out. The owner was asked to be available to
+confirm that system request on a retry; no confirmation or new permission is
+assumed. This remains an unexecuted automatic test, not an app assertion
+failure or a passed XCTest.
+
+Completed an additional manual CUA test of the exact development-signed app:
+
+- Opened the fresh QA container, completed all three onboarding panels,
+  imported the public atlas `cumulus.jpg`, received three numbered proposals,
+  selected the first and ran the actual bundled local model.
+- Observed explicit unconfirmed status and the retained own crop/atlas
+  comparison. Saved the whole photo without inventing a genus.
+- Added `Notatka testowa QA 2026-09-05: zapis i ponowne uruchomienie.` to the
+  automatic crop note. Verified the exact text in the interface and the
+  successful-save message. Quit the QA process, verified it absent, reopened
+  the app and the same observation, and verified the full photo, uncertain
+  status, exact crop note and additional note remained. No production app or
+  real user observation was opened or changed.
+- CUA accessibility clicks on an off-screen WebKit textarea did not reliably
+  focus it. Scrolling, a screenshot-grounded direct click and clipboard paste
+  produced a verified exact edit; simulated typing alone altered the multiply
+  sign and was corrected before saving. Do not count failed attempts as saves.
+- The native picker again highlighted the requested file while Open remained
+  disabled; double-clicking that file imported it. The prepared XCTest now
+  waits for/focuses the Go To field, replaces the old path explicitly, then
+  waits for and double-taps the exact filename. This mirrors the manually
+  successful sequence but still requires a real XCTest run.
+- The first signed-app launch was slow. A 2s sample, 90s after launch, found
+  the main thread in dyld `__open`, before app initialization. Evidence:
+  `build/v4-mac-qa-development-startup-sample.txt`. It subsequently loaded
+  without forced termination; the post-save relaunch request finished in
+  about2s. Neither is a controlled startup benchmark or a permanent fix.
+
+Quit the manual QA app and verified no app, runner or xcodebuild process
+remained before the final test-source build. Postcard export, physical camera,
+VoiceOver and large text are not verified by this run. No model weights,
+distribution archives or Apple submissions changed.
+
+## Owner-Approved Automation Retry And Direct Persistence Check
+
+The owner confirmed availability for Enable UI Automation. Subsequent XCTest
+runs entered the test body; the original permission request is no longer the
+only blocker. Permission can recur between runs: the intermediate
+`v4-isolated-mac-unique-note-20260905.xcresult` timed out before its test body.
+Do not infer a permanent system permission or a repaired host service.
+
+The test now uses the actual Catalyst window rather than the application-wide
+frame, mouse clicks and wheel events rather than phone taps/Page Down, and
+checks static-text values as well as labels. It verifies the full Go To path
+and waits for both native picker sheets to close. Every Catalyst test refuses
+to launch without the exact isolated QA identifier. App, runner and test
+bundle retain the same existing Apple Development team and App Sandbox;
+library validation and release signing are unchanged.
+
+Selected failed runs under `build/`, retained as failures:
+
+| Result bundle | Observed boundary |
+| --- | --- |
+| `v4-isolated-mac-owner-approval-20260905.xcresult` | Entered test body; original WebKit action/geometry failed |
+| `v4-isolated-mac-window-geometry-20260905.xcresult` | Opened picker; original button-label query failed |
+| `v4-isolated-mac-picker-id-20260905.xcresult` | Imported fixture, proposed regions and ran inference; model-version label query failed |
+| `v4-isolated-mac-unique-note-retry-20260905.xcresult` | Saved whole photo; immediate note assertion saw only part of the typed marker |
+| `v4-isolated-mac-note-wait-20260905.xcresult` | No proposals after the picker sequence; this does not establish a model failure |
+| `v4-isolated-mac-mouse-waits-20260905.xcresult` | Import and inference passed; Page Down did not move the result panel |
+| `v4-isolated-mac-wheel-persistence-20260905.xcresult` | Import, wheel scrolling, inference and initial save passed; exact note wait failed before saving the edit |
+| `v4-isolated-mac-focused-note-20260905.xcresult` | Native Go To typing failed with `Timed out while synthesizing event`; exit 65, 164.505-second test body |
+
+The wheel run's final AX snapshot contains the original crop note, without the
+new marker. Its log also records other applications interrupting the textarea
+click/keyboard sequence. This is not proof that focus contention is the sole
+cause, nor evidence of a failed persistence write: the edit never reached the
+Save action. The later attempt reactivates QA before controls and targets the
+active application for typing, but failed earlier in the native file picker.
+The full automatic persistence test remains unpassed; its assertions were not
+removed or relaxed.
+
+After all XCTest processes finished, used CUA on the exact current
+`build/macos-qa-development/Build/Products/Debug-maccatalyst/App.app`:
+
+1. Reopened the latest QA record, ID
+   `37557e50-2832-4774-89c5-f53f2f98007a`, containing the public atlas fixture
+   saved during the wheel run. Production CHMURNIK remained closed.
+2. Kept the complete automatic crop note and added a unique Polish note with
+   `żółć, źdźbło`. The initial paste duplicated the original note because the
+   select-all shortcut did not take effect. Corrected the visible editable
+   field through the supported AX setter and verified its exact full text
+   before pressing Save; the duplicate was not saved.
+3. Observed the successful-save message, quit QA through its own application
+   menu, and verified it absent from the running-app inventory before relaunch.
+4. Reopened the same record ID and visually verified the full original photo,
+   unchanged unconfirmed genus, complete crop note and exact added Polish
+   note. Expanded saved details and verified
+   `3.0-ensemble-selected-region-experimental` remained attached.
+5. Quit QA again and verified it absent; no host, Remote, unrelated application,
+   real user observation or production database was modified.
+
+The exact additional note was:
+`Kontrola zapisu 2026-09-05 12:14: żółć, źdźbło. Notatka ma przetrwać ponowne uruchomienie.`
+The timestamp is an identifying test string, not a measured benchmark time.
+Screenshots and AX evidence are retained in this task's tool history. This
+checks UI editing via the supported accessibility setter and persistence,
+not uninterrupted physical typing or a passing XCTest.
+
+XCTest attachments stay private under `build/`. Explicit captures now target
+the QA window only; Xcode's automatic recordings can include other windows
+and must not be published. A prior result capture showed scrolled proposal
+controls peeking above the sticky modal header; do not call visual QA perfect.
+Keyboard-only operation, large text, VoiceOver, physical camera, postcard
+export and full device/background acceptance remain unverified here.
+
+No new classifier weights, calibration thresholds, release archives or Apple
+submissions were produced. Direct persistence success does not satisfy the
+independent genus-quality gate.
+
+Final regression checks after these source changes: 272 JavaScript tests,
+139 ML/tooling unit tests and all nine lesson contracts pass. The latest
+development-signed Mac build-for-testing also passes signature/team checks.
+Core ML tooling still warns about installed scikit-learn/Torch versions, and
+the SVC tests emit the existing probability-parameter deprecation warning;
+no new model conversion or dependency update was performed. Unit-test fixture
+training is not an additional classifier experiment or accuracy benchmark.

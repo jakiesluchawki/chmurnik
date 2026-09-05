@@ -184,10 +184,73 @@ infer those fields or a fixed UTC offset. This is not a ready eleven-class
 training/confirmation set. Any future partial-label or uncertainty research
 requires a fixed visual/provenance audit first. Eleven focused tests pass.
 
-The current [CCAiM card](https://huggingface.co/datasets/serbekun/CCAiM-CloudsDataset)
-still reports 916 images, ten classes and MIT licensing; the listed file size is
-2.58 GB. It is not the previously exposed local snapshot. New membership,
-annotations and overlap would need auditing before use; it was not downloaded.
+### Pinned CCAiM Metadata And Overlap Audit
+
+The [CCAiM card](https://huggingface.co/datasets/serbekun/CCAiM-CloudsDataset)
+reports 916 images, ten classes and MIT licensing. The
+[source repository](https://github.com/serbekun/CCAiM) separately identifies
+the `clouds_<dataset_number>` photographs as CC0 and the code as MIT; it also
+asks contributors to correct wrong labels. This is not expert-verified
+single-genus supervision merely because the labels use ten familiar names.
+
+On September 5 downloaded only `labels.json`, the revision response and the
+`clouds_1` tree at dataset revision
+`07e790f94faf1f6a6cb39d0547837407ed59ba49` (July 23). No new photos downloaded.
+The pinned audit is `ml/cloud-recognition/audit_ccaim_metadata.py`; local input
+and results are in `.local/v4/ccaim-20260723-audit/`.
+
+- The inventory contains 917 JPEG entries, 916 labels and 834 unique published
+  Git LFS SHA256 hashes. Photo `591.jpg` has no label; never infer clear sky
+  or another genus for it.
+- There are 83 duplicate-hash groups, all pairs. In 28 pairs the exact same
+  published content hash has different genus labels. Examples include
+  `41/67` (Stratus/Cirrus), `47/51` (Stratus/Stratocumulus), and `276/749`
+  (Nimbostratus/Cumulus). These counts use the repository's LFS metadata,
+  not a new local download and hash of every remote image.
+- Rehashed all 251 local `ccaim-old` rows from the frozen V2 manifest and
+  verified their decoded-pixel fingerprints first. All 251 match current
+  published image hashes; they represent 247 unique byte hashes. They are
+  previously exposed evidence, not 251 new independent test photographs.
+- Metadata-only screening removes those exposed hashes, every conflicting
+  hash and unlabelled records, and chooses one representative per remaining
+  hash. This leaves 560 review candidates totaling 461,197,459 bytes. They
+  have not been downloaded, visually checked, near-deduplicated or approved
+  for training/fresh testing. Hash differences cannot rule out recompression,
+  resizes, related frames or earlier exposure from other datasets.
+
+| Source label | Metadata-screened unique hashes |
+| --- | ---: |
+| Cumulus | 272 |
+| Altocumulus | 53 |
+| Stratocumulus | 53 |
+| Altostratus | 52 |
+| Cirrus | 51 |
+| Cirrostratus | 31 |
+| Cumulonimbus | 29 |
+| Cirrocumulus | 14 |
+| Nimbostratus | 3 |
+| Stratus | 2 |
+
+The remaining imbalance, especially two Stratus and three Nimbostratus, does
+not repair the current difficult-class supervision by itself. Do not append
+the whole source or automatically choose between contradictory labels. No
+ground truth, frozen split, classifier weight or acceptance threshold changed.
+Eleven focused tests cover pinning, malformed/duplicate metadata, old-byte
+overlap, changed historical pixels, review exclusions and order independence.
+
+Frozen SHA256 receipts:
+
+- `labels.json`: `73c9a6363e825ac73b27742d26b2a264637e5b973166d92ec95d7462d8660b5b`
+- `revision.json`: `91219091d458b587caa403817a5a2fbbf6de38d4892efa216e5c30ea000a64ed`
+- `tree.json`: `31026dd132d22d04dc0a50aa3c22e2ae1de7661fc8f97173ed4915449e1a14a8`
+- `profile-v2.json`: `5317fcc6a01a235f415462c72f916b87c738ae466dccec7f8b44b59d1702a195`
+- Audit code: `1c44eb915cf668e170f697e7a7019820e0d1a66bd34ca5a2c68f114c95b886e5`
+
+`profile.json` preserves the earlier overlap-only report; `profile-v2.json`
+adds the deterministic review inventory. Both explicitly deny training
+approval. Outputs refuse overwrites. No new recognition score is claimed.
+
+### WEBCAM
 
 [WEBCAM repository](https://github.com/MarcusCoteFIT/webcam-ground-based-cloud-image-dataset)
 reports over 15,500 images and nine aviation-oriented categories, including fog,

@@ -5,6 +5,30 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
+test("Mac QA rejects ad-hoc or invalid signing before staging any files", () => {
+  for (const identity of ["-", "invalid-identity"]) {
+    const result = spawnSync(process.execPath, ["scripts/prepare-macos-qa.mjs"], {
+      cwd: new URL("../", import.meta.url),
+      encoding: "utf8",
+      env: { ...process.env, CHMURNIK_QA_SIGN_IDENTITY: identity },
+    });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /QA requires an existing Apple Development identity/);
+  }
+});
+
+test("Mac UI-test setup rejects a non-QA plan before launching the application", async () => {
+  const source = await readFile(new URL("../ios/App/AppUITests/AppStoreUITests.swift", import.meta.url), "utf8");
+  const setup = source.slice(source.indexOf("override func setUpWithError()"), source.indexOf("private func button"));
+  const conditionalIndex = setup.indexOf("#if targetEnvironment(macCatalyst)");
+  const guardIndex = setup.indexOf('guard ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"]');
+  const skipIndex = setup.indexOf("throw XCTSkip", guardIndex);
+  assert.ok(conditionalIndex >= 0);
+  assert.ok(guardIndex > conditionalIndex);
+  assert.ok(skipIndex > guardIndex && skipIndex < setup.indexOf("app.launch()"));
+  assert.match(setup, /cloud\.chmurnik\.qa\.v4\.development/);
+});
+
 test("TestFlight release rejects incomplete isolated signing configuration", async () => {
   const directory = await mkdtemp(path.join(tmpdir(), "chmurnik-signing-test-"));
 

@@ -1,16 +1,39 @@
 import XCTest
 
 final class AppStoreUITests: XCTestCase {
-    private let app = ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4"
-        ? XCUIApplication(bundleIdentifier: "cloud.chmurnik.qa.v4") : XCUIApplication()
+    private let app = ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4.development"
+        ? XCUIApplication(bundleIdentifier: "cloud.chmurnik.qa.v4.development") : XCUIApplication()
 
     override func setUpWithError() throws {
         continueAfterFailure = false
+        #if targetEnvironment(macCatalyst)
+        guard ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4.development" else {
+            throw XCTSkip("Mac UI tests require the isolated QA plan; never launch the production app")
+        }
+        #endif
         app.launchArguments = ["-AppleLanguages", "(pl)", "-AppleLocale", "pl_PL"]
         app.launch()
+        #if targetEnvironment(macCatalyst)
+        app.activate()
+        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
+        #endif
         XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 45))
         let skip = app.buttons["Pomiń"].firstMatch
-        if skip.waitForExistence(timeout: 10) { skip.tap() }
+        if skip.waitForExistence(timeout: 10) {
+            #if targetEnvironment(macCatalyst)
+            tap("Pomiń")
+            #else
+            skip.tap()
+            #endif
+        }
+    }
+
+    override func tearDownWithError() throws {
+        #if targetEnvironment(macCatalyst)
+        if ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4.development" {
+            app.terminate()
+        }
+        #endif
     }
 
     private func button(_ label: String) -> XCUIElement {
@@ -19,32 +42,65 @@ final class AppStoreUITests: XCTestCase {
             XCUIElement.ElementType.button.rawValue,
             XCUIElement.ElementType.switch.rawValue, label
         ))
-        return controls.allElementsBoundByIndex.first(where: { isOnScreen($0) && $0.isHittable }) ?? controls.firstMatch
+        return controls.allElementsBoundByIndex.first(where: { isActionable($0) }) ?? controls.firstMatch
     }
 
     private func isOnScreen(_ element: XCUIElement) -> Bool {
         let frame = element.frame
-        return !frame.isEmpty && !frame.isInfinite && app.frame.insetBy(dx: 8, dy: 8)
+        #if targetEnvironment(macCatalyst)
+        let viewport = app.windows["SceneWindow"].frame
+        #else
+        let viewport = app.frame
+        #endif
+        return !frame.isEmpty && !frame.isInfinite && viewport.insetBy(dx: 8, dy: 8)
             .contains(CGPoint(x: frame.midX, y: frame.midY))
+    }
+
+    private func isActionable(_ element: XCUIElement) -> Bool {
+        #if targetEnvironment(macCatalyst)
+        // Catalyst exposes disabled AX ancestors even for visible WebKit controls.
+        return isOnScreen(element) && element.isEnabled
+        #else
+        return isOnScreen(element) && element.isHittable
+        #endif
     }
 
     private func tap(_ label: String, contains: Bool = false) {
         let element = contains
             ? app.buttons.matching(NSPredicate(format: "label CONTAINS %@", label)).firstMatch
             : button(label)
+        tapElement(element, label: label)
+    }
+
+    private func tapElement(_ element: XCUIElement, label: String) {
+        #if targetEnvironment(macCatalyst)
+        app.activate()
+        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
+        #endif
         XCTAssertTrue(element.waitForExistence(timeout: 15), label)
         for _ in 0..<8 {
             // WebKit can fail the test when asked for an off-screen activation point.
-            if isOnScreen(element) && element.isHittable { break }
+            if isActionable(element) { break }
+            #if targetEnvironment(macCatalyst)
+            let above = element.frame.midY < app.windows["SceneWindow"].frame.minY
+            // Scroll inside the modal without relying on keyboard focus after inference.
+            app.windows["SceneWindow"].coordinate(withNormalizedOffset: CGVector(dx: 0.84, dy: 0.65))
+                .scroll(byDeltaX: 0, deltaY: above ? 380 : -380)
+            #else
             if element.frame.minY < 100 { app.webViews.firstMatch.swipeDown() }
             else { app.webViews.firstMatch.swipeUp() }
+            #endif
         }
-        XCTAssertTrue(isOnScreen(element) && element.isHittable, label)
+        XCTAssertTrue(isActionable(element), label)
+        #if targetEnvironment(macCatalyst)
+        element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).click()
+        #else
         element.tap()
+        #endif
     }
 
     private func visibleText(_ text: String) -> Bool {
-        app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@", text))
+        app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@ OR value CONTAINS[c] %@", text, text))
             .firstMatch.waitForExistence(timeout: 15)
     }
 
@@ -56,7 +112,11 @@ final class AppStoreUITests: XCTestCase {
     }
 
     private func capture(_ name: String, fullScreen: Bool = false) {
+        #if targetEnvironment(macCatalyst)
+        let attachment = XCTAttachment(screenshot: app.windows["SceneWindow"].screenshot())
+        #else
         let attachment = XCTAttachment(screenshot: fullScreen ? XCUIScreen.main.screenshot() : app.screenshot())
+        #endif
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
@@ -272,7 +332,7 @@ final class AppStoreUITests: XCTestCase {
     func test07IsolatedMacPhotoAndPersistence() throws {
         #if targetEnvironment(macCatalyst)
         let environment = ProcessInfo.processInfo.environment
-        guard environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4",
+        guard environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4.development",
               let photo = environment["CHMURNIK_QA_PHOTO"] else {
             throw XCTSkip("Run only through the isolated macOS QA test plan")
         }
@@ -280,13 +340,30 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertTrue(visibleText("Poznaj chmury nad sobą"))
         capture("mac-qa-home")
         tap("Wybierz zdjęcie nieba")
-        let open = app.buttons.matching(NSPredicate(format: "label IN %@", ["Otwórz", "Open"])).firstMatch
-        XCTAssertTrue(open.waitForExistence(timeout: 15), app.debugDescription)
+        let picker = app.sheets["open-panel"]
+        XCTAssertTrue(picker.waitForExistence(timeout: 15), app.debugDescription)
         app.typeKey("g", modifierFlags: [.command, .shift])
-        app.typeText(photo)
+        let pathField = app.textFields["PathTextField"]
+        XCTAssertTrue(pathField.waitForExistence(timeout: 15), app.debugDescription)
+        pathField.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).click()
+        pathField.typeKey("a", modifierFlags: [.command])
+        pathField.typeText(photo)
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", photo), object: pathField
+        )], timeout: 15), .completed, "The full fixture path must arrive before confirming Go To")
         app.typeKey(.return, modifierFlags: [])
-        XCTAssertTrue(open.isEnabled, app.debugDescription)
-        open.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "exists == false"), object: pathField
+        )], timeout: 15), .completed, "Go To must close before opening the selected file")
+        // Go To can highlight the file while the Open button remains disabled.
+        let selectedFile = app.textFields.matching(NSPredicate(
+            format: "value == %@", URL(fileURLWithPath: photo).lastPathComponent
+        )).firstMatch
+        XCTAssertTrue(selectedFile.waitForExistence(timeout: 15), app.debugDescription)
+        selectedFile.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).doubleClick()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "exists == false"), object: picker
+        )], timeout: 30), .completed, "The native picker must finish before waiting for cloud proposals")
         let proposal = button("Zaznacz proponowany fragment 1")
         XCTAssertTrue(proposal.waitForExistence(timeout: 90), app.debugDescription)
         capture("mac-qa-proposals")
@@ -299,12 +376,29 @@ final class AppStoreUITests: XCTestCase {
         capture("mac-qa-result")
         tap("Zapisz w Moim niebie")
         XCTAssertTrue(visibleText("Twoje rozpoznanie i notatki"))
+        let note = app.textViews["Notatka"].firstMatch
+        XCTAssertTrue(note.waitForExistence(timeout: 15), app.debugDescription)
+        let originalNote = try XCTUnwrap(note.value as? String)
+        XCTAssertTrue(originalNote.contains("Zachowano całe zdjęcie."))
+        let marker = "QA persistence \(UUID().uuidString)"
+        tapElement(note, label: "Notatka")
+        note.typeKey(.downArrow, modifierFlags: [.command])
+        app.typeText("\n" + marker)
+        let expectedNote = originalNote + "\n" + marker
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", expectedNote), object: note
+        )], timeout: 10), .completed, app.debugDescription)
+        tap("Zapisz zmiany")
+        XCTAssertTrue(visibleText("Zmiany zapisane. Oryginalny wynik modelu pozostał bez zmian."))
         app.terminate()
         app.launch()
         tap("Moje niebo")
         let observation = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Obserwacja bez rozpoznania")).firstMatch
         XCTAssertTrue(observation.waitForExistence(timeout: 15), app.debugDescription)
-        observation.tap()
+        tap("Obserwacja bez rozpoznania", contains: true)
+        XCTAssertTrue(note.waitForExistence(timeout: 15), app.debugDescription)
+        XCTAssertEqual(note.value as? String, expectedNote, "The newly saved observation must survive relaunch")
+        XCTAssertTrue(app.images.matching(NSPredicate(format: "label BEGINSWITH %@", "Własne zdjęcie nieba,")).firstMatch.waitForExistence(timeout: 15))
         tap("Szczegóły zapisanego wyniku")
         XCTAssertTrue(visibleText("3.0-ensemble-selected-region-experimental"))
         capture("mac-qa-restored-observation")
