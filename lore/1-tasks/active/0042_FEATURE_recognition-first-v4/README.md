@@ -46,6 +46,12 @@ canonical redirects pass, and the complete public browser harness passes. See
 verified SDK signatures, inherited screenshots and the remaining ML/hosting
 and wallpaper work. The existing daily monitor now includes both review states.
 
+Later September6 verification at16:37 UTC: Mac1.2 is READY_FOR_SALE /
+READY_FOR_DISTRIBUTION, downloadable=true and linked to the submitted build.
+The public Polish Mac storefront independently shows Version1.2 and the
+approved V4 notes. iOS/iPadOS1.2 remains WAITING_FOR_REVIEW. The older submission
+snapshot above is historical; no classifier upgrade or new Apple write occurred.
+
 The isolated native Mac photo/persistence XCTest passed on September6 at11:07
 CEST: one passed, zero failures/skips, including actual import, local inference,
 whole-photo save, keyboard-edited note and exact persistence after relaunch.

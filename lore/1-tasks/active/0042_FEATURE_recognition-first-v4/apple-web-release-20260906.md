@@ -2,9 +2,20 @@
 
 ## Verified Outcome
 
-The owner-authorized UI/content release is submitted, not approved or publicly
-released. Both App Store versions were read back as WAITING_FOR_REVIEW on
-September 6 at 11:39 CEST. Existing AFTER_APPROVAL publication behavior remains.
+The owner-authorized UI/content release is publicly available on Mac; iPhone/
+iPad1.2 remains in review waiting. Readback on September6 at16:37 UTC reports
+MAC_OS READY_FOR_SALE and IOS WAITING_FOR_REVIEW. The Mac version also reports
+READY_FOR_DISTRIBUTION and downloadable=true, with the exact submitted build
+relationship below. Existing AFTER_APPROVAL publication behavior remains.
+
+The public Polish [Mac App Store page](https://apps.apple.com/pl/app/chmurnik/id6782159027?platform=mac)
+was independently opened in the in-app browser. It shows "for Mac", "View in
+Mac App Store", "Version1.2", the complete approved V4 release notes and Poland.
+This is actual storefront confirmation, not merely successful processing.
+The iTunes lookup returned the iOS1.1 record despite entity=macSoftware, so that
+lookup must not override platform-specific App Store Connect and storefront
+evidence. No new submission, build, store metadata or distribution change was
+made during verification. The original submission history below is retained.
 
 | Platform | Version | Build | Source | Apple Processing |
 | --- | --- | --- | --- | --- |
@@ -148,7 +159,9 @@ and build numbers recorded above. Receipts are the respective
 The shared helper's `check` early exit was inspected before approved execution;
 no new build selection or submission occurred.
 
-- Await actual Apple review outcomes; do not label WAITING_FOR_REVIEW as live.
+- Await the iOS/iPadOS1.2 review outcome; do not label WAITING_FOR_REVIEW as live.
+  Mac1.2 is now verified publicly available in Poland; this is the UI/content
+  release with the original genus classifier, not a recognition-accuracy claim.
 - The root deployment is verified; existing-user service-worker migration on
   this domain was not captured before upload and is not newly certified here.
 - Continue classifier work from independent evidence, not further tuning to
