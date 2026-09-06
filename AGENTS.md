@@ -72,6 +72,12 @@ Writing production code without an active Lore task is forbidden.
   the approved social copy without sacrificing technical meaning, uncertainty,
   or scientific sources. Review the complete journey, not just reported phrases;
   present complete revised copy sets for review and preserve published SM packs.
+- On 2026-09-06 the owner explicitly separated the user-facing release from
+  classifier research. Ship verified copy, frontend, learning and photo-workflow
+  improvements without waiting for replacement genus-model weights. Keep the
+  current on-device classifier and truthful uncertainty; do not call this an
+  accuracy upgrade. Native QA, privacy and signing checks still apply. Research
+  quality gates remain mandatory before any later classifier replacement.
 - For wallpaper packs, the requested count means distinct visual motifs.
   Portrait and landscape exports of the same motif do not count as two
   designs. Label motif and file counts separately in galleries and bundles.

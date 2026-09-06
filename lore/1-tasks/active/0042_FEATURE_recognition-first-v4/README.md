@@ -21,6 +21,28 @@ history:
 
 ## Priority and Scope
 
+### September 6 Owner-Authorized Release Split
+
+The owner explicitly directed that classifier research must no longer hold up
+the copy, frontend and other verified improvements. Prepare Apple version1.2
+as the user-facing V4 release with the existing on-device genus ensemble;
+preserve the experimental selected-region limitation and separate cloud-area
+proposal model. Do not describe this as improved genus accuracy. Original
+classifier-quality and fresh-evidence gates remain open for a later model
+replacement and do not block this specifically authorized UI/content release.
+Native regression, privacy, preservation and distribution-signing requirements
+are unchanged. Keep this overall task open while those research/delivery
+requirements remain unfinished. Complete release copy is in
+`design/release-v4-ui-20260906.md`.
+
+The isolated native Mac photo/persistence XCTest passed on September6 at11:07
+CEST: one passed, zero failures/skips, including actual import, local inference,
+whole-photo save, keyboard-edited note and exact persistence after relaunch.
+The earlier initialization timeout was traced to an OS Enable UI Automation
+authentication request; no system security settings were changed. Evidence and
+the remaining release boundaries are in `native-and-copy-qa.md`. This removes
+that specific UI-release blocker, not the separate classifier research gates.
+
 First measure and improve recognition itself. Do not relabel improved copy,
 abstention, or more attractive results as improved classification accuracy.
 Then add automatic region proposals with tap selection, a comprehensible result,

@@ -548,3 +548,59 @@ coordinator; another attempt requires a new availability and session check.
 No native distribution archive, App Store upload, model replacement or new web
 publication was performed. Previously recorded manual persistence evidence
 remains separate from this failed unattended run.
+
+### September 6: Authentication Diagnosed And Native Persistence Test Passed
+
+The 10:54 CEST attempt, retained as
+`build/v4-isolated-mac-awake-3h-20260906.xcresult`, failed before the test body.
+Its exported system log identifies the prerequisite precisely: at10:54:31
+testmanagerd reported `Writer daemon requires authentication to enable
+automation mode`, followed by a LocalAuthentication request with the reason
+`Enable UI Automation`. XCTest timed out after60seconds waiting for that
+request. Runner authorization had already succeeded. This is stronger evidence
+than inferring a cause from the disabled Developer Mode flag or screen state.
+
+The owner then explicitly returned to approve Enable UI Automation. The next
+single test-without-building completed successfully at11:07 CEST:
+
+- Result: `build/v4-isolated-mac-owner-enables-20260906.xcresult`.
+- `test07IsolatedMacPhotoAndPersistence`: passed in99.5966seconds;
+  one passed, zero failed, zero skipped; xcodebuild exit0.
+- Actual development-signed, sandboxed `cloud.chmurnik.qa.v4.development`;
+  Mac mini arm64, macOS26.6.2 (25G83), current web bundle
+  `index-DRnTagjr.js` / `index-CNpHOjaI.css`.
+- Native file picker imported the public atlas fixture. The local proposal
+  and genus models ran; the selected-region result retained the version
+  `3.0-ensemble-selected-region-experimental` and unconfirmed status.
+- Saved the whole photograph, appended a unique note through keyboard input,
+  checked the save confirmation, terminated and relaunched the app, reopened
+  the observation and asserted the complete note and model version unchanged.
+- Four screenshot attachments were exported under
+  `build/v4-isolated-mac-owner-enables-20260906-attachments/`. Inspected the
+  result and restored-observation captures: the sticky modal header is covered,
+  Save is visible, the restored whole photograph and uncertainty remain shown.
+
+No assertions were weakened, no test was skipped and no production app data
+was used. The public fixture is not an independent recognition benchmark.
+The test's existing defer terminated only QA; the UI window was released to
+the host coordinator. No distribution archive or Apple upload is implied.
+
+Operational rule for subsequent sessions: a timed-out OS authentication prompt
+is an unmet test prerequisite, not a failed product assertion. Do not repeatedly
+rebuild, retry, restart services or ask the owner to unlock an already-unlocked
+screen. Diagnose the recorded request first; request user action only for an
+actual authentication prompt that is necessary for the next test. A completed
+XCTest result, not a dismissed prompt, is the acceptance evidence. This pass
+does not prove authorization persists after a reboot or session change.
+
+At the owner's explicit request, a bounded `caffeinate -di -t10800` assertion
+keeps system and display idle sleep off until approximately13:46 CEST. It
+self-expires and does not bypass manual screen locking. No login password was
+read or retained; Developer Mode, TCC and authentication settings were unchanged.
+
+After the native pass, repeated all272 JavaScript tests and the nine-module
+lesson audit successfully. Vite rebuilt the same `index-DRnTagjr.js` and
+`index-CNpHOjaI.css`; the source version1.2 metadata passes `plutil -lint`.
+These checks and the Mac persistence gate are marked complete in the release
+checklist. Distribution archives, current signing-profile verification and
+App Store processing/submission are still separate, unfinished steps.
