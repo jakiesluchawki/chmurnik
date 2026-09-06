@@ -2,7 +2,9 @@
 
 Declared before selecting or viewing the sample. This is a small review of
 label suitability, not a new accuracy benchmark or a replacement for model
-release gates. No reviewer has agreed or returned annotations yet.
+release gates. No reviewer has agreed or returned annotations yet. The owner
+received the private package on September 6, but explicitly deferred involving
+a meteorologist until an independent general-vision comparison is attempted.
 
 ## Fixed Selection
 
@@ -150,3 +152,19 @@ or another audited supervision source changes the evidence; predeclare the
 new development recipe and keep exposed regression sets distinct from a fresh
 confirmation set. Neither this pilot nor improved interface behavior satisfies
 the classifier release requirement.
+
+## Owner Delivery, September 6
+
+The owner explicitly authorized uploading `CHMURNIK-OCENA-ZDJEC-33.zip` to the
+connected Google Drive, owner-only. Reverified the layout2 SHA256 and all 37
+archive entries/CRC before upload: 33 neutral-ID photos, blank CSV, offline
+gallery, instructions and image receipts. No source-label key, private feedback
+or generated model answer is included. Drive readback confirms 1,118,685 bytes,
+application/zip, shared=false and the owner as the only permission grantee.
+The download URL was returned privately in the conversation, not published in
+the SM hub. No direct sharing with a third party occurred.
+
+The owner's subsequent priority is the separately predeclared
+`blind-vision-pilot.md`. Model-generated answers must not be imported as human
+reviews or copied into the still-blank reviewer archive. The archive's images,
+selection and checksum remain unchanged; no expert response is assumed.
