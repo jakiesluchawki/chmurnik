@@ -1,6 +1,11 @@
 import CoreML
+import CryptoKit
 import Foundation
 import Vision
+#if MAC_IMPORT_JPEG
+import ImageIO
+import UIKit
+#endif
 
 struct Input: Decodable {
     let id: String
@@ -12,10 +17,31 @@ struct Prediction: Encodable {
     let probabilities: [Double]
     let seconds: Double
     let bounds: [Double]
+    let inputSHA256: String
+    let inputByteCount: Int
 }
 
 enum ParityError: Error {
     case invalidArguments, invalidModel, invalidOutput, outputExists
+}
+
+func recognitionData(at url: URL) throws -> Data {
+    #if MAC_IMPORT_JPEG
+    let fileSize = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+    guard fileSize > 0, fileSize <= 30 * 1024 * 1024,
+          let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+          let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceThumbnailMaxPixelSize: 1800,
+          ] as CFDictionary),
+          let data = UIImage(cgImage: image).jpegData(compressionQuality: 0.86) else {
+        throw CloudImageError.unreadable
+    }
+    return data
+    #else
+    return try Data(contentsOf: url)
+    #endif
 }
 
 guard CommandLine.arguments.count == 4 else { throw ParityError.invalidArguments }
@@ -41,7 +67,8 @@ var predictions: [Prediction] = []
 for entry in inputs {
     let result: Prediction = try autoreleasepool {
         let started = CFAbsoluteTimeGetCurrent()
-        let original = try CloudImagePreprocessor.orientedImage(data: Data(contentsOf: URL(fileURLWithPath: entry.path)))
+        let data = try recognitionData(at: URL(fileURLWithPath: entry.path))
+        let original = try CloudImagePreprocessor.orientedImage(data: data)
         #if REFERENCE_BILINEAR
         let prepared = try ReferenceBilinear.modelInput(original, size: size, fraction: fraction)
         #else
@@ -60,7 +87,9 @@ for entry in inputs {
         let bounds = prepared.bounds
         return Prediction(id: entry.id, probabilities: probabilities,
                           seconds: CFAbsoluteTimeGetCurrent() - started,
-                          bounds: [bounds.minX, bounds.minY, bounds.width, bounds.height])
+                          bounds: [bounds.minX, bounds.minY, bounds.width, bounds.height],
+                          inputSHA256: SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined(),
+                          inputByteCount: data.count)
     }
     predictions.append(result)
 }

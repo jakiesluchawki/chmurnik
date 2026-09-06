@@ -5,6 +5,7 @@ import UniformTypeIdentifiers
 struct ImageFixture: Decodable {
     let input: String
     let output: String
+    let maximumSide: Int?
 }
 
 if CommandLine.arguments.count == 2 && CommandLine.arguments[1] == "--invalid-inputs" {
@@ -28,15 +29,18 @@ if CommandLine.arguments.count == 2 && CommandLine.arguments[1] == "--invalid-in
 if CommandLine.arguments.count == 3 && CommandLine.arguments[1] == "--images" {
     let fixtures = try JSONDecoder().decode([ImageFixture].self, from: Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[2])))
     for fixture in fixtures {
-        guard !FileManager.default.fileExists(atPath: fixture.output) else { throw CloudImageError.invalidGeometry }
-        let original = try CloudImagePreprocessor.orientedImage(data: Data(contentsOf: URL(fileURLWithPath: fixture.input)))
-        let prepared = try ReferenceBilinear.modelInput(original, size: 224, fraction: 0.902)
-        guard let destination = CGImageDestinationCreateWithURL(URL(fileURLWithPath: fixture.output) as CFURL,
-                                                               UTType.png.identifier as CFString, 1, nil) else {
-            throw CloudImageError.unreadable
+        try autoreleasepool {
+            guard !FileManager.default.fileExists(atPath: fixture.output) else { throw CloudImageError.invalidGeometry }
+            let original = try CloudImagePreprocessor.orientedImage(data: Data(contentsOf: URL(fileURLWithPath: fixture.input)),
+                                                                   maximumSide: fixture.maximumSide ?? 1800)
+            let prepared = try ReferenceBilinear.modelInput(original, size: 224, fraction: 0.902)
+            guard let destination = CGImageDestinationCreateWithURL(URL(fileURLWithPath: fixture.output) as CFURL,
+                                                                   UTType.png.identifier as CFString, 1, nil) else {
+                throw CloudImageError.unreadable
+            }
+            CGImageDestinationAddImage(destination, prepared.image, nil)
+            guard CGImageDestinationFinalize(destination) else { throw CloudImageError.unreadable }
         }
-        CGImageDestinationAddImage(destination, prepared.image, nil)
-        guard CGImageDestinationFinalize(destination) else { throw CloudImageError.unreadable }
     }
     print("Prepared \(fixtures.count) image fixtures")
     exit(0)

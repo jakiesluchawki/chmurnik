@@ -612,3 +612,21 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   limits remain open. See `native-resampling-probe.md` for full receipts and
   the separately verified Apple-status readback. At 13:29 UTC both 1.2
   platforms remain WAITING_FOR_REVIEW with VALID builds; no new submission.
+- Extended input checks through 12MP originals: all 48 direct/reference cases
+  match at the 4096px cap, but a fresh-process comparison measured about 246MB
+  versus 64MB at 1800px, before ML. Keep the production memory cap. Actual
+  UIKit JPEG .86 import fails candidate parity on four non-tie validation
+  cases; the earlier unencoded reference pass is not whole-app input parity.
+  See `large-image-input-probe.md` for independent checks and preserved reports.
+- Completed one predeclared imported-training trial on 2325 training and
+  452 validation photos, with frozen labels, groups, quality weights and
+  hyperparameters. Exact Mac-import receipt checks passed for all photos;
+  452 validation encodings match the previous native runner byte-for-byte.
+  The head improves imported-input Torch top-1 from 286 to 289/452, but raw
+  macro-F1 regresses from .644547 to .642533. Admission fails; no calibration,
+  holdout evaluation or model replacement follows. All 225 ML/tooling tests
+  pass, along with 327 RGB, 96 smaller PNG/EXIF and nine invalid-input cases.
+  Research scripts and receipts preserve both negative findings. No shipped
+  code, app weights, Apple submission, domain or privacy settings changed.
+  See `mac-import-training-probe.md`. This goal remains active; the current
+  classifier's reliability and fresh-evidence requirements are not satisfied.
