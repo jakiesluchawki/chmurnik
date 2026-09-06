@@ -16,6 +16,8 @@ The iTunes lookup returned the iOS1.1 record despite entity=macSoftware, so that
 lookup must not override platform-specific App Store Connect and storefront
 evidence. No new submission, build, store metadata or distribution change was
 made during verification. The original submission history below is retained.
+After the full ML run, a final iOS GET at17:09:41 UTC still confirms
+WAITING_FOR_REVIEW and the same VALID build20260906092043.
 
 | Platform | Version | Build | Source | Apple Processing |
 | --- | --- | --- | --- | --- |

@@ -178,6 +178,19 @@ That earlier approval does not establish recognition-first V4 acceptance.
 
 ## Worklog
 
+- September 6: completed the frozen local Qwen3-VL4B 4-bit trial on all 452
+  validation images. It achieved 138/452 (30.53%, macro-F1 0.311565) versus
+  DINO control 290/452 (64.16%, 0.644547), with 91 refusals and 17 paired gains
+  versus 169 regressions. Duplicate grouping and independent recalculation
+  confirm the loss. Reject this recipe, preserve the current app classifier
+  and all release gates; no holdout, prompt search or expert outreach.
+  The isolated runtime required MLX0.32.0 instead of a failing0.32.2 smoke test;
+  no vendor code or host security setting changed. All246 ML tests passed.
+  See `local-vlm-probe.md` and `local-vlm-evaluation.json` for full evidence.
+  Independently confirmed Mac1.2 publicly available in Poland; iOS1.2 remains
+  WAITING_FOR_REVIEW. This makes the prior goal work progress, not a blocked
+  or completed goal; the original model-improvement requirement remains open.
+
 Ongoing details and benchmark contracts belong in this task, not the wiki.
 
 - Reproduced loss of all30 downloaded atlas photos across the actual old-to-new

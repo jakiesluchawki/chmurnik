@@ -94,3 +94,65 @@ cloud identification, and it is retained without adjusting the prompt. Runtime
 success only permits the fixed452-image validation. The macOS process RSS
 counter (632,438,784 bytes) does not include all GPU/shared allocations; it must
 not be presented as total model memory. Both counters are retained separately.
+
+## Complete Result And Decision
+
+The frozen runner was committed as `ccb9c8d` before photo inference. The process
+completed all 452 rows with exit 0 using MLX/MLX-Metal 0.32.0. There were no
+photo retries, prompt revisions, vendor-code patches, selected subsets or
+unfinished rows. The unchanged package/input hashes and all row identities
+were checked again afterwards. An independent scikit-learn calculation agrees
+with both raw and grouped accuracy and macro-F1 to within 1e-12.
+
+| Population | DINO Control | Local Qwen | DINO Macro-F1 | Qwen Macro-F1 |
+| --- | --- | --- | --- | --- |
+| All 452 validation rows | 290 (64.16%) | 138 (30.53%) | 0.644547 | 0.311565 |
+| 449 duplicate groups | 287 (63.92%) | 135 (30.07%) | 0.642974 | 0.308538 |
+
+Qwen returned 361 valid genus/clear codes and 91 explicit refusals, with zero
+malformed responses. Refusals remain in the denominator. Of the answered rows,
+138/361 (38.23%) agree with source labels, so removing refusals would not rescue
+the result. There are 17 paired gains and 169 regressions against the control.
+
+| Genus | Rows | DINO Correct | Qwen Correct |
+| --- | --- | --- | --- |
+| Cirrus | 30 | 18 | 17 |
+| Cirrocumulus | 46 | 29 | 20 |
+| Cirrostratus | 48 | 33 | 2 |
+| Altocumulus | 43 | 22 | 7 |
+| Altostratus | 37 | 20 | 0 |
+| Nimbostratus | 44 | 27 | 25 |
+| Stratocumulus | 57 | 37 | 0 |
+| Stratus | 35 | 17 | 2 |
+| Cumulus | 36 | 27 | 14 |
+| Cumulonimbus | 46 | 30 | 26 |
+| Clear sky | 30 | 30 | 25 |
+
+The loss occurs in both cloud sources: CCSN 87/288 versus 182/288 and IMGW
+36/144 versus 88/144. The separate clear source is 15/20 versus 20/20. This is
+source-label agreement, not independently certified meteorological accuracy.
+All 11 classes remain in per-source macro-F1, even when absent from a source;
+those per-source macro scores must not be interpreted as present-class averages.
+
+Generation took 898.97 seconds in aggregate, median 2.054 seconds per image,
+excluding image preparation and model loading. Peak MLX allocation was
+3,715,235,264 bytes (about 3.46 GiB); process RSS counter was 692,731,904 bytes
+and is not a total GPU-memory measure. These are host measurements, not phone
+performance or battery tests. The 3.09 GB weights are not an app-size estimate.
+
+**Reject this strategy for advancement.** It loses on both preregistered metrics
+and every class. Do not calibrate it, open holdouts, search prompts on the same
+evaluation, or replace the shipped classifier. A different model/runtime or
+strategy needs its own justified, frozen protocol. Quantized-versus-original
+parity remains unverified; the result does not prove that every VLM fails or
+that all disagreement is a model error. It does disprove using this measured
+local recipe as the promised accuracy improvement.
+
+Aggregate report: `local-vlm-evaluation.json`, SHA256
+`193cb2a88e3066099170cc27fc66669ad993505476ccd2ddb6007d54e528981a`.
+Local raw receipts: `.local/v4/local-vlm-20260906/validation-results.json`, SHA256
+`52db6d718905fcee1d1756da548f1eb0b1559d48391905e7867122065c85f5f4`.
+Comparison key SHA256:
+`a3f873684c1fdc41cb4bbf72d7e816b96649f21e275f96727b7c10fc5e9dc33f`.
+All 246 ML tests passed before inference. No product source, Apple build,
+photo transmission or expert outreach occurred. The overall goal remains active.
