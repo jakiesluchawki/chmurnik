@@ -183,6 +183,10 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   `offline-upgrade-preservation.md` for exact artifacts, retained negative
   results and browser-fixture limitations. No classifier or Apple submission
   changed; this is concrete preservation progress, not goal completion.
+  Published13dd8f4 to Pages and verified81 application files, five unchanged
+  galleries,18 downloadable ZIPs and the complete live browser harness. The
+  private Cyber_Folks ZIP was updated under the same owner-only link and
+  awaits owner upload; the root domain is not claimed to contain this patch.
 
 - Created the frozen manifest and measured both actual bundled Core ML packages.
   Native renderer parity is still pending; see `experiment-contract.md`.

@@ -104,7 +104,21 @@ size and unshared state, but exposes no remote content checksum. The private
 receipt is `.local/v4/web-delivery-offline-20260906.json`. Cyber_Folks upload
 remains the owner's action; this new ZIP has not been verified on that domain.
 
-Pages publication will be recorded after readback. Existing
+Pages13dd8f4 was published successfully by the existing workflow:
+https://github.com/jakiesluchawki/chmurnik/actions/runs/34044629016
+Its own279-test suite, lesson audit and build pass. At16:13:09 UTC, public
+readback verifies all81 public application files against the final Pages
+build, all five gallery entry files unchanged and all18 prior social ZIPs
+available with nonzero lengths. No social source files differ from7a1d618.
+The repeated full browser harness also passes on the actual public Pages
+deployment; its mobile screenshot was inspected. Live receipts:
+`build/v4-offline-preservation-pages-live.json` (SHA256
+`c483608b9509b187ad0e3e0cb7e518b9c01b1ea72b2ebda04b42639ac3479aa1`)
+and `build/v4-offline-preservation-pages-live-ui/`. These checks do not claim
+the root-domain package has been uploaded or overwrite the previous root
+verification record. This goal turn made concrete progress; no blocked streak.
+
+Existing
 Apple1.2 submissions are unchanged and do not contain this later web patch.
 The previous verified dialog-focus source patch is included in the new web
 bundle. All existing social assets remain outside this change. The overall

@@ -133,6 +133,14 @@ UI tests or automatic submission. No duplicate automation was created.
 
 ## Remaining Work
 
+Later September6 web-only patch13dd8f4 is published and verified on Pages.
+It fixes downloaded-atlas preservation during updates, offline logo/italic
+availability and includes the earlier keyboard-focus repair. Apple1.2 is
+unchanged. A new private root ZIP under the same link requires a separate
+owner upload; do not confuse the earlier verified7a1d618 root deployment
+with this later package. See `offline-upgrade-preservation.md` for the real
+old-to-new tests, exact live/ZIP receipts and browser-fixture limitations.
+
 Read-only recheck on September 6: iOS at 13:29:18.904 UTC and macOS at
 13:29:44.824 UTC both remain WAITING_FOR_REVIEW, with the same VALID build IDs
 and build numbers recorded above. Receipts are the respective
