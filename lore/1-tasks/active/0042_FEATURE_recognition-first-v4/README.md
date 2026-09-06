@@ -643,3 +643,14 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   The unknown source-training overlap prevents an independent accuracy claim.
   See `genera-source-probe.md` for the protocol, complete source breakdown,
   numeric replay limits and retained artifact hashes. This goal remains active.
+- Completed the predeclared small-context/mirror study of the current kernel
+  candidate on452 validation photos. Center control reproduces with no top-1
+  differences. The fixed six-view mean regresses290->285 correct and
+  macro-F1 .644547->.633034; reject without retuning or holdout access.
+  All-six-stable predictions include96 wrong answers out of336; consistency
+  is not a correctness certificate. Independent receipt/metric replay verifies
+  all452 source files,2712 input tensors and both raw/grouped source results.
+  Five focused and all240 ML/tooling tests pass. No production classifier,
+  application release, privacy setting or expert-outreach change occurred.
+  See `context-stability-probe.md` for the fixed protocol, complete results,
+  timing and immutable hashes. Goal remains active; reliability gates are open.
