@@ -178,6 +178,15 @@ That earlier approval does not establish recognition-first V4 acceptance.
 
 ## Worklog
 
+- September6: verified the owner's offline root ZIP upload (81 byte-identical
+  public files, complete browser regression and30/30 downloaded atlas photos
+  offline). Then reproduced and fixed the daily exercise's answer-name leak
+  in its adjacent training button. All280 JS tests, nine lessons and61 links
+  pass; both production variants and public Pages pass the full UI harness.
+  Pages2ed1e58 is live with all galleries preserved; the same private Drive
+  link now carries the exercise ZIP for a separate owner upload. No classifier
+  or Apple release changed. See `daily-answer-qa.md`. Goal remains active.
+
 - September 6: completed the frozen local Qwen3-VL4B 4-bit trial on all 452
   validation images. It achieved 138/452 (30.53%, macro-F1 0.311565) versus
   DINO control 290/452 (64.16%, 0.644547), with 91 refusals and 17 paired gains

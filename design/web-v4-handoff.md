@@ -14,6 +14,9 @@ bajtów). Zastąpiła plik o 20:20 czasu polskiego. Uprawnienia i folder pozosta
 niezmienione. Ta poprawka wymaga osobnego wgrania do Cyber_Folks.
 
 Build domeny: `index-DGckzKHS.js`; build Pages: `index-BwGsoViE.js`.
+GitHub Pages opublikowano z `2ed1e58`; publiczny test ćwiczenia i pozostałych
+funkcji przeszedł. Wszystkie 81 plików aplikacji zgadza się z buildem, galerie
+i 18 istniejących archiwów SM są zachowane.
 280 testów i audyt dziewięciu lekcji przeszły, podobnie pełne testy obu wariantów
 w przeglądarce. Modele i wersje Apple nie zostały zmienione.
 

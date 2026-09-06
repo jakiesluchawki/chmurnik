@@ -1,5 +1,14 @@
 # Daily Answer Concealment: September 6
 
+Published as2ed1e58 on GitHub Pages. Workflow34051522326 succeeded:
+https://github.com/jakiesluchawki/chmurnik/actions/runs/34051522326
+Public readback matches all81 application files; all five gallery entry files
+remain identical and18 social ZIPs remain available. The full browser harness
+passes again against the public Pages URL, including conceal/reveal/hide and
+follow-up training. Receipts: `build/v4-daily-answer-pages-live.json` and
+`build/v4-daily-answer-pages-live-ui/`. Cyber_Folks still needs the owner's
+new exercise ZIP upload; the previous offline ZIP upload was verified below.
+
 The owner reported that the daily exercise concealed the answer but disclosed
 the genus in its adjacent training button. The real HomePage rendering test
 reproduced the exact Stratocumulus leak before the fix. Render that targeted
