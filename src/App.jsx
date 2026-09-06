@@ -243,10 +243,13 @@ function useDialogFocus(onClose, focusFirstControl = true) {
 
       const first = focusable[0];
       const last = focusable.at(-1);
-      if (event.shiftKey && document.activeElement === first) {
+      const active = document.activeElement;
+      // Some dialogs initially focus their container to announce the heading.
+      const needsEntry = active === dialog || !dialog.contains(active);
+      if (event.shiftKey && (active === first || needsEntry)) {
         event.preventDefault();
         last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
+      } else if (!event.shiftKey && (active === last || needsEntry)) {
         event.preventDefault();
         first.focus();
       }

@@ -562,3 +562,12 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   now confirmed; no additional upload is needed for this package. This does
   not validate an old-to-new root service-worker transition or improve the
   failed classifier gate. See `apple-web-release-20260906.md` for evidence.
+- Reproduced and fixed a keyboard escape in the shared dialog focus handler:
+  initial Shift+Tab and recovery after lost focus no longer enter the page
+  behind onboarding/photo recognition. All 56 final Chromium/WebKit checks
+  pass, including nested source dialogs and focus/scroll restoration. All 273
+  app tests, nine lesson audits, the repeated photo fixture flow and the
+  separate production browser harness pass. This is an unpublished source
+  patch for the next release, not part of Apple 1.2 or the owner's newly
+  updated root deployment. Model weights and quality gates remain unchanged.
+  See `dialog-focus-qa.md` for the negative reproduction and exact QA scope.

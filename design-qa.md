@@ -1,5 +1,19 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-06: Dialog Keyboard Patch, Not Yet Published
+
+- Reproduced focus escaping behind newly opened onboarding/photo dialogs on
+  Shift+Tab. The shared handler now enters the first/last control correctly
+  from the container or after lost focus. No visual redesign or copy change.
+- Chromium and WebKit each pass 28 focused checks across 390/1440 widths,
+  including nested atlas sources, Escape, trigger focus and scroll restoration.
+  Inspected the before/final wide photo screenshots; focus is now inside.
+- All 273 app tests, nine lesson audits, repeated photo fixture workflow,
+  production build and full production browser harness pass. No JS/CSP errors.
+- This patch is not yet in the Apple 1.2 submission or live website. It does not
+  certify native VoiceOver, physical cameras, large text or model accuracy.
+  Evidence: `lore/1-tasks/active/0042_FEATURE_recognition-first-v4/dialog-focus-qa.md`.
+
 ## 2026-09-05: Recognition-First V4 In Progress
 
 - Approved pink/olive/violet, Romie/Roobert, felt artwork and licensed atlas
