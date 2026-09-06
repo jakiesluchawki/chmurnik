@@ -687,3 +687,16 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   application release, privacy setting or expert-outreach change occurred.
   See `context-stability-probe.md` for the fixed protocol, complete results,
   timing and immutable hashes. Goal remains active; reliability gates are open.
+- Completed a fixed, training-only density-support trust-score probe without
+  changing the DINO candidate's genus predictions. On 420 unique cloud
+  validation photos, correctness AUC regresses .711886 -> .603240 and the
+  highest-ranked 42 cases fall 39 -> 32 correct. Independent SciPy tree replay
+  matches every score within 2.11e-15. Reject without tuning or holdout access;
+  see `trust-score-probe.md` and the retained aggregate report.
+- Audited the historical confidence-grid cap with exact boundary enumeration
+  on existing calibration predictions only. Of 54747 supported threshold pairs,
+  none reaches 90%; maximum is 35/41 = 85.37%. This closes the grid-limitation
+  explanation for the current failed candidate, without relaxing requirements
+  or changing production code. See `policy-grid-audit.md`. The overall goal
+  remains active; no app weights, Apple release, web package, privacy setting
+  or owner-deferred expert review changed in these two investigations.

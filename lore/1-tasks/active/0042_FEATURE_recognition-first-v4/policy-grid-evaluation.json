@@ -1,0 +1,32 @@
+{
+  "recipe_sha256": "3081f6faebba37a2861a8e0701b19edf6c98e4601758b2a7d1149de27f404a4f",
+  "calibration_cloud_count": 260,
+  "historical_grid": {
+    "minimum_confidence": 0.22,
+    "margin_threshold": 0.02,
+    "precision": 0.5423728813559322,
+    "coverage": 0.9076923076923077,
+    "accepted_count": 236,
+    "target_precision": 0.9,
+    "target_met": false
+  },
+  "exact_boundaries": {
+    "target": 0.9,
+    "minimum_accepted_count": 25,
+    "target_met": false,
+    "selected": null,
+    "maximum_supported_precision": {
+      "minimum_confidence": 0.2,
+      "margin_threshold": 0.8586264476180077,
+      "accepted_count": 41,
+      "correct": 35,
+      "precision": 0.8536585365853658,
+      "coverage": 0.1576923076923077
+    },
+    "distinct_confidence_boundaries": 255,
+    "distinct_margin_boundaries": 261,
+    "supported_threshold_pairs": 54747
+  },
+  "release_approved": false,
+  "test_labels_evaluated": false
+}
