@@ -743,3 +743,18 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   No shipped model, web package, Apple state or owner-deferred expert-review
   decision changed. The goal remains active; this completed representation
   experiment rules out a distinct hypothesis, not the reliability requirement.
+- Completed the fixed source-within-class balancing trial on the unchanged
+  Small features and frozen OOF factors. Original class-balanced training still
+  gave CCSN61-80% influence in each cloud class; equalizing available sources
+  regresses290->279/452 and macro-F1 .644547->.617689 (6gains,17regressions).
+  Both CCSN182->173 and IMGW88->86 decline, so reject without source-ratio
+  tuning, calibration, holdouts or export. Control logits reproduce exactly.
+  Independent NumPy/SciPy normal-equation refits match within2.59e-11 and verify
+  all36 population reports and source/class influence. Seven focused and
+  all291 ML/tooling tests pass. See `source-balance-probe.md` and
+  `source-balance-result.md`. No app weights, web package or expert-outreach
+  decision changed. The goal remains active; this is a completed negative
+  learning-hypothesis result, not an accuracy improvement or a verified wait.
+  Read-only Apple checks at19:31UTC(iOS) and19:34UTC(Mac) still show
+  WAITING_FOR_REVIEW and READY_FOR_SALE respectively, with both submitted
+  builds VALID. No release status was inferred from a local artifact alone.

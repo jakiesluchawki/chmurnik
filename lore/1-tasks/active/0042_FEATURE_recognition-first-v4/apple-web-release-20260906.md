@@ -176,3 +176,11 @@ Mac1.2 remains READY_FOR_SALE with build20260906093223. Both exact submitted
 build IDs are still VALID. The inspected helper's `check` exits before any
 remote write; no build selection or resubmission occurred. Current readbacks
 are the respective `.local/releases/apple-0042-20260906/{ios,macos}/processing-check.json`.
+
+September6 read-only recheck at19:31:47.333UTC(iOS) and19:34:42.008UTC(macOS):
+iOS1.2 remains WAITING_FOR_REVIEW and Mac1.2 remains READY_FOR_SALE. The queried
+submitted builds20260906092043 and20260906093223 both remain VALID, with the
+same build IDs. Before execution, both the local `check` early exit and its
+imported API helper were inspected; only authenticated GETs and local receipts
+were used. No build selection, resubmission or other Apple write occurred.
+This is an unchanged external release state, not model-research completion.
