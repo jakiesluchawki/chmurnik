@@ -42,7 +42,11 @@ for entry in inputs {
     let result: Prediction = try autoreleasepool {
         let started = CFAbsoluteTimeGetCurrent()
         let original = try CloudImagePreprocessor.orientedImage(data: Data(contentsOf: URL(fileURLWithPath: entry.path)))
+        #if REFERENCE_BILINEAR
+        let prepared = try ReferenceBilinear.modelInput(original, size: size, fraction: fraction)
+        #else
         let prepared = try CloudImagePreprocessor.modelInput(original, size: size, fraction: fraction)
+        #endif
         let request = VNCoreMLRequest(model: vision)
         request.imageCropAndScaleOption = .scaleFill
         try VNImageRequestHandler(cgImage: prepared.image, options: [:]).perform([request])

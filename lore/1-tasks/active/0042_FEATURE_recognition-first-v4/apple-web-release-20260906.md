@@ -133,6 +133,13 @@ UI tests or automatic submission. No duplicate automation was created.
 
 ## Remaining Work
 
+Read-only recheck on September 6: iOS at 13:29:18.904 UTC and macOS at
+13:29:44.824 UTC both remain WAITING_FOR_REVIEW, with the same VALID build IDs
+and build numbers recorded above. Receipts are the respective
+`.local/releases/apple-0042-20260906/{ios,macos}/processing-check.json` files.
+The shared helper's `check` early exit was inspected before approved execution;
+no new build selection or submission occurred.
+
 - Await actual Apple review outcomes; do not label WAITING_FOR_REVIEW as live.
 - The root deployment is verified; existing-user service-worker migration on
   this domain was not captured before upload and is not newly certified here.

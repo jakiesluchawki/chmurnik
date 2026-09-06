@@ -600,3 +600,15 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
 - The owner explicitly deferred involving the meteorologist again on
   September6. Continue independent technical work; do not contact the reviewer
   or substitute model/self-assessments for independent human annotations.
+- Isolated a Pillow-compatible native bilinear reference without changing any
+  production source or model. All 327 raw RGB and 96 complete lossless/EXIF
+  fixtures match exactly; nine invalid inputs are rejected. On the same 452
+  original validation photographs, non-tie Torch/native disagreements fall
+  from three to zero under the unchanged .05 margin. Seven near-tie switches
+  and maximum probability error .070827 remain; this passes the existing
+  native decision gate, not strict whole-pipeline numeric equality or cloud
+  reliability. All 217 existing ML/tooling tests pass. The owner-deferred
+  expert review, failed classifier coverage gate and physical format/device
+  limits remain open. See `native-resampling-probe.md` for full receipts and
+  the separately verified Apple-status readback. At 13:29 UTC both 1.2
+  platforms remain WAITING_FOR_REVIEW with VALID builds; no new submission.
