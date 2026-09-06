@@ -31,7 +31,7 @@ class StableFeatureRBF(nn.Module):
     def forward(self, features):
         values = (features - self.mean) / self.scale
         distance = (values.square().sum(1, keepdim=True) + self.support_norm
-                    - 2 * values @ self.support.T).clamp_min(0)
+                    - 2 * values @ self.support.T).clamp_min(0.0)
         kernel = (-self.gamma * distance).exp()
         center = kernel.mean(1, keepdim=True)
         # Remove the large common term before summing opposing coefficients.

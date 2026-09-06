@@ -581,3 +581,22 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   fitting, re-labelling, recalibration, model replacement or new publication.
   See `noaa-diagnostic.md` for the source audit, numeric cross-check, two
   remaining low-cloud errors and access restrictions of other checked sources.
+- Audited all23 full-size NWS Key West low-cloud examples and100,004 reuse
+  pairs against the frozen manifest. No reuse flags, but image-level Jim W.
+  Lee copyright notices prevent assuming unrestricted training permission;
+  preserve mixed/alternative source categories and do not admit or publish
+  the collection. No model predictions or training used these photographs.
+- Fixed an ATEN/Core ML kernel conversion failure caused by an integer clamp
+  bound; the focused test fails before and passes after the equivalent0.0
+  correction. Added export/checkpoint binding and complete probability
+  receipts to both verifiers. All217 ML/tooling tests pass. On all452 validation
+  inputs, FLOAT16 fails numeric parity (maximum error.12690,23 non-tie changes),
+  while FLOAT32 passes (maximum.00003469,zero changes), with a101.3MB research
+  package. Original-photo native processing still fails with three non-tie
+  changes; a seven-photo diagnostic separates small decoding/resampling
+  differences from conversion. No production weights/helper, fit, gate,
+  application release or Apple submission changed. See
+  `coreml-reliability-parity.md`; classifier reliability remains unfinished.
+- The owner explicitly deferred involving the meteorologist again on
+  September6. Continue independent technical work; do not contact the reviewer
+  or substitute model/self-assessments for independent human annotations.

@@ -147,6 +147,7 @@ def main() -> None:
     metadata["training_data_doi"] = "10.7910/DVN/CADDPD"
     metadata["training_data_sources"] = json.dumps(data_sources)
     metadata["export_precision"] = args.precision
+    metadata["checkpoint_sha256"] = hashlib.sha256(checkpoint_path.read_bytes()).hexdigest()
     metadata["probability_mode"] = "softmax"
     metadata["architecture"] = checkpoint.get("architecture", "mobilenet_v3_small")
     metadata["input_size"] = str(input_size)
