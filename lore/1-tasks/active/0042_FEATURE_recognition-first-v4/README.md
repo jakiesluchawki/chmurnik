@@ -720,3 +720,14 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   still show Mac1.2 READY_FOR_SALE and iOS1.2 WAITING_FOR_REVIEW, both VALID.
   This goal turn makes research progress; model reliability/fresh-evidence
   requirements remain open and no expert contact or host changes occurred.
+- Completed the fixed Howard-Cloud-X v2 source audit: 1,421 files, 1,419
+  supported single-frame photos and 1,291 unique pixel hashes. It contains
+  36 exact-pixel groups with conflicting singleton labels and 37 source test
+  photos duplicated in training. Visible stock/copyright marks contradict
+  treating the CC0 card alone as adequate provenance evidence. Reject automatic
+  training/fresh-test admission; no predictions or label changes were made.
+  Independent replay confirms all 6,184,002 reference comparisons and exact
+  internal conflicts. Nine focused and all 276 ML/tooling tests pass. See
+  `howard-source-audit.md` for scope, visual evidence and preserved receipts.
+  Model reliability remains open; this negative source result changes the
+  next data-admission decision without weakening the release gate.
