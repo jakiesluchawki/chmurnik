@@ -6,8 +6,8 @@ Public readback matches all81 application files; all five gallery entry files
 remain identical and18 social ZIPs remain available. The full browser harness
 passes again against the public Pages URL, including conceal/reveal/hide and
 follow-up training. Receipts: `build/v4-daily-answer-pages-live.json` and
-`build/v4-daily-answer-pages-live-ui/`. Cyber_Folks still needs the owner's
-new exercise ZIP upload; the previous offline ZIP upload was verified below.
+`build/v4-daily-answer-pages-live-ui/`. The owner's latest exercise ZIP upload
+to Cyber_Folks is now verified as recorded below.
 
 The owner reported that the daily exercise concealed the answer but disclosed
 the genus in its adjacent training button. The real HomePage rendering test
@@ -31,8 +31,29 @@ Root ZIP: `build/CHMURNIK-WWW-V4-CYBERFOLKS-CWICZENIE-20260906.zip`,22,779,759
 bytes, SHA256 `de4980fbfe9a81dc765d17c1d502d648065547bb57272dab92351454f9fe876e`.
 CRC validation passes. At18:20:49UTC it replaced the existing private Drive ZIP;
 metadata readback confirms name, size, same parent and owner-only permission.
-No remote checksum is exposed by the connector. Root upload is the owner's
-separate action; this newer exercise patch is not yet verified on Cyber_Folks.
+No remote checksum is exposed by the connector. The owner subsequently uploaded
+this exercise patch to Cyber_Folks; public file hashes match the local release.
+
+## Latest Owner Upload Verified
+
+At 18:31:10 UTC (20:31 in Poland), all 81 public files on chmurnik.cloud match
+the exercise release byte-for-byte. Security and cache headers match the
+package; HTTP and www redirect to the canonical HTTPS root. Public access to
+`.htaccess` returns 403. Receipt:
+`build/v4-cyberfolks-daily-live-20260906-files.json`.
+
+The complete public browser harness passes, including daily conceal/reveal/
+hide and follow-up training, photo journal and backups, lessons, atlas,
+METAR/TAF, wind, maps and 42 route/viewport visits. No JS/CSP errors or horizontal
+overflow. Visually inspected the concealed daily card. Evidence:
+`build/v4-cyberfolks-daily-live-ui/`.
+
+A fresh isolated Chromium profile downloads the atlas and reloads offline.
+The HTML navigation comes from the service worker; all 33 checked resources
+(HTML, 30 atlas photos, logo and italic font) match the release hashes.
+Cache: `chmurnik-9103765fb00b`; no page errors. Receipt: `offline-smoke.json`
+in the same browser output directory. This does not certify an existing owner
+profile or physical Safari. No additional owner upload is needed.
 
 ## Owner's Previous Upload Verified
 

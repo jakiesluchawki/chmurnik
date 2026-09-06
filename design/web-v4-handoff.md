@@ -2,16 +2,24 @@
 
 ## Poprawka Ćwiczenia, 6 Września Wieczorem
 
-Potwierdzono Twoje wgranie poprzedniej paczki offline: 6 września o 20:02
-czasu polskiego wszystkie 81 publicznych plików na chmurnik.cloud było
-identycznych z paczką. Test funkcji, układu i pobranego atlasu offline przeszedł.
+Potwierdzono wgranie najnowszej paczki z poprawką ćwiczenia: 6 września
+o 20:31 czasu polskiego wszystkie 81 publicznych plików na chmurnik.cloud było
+identycznych z paczką. Test ćwiczenia, pozostałych funkcji, układu i pobranego
+atlasu offline przeszedł. Nie trzeba ponownie wgrywać plików.
 
 Późniejsza, mała poprawka usuwa podpowiedź z ćwiczenia: przycisk z nazwą chmury
 pojawia się dopiero po odsłonięciu odpowiedzi. Nowa paczka jest pod
 [tym samym prywatnym linkiem na Dysku](https://drive.google.com/file/d/1dKNT_GPExwtf9P2uqcm3h2enE96wCYVC/view),
 teraz jako `CHMURNIK-WWW-V4-CyberFolks-2026-09-06-cwiczenie.zip` (22 779 759
 bajtów). Zastąpiła plik o 20:20 czasu polskiego. Uprawnienia i folder pozostają
-niezmienione. Ta poprawka wymaga osobnego wgrania do Cyber_Folks.
+niezmienione. Osobne wgranie do Cyber_Folks zostało wykonane i zweryfikowane.
+
+Przed odsłonięciem odpowiedzi nazwa chmury i przycisk ćwiczenia danego rodzaju
+są ukryte; pojawiają się po odsłonięciu i znikają po ponownym ukryciu.
+Nagłówki bezpieczeństwa i przekierowania działają. Test offline wykonano
+w nowym profilu Chromium, nie w istniejącej sesji właściciela ani na Safari.
+Raport: `build/v4-cyberfolks-daily-live-20260906-files.json`;
+testy i zrzuty: `build/v4-cyberfolks-daily-live-ui/`.
 
 Build domeny: `index-DGckzKHS.js`; build Pages: `index-BwGsoViE.js`.
 GitHub Pages opublikowano z `2ed1e58`; publiczny test ćwiczenia i pozostałych
