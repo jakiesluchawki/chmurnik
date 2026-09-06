@@ -5,6 +5,16 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
+test("regenerated Catalyst projects inherit the education category", { skip: process.platform !== "darwin" }, () => {
+  const result = spawnSync("plutil", ["-convert", "json", "-o", "-", "ios/App/App/Info.plist"], {
+    cwd: new URL("../", import.meta.url), encoding: "utf8",
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const info = JSON.parse(result.stdout);
+  assert.equal(info.LSApplicationCategoryType, "public.app-category.education");
+  assert.equal(info.ITSAppUsesNonExemptEncryption, false);
+});
+
 test("Mac QA rejects ad-hoc or invalid signing before staging any files", () => {
   for (const identity of ["-", "invalid-identity"]) {
     const result = spawnSync(process.execPath, ["scripts/prepare-macos-qa.mjs"], {
