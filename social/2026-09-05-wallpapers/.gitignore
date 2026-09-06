@@ -1,0 +1,3 @@
+# Source generation receipts and original files remain local; final exports are tracked in the new campaign.
+art/*-source.png
+art/batch-*.json

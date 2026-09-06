@@ -1,0 +1,15 @@
+Zaczęło się od kogoś bliskiego.
+
+Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację.
+
+Tak zaczął się CHMURNIK. Potem przyszła kolej na język pilotów: trening METAR i czytnik METAR/TAF. Dodałem też pracownię czytania Windy, bo chciałem rozumieć, co właściwie pokazują te wszystkie warstwy. A na żaglach z chłopakami przydał się moduł wiatru.
+
+W karuzeli pokazuję, co z tego wyrosło: prawdziwe zdjęcia w atlasie, fragment lekcji, czytnik i pracownie, w których można coś przesunąć, sprawdzić i zrozumieć.
+
+Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.
+
+CHMURNIK jest bezpłatny na iPhone’a. W App Store szukaj: CHMURNIK. Link do pobrania znajdziesz też w relacjach.
+
+To narzędzia edukacyjne, nie oficjalny briefing. Pracownia Windy jest niezależna i nie ma integracji z Windy. Telefon nie mierzy wiatru.
+
+#CHMURNIK #chmury #meteorologia #żeglarstwo #lotnictwo

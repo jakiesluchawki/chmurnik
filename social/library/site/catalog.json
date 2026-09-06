@@ -1,13 +1,74 @@
 {
-  "updatedOn": "2026-09-04",
+  "updatedOn": "2026-09-07",
   "canonicalUrl": "https://jakiesluchawki.github.io/chmurnik/assetySM/",
   "packs": [
+    {
+      "id": "niebo",
+      "source": "2026-09-07-niebo",
+      "date": "2026-09-07",
+      "dateLabel": "7 września 2026",
+      "status": "Najnowszy pakiet",
+      "title": "Żeby niebo stawało się znajome.",
+      "description": "Pełna opowieść i trzy dodatkowe plansze o modelu i Androidzie: 13 Stories, karuzela, Facebook i LinkedIn. Dodatkowo 20 nowych motywów tapet, osobno na telefon i komputer. Oryginały oraz oznaczone powiększone eksporty 4K: 80 PNG.",
+      "base": "../premiera/niebo/",
+      "preview": "previews/stories/01-geneza.jpg",
+      "formats": [
+        "Stories PNG",
+        "Karuzela",
+        "Facebook",
+        "LinkedIn",
+        "20 tapet",
+        "Oryginały + 4K"
+      ],
+      "downloads": [
+        [
+          "Całość · sociale i wszystkie tapety",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-NIEBO-CALOSC.zip",
+          "zip"
+        ],
+        [
+          "Tapety · 40 oryginałów",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-20-TAPET-ORYGINALY.zip",
+          "zip"
+        ],
+        [
+          "Tapety · 40 powiększonych eksportów 4K",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-20-TAPET-4K.zip",
+          "zip"
+        ],
+        [
+          "Stories · 10 + 3 PNG",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-NIEBO-STORIES.zip",
+          "zip"
+        ],
+        [
+          "Instagram · karuzela i opis",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-NIEBO-INSTAGRAM.zip",
+          "zip"
+        ],
+        [
+          "Facebook · grafika i post",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-NIEBO-FACEBOOK.zip",
+          "zip"
+        ],
+        [
+          "LinkedIn · PDF i post",
+          "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-20260907/CHMURNIK-NIEBO-LINKEDIN.zip",
+          "zip"
+        ],
+        [
+          "Pełne teksty Stories i linki",
+          "TEKSTY-I-LINKI.txt",
+          "txt"
+        ]
+      ]
+    },
     {
       "id": "astra",
       "source": "2026-09-04-astra",
       "date": "2026-09-04",
       "dateLabel": "4 września 2026",
-      "status": "Najnowszy pakiet",
+      "status": "Pakiet Astry",
       "title": "W tym niebie jest trochę Astry.",
       "description": "Pełny pakiet Astry: 10 Stories, 10 plansz karuzeli na Instagram, grafika Facebooka, dokument LinkedIn i kompletne posty. Dodatkowo 10 motywów tapet 4K, każdy na komputer i telefon: 20 PNG.",
       "base": "../premiera/astra/",

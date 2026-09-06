@@ -1,0 +1,9 @@
+Do CHMURNIKA wracam z kolejną porcją nieba i małym raportem z prac.
+
+Rozpoznawanie chmur wciąż wymaga poprawy. Przetestowałem kolejne pomysły, ale nie mam jeszcze nowego modelu, który mógłbym uczciwie polecić jako gotowe ulepszenie. Dlatego nie podmieniam obecnego silnika. Przygotowuję zdjęcia do konsultacji meteorologicznej; kolejny etap będzie potrzebował niezależnej oceny i lepszych danych.
+
+Jest też Android, na razie w przygotowaniu. Nie znajdziesz jeszcze CHMURNIKA w Google Play, bo przed nami formalności i wymagane testy. Datę podam, kiedy będzie miała oparcie w rzeczywistości.
+
+Nie trzeba jednak czekać, żeby zajrzeć do atlasu chmur, przeczytać lekcję albo rozczytać METAR. CHMURNIK działa w przeglądarce: https://chmurnik.cloud
+
+A dla tych, którzy po prostu lubią mieć niebo blisko, mam 20 nowych motywów tapet na telefon i komputer. Są oryginały i wyraźnie oznaczone powiększenia 4K. Napisz, a podeślę link.
