@@ -571,3 +571,13 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   patch for the next release, not part of Apple 1.2 or the owner's newly
   updated root deployment. Model weights and quality gates remain unchanged.
   See `dialog-focus-qa.md` for the negative reproduction and exact QA scope.
+- Completed a frozen ten-photo NOAA NESDIS source diagnostic, after checking
+  credits and43,415 photo-reuse comparisons against4,358 manifest rows. No
+  overlap was flagged; this is not proof of independent capture groups or
+  expert ground truth. The actual packaged native baseline agrees with4/10
+  source labels; the existing calibrated candidate agrees with8/10, four
+  gains and zero regressions. Both accept zero answers under unchanged
+  policies. All inputs/results and the complete table are retained, without
+  fitting, re-labelling, recalibration, model replacement or new publication.
+  See `noaa-diagnostic.md` for the source audit, numeric cross-check, two
+  remaining low-cloud errors and access restrictions of other checked sources.
