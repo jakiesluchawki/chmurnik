@@ -19,6 +19,25 @@ history:
 
 # Recognition-First V4
 
+## Owner Stop And Finite Handoff, September 6
+
+This instruction supersedes the historical research plans below. The owner
+ended further ML training, threshold tuning, candidate searches and automatic
+experiments. The earlier classifier-quality objective was NOT achieved; its
+unchecked criteria remain unmet, not silently waived. Preserve all code and
+results. Further research requires a new explicit owner instruction.
+
+The replacement finite delivery covers 20 wallpaper motifs / 80 PNG, a complete
+social package with factual model and Android status, and two private consultation
+packages. See `social-delivery-20260907.md` and `consultation-handoff-20260907.md`.
+The existing Apple/DSA read-only monitor is separate and must not restart research.
+
+Fresh GET receipts at 21:05 UTC September 6 confirm macOS 1.2 READY_FOR_SALE
+and iOS/iPadOS 1.2 WAITING_FOR_REVIEW, with both linked builds VALID. At
+21:06 UTC all 81 files on chmurnik.cloud match the latest owner-uploaded root
+package, including the daily-answer concealment fix. Android remains before
+Google Play publication. No new genus model was shipped in these releases.
+
 ## Priority and Scope
 
 ### September 6 Owner-Authorized Release Split
@@ -169,12 +188,15 @@ That earlier approval does not establish recognition-first V4 acceptance.
 
 ## Additional Deliverable Requested September 5
 
-- [ ] Create 20 more distinct wallpaper motifs in the approved CHMURNIK
+- [x] Create 20 more distinct wallpaper motifs in the approved CHMURNIK
   felt/cloud/pink/olive/violet style. Each motif has separately composed
-  desktop 3840x2160 and phone 2160x3840 PNGs: 20 motifs, 40 files, not
+  desktop and phone originals plus 3840x2160 / 2160x3840 enlarged PNGs:
+  20 motifs, 80 files, not
   recolors/crops counted as additional designs. No text or scientific-photo
   claims. Preserve existing packs and expose individual/ZIP downloads through
-  the existing SM asset hub. This is supplementary; recognition remains first.
+  the existing SM asset hub. Originals are 1672x941 / 941x1672; enlarged exports
+  are explicitly labeled, not claimed as native 4K generation. The later owner
+  handoff instruction above supersedes the earlier recognition-first priority.
 
 ## Worklog
 

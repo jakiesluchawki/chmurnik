@@ -37,7 +37,7 @@ No social post was sent. Existing campaigns and captions remain untouched.
 
 ## Verification
 
-All 284 app/social tests pass, including four new campaign tests. Nine lesson
+All 285 app/social tests pass, including five new campaign tests. Nine lesson
 audits and the Pages production build pass. All 40 original RGB arrays match
 the generation sources, all 80 PNG dimensions/hashes verify, and all seven ZIPs
 pass CRC testing. The gallery passes at 320/390/768/1440px with all 80 wallpaper
@@ -48,3 +48,36 @@ layouts, phone gallery, and rendered LinkedIn pages. The PDF contains 13 pages,
 including the complete METAR/TAF body and explicit Android unavailability.
 UI evidence is local in `build/niebo-social-qa/`. This is artwork/package QA,
 not a new device or ML-quality test. Public publication is recorded after upload.
+
+## Published And Verified
+
+The public gallery and permanent hub were verified on September 6 at21:23 UTC:
+
+- Gallery: https://jakiesluchawki.github.io/chmurnik/premiera/niebo/
+- Permanent hub: https://jakiesluchawki.github.io/chmurnik/assetySM/
+- Release: https://github.com/jakiesluchawki/chmurnik/releases/tag/sm-niebo-20260907
+- Public main commit: `6d70adfba98249aff14a242601a3afb5c87cee14`.
+- Successful Pages run: `34060727979`.
+
+Only the two media commits were cherry-picked from the research branch onto
+the existing main; no classifier research change was deployed. The asset release
+is explicitly not a new app release and is not marked latest. All87 remote
+asset SHA256 values and sizes match local files. Every public download returned
+HTTP200 and the expected content length. All114 gallery/hub files compared
+byte-for-byte; mobile320px and desktop1440px browser checks passed without
+overflow, missing images or JS errors. Four older gallery indexes also match
+their original bytes.
+
+The deployment review caught an overly broad rsync exclusion that would have
+removed nested wallpaper previews. It was corrected to root-anchored directory
+exclusions before deployment and covered by the fifth regression test. No
+existing tests were weakened. A real rsync payload check preserved40 previews
+while omitting only the80 full-resolution downloads hosted in the release.
+
+All13 LinkedIn pages were also checked for the complete approved/new body text,
+not merely page count. `scripts/check-niebo-publication.mjs` reproduces the public
+verification. Evidence remains in ignored `build/niebo-social-qa/`.
+
+This completes the finite wallpaper/social/private-consultation handoff, not
+the earlier failed model-quality objective. The owner controls expert contact
+and any future research. Apple review and Android publication are separate.
