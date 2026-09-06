@@ -1,5 +1,19 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-06: Daily Exercise Answer
+
+- The answer-specific training button is absent until explicit reveal, and
+  disappears again on hide. Photo alt text and captions do not name the genus.
+- The actual-render regression fails before and passes after the fix. All280
+  JS tests, nine lesson audits and61 source links pass. Root and Pages builds
+  each pass42 route/viewport visits plus the complete functional browser suite,
+  including reveal/hide and following the training action. No JS/CSP errors.
+- Inspected the concealed daily card and desktop home: approved identity and
+  layout are retained. No native model or Apple release was changed.
+- The owner's previous root upload matches all81 public files; fresh-profile
+  offline navigation and30 downloaded atlas photos pass. This new exercise
+  patch requires a separate root upload. See `daily-answer-qa.md` in task0042.
+
 ## 2026-09-06: Dialog Keyboard Patch, Not Yet Published
 
 - Reproduced focus escaping behind newly opened onboarding/photo dialogs on

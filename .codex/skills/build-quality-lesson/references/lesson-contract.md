@@ -10,6 +10,9 @@ Use this contract for every new or revised lesson.
 - The lesson has at least four chapters.
 - Every chapter contains at least two explanatory paragraphs and source IDs.
 - Every chapter ends with an active-recall prompt and explanatory answer.
+- Before explicit reveal or an answer attempt, do not disclose a concealed
+  answer through adjacent actions, destinations, captions, alternative text,
+  or accessible labels. Verify both concealed and revealed states.
 - The prose explains mechanisms and decisions, not only definitions.
 - At least one worked example, case, calculation, or comparison is present.
 - The practice has ordered steps and a visible completion condition.

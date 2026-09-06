@@ -279,6 +279,35 @@ try {
     }
     await screenshot("01-home-mobile");
 
+    const dailyExercise = page.locator(".daily-sky");
+    const assertConcealedDailyAnswer = async () => {
+      const labels = await dailyExercise.evaluate((element) => [
+        element.innerText,
+        ...[...element.querySelectorAll("[alt], [title], [aria-label]")].flatMap((node) =>
+          ["alt", "title", "aria-label"].map((attribute) => node.getAttribute(attribute) || "")),
+      ].join(" ").toLowerCase());
+      for (const cloud of clouds) assert.ok(!labels.includes(cloud.name.toLowerCase()),
+        `Concealed daily exercise leaks ${cloud.name}`);
+      assert.equal(await dailyExercise.locator(".text-button").count(), 0);
+      assert.equal(await dailyExercise.getByRole("button", { name: "Odsłoń odpowiedź" })
+        .getAttribute("aria-expanded"), "false");
+    };
+    await assertConcealedDailyAnswer();
+    await dailyExercise.getByRole("button", { name: "Odsłoń odpowiedź" }).click();
+    const dailyName = (await dailyExercise.locator("h3").innerText()).trim();
+    assert.ok(clouds.some((cloud) => cloud.name === dailyName));
+    const continueExercise = dailyExercise.getByRole("button", { name: `Ćwicz rozpoznawanie ${dailyName}`, exact: true });
+    await continueExercise.waitFor();
+    assert.equal(await dailyExercise.getByRole("button", { name: "Ukryj odpowiedź" })
+      .getAttribute("aria-expanded"), "true");
+    await dailyExercise.getByRole("button", { name: "Ukryj odpowiedź" }).click();
+    await assertConcealedDailyAnswer();
+    await dailyExercise.screenshot({ path: path.join(output, "daily-answer-concealed.png") });
+    await dailyExercise.getByRole("button", { name: "Odsłoń odpowiedź" }).click();
+    await continueExercise.click();
+    await page.locator(".recognition-test").waitFor();
+    console.log("PASS: daily answer and targeted action stay concealed until reveal; reveal/hide and follow-up training work.");
+
     await navigate("journal");
     await page
       .getByRole("heading", { name: "Tu pojawią się Twoje obserwacje" })

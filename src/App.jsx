@@ -565,9 +565,11 @@ function HomePage({
                 {dailyAnswerVisible ? "Ukryj odpowiedź" : "Odsłoń odpowiedź"}
                 <Eye size={18} />
               </button>
-              <button className="text-button" onClick={() => onOpenRecognition(daily.cloud.id)}>
-                Ćwicz rozpoznawanie {daily.cloud.name} <ArrowRight size={16} />
-              </button>
+              {dailyAnswerVisible && (
+                <button className="text-button" onClick={() => onOpenRecognition(daily.cloud.id)}>
+                  Ćwicz rozpoznawanie {daily.cloud.name} <ArrowRight size={16} />
+                </button>
+              )}
             </div>
           </div>
         </section>

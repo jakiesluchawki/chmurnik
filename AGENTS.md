@@ -37,6 +37,9 @@ Writing production code without an active Lore task is forbidden.
 - Scientific claims shown to learners must cite a reviewable source.
 - Creating or substantially revising a lesson must use the project skill
   `.codex/skills/build-quality-lesson/`.
+- Concealed exercise answers must remain hidden in adjacent actions, captions
+  and accessible labels. Show answer-specific follow-up actions only after
+  explicit reveal or an answer attempt, and hide them again with the answer.
 - A lesson duration is a product contract. It must be supported by the
   audited reading, examples, learner actions, practice, and knowledge check;
   a short summary must never be presented as a multi-minute lesson.

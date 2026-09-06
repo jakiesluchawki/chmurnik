@@ -1,5 +1,24 @@
 # CHMURNIK: paczki WWW V4
 
+## Poprawka Ćwiczenia, 6 Września Wieczorem
+
+Potwierdzono Twoje wgranie poprzedniej paczki offline: 6 września o 20:02
+czasu polskiego wszystkie 81 publicznych plików na chmurnik.cloud było
+identycznych z paczką. Test funkcji, układu i pobranego atlasu offline przeszedł.
+
+Późniejsza, mała poprawka usuwa podpowiedź z ćwiczenia: przycisk z nazwą chmury
+pojawia się dopiero po odsłonięciu odpowiedzi. Nowa paczka jest pod
+[tym samym prywatnym linkiem na Dysku](https://drive.google.com/file/d/1dKNT_GPExwtf9P2uqcm3h2enE96wCYVC/view),
+teraz jako `CHMURNIK-WWW-V4-CyberFolks-2026-09-06-cwiczenie.zip` (22 779 759
+bajtów). Zastąpiła plik o 20:20 czasu polskiego. Uprawnienia i folder pozostają
+niezmienione. Ta poprawka wymaga osobnego wgrania do Cyber_Folks.
+
+Build domeny: `index-DGckzKHS.js`; build Pages: `index-BwGsoViE.js`.
+280 testów i audyt dziewięciu lekcji przeszły, podobnie pełne testy obu wariantów
+w przeglądarce. Modele i wersje Apple nie zostały zmienione.
+
+SHA-256 ZIP-a: `de4980fbfe9a81dc765d17c1d502d648065547bb57272dab92351454f9fe876e`.
+
 ## Aktualizacja 6 Września
 
 Aktualna paczka domeny to
