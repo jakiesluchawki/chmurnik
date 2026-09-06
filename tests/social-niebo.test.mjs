@@ -38,3 +38,8 @@ test('public library retains older campaigns and excludes consultation materials
   assert.doesNotMatch(html,/PRIVATE-KEY|drive\.google\.com|expert-review|R001/);
   assert.match(html,/bez powiększania/);assert.match(html,/powiększony/);
 });
+test('Pages omits full-size wallpaper directories but retains nested previews',async()=>{
+  const workflow=await readFile(new URL('../.github/workflows/deploy-pages.yml',import.meta.url),'utf8');
+  assert.match(workflow,/--exclude=\/tapety\/ --exclude=\/oryginaly\//);
+  assert.doesNotMatch(workflow,/--exclude=tapety\b/);
+});
