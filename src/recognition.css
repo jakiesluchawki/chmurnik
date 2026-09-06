@@ -5,9 +5,10 @@
 
 .photo-recognition-modal .photo-recognition-header {
   position: sticky;
-  top: 0;
+  top: calc(0px - var(--photo-modal-top));
   z-index: 4;
-  padding-block: 8px;
+  margin: calc(0px - var(--photo-modal-top)) calc(0px - var(--photo-modal-gutter)) 0;
+  padding: var(--photo-modal-top) var(--photo-modal-gutter) 8px;
   background: var(--paper);
 }
 

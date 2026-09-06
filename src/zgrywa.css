@@ -1744,6 +1744,8 @@ html.native-ios .quiz-modal {
 }
 
 .photo-recognition-modal {
+  --photo-modal-gutter: clamp(22px, 3vw, 38px);
+  --photo-modal-top: var(--photo-modal-gutter);
   position: relative;
   width: min(1040px, calc(100vw - 30px));
   max-height: calc(100svh - 30px);
@@ -1751,7 +1753,7 @@ html.native-ios .quiz-modal {
   border-radius: 28px;
   background: var(--paper);
   color: var(--ink);
-  padding: clamp(22px, 3vw, 38px);
+  padding: var(--photo-modal-top) var(--photo-modal-gutter);
 }
 
 .photo-recognition-modal:focus {
@@ -2431,10 +2433,12 @@ html.native-ios .quiz-modal {
   }
 
   .photo-recognition-modal {
+    --photo-modal-gutter: 15px;
+    --photo-modal-top: 20px;
     width: 100%;
     max-height: calc(100svh - 8px);
     align-self: flex-end;
-    padding: 20px 15px calc(16px + env(safe-area-inset-bottom));
+    padding: var(--photo-modal-top) var(--photo-modal-gutter) calc(16px + env(safe-area-inset-bottom));
     border-radius: 24px 24px 0 0;
   }
 
@@ -3094,7 +3098,7 @@ html.native-ios .quiz-modal {
   }
 
   .photo-recognition-modal {
-    padding-top: 17px;
+    --photo-modal-top: 17px;
   }
 
   .photo-recognition-header h2 {

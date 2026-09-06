@@ -176,6 +176,43 @@ try {
       assert.equal(imageSizes.length, 3, "Full photo, selected crop and atlas reference are retained");
       assert.equal(imageSizes[1].width, imageSizes[1].height, "Analyzed selection is the shown square");
       assert.notEqual(imageSizes[1].src, imageSizes[2].src, "Own photo is distinct from atlas evidence");
+      if (attempt === 0) {
+        for (const viewport of [
+          { width: 320, height: 640 },
+          { width: 390, height: 844 },
+          { width: 844, height: 390 },
+          { width: 1024, height: 768 },
+          { width: 1280, height: 800 },
+        ]) {
+          await page.setViewportSize(viewport);
+          const modal = page.getByRole("dialog", { name: "Rozpoznawanie chmur ze zdjęcia" });
+          const technical = modal.locator(".photo-technical summary");
+          await technical.click();
+          await technical.click();
+          await modal.evaluate((element) => element.scrollTo({ top: element.scrollHeight, behavior: "instant" }));
+          const headerState = await modal.evaluate((element) => {
+            const header = element.querySelector(".photo-recognition-header");
+            const modalRect = element.getBoundingClientRect();
+            const headerRect = header.getBoundingClientRect();
+            const probe = document.elementFromPoint(modalRect.left + modalRect.width / 2, modalRect.top + 2);
+            const close = header.querySelector("button");
+            const rect = close.getBoundingClientRect();
+            return {
+              gap: headerRect.top - modalRect.top,
+              headerOwnsTop: header.contains(probe),
+              closeClickable: close.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2)),
+              overflowing: element.scrollWidth > element.clientWidth + 1,
+            };
+          });
+          assert.ok(Math.abs(headerState.gap) <= 1, `Sticky header leaves no exposed strip: ${JSON.stringify(headerState)} at ${viewport.width}`);
+          assert.equal(headerState.headerOwnsTop, true, "Scrolled controls cannot appear above the sticky header");
+          assert.equal(headerState.closeClickable, true, "Close remains clickable after scrolling");
+          assert.equal(headerState.overflowing, false, "Modal does not overflow horizontally");
+          await modal.getByRole("button", { name: "Zapisz w Moim niebie" }).click({ trial: true });
+          await page.screenshot({ path: path.join(output, `capture-header-${viewport.width}.png`) });
+        }
+        await page.setViewportSize({ width: 390, height: 844 });
+      }
       await screenshot(`capture-${attempt + 1}-frame`);
       await page.getByRole("button", { name: "Zapisz w Moim niebie" }).click();
       await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).waitFor();

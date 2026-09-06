@@ -464,3 +464,53 @@ developer mode, edit TCC, grant Accessibility or bypass authorization. Await
 the concrete permission/UI condition instead of repeating timed-out launches.
 Manual QA evidence above remains valid within its stated scope; it is not a
 passing unattended XCTest. Genus-quality and release gates remain open.
+
+### September 6: Owner Approval and Interrupted Interaction
+
+The owner confirmed approving Enable UI Automation. The next run,
+`build/v4-isolated-mac-approved-20260906.xcresult`, entered the test body,
+launched the isolated app and initialized the accessibility/automation session.
+After the conversation interruption its execution handle and runner were gone;
+the bundle lacks Info.plist and is not a valid completed result. Direct AX
+inspection found the imported fixture and five proposals in QA. This proves
+progress beyond initialization, not a passing test. Closed only the remaining
+isolated QA app through its menu and verified its process absent.
+
+One complete retry is retained at
+`build/v4-isolated-mac-uninterrupted-20260906.xcresult`. It finished with exit65
+and one assertion failure after131.632seconds in the test body, approximately
+203seconds including initialization. Import, proposal selection, inference and
+the experimental model-version check completed. After the Save click the
+expected observation-editing text did not appear within15seconds (Swift378).
+The runner and QA app terminated. No permission toggle or host/service restart
+was performed. Developer Mode being disabled did not prevent this test body.
+
+The interaction was obstructed by an external foreground window. This is not
+proof of a persistence bug. Do not change save behavior or relax assertions to
+make this contaminated run green. No automatic persistence pass is claimed.
+Detailed diagnostic notes and recordings remain local under build/, outside
+version control; unrelated application details must not enter public reports.
+
+The host coordinator requested an exclusive native-QA window for another task.
+Confirmed only that CHMURNIK's heavy work has ended and deferred new native
+builds, UI tests and simulators until the window is released. A proposed
+cross-task detailed diagnostic message was rejected by the approval reviewer;
+it was not sent. A separate minimal scheduling-only confirmation was accepted.
+Do not share the rejected recording-derived diagnostics without owner approval.
+
+The QA result screenshot independently reproduces content showing above the
+sticky photo header. Corrected the header background/position to cover the
+modal's top padding, preserving separate responsive top/side gutters and the
+bottom safe area. Headless Chromium checks pass at 320x640, 390x844, 844x390,
+1024x768 and 1280x800: after opening/closing details and scrolling, the header
+covers the top edge, Close/Save remain actionable and there is no horizontal
+overflow. Inspected narrow, landscape and desktop captures. The complete
+two-photo fixture flow still passes selection, keyboard movement, original
+photo save, reload, unconfirmed status and delete. Evidence is under
+`build/v4-photo-header-qa-wide-check-20260906/`; the earlier failed responsive
+check is retained separately, not overwritten.
+
+All 272 JavaScript tests pass; the production web build succeeds with
+`index-DRnTagjr.js` and `index-CNpHOjaI.css`. No native bundle was refreshed or
+published during the exclusive QA hold. Browser fixtures do not prove native
+WebKit/physical-camera acceptance or classifier quality.
