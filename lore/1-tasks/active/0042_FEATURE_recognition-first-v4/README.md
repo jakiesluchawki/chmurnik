@@ -770,3 +770,15 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   Independent labels and native imported-photo parity remain unresolved;
   the owner's deferral of meteorologist involvement is unchanged. Production
   web and Apple binaries remain unchanged by this research.
+- Bound actual native prepared RGB pixels to all452 imported-photo predictions.
+  Exact-pixel CPU/FP32 Vision parity passes with maximum error.00002741814 and
+  zero top1 switches; raw-to-imported JPEG changes14 decisions and independent
+  preparation changes9. The original end-to-end11 switches/four non-tie failures
+  reproduce exactly. This isolates input sensitivity without waiving the
+  robustness or classifier-quality gates; see `import-pixel-parity.md`.
+  Independent replay verifies all pixel/byte identities and seven comparisons;
+  all303 ML/tooling tests pass. No production model, web upload, Apple write,
+  UI automation or expert contact occurred. Read-only Apple receipts at20:06UTC
+  show Mac1.2 READY_FOR_SALE and iOS/iPadOS1.2 WAITING_FOR_REVIEW, both VALID.
+  The owner requested a bedtime status: no additional upload or host unlock
+  is required now. Goal remains active; this is verified diagnostic progress.

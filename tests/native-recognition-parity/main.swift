@@ -1,9 +1,10 @@
 import CoreML
 import CryptoKit
 import Foundation
+import ImageIO
+import UniformTypeIdentifiers
 import Vision
 #if MAC_IMPORT_JPEG
-import ImageIO
 import UIKit
 #endif
 
@@ -19,6 +20,9 @@ struct Prediction: Encodable {
     let bounds: [Double]
     let inputSHA256: String
     let inputByteCount: Int
+    let preparedPNG: String?
+    let preparedPNGSHA256: String?
+    let preparedRGBSHA256: String?
 }
 
 enum ParityError: Error {
@@ -44,11 +48,45 @@ func recognitionData(at url: URL) throws -> Data {
     #endif
 }
 
-guard CommandLine.arguments.count == 4 else { throw ParityError.invalidArguments }
+func digest(_ data: Data) -> String {
+    SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+}
+
+func savePrepared(_ image: CGImage, to url: URL) throws -> (png: String, rgb: String) {
+    // The reference crop can retain its parent's row stride; omit padding.
+    guard image.bitsPerComponent == 8, image.bitsPerPixel == 24,
+          image.alphaInfo == .none,
+          let data = image.dataProvider?.data else { throw ParityError.invalidOutput }
+    let bytes = data as Data
+    let rowBytes = image.width * 3
+    guard image.bytesPerRow >= rowBytes,
+          bytes.count >= (image.height - 1) * image.bytesPerRow + rowBytes else {
+        throw ParityError.invalidOutput
+    }
+    var rgb = Data()
+    for row in 0..<image.height {
+        let start = row * image.bytesPerRow
+        rgb.append(bytes[start..<(start + rowBytes)])
+    }
+    guard !FileManager.default.fileExists(atPath: url.path),
+          let destination = CGImageDestinationCreateWithURL(url as CFURL, UTType.png.identifier as CFString, 1, nil) else {
+        throw ParityError.outputExists
+    }
+    CGImageDestinationAddImage(destination, image, nil)
+    guard CGImageDestinationFinalize(destination) else { throw ParityError.invalidOutput }
+    return (digest(try Data(contentsOf: url)), digest(rgb))
+}
+
+guard [4, 5].contains(CommandLine.arguments.count) else { throw ParityError.invalidArguments }
 let inputs = try JSONDecoder().decode([Input].self, from: Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[1])))
 let source = URL(fileURLWithPath: CommandLine.arguments[2])
 let output = URL(fileURLWithPath: CommandLine.arguments[3])
 guard !FileManager.default.fileExists(atPath: output.path) else { throw ParityError.outputExists }
+let preparedDirectory = CommandLine.arguments.count == 5 ? URL(fileURLWithPath: CommandLine.arguments[4]) : nil
+if let directory = preparedDirectory {
+    guard !FileManager.default.fileExists(atPath: directory.path) else { throw ParityError.outputExists }
+    try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: false)
+}
 let compiled = source.pathExtension == "mlmodelc" ? source : try MLModel.compileModel(at: source)
 defer {
     if compiled != source { try? FileManager.default.removeItem(at: compiled) }
@@ -64,7 +102,7 @@ guard let metadata = model.modelDescription.metadata[.creatorDefinedKey] as? [St
 }
 let vision = try VNCoreMLModel(for: model)
 var predictions: [Prediction] = []
-for entry in inputs {
+for (index, entry) in inputs.enumerated() {
     let result: Prediction = try autoreleasepool {
         let started = CFAbsoluteTimeGetCurrent()
         let data = try recognitionData(at: URL(fileURLWithPath: entry.path))
@@ -74,6 +112,13 @@ for entry in inputs {
         #else
         let prepared = try CloudImagePreprocessor.modelInput(original, size: size, fraction: fraction)
         #endif
+        var preparedFile: String?
+        var preparedHashes: (png: String, rgb: String)?
+        if let directory = preparedDirectory {
+            let filename = String(format: "%05d.png", index)
+            preparedHashes = try savePrepared(prepared.image, to: directory.appendingPathComponent(filename))
+            preparedFile = filename
+        }
         let request = VNCoreMLRequest(model: vision)
         request.imageCropAndScaleOption = .scaleFill
         try VNImageRequestHandler(cgImage: prepared.image, options: [:]).perform([request])
@@ -88,8 +133,9 @@ for entry in inputs {
         return Prediction(id: entry.id, probabilities: probabilities,
                           seconds: CFAbsoluteTimeGetCurrent() - started,
                           bounds: [bounds.minX, bounds.minY, bounds.width, bounds.height],
-                          inputSHA256: SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined(),
-                          inputByteCount: data.count)
+                          inputSHA256: digest(data), inputByteCount: data.count,
+                          preparedPNG: preparedFile, preparedPNGSHA256: preparedHashes?.png,
+                          preparedRGBSHA256: preparedHashes?.rgb)
     }
     predictions.append(result)
 }
