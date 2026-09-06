@@ -436,3 +436,31 @@ explicitly disallowed controlling Terminal. That restriction was not bypassed.
 No host or Remote restart was performed by this task. Later migration and a
 working filesystem do not themselves prove this UI-test failure fixed. On
 September6 only data-audit/unit work resumed; no native launch is being claimed.
+
+### September 6: Aqua Retry
+
+Later on September6 the shell reported launchd manager `Aqua`, unlike the
+previous `Background` context. This justified one new test-without-building,
+not another identical compile. First checked the existing app and runner
+signatures, the exact isolated QA bundle/environment in the xctestrun, and
+byte equality of the staged/current Swift test source. No signing changes,
+new security permissions or production-app data changes were made.
+
+`build/v4-isolated-mac-aqua-20260906.xcresult` records the run at08:58 CEST:
+Mac mini, arm64, macOS26.6.2 (25G83), the single isolated persistence test,
+parallel testing disabled and a300-second maximum test allowance. The runner
+started, without the earlier `childPID` assertion, but initialization failed
+with `Timed out while enabling automation mode.` before the test body.
+The command exited65 after approximately70seconds. `xcresulttool` confirms
+zero passed tests and one runner-initialization failure, not a photo-workflow
+assertion failure. The runner was absent from the running-app inventory after
+completion; no orphan cleanup or service restart was necessary.
+
+Elevated **read-only** `DevToolsSecurity -status` reports developer mode
+disabled. This is a relevant observation, not proof that toggling that global
+setting alone would fix XCTest. Asked the owner whether they can approve the
+system Enable UI Automation prompt on a subsequent attempt. Did not enable
+developer mode, edit TCC, grant Accessibility or bypass authorization. Await
+the concrete permission/UI condition instead of repeating timed-out launches.
+Manual QA evidence above remains valid within its stated scope; it is not a
+passing unattended XCTest. Genus-quality and release gates remain open.
