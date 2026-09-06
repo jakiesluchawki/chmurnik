@@ -39,6 +39,13 @@ class BlindVisionComparisonTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 compare(key, a, b)
 
+    def test_single_arm_never_invents_a_replicate(self):
+        key, a, _ = self.fixture()
+        report = compare(key, a)
+        self.assertEqual(set(report["arms"]), {"a"})
+        self.assertIsNone(report["changed_best_guess"])
+        self.assertTrue(report["source_labels_are_not_independent_ground_truth"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -71,6 +71,22 @@ class BlindVisionPilotTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "hash mismatch"):
                 build(mp, bp, root / "bad")
 
+    def test_complete_atlas_cannot_drop_classes_or_include_wrong_roles(self):
+        rows = [{"id": f"{label}-{n}", "label": label, "split": "diagnostic",
+                 "source": "atlas", "group": f"g{label}-{n}"}
+                for label in range(10) for n in range(3)]
+        manifest, baseline = {"rows": rows}, {"rows": copy.deepcopy(rows)}
+        selected = select(manifest, baseline, "atlas-complete")
+        self.assertEqual(len(selected), 30)
+        manifest["rows"].reverse()
+        self.assertEqual(select(manifest, baseline, "atlas-complete"), selected)
+        manifest["rows"][0]["split"] = "train"
+        with self.assertRaises(ValueError):
+            select(manifest, baseline, "atlas-complete")
+        manifest["rows"].pop()
+        with self.assertRaises(ValueError):
+            select(manifest, baseline, "atlas-complete")
+
 
 if __name__ == "__main__":
     unittest.main()

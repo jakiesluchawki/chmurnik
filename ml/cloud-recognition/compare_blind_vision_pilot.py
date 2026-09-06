@@ -35,11 +35,13 @@ def observations(value, expected):
     return indexed
 
 
-def compare(key, a, b):
+def compare(key, a, b=None):
     source = {row["photo_id"]: row for row in key["source_label_key"]}
     if len(source) != len(key["source_label_key"]) or not source:
         raise ValueError("Invalid frozen comparison key")
-    arms = {"a": observations(a, source), "b": observations(b, source)}
+    arms = {"a": observations(a, source)}
+    if b is not None:
+        arms["b"] = observations(b, source)
     rows = []
     for photo_id, original in source.items():
         label = original["source_label"]
@@ -62,21 +64,23 @@ def compare(key, a, b):
             "disagrees_where_native_matches": [row["photo_id"] for row in rows
                                                 if not row[arm]["matches_source"] and row["native_matches_source"]],
         }
-    return {"scope": "Source-label agreement on a small exposed balanced subset; not verified ground truth or release approval",
+    return {"scope": key.get("scope", "Source-label agreement; not verified ground truth or release approval"),
+            "source_labels_are_not_independent_ground_truth": True,
             "training_ready": False, "labels_applied": 0, "photos": len(rows),
             "native_matches_source": sum(row["native_matches_source"] for row in rows),
             "arms": summaries,
-            "changed_best_guess": [row["photo_id"] for row in rows if row["a"]["best_guess"] != row["b"]["best_guess"]],
+            "changed_best_guess": [row["photo_id"] for row in rows if row["a"]["best_guess"] != row["b"]["best_guess"]] if b is not None else None,
             "rows": rows}
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    for argument in ("key", "a", "b", "output"):
+    for argument in ("key", "a", "output"):
         parser.add_argument(f"--{argument}", type=Path, required=True)
+    parser.add_argument("--b", type=Path)
     args = parser.parse_args()
-    inputs = {name: getattr(args, name).read_bytes() for name in ("key", "a", "b")}
-    report = compare(*(json.loads(inputs[name]) for name in ("key", "a", "b")))
+    inputs = {name: getattr(args, name).read_bytes() for name in ("key", "a", "b") if getattr(args, name) is not None}
+    report = compare(json.loads(inputs["key"]), json.loads(inputs["a"]), json.loads(inputs["b"]) if "b" in inputs else None)
     report["sha256"] = {name: hashlib.sha256(data).hexdigest() for name, data in inputs.items()}
     with args.output.open("x") as handle:
         handle.write(json.dumps(report, indent=2, ensure_ascii=False) + "\n")

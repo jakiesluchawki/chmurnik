@@ -514,3 +514,37 @@ All 272 JavaScript tests pass; the production web build succeeds with
 `index-DRnTagjr.js` and `index-CNpHOjaI.css`. No native bundle was refreshed or
 published during the exclusive QA hold. Browser fixtures do not prove native
 WebKit/physical-camera acceptance or classifier quality.
+
+### September 6: Released Host Window And Refreshed QA Bundle
+
+The coordinator explicitly released the EnergyApp heavy-work hold. Before
+launching native work, obtained a separate scheduling-only confirmation from
+Wiciograwitacja that it had no active build/UI QA and required no exclusivity.
+Read-only process inspection found no active xcodebuild at that point; no
+unrelated process or simulator was stopped. Kingston had about 1.7 TiB free.
+
+Used Capacitor copy to refresh the already-built web assets, updated the
+generated Mac stage and ran `scripts/prepare-macos-qa.mjs`. The development
+build-for-testing and signature/team/isolation checks passed. Existing cached
+build entries generated stale historical-path warnings after migration; they
+did not cause a build failure. Byte equality confirms the actual QA app contains
+the current `index.html`, `index-DRnTagjr.js` and `index-CNpHOjaI.css`, including
+the previously browser-verified sticky-header fix.
+
+The single test-without-building attempt at10:35-10:37 CEST is retained as
+`build/v4-isolated-mac-after-window-20260906.xcresult`. It exited65 after about
+70seconds, before the test body: `Timed out while enabling automation mode.`
+`xcresulttool` records zero passing tests and one runner-initialization failure.
+No product persistence assertion ran, and no automatic pass is claimed.
+
+A subsequent attempt to inspect the exact QA app through computer use reported
+that the Mac was locked and could not be unlocked automatically. Asked the
+owner to unlock it manually; no authentication, Developer Mode or permissions
+were changed. This establishes the current UI prerequisite, not retrospective
+proof of the entire earlier failure cause. Process inspection found no remaining
+CHMURNIK xcodebuild/app/runner. Released the heavy-work window back to the
+coordinator; another attempt requires a new availability and session check.
+
+No native distribution archive, App Store upload, model replacement or new web
+publication was performed. Previously recorded manual persistence evidence
+remains separate from this failed unattended run.

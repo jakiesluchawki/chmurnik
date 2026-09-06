@@ -107,3 +107,87 @@ SHA256 receipts:
 - Frozen comparison key: `6716333cf29d960fcc694d426ffacacd23a53919a5f2450fd2f66218a65bcb38`
 - Full-frame response: `d82b37e9b6b840caa7b8debab178e1d52a97c43cac78799b8d3d56dde7a2e3b6`
 - Center-frame response: `c2184474a46278484ccfbda80c4144e633b4919dc33effec1c210d21338dcac4`
+
+## Source Archive Check And Predeclared Atlas Follow-Up
+
+Compared all 20 CCSN photos in the pilot directly with entries in the preserved
+`CCSN.zip`, without extracting or changing them. Every SHA256 matches the
+previously frozen source bytes, including the disputed category paths. This
+rules out a local copy/path substitution for these photos, not incorrect
+meteorological source labels or a general error elsewhere in the dataset.
+The two clear-sky photos come from another source and are not covered by this
+archive check. The labels.py mapping and train_ccsn.collect use the category
+folder code to select the canonical genus index; no remapping fix follows.
+
+Before requesting further predictions, freeze a separate diagnostic comparison
+on **all 30 atlas photos**, not examples selected by earlier successes/failures.
+Use the same V2 manifest and measured native baseline, verify source pixels,
+preserve all three examples of each of the ten atlas genera, and exclude the
+nine project-outlier rows that also have diagnostic split. This is an existing,
+curated product diagnostic set, not independent confirmation or a replacement
+for the unfavorable CCSN comparison. Atlas labels also are not infallible.
+
+Reuse the full-frame inference prompt and schema. Shuffle all 30 IDs using the
+fixed seed's atlas-presentation stage. Divide into three successive ten-photo
+batches, each in a fresh, label-blind session with no history/source names or
+other model outputs. Evaluate only full-frame input in this follow-up; generated
+center-frame artifacts are retained but not evaluated or counted as a replicate.
+Preserve each raw batch before combining by photo_id. Missing responses fail
+comparison instead of disappearing from the denominator. No training labels,
+model weights, calibration or release gates change.
+
+### Complete Atlas Result
+
+All 30 full-frame responses were returned, validated and retained. Three fresh
+ten-photo sessions used the inherited parent model without a model override;
+they did not use the ChatGPT website or reproduce the feedback author's model
+and settings. No history, source labels or native answers were passed. All
+three agents were closed after receiving their raw outputs. Private artifacts,
+prompts, hashes and session receipts are in
+`.local/v4/blind-atlas-pilot-20260906/`.
+
+| Existing atlas label | Photos | Native leading match | Blind VLM leading match |
+|---|---:|---:|---:|
+| Ac | 3 | 3 | 3 |
+| As | 3 | 0 | 1 |
+| Cc | 3 | 2 | 1 |
+| Cs | 3 | 3 | 1 |
+| Ci | 3 | 3 | 3 |
+| Cb | 3 | 2 | 2 |
+| Cu | 3 | 3 | 3 |
+| Ns | 3 | 2 | 1 |
+| Sc | 3 | 0 | 2 |
+| St | 3 | 1 | 2 |
+| Total | 30 | 19 | 19 |
+
+The VLM matches four labels where native does not (P007/P018/P020/P024) and
+disagrees with four that native matches (P001/P009/P016/P019). One response
+has unknown as its leading guess; seven are uncertain, seven mixed and sixteen
+single-genus. P009 and P029 include the atlas label among co-occurring genera,
+but not as the leading guess. This is a target-selection ambiguity worth
+reviewing, not permission to change the predeclared primary score or count
+alternative guesses as correct identifications.
+
+The seven qualitative-high VLM answers all agree with their atlas labels;
+the native acceptance rule selects four photos, three matching their labels.
+These small, differently selected subsets do not establish calibrated precision
+or comparable operating coverage. The VLM often describes visible features and
+missing context explicitly, but useful wording is not measured classification
+improvement and was not independently rated for learner comprehension.
+
+Conclusion: this complete diagnostic does not demonstrate a leading-label
+advantage for the VLM. It also does not erase the unfavorable 22-photo result.
+Retain the current on-device privacy boundary and do not swap models, relabel
+training data or weaken release gates on this evidence. The exact original
+field example and feedback author's session remain unreproduced.
+
+Seven focused pack/comparator tests pass, including complete-atlas selection,
+missing-row rejection and a single-arm result without a fabricated replicate.
+
+SHA256 receipts:
+
+- Frozen key: `3b9ea3345110e9c0e1cb2b7bbb4dd87bf0b23281bc3cb32548f2954085031965`
+- Combined response: `f6376078eb3aa4aec93d541c345860c909e51e1d241231ee77e26846c1cde72b`
+- Batch 1: `347b96d18e11342cebe5e44e7e77e18c111e6ae09634ebc3500ae4adf926add4`
+- Batch 2: `a7f2fd84cb90dc823fac617e1c6671438eec1d586100f3cf2ad61c1cdaab9f89`
+- Batch 3: `203059aaf3d30d9237459cb5a9223726fba70efa87ac31a21b4e66750d9f08f0`

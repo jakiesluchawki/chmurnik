@@ -23,13 +23,25 @@ def ordered_key(row, stage):
     return digest(f"{SEED}:{stage}:{row['id']}".encode())
 
 
-def select(manifest, baseline):
+def select(manifest, baseline, scope="test-balanced"):
     rows = manifest["rows"]
     if len({row["id"] for row in rows}) != len(rows):
         raise ValueError("Duplicate source IDs")
     predictions = {row["id"]: row for row in baseline["rows"]}
     if len(predictions) != len(baseline["rows"]):
         raise ValueError("Duplicate baseline IDs")
+    if scope == "atlas-complete":
+        atlas = [row for row in rows if row["source"] == "atlas"]
+        counts = {label: sum(row["label"] == label for row in atlas) for label in range(10)}
+        if len(atlas) != 30 or set(counts.values()) != {3} or any(row["split"] != "diagnostic" for row in atlas):
+            raise ValueError("Expected the complete 30-photo diagnostic atlas, not a selected subset")
+        for row in atlas:
+            previous = predictions.get(row["id"])
+            if previous is None or any(previous[key] != row[key] for key in ("split", "label", "source", "group")):
+                raise ValueError("Missing or changed atlas baseline")
+        return sorted(atlas, key=lambda row: ordered_key(row, "atlas-presentation"))
+    if scope != "test-balanced":
+        raise ValueError("Unknown comparison scope")
     selected, used_groups = [], set()
     for label in range(len(manifest["classes"])):
         candidates = sorted(
@@ -63,19 +75,21 @@ def crop_geometry(image):
                            (1, 0, left, 0, 1, top), Image.Resampling.BICUBIC)
 
 
-def build(manifest_path, baseline_path, output):
+def build(manifest_path, baseline_path, output, scope="test-balanced"):
     manifest_bytes, baseline_bytes = manifest_path.read_bytes(), baseline_path.read_bytes()
     manifest, baseline = json.loads(manifest_bytes), json.loads(baseline_bytes)
     if baseline["manifest_sha256"] != digest(manifest_bytes):
         raise ValueError("Baseline manifest hash mismatch")
     if not baseline["preprocessing"].startswith("Native UIKit/Vision"):
         raise ValueError("Comparison requires measured native baseline")
-    chosen = select(manifest, baseline)
+    chosen = select(manifest, baseline, scope)
     output.mkdir(parents=True, exist_ok=False)
     predictions = {row["id"]: row for row in baseline["rows"]}
     evidence = {"seed": SEED, "manifest_sha256": digest(manifest_bytes),
-                "baseline_sha256": digest(baseline_bytes), "per_class": PER_CLASS,
-                "scope": "Previously exposed test regression; source-label agreement, not fresh confirmation",
+                "baseline_sha256": digest(baseline_bytes), "per_class": 3 if scope == "atlas-complete" else PER_CLASS,
+                "selection_scope": scope,
+                "scope": "Complete existing 30-photo atlas diagnostic; not fresh confirmation" if scope == "atlas-complete"
+                         else "Previously exposed test regression; source-label agreement, not fresh confirmation",
                 "training_ready": False, "source_label_key": [], "arms": {"a": [], "b": []}}
     for arm in evidence["arms"]:
         (output / arm).mkdir()
@@ -108,8 +122,9 @@ if __name__ == "__main__":
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--scope", choices=("test-balanced", "atlas-complete"), default="test-balanced")
     args = parser.parse_args()
-    receipt = build(args.manifest, args.baseline, args.output)
+    receipt = build(args.manifest, args.baseline, args.output, args.scope)
     print(json.dumps({"photos": len(receipt["source_label_key"]),
                       "arms": {arm: len(items) for arm, items in receipt["arms"].items()},
                       "key_sha256": digest((args.output / "PRIVATE-COMPARISON-KEY.json").read_bytes())}))
