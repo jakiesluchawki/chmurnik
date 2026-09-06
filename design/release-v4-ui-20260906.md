@@ -1,8 +1,14 @@
 # CHMURNIK 1.2: Aktualizacja Interfejsu I Nauki
 
-Stan: przygotowanie wydania na iPhone'a, iPada i Maca. Nie jest to informacja
-o wysłaniu ani zatwierdzeniu aktualizacji przez Apple. Wersja 1.1 pozostaje
-opublikowana na obu platformach; odczyt Apple z 6 września, 10:49 CEST.
+Stan z 6 września, 11:39 CEST: obie aktualizacje 1.2 zostały przesłane,
+poprawnie przetworzone przez Apple i zgłoszone do recenzji. Obie mają status
+`WAITING_FOR_REVIEW`, nie akceptację ani publikację.
+
+- iPhone/iPad: build `20260906092043`, źródło `3a6372a`.
+- Mac: build `20260906093223`, źródło `7a1d618`.
+- Obie wersje zawierają ten sam zweryfikowany kod interfejsu. Dodatkowy commit
+  Maca przywraca kategorię „Edukacja” w metadanych i dodaje jej test regresji.
+- Dotychczasowy tryb publikacji po akceptacji Apple pozostał niezmieniony.
 
 ## Co Nowego
 
@@ -59,7 +65,7 @@ samego wyglądu odpowiedzi jako dowodu poprawnego rozpoznania.
 
 ## Kontrola Wydania
 
-- [x] Aktualne testy kodu i lekcji oraz build produkcyjny: 272/272 testy kodu,
+- [x] Aktualne testy kodu i lekcji oraz build produkcyjny: 273/273 testy kodu,
   9 modułów lekcji, build Vite z `index-DRnTagjr.js` i `index-CNpHOjaI.css`.
   Powtórzona kontrola 6 września po zaliczonym teście Maca.
 - [x] Zweryfikowana obsługa zdjęcia i trwałość zapisu na Macu: natywny test
@@ -67,11 +73,25 @@ samego wyglądu odpowiedzi jako dowodu poprawnego rozpoznania.
   1 zaliczony, 0 błędów, 0 pominiętych. Import publicznego zdjęcia, lokalne
   propozycje i analiza, zapis całego kadru i dodatkowej notatki, odczyt po
   ponownym uruchomieniu. Osobna aplikacja QA, bez danych użytkownika.
-- [ ] Rewizja bieżącego zakresu iPhone/iPad oraz pozostałych ograniczeń sprzętowych.
-- [ ] Podpisane archiwa i porównanie zawartości z przetestowanym kandydatem.
-- [ ] Kontrola podpisów SDK na Macu, bez powrotu błędu ITMS-91065.
-- [ ] Wysłanie i odczyt statusów przetwarzania Apple.
-- [ ] Informacje o wersji, właściwe buildy i zrzuty ekranu.
-- [ ] Zgłoszenie wersji do recenzji i potwierdzenie rzeczywistego stanu.
+- [x] Rewizja bieżącego zakresu iPhone/iPad oraz pozostałych ograniczeń sprzętowych:
+  pięć wcześniejszych testów natywnych iPhone'a i test obrotu iPada zaliczone;
+  ich dokładny zakres i późniejsze poprawki opisuje raport QA. Nie deklarujemy
+  pełnego testu fizycznego aparatu, VoiceOver ani wszystkich starszych systemów.
+- [x] Podpisane archiwa i porównanie zawartości z przetestowanym kandydatem.
+- [x] Kontrola podpisów SDK na Macu: Capacitor i Cordova, właściwy zespół,
+  bezpieczny znacznik czasu, rekordy SDK w archiwum i dopasowane symbole dSYM.
+  Apple przetworzyło nowy build jako `VALID`.
+- [x] Wysłanie i odczyt statusów przetwarzania Apple: oba buildy `VALID`.
+- [x] Informacje o wersji i właściwe buildy zweryfikowane przez ponowny odczyt.
+  Zrzuty sklepu odziedziczone z 1.1: pięć iPhone, cztery iPad i cztery Mac,
+  wszystkie `COMPLETE`. Nie są nową sesją promocyjną przedstawiającą V4.
+- [x] Zgłoszenie wersji do recenzji: oba zgłoszenia `WAITING_FOR_REVIEW`.
+
+Aktualny GitHub Pages przeszedł lokalne i publiczne testy 42 kombinacji
+tras/rozmiarów. Paczka dla chmurnik.cloud została uaktualniona na prywatnym
+Dysku pod tym samym linkiem; samo to nie zmienia hostingu domeny.
+Nadzór dobowy obejmuje teraz również oba zgłoszenia 1.2. Badania nad trafnością
+klasyfikatora oraz dwadzieścia dodatkowych motywów tapet pozostają osobnymi,
+nieukończonymi pracami. Całego celu nie oznaczono jako zakończonego.
 
 Żaden powyższy punkt nie stanowi twierdzenia, że nowy klasyfikator został zatwierdzony.

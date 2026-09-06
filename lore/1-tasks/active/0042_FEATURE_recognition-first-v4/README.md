@@ -35,6 +35,15 @@ are unchanged. Keep this overall task open while those research/delivery
 requirements remain unfinished. Complete release copy is in
 `design/release-v4-ui-20260906.md`.
 
+September 6 delivery: iOS/iPadOS 1.2 build20260906092043 and macOS 1.2
+build20260906093223 both processed as VALID and were submitted successfully;
+both version states are WAITING_FOR_REVIEW, not approved/live. Updated Pages
+7a1d618 passed public regression; the private root ZIP was replaced under the
+same owner-only Drive link. The domain still serves the older build. See
+`apple-web-release-20260906.md` for archive provenance, the fixed Mac category,
+verified SDK signatures, inherited screenshots and the remaining ML/hosting
+and wallpaper work. The existing daily monitor now includes both review states.
+
 The isolated native Mac photo/persistence XCTest passed on September6 at11:07
 CEST: one passed, zero failures/skips, including actual import, local inference,
 whole-photo save, keyboard-edited note and exact persistence after relaunch.

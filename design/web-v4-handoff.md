@@ -1,5 +1,32 @@
 # CHMURNIK: paczki WWW V4
 
+## Aktualizacja 6 Września
+
+Aktualna paczka domeny to
+[CHMURNIK-WWW-V4-CYBERFOLKS-7a1d618.zip](../build/CHMURNIK-WWW-V4-CYBERFOLKS-7a1d618.zip),
+22 777 833 bajty. Na prywatnym Dysku właściciela zastąpiła poprzednią paczkę
+pod tym samym linkiem, z nazwą `CHMURNIK-WWW-V4-CyberFolks-2026-09-06.zip`.
+Ponowny odczyt potwierdza rozmiar, nazwę i wyłącznie uprawnienie właściciela.
+Lokalna kontrola ZIP-a przeszła. SHA-256:
+`361ffea54e3fa3a4075cb0612b5231b469c17a9b92287ec65b6f471b908881b5`.
+
+GitHub Pages opublikowano z `7a1d618`:
+[udane wdrożenie](https://github.com/jakiesluchawki/chmurnik/actions/runs/34025437817).
+Aktualny build domeny ma `index-DRnTagjr.js`, Pages `index-BIk7iW0S.js`.
+Oba warianty przeszły po 42 kontrole tras i rozmiarów, także zrzuty układu.
+Po publikacji te same kontrole przeszły na publicznym Pages. Siedemnaście
+publicznych plików jest identycznych z kandydatem, pięć archiwów SM ma HTTP 200
+i zgodne rozmiary. Wszystkie 255 lokalnych plików istniejących galerii zachowano
+bajt po bajcie. Nie dodano nowych tapet.
+
+Kontrola publicznej domeny 6 września nadal pokazuje `index-BpdEVwM6.js`.
+Wdrożenie na Cyber_Folks pozostaje po stronie właściciela. Obowiązują poniższe
+instrukcje: nie usuwać istniejących galerii, zasoby przesłać przed plikami
+wejściowymi i zachować `.htaccess`. Nowa paczka obejmuje także późniejszą
+poprawkę nagłówka analizy, bez nowych wag modelu rozpoznawania.
+
+## Historia Dostawy Z 5 Września
+
 Przygotowane 5 września 2026 z commitu `face674`. Przetestowana wersja WWW
 jest już opublikowana na [GitHub Pages](https://jakiesluchawki.github.io/chmurnik/).
 Paczka dla chmurnik.cloud została dostarczona na prywatny Dysk Google właściciela;
