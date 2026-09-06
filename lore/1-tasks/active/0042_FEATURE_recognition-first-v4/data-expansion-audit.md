@@ -131,7 +131,10 @@ single-label truth. A later experimental use must preserve partial labels,
 exclude unresolvable Cb supervision, control the large clear/As-St imbalance,
 and deduplicate/group by observation, spatial context and capture day. Extra
 photos do not justify weakening the existing genus/release gates. No GLOBE
-training or confirmatory evaluation has occurred.
+training or confirmatory evaluation had occurred at that audit stage.
+The later September6 partial-label experiment is recorded separately in
+`globe-partial-supervision.md`:362 admitted training photos, negative paired
+result, no calibration/test access or production changes.
 
 ## Vienna WMO Multi-Label Study
 
@@ -145,6 +148,50 @@ about 1.4GB. Do not map a four-view label indiscriminately to each individual
 photo or treat augmented neighboring times as independent samples. No files
 were downloaded; data license and available image resolution need further
 verification before deciding whether it is useful here.
+
+### September 6: Verified Training-File Audit
+
+The public record API identifies CC-BY-4.0. Downloaded only the pinned training
+CSV (848,632bytes, MD5 `1976ccca001a0bb2012d77ac59aeb2a0`) and training NetCDF
+(837,915,407bytes, MD5 `3718986550e7192d83e4e2181cc623e0`). Both checksums match.
+No validation/test/out-of-sample file was downloaded. Public author code was
+read only, not imported or executed. Record and original files remain local.
+
+Actual CSV inspection:13,912 rows, exactly30 binary columns, at most one code
+per level. All rows have a low-level observation;2,320 lack middle and3,982
+lack high observations. Those all-zero blocks must remain unknown, not be
+treated as cloud absence. Only294 rows explicitly report no cloud at all
+three levels. There are4,725 one-cloudy-level,5,510 two-cloudy-level and3,383
+three-cloudy-level records. These are reported levels, not individual genera
+or the number of independently visible cloud objects.
+
+Actual HDF5 inspection: one `Full_period` dataset with shape
+`(13912,4,64,100,3)`, gzip-compressed int16. Each directional image is only
+100x64 pixels. There are no root/dataset attributes or coordinate datasets:
+the downloaded training files do not preserve capture dates, observation IDs
+or named directions. Do not invent these from row order. File-to-label joining
+is positional, matching the author loader. Four images are one observation.
+
+Full streaming byte-normalized RGB audit validates all image values and finds
+13,912 unique direction-invariant exact four-view sets,55,560 unique individual
+views and88 repeated view occurrences. No exact four-view conflicts occur.
+This does not exclude nearby captures, transformed reuse or label errors, and
+is not a visual meteorological review. The original chronology cannot be
+reconstructed from these files for a leakage-controlled temporal split.
+
+Decision: no automatic genus-manifest admission and no new training yet.
+This source may support a separate weakly supervised four-view experiment,
+with unknown levels masked and shared observation labels preserved. It cannot
+provide exact labels for each phone photo, a fresh single-genus reliability
+test, or verified independent capture-day counts. Its low spatial detail also
+limits the case for using it to teach fine cloud structure. Do not upsample
+and claim original detail or train every direction on every reported genus.
+
+The parser and audit have9 focused passing tests. Local evidence:
+`.local/v4/vienna-audit-20260906/reuse-audit.json`. Original training CSV SHA256
+`682037e48cff55798df4851624f02f9434ab575c7f93a23d4456c662f9fa37c7`;
+NetCDF SHA256 `1752637e1e0707f7236be424febde665eaa13c26aa6c2ac8c2709f213d30f9c3`.
+No downloaded data, public author code or photographs are committed.
 
 ## TJNU GCD
 

@@ -528,3 +528,12 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   weights. All177 ML/tooling tests pass, zero skips. The recipe, limitations,
   class/source breakdown and artifact hashes are in `globe-partial-supervision.md`.
   Apple1.2 remains a separately delivered UX/content release, not an ML upgrade.
+- Verified the Vienna source's CC-BY-4.0 license and actual training files:
+  13,912 joint four-view observations,100x64 pixels per view, with no retained
+  timestamp/observation-coordinate datasets. Added strict30-column decoding
+  that preserves unobserved layers as unknown, and a complete exact-image
+  reuse scan (88 repeated individual views, no repeated four-view sets).
+  Nine focused tests and the full186-test ML/tooling suite pass, zero skips.
+  No individual-photo genus labels, chronological
+  groups, fresh test evidence or model improvement are inferred. No training
+  admission occurred; limits and hashes are in `data-expansion-audit.md`.
