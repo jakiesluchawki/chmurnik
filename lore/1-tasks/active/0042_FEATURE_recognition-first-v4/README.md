@@ -700,3 +700,14 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   or changing production code. See `policy-grid-audit.md`. The overall goal
   remains active; no app weights, Apple release, web package, privacy setting
   or owner-deferred expert review changed in these two investigations.
+- Completed the fixed paired generalized-cross-entropy training trial. The
+  ordinary CE control reproduces its retained logits exactly; GCE q=0.7 drops
+  validation288->280/452 and macro-F1 .631637->.623513, below the best RBF290
+  and.644547. Independent NumPy/SciPy replay verifies both heads with zero
+  prediction changes and recomputes all54 population reports. All267 ML/tooling
+  tests pass, zero skips. Reject the fixed recipe without a q/seed sweep,
+  holdout access, model export or replacement; `robust-loss-probe.md` retains
+  protocol, full negative results and hashes. Read-only Apple checks at17:56UTC
+  still show Mac1.2 READY_FOR_SALE and iOS1.2 WAITING_FOR_REVIEW, both VALID.
+  This goal turn makes research progress; model reliability/fresh-evidence
+  requirements remain open and no expert contact or host changes occurred.

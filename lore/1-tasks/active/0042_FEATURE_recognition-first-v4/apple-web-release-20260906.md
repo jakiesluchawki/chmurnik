@@ -169,3 +169,10 @@ no new build selection or submission occurred.
 - Continue classifier work from independent evidence, not further tuning to
   the exposed test set or lowering the quality gate.
 - Deliver the separate twenty-distinct-motif wallpaper request.
+
+September6 read-only recheck at17:56:24.301UTC (iOS) and17:56:28.575UTC
+(macOS): iOS1.2 remains WAITING_FOR_REVIEW with build20260906092043;
+Mac1.2 remains READY_FOR_SALE with build20260906093223. Both exact submitted
+build IDs are still VALID. The inspected helper's `check` exits before any
+remote write; no build selection or resubmission occurred. Current readbacks
+are the respective `.local/releases/apple-0042-20260906/{ios,macos}/processing-check.json`.
