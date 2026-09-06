@@ -250,6 +250,84 @@ Frozen SHA256 receipts:
 adds the deterministic review inventory. Both explicitly deny training
 approval. Outputs refuse overwrites. No new recognition score is claimed.
 
+### September 6: Bounded Visual And Crop-Reuse Audit
+
+After migration to Kingston, continued in the physical V4 worktree. No original
+split, genus label, calibration threshold or shipped model was changed.
+
+`audit_ccaim_photos.py` freezes a deterministic sample with seed13042, at most
+six images per source genus: **53 photos, 35,740,566 bytes**, including all
+three remaining Ns and two St candidates. The first attempt downloaded zero
+photos because its redirect allowlist did not include the observed Hugging
+Face CDN `us.aws.cdn.hf.co`. Preserved that attempt and its selection; a new
+audit with this HTTPS host allowed downloaded the exact same 53 photos. All
+published byte sizes/SHA256 hashes, image decoding and decoded fingerprints
+were checked. No failed photo was replaced by a more convenient example.
+
+Evidence is private under `.local/v4/ccaim-visual-audit-20260906-cdn/`, not SM
+assets. Ten contact sheets were inspected. Visual triage is **not independent
+expert annotation** and does not supply a replacement genus:
+
+- Several photos contain different cloud structures in one view, including
+  C005 (source Ci), C017 (source Cs), C024 (source Ac) and C043 (source Cu).
+- C002, C033 and C038 visibly contain a mouse pointer. Some images are narrow
+  strips or small crops; C010 is 959x181. Framing, scale and capture context
+  cannot be assumed from a single source label.
+- C025/C026/C028/C030 and C046 look potentially sequence-related; C040/C041
+  also need capture-provenance review. They are not declared identical merely
+  from that resemblance. The small Ns/St inventory is not verified as reliable
+  hard-class supervision by this inspection.
+- The previous dHash screen flagged C014 against 15 older largely uniform
+  images, with no exact decoded-pixel match. Such flags are only review leads.
+  It missed visually apparent photographic crops, so neither a small dHash
+  distance nor its absence establishes independence.
+
+Added `audit_crop_reuse.py`: up to800 SIFT features on an 800px long edge,
+mutual ratio-test matches, robust similarity-transform alignment, minimum
+spatial support/overlap, and aligned-grayscale correlation/residual checks.
+Gates are documented in code; no thresholds were selected on model accuracy.
+Use two OpenCV threads. OpenCV4.12.0.88/NumPy2.2.6 are isolated in
+`.local/v4/photo-audit-deps`; training NumPy2.5.0 was not replaced.
+
+The first within-sample run compared1,378 pairs and flagged two. The expanded
+run rehashed every251 old CCAiM row against the pinned prior audit, retained
+all role/label aliases, and compared247 unique old byte hashes against all53
+new photos. Combined total: **14,469 comparisons, three candidate pairs**.
+Inspected both full photographs in each candidate pair:
+
+| New sample | Matching photo | Observation | Aligned correlation |
+| --- | --- | --- | ---: |
+| C049 / source475 | C052 / source659 | Same photographed scene, different crop; both source Cb | 0.99457 |
+| C051 / source492 | C053 / source615 | Same photographed scene, different crop; both source Cb | 0.99679 |
+| C024 / source label Ac | old `stratocumulus/0137.jpg` | Same photographed scene, different crop and contradictory source labels | 0.99887 |
+
+These are photograph-reuse findings, not a resolution of the Ac/Sc label.
+They show the sample cannot be counted as53 new independent examples. No
+candidate is admitted to training or fresh testing. Other previous datasets,
+related frames, difficult crops and missing feature matches remain unaudited;
+the absence of further candidates does **not** prove the remaining photos
+independent. Do not amend historical scores or merge frozen splits in place.
+
+The complete ML/tooling suite passes **155 tests**, including eight downloader
+tests and eight crop-audit tests. Coverage includes crop/resize/JPEG, brightness
+changes, reverse matching, uniform/repetitive negatives, small shared overlays,
+different aligned pixels, pinned receipts and preserved old-role aliases.
+The existing-partial-download test also prevents a failed exclusive create
+from deleting a prior attempt's file. CoreML tooling still warns about the
+installed Torch/scikit-learn versions; no model conversion ran here.
+
+SHA256 receipts:
+
+- Selection: `16acadc99d29cee24bcfa33753226ab0028edec43f2cd8aeba0541c7111c375f`
+- Downloads: `04039510721a8c6b8bf408b2503166df23af19bbaa9459e88020297ba52048e2`
+- `crop-reuse-with-previous-v2.json`: `08304872cef24ba4f67f7bb741c98103de9201a06b03f324019e51b0c36ae8d9`
+- Crop-audit code: `aa19556a3a1ae81ab14f6f6f5c1b12738d8da3fba7ef208e08c4e071f8990a64`
+
+Next model-data work requires reviewed region/mixed-genus supervision, capture
+grouping and truly independent confirmation. The existing blinded33-photo
+expert pilot still has no returned reviews. Do not feed these noisy labels to
+another training variant and advertise the resulting score as improvement.
+
 ### WEBCAM
 
 [WEBCAM repository](https://github.com/MarcusCoteFIT/webcam-ground-based-cloud-image-dataset)

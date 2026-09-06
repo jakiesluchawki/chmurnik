@@ -420,3 +420,19 @@ Core ML tooling still warns about installed scikit-learn/Torch versions, and
 the SVC tests emit the existing probability-parameter deprecation warning;
 no new model conversion or dependency update was performed. Unit-test fixture
 training is not an additional classifier experiment or accuracy benchmark.
+
+### Later September 5 Launch Failures, Recorded After Migration
+
+The subsequent owner-idle and unlocked attempts are retained as
+`build/v4-isolated-mac-owner-idle-20260905.xcresult` and
+`build/v4-isolated-mac-unlocked-20260905.xcresult`. Both terminated with exit134
+and Xcode's `childPID > 0` assertion in `IDELaunchServicesLauncher.m`, before
+the test body. Only the identified orphaned runners of those attempts were
+stopped. The command context reported launchd manager `Background`; this is
+a diagnostic clue, not a proven cause. No full XCTest pass resulted.
+
+A proposed GUI Terminal launch could not be used: the computer-use tool
+explicitly disallowed controlling Terminal. That restriction was not bypassed.
+No host or Remote restart was performed by this task. Later migration and a
+working filesystem do not themselves prove this UI-test failure fixed. On
+September6 only data-audit/unit work resumed; no native launch is being claimed.

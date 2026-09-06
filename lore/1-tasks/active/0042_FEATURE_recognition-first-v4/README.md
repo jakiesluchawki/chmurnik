@@ -477,3 +477,12 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   model metadata and complete additional Polish note after quit/relaunch.
   Slow first launch remains a recorded limitation, not a claimed system fix.
   Production user data, host/Remote services and Apple releases are untouched.
+- Resumed from the physical Kingston worktree after the migration owner released
+  the project hold. Downloaded and hash-verified a fixed53-photo development
+  CCAiM sample; preserved an earlier CDN-redirect failure without replacing any
+  selected photo. Added a crop-aware photograph-reuse audit and checked14,469
+  pairs against the sample and247 unique older CCAiM photos. Three visually
+  confirmed reuse pairs include one contradictory Ac/Sc source-label pair.
+  No automatic relabelling, training admission or new accuracy claim follows.
+  All155 ML/tooling tests pass. Photo evidence stays local; the full audit and
+  unresolved provenance/annotation requirements are in `data-expansion-audit.md`.

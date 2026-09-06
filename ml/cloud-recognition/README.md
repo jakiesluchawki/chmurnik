@@ -73,6 +73,41 @@ regressed both the application atlas and independent Commons benchmark.
 V4 is under evaluation, not yet shipped. The experiment contract and known data
 limitations are in Lore task 0042. Keep private feedback out of training and Git.
 
+### Optional Photo-Reuse Audit
+
+`audit_ccaim_photos.py` freezes a bounded development sample before downloading
+and validates published byte hashes. `audit_crop_reuse.py` complements exact
+hashes and dHash with SIFT, mutual matches, robust scale/rotation alignment and
+aligned-pixel checks. It flags possible crops for visual review; a missing flag
+does not prove independence, and neither tool approves labels or training.
+See the [OpenCV feature-matching reference](https://docs.opencv.org/4.12.0/d1/de0/tutorial_py_feature_homography.html)
+for the underlying feature/robust-estimation approach. The implementation uses
+a more constrained similarity transform, not a flexible homography.
+
+From the repository root, with the existing ML Python and Pillow available:
+
+```sh
+python -m pip install --only-binary=:all: --no-cache-dir \
+  --target .local/v4/photo-audit-deps \
+  -r ml/cloud-recognition/requirements-photo-audit.txt
+PYTHONPATH=.local/v4/photo-audit-deps python -B -m unittest discover \
+  -s ml/cloud-recognition -p test_audit_crop_reuse.py -v
+PYTHONPATH=.local/v4/photo-audit-deps python -B ml/cloud-recognition/audit_crop_reuse.py \
+  --sample .local/v4/ccaim-visual-audit-20260906-cdn \
+  --previous-manifest .local/v4/data-v2/manifest.json \
+  --previous-profile .local/v4/ccaim-20260723-audit/profile-v2.json \
+  --output .local/v4/ccaim-visual-audit-20260906-cdn/crop-reuse-review.json
+```
+
+The optional dependencies are isolated; do not downgrade training NumPy.
+Without OpenCV, these optional tests explicitly skip rather than silently pass.
+Existing output is never overwritten. Reference comparisons cover every old
+CCAiM row irrespective of role, group identical bytes while preserving aliases,
+and revalidate pinned manifest, audit and photograph hashes. Other datasets and
+related-but-not-identical frames still require separate review.
+
+### Training And Evaluation
+
 ```sh
 python v4_data.py --data /path/to/CCSN_v2 \
   --clear /path/to/clear_sky_tensor.pt --atlas ../../public/assets/clouds \
