@@ -517,3 +517,14 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   No automatic relabelling, training admission or new accuracy claim follows.
   All155 ML/tooling tests pass. Photo evidence stays local; the full audit and
   unresolved provenance/annotation requirements are in `data-expansion-audit.md`.
+- Completed a predeclared paired partial-label trial with362 independently
+  crowd-labelled GLOBE photos, after bounded downloads, full-frame technical
+  review and conservative overlap screening. Preserved unresolved source
+  category unions instead of inventing exact genera. Fixed an independent
+  review's feature-cache identity finding before fitting; replay of120 feature
+  vectors from72 original photos is exact. The additional-data arm worsens
+  validation288->278/452 and macro-F1 .631637->.619802, so it is rejected without
+  opening calibration/test splits, retuning, exporting or replacing production
+  weights. All177 ML/tooling tests pass, zero skips. The recipe, limitations,
+  class/source breakdown and artifact hashes are in `globe-partial-supervision.md`.
+  Apple1.2 remains a separately delivered UX/content release, not an ML upgrade.
