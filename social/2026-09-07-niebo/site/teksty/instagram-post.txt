@@ -1,0 +1,11 @@
+Trochę nieba i uczciwie o tym, co dalej z CHMURNIKIEM.
+
+Rozpoznawanie chmur wymaga jeszcze pracy. Nowy model nie jest wdrożony: dotychczasowe próby nie dały podstaw, żeby ogłosić wiarygodniejsze rozpoznawanie. Przygotowuję materiał do konsultacji meteorologicznej, a dalszy etap będzie zależał od niezależnej oceny i lepszych danych.
+
+Android jest w przygotowaniu, nie w Google Play. Zostały formalności i wymagane testy, więc jeszcze bez daty premiery.
+
+Tymczasem atlas, lekcje, METAR, TAF i nauka wiatru czekają w CHMURNIKU. Wersja przeglądarkowa: chmurnik.cloud.
+
+Do pobrania przygotowałem też 20 nowych motywów tapet, każdy na telefon i komputer, w oryginale i powiększonym eksporcie 4K. Napisz po link.
+
+#CHMURNIK #chmury #meteorologia #nauka #Android

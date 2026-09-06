@@ -1,0 +1,11 @@
+CHMURNIK rośnie, ale nie każdą zmianę chcę nazywać przełomem.
+
+Przy rozpoznawaniu chmur sprawdziłem kolejne modele i sposoby przygotowania zdjęć. Wyniki nie dały podstaw do wdrożenia nowego, wiarygodniejszego modelu. Obecna aplikacja nie dostała więc wymiany silnika pod pozorem poprawy.
+
+Zamykam ten etap eksperymentów i przygotowuję materiał do konsultacji meteorologicznej. Potrzebujemy niezależnej oceny zdjęć i lepszych danych. Konsultacja jeszcze się nie odbyła i nie jest obietnicą konkretnego wyniku.
+
+Równolegle powstaje wersja na Androida. Nie jest jeszcze dostępna w Google Play: pozostają formalności konta oraz wymagane testy. Na razie bez daty premiery.
+
+A niebo można poznawać już teraz: atlas, lekcje, METAR i TAF oraz narzędzia do nauki wiatru są dostępne w CHMURNIKU. W przeglądarce: https://chmurnik.cloud
+
+Do tej opowieści przygotowałem też 20 nowych motywów tapet. Trochę nieba, które można zabrać na swój ekran.

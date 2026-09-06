@@ -1,0 +1,17 @@
+CHMURNIK / Żeby niebo stawało się znajome.
+Nowa oprawa statyczna, 7 września 2026. Opowieść 01-10 możesz opublikować samodzielnie; aktualizacje 11-13 również tworzą oddzielną krótką serię. Pierwsze 10 plansz zachowuje pełne zaakceptowane teksty. Plansze 11-13 i nowe podpisy opisują stan modelu oraz Androida, zgodnie z dodatkową dyspozycją właściciela. Starsze pełne podpisy zachowano w teksty/*-historia.txt. Nic nie zostało opublikowane automatycznie na kontach społecznościowych.
+
+STORIES: 13 PNG 1080x1920 w kolejności 01-13. Dodaj własną muzykę oraz naklejkę z linkiem z TEKSTY-I-LINKI.txt, w pustym miejscu nad dolną linią.
+INSTAGRAM: 13 PNG 1080x1350 z karuzela i pełny opis z teksty/instagram-post.txt. Link w opisie nie jest klikalny.
+FACEBOOK: facebook/chmurnik-niebo.png i teksty/facebook-post.txt.
+LINKEDIN: CHMURNIK-NIEBO-LINKEDIN.pdf jako dokument i teksty/linkedin-post.txt. Tytuł dokumentu: Żeby niebo stawało się znajome. W interfejsie właściciela opcja dokumentu była dostępna w aplikacji na telefonie.
+
+TAPETY: 20 nowych motywów x 2 osobno wygenerowane kompozycje (telefon/komputer) x 2 warianty pliku = 80 PNG. Folder oryginaly zachowuje rozdzielczość źródłową; usunięto dodatkowe metadane. Folder tapety zawiera eksporty 3840x2160 i 2160x3840. Mniejsze źródła są powiększone filtrem Lanczos; 4K nie oznacza natywnej rozdzielczości generatora ani nowych detali. Dokładne wymiary i pochodzenie zapisano w manifest.json.
+
+Ekrany pochodzą z wcześniej przygotowanych, autentycznych ujęć interfejsu w izolowanej przeglądarce z września 2026. To nie nowy film ani aktualny zrzut fizycznego iPhone'a. Ilustracje i tapety są dekoracyjne, nie służą do rozpoznawania rodzajów chmur. Zachowaj ZRODLA-ZDJEC.txt.
+
+Narzędzia meteorologiczne służą do nauki, nie zastępują oficjalnego briefingu. Pracownia Windy jest niezależna, bez integracji z Windy. Telefon nie mierzy wiatru. Ten pakiet NIE ogłasza nowego modelu rozpoznawania.
+
+Stała biblioteka: https://jakiesluchawki.github.io/chmurnik/assetySM/
+Ta seria: https://jakiesluchawki.github.io/chmurnik/premiera/niebo/
+Galeria jest publiczna, bez logowania, z noindex. Można przekazać link dalej. Tapety do osobistego użytku jako tło ekranu.

@@ -1,0 +1,90 @@
+1. Zaczęło się od kogoś bliskiego.
+Mam w rodzinie szybownika. Ostatnio do dziobu doczepił silnik i lata jeszcze dalej. Rozpoznawanie chmur może mu się przydać, więc zrobiłem dla niego aplikację. Tak zaczął się CHMURNIK, który z czasem urósł trochę bardziej, niż planowałem.
+
+
+Naklejka: Poznaj CHMURNIK
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+2. Żeby niebo stawało się znajome.
+Otwórz atlas i wybierz chmurę, którą chcesz poznać. Zdjęcia są prawdziwe, a opisy podpowiedzą Ci, na co patrzeć i jak odróżnić ją od innych. Jest dziesięć rodzajów do poznania, ale najprzyjemniejszy moment przychodzi później, kiedy rozpoznajesz któryś z nich nad własną głową.
+
+
+Naklejka: Otwórz atlas chmur
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+3. Najpierw patrz, potem nazywaj.
+To tytuł pierwszej lekcji. Przeczytaj fragment, zatrzymaj się przy pytaniu i sprawdź odpowiedź. Przyglądamy się kształtom, warstwom i światłu, żeby nazwa chmury kojarzyła się z czymś, co naprawdę widzisz, a nie tylko z hasłem do zapamiętania.
+
+
+Naklejka: Zajrzyj do lekcji
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+4. Potem przyszła kolej na język pilotów.
+Do rozpoznawania chmur dobudowałem trening METAR. Żeby za ciągiem liter i cyfr zobaczyć to, o czym mówią: wiatr, widzialność, chmury.
+
+Przykład do nauki, nie aktualna pogoda.
+Naklejka: Poznaj trening METAR
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+5. Kilka znaków. Tyle pogody.
+METAR opisuje obserwację. TAF jest prognozą. Wklejasz depeszę i rozczytujesz ją po kawałku. Skróty zaczynają nabierać znaczenia.
+
+Przykład do nauki, nie aktualna pogoda.
+Naklejka: Wypróbuj czytnik
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+6. Mapa przyciąga wzrok. Chciałem rozumieć więcej.
+Aplikacja rosła. Dodałem pracownię czytania Windy: co oznaczają warstwy, na jakim poziomie patrzymy i czego z samego koloru jeszcze nie wiemy.
+
+Niezależna pracownia edukacyjna. Bez integracji z Windy.
+Naklejka: Poznaj pracownię Windy
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+7. Kolor to dopiero początek.
+Wybierasz warstwę. Sprawdzasz, co przedstawia, w jakich jednostkach i względem czego. Potem odpowiadasz na pytanie i poznajesz wyjaśnienie. Tak ćwiczysz czytanie mapy.
+
+Niezależna pracownia edukacyjna. Bez integracji z Windy.
+Naklejka: Przećwicz warstwy
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+8. Ten sam poziom. Ziemia coraz bliżej.
+Przesuwasz teren pod wybraną powierzchnią ciśnienia. Na przekroju widzisz różnicę między wysokością nad morzem a odległością od gruntu. hPa, MSL i AGL przestają być tylko skrótami.
+
+Niezależna pracownia edukacyjna. Bez integracji z Windy.
+Naklejka: Zobacz różnicę wysokości
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+9. A potem popłynęliśmy.
+Na żagle z chłopakami zabrałem też CHMURNIKA. Przydał się moduł wiatru, bo ten, który czujesz na twarzy, zależy również od ruchu łodzi. Zmień w aplikacji kurs i prędkość jachtu, a zobaczysz, jak zmienia się wiatr pozorny. Trochę fizyki, którą na wodzie czujesz na własnej skórze.
+
+Model szkoleniowy. Telefon nie mierzy wiatru.
+Naklejka: Poznaj wiatr na pokładzie
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+10. Zrobiłem dla kogoś bliskiego. Teraz dzielę się z Tobą.
+Nie trzeba latać ani żeglować, żeby lubić patrzeć w niebo. CHMURNIK jest po to, żeby obok zachwytu znalazło się trochę zrozumienia. Chciałbym, żeby po odłożeniu telefonu zostało z Tobą coś, co zauważysz podczas następnego spaceru.
+CHMURNIK. Bezpłatnie na iPhone’a.
+
+Naklejka: Pobierz CHMURNIK
+https://apps.apple.com/pl/app/chmurnik/id6782159027
+
+11. Nie każda chmura daje się łatwo nazwać.
+Rozpoznawanie w CHMURNIKU nadal wymaga poprawy. Sprawdziłem kolejne modele, ale żaden nie dał podstaw, żeby ogłosić gotową, wiarygodniejszą wersję. Dlatego obecnego modelu nie zastępuję nowym tylko po to, żeby napisać o aktualizacji.
+
+Nowy model nie jest wdrożony.
+Naklejka: Poznaj CHMURNIK
+https://chmurnik.cloud/
+
+12. Teraz potrzebujemy uważnego spojrzenia.
+Przygotowuję zdjęcia i wyniki do konsultacji meteorologicznej. Chcę sprawdzić, gdzie myli się model, a gdzie samo zdjęcie albo jego opis nie pozwala na jednoznaczną odpowiedź. Dalsze prace nad modelem czekają na niezależną ocenę i lepsze dane.
+
+Ocena specjalisty jeszcze się nie odbyła.
+Naklejka: Zajrzyj do atlasu
+https://chmurnik.cloud/
+
+13. Na Androidzie też chcę pokazać Ci niebo.
+Wersja na Androida jest przygotowywana, ale nie ma jej jeszcze w Google Play. Przed nami formalności konta i wymagane testy. Nie podaję daty premiery, której nie mogę obiecać. Tymczasem z CHMURNIKA możesz korzystać w przeglądarce pod chmurnik.cloud.
+
+Android: prace przed publikacją, nie premiera.
+Naklejka: Otwórz chmurnik.cloud
+https://chmurnik.cloud/

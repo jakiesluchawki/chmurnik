@@ -44,6 +44,9 @@ jobs:
         run: cp -R social/2026-09-04-astra/site dist/premiera/astra
       - name: Add the permanent social media library (not bundled in iOS)
         run: cp -R social/library/site dist/assetySM
+      - name: Add the new static story pack and original plus 4K wallpapers
+        # Full-resolution downloads live in the matching GitHub Release.
+        run: rsync -a --exclude=tapety --exclude=oryginaly social/2026-09-07-niebo/site/ dist/premiera/niebo/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
