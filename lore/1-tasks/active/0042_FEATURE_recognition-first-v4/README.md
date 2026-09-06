@@ -537,3 +537,17 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   No individual-photo genus labels, chronological
   groups, fresh test evidence or model improvement are inferred. No training
   admission occurred; limits and hashes are in `data-expansion-audit.md`.
+- Completed a predeclared Vienna multi-instance trial with 155 technically
+  reviewed four-view bags / 620 photos from the verified training source.
+  Joint positive SYNOP constraints remain weak supervision; no individual
+  genus labels or temporal independence were invented. Fixed two independent
+  pre-fit review findings by enforcing selection agreement and recomputing
+  overlaps from verified pixels against the current manifest. All 207 tests
+  pass, zero skips; original 72-photo feature replay remains exact. The paired
+  auxiliary arm worsens validation 288->280/452 and macro-F1 .631637->.621106,
+  with declines in all three sources and 26 gains versus 34 regressions. This
+  fixed pilot is rejected without opening calibration/test data, retuning,
+  exporting or replacing the app model. The protocol, code, source/class
+  breakdown and artifact hashes are in `vienna-bag-trial.md`. No new host
+  permissions, system changes or owner presence were needed; the goal remains
+  active, with the UI/content release separate from ML qualification.
