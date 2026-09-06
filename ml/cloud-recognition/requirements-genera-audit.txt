@@ -1,0 +1,3 @@
+# Optional numeric-only Genera archive audit, in addition to the existing ML env.
+# No Keras, TensorFlow, Streamlit or downloaded model code is required.
+h5py==3.16.0

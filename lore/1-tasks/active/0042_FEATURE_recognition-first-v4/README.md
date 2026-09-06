@@ -630,3 +630,16 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   code, app weights, Apple submission, domain or privacy settings changed.
   See `mac-import-training-probe.md`. This goal remains active; the current
   classifier's reliability and fresh-evidence requirements are not satisfied.
+- Audited the published Genera cloud-specialist archive and tested a fixed
+  numeric-only reconstruction without Keras loading or downloaded-code execution.
+  Bounded archive/HDF5 checks pass; the remote suspicious scanner finding is
+  retained, not declared resolved. Three independent float64 NumPy graph replays
+  agree with PyTorch within .0000002494 probability error. On the same452
+  validation rows, source-label agreement falls290->267 and macro-F1
+  .644547->.572943; CCSN gains do not offset IMGW and clear-sky regressions.
+  All26 contrail outputs remain unsupported, not renormalized away. Ten focused
+  and all235 ML/tooling tests pass. Reject this fixed direct-replacement trial;
+  no training, calibration, holdout access, model release or expert outreach.
+  The unknown source-training overlap prevents an independent accuracy claim.
+  See `genera-source-probe.md` for the protocol, complete source breakdown,
+  numeric replay limits and retained artifact hashes. This goal remains active.
