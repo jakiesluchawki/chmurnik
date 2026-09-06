@@ -39,7 +39,9 @@ September 6 delivery: iOS/iPadOS 1.2 build20260906092043 and macOS 1.2
 build20260906093223 both processed as VALID and were submitted successfully;
 both version states are WAITING_FOR_REVIEW, not approved/live. Updated Pages
 7a1d618 passed public regression; the private root ZIP was replaced under the
-same owner-only Drive link. The domain still serves the older build. See
+same owner-only Drive link. After the owner's upload, the root domain was
+verified at 11:30 UTC: all 81 public package files match, security headers and
+canonical redirects pass, and the complete public browser harness passes. See
 `apple-web-release-20260906.md` for archive provenance, the fixed Mac category,
 verified SDK signatures, inherited screenshots and the remaining ML/hosting
 and wallpaper work. The existing daily monitor now includes both review states.
@@ -551,3 +553,12 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   breakdown and artifact hashes are in `vienna-bag-trial.md`. No new host
   permissions, system changes or owner presence were needed; the goal remains
   active, with the UI/content release separate from ML qualification.
+- After the owner replaced Cyber_Folks files, verified all 81 public root
+  package files byte-for-byte, matching security headers, canonical redirects
+  and protected .htaccess. The full public browser harness passes, including
+  photo collection/backup, lessons, atlas, METAR/TAF, wind, maps and 42
+  route/viewport visits; inspected three actual live screenshots. Existing
+  Pages asset-hub/Astra entry files remain unchanged. The root deployment is
+  now confirmed; no additional upload is needed for this package. This does
+  not validate an old-to-new root service-worker transition or improve the
+  failed classifier gate. See `apple-web-release-20260906.md` for evidence.

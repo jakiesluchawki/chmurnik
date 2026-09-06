@@ -19,11 +19,23 @@ publicznych plików jest identycznych z kandydatem, pięć archiwów SM ma HTTP 
 i zgodne rozmiary. Wszystkie 255 lokalnych plików istniejących galerii zachowano
 bajt po bajcie. Nie dodano nowych tapet.
 
-Kontrola publicznej domeny 6 września nadal pokazuje `index-BpdEVwM6.js`.
-Wdrożenie na Cyber_Folks pozostaje po stronie właściciela. Obowiązują poniższe
-instrukcje: nie usuwać istniejących galerii, zasoby przesłać przed plikami
-wejściowymi i zachować `.htaccess`. Nowa paczka obejmuje także późniejszą
-poprawkę nagłówka analizy, bez nowych wag modelu rozpoznawania.
+Po podmianie plików przez właściciela **potwierdzono wdrożenie na chmurnik.cloud
+6 września o 13:30 czasu polskiego**. Wszystkie 81 publicznych plików paczki
+jest identycznych z przygotowaną wersją, w tym `index-DRnTagjr.js`, zdjęcia,
+fonty, CSS i service worker. Nagłówki bezpieczeństwa z `.htaccess` są aktywne,
+a HTTP oraz www przekierowują na właściwy adres HTTPS.
+
+Pełny test na publicznej domenie przeszedł: dziennik ze zdjęciami, edycja,
+eksport i odtworzenie kopii, atlas, lekcje, METAR/TAF, wiatr i mapy oraz
+42 wizyty w widokach mobilnych i desktopowych. Nie wystąpiły błędy JavaScript
+ani naruszenia CSP. Sprawdzono też trzy zrzuty publicznej strony. Biblioteka
+materiałów SM i galeria Astry pod dotychczasowymi adresami Pages są niezmienione.
+Nie trzeba ponownie przesyłać tej paczki. Test nie obejmuje przejścia starej
+sesji service workera na tej domenie; poprzedni stan nie został zachowany
+przed podmianą. Nowe wagi modelu rozpoznawania nie wchodzą w tę aktualizację.
+
+Raport: `build/v4-cyberfolks-live-20260906-files.json`.
+Zrzuty: `build/v4-cyberfolks-live-20260906-qa/`.
 
 ## Historia Dostawy Z 5 Września
 

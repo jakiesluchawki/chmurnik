@@ -87,14 +87,44 @@ preserved byte-for-byte in the candidate. Previous published Stories, videos,
 PDFs and wallpapers are untouched. No new twenty-motif wallpaper pack exists.
 
 Current Pages entry bundle: index-BIk7iW0S.js. Root candidate: index-DRnTagjr.js.
-Public chmurnik.cloud still serves index-BpdEVwM6.js; no domain deployment is
-claimed. Updated the owner's private existing Drive ZIP in place, retaining
+Before the owner's upload, chmurnik.cloud served index-BpdEVwM6.js. Updated
+the owner's private existing Drive ZIP in place, retaining
 its link, parent and owner-only permission. Readback confirms 22,777,833 bytes
 and the September 6 file name. Local ZIP structure/CRC passes; SHA-256 is
 361ffea54e3fa3a4075cb0612b5231b469c17a9b92287ec65b6f471b908881b5.
 Connector metadata exposes size, not a remote checksum. Delivery receipt is
 .local/v4/web-delivery-20260906.json; hosting instructions remain in
 design/web-v4-handoff.md. The owner performs the Cyber_Folks deployment.
+
+### Root Deployment Verified After Owner Upload
+
+On September 6 at 11:30:16 UTC, all 81 public files from the delivered root
+candidate match the live domain byte-for-byte (24,452,581 decoded bytes).
+This includes index-DRnTagjr.js, index-CNpHOjaI.css, the knowledge bundle,
+all packaged cloud photographs, fonts, icons, service worker and information
+pages. This is a verified root deployment, not a Pages-only update.
+
+The response headers exactly match every `Header always set` value in the
+delivered .htaccess. Entry HTML, manifest and service worker have no-store /
+no-cache; .htaccess itself returns 403. HTTP and www entry points redirect to
+https://chmurnik.cloud/ and return the same tested entry HTML. The existing
+Pages asset hub and Astra gallery remain available and byte-identical; these
+gallery checks refer to their established Pages URLs, not root-hosted copies.
+
+The complete `scripts/check-field-ui.mjs --base https://chmurnik.cloud/`
+browser harness passes on the public deployment: observation/photo storage,
+editing, postcard, deletion, backup round trip, METAR/TAF parsing and timelines,
+error recovery, wind/map controls, atlas, all nine lesson entry points,
+42 route/viewport visits and public help/privacy pages. No uncaught JavaScript
+errors or CSP violations occurred. Inspected actual mobile home, layers lesson
+and desktop METAR screenshots. This is not physical-device accessibility QA,
+an old-to-new service-worker transition test, or an improved-model claim.
+
+Evidence: `build/v4-cyberfolks-live-20260906-files.json`, SHA256
+`ebefe3dc2ccc1ce2f916ea91b11819f53c9e6f20135e9ec24fef00d986275586`,
+and `build/v4-cyberfolks-live-20260906-qa/` screenshots. The verifier is local
+under `.local/v4/check-cyberfolks-live.mjs`. No server file, user browser
+profile, model or Apple submission was modified by these checks.
 
 The existing 24-hour heartbeat was updated through the app tool to check both
 1.2 review states independently, remaining silent without a meaningful change.
@@ -104,7 +134,8 @@ UI tests or automatic submission. No duplicate automation was created.
 ## Remaining Work
 
 - Await actual Apple review outcomes; do not label WAITING_FOR_REVIEW as live.
-- Confirm the root-domain deployment only after the owner uploads the ZIP.
+- The root deployment is verified; existing-user service-worker migration on
+  this domain was not captured before upload and is not newly certified here.
 - Continue classifier work from independent evidence, not further tuning to
   the exposed test set or lowering the quality gate.
 - Deliver the separate twenty-distinct-motif wallpaper request.
