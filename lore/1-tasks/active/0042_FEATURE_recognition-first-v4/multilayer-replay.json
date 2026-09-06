@@ -1,0 +1,24 @@
+{
+  "method": "independent NumPy/SciPy; no probe/metric/head helper imports",
+  "evaluation_sha256": "dfba0b13fdf54618d34fb22f3de4d1a997ab922005b5e65a0c354fbdd5412a5e",
+  "script_sha256": "fff5aad58fd02bdce5f88da507b1e3b86483d7ffb29791e61736aba1d2e4bffc",
+  "head_checks": {
+    "control": {
+      "max_logit_error": 3.0692085502437294e-05,
+      "prediction_changes": 0,
+      "population_reports_verified": 18
+    },
+    "last_four": {
+      "max_logit_error": 4.430981729897088e-05,
+      "prediction_changes": 0,
+      "population_reports_verified": 18
+    }
+  },
+  "reference_population_reports_verified": 18,
+  "training_statistics_and_quality_verified": true,
+  "candidate_fits_repeated": false,
+  "verification_passed": true,
+  "eligible_for_further_evaluation": false,
+  "calibration_evaluated": false,
+  "holdouts_evaluated": false
+}

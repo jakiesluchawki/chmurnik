@@ -731,3 +731,15 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   `howard-source-audit.md` for scope, visual evidence and preserved receipts.
   Model reliability remains open; this negative source result changes the
   next data-admission decision without weakening the release gate.
+- Completed one frozen last-four-layer DINO representation trial. A training-
+  only numerical check first isolated CPU/Metal rounding; using the historical
+  CPU backend reproduces all5,102 final-only feature vectors and reference
+  logits exactly, without loosening any gate. The new1,920-feature arm regresses
+  290->277/452 and macro-F1 .644547->.616455 (17gains,30regressions), so reject
+  without calibration, holdouts, export or block/hyperparameter retuning.
+  Independent NumPy/SciPy replay verifies both heads, all54 population reports
+  and rejection; all284 ML/tooling tests pass. See `multilayer-probe.md` for the
+  predeclared protocol and `multilayer-result.md` for the result and receipts.
+  No shipped model, web package, Apple state or owner-deferred expert-review
+  decision changed. The goal remains active; this completed representation
+  experiment rules out a distinct hypothesis, not the reliability requirement.
