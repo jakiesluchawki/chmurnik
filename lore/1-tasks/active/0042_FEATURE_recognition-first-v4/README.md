@@ -758,3 +758,15 @@ Ongoing details and benchmark contracts belong in this task, not the wiki.
   Read-only Apple checks at19:31UTC(iOS) and19:34UTC(Mac) still show
   WAITING_FOR_REVIEW and READY_FOR_SALE respectively, with both submitted
   builds VALID. No release status was inferred from a local artifact alone.
+- Completed the fixed current-RBF 336px versus224px input trial after auditing
+  all2,777 development image sizes. Candidate285/452 and macro-F1 .633350
+  regress against290/.644547;18gains versus23regressions, bothsources down.
+  Exact control parity and independent weighted-normal-equation replay verify
+  all36 reports and every image dimension. All296 ML/tooling tests pass.
+  Reject without calibration/holdouts/export; close the size-only direction
+  and do not launch448/518 or another nearby parameter grid on the same data.
+  See `resolution-probe.md` and `resolution-result.md`. This is progress on
+  a distinct fixed hypothesis, not a model release or a completed goal.
+  Independent labels and native imported-photo parity remain unresolved;
+  the owner's deferral of meteorologist involvement is unchanged. Production
+  web and Apple binaries remain unchanged by this research.

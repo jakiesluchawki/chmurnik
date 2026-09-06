@@ -1,0 +1,22 @@
+{
+  "verification_passed": true,
+  "method": "NumPy/SciPy weighted normal equations; no probe/model/metric imports",
+  "script_sha256": "09cb5bd50e054c91689db1c140e5f42c264a04d02099b8d6ef531dde33c711b1",
+  "evaluation_sha256": "7fb497969ea3ca15482320e3b16d5e0f8864bf1303a0ed06f7a0d98198dac74c",
+  "checks": {
+    "control": {
+      "independent_refit_max_logit_error": 2.5831781158558442e-11,
+      "prediction_changes": 0,
+      "population_reports_verified": 18
+    },
+    "resolution_336": {
+      "independent_refit_max_logit_error": 2.575184510078543e-11,
+      "prediction_changes": 0,
+      "population_reports_verified": 18
+    }
+  },
+  "image_geometries_verified": 2777,
+  "eligible_for_further_evaluation": false,
+  "holdouts_evaluated": false,
+  "calibration_evaluated": false
+}
