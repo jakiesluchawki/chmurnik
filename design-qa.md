@@ -407,3 +407,14 @@ Current result: automated layout/function gates passed; physical acceptance open
 - Consider code splitting the largest educational workshops in a later performance-only task; it is not a visual or functional release blocker.
 
 final result: passed
+
+## Offline Preservation Patch (2026-09-06)
+
+No redesign or copy change. The existing wordmark and italic WOFF2 are now
+available after an offline update. Inspected the full WebKit observation and
+Chromium mobile/desktop home captures in `build/v4-offline-preservation-webkit/`
+and `build/v4-offline-preservation-field-ui/`. Approved palette, real atlas
+photography, typography and navigation are retained. Full browser checks pass
+without horizontal overflow or candidate runtime/CSP errors. Physical-device
+accessibility limits remain unchanged. Details: active Lore0042,
+`offline-upgrade-preservation.md`.

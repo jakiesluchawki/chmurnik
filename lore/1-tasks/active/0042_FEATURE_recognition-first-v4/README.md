@@ -174,6 +174,16 @@ That earlier approval does not establish recognition-first V4 acceptance.
 
 Ongoing details and benchmark contracts belong in this task, not the wiki.
 
+- Reproduced loss of all30 downloaded atlas photos across the actual old-to-new
+  root upgrade, while private observations remain intact. Fixed activation to
+  retain byte-verified photographs before removing old own-scope caches, and
+  restored offline logo/italic assets. Three isolated Chromium/WebKit upgrade
+  cases pass, including acceptance while offline;279 app tests, nine lessons
+  and the full production browser harness pass. See
+  `offline-upgrade-preservation.md` for exact artifacts, retained negative
+  results and browser-fixture limitations. No classifier or Apple submission
+  changed; this is concrete preservation progress, not goal completion.
+
 - Created the frozen manifest and measured both actual bundled Core ML packages.
   Native renderer parity is still pending; see `experiment-contract.md`.
 - Confirmed contradictory source labels on visually identical photographs.

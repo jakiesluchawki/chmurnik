@@ -3,6 +3,7 @@ const BUILD_VERSION = "__CHMURNIK_BUILD_VERSION__";
 const VERSION = `${CACHE_PREFIX}${BUILD_VERSION.includes("__CHMURNIK") ? "development" : BUILD_VERSION}`;
 const BASE = new URL("./", self.location.href).pathname;
 const RUNTIME_ASSETS = /* __CHMURNIK_RUNTIME_ASSETS__ */ [];
+const ATLAS_HASHES = /* __CHMURNIK_ATLAS_HASHES__ */ {};
 const CLOUD_PHOTOS = [
   "altocumulus-lenticularis-nyons.jpg",
   "altocumulus-mackerel.jpg",
@@ -43,7 +44,9 @@ const APP_SHELL = [
   `${BASE}assets/observer-guide-still-life-720.webp`,
   `${BASE}fonts/Roobert-Regular.woff2`,
   `${BASE}fonts/Roobert-Bold.woff2`,
+  `${BASE}fonts/Roobert-RegularItalic.woff2`,
   `${BASE}fonts/Romie-Regular.woff2`,
+  `${BASE}brand/chmurnik-wordmark.png`,
   `${BASE}icons/icon-192.png`,
   ...RUNTIME_ASSETS.map((file) => `${BASE}${file}`),
 ];
@@ -52,15 +55,35 @@ self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(VERSION).then((cache) => cache.addAll(APP_SHELL)));
 });
 
+async function activateVersion() {
+  const previous = [];
+  for (const key of await caches.keys()) {
+    if (!key.startsWith(CACHE_PREFIX) || key === VERSION) continue;
+    const cache = await caches.open(key);
+    if (await cache.match(BASE)) previous.push({ key, cache });
+  }
+  const current = await caches.open(VERSION);
+  // Retain downloaded atlas photos only when their bytes match this release.
+  // Complete every copy before deleting old caches, including on quota failure.
+  for (const file of CLOUD_PHOTOS) {
+    if (!ATLAS_HASHES[file]) continue;
+    const url = `${BASE}assets/clouds/${file}`;
+    for (const { cache } of previous) {
+      const response = await cache.match(url);
+      if (!response?.ok) continue;
+      const digest = await crypto.subtle.digest("SHA-256", await response.clone().arrayBuffer());
+      const hash = [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, "0")).join("");
+      if (hash !== ATLAS_HASHES[file]) continue;
+      await current.put(url, response);
+      break;
+    }
+  }
+  await Promise.all(previous.map(({ key }) => caches.delete(key)));
+  await self.clients.claim();
+}
+
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(
-        keys.filter((key) => key.startsWith(CACHE_PREFIX) && key !== VERSION)
-          .map((key) => caches.delete(key)),
-      ))
-      .then(() => self.clients.claim()),
-  );
+  event.waitUntil(activateVersion());
 });
 
 self.addEventListener("message", (event) => {

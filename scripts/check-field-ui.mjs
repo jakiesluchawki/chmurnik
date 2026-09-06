@@ -17,10 +17,13 @@ const { values } = parseArgs({
     output: { type: "string", default: "build/field-ui-qa" },
     native: { type: "boolean", default: false },
     preview: { type: "boolean", default: false },
+    "build-dir": { type: "string" },
     capture: { type: "boolean", default: false },
     "path-prefix": { type: "string", default: "/" },
   },
 });
+assert.ok(!values["build-dir"] || (values.preview && !values.base),
+  "A build directory requires the local production preview.");
 const { chromium } = await import(
   values["playwright-path"]
     ? pathToFileURL(values["playwright-path"]).href
@@ -41,7 +44,8 @@ try {
         false,
         "Capture fixtures require the isolated QA build.",
       );
-      const apache = await readFile("public/.htaccess", "utf8");
+      const apache = await readFile(values["build-dir"]
+        ? path.join(values["build-dir"], ".htaccess") : "public/.htaccess", "utf8");
       const headers = Object.fromEntries(
         [...apache.matchAll(/^\s*Header always set ([\w-]+) "([^"]+)"/gm)].map(
           (match) => [match[1], match[2]],
@@ -49,6 +53,7 @@ try {
       );
       server = await preview({
         base: values["path-prefix"],
+        ...(values["build-dir"] ? { build: { outDir: path.resolve(values["build-dir"]) } } : {}),
         preview: { host: "127.0.0.1", port: 4177, headers },
       });
     } else {
