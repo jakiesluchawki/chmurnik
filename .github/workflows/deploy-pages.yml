@@ -48,6 +48,8 @@ jobs:
         # Full-resolution downloads live in the matching GitHub Release.
         run: rsync -a --exclude=/tapety/ --exclude=/oryginaly/ social/2026-09-07-niebo/site/ dist/premiera/niebo/
       - uses: actions/configure-pages@v5
+      - name: Add code-only hosting updates (not bundled in native apps)
+        run: cp -R release-downloads dist/aktualizacje
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
