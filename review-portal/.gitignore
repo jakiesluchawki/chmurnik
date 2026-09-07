@@ -1,0 +1,4 @@
+site/_private/
+site/assets/
+site/runtime/
+*.zip
