@@ -41,6 +41,11 @@ an outline, not a finished lesson.
     what to observe, verify the action, then explain the result. Reveal further
     controls progressively. Keep this walkthrough distinct from free exploration
     and assessment; a panel of sliders is not a tutorial.
+13. Choose an interaction that teaches the outcome, not a slider for every
+    topic. Use authentic comparisons for observation, causal inputs for
+    mechanisms, and progressively revealed data for technical diagrams.
+    Start with a concrete question and a readable single-level example before
+    showing all curves, specialist notation or multiple hazards together.
 
 ## Quality Gate
 

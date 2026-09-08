@@ -1238,6 +1238,11 @@ function LearnPage({
         <span>Postęp zapisany na tym urządzeniu</span>
       </div>
 
+      {import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform() && import.meta.env.BASE_URL === "/chmurnik/" && <section className="weather-tool-guide" aria-label="Pracownia do pełnych lekcji">
+        <div><span className="eyebrow">Pracownia pogody · podgląd</span><h2>Najpierw zobacz, co się zmienia</h2><p>14 doświadczeń i ćwiczeń do dziewięciu lekcji. Każde ma przewodnik, samodzielną próbę i powrót do pełnego tematu.</p></div>
+        <div><a href={`${import.meta.env.BASE_URL}pogoda-preview/#pracownia`}>Wybierz doświadczenie<ArrowRight /></a></div>
+      </section>}
+
       <div className="learning-path">
         {learningModules.map((module) => {
           const done = completed.includes(module.id);
@@ -3275,6 +3280,9 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
   const [terrain, setTerrain] = useState(300);
   const [pressure, setPressure] = useState(850);
   const heading = layersHeadings[tab];
+  const previewLesson = { wind: "wiatr", metar: "lotnictwo", hazards: "zagrozenia", sounding: "warstwy", lab: "warstwy" }[tab];
+  const previewActivities = import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform()
+    ? weatherLessonLinks(previewLesson, import.meta.env.BASE_URL).filter(item => tab !== "sounding" || item.href.endsWith("#sondaz")) : [];
 
   return (
     <main className="page layers-page">
@@ -3301,6 +3309,11 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
           <button key={id} className={tab === id ? "active" : ""} onClick={() => setTab(id)}>{label}</button>
         ))}
       </div>
+
+      {import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform() && import.meta.env.BASE_URL === "/chmurnik/" && <section className="weather-tool-guide" aria-label="Ćwiczenia z przewodnikiem">
+        <div><span className="eyebrow">Zacznij od doświadczenia</span><h2>{tab === "sounding" ? "Sondaż od początku, bez skrótów" : "Zobacz mechanizm, potem odczytaj dane"}</h2><p>Przewodnik pokaże, co zmienić i gdzie szukać efektu. Pełne narzędzia zostają poniżej.</p></div>
+        <div>{previewActivities.map(item => <a key={item.href} href={item.href}>{item.title}<ArrowRight /></a>)}<a href={`${import.meta.env.BASE_URL}pogoda-preview/#pracownia`}>Wszystkie 14 doświadczeń i ćwiczeń<ArrowRight /></a></div>
+      </section>}
 
       {tab === "decoder" && (
         <WindyDecoderPanel

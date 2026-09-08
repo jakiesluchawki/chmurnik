@@ -79,6 +79,13 @@ Writing production code without an active Lore task is forbidden.
   Reset native slider-thumb painting so the illustration does not sit on a
   second system knob, including Safari. This is not a ban on shadows or a
   retroactive restyle of older screens.
+- Owner-approved learning expansion covers all nine lessons and relevant
+  tools, in the Pages web preview first. Keep cloud recognition/photo data,
+  native navigation, Apple builds and chmurnik.cloud unchanged until review.
+  Match the interaction to the outcome: authentic photo comparison for
+  observation/classification, causal experiments for weather mechanisms,
+  progressive data reading for METAR and soundings. Teach a simple vertical
+  profile before introducing Skew-T; explain acronyms before using them.
 - On 2026-09-03 the owner explicitly requested iPad and macOS applications.
   Keep a shared iPhone/iPad UIKit target and build Mac Catalyst from the same
   sources. Preserve compact phone navigation; wide native windows get a

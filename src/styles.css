@@ -945,6 +945,13 @@ p {
 }
 .lesson-experiment-links a svg { flex-shrink: 0; }
 .lesson-experiment-links a:hover { text-decoration: underline; }
+.weather-tool-guide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 1fr); gap: 24px; padding: 26px; margin: 24px 0; background: var(--cream, #fff7f1); border: 1px solid #6d643540; border-radius: 22px; }
+.weather-tool-guide h2 { margin: 10px 0 14px; font-size: 30px; }
+.weather-tool-guide p { line-height: 1.6; }
+.weather-tool-guide > div:last-child { display: grid; gap: 10px; }
+.weather-tool-guide a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; min-height: 48px; border: 1px solid #7442d94d; border-radius: 14px; color: #6030bc; text-decoration: none; line-height: 1.4; }
+.weather-tool-guide a svg { flex-shrink: 0; }
+@media (max-width: 700px) { .weather-tool-guide { grid-template-columns: minmax(0, 1fr); padding: 22px 18px; } }
 
 .lesson-source-row p {
   max-width: 520px;
