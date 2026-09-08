@@ -19,6 +19,7 @@ test('weather campaign retains full copy and does not claim an Apple release', a
   assert(txt.includes(previewUrl));
   const html=await readFile(new URL('index.html',base),'utf8');
   assert.match(html,/Teksty do akceptacji/);
+  assert.match(html,/href="style\.css\?v=[a-f0-9]{12}"/);
   assert.match(html,/nie ogłasza nowej funkcji w App Store/);
   assert.doesNotMatch(html,/expert-review|drive\.google\.com|R001|PRIVATE-KEY/);
   const css=await readFile(new URL('style.css',base),'utf8');
