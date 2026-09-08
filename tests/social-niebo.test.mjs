@@ -33,7 +33,8 @@ test('twenty unique wallpaper motifs have originals and explicit enlarged export
   assert.equal(hashes.size,80);
 });
 test('public library retains older campaigns and excludes consultation materials',async()=>{
-  assert.equal(packs[0].id,'niebo');assert.equal(packs.length,5);
+  assert(packs.some(pack=>pack.id==='niebo'));
+  assert.equal(new Set(packs.map(pack=>pack.id)).size,packs.length);
   const html=await readFile(new URL('index.html',base),'utf8');
   assert.doesNotMatch(html,/PRIVATE-KEY|drive\.google\.com|expert-review|R001/);
   assert.match(html,/bez powiększania/);assert.match(html,/powiększony/);

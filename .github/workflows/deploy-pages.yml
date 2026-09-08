@@ -32,8 +32,14 @@ jobs:
       - run: npm test
       - run: npm run check:lessons
       - name: Update the permanent social media library
-        run: node social/library/build.mjs
+        run: |
+          node social/2026-09-08-pogoda/build.mjs
+          node social/library/build.mjs
       - run: npm run build:pages
+      - name: Build the isolated weather-learning preview (never the root domain or Apple bundle)
+        run: npm run weather:build
+      - name: Add the owner-review weather playground
+        run: cp -R build/weather-preview dist/pogoda-preview
       - name: Add the separate launch media gallery (not bundled in iOS)
         run: cp -R social/2026-08-30/site dist/premiera
       - name: Add the origin-story media gallery (not bundled in iOS)
@@ -44,6 +50,8 @@ jobs:
         run: cp -R social/2026-09-04-astra/site dist/premiera/astra
       - name: Add the permanent social media library (not bundled in iOS)
         run: cp -R social/library/site dist/assetySM
+      - name: Add weather-preview social copy for owner approval
+        run: cp -R social/2026-09-08-pogoda/site dist/premiera/pogoda
       - name: Add the public consultation introduction (never the private PHP portal)
         run: cp -R review-portal/entry dist/ocena
       - name: Add the new static story pack and original plus 4K wallpapers

@@ -26,6 +26,9 @@ Writing production code without an active Lore task is forbidden.
 
 ## Product Guardrails
 
+- September 8 weather-learning work is a separate GitHub Pages preview only.
+  Do not publish it to chmurnik.cloud or Apple before owner acceptance. Keep
+  production navigation and existing learning/photo storage untouched.
 - The product interface and educational content are in Polish.
 - Version 1 teaches people to recognize clouds. Its experimental iOS photo
   assistant runs entirely on-device and presents uncertain, evidence-led

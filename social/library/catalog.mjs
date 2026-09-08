@@ -1,5 +1,14 @@
 export const packs = [
   {
+    id: 'pogoda', source: '2026-09-08-pogoda', date: '2026-09-08',
+    dateLabel: '8 września 2026', status: 'Nowa pracownia · teksty do akceptacji',
+    title: 'Jak powstaje pogoda.',
+    description: 'Dwa interaktywne doświadczenia do wypróbowania. Pełne teksty 5 Stories i karuzeli oraz postów na Instagram, Facebook i LinkedIn. Finalne plansze PNG i PDF po akceptacji tekstów; to zapowiedź podglądu, nie aktualizacja App Store.',
+    base: '../premiera/pogoda/', preview: 'assets/coast.webp',
+    formats: ['Podgląd pracowni', 'Teksty Stories', 'Instagram', 'Facebook', 'LinkedIn'],
+    downloads: [['Wszystkie teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'], ['Robocza paczka tekstów', 'CHMURNIK-POGODA-TEKSTY.zip', 'zip']],
+  },
+  {
     id: 'niebo', source: '2026-09-07-niebo', date: '2026-09-07',
     dateLabel: '7 września 2026', status: 'Najnowszy pakiet',
     title: 'Żeby niebo stawało się znajome.',
