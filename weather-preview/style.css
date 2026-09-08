@@ -824,13 +824,17 @@ main {
   box-shadow: 0 3px 9px #38205220;
   transition:
     box-shadow 120ms,
-    scale 120ms;
+    transform 120ms;
 }
 .range-thumb svg {
   width: 29px;
   height: 29px;
 }
 .range-thumb img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 49px;
   max-width: none;
   filter: drop-shadow(0 3px 3px #57427c70);
@@ -856,7 +860,7 @@ main {
     0 4px 10px #38205225;
 }
 .range-track:active .range-thumb {
-  scale: 1.06;
+  transform: translate(-50%, -50%) scale(1.06);
 }
 .step {
   width: 44px;
@@ -874,7 +878,11 @@ main {
   width: 100%;
   height: 44px;
   margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-appearance: none;
   appearance: none;
+  box-shadow: none;
   display: block;
   background: transparent;
   cursor: grab;
@@ -890,6 +898,7 @@ main {
   );
 }
 .range-row input::-webkit-slider-thumb {
+  -webkit-appearance: none;
   appearance: none;
   margin-top: -19px;
   width: 44px;
@@ -897,6 +906,8 @@ main {
   border: 0;
   border-radius: 50%;
   background: transparent;
+  box-shadow: none;
+  opacity: 0;
 }
 .range-row input::-moz-range-track {
   height: 6px;
@@ -913,6 +924,8 @@ main {
   border: 0;
   border-radius: 50%;
   background: transparent;
+  box-shadow: none;
+  opacity: 0;
 }
 .range-row input:active {
   cursor: grabbing;

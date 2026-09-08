@@ -73,6 +73,12 @@ Writing production code without an active Lore task is forbidden.
   to dragging, and ensure illustrations never cover controls or keyboard focus.
   A draggable-looking object must respond directly or clearly point to its control.
   Distinguish narrow-viewport pointer checks from physical Android touch testing.
+- For new illustrated controls, subtle focus shadows/halos are approved, but
+  must stay centred on the handle in idle, focused and pressed states. Centre
+  oversized artwork explicitly; it must not expand an implicit grid track.
+  Reset native slider-thumb painting so the illustration does not sit on a
+  second system knob, including Safari. This is not a ban on shadows or a
+  retroactive restyle of older screens.
 - On 2026-09-03 the owner explicitly requested iPad and macOS applications.
   Keep a shared iPhone/iPad UIKit target and build Mac Catalyst from the same
   sources. Preserve compact phone navigation; wide native windows get a

@@ -90,6 +90,23 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner Follow-up: Slider Alignment
+
+The owner clarified that subtle focus shadows are welcome; the defect is the
+misaligned/duplicate handle, not the existence of focus styling. Apply this
+quality rule to new work without restyling older screens. A 49px cloud in an
+implicitly sized grid inside a 40px bordered handle rendered 5.5 CSS px right of
+centre. Smaller moon/drop icons fit the grid, explaining the desktop example.
+Centre the cloud explicitly, keep pressed scaling around that same centre and
+preserve the approved shadows. Reset WebKit appearance and hide only native
+thumb painting (not its hit area or semantics) to prevent a second system knob.
+The iPhone image showed a white system-style disk, but its exact Safari version
+was unavailable. Do not claim physical-device QA.
+
+- [x] Fix the shared slider geometry and record the clarified design rule.
+- [x] Verify interactions and focus; see `design/weather-preview-20260908/slider-qa.md`.
+- [ ] Verify the Pages-only deployment.
+
 ### Owner Follow-up: Phone Interaction Failure
 
 - [x] Reproduce the reported cloud journey on a short phone viewport.
