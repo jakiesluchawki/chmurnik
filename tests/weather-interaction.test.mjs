@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import postcss from "postcss";
 import {
   dragHeight,
   keyboardHeight,
@@ -8,6 +9,69 @@ import {
   HEIGHT_SPAN,
 } from "../weather-preview/interaction.mjs";
 import { cloud } from "../weather-preview/model.mjs";
+
+test("illustrated sliders centre oversized artwork and keep one focused handle", async () => {
+  const css = postcss.parse(
+    await readFile(
+      new URL("../weather-preview/style.css", import.meta.url),
+      "utf8",
+    ),
+  );
+  const rules = new Map();
+  css.walkRules((rule) =>
+    rules.set(
+      rule.selector,
+      rule.nodes.filter((n) => n.type === "decl"),
+    ),
+  );
+  const image = new Map(
+    rules.get(".range-thumb img").map((decl) => [decl.prop, decl.value]),
+  );
+  assert.equal(image.get("position"), "absolute");
+  assert.equal(image.get("left"), "50%");
+  assert.equal(image.get("top"), "50%");
+  assert.equal(image.get("transform"), "translate(-50%, -50%)");
+  const pressed = new Map(
+    rules
+      .get(".range-track:active .range-thumb")
+      .map((decl) => [decl.prop, decl.value]),
+  );
+  assert.equal(pressed.get("transform"), "translate(-50%, -50%) scale(1.06)");
+  assert.equal(pressed.has("scale"), false);
+  assert.ok(
+    rules
+      .get(
+        ".range-track:focus-within .range-thumb,\n.range-track:active .range-thumb",
+      )
+      .some((decl) => decl.prop === "box-shadow" && decl.value !== "none"),
+  );
+  for (const selector of [
+    ".range-row input",
+    ".range-row input::-webkit-slider-thumb",
+  ]) {
+    const props = new Map(
+      rules.get(selector).map((decl) => [decl.prop, decl.value]),
+    );
+    assert.equal(props.get("-webkit-appearance"), "none");
+    assert.equal(props.get("appearance"), "none");
+  }
+  for (const suffix of ["::-webkit-slider-thumb", "::-moz-range-thumb"]) {
+    const props = new Map(
+      rules
+        .get(`.range-row input${suffix}`)
+        .map((decl) => [decl.prop, decl.value]),
+    );
+    assert.equal(props.get("opacity"), "0");
+    assert.equal(props.get("box-shadow"), "none");
+    assert.equal(props.get("width"), "44px");
+    assert.equal(props.get("height"), "44px");
+  }
+  assert.ok(
+    rules
+      .get(".range-row input:focus-visible")
+      .some((decl) => decl.prop === "outline" && decl.value !== "none"),
+  );
+});
 
 test("parcel drag uses the rendered scene height, not desktop pixels", () => {
   for (const sceneHeight of [190, 204.8, 250, 390, 600]) {

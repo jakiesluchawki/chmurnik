@@ -73,6 +73,12 @@ Writing production code without an active Lore task is forbidden.
   to dragging, and ensure illustrations never cover controls or keyboard focus.
   A draggable-looking object must respond directly or clearly point to its control.
   Distinguish narrow-viewport pointer checks from physical Android touch testing.
+- For new illustrated controls, subtle focus shadows/halos are approved, but
+  must stay centred on the handle in idle, focused and pressed states. Centre
+  oversized artwork explicitly; it must not expand an implicit grid track.
+  Reset native slider-thumb painting so the illustration does not sit on a
+  second system knob, including Safari. This is not a ban on shadows or a
+  retroactive restyle of older screens.
 - Native compact navigation must expose Warstwy as a separate bottom tab,
   with direct access to METAR/TAF, wind, Windy and full lessons, not through
   Atlas. Verify the actual native FieldHome and nativeNavigation paths and
