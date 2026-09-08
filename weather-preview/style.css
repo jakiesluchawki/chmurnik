@@ -202,6 +202,19 @@ main {
   line-height: 1.2;
   margin: 14px 0;
 }
+.guide-intro {
+  grid-column: 1 / -1;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+.guide-finish {
+  display: grid;
+  gap: 12px;
+}
 .guide-intro h3:focus {
   outline: none;
 }
@@ -267,7 +280,7 @@ main {
   margin-top: 12px;
 }
 .with-guide .controls .control {
-  margin-top: 20px;
+  margin-top: 0;
   padding: 12px;
   border: 1px solid var(--violet);
   border-radius: 14px;
@@ -447,6 +460,83 @@ main {
   width: 100%;
   background: #efd2de;
   color: #514927;
+}
+.scene-visual {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  pointer-events: none;
+}
+.parcel-control {
+  position: absolute;
+  left: 52%;
+  width: 90px;
+  height: 80px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 1px dashed var(--violet);
+  border-radius: 50%;
+  color: var(--violet);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.parcel-control svg {
+  position: absolute;
+  right: -10px;
+  top: -5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--white);
+}
+.parcel-control.dragging {
+  cursor: grabbing;
+  border-style: solid;
+  background: #7442d912;
+}
+.lift-actions {
+  padding: 8px 14px;
+  border-top: 1px solid var(--line);
+}
+.lift-actions p {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.lift-actions > div {
+  display: flex;
+  gap: 8px;
+}
+.lift-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+  min-height: 44px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #eee5f9;
+  font-size: 13px;
+}
+.lift-step svg {
+  width: 16px;
+}
+.scene-action {
+  padding: 8px 14px 14px;
+}
+@media (min-width: 761px) {
+  .scene-area .scene {
+    max-height: 480px;
+  }
+  .scene-action .guide-target {
+    max-width: 420px;
+  }
+  .lift-actions > div {
+    max-width: 420px;
+  }
 }
 .landscape {
   position: absolute;
@@ -769,7 +859,7 @@ main {
   scale: 1.06;
 }
 .step {
-  width: 36px;
+  width: 44px;
   min-height: 44px;
   display: grid;
   place-items: center;
@@ -801,9 +891,9 @@ main {
 }
 .range-row input::-webkit-slider-thumb {
   appearance: none;
-  margin-top: -13px;
-  width: 32px;
-  height: 32px;
+  margin-top: -19px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: transparent;
@@ -818,8 +908,8 @@ main {
   background: var(--violet);
 }
 .range-row input::-moz-range-thumb {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: transparent;
@@ -986,8 +1076,8 @@ main {
   font-size: 17px;
   margin-top: 3px;
 }
-.scene:has(.parcel) .scene-result,
-.scene:has(.fog-readout) .scene-result {
+.scene-cloud .scene-result,
+.scene-fog .scene-result {
   top: auto;
   bottom: 7%;
   background: #fff7f1ee;
@@ -996,7 +1086,7 @@ main {
   border-radius: 10px;
   font-size: 14px;
 }
-.scene:has(.parcel) .scene-result small {
+.scene-cloud .scene-result small {
   margin-top: 3px;
 }
 .notice {
@@ -1525,13 +1615,13 @@ footer svg {
   .parcel-readout b {
     font-size: 14px;
   }
-  .scene:has(.parcel) .scene-result,
-  .scene:has(.fog-readout) .scene-result {
+  .scene-cloud .scene-result,
+  .scene-fog .scene-result {
     font-size: 12px;
     padding: 7px 12px;
     bottom: 6%;
   }
-  .scene:has(.parcel) .scene-result small {
+  .scene-cloud .scene-result small {
     font-size: 9px;
   }
   .section-heading {
@@ -1615,13 +1705,52 @@ footer svg {
   .workbench {
     overflow: clip;
   }
-  .scene-area {
-    position: sticky;
-    top: 0;
-    z-index: 3;
-    box-shadow: 0 3px 9px #6d643515;
+  .scene-area,
+  .with-guide .scene-area {
+    position: static;
   }
   .scene-area .scene {
-    max-height: 285px;
+    max-height: 250px;
+    max-height: clamp(190px, 32svh, 250px);
+  }
+  .guide-intro {
+    display: block;
+    padding: 14px 16px;
+  }
+  .guide-intro h3 {
+    font-size: 23px;
+    margin: 8px 0;
+  }
+  .guide-intro > p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .controls {
+    padding: 16px;
+  }
+  .parcel-control {
+    width: 72px;
+    height: 60px;
+  }
+  .back-link {
+    min-width: 44px;
+    justify-content: center;
+  }
+  .scene-cloud:not(.mini) .scene-result {
+    display: none;
+  }
+  .scene-cloud .parcel-readout {
+    left: calc(100% - 2px);
+  }
+}
+@media (max-height: 600px) {
+  .with-guide .scene-area {
+    position: static;
+  }
+}
+@media (max-width: 760px) and (orientation: landscape) {
+  .scene-area .scene {
+    height: 230px;
+    max-height: none;
   }
 }

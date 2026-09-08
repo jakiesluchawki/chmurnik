@@ -90,6 +90,25 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner Follow-up: Phone Interaction Failure
+
+- [x] Reproduce the reported cloud journey on a short phone viewport.
+- [x] Make the parcel directly movable, with equivalent tap/keyboard actions.
+- [x] Keep primary actions beside the scene and remove mobile sticky occlusion.
+- [x] Recheck all guides, assessment locks and small/landscape layouts.
+- [ ] Verify the Pages deployment and unchanged production domain.
+
+At 360x640 the old scene showed an inert upward arrow, while the height slider
+started at y=683 and the target action at y=767 after opening the workbench.
+The sticky illustration compounded the problem during scrolling. This is a
+usability failure despite previous zero-overflow checks, not a proven Android
+engine-specific defect. Record actual test environments; do not claim WCAG
+conformance or physical-device verification based on resized desktop input.
+326 Node tests, nine lesson audits and three builds pass. All eleven guide
+steps pass browser checks; direct parcel input does not bypass assessment locks.
+Six viewport sizes checked, including short portrait and landscape. See
+`design/weather-preview-20260908/mobile-qa.md` for evidence and device-test limits.
+
 ### Owner Follow-up: Continuous Interaction
 
 - [x] Replace fog/cloud switches with continuous post-saturation rendering.

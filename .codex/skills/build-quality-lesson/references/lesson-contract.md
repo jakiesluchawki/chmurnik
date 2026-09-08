@@ -49,6 +49,10 @@ duration.
 - Provide a stable direct URL when the product supports routing, so learners
   can resume or share a specific lesson.
 - Preserve full keyboard access and visible focus.
+- For interactive practice, verify that a beginner can reach the named action
+  on a short phone screen. Offer tap alternatives to dragging, keep controls
+  beside the observation, and never cover them with sticky illustrations.
+  Zero horizontal overflow alone is not a mobile usability check.
 
 ## Review Questions
 
