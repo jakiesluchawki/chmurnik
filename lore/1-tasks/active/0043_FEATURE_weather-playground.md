@@ -105,7 +105,17 @@ was unavailable. Do not claim physical-device QA.
 
 - [x] Fix the shared slider geometry and record the clarified design rule.
 - [x] Verify interactions and focus; see `design/weather-preview-20260908/slider-qa.md`.
-- [ ] Verify the Pages-only deployment.
+- [x] Verify the Pages-only deployment.
+
+Published f31e008 (local 64d251e); Pages run 34276764667 succeeded. Public
+browser loads index-BJCXZuug.js / index-wALuUYJK.css. At 390px width the cloud
+and handle centres match on both axes, with no horizontal overflow. The guided
+500m action updates the range and enables the next step; artwork is loaded.
+The sun/time controls were also checked on desktop with zero centre offsets.
+Production HTML hash remains
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No native release or CyberFolks update. Physical Safari verification remains
+unavailable; this is not a claim of testing the owner's specific iPhone.
 
 ### Owner Follow-up: Phone Interaction Failure
 
