@@ -42,7 +42,21 @@
   0 C; both corresponding outputs are shown. The browser connector intermittently
   times out dispatching focus/click events; no host/session restart was used.
 
-Public deployment verification is recorded below after publishing.
+## Public Verification
+
+- Local implementation commit: 5d79d79. Scoped public cherry-pick: 8f27230.
+- GitHub Pages run 34264573836 passed build, all public tests, lesson audit
+  and deployment. No unrelated local native/reviewer work was published.
+- Public preview and both new image URLs return HTTP 200. Preview HTML
+  includes cloud/fog preloads and `index-DtcJ0btA.js`.
+- Public browser: wind lesson chapter 2 -> breeze -> fog -> return to wind
+  lesson, with chapter 2 restored. Default guide and all three tabs confirmed.
+- Fog A/B entries at cooling 10 C and 0 C survived a full page navigation;
+  both reappeared in free exploration, while the default guide stayed uncluttered.
+- chmurnik.cloud HTML remains SHA256
+  `4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57`,
+  with the same `index-DGckzKHS.js` bundle as before this work.
+
 No physical iPad, native app, VoiceOver or offline-preview acceptance is claimed.
 No change was uploaded to chmurnik.cloud, CyberFolks or Apple.
 

@@ -96,7 +96,14 @@ to native integration or production domain without that acceptance.
   actions and expected effects rather than an unexplained control panel.
 - [x] Third experiment: nighttime near-surface cooling and condensation.
 - [x] Reciprocal lesson entry / return links, gated to the Pages build only.
-- [ ] Regression tests, phone / desktop checks, and Pages-only publication.
+- [x] Regression tests, phone / desktop checks, and Pages-only publication.
+
+Published as 8f27230, run 34264573836 succeeded. 315 local tests and all nine
+lesson audits passed; public lesson -> experiment -> lesson roundtrip retains
+chapter 2 even after switching experiment. See
+`design/weather-preview-20260908/tutorial-qa.md`. Production domain unchanged.
+Task remains active for owner preview / social-copy acceptance, not for
+unsolicited native or CyberFolks deployment.
 
 The owner explicitly requested additional experiments and lesson-to-experiment
 discovery. Cloud domain and Apple still require separate acceptance. Preserve
