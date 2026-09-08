@@ -180,11 +180,12 @@ const nativeNavigation = [
   { id: "home", label: "Dziś", icon: House },
   { id: "journal", label: "Moje niebo", icon: ImageSquare },
   { id: "atlas", label: "Atlas", icon: Cloud },
+  { id: "layers", label: "Warstwy", icon: Stack },
 ];
 const nativeLayout = Capacitor.getPlatform() === "ios" || import.meta.env.VITE_QA_NATIVE_LAYOUT === "1";
 const macWorkspace = isMacWorkspace();
 const workspaceItems = [
-  ...nativeNavigation,
+  ...nativeNavigation.filter((item) => item.id !== "layers"),
   { id: "learn", label: "Lekcje", icon: BookOpen },
   { id: "practice/metar", label: "METAR i TAF", icon: AirplaneTilt },
   { id: "practice/wind", label: "Wiatr", icon: Wind },
@@ -281,7 +282,7 @@ function useRoute() {
 
   const navigate = (next) => {
     window.location.hash = `/${next}`;
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: nativeLayout ? "instant" : "smooth" });
   };
 
   return [route, navigate];
@@ -395,7 +396,7 @@ function AppHeader({ route, navigate }) {
 
 function BottomNav({ route, navigate }) {
   const items = nativeLayout ? nativeNavigation : navItems;
-  const active = nativeLayout && ["learn", "layers", "practice"].includes(route) ? "atlas" : route;
+  const active = nativeLayout && ["learn", "practice"].includes(route) ? "layers" : route;
   return (
     <nav className="bottom-nav" aria-label="Nawigacja mobilna">
       {items.map((item) => (
@@ -3290,6 +3291,11 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
         ))}
       </div>
 
+      {nativeLayout && <section className="native-layer-shortcuts" aria-label="Pogoda w praktyce">
+        <PracticeLinks navigate={navigate} />
+        <button className="field-source" onClick={() => navigate("learn")}><BookOpen size={17} /> Pełne lekcje</button>
+      </section>}
+
       {tab === "decoder" && (
         <WindyDecoderPanel
           terrain={terrain}
@@ -5454,7 +5460,6 @@ export function App() {
         )}
         {validRoute === "atlas" && (
           <>
-          {nativeLayout && <div className="native-atlas-shortcuts"><PracticeLinks navigate={navigate} /><button className="field-source" onClick={() => navigate("learn")}><BookOpen size={17} /> Pełne lekcje</button><button className="field-source" onClick={() => navigate("layers")}><Stack size={17} /> Warstwy i sondaże</button></div>}
           <AtlasPage
             onSources={setSourceIds}
             onSaveObservation={saveFieldObservation}

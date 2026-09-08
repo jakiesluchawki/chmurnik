@@ -53,6 +53,12 @@ Writing production code without an active Lore task is forbidden.
   identity. Keep the interface calm, compact, and mature; real cloud imagery
   must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
+- Native compact navigation must expose Warstwy as a separate bottom tab,
+  with direct access to METAR/TAF, wind, Windy and full lessons, not through
+  Atlas. Verify the actual native FieldHome and nativeNavigation paths and
+  the packaged Apple web assets; a passing web-only test is insufficient.
+  The native daily exercise must hide genus, diagnostic text, answer-specific
+  actions and accessible labels until reveal, including after a date change.
 - On 2026-09-03 the owner explicitly requested iPad and macOS applications.
   Keep a shared iPhone/iPad UIKit target and build Mac Catalyst from the same
   sources. Preserve compact phone navigation; wide native windows get a

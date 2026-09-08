@@ -1,8 +1,10 @@
+import { useState } from "react";
 import {
   ArrowRight,
   BookOpen,
   Camera,
   Compass,
+  Eye,
   ImageSquare,
   Info,
 } from "@phosphor-icons/react";
@@ -21,6 +23,8 @@ export function FieldHome({
   desktop = false,
 }) {
   const daily = selectDailyCloud(clouds, day);
+  const [revealedDate, setRevealedDate] = useState(null);
+  const answerVisible = revealedDate === daily?.dateKey;
   return (
     <main className="page field-page field-home">
       <header className="field-home-heading">
@@ -69,38 +73,48 @@ export function FieldHome({
         <PracticeLinks navigate={navigate} />
         <FullLearningLinks navigate={navigate} />
       </section>
-      <section className="field-daily">
+      {daily && <section className="field-daily" aria-label="Dzisiejsze ćwiczenie z atlasu">
         <div className="field-section-label">
-          <span className="eyebrow">Fotografia z atlasu</span>
-          <button
+          <span className="eyebrow">Dzisiejsze ćwiczenie z atlasu</span>
+          {answerVisible && <button
             className="field-source"
             onClick={() => onSources(daily.cloud.sourceIds)}
           >
             <Info size={17} /> Źródła
-          </button>
+          </button>}
         </div>
         <img
           src={asset(daily.image.src)}
-          alt={`Prawdziwa fotografia ${daily.cloud.name}`}
+          alt="Zdjęcie z atlasu wybrane do dzisiejszego ćwiczenia"
         />
         <div className="field-daily-caption">
-          <h2>{daily.cloud.name}</h2>
-          <p>{daily.image.diagnostic}</p>
-          <button
+          <h2>Jaka to chmura?</h2>
+          <p>Przyjrzyj się jej kształtowi i cieniowaniu. Spróbuj ją rozpoznać, zanim odsłonisz nazwę.</p>
+          <div aria-live="polite">
+            {answerVisible && <>
+              <h3>{daily.cloud.name}</h3>
+              <p>{daily.image.diagnostic}</p>
+            </>}
+          </div>
+          <button className="button button--primary" aria-expanded={answerVisible}
+            onClick={() => setRevealedDate(answerVisible ? null : daily.dateKey)}>
+            {answerVisible ? "Ukryj odpowiedź" : "Odsłoń odpowiedź"} <Eye size={18} />
+          </button>
+          {answerVisible && <button
             className="button button--secondary"
             onClick={() => onRecognition(daily.cloud.id)}
           >
             Ćwicz rozpoznawanie <ArrowRight size={17} />
-          </button>
+          </button>}
           <small>
             Fot. {daily.image.author} ·{" "}
-            <a href={daily.image.page} target="_blank" rel="noreferrer">
+            {answerVisible ? <a href={daily.image.page} target="_blank" rel="noreferrer">
               {daily.image.license}
-            </a>
+            </a> : daily.image.license}
             . To zdjęcie z atlasu, nie widok dzisiejszej pogody.
           </small>
         </div>
-      </section>
+      </section>}
       <nav className="field-deep-links" aria-label="Wiedza i narzędzia">
         <button onClick={() => navigate("learn")}>
           <BookOpen size={21} />

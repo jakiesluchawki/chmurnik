@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { cpSync, existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { execFileSync, spawnSync } from "node:child_process";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,6 +22,8 @@ const savePlist = (path, data) => {
 assert.ok(existsSync(resolve(source, "App.xcodeproj/project.pbxproj")), "Run build-macos.mjs first");
 assert.equal(readFileSync(resolve(source, "App/public/index.html"), "utf8"),
   readFileSync(resolve(root, "ios/App/App/public/index.html"), "utf8"), "Refresh the Mac staging bundle first");
+// Copying over a previous stage leaves obsolete hashed bundles behind.
+rmSync(resolve(stage, "App/public"), { recursive: true, force: true });
 cpSync(source, stage, { recursive: true });
 cpSync(resolve(root, "ios/App/AppUITests"), resolve(stage, "AppUITests"), { recursive: true });
 const projectPath = resolve(stage, "App.xcodeproj/project.pbxproj");
@@ -52,9 +54,10 @@ assert.equal(entitlements["com.apple.security.app-sandbox"], true);
 assert.equal(entitlements["com.apple.security.application-groups"], undefined);
 
 run("xcodebuild", ["-quiet", "-project", resolve(stage, "App.xcodeproj"), "-scheme", "App",
+  "-disableAutomaticPackageResolution", "-onlyUsePackageVersionsFromResolvedFile",
   "-configuration", "Debug", "-destination", "platform=macOS,variant=Mac Catalyst,arch=arm64",
   "-derivedDataPath", derived, `CODE_SIGN_IDENTITY=${identity}`, "CODE_SIGN_STYLE=Manual", `DEVELOPMENT_TEAM=${team}`,
-  "PROVISIONING_PROFILE_SPECIFIER=", "build-for-testing"]);
+  "PROVISIONING_PROFILE_SPECIFIER=", "clean", "build-for-testing"]);
 const products = resolve(derived, "Build/Products");
 const app = resolve(products, "Debug-maccatalyst/App.app");
 assert.equal(plist(resolve(app, "Contents/Info.plist")).CFBundleIdentifier, bundleId);

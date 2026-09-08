@@ -1,5 +1,20 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-08: Native Navigation And Daily Answer Hotfix
+
+- The previous WWW-only fix missed `FieldHome` and native navigation. Add a
+  separate Warstwy entry, preserve the full six-tab workshop, and conceal the
+  daily genus, diagnosis, source URL and follow-up until reveal.
+- Verified real iPhone/iPad screenshots for conceal/reveal and workshop entry;
+  corrected an additional tablet Sources/description overlap found in them.
+  Final packaged-app runs after that CSS correction pass: one iPhone test and
+  two iPad tests, zero failures/skips. Final screenshots were inspected.
+- Retain pink/olive/violet identity, Romie/Roobert, genuine atlas photographs,
+  attribution and the existing on-device model. No accuracy-upgrade claim.
+- Mac builds pass; native Mac UI QA remains blocked during runner automation
+  initialization. Compilation/browser QA do not constitute native Mac release
+  approval. See task 0042's `native-navigation-hotfix-20260908.md` for evidence.
+
 ## 2026-09-06: Daily Exercise Answer
 
 - The answer-specific training button is absent until explicit reveal, and

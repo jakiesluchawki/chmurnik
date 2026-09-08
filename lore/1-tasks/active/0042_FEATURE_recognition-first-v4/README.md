@@ -19,6 +19,14 @@ history:
 
 # Recognition-First V4
 
+## September 8 Native Hotfix
+
+The owner's App Store 1.2 screenshots exposed missing native Warstwy navigation
+and a daily-answer leak in `FieldHome`, separate from the already-fixed WWW
+path. The owner resumed work after the application restart. Scope is the
+native hotfix and package/release verification, not ML or host migration.
+See `native-navigation-hotfix-20260908.md`. Preserve the research stop below.
+
 ## Owner Stop And Finite Handoff, September 6
 
 This instruction supersedes the historical research plans below. The owner

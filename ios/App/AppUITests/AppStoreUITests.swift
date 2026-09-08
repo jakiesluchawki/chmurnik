@@ -10,6 +10,9 @@ final class AppStoreUITests: XCTestCase {
         guard ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4.development" else {
             throw XCTSkip("Mac UI tests require the isolated QA plan; never launch the production app")
         }
+        #else
+        // A failed rotation test must not change the next test's starting layout.
+        XCUIDevice.shared.orientation = .portrait
         #endif
         app.launchArguments = ["-AppleLanguages", "(pl)", "-AppleLocale", "pl_PL"]
         app.launch()
@@ -18,6 +21,9 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
         #endif
         XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 45))
+        #if !targetEnvironment(macCatalyst)
+        rotateTablet(landscape: false)
+        #endif
         let skip = app.buttons["Pomiń"].firstMatch
         if skip.waitForExistence(timeout: 10) {
             #if targetEnvironment(macCatalyst)
@@ -124,9 +130,22 @@ final class AppStoreUITests: XCTestCase {
 
     private func rotateTablet(landscape: Bool) {
         XCUIDevice.shared.orientation = landscape ? .landscapeLeft : .portrait
+        var stableSince: Date?
+        var previousFrame = CGRect.zero
         let resized = XCTNSPredicateExpectation(predicate: NSPredicate { [self] _, _ in
             let frame = app.webViews.firstMatch.frame
-            return !frame.isEmpty && (frame.width > frame.height) == landscape
+            let window = app.frame
+            guard !frame.isEmpty, (frame.width > frame.height) == landscape,
+                  (window.width > window.height) == landscape else {
+                stableSince = nil
+                return false
+            }
+            // WebKit's AX bounds can update before the native rotation has settled.
+            if frame != previousFrame || stableSince == nil {
+                previousFrame = frame
+                stableSince = Date()
+            }
+            return Date().timeIntervalSince(stableSince!) >= 2
         }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [resized], timeout: 15), .completed)
     }
@@ -327,6 +346,54 @@ final class AppStoreUITests: XCTestCase {
         assertChapter(2, of: 6)
         capture("qa-lesson-restored-chapter")
         #endif
+    }
+
+    func test08CompactNavigationAndDailyReveal() throws {
+        #if targetEnvironment(macCatalyst)
+        throw XCTSkip("Compact iOS navigation; Mac sidebar is tested separately")
+        #else
+        verifyNavigationAndDailyReveal()
+        #endif
+    }
+
+    func test09MacNavigationAndDailyReveal() throws {
+        #if targetEnvironment(macCatalyst)
+        verifyNavigationAndDailyReveal(layersLabel: "Mapy i warstwy")
+        #else
+        throw XCTSkip("Isolated Mac QA only")
+        #endif
+    }
+
+    private func verifyNavigationAndDailyReveal(layersLabel: String = "Warstwy") {
+        tap("Dziś")
+        XCTAssertTrue(button(layersLabel).exists)
+        XCTAssertFalse(button("Ćwicz rozpoznawanie").exists)
+        XCTAssertTrue(visibleText("Jaka to chmura?"))
+        tap("Odsłoń odpowiedź")
+        XCTAssertTrue(button("Ćwicz rozpoznawanie").exists)
+        capture("native-daily-revealed")
+        tap("Ukryj odpowiedź")
+        XCTAssertFalse(button("Ćwicz rozpoznawanie").exists)
+        capture("native-daily-hidden")
+        tap(layersLabel)
+        XCTAssertTrue(button("Czytnik Windy").waitForExistence(timeout: 15))
+        for label in ["Wysokość", "Wiatr z nieba", "METAR / TAF", "Zagrożenia", "Sondaż i Skew-T"] {
+            XCTAssertTrue(button(label).exists, label)
+        }
+        capture("native-layers-tab")
+        tap("Rozczytaj depeszę", contains: true)
+        XCTAssertTrue(visibleText("Rozczytaj METAR i TAF"))
+        XCTAssertTrue(button("Wyjaśnij depeszę").exists)
+        tap(layersLabel)
+        tap("Oblicz składowe wiatru", contains: true)
+        XCTAssertTrue(visibleText("Sprawdź składowe wiatru"))
+        tap(layersLabel)
+        tap("Zrozum warstwy mapy", contains: true)
+        XCTAssertTrue(visibleText("Wszystkie liczby są wymyślone do ćwiczenia"))
+        tap(layersLabel)
+        tap("Pełne lekcje")
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Czytanie atmosfery w pionie"))
+            .firstMatch.waitForExistence(timeout: 15))
     }
 
     func test07IsolatedMacPhotoAndPersistence() throws {
