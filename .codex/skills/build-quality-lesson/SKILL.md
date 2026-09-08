@@ -35,6 +35,12 @@ an outline, not a finished lesson.
 9. Inspect the rendered mobile reading rhythm when a browser is available.
 10. For long mobile lessons, present one chapter at a time with visible
     progress, previous/next navigation, and a remembered resume position.
+11. Pair interactive experiences with reciprocal lesson links or embed them
+    in the lesson. Preserve the learner's reading position on return.
+12. For beginners, default to one action at a time: name the control, explain
+    what to observe, verify the action, then explain the result. Reveal further
+    controls progressively. Keep this walkthrough distinct from free exploration
+    and assessment; a panel of sliders is not a tutorial.
 
 ## Quality Gate
 

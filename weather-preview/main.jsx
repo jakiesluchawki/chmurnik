@@ -28,6 +28,15 @@ import {
   directionLabel,
 } from "./model.mjs";
 import { experiments } from "./content.mjs";
+import {
+  guides,
+  guideInputsAt,
+  guideStepComplete,
+  quizCases,
+  sceneHashes,
+  sceneFromHash,
+  returnLesson,
+} from "./tutorial.mjs";
 import "./style.css";
 
 const num = (value, digits = 1) =>
@@ -36,9 +45,11 @@ const num = (value, digits = 1) =>
     minimumFractionDigits: digits,
   });
 const metres = (value) => `${Math.round(value / 10) * 10} m`;
-const mainSite = "https://jakiesluchawki.github.io/chmurnik/";
+const mainSite = location.pathname.includes("/pogoda-preview/")
+  ? new URL("../", location.href).href
+  : "https://jakiesluchawki.github.io/chmurnik/";
 function initialScene() {
-  return location.hash === "#chmura" ? "cloud" : "breeze";
+  return sceneFromHash(location.hash);
 }
 
 function Slider({
@@ -98,6 +109,7 @@ function Slider({
 
 function Scene({ scene, input, result, playing, diagram, mini = false }) {
   const breezeScene = scene === "breeze";
+  const fogScene = scene === "fog";
   const night = breezeScene && result.night;
   const heightY = breezeScene ? 0 : 72 - (input.height / 3000) * 48;
   const baseY = breezeScene ? 0 : 72 - (result.base / 3000) * 48;
@@ -108,10 +120,16 @@ function Scene({ scene, input, result, playing, diagram, mini = false }) {
       aria-label={
         breezeScene
           ? `Przekrój zatoki, godzina ${timeLabel(input.hour)}. Ląd ${num(result.land)} stopnia, woda ${num(result.water)} stopnia. ${directionLabel(result.direction)} przy powierzchni.`
-          : `Unoszone powietrze na ${metres(input.height)} nad ziemią. Temperatura ${num(result.parcel)} stopnia. ${result.saturated ? "Osiągnęło nasycenie." : "Jeszcze bez kondensacji."}`
+          : fogScene
+            ? `Powietrze przy gruncie: ${num(result.current)} stopnia, wilgotność względna ${num(result.relative, 0)} procent. ${result.saturated ? "Warunki do kondensacji." : "Jeszcze bez kondensacji."}`
+            : `Unoszone powietrze na ${metres(input.height)} nad ziemią. Temperatura ${num(result.parcel)} stopnia. ${result.saturated ? "Osiągnęło nasycenie." : "Jeszcze bez kondensacji."}`
       }
     >
-      <img className="landscape" src="./coast.webp" alt="" />
+      <img
+        className="landscape"
+        src={fogScene ? "./valley.webp" : "./coast.webp"}
+        alt=""
+      />
       <div className="night-wash" />
       {!mini && (
         <span className="scene-stamp">SCHEMAT EDUKACYJNY · NIE PROGNOZA</span>
@@ -162,13 +180,6 @@ function Scene({ scene, input, result, playing, diagram, mini = false }) {
               )}
             </>
           )}
-          {result.direction === "calm" && (
-            <span className="calm-label">
-              Podobne temperatury
-              <br />
-              brak wyraźnej bryzy
-            </span>
-          )}
           <span className="measure water">
             <small>WODA</small>
             <b>{num(result.water)}°</b>
@@ -182,6 +193,25 @@ function Scene({ scene, input, result, playing, diagram, mini = false }) {
             <small>przy powierzchni</small>
           </span>
         </>
+      ) : fogScene ? (
+        <>
+          <div className="fog-readout">
+            <Moon weight="fill" />
+            <span>POWIETRZE PRZY ZIEMI</span>
+            <b>{num(result.current)}°C</b>
+            <small>Wilgotność względna: {num(result.relative, 0)}%</small>
+          </div>
+          {result.saturated && (
+            <div className="fog-layer" aria-hidden="true">
+              <img src="./fog.webp" alt="" />
+            </div>
+          )}
+          {diagram && (
+            <span className="fog-dew">
+              Początkowy punkt rosy: {num(result.initialDew)}°C
+            </span>
+          )}
+        </>
       ) : (
         <>
           {diagram && (
@@ -194,9 +224,7 @@ function Scene({ scene, input, result, playing, diagram, mini = false }) {
             </div>
           )}
           {diagram && !result.aboveScene && (
-            <div className="condensation-line" style={{ top: `${baseY}%` }}>
-              <span>kondensacja ≈ {metres(result.base)}</span>
-            </div>
+            <div className="condensation-line" style={{ top: `${baseY}%` }} />
           )}
           <div
             className="parcel"
@@ -234,10 +262,15 @@ function Scene({ scene, input, result, playing, diagram, mini = false }) {
 
 function App() {
   const [scene, setScene] = useState(initialScene);
-  const [inputs, setInputs] = useState(DEFAULTS);
+  const [inputs, setInputs] = useState(() =>
+    Object.fromEntries(
+      Object.keys(guides).map((key) => [key, guideInputsAt(key, 0)]),
+    ),
+  );
   const [playing, setPlaying] = useState(false);
   const [diagram, setDiagram] = useState(true);
-  const [mode, setMode] = useState("explore");
+  const [mode, setMode] = useState("tutorial");
+  const [guideIndex, setGuideIndex] = useState(0);
   const [step, setStep] = useState("predict");
   const [prediction, setPrediction] = useState(null);
   const [trials, setTrials] = useState(() => {
@@ -256,7 +289,18 @@ function App() {
   const data = experiments[scene];
   const currentTrials = trials.filter((t) => t.scene === scene).slice(-2);
   const locked = mode === "guided" && step === "predict";
-  const tested = scene === "breeze" ? input.hour === 2 : input.humidity === 70;
+  const quiz = quizCases[scene];
+  const tested = input[quiz.key] === quiz.target;
+  const guide = guides[scene];
+  const guideStep = guide.steps[guideIndex];
+  const tutorial = mode === "tutorial";
+  const guideDone = tutorial && !guideStep;
+  const stepDone = guideStepComplete(scene, guideIndex, input);
+  const lesson = returnLesson(location.search, data.lesson);
+  const lessonHref = `${mainSite}#/learn/${lesson}`;
+  const showControl = (key) => !tutorial || guideStep?.key === key;
+  const controlDisabled = (key) =>
+    locked || (mode === "guided" && key !== quiz.key);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -270,11 +314,7 @@ function App() {
     };
     document.addEventListener("visibilitychange", hidden);
     const hash = () => {
-      setScene(initialScene());
-      setPlaying(false);
-      setMode("explore");
-      setStep("predict");
-      setPrediction(null);
+      chooseScene(initialScene());
     };
     window.addEventListener("hashchange", hash);
     return () => {
@@ -292,7 +332,12 @@ function App() {
           [scene]:
             scene === "breeze"
               ? { ...old.breeze, hour: (old.breeze.hour + 0.5) % 24 }
-              : { ...old.cloud, height: Math.min(3000, old.cloud.height + 50) },
+              : scene === "cloud"
+                ? {
+                    ...old.cloud,
+                    height: Math.min(3000, old.cloud.height + 50),
+                  }
+                : { ...old.fog, cooling: Math.min(10, old.fog.cooling + 0.5) },
         }));
       },
       scene === "breeze" ? 900 : 400,
@@ -301,7 +346,8 @@ function App() {
   }, [playing, scene]);
   useEffect(() => {
     if (scene === "cloud" && input.height >= 3000) setPlaying(false);
-  }, [scene, input.height]);
+    if (scene === "fog" && input.cooling >= 10) setPlaying(false);
+  }, [scene, input.height, input.cooling]);
 
   function update(key, value) {
     setPlaying(false);
@@ -314,25 +360,41 @@ function App() {
   function chooseScene(next) {
     setScene(next);
     setPlaying(false);
-    setMode("explore");
+    setMode("tutorial");
+    setGuideIndex(0);
+    setInputs((old) => ({ ...old, [next]: guideInputsAt(next, 0) }));
+    setDiagram(true);
     setStep("predict");
     setPrediction(null);
     setNotice("");
-    history.replaceState(null, "", next === "cloud" ? "#chmura" : "#bryza");
+    history.replaceState(null, "", `#${sceneHashes[next]}`);
+    requestAnimationFrame(() =>
+      document
+        .getElementById("workbench")
+        ?.scrollIntoView({ behavior: "instant" }),
+    );
   }
   function chooseMode(next) {
     setMode(next);
     setStep("predict");
     setPrediction(null);
     setPlaying(false);
+    setNotice("");
+    if (next === "tutorial") {
+      setGuideIndex(0);
+      setDiagram(true);
+      setInputs((old) => ({ ...old, [scene]: guideInputsAt(scene, 0) }));
+    }
     if (next === "guided")
       setInputs((old) => ({
         ...old,
-        [scene]:
-          scene === "breeze"
-            ? { hour: 14, heating: 70 }
-            : { temperature: 24, humidity: 40, height: 1500 },
+        [scene]: { ...quiz.start },
       }));
+    requestAnimationFrame(() =>
+      document
+        .querySelector(next === "guided" ? ".challenge" : "#workbench")
+        ?.scrollIntoView({ behavior: "instant" }),
+    );
   }
   function storeTrials(next) {
     setTrials(next);
@@ -367,11 +429,26 @@ function App() {
     );
   }
   function reset() {
+    if (tutorial) {
+      chooseMode("tutorial");
+      return;
+    }
     setPlaying(false);
     setInputs((old) => ({ ...old, [scene]: { ...DEFAULTS[scene] } }));
     setMode("explore");
     setStep("predict");
     setPrediction(null);
+  }
+  function guideTo(index) {
+    setGuideIndex(index);
+    setPlaying(false);
+    setInputs((old) => ({ ...old, [scene]: guideInputsAt(scene, index) }));
+    requestAnimationFrame(() => {
+      document
+        .getElementById("workbench")
+        ?.scrollIntoView({ behavior: "instant" });
+      document.getElementById("guide-heading")?.focus({ preventScroll: true });
+    });
   }
 
   return (
@@ -394,40 +471,67 @@ function App() {
             <h1>Niebo ma swoje powody.</h1>
           </div>
           <p>
-            Zmień warunki, obserwuj skutki i porównaj dwie próby. Tutaj możesz
-            zatrzymać pogodę, żeby lepiej ją zrozumieć.
+            Nie musisz znać meteorologii. Przewodnik pokaże Ci, co zmienić,
+            gdzie spojrzeć i jak odczytać wynik. Potem możesz spróbować
+            samodzielnie.
+            <a
+              className="start-guide"
+              href="#workbench"
+              onClick={(event) => {
+                event.preventDefault();
+                document
+                  .getElementById("workbench")
+                  ?.scrollIntoView({ behavior: "instant" });
+              }}
+            >
+              Zacznij od pierwszego kroku <ArrowRight />
+            </a>
           </p>
         </div>
         <nav className="experiment-nav" aria-label="Wybierz eksperyment">
-          {Object.entries(experiments).map(([key, exp]) => (
-            <button
-              key={key}
-              aria-pressed={scene === key}
-              onClick={() => chooseScene(key)}
-            >
-              <span>{exp.number}</span>
-              {exp.short}
-              {key === "breeze" ? <Wind /> : <Cloud />}
-            </button>
-          ))}
+          {Object.entries(experiments)
+            .sort((a, b) => a[1].number.localeCompare(b[1].number))
+            .map(([key, exp]) => (
+              <button
+                key={key}
+                aria-pressed={scene === key}
+                onClick={() => chooseScene(key)}
+              >
+                <span>{exp.number}</span>
+                {exp.short}
+                {key === "breeze" ? (
+                  <Wind />
+                ) : key === "fog" ? (
+                  <Moon />
+                ) : (
+                  <Cloud />
+                )}
+              </button>
+            ))}
         </nav>
         <div className="workshop-title">
           <div>
-            <p className="eyebrow">EKSPERYMENT {data.number} / 02</p>
+            <p className="eyebrow">EKSPERYMENT {data.number} / 03</p>
             <h2>{data.title}</h2>
           </div>
           <div className="mode-switch" aria-label="Sposób nauki">
             <button
+              aria-pressed={tutorial}
+              onClick={() => chooseMode("tutorial")}
+            >
+              Prowadź mnie
+            </button>
+            <button
               aria-pressed={mode === "explore"}
               onClick={() => chooseMode("explore")}
             >
-              Eksperymentuj
+              Spróbuj samodzielnie
             </button>
             <button
               aria-pressed={mode === "guided"}
               onClick={() => chooseMode("guided")}
             >
-              Zadanie z wyjaśnieniem
+              Sprawdź się
             </button>
           </div>
         </div>
@@ -493,19 +597,42 @@ function App() {
             )}
           </section>
         )}
-        <section className="workbench" aria-label={data.short}>
+        <section
+          id="workbench"
+          className={`workbench ${tutorial ? "with-guide" : ""}`}
+          aria-label={data.short}
+        >
           <div className="scene-area">
             <Scene
               {...{ scene, input, result, diagram }}
               playing={playing && !reduced}
             />
+            {scene === "cloud" && diagram && (
+              <p className="scene-caption">
+                {result.aboveScene
+                  ? `Kondensacja ≈ ${metres(result.base)}, powyżej rysunku.`
+                  : `Przerywana linia: kondensacja ≈ ${metres(result.base)}.`}
+              </p>
+            )}
+            {scene === "fog" && (
+              <p className="scene-caption fog-caption">
+                <b>
+                  {result.saturated
+                    ? "Warunki do kondensacji przy ziemi"
+                    : "Jeszcze bez kondensacji"}
+                </b>
+                <span>Ilustracja mgły jest symbolem, nie prognozą.</span>
+              </p>
+            )}
             <div className="scene-toolbar">
               <button
                 className="plain"
-                disabled={mode === "guided"}
+                disabled={mode !== "explore"}
                 onClick={() => {
                   if (scene === "cloud" && input.height === 3000)
                     update("height", 0);
+                  if (scene === "fog" && input.cooling === 10)
+                    update("cooling", 0);
                   setPlaying((p) => !p);
                 }}
               >
@@ -514,11 +641,14 @@ function App() {
                   ? "Zatrzymaj"
                   : scene === "breeze"
                     ? "Uruchom dobę"
-                    : "Unoś powietrze"}
+                    : scene === "cloud"
+                      ? "Unoś powietrze"
+                      : "Ochładzaj powietrze"}
               </button>
               <button
                 className="plain"
                 aria-pressed={diagram}
+                disabled={tutorial}
                 onClick={() => setDiagram((d) => !d)}
               >
                 {diagram ? "Ukryj schemat" : "Pokaż schemat"}
@@ -535,118 +665,283 @@ function App() {
             )}
           </div>
           <aside className="controls">
-            <p className="eyebrow">TWOJE WARUNKI</p>
-            <p className="controls-intro">{data.intro}</p>
+            {tutorial ? (
+              <section className="guide-intro" aria-labelledby="guide-heading">
+                <p className="eyebrow">
+                  {guideDone
+                    ? "PRZEWODNIK UKOŃCZONY"
+                    : `KROK ${guideIndex + 1} Z ${guide.steps.length}`}
+                </p>
+                <div className="guide-progress" aria-hidden="true">
+                  {guide.steps.map((item, i) => (
+                    <span
+                      key={item.title}
+                      className={i <= guideIndex ? "filled" : ""}
+                    />
+                  ))}
+                </div>
+                <h3 id="guide-heading" tabIndex={-1}>
+                  {guideDone
+                    ? "Teraz porównaj własne pomysły"
+                    : guideStep.title}
+                </h3>
+                {guideDone ? (
+                  <>
+                    <p>
+                      Masz za sobą wszystkie kroki. W trybie samodzielnym możesz
+                      zmieniać każdy warunek i zapisywać dwie próby do
+                      porównania.
+                    </p>
+                    <button
+                      className="primary"
+                      onClick={() => chooseMode("explore")}
+                    >
+                      Spróbuj samodzielnie <ArrowRight />
+                    </button>
+                    <button
+                      className="plain"
+                      onClick={() => chooseMode("guided")}
+                    >
+                      Sprawdź, co pamiętasz <ArrowRight />
+                    </button>
+                    <a className="plain" href={lessonHref}>
+                      <BookOpen /> Wróć do pełnej lekcji
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <p>{guideStep.instruction}</p>
+                    <div className="guide-expect">
+                      <b>Na co patrzeć</b>
+                      <p>{guideStep.expect}</p>
+                    </div>
+                  </>
+                )}
+              </section>
+            ) : (
+              <>
+                <p className="eyebrow">TWOJE WARUNKI</p>
+                <p className="controls-intro">{data.intro}</p>
+              </>
+            )}
             {scene === "breeze" ? (
               <>
-                <Slider
-                  id="hour"
-                  label="Pora dnia"
-                  value={input.hour}
-                  min={0}
-                  max={23.5}
-                  step={0.5}
-                  display={timeLabel(input.hour)}
-                  onChange={(v) => update("hour", v)}
-                  disabled={locked}
-                  ends={["00:00", "23:30"]}
-                />
-                <div className="presets">
-                  <button disabled={locked} onClick={() => update("hour", 2)}>
-                    <Moon /> 02:00
-                  </button>
-                  <button disabled={locked} onClick={() => update("hour", 14)}>
-                    <Sun /> 14:00
-                  </button>
-                </div>
-                <Slider
-                  id="heating"
-                  label="Kontrast nagrzewania"
-                  value={input.heating}
-                  min={0}
-                  max={100}
-                  step={10}
-                  display={`${input.heating}%`}
-                  onChange={(v) => update("heating", v)}
-                  disabled={mode === "guided"}
-                  ends={["Brak różnicy", "Duża różnica"]}
-                />
-                <div className="instrument">
-                  <span>Różnica: ląd − woda</span>
-                  <strong>
-                    {result.difference > 0 ? "+" : ""}
-                    {num(result.difference)}°C
-                  </strong>
-                  <p>
-                    {result.direction === "calm"
-                      ? "Przy podobnych temperaturach lokalny obieg zanika."
-                      : result.direction === "onshore"
-                        ? "W tym ustawieniu cieplejszy jest ląd."
-                        : "W tym ustawieniu cieplejsza jest woda."}
-                  </p>
-                </div>
+                {showControl("hour") && (
+                  <>
+                    <Slider
+                      id="hour"
+                      label="Pora dnia"
+                      value={input.hour}
+                      min={0}
+                      max={23.5}
+                      step={0.5}
+                      display={timeLabel(input.hour)}
+                      onChange={(v) => update("hour", v)}
+                      disabled={controlDisabled("hour")}
+                      ends={["00:00", "23:30"]}
+                    />
+                    {!tutorial && (
+                      <div className="presets">
+                        <button
+                          disabled={locked}
+                          onClick={() => update("hour", 2)}
+                        >
+                          <Moon /> 02:00
+                        </button>
+                        <button
+                          disabled={locked}
+                          onClick={() => update("hour", 14)}
+                        >
+                          <Sun /> 14:00
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+                {showControl("heating") && (
+                  <Slider
+                    id="heating"
+                    label="Kontrast nagrzewania"
+                    value={input.heating}
+                    min={0}
+                    max={100}
+                    step={10}
+                    display={`${input.heating}%`}
+                    onChange={(v) => update("heating", v)}
+                    disabled={controlDisabled("heating")}
+                    ends={["Brak różnicy", "Duża różnica"]}
+                  />
+                )}
+                {!tutorial && (
+                  <div className="instrument">
+                    <span>Różnica: ląd − woda</span>
+                    <strong>
+                      {result.difference > 0 ? "+" : ""}
+                      {num(result.difference)}°C
+                    </strong>
+                    <p>
+                      {result.direction === "calm"
+                        ? "Przy podobnych temperaturach lokalny obieg zanika."
+                        : result.direction === "onshore"
+                          ? "W tym ustawieniu cieplejszy jest ląd."
+                          : "W tym ustawieniu cieplejsza jest woda."}
+                    </p>
+                  </div>
+                )}
               </>
             ) : (
               <>
-                <Slider
-                  id="temperature"
-                  label="Temperatura przy ziemi"
-                  value={input.temperature}
-                  min={5}
-                  max={35}
-                  display={`${input.temperature}°C`}
-                  onChange={(v) => update("temperature", v)}
-                  disabled={mode === "guided"}
-                  ends={["5°C", "35°C"]}
-                />
-                <Slider
-                  id="humidity"
-                  label="Wilgotność przy ziemi"
-                  value={input.humidity}
-                  min={20}
-                  max={100}
-                  step={5}
-                  display={`${input.humidity}%`}
-                  onChange={(v) => update("humidity", v)}
-                  disabled={locked}
-                  ends={["20%", "100%"]}
-                />
-                <Slider
-                  id="height"
-                  label="Uniesienie nad ziemię"
-                  value={input.height}
-                  min={0}
-                  max={3000}
-                  step={50}
-                  display={metres(input.height)}
-                  onChange={(v) => update("height", v)}
-                  disabled={mode === "guided"}
-                  ends={["Poziom ziemi", "3000 m"]}
-                />
-                <div className="instrument">
-                  <span>Szacowany poziom kondensacji</span>
-                  <strong>≈ {metres(result.base)}</strong>
-                  <p>
-                    {result.aboveScene
-                      ? "Powyżej zakresu tej sceny. Nie dorysowujemy chmury na granicy wykresu."
-                      : `Punkt rosy przy ziemi: ${num(result.dew)}°C. To temperatura, przy której początkowe powietrze osiągnęłoby nasycenie przy niezmienionym ciśnieniu.`}
-                  </p>
-                </div>
+                {showControl("temperature") && (
+                  <Slider
+                    id="temperature"
+                    label={
+                      scene === "fog"
+                        ? "Temperatura początkowa"
+                        : "Temperatura przy ziemi"
+                    }
+                    value={input.temperature}
+                    min={scene === "fog" ? 15 : 5}
+                    max={scene === "fog" ? 30 : 35}
+                    display={`${input.temperature}°C`}
+                    onChange={(v) => update("temperature", v)}
+                    disabled={controlDisabled("temperature")}
+                    ends={scene === "fog" ? ["15°C", "30°C"] : ["5°C", "35°C"]}
+                  />
+                )}
+                {showControl("humidity") && (
+                  <Slider
+                    id="humidity"
+                    label={
+                      scene === "fog"
+                        ? "Wilgotność początkowa"
+                        : "Wilgotność przy ziemi"
+                    }
+                    value={input.humidity}
+                    min={scene === "fog" ? 40 : 20}
+                    max={scene === "fog" ? 95 : 100}
+                    step={5}
+                    display={`${input.humidity}%`}
+                    onChange={(v) => update("humidity", v)}
+                    disabled={controlDisabled("humidity")}
+                    ends={scene === "fog" ? ["40%", "95%"] : ["20%", "100%"]}
+                  />
+                )}
+                {scene === "cloud" && showControl("height") && (
+                  <Slider
+                    id="height"
+                    label="Uniesienie nad ziemię"
+                    value={input.height}
+                    min={0}
+                    max={3000}
+                    step={50}
+                    display={metres(input.height)}
+                    onChange={(v) => update("height", v)}
+                    disabled={controlDisabled("height")}
+                    ends={["Poziom ziemi", "3000 m"]}
+                  />
+                )}
+                {scene === "fog" && showControl("cooling") && (
+                  <Slider
+                    id="cooling"
+                    label="Nocne ochłodzenie"
+                    value={input.cooling}
+                    min={0}
+                    max={10}
+                    step={0.5}
+                    display={`o ${num(input.cooling)}°C`}
+                    onChange={(v) => update("cooling", v)}
+                    disabled={controlDisabled("cooling")}
+                    ends={["Bez ochłodzenia", "O 10°C"]}
+                  />
+                )}
+                {!tutorial &&
+                  (scene === "fog" ? (
+                    <div className="instrument">
+                      <span>Do rozpoczęcia kondensacji</span>
+                      <strong>
+                        {result.saturated
+                          ? "Nasycenie"
+                          : `jeszcze ${num(result.remaining)}°C`}
+                      </strong>
+                      <p>
+                        Początkowy punkt rosy: {num(result.initialDew)}°C. To
+                        temperatura, do której trzeba ochłodzić początkowe
+                        powietrze, aby osiągnęło nasycenie.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="instrument">
+                      <span>Szacowany poziom kondensacji</span>
+                      <strong>≈ {metres(result.base)}</strong>
+                      <p>
+                        {result.aboveScene
+                          ? "Powyżej zakresu tej sceny. Nie dorysowujemy chmury na granicy wykresu."
+                          : `Punkt rosy przy ziemi: ${num(result.dew)}°C. To temperatura, przy której początkowe powietrze osiągnęłoby nasycenie przy niezmienionym ciśnieniu.`}
+                      </p>
+                    </div>
+                  ))}
               </>
             )}
-            <button
-              className="primary save-button"
-              onClick={saveTrial}
-              disabled={locked}
-            >
-              <FloppyDisk /> Zapisz próbę do porównania
-            </button>
+            {tutorial && !guideDone && (
+              <div className="guide-action">
+                <button
+                  className="primary guide-target"
+                  onClick={() => update(guideStep.key, guideStep.target)}
+                  disabled={stepDone}
+                >
+                  {stepDone ? <Check /> : <ArrowRight />}
+                  {stepDone ? "Ustawienie gotowe" : guideStep.action}
+                </button>
+                <div className="guide-feedback" role="status">
+                  {stepDone && (
+                    <>
+                      <b>Co się zmieniło i dlaczego</b>
+                      <p>{guideStep.explanation}</p>
+                    </>
+                  )}
+                </div>
+                <div className="guide-navigation">
+                  <button
+                    className="plain"
+                    disabled={guideIndex === 0}
+                    onClick={() => guideTo(guideIndex - 1)}
+                  >
+                    <ArrowLeft /> Wstecz
+                  </button>
+                  <button
+                    className="primary"
+                    disabled={!stepDone}
+                    onClick={() => guideTo(guideIndex + 1)}
+                  >
+                    {guideIndex === guide.steps.length - 1
+                      ? "Podsumuj"
+                      : "Dalej"}{" "}
+                    <ArrowRight />
+                  </button>
+                </div>
+                {!stepDone && (
+                  <p className="guide-hint">
+                    Najpierw wykonaj wskazaną zmianę. Możesz użyć suwaka albo
+                    fioletowego przycisku powyżej.
+                  </p>
+                )}
+              </div>
+            )}
+            {!tutorial && (
+              <button
+                className="primary save-button"
+                onClick={saveTrial}
+                disabled={locked}
+              >
+                <FloppyDisk /> Zapisz próbę do porównania
+              </button>
+            )}
           </aside>
         </section>
         <p className="notice" role="status">
           {notice}
         </p>
-        {!locked && (
+        {!locked && !tutorial && (
           <section className="comparison" aria-labelledby="comparison-heading">
             <div className="section-heading">
               <div>
@@ -711,7 +1006,9 @@ function App() {
                     <p>
                       {scene === "breeze"
                         ? `${timeLabel(trial.input.hour)} · kontrast ${trial.input.heating}% · ${directionLabel(calculate(scene, trial.input).direction)}`
-                        : `${trial.input.temperature}°C · wilgotność ${trial.input.humidity}% · uniesienie ${metres(trial.input.height)} · kondensacja ≈ ${metres(calculate(scene, trial.input).base)}`}
+                        : scene === "fog"
+                          ? `Początkowo ${trial.input.temperature}°C i ${trial.input.humidity}% · ochłodzenie o ${trial.input.cooling}°C · ${calculate(scene, trial.input).saturated ? "warunki do kondensacji" : "bez kondensacji"}`
+                          : `${trial.input.temperature}°C · wilgotność ${trial.input.humidity}% · uniesienie ${metres(trial.input.height)} · kondensacja ≈ ${metres(calculate(scene, trial.input).base)}`}
                     </p>
                   </article>
                 ))}
@@ -736,12 +1033,11 @@ function App() {
                   Warstw ani narzędzi METAR i Windy.
                 </p>
               </div>
-              <a
-                className="lesson-link"
-                href={`${mainSite}#/learn/${data.lesson}`}
-              >
+              <a className="lesson-link" href={lessonHref}>
                 <BookOpen />
-                {data.lessonLabel}
+                {lesson === data.lesson
+                  ? data.lessonLabel
+                  : "Wróć do lekcji, z której przyszedłeś"}
                 <ArrowRight />
               </a>
             </section>
@@ -766,10 +1062,20 @@ function App() {
                   <ArrowRight />
                 </a>
               )}
+              {scene === "fog" && (
+                <a
+                  href="https://about.metservice.com/learning/radiation-fog-s7gkj"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  MetService: rola gruntu, wilgoci i mieszania powietrza{" "}
+                  <ArrowRight />
+                </a>
+              )}
             </details>
           </>
         )}
-        {mode === "guided" && step === "explain" && (
+        {((mode === "guided" && step === "explain") || guideDone) && (
           <section className="recap">
             <h3>Co zabierasz z tego doświadczenia</h3>
             {data.recap.map((line) => (

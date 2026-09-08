@@ -3,10 +3,12 @@ export const STORAGE_KEY = "chmurnik:weather-preview:v1";
 export const DEFAULTS = {
   breeze: { hour: 14, heating: 70 },
   cloud: { temperature: 24, humidity: 55, height: 900 },
+  fog: { temperature: 18, humidity: 70, cooling: 0 },
 };
 export const LIMITS = {
   breeze: { hour: [0, 23.5], heating: [0, 100] },
   cloud: { temperature: [5, 35], humidity: [20, 100], height: [0, 3000] },
+  fog: { temperature: [15, 30], humidity: [40, 95], cooling: [0, 10] },
 };
 export function cleanInputs(scene, input = {}) {
   if (!LIMITS[scene]) throw new Error("Unknown experiment");
@@ -74,7 +76,36 @@ export function cloud(input) {
   };
 }
 export function calculate(scene, input) {
-  return scene === "breeze" ? breeze(input) : cloud(input);
+  const models = { breeze, cloud, fog };
+  if (!Object.hasOwn(models, scene)) throw new Error("Unknown experiment");
+  return models[scene](input);
+}
+export function fog(input) {
+  const { temperature, humidity, cooling } = cleanInputs("fog", input);
+  const initialDew = dewPoint(temperature, humidity);
+  const current = temperature - cooling;
+  const needed = temperature - initialDew;
+  const saturated = cooling >= needed;
+  // Fixed pressure, no moisture advection; condensate removes supersaturation.
+  const relative = saturated
+    ? 100
+    : Math.min(
+        100,
+        humidity *
+          Math.exp(
+            (17.625 * temperature) / (243.04 + temperature) -
+              (17.625 * current) / (243.04 + current),
+          ),
+      );
+  return {
+    initialDew,
+    current,
+    needed,
+    saturated,
+    relative,
+    dew: Math.min(initialDew, current),
+    remaining: Math.max(0, needed - cooling),
+  };
 }
 export function readTrials(raw) {
   try {

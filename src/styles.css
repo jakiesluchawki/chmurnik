@@ -928,6 +928,24 @@ p {
   gap: 24px;
 }
 
+.lesson-experiments {
+  margin: 0 0 28px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+}
+.lesson-experiments h2 { margin: 8px 0; font-size: 26px; }
+.lesson-experiments p { max-width: 660px; line-height: 1.6; }
+.lesson-experiment-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.lesson-experiment-links a {
+  display: flex; align-items: center; gap: 16px; min-height: 48px;
+  padding: 12px 16px; border: 1px solid currentColor; border-radius: 12px;
+  color: var(--coral); text-decoration: none; font-weight: 600;
+}
+.lesson-experiment-links a svg { flex-shrink: 0; }
+.lesson-experiment-links a:hover { text-decoration: underline; }
+
 .lesson-source-row p {
   max-width: 520px;
   margin: 0;

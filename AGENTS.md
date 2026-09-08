@@ -29,6 +29,11 @@ Writing production code without an active Lore task is forbidden.
 - September 8 weather-learning work is a separate GitHub Pages preview only.
   Do not publish it to chmurnik.cloud or Apple before owner acceptance. Keep
   production navigation and existing learning/photo storage untouched.
+- Weather experiments need a default beginner walkthrough: one named action,
+  expected observation, verified completion and a plain-language explanation.
+  Keep free exploration and concealed assessment separate. Related lessons
+  must link to experiments and experiments back to the originating lesson.
+  Until acceptance these entry links are enabled only in the Pages build.
 - The product interface and educational content are in Polish.
 - Version 1 teaches people to recognize clouds. Its experimental iOS photo
   assistant runs entirely on-device and presents uncertain, evidence-led

@@ -90,5 +90,17 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner Follow-up: Beginner Walkthroughs
+
+- [x] Default progressive walkthrough for each experiment, with observable
+  actions and expected effects rather than an unexplained control panel.
+- [x] Third experiment: nighttime near-surface cooling and condensation.
+- [x] Reciprocal lesson entry / return links, gated to the Pages build only.
+- [ ] Regression tests, phone / desktop checks, and Pages-only publication.
+
+The owner explicitly requested additional experiments and lesson-to-experiment
+discovery. Cloud domain and Apple still require separate acceptance. Preserve
+lesson resume state, old A/B records and hidden assessment answers.
+
 Owner acceptance precedes mountain / front / stability scenes and production
 lesson/native integration. These remain outside this first prototype.
