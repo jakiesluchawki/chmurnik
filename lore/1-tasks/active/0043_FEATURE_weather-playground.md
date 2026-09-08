@@ -30,7 +30,7 @@ not a completed new multi-chapter course or an operational weather forecast.
 - [x] No concealed answers leak before an explicit attempt / reveal.
 - [x] A/B comparison preserves the actual inputs and supports replay.
 - [x] Deterministic model / persistence tests and browser checks pass.
-- [ ] Isolated GitHub Pages URL works publicly on phone and desktop layouts.
+- [x] Isolated GitHub Pages URL works publicly on phone and desktop layouts.
 - [x] No change to chmurnik.cloud, Apple assets/releases, photo ML or production navigation.
 
 ## Design Decisions
@@ -71,6 +71,22 @@ The permanent social library contains a new weather campaign with complete
 five-story/carousel copy and Instagram, Facebook, LinkedIn posts. Owner copy
 approval was requested; final social PNG/PDF rendering remains pending.
 Nothing was posted to social accounts. No secrets or reviewer photos included.
+
+Published through isolated cherry-pick b8ce2cf on Pages main, CI run
+34256367367 succeeded. Public preview, library, weather campaign and text ZIP
+return HTTP 200; browser interactions and fonts/artwork verified. Pages branch
+runs 300 tests (the local branch additionally includes five native/reviewer
+regressions, intentionally not shipped in this preview-only commit).
+
+Root Pages HTML SHA256 before/after:
+54a6bdd98c455f3a8bba89601a173afec43e322c3e5f8762ec86934768af5283.
+chmurnik.cloud HTML SHA256 before/after:
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+Public mobile check found long URLs overflowing social-post text; the gallery
+now wraps them and shows fallback text while branded fonts load.
+
+Task remains active for owner review and social copy approval; do not continue
+to native integration or production domain without that acceptance.
 
 ## Future Work
 
