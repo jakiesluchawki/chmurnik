@@ -90,6 +90,19 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner Follow-up: Continuous Interaction
+
+- [x] Replace fog/cloud switches with continuous post-saturation rendering.
+- [x] Smooth all three scenes and refine touch/keyboard slider feedback.
+- [x] Verify physical boundaries, walkthroughs, reduced motion and responsive UI.
+- [ ] Publish only the Pages preview and confirm the production domain is unchanged.
+
+NWS radiation-fog guidance supports thickening during further cooling after
+saturation. The teaching models do not resolve liquid water content, optical
+depth or visibility: opacity and cloud size remain illustrative mappings.
+Keep model equations and stored input schema unchanged; animate the scene's
+inputs and recalculate its readouts together so labels agree with the image.
+
 ### Owner Follow-up: Beginner Walkthroughs
 
 - [x] Default progressive walkthrough for each experiment, with observable

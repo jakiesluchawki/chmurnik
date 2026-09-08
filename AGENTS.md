@@ -34,6 +34,13 @@ Writing production code without an active Lore task is forbidden.
   Keep free exploration and concealed assessment separate. Related lessons
   must link to experiments and experiments back to the originating lesson.
   Until acceptance these entry links are enabled only in the Pages build.
+- Weather controls should produce continuous, responsive visual changes.
+  Keep physical thresholds intact: condensate illustrations start from zero
+  at saturation and strengthen beyond it, never fade in beforehand for style.
+  Distinguish illustrative opacity from measured visibility. Respect reduced
+  motion, retain keyboard controls, and keep saved trials deterministic.
+  Use meaningful illustrated slider handles (cloud, sun, moon, water) while
+  preserving labelled native range semantics, numerical values and a clear track.
 - The product interface and educational content are in Polish.
 - Version 1 teaches people to recognize clouds. Its experimental iOS photo
   assistant runs entirely on-device and presents uncertain, evidence-led

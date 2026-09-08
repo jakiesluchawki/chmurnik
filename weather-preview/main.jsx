@@ -8,6 +8,8 @@ import {
   ArrowCounterClockwise,
   Sun,
   Moon,
+  Drop,
+  Thermometer,
   Wind,
   Cloud,
   BookOpen,
@@ -28,6 +30,8 @@ import {
   directionLabel,
 } from "./model.mjs";
 import { experiments } from "./content.mjs";
+import { sceneAppearance } from "./presentation.mjs";
+import { useSceneMotion } from "./motion.jsx";
 import {
   guides,
   guideInputsAt,
@@ -59,13 +63,23 @@ function Slider({
   min,
   max,
   step = 1,
+  nudge = step,
   display,
   onChange,
   disabled,
   ends,
 }) {
+  const ratio = (value - min) / (max - min);
+  const Handle =
+    id === "cooling"
+      ? Moon
+      : id === "humidity"
+        ? Drop
+        : id === "temperature"
+          ? Thermometer
+          : Sun;
   return (
-    <div className="control">
+    <div className={`control ${disabled ? "disabled" : ""}`}>
       <div className="control-heading">
         <label htmlFor={id}>{label}</label>
         <output htmlFor={id}>{display}</output>
@@ -73,26 +87,44 @@ function Slider({
       <div className="range-row">
         <button
           className="step"
-          onClick={() => onChange(Math.max(min, value - step))}
+          onClick={() =>
+            onChange(Math.max(min, Number((value - nudge).toFixed(3))))
+          }
           disabled={disabled || value <= min}
           aria-label={`Zmniejsz: ${label}`}
         >
           <Minus />
         </button>
-        <input
-          id={id}
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          disabled={disabled}
-          aria-valuetext={display}
-          onChange={(e) => onChange(Number(e.target.value))}
-        />
+        <div className={`range-track handle-${id}`}>
+          <input
+            id={id}
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            style={{ "--range-fill": `${ratio * 100}%` }}
+            disabled={disabled}
+            aria-valuetext={display}
+            onChange={(e) => onChange(Number(e.target.value))}
+          />
+          <span
+            className="range-thumb"
+            style={{ left: `calc(${ratio * 100}% + ${16 - 32 * ratio}px)` }}
+            aria-hidden="true"
+          >
+            {id === "height" ? (
+              <img src="./cloud.webp" alt="" />
+            ) : (
+              <Handle weight="fill" />
+            )}
+          </span>
+        </div>
         <button
           className="step"
-          onClick={() => onChange(Math.min(max, value + step))}
+          onClick={() =>
+            onChange(Math.min(max, Number((value + nudge).toFixed(3))))
+          }
           disabled={disabled || value >= max}
           aria-label={`Zwiększ: ${label}`}
         >
@@ -107,156 +139,234 @@ function Slider({
   );
 }
 
-function Scene({ scene, input, result, playing, diagram, mini = false }) {
+function Scene({
+  scene,
+  input: target,
+  playing,
+  diagram,
+  reduced,
+  mini = false,
+}) {
+  const { input, flowOffset } = useSceneMotion(
+    scene,
+    target,
+    playing,
+    reduced || mini,
+  );
+  const result = calculate(scene, input);
+  const appearance = sceneAppearance(scene, input);
   const breezeScene = scene === "breeze";
   const fogScene = scene === "fog";
-  const night = breezeScene && result.night;
-  const heightY = breezeScene ? 0 : 72 - (input.height / 3000) * 48;
-  const baseY = breezeScene ? 0 : 72 - (result.base / 3000) * 48;
+  const humidityLabel = fogScene
+    ? result.saturated
+      ? "100"
+      : result.relative >= 99.9
+        ? "<100"
+        : num(result.relative)
+    : "";
+  const night = breezeScene && appearance.night > 0.5;
+  const heightY = scene === "cloud" ? 72 - (input.height / 3000) * 48 : 0;
+  const baseY = scene === "cloud" ? 72 - (result.base / 3000) * 48 : 0;
   return (
-    <div
-      className={`scene ${night ? "night" : ""} ${playing ? "running" : ""} ${mini ? "mini" : ""}`}
-      role="img"
-      aria-label={
-        breezeScene
-          ? `Przekrój zatoki, godzina ${timeLabel(input.hour)}. Ląd ${num(result.land)} stopnia, woda ${num(result.water)} stopnia. ${directionLabel(result.direction)} przy powierzchni.`
-          : fogScene
-            ? `Powietrze przy gruncie: ${num(result.current)} stopnia, wilgotność względna ${num(result.relative, 0)} procent. ${result.saturated ? "Warunki do kondensacji." : "Jeszcze bez kondensacji."}`
-            : `Unoszone powietrze na ${metres(input.height)} nad ziemią. Temperatura ${num(result.parcel)} stopnia. ${result.saturated ? "Osiągnęło nasycenie." : "Jeszcze bez kondensacji."}`
-      }
-    >
-      <img
-        className="landscape"
-        src={fogScene ? "./valley.webp" : "./coast.webp"}
-        alt=""
-      />
-      <div className="night-wash" />
-      {!mini && (
-        <span className="scene-stamp">SCHEMAT EDUKACYJNY · NIE PROGNOZA</span>
-      )}
-      {breezeScene ? (
-        <>
-          <div className="celestial" aria-hidden="true">
-            {night ? <Moon weight="fill" /> : <Sun weight="fill" />}
-          </div>
-          <div className="scene-hour">
-            {timeLabel(input.hour)}
-            <small>{night ? "Noc nad zatoką" : "Dzień nad zatoką"}</small>
-          </div>
-          {diagram && result.direction !== "calm" && (
-            <>
-              <svg
-                className={`circulation ${result.direction === "offshore" ? "reverse" : ""}`}
-                viewBox="0 0 800 500"
-                preserveAspectRatio="none"
+    <>
+      <div
+        className={`scene ${night ? "night" : ""} ${playing ? "running" : ""} ${mini ? "mini" : ""}`}
+        role="img"
+        aria-label={
+          breezeScene
+            ? `Przekrój zatoki, godzina ${timeLabel(input.hour)}. Ląd ${num(result.land)} stopnia, woda ${num(result.water)} stopnia. ${directionLabel(result.direction)} przy powierzchni.`
+            : fogScene
+              ? `Powietrze przy gruncie: ${num(result.current)} stopnia, wilgotność względna ${humidityLabel.replace("<", "mniej niż ")} procent. ${result.saturated ? "Warunki do kondensacji." : "Jeszcze bez kondensacji."}`
+              : `Unoszone powietrze na ${metres(input.height)} nad ziemią. Temperatura ${num(result.parcel)} stopnia. ${result.saturated ? "Osiągnęło nasycenie." : "Jeszcze bez kondensacji."}`
+        }
+      >
+        <img
+          className="landscape"
+          src={fogScene ? "./valley.webp" : "./coast.webp"}
+          alt=""
+        />
+        <div
+          className="night-wash"
+          style={{ opacity: breezeScene ? appearance.night * 0.74 : 0 }}
+        />
+        {!mini && (
+          <span className="scene-stamp">SCHEMAT EDUKACYJNY · NIE PROGNOZA</span>
+        )}
+        {breezeScene ? (
+          <>
+            <div className="celestial" aria-hidden="true">
+              <Sun
+                weight="fill"
+                style={{
+                  opacity: 1 - appearance.night,
+                  transform: `translateY(${appearance.night * 14}px)`,
+                }}
+              />
+              <Moon
+                weight="fill"
+                style={{
+                  opacity: appearance.night,
+                  transform: `translateY(${(1 - appearance.night) * -14}px)`,
+                }}
+              />
+            </div>
+            <div className="scene-hour">
+              {timeLabel(input.hour)}
+              <small>{night ? "Noc nad zatoką" : "Dzień nad zatoką"}</small>
+            </div>
+            {diagram && (
+              <div className="airflow" style={{ opacity: appearance.flow }}>
+                <svg
+                  className={`circulation ${result.direction === "offshore" ? "reverse" : ""}`}
+                  viewBox="0 0 800 500"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    className="flow-base"
+                    d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
+                  />
+                  <path
+                    className="flow-dots"
+                    style={{ strokeDashoffset: flowOffset }}
+                    d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
+                  />
+                </svg>
+                <span className="flow-arrow lower" aria-hidden="true">
+                  {result.direction === "onshore" ? (
+                    <ArrowRight weight="bold" />
+                  ) : (
+                    <ArrowLeft weight="bold" />
+                  )}
+                </span>
+                <span className="flow-arrow upper" aria-hidden="true">
+                  {result.direction === "onshore" ? (
+                    <ArrowLeft weight="bold" />
+                  ) : (
+                    <ArrowRight weight="bold" />
+                  )}
+                </span>
+                {!mini && (
+                  <span className="return-label">wyżej: powrót powietrza</span>
+                )}
+              </div>
+            )}
+            <span className="measure water">
+              <small>WODA</small>
+              <b>{num(result.water)}°</b>
+              <meter min="5" max="35" value={result.water} aria-hidden="true" />
+            </span>
+            <span className="measure land">
+              <small>LĄD</small>
+              <b>{num(result.land)}°</b>
+              <meter min="5" max="35" value={result.land} aria-hidden="true" />
+            </span>
+            <span className="scene-result">
+              <Wind /> {directionLabel(result.direction)}{" "}
+              <small>przy powierzchni</small>
+            </span>
+          </>
+        ) : fogScene ? (
+          <>
+            <div className="fog-readout">
+              <Moon weight="fill" />
+              <span>POWIETRZE PRZY ZIEMI</span>
+              <b>{num(result.current)}°C</b>
+              <small>Wilgotność względna: {humidityLabel}%</small>
+              <meter
+                min="0"
+                max="100"
+                value={result.relative}
                 aria-hidden="true"
-                style={{ "--flow-duration": `${12 - result.strength * 7}s` }}
-              >
-                <path
-                  className="flow-base"
-                  d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
-                />
-                <path
-                  className="flow-dots"
-                  d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
-                />
-              </svg>
-              <span className="flow-arrow lower" aria-hidden="true">
-                {result.direction === "onshore" ? (
-                  <ArrowRight weight="bold" />
-                ) : (
-                  <ArrowLeft weight="bold" />
-                )}
-              </span>
-              <span className="flow-arrow upper" aria-hidden="true">
-                {result.direction === "onshore" ? (
-                  <ArrowLeft weight="bold" />
-                ) : (
-                  <ArrowRight weight="bold" />
-                )}
-              </span>
-              {!mini && (
-                <span className="return-label">wyżej: powrót powietrza</span>
-              )}
-            </>
-          )}
-          <span className="measure water">
-            <small>WODA</small>
-            <b>{num(result.water)}°</b>
-          </span>
-          <span className="measure land">
-            <small>LĄD</small>
-            <b>{num(result.land)}°</b>
-          </span>
-          <span className="scene-result">
-            <Wind /> {directionLabel(result.direction)}{" "}
-            <small>przy powierzchni</small>
-          </span>
-        </>
-      ) : fogScene ? (
-        <>
-          <div className="fog-readout">
-            <Moon weight="fill" />
-            <span>POWIETRZE PRZY ZIEMI</span>
-            <b>{num(result.current)}°C</b>
-            <small>Wilgotność względna: {num(result.relative, 0)}%</small>
-          </div>
-          {result.saturated && (
-            <div className="fog-layer" aria-hidden="true">
+              />
+            </div>
+            <div
+              className="fog-layer"
+              aria-hidden="true"
+              style={{ opacity: appearance.opacity }}
+            >
               <img src="./fog.webp" alt="" />
             </div>
-          )}
-          {diagram && (
-            <span className="fog-dew">
-              Początkowy punkt rosy: {num(result.initialDew)}°C
-            </span>
-          )}
-        </>
-      ) : (
-        <>
-          {diagram && (
-            <div className="height-scale" aria-hidden="true">
-              {[3000, 2000, 1000, 0].map((h) => (
-                <span key={h} style={{ top: `${((3000 - h) / 3000) * 100}%` }}>
-                  {h} m
-                </span>
-              ))}
-            </div>
-          )}
-          {diagram && !result.aboveScene && (
-            <div className="condensation-line" style={{ top: `${baseY}%` }} />
-          )}
-          <div
-            className="parcel"
-            style={{ top: `${heightY}%` }}
-            aria-hidden="true"
-          >
-            {result.saturated ? (
-              <img
-                src="./cloud.webp"
-                alt=""
-                style={{ width: `${110 + 70 * result.growth}px` }}
-              />
-            ) : (
-              <span className="parcel-ring">
-                <ArrowRight className="up-arrow" />
+            {diagram && (
+              <span className="fog-dew">
+                Początkowy punkt rosy: {num(result.initialDew)}°C
               </span>
             )}
-            <span className="parcel-readout">
-              {metres(input.height)}
-              <b>{num(result.parcel)}°C</b>
+          </>
+        ) : (
+          <>
+            {diagram && (
+              <div className="height-scale" aria-hidden="true">
+                {[3000, 2000, 1000, 0].map((h) => (
+                  <span
+                    key={h}
+                    style={{ top: `${((3000 - h) / 3000) * 100}%` }}
+                  >
+                    {h} m
+                  </span>
+                ))}
+              </div>
+            )}
+            {diagram && !result.aboveScene && (
+              <div className="condensation-line" style={{ top: `${baseY}%` }} />
+            )}
+            <div
+              className="parcel"
+              style={{ top: `${heightY}%` }}
+              aria-hidden="true"
+            >
+              <div className="parcel-visual">
+                <img
+                  src="./cloud.webp"
+                  alt=""
+                  style={{
+                    opacity: appearance.opacity,
+                    transform: `scale(${appearance.scale})`,
+                  }}
+                />
+                <span
+                  className="parcel-ring"
+                  style={{ opacity: 1 - appearance.opacity }}
+                >
+                  <ArrowRight className="up-arrow" />
+                </span>
+              </div>
+              <span className="parcel-readout">
+                {metres(input.height)}
+                <b>{num(result.parcel)}°C</b>
+              </span>
+            </div>
+            <span className="scene-result">
+              <Cloud />{" "}
+              {result.saturated
+                ? "Zaczęła się kondensacja"
+                : "Jeszcze bez chmury"}
+              <small>unoszona porcja powietrza</small>
             </span>
-          </div>
-          <span className="scene-result">
-            <Cloud />{" "}
-            {result.saturated
-              ? "Zaczęła się kondensacja"
-              : "Jeszcze bez chmury"}
-            <small>unoszona porcja powietrza</small>
-          </span>
-        </>
+          </>
+        )}
+      </div>
+      {!mini && scene === "cloud" && diagram && (
+        <p className="scene-caption">
+          {result.aboveScene
+            ? `Kondensacja ≈ ${metres(result.base)}, powyżej rysunku.`
+            : `Przerywana linia: kondensacja ≈ ${metres(result.base)}.`}
+        </p>
       )}
-    </div>
+      {!mini && fogScene && (
+        <p className="scene-caption fog-caption">
+          <b>
+            {result.saturated
+              ? "Warunki do kondensacji przy ziemi"
+              : "Jeszcze bez kondensacji"}
+          </b>
+          <span>
+            Mgła gęstnieje na rysunku po nasyceniu. To ilustracja, nie pomiar
+            widzialności.
+          </span>
+        </p>
+      )}
+    </>
   );
 }
 
@@ -331,7 +441,13 @@ function App() {
           ...old,
           [scene]:
             scene === "breeze"
-              ? { ...old.breeze, hour: (old.breeze.hour + 0.5) % 24 }
+              ? {
+                  ...old.breeze,
+                  hour:
+                    old.breeze.hour > 23
+                      ? 0
+                      : Number((old.breeze.hour + 0.5).toFixed(1)),
+                }
               : scene === "cloud"
                 ? {
                     ...old.cloud,
@@ -604,26 +720,11 @@ function App() {
         >
           <div className="scene-area">
             <Scene
+              key={`${scene}:${mode}`}
               {...{ scene, input, result, diagram }}
+              reduced={reduced}
               playing={playing && !reduced}
             />
-            {scene === "cloud" && diagram && (
-              <p className="scene-caption">
-                {result.aboveScene
-                  ? `Kondensacja ≈ ${metres(result.base)}, powyżej rysunku.`
-                  : `Przerywana linia: kondensacja ≈ ${metres(result.base)}.`}
-              </p>
-            )}
-            {scene === "fog" && (
-              <p className="scene-caption fog-caption">
-                <b>
-                  {result.saturated
-                    ? "Warunki do kondensacji przy ziemi"
-                    : "Jeszcze bez kondensacji"}
-                </b>
-                <span>Ilustracja mgły jest symbolem, nie prognozą.</span>
-              </p>
-            )}
             <div className="scene-toolbar">
               <button
                 className="plain"
@@ -734,7 +835,8 @@ function App() {
                       value={input.hour}
                       min={0}
                       max={23.5}
-                      step={0.5}
+                      step={0.1}
+                      nudge={0.5}
                       display={timeLabel(input.hour)}
                       onChange={(v) => update("hour", v)}
                       disabled={controlDisabled("hour")}
@@ -765,7 +867,8 @@ function App() {
                     value={input.heating}
                     min={0}
                     max={100}
-                    step={10}
+                    step={1}
+                    nudge={10}
                     display={`${input.heating}%`}
                     onChange={(v) => update("heating", v)}
                     disabled={controlDisabled("heating")}
@@ -802,7 +905,9 @@ function App() {
                     value={input.temperature}
                     min={scene === "fog" ? 15 : 5}
                     max={scene === "fog" ? 30 : 35}
-                    display={`${input.temperature}°C`}
+                    step={0.1}
+                    nudge={1}
+                    display={`${num(input.temperature)}°C`}
                     onChange={(v) => update("temperature", v)}
                     disabled={controlDisabled("temperature")}
                     ends={scene === "fog" ? ["15°C", "30°C"] : ["5°C", "35°C"]}
@@ -819,7 +924,8 @@ function App() {
                     value={input.humidity}
                     min={scene === "fog" ? 40 : 20}
                     max={scene === "fog" ? 95 : 100}
-                    step={5}
+                    step={1}
+                    nudge={5}
                     display={`${input.humidity}%`}
                     onChange={(v) => update("humidity", v)}
                     disabled={controlDisabled("humidity")}
@@ -833,7 +939,8 @@ function App() {
                     value={input.height}
                     min={0}
                     max={3000}
-                    step={50}
+                    step={10}
+                    nudge={50}
                     display={metres(input.height)}
                     onChange={(v) => update("height", v)}
                     disabled={controlDisabled("height")}
@@ -847,7 +954,8 @@ function App() {
                     value={input.cooling}
                     min={0}
                     max={10}
-                    step={0.5}
+                    step={0.1}
+                    nudge={0.5}
                     display={`o ${num(input.cooling)}°C`}
                     onChange={(v) => update("cooling", v)}
                     disabled={controlDisabled("cooling")}
