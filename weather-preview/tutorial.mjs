@@ -186,5 +186,5 @@ export function sceneFromHash(hash) {
 }
 export function returnLesson(search, fallback) {
   const from = new URLSearchParams(search).get("from");
-  return ["wiatr", "procesy"].includes(from) ? from : fallback;
+  return ["obserwacja", "rodziny", "procesy", "fronty", "wiatr", "lotnictwo", "warstwy", "zagrozenia", "ekspert"].includes(from) ? from : fallback;
 }

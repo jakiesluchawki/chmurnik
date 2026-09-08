@@ -1,0 +1,79 @@
+[
+  {
+    "id": "obserwacja",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "rodziny",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "front",
+    "steps": 4,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "wiatr",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "metar",
+    "steps": 4,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "wysokosc",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "sondaz",
+    "steps": 5,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "oblodzenie",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "turbulencja",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "burza",
+    "steps": 4,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  },
+  {
+    "id": "nazwy",
+    "steps": 3,
+    "quiz": true,
+    "overflow": false,
+    "broken": []
+  }
+]

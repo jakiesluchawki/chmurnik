@@ -90,6 +90,31 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner-Approved Expansion: All Lessons
+
+The owner now authorizes a coherent web learning expansion across all nine
+lessons and the wind, METAR, hazards and sounding tools. This supersedes the
+earlier two/three-experiment scope, but not the Pages-only publication gate.
+No Apple build or chmurnik.cloud deployment before owner acceptance. Keep
+existing navigation, lesson resume, real-photo provenance and concealed answers.
+
+- [x] Inspect all lesson chapters and capture current mobile entry flows.
+- [x] Match outcomes to authentic comparisons, causal scenes or data reading.
+- [x] Implement the expanded preview, with beginner walkthroughs and sources.
+- [x] Link all nine lessons and relevant tools to the experiments and back.
+- [x] Verify science contracts, concealed answers, keyboard and mobile journeys.
+- [ ] Publish only reviewed code to Pages and verify the public result.
+
+Priority: METAR, sounding foundations, wind and three distinct hazard scenes;
+front lifting and photo/name exercises complete the lesson coverage. Do not
+claim this replaces the full lessons or is an operational weather simulator.
+
+Implementation and audit: `design/learning-expansion-20260908/REVIEW.md`.
+All 38 new guide steps completed in browser. All 11 exploration views fit at
+320/390/844/1365px. METAR chapter-3 round-trip and centered mobile slider focus
+verified. Existing learning data, recognition models and native navigation are
+unchanged. Independent meteorologist/physical-device checks remain unclaimed.
+
 ### Owner Follow-up: Slider Alignment
 
 The owner clarified that subtle focus shadows are welcome; the defect is the

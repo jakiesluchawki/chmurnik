@@ -122,7 +122,7 @@ test("assessment presets differ from tutorial presets and require the intended a
   assert.equal(fog({ ...quizCases.fog.start, cooling: 6 }).saturated, true);
 });
 test("lesson links and return targets are explicit, reciprocal and Pages-only", () => {
-  assert.equal(weatherLessonLinks("wiatr", "/chmurnik/").length, 1);
+  assert.equal(weatherLessonLinks("wiatr", "/chmurnik/").length, 2);
   assert.equal(weatherLessonLinks("procesy", "/chmurnik/").length, 2);
   for (const lesson of ["wiatr", "procesy"]) {
     assert.deepEqual(weatherLessonLinks(lesson, "/"), []);

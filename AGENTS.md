@@ -79,6 +79,13 @@ Writing production code without an active Lore task is forbidden.
   Reset native slider-thumb painting so the illustration does not sit on a
   second system knob, including Safari. This is not a ban on shadows or a
   retroactive restyle of older screens.
+- Owner-approved learning expansion covers all nine lessons and relevant
+  tools, in the Pages web preview first. Keep cloud recognition/photo data,
+  native navigation, Apple builds and chmurnik.cloud unchanged until review.
+  Match the interaction to the outcome: authentic photo comparison for
+  observation/classification, causal experiments for weather mechanisms,
+  progressive data reading for METAR and soundings. Teach a simple vertical
+  profile before introducing Skew-T; explain acronyms before using them.
 - Native compact navigation must expose Warstwy as a separate bottom tab,
   with direct access to METAR/TAF, wind, Windy and full lessons, not through
   Atlas. Verify the actual native FieldHome and nativeNavigation paths and

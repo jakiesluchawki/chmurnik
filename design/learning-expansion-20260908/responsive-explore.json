@@ -1,0 +1,310 @@
+[
+  {
+    "width": 320,
+    "id": "obserwacja",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "rodziny",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "front",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "wiatr",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "metar",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "wysokosc",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "sondaz",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "oblodzenie",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "turbulencja",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "burza",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 320,
+    "id": "nazwy",
+    "broken": [],
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "width": 390,
+    "id": "obserwacja",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "rodziny",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "front",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "wiatr",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "metar",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "wysokosc",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "sondaz",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "oblodzenie",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "turbulencja",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "burza",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 390,
+    "id": "nazwy",
+    "broken": [],
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "width": 844,
+    "id": "obserwacja",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "rodziny",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "front",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "wiatr",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "metar",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "wysokosc",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "sondaz",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "oblodzenie",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "turbulencja",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "burza",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 844,
+    "id": "nazwy",
+    "broken": [],
+    "overflow": false,
+    "w": 844
+  },
+  {
+    "width": 1365,
+    "id": "obserwacja",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "rodziny",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "front",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "wiatr",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "metar",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "wysokosc",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "sondaz",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "oblodzenie",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "turbulencja",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "burza",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  },
+  {
+    "width": 1365,
+    "id": "nazwy",
+    "broken": [],
+    "overflow": false,
+    "w": 1365
+  }
+]
