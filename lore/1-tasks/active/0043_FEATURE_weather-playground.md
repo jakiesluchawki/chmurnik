@@ -95,13 +95,21 @@ to native integration or production domain without that acceptance.
 - [x] Replace fog/cloud switches with continuous post-saturation rendering.
 - [x] Smooth all three scenes and refine touch/keyboard slider feedback.
 - [x] Verify physical boundaries, walkthroughs, reduced motion and responsive UI.
-- [ ] Publish only the Pages preview and confirm the production domain is unchanged.
+- [x] Publish only the Pages preview and confirm the production domain is unchanged.
 
 NWS radiation-fog guidance supports thickening during further cooling after
 saturation. The teaching models do not resolve liquid water content, optical
 depth or visibility: opacity and cloud size remain illustrative mappings.
 Keep model equations and stored input schema unchanged; animate the scene's
 inputs and recalculate its readouts together so labels agree with the image.
+
+Published as 8273d58, Pages run 34270141929 succeeded. Public preview loads
+index-D0vP8fei.js / index-Bol4nwQm.css; browser verified new illustrated handles,
+guide actions and zero fog at 5.5 degrees cooling before saturation. Landscape
+and transparent artwork loaded. Production HTML before/after remains
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+See design/weather-preview-20260908/motion-qa.md. Owner review still pending;
+this is not approval for CyberFolks or native publication.
 
 ### Owner Follow-up: Beginner Walkthroughs
 
