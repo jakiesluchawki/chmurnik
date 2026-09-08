@@ -32,6 +32,7 @@ import {
 import { experiments } from "./content.mjs";
 import { sceneAppearance } from "./presentation.mjs";
 import { useSceneMotion } from "./motion.jsx";
+import { ParcelControl } from "./parcel-control.jsx";
 import {
   guides,
   guideInputsAt,
@@ -110,7 +111,7 @@ function Slider({
           />
           <span
             className="range-thumb"
-            style={{ left: `calc(${ratio * 100}% + ${16 - 32 * ratio}px)` }}
+            style={{ left: `calc(${ratio * 100}% + ${22 - 44 * ratio}px)` }}
             aria-hidden="true"
           >
             {id === "height" ? (
@@ -146,6 +147,7 @@ function Scene({
   diagram,
   reduced,
   mini = false,
+  onHeightChange,
 }) {
   const { input, flowOffset } = useSceneMotion(
     scene,
@@ -170,180 +172,208 @@ function Scene({
   return (
     <>
       <div
-        className={`scene ${night ? "night" : ""} ${playing ? "running" : ""} ${mini ? "mini" : ""}`}
-        role="img"
-        aria-label={
-          breezeScene
-            ? `Przekrój zatoki, godzina ${timeLabel(input.hour)}. Ląd ${num(result.land)} stopnia, woda ${num(result.water)} stopnia. ${directionLabel(result.direction)} przy powierzchni.`
-            : fogScene
-              ? `Powietrze przy gruncie: ${num(result.current)} stopnia, wilgotność względna ${humidityLabel.replace("<", "mniej niż ")} procent. ${result.saturated ? "Warunki do kondensacji." : "Jeszcze bez kondensacji."}`
-              : `Unoszone powietrze na ${metres(input.height)} nad ziemią. Temperatura ${num(result.parcel)} stopnia. ${result.saturated ? "Osiągnęło nasycenie." : "Jeszcze bez kondensacji."}`
-        }
+        className={`scene scene-${scene} ${night ? "night" : ""} ${playing ? "running" : ""} ${mini ? "mini" : ""}`}
       >
-        <img
-          className="landscape"
-          src={fogScene ? "./valley.webp" : "./coast.webp"}
-          alt=""
-        />
         <div
-          className="night-wash"
-          style={{ opacity: breezeScene ? appearance.night * 0.74 : 0 }}
-        />
-        {!mini && (
-          <span className="scene-stamp">SCHEMAT EDUKACYJNY · NIE PROGNOZA</span>
-        )}
-        {breezeScene ? (
-          <>
-            <div className="celestial" aria-hidden="true">
-              <Sun
-                weight="fill"
-                style={{
-                  opacity: 1 - appearance.night,
-                  transform: `translateY(${appearance.night * 14}px)`,
-                }}
-              />
-              <Moon
-                weight="fill"
-                style={{
-                  opacity: appearance.night,
-                  transform: `translateY(${(1 - appearance.night) * -14}px)`,
-                }}
-              />
-            </div>
-            <div className="scene-hour">
-              {timeLabel(input.hour)}
-              <small>{night ? "Noc nad zatoką" : "Dzień nad zatoką"}</small>
-            </div>
-            {diagram && (
-              <div className="airflow" style={{ opacity: appearance.flow }}>
-                <svg
-                  className={`circulation ${result.direction === "offshore" ? "reverse" : ""}`}
-                  viewBox="0 0 800 500"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    className="flow-base"
-                    d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
-                  />
-                  <path
-                    className="flow-dots"
-                    style={{ strokeDashoffset: flowOffset }}
-                    d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
-                  />
-                </svg>
-                <span className="flow-arrow lower" aria-hidden="true">
-                  {result.direction === "onshore" ? (
-                    <ArrowRight weight="bold" />
-                  ) : (
-                    <ArrowLeft weight="bold" />
-                  )}
-                </span>
-                <span className="flow-arrow upper" aria-hidden="true">
-                  {result.direction === "onshore" ? (
-                    <ArrowLeft weight="bold" />
-                  ) : (
-                    <ArrowRight weight="bold" />
-                  )}
-                </span>
-                {!mini && (
-                  <span className="return-label">wyżej: powrót powietrza</span>
-                )}
-              </div>
-            )}
-            <span className="measure water">
-              <small>WODA</small>
-              <b>{num(result.water)}°</b>
-              <meter min="5" max="35" value={result.water} aria-hidden="true" />
+          className="scene-visual"
+          role="img"
+          aria-label={
+            breezeScene
+              ? `Przekrój zatoki, godzina ${timeLabel(input.hour)}. Ląd ${num(result.land)} stopnia, woda ${num(result.water)} stopnia. ${directionLabel(result.direction)} przy powierzchni.`
+              : fogScene
+                ? `Powietrze przy gruncie: ${num(result.current)} stopnia, wilgotność względna ${humidityLabel.replace("<", "mniej niż ")} procent. ${result.saturated ? "Warunki do kondensacji." : "Jeszcze bez kondensacji."}`
+                : `Unoszone powietrze na ${metres(input.height)} nad ziemią. Temperatura ${num(result.parcel)} stopnia. ${result.saturated ? "Osiągnęło nasycenie." : "Jeszcze bez kondensacji."}`
+          }
+        >
+          <img
+            className="landscape"
+            src={fogScene ? "./valley.webp" : "./coast.webp"}
+            alt=""
+          />
+          <div
+            className="night-wash"
+            style={{ opacity: breezeScene ? appearance.night * 0.74 : 0 }}
+          />
+          {!mini && (
+            <span className="scene-stamp">
+              SCHEMAT EDUKACYJNY · NIE PROGNOZA
             </span>
-            <span className="measure land">
-              <small>LĄD</small>
-              <b>{num(result.land)}°</b>
-              <meter min="5" max="35" value={result.land} aria-hidden="true" />
-            </span>
-            <span className="scene-result">
-              <Wind /> {directionLabel(result.direction)}{" "}
-              <small>przy powierzchni</small>
-            </span>
-          </>
-        ) : fogScene ? (
-          <>
-            <div className="fog-readout">
-              <Moon weight="fill" />
-              <span>POWIETRZE PRZY ZIEMI</span>
-              <b>{num(result.current)}°C</b>
-              <small>Wilgotność względna: {humidityLabel}%</small>
-              <meter
-                min="0"
-                max="100"
-                value={result.relative}
-                aria-hidden="true"
-              />
-            </div>
-            <div
-              className="fog-layer"
-              aria-hidden="true"
-              style={{ opacity: appearance.opacity }}
-            >
-              <img src="./fog.webp" alt="" />
-            </div>
-            {diagram && (
-              <span className="fog-dew">
-                Początkowy punkt rosy: {num(result.initialDew)}°C
-              </span>
-            )}
-          </>
-        ) : (
-          <>
-            {diagram && (
-              <div className="height-scale" aria-hidden="true">
-                {[3000, 2000, 1000, 0].map((h) => (
-                  <span
-                    key={h}
-                    style={{ top: `${((3000 - h) / 3000) * 100}%` }}
-                  >
-                    {h} m
-                  </span>
-                ))}
-              </div>
-            )}
-            {diagram && !result.aboveScene && (
-              <div className="condensation-line" style={{ top: `${baseY}%` }} />
-            )}
-            <div
-              className="parcel"
-              style={{ top: `${heightY}%` }}
-              aria-hidden="true"
-            >
-              <div className="parcel-visual">
-                <img
-                  src="./cloud.webp"
-                  alt=""
+          )}
+          {breezeScene ? (
+            <>
+              <div className="celestial" aria-hidden="true">
+                <Sun
+                  weight="fill"
                   style={{
-                    opacity: appearance.opacity,
-                    transform: `scale(${appearance.scale})`,
+                    opacity: 1 - appearance.night,
+                    transform: `translateY(${appearance.night * 14}px)`,
                   }}
                 />
-                <span
-                  className="parcel-ring"
-                  style={{ opacity: 1 - appearance.opacity }}
-                >
-                  <ArrowRight className="up-arrow" />
+                <Moon
+                  weight="fill"
+                  style={{
+                    opacity: appearance.night,
+                    transform: `translateY(${(1 - appearance.night) * -14}px)`,
+                  }}
+                />
+              </div>
+              <div className="scene-hour">
+                {timeLabel(input.hour)}
+                <small>{night ? "Noc nad zatoką" : "Dzień nad zatoką"}</small>
+              </div>
+              {diagram && (
+                <div className="airflow" style={{ opacity: appearance.flow }}>
+                  <svg
+                    className={`circulation ${result.direction === "offshore" ? "reverse" : ""}`}
+                    viewBox="0 0 800 500"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      className="flow-base"
+                      d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
+                    />
+                    <path
+                      className="flow-dots"
+                      style={{ strokeDashoffset: flowOffset }}
+                      d="M180 335 L620 335 C730 335 730 155 620 155 L180 155 C70 155 70 335 180 335Z"
+                    />
+                  </svg>
+                  <span className="flow-arrow lower" aria-hidden="true">
+                    {result.direction === "onshore" ? (
+                      <ArrowRight weight="bold" />
+                    ) : (
+                      <ArrowLeft weight="bold" />
+                    )}
+                  </span>
+                  <span className="flow-arrow upper" aria-hidden="true">
+                    {result.direction === "onshore" ? (
+                      <ArrowLeft weight="bold" />
+                    ) : (
+                      <ArrowRight weight="bold" />
+                    )}
+                  </span>
+                  {!mini && (
+                    <span className="return-label">
+                      wyżej: powrót powietrza
+                    </span>
+                  )}
+                </div>
+              )}
+              <span className="measure water">
+                <small>WODA</small>
+                <b>{num(result.water)}°</b>
+                <meter
+                  min="5"
+                  max="35"
+                  value={result.water}
+                  aria-hidden="true"
+                />
+              </span>
+              <span className="measure land">
+                <small>LĄD</small>
+                <b>{num(result.land)}°</b>
+                <meter
+                  min="5"
+                  max="35"
+                  value={result.land}
+                  aria-hidden="true"
+                />
+              </span>
+              <span className="scene-result">
+                <Wind /> {directionLabel(result.direction)}{" "}
+                <small>przy powierzchni</small>
+              </span>
+            </>
+          ) : fogScene ? (
+            <>
+              <div className="fog-readout">
+                <Moon weight="fill" />
+                <span>POWIETRZE PRZY ZIEMI</span>
+                <b>{num(result.current)}°C</b>
+                <small>Wilgotność względna: {humidityLabel}%</small>
+                <meter
+                  min="0"
+                  max="100"
+                  value={result.relative}
+                  aria-hidden="true"
+                />
+              </div>
+              <div
+                className="fog-layer"
+                aria-hidden="true"
+                style={{ opacity: appearance.opacity }}
+              >
+                <img src="./fog.webp" alt="" />
+              </div>
+              {diagram && (
+                <span className="fog-dew">
+                  Początkowy punkt rosy: {num(result.initialDew)}°C
+                </span>
+              )}
+            </>
+          ) : (
+            <>
+              {diagram && (
+                <div className="height-scale" aria-hidden="true">
+                  {[3000, 2000, 1000, 0].map((h) => (
+                    <span
+                      key={h}
+                      style={{ top: `${((3000 - h) / 3000) * 100}%` }}
+                    >
+                      {h} m
+                    </span>
+                  ))}
+                </div>
+              )}
+              {diagram && !result.aboveScene && (
+                <div
+                  className="condensation-line"
+                  style={{ top: `${baseY}%` }}
+                />
+              )}
+              <div
+                className="parcel"
+                style={{ top: `${heightY}%` }}
+                aria-hidden="true"
+              >
+                <div className="parcel-visual">
+                  <img
+                    src="./cloud.webp"
+                    alt=""
+                    style={{
+                      opacity: appearance.opacity,
+                      transform: `scale(${appearance.scale})`,
+                    }}
+                  />
+                  <span
+                    className="parcel-ring"
+                    style={{ opacity: 1 - appearance.opacity }}
+                  >
+                    <ArrowRight className="up-arrow" />
+                  </span>
+                </div>
+                <span className="parcel-readout">
+                  {metres(input.height)}
+                  <b>{num(result.parcel)}°C</b>
                 </span>
               </div>
-              <span className="parcel-readout">
-                {metres(input.height)}
-                <b>{num(result.parcel)}°C</b>
+              <span className="scene-result">
+                <Cloud />{" "}
+                {result.saturated
+                  ? "Zaczęła się kondensacja"
+                  : "Jeszcze bez chmury"}
+                <small>unoszona porcja powietrza</small>
               </span>
-            </div>
-            <span className="scene-result">
-              <Cloud />{" "}
-              {result.saturated
-                ? "Zaczęła się kondensacja"
-                : "Jeszcze bez chmury"}
-              <small>unoszona porcja powietrza</small>
-            </span>
-          </>
+            </>
+          )}
+        </div>
+        {scene === "cloud" && !mini && onHeightChange && (
+          <ParcelControl
+            value={target.height}
+            position={heightY}
+            onChange={onHeightChange}
+          />
         )}
       </div>
       {!mini && scene === "cloud" && diagram && (
@@ -424,7 +454,10 @@ function App() {
     };
     document.addEventListener("visibilitychange", hidden);
     const hash = () => {
-      chooseScene(initialScene());
+      if (
+        Object.values(sceneHashes).some((hash) => `#${hash}` === location.hash)
+      )
+        chooseScene(initialScene());
     };
     window.addEventListener("hashchange", hash);
     return () => {
@@ -718,13 +751,111 @@ function App() {
           className={`workbench ${tutorial ? "with-guide" : ""}`}
           aria-label={data.short}
         >
+          {tutorial && (
+            <section className="guide-intro" aria-labelledby="guide-heading">
+              <div>
+                <p className="eyebrow">
+                  {guideDone
+                    ? "PRZEWODNIK UKOŃCZONY"
+                    : `KROK ${guideIndex + 1} Z ${guide.steps.length}`}
+                </p>
+                <div className="guide-progress" aria-hidden="true">
+                  {guide.steps.map((item, i) => (
+                    <span
+                      key={item.title}
+                      className={i <= guideIndex ? "filled" : ""}
+                    />
+                  ))}
+                </div>
+                <h3 id="guide-heading" tabIndex={-1}>
+                  {guideDone
+                    ? "Teraz porównaj własne pomysły"
+                    : guideStep.title}
+                </h3>
+              </div>
+              {guideDone ? (
+                <div className="guide-finish">
+                  <p>
+                    Masz za sobą wszystkie kroki. W trybie samodzielnym możesz
+                    zmieniać każdy warunek i zapisywać dwie próby do porównania.
+                  </p>
+                  <button
+                    className="primary"
+                    onClick={() => chooseMode("explore")}
+                  >
+                    Spróbuj samodzielnie <ArrowRight />
+                  </button>
+                  <button
+                    className="plain"
+                    onClick={() => chooseMode("guided")}
+                  >
+                    Sprawdź, co pamiętasz <ArrowRight />
+                  </button>
+                  <a className="plain" href={lessonHref}>
+                    <BookOpen /> Wróć do pełnej lekcji
+                  </a>
+                </div>
+              ) : (
+                <p>{guideStep.instruction}</p>
+              )}
+            </section>
+          )}
           <div className="scene-area">
             <Scene
               key={`${scene}:${mode}`}
               {...{ scene, input, result, diagram }}
               reduced={reduced}
               playing={playing && !reduced}
+              onHeightChange={
+                scene === "cloud" &&
+                showControl("height") &&
+                !controlDisabled("height")
+                  ? (value) => update("height", value)
+                  : undefined
+              }
             />
+            {scene === "cloud" &&
+              showControl("height") &&
+              !controlDisabled("height") && (
+                <div className="lift-actions">
+                  <p id="parcel-instructions">
+                    Przeciągnij kółko lub chmurę w górę. Możesz też użyć
+                    przycisków.
+                  </p>
+                  <div>
+                    <button
+                      className="lift-step"
+                      disabled={input.height <= 0}
+                      onClick={() =>
+                        update("height", Math.max(0, input.height - 100))
+                      }
+                    >
+                      <Minus /> Opuść o 100 m
+                    </button>
+                    <button
+                      className="lift-step"
+                      disabled={input.height >= 3000}
+                      onClick={() =>
+                        update("height", Math.min(3000, input.height + 100))
+                      }
+                    >
+                      <Plus /> Unieś o 100 m
+                    </button>
+                  </div>
+                </div>
+              )}
+            {tutorial && !guideDone && (
+              <div className="scene-action">
+                <button
+                  className="primary guide-target"
+                  onClick={() => update(guideStep.key, guideStep.target)}
+                  disabled={stepDone}
+                >
+                  {stepDone ? <Check /> : <ArrowRight />}
+                  {stepDone ? "Ustawienie gotowe" : guideStep.action}
+                </button>
+              </div>
+            )}
             <div className="scene-toolbar">
               <button
                 className="plain"
@@ -766,60 +897,7 @@ function App() {
             )}
           </div>
           <aside className="controls">
-            {tutorial ? (
-              <section className="guide-intro" aria-labelledby="guide-heading">
-                <p className="eyebrow">
-                  {guideDone
-                    ? "PRZEWODNIK UKOŃCZONY"
-                    : `KROK ${guideIndex + 1} Z ${guide.steps.length}`}
-                </p>
-                <div className="guide-progress" aria-hidden="true">
-                  {guide.steps.map((item, i) => (
-                    <span
-                      key={item.title}
-                      className={i <= guideIndex ? "filled" : ""}
-                    />
-                  ))}
-                </div>
-                <h3 id="guide-heading" tabIndex={-1}>
-                  {guideDone
-                    ? "Teraz porównaj własne pomysły"
-                    : guideStep.title}
-                </h3>
-                {guideDone ? (
-                  <>
-                    <p>
-                      Masz za sobą wszystkie kroki. W trybie samodzielnym możesz
-                      zmieniać każdy warunek i zapisywać dwie próby do
-                      porównania.
-                    </p>
-                    <button
-                      className="primary"
-                      onClick={() => chooseMode("explore")}
-                    >
-                      Spróbuj samodzielnie <ArrowRight />
-                    </button>
-                    <button
-                      className="plain"
-                      onClick={() => chooseMode("guided")}
-                    >
-                      Sprawdź, co pamiętasz <ArrowRight />
-                    </button>
-                    <a className="plain" href={lessonHref}>
-                      <BookOpen /> Wróć do pełnej lekcji
-                    </a>
-                  </>
-                ) : (
-                  <>
-                    <p>{guideStep.instruction}</p>
-                    <div className="guide-expect">
-                      <b>Na co patrzeć</b>
-                      <p>{guideStep.expect}</p>
-                    </div>
-                  </>
-                )}
-              </section>
-            ) : (
+            {!tutorial && (
               <>
                 <p className="eyebrow">TWOJE WARUNKI</p>
                 <p className="controls-intro">{data.intro}</p>
@@ -992,14 +1070,10 @@ function App() {
             )}
             {tutorial && !guideDone && (
               <div className="guide-action">
-                <button
-                  className="primary guide-target"
-                  onClick={() => update(guideStep.key, guideStep.target)}
-                  disabled={stepDone}
-                >
-                  {stepDone ? <Check /> : <ArrowRight />}
-                  {stepDone ? "Ustawienie gotowe" : guideStep.action}
-                </button>
+                <div className="guide-expect">
+                  <b>Na co patrzeć</b>
+                  <p>{guideStep.expect}</p>
+                </div>
                 <div className="guide-feedback" role="status">
                   {stepDone && (
                     <>
@@ -1029,8 +1103,9 @@ function App() {
                 </div>
                 {!stepDone && (
                   <p className="guide-hint">
-                    Najpierw wykonaj wskazaną zmianę. Możesz użyć suwaka albo
-                    fioletowego przycisku powyżej.
+                    Najpierw wykonaj wskazaną zmianę. Suwak, przyciski plus i
+                    minus oraz fioletowy przycisk pod rysunkiem zmieniają te
+                    same warunki.
                   </p>
                 )}
               </div>

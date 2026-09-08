@@ -68,6 +68,11 @@ Writing production code without an active Lore task is forbidden.
   identity. Keep the interface calm, compact, and mature; real cloud imagery
   must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
+- Weather preview QA must exercise the actual phone journey, not just check
+  horizontal overflow. Keep actions beside their scene, provide tap alternatives
+  to dragging, and ensure illustrations never cover controls or keyboard focus.
+  A draggable-looking object must respond directly or clearly point to its control.
+  Distinguish narrow-viewport pointer checks from physical Android touch testing.
 - Native compact navigation must expose Warstwy as a separate bottom tab,
   with direct access to METAR/TAF, wind, Windy and full lessons, not through
   Atlas. Verify the actual native FieldHome and nativeNavigation paths and

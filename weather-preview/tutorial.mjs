@@ -8,7 +8,7 @@ export const guides = {
         target: 70,
         action: "Ustaw kontrast na 70%",
         instruction:
-          "Przesuń suwak „Kontrast nagrzewania” do 70% albo użyj przycisku pod nim. Godzina pozostaje 14:00.",
+          "Ustaw „Kontrast nagrzewania” na 70% suwakiem albo przyciskiem pod rysunkiem. Godzina pozostaje 14:00.",
         expect:
           "Porównaj dwa termometry na rysunku. Ląd powinien stać się cieplejszy od wody, a dolna strzałka pokazać ruch znad wody.",
         explanation:
@@ -49,7 +49,7 @@ export const guides = {
         target: 500,
         action: "Unieś na 500 m",
         instruction:
-          "Przesuń „Uniesienie nad ziemię” do 500 m. Kółko na rysunku oznacza porcję powietrza, a liczba przy nim jej temperaturę.",
+          "Unieś porcję powietrza na 500 m: przeciągnij kółko w górę albo naciśnij „Unieś na 500 m” pod rysunkiem. Liczba przy kółku pokazuje temperaturę.",
         expect:
           "Kółko przesunie się w górę, a temperatura spadnie z 24°C do około 19°C. Chmura jeszcze się nie pojawi.",
         explanation:
@@ -61,7 +61,7 @@ export const guides = {
         target: 1500,
         action: "Unieś na 1500 m",
         instruction:
-          "Tym samym suwakiem ustaw 1500 m. Obserwuj przejście przez przerywaną linię na rysunku.",
+          "Przeciągnij powietrze wyżej lub naciśnij „Unieś na 1500 m”. Obserwuj przejście przez przerywaną linię na rysunku.",
         expect:
           "Po przekroczeniu linii kółko zamieni się w chmurę: w tym modelu zaczyna się kondensacja.",
         explanation:
