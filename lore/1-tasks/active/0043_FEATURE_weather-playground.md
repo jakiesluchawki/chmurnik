@@ -96,7 +96,7 @@ to native integration or production domain without that acceptance.
 - [x] Make the parcel directly movable, with equivalent tap/keyboard actions.
 - [x] Keep primary actions beside the scene and remove mobile sticky occlusion.
 - [x] Recheck all guides, assessment locks and small/landscape layouts.
-- [ ] Verify the Pages deployment and unchanged production domain.
+- [x] Verify the Pages deployment and unchanged production domain.
 
 At 360x640 the old scene showed an inert upward arrow, while the height slider
 started at y=683 and the target action at y=767 after opening the workbench.
@@ -108,6 +108,9 @@ conformance or physical-device verification based on resized desktop input.
 steps pass browser checks; direct parcel input does not bypass assessment locks.
 Six viewport sizes checked, including short portrait and landscape. See
 `design/weather-preview-20260908/mobile-qa.md` for evidence and device-test limits.
+Published f15d578, Pages run 34274954913 succeeded. Public target action and
+artwork verified; preview HTML matches local build. Production HTML hash
+remains 4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
 
 ### Owner Follow-up: Continuous Interaction
 

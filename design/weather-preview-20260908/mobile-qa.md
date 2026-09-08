@@ -66,5 +66,13 @@ and [focus not obscured](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-o
 
 ## Publication
 
-Pending Pages deployment verification. Production-domain HTML captured before
-publishing; do not upload a CyberFolks package or alter native bundles.
+Published as f15d578 (local a567c36); Pages run 34274954913 succeeded.
+Public browser loaded index-C5HGKZNO.js and index-D9tfQMk6.css. The target action
+set both the native range and direct parcel control to 500 m, displayed 19.1 C,
+and enabled the next step. Artwork loaded successfully.
+
+Public preview HTML matches the locally verified build, SHA256:
+bf3f3baaa2241ef608ae05714f6e91e6dfeda4ebdf34faeda6531f4a04955862.
+Production chmurnik.cloud HTML before/after remains:
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No CyberFolks package or native bundle was changed.
