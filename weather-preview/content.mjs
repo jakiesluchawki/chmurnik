@@ -23,7 +23,7 @@ export const experiments = {
     source: "https://www.weather.gov/safety/fog-radiation",
     sourceLabel: "NWS: nocne ochładzanie i mgła radiacyjna",
     limits:
-      "Uproszczenie: ochładzamy powietrze przy gruncie, przy stałym ciśnieniu, bez dopływu pary i bez unoszenia. Przed nasyceniem ilość pary nie zmienia się; po jego osiągnięciu nadmiar ulega kondensacji, a wilgotność względna nie przekracza 100%. Używamy zależności Magnusa. Nie obliczamy bilansu energii gruntu, widzialności, grubości mgły ani podziału kondensatu między mgłę i rosę. Ilustracja pokazuje warunki do kondensacji, nie pewne wystąpienie mgły.",
+      "Uproszczenie: ochładzamy powietrze przy gruncie, przy stałym ciśnieniu, bez dopływu pary i bez unoszenia. Przed nasyceniem ilość pary nie zmienia się; po jego osiągnięciu nadmiar ulega kondensacji, a wilgotność względna nie przekracza 100%. Używamy zależności Magnusa. Mgiełka stopniowo zagęszcza się na rysunku wraz z dalszym chłodzeniem po nasyceniu. Jej przejrzystość jest umowna: nie obliczamy ilości ciekłej wody, widzialności, grubości mgły ani podziału kondensatu między mgłę i rosę. Nie rozwiązujemy bilansu energii gruntu. Ilustracja pokazuje warunki do kondensacji, nie pewne wystąpienie mgły.",
     recap: [
       "W pogodną noc grunt może tracić ciepło i ochładzać powietrze tuż nad nim.",
       "Ochładzanie może zwiększyć wilgotność względną bez dodawania pary wodnej.",

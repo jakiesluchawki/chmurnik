@@ -67,6 +67,10 @@ describe the actual learner activity present in the product.
 - In synthetic diagrams, verify that labels and conclusions agree with the
   plotted data. A level outside the supplied profile is unknown there, not a
   value to invent or clamp to the chart edge.
+- Smooth interactive diagrams without moving scientific thresholds. Recompute
+  the diagram and its labels from the same intermediate state; distinguish
+  illustrative opacity, size and speed from calibrated physical quantities.
+  Preserve exact saved inputs and provide a reduced-motion path.
 - When a workshop accepts external input, identify and teach its type before
   interpreting values. Test realistic copied inputs without optional headings;
   never silently turn forecasts, possibilities, or missing values into facts.
