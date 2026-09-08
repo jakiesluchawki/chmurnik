@@ -71,6 +71,7 @@ import {
   quizQuestions,
 } from "./data/learning.js";
 import { lessons } from "./data/lessons.js";
+import { weatherLessonLinks } from "./lib/weather-lesson-links.js";
 import {
   aviationBriefingSets,
   metarDecodeSections,
@@ -1027,6 +1028,8 @@ function LearnPage({
     const practice = lessonPractices[selected];
     const check = moduleChecks[selected];
     const isDone = completed.includes(selected);
+    const experimentLinks = import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform()
+      ? weatherLessonLinks(selected, import.meta.env.BASE_URL) : [];
     const chooseChapter = (index) => {
       const nextIndex = Math.max(0, Math.min(index, content.chapters.length - 1));
       setActiveChapter(nextIndex);
@@ -1054,6 +1057,15 @@ function LearnPage({
             <p>{content.lead}</p>
           </div>
         </div>
+        {experimentLinks.length > 0 && <section className="lesson-experiments" aria-label="Doświadczenia do tej lekcji">
+          <div><span className="eyebrow">Pracownia pogody · podgląd</span>
+            <h2>Sprawdź to krok po kroku</h2>
+            <p>Przewodnik pokaże, co zmienić i jak odczytać wynik. Po powrocie będziesz w tym samym rozdziale lekcji.</p>
+          </div>
+          <div className="lesson-experiment-links">{experimentLinks.map((link) =>
+            <a key={link.href} href={link.href}>{link.title}<ArrowRight size={20} /></a>
+          )}</div>
+        </section>}
         <details
           className="lesson-orientation-disclosure"
           open={orientationOpen}

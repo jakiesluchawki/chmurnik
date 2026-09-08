@@ -1,4 +1,36 @@
 export const experiments = {
+  fog: {
+    number: "03",
+    short: "Noc i mgła",
+    title: "Dlaczego nocą może powstać mgła?",
+    intro:
+      "Porównaj ochładzanie wilgotnego i suchszego powietrza przy ziemi. Sprawdź, kiedy możliwa staje się kondensacja.",
+    question:
+      "Zaczynamy z temperaturą 18°C i wilgotnością względną 70%. Co stanie się przy ochłodzeniu do 12°C, bez dopływu pary wodnej?",
+    choices: [
+      "Wilgotność względna spadnie, bo noc jest chłodniejsza.",
+      "Wilgotność względna pozostanie na 70%.",
+      "Na pewno zacznie padać deszcz.",
+      "Powietrze osiągnie nasycenie; kondensacja stanie się możliwa.",
+    ],
+    correct: 3,
+    instruction:
+      "Ustaw nocne ochłodzenie na 6°C. Temperaturę i wilgotność początkową pozostawiamy bez zmian.",
+    explanation:
+      "Początkowy punkt rosy wynosi około 12,4°C. Po ochłodzeniu do 12°C powietrze osiąga nasycenie. Kondensacja przy gruncie może sprzyjać mgle, ale ten model nie rozstrzyga, czy powstanie mgła, czy głównie rosa.",
+    lesson: "procesy",
+    lessonLabel: "Pełna lekcja o kondensacji",
+    source: "https://www.weather.gov/safety/fog-radiation",
+    sourceLabel: "NWS: nocne ochładzanie i mgła radiacyjna",
+    limits:
+      "Uproszczenie: ochładzamy powietrze przy gruncie, przy stałym ciśnieniu, bez dopływu pary i bez unoszenia. Przed nasyceniem ilość pary nie zmienia się; po jego osiągnięciu nadmiar ulega kondensacji, a wilgotność względna nie przekracza 100%. Używamy zależności Magnusa. Nie obliczamy bilansu energii gruntu, widzialności, grubości mgły ani podziału kondensatu między mgłę i rosę. Ilustracja pokazuje warunki do kondensacji, nie pewne wystąpienie mgły.",
+    recap: [
+      "W pogodną noc grunt może tracić ciepło i ochładzać powietrze tuż nad nim.",
+      "Ochładzanie może zwiększyć wilgotność względną bez dodawania pary wodnej.",
+      "Bliżej punktu rosy potrzeba mniejszego ochłodzenia do rozpoczęcia kondensacji.",
+      "O wystąpieniu mgły decydują też wiatr, mieszanie i grubość chłodnej warstwy.",
+    ],
+  },
   breeze: {
     number: "01",
     short: "Dzień nad zatoką",

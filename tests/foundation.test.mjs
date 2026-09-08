@@ -178,7 +178,7 @@ test("the public base path supports both the custom domain and GitHub Pages", as
 
   assert.match(config, /process\.env\.CHMURNIK_BASE_PATH \|\| "\/"/);
   assert.match(config, /base,/);
-  assert.equal(packageJson.scripts["build:pages"], "CHMURNIK_BASE_PATH=/chmurnik/ vite build");
+  assert.equal(packageJson.scripts["build:pages"], "CHMURNIK_BASE_PATH=/chmurnik/ VITE_WEATHER_PREVIEW=true vite build");
   assert.doesNotMatch(styles, /\/chmurnik\//);
   assert.match(styles, /url\("\/fonts\/Romie-Regular\.woff2"\) format\("woff2"\)/);
   assert.match(styles, /url\("\/fonts\/Roobert-Regular\.woff2"\) format\("woff2"\)/);

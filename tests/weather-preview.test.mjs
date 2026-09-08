@@ -136,5 +136,5 @@ test("preview stays outside the production entry and has no audio or camera code
   assert.doesNotMatch(source, /getUserMedia|speechSynthesis|new Audio|fetch\(/);
   assert.match(source, /step === ["']explain["']/);
   assert.match(source, /disabled=\{!tested\}/);
-  assert.match(source, /!locked && \(\s*<section className="comparison"/);
+  assert.match(source, /!locked && !tutorial && \(\s*<section className="comparison"/);
 });

@@ -181,10 +181,230 @@ main {
 }
 .workshop-title {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 25px;
   align-items: center;
   margin-bottom: 22px;
+}
+
+.start-guide {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+  color: var(--violet);
+  font-weight: 600;
+}
+.guide-intro h3 {
+  font-family: "Romie", Georgia, serif;
+  font-size: 29px;
+  line-height: 1.2;
+  margin: 14px 0;
+}
+.guide-intro h3:focus {
+  outline: none;
+}
+.guide-intro > p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.guide-progress {
+  display: flex;
+  gap: 5px;
+}
+.guide-progress span {
+  flex: 1;
+  height: 4px;
+  background: var(--line);
+  border-radius: 4px;
+}
+.guide-progress .filled {
+  background: var(--violet);
+}
+.guide-expect {
+  margin: 16px 0;
+  padding-left: 13px;
+  border-left: 3px solid var(--violet);
+  font-size: 13px;
+}
+.guide-expect p {
+  margin-top: 5px;
+}
+.guide-intro .primary,
+.guide-target {
+  width: 100%;
+  white-space: normal;
+  text-align: left;
+}
+.guide-intro .plain {
+  margin-top: 14px;
+}
+.guide-action {
+  margin-top: 4px;
+}
+.guide-feedback:not(:empty) {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--paper);
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.guide-feedback p {
+  margin: 6px 0 0;
+}
+.guide-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.guide-hint {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 12px;
+}
+.with-guide .controls .control {
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid var(--violet);
+  border-radius: 14px;
+}
+.with-guide .scene-area {
+  align-self: start;
+  position: sticky;
+  top: 12px;
+}
+.with-guide {
+  overflow: clip;
+}
+.fog-readout {
+  position: absolute;
+  top: 17%;
+  left: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fog-readout svg {
+  width: 28px;
+  height: 28px;
+}
+.fog-readout span {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.fog-readout b {
+  font-family: "Romie", Georgia, serif;
+  font-size: 52px;
+  line-height: 1.05;
+}
+.fog-readout small {
+  font-size: 14px;
+}
+.fog-dew {
+  position: absolute;
+  top: 54%;
+  left: 8%;
+  font-size: 13px;
+  background: var(--white);
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+.fog-layer {
+  position: absolute;
+  inset: 58% 0 11%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.fog-layer img {
+  width: 110%;
+  height: auto;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+.scene-caption {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: var(--violet);
+  background: var(--white);
+}
+.fog-caption {
+  color: var(--ink);
+}
+.fog-caption span {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+}
+.mini .fog-readout {
+  top: 9%;
+  gap: 2px;
+}
+.mini .fog-readout b {
+  font-size: 29px;
+}
+.mini .fog-readout svg,
+.mini .fog-readout span,
+.mini .fog-dew {
+  display: none;
+}
+.mini .fog-readout small {
+  font-size: 11px;
+}
+@media (max-width: 760px) {
+  .experiment-nav {
+    gap: 8px;
+  }
+  .experiment-nav button {
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
+    font-size: 13px;
+  }
+  .experiment-nav button svg {
+    display: none;
+  }
+  .mode-switch {
+    flex-wrap: wrap;
+  }
+  .mode-switch button {
+    padding: 8px 6px;
+    min-width: 75px;
+  }
+  .with-guide .scene-toolbar {
+    display: none;
+  }
+  .with-guide .scene-area {
+    top: 0;
+  }
+  .guide-intro h3 {
+    font-size: 27px;
+  }
+  .fog-readout {
+    top: 18%;
+    gap: 3px;
+  }
+  .fog-readout svg {
+    display: none;
+  }
+  .fog-readout b {
+    font-size: 32px;
+  }
+  .fog-readout span {
+    font-size: 9px;
+  }
+  .fog-readout small {
+    font-size: 11px;
+  }
+  .fog-dew {
+    font-size: 10px;
+  }
 }
 .workshop-title .eyebrow {
   margin-bottom: 6px;
@@ -624,7 +844,8 @@ main {
   font-size: 17px;
   margin-top: 3px;
 }
-.scene:has(.parcel) .scene-result {
+.scene:has(.parcel) .scene-result,
+.scene:has(.fog-readout) .scene-result {
   top: auto;
   bottom: 7%;
   background: #fff7f1ee;
@@ -1158,7 +1379,8 @@ footer svg {
   .parcel-readout b {
     font-size: 14px;
   }
-  .scene:has(.parcel) .scene-result {
+  .scene:has(.parcel) .scene-result,
+  .scene:has(.fog-readout) .scene-result {
     font-size: 12px;
     padding: 7px 12px;
     bottom: 6%;
