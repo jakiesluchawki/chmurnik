@@ -106,7 +106,7 @@ the standalone preview build.
   Main mobile navigation retained Start, Nauka, Atlas, Warstwy and Dziennik.
 - All six wind markers paused using the visible pause control. The first action
   and Next transition still worked in each of the three original experiments.
-- Screenshots `06` through `12` record mobile/desktop checks. During QA the
+- Screenshots `06` through `14` record mobile/desktop checks. During QA the
   mountain parcel was moved above the terrain and the sounding level readout
   was enlarged before the chart.
 - Focused contracts cover every guide, all lesson links, ceiling changes, TAF
@@ -122,3 +122,23 @@ Publish only this scoped change through the existing Pages worktree. Do not push
 the whole development branch, which contains separate native/reviewer work.
 Do not upload a CyberFolks package, alter the recognition model, submit Apple
 builds or describe the feature as production-released before owner acceptance.
+
+## Published Preview
+
+Published on 2026-09-09 at
+https://jakiesluchawki.github.io/chmurnik/pogoda-preview/#pracownia .
+Scoped public commits: 3589747 and c414f01. Final Pages workflow
+https://github.com/jakiesluchawki/chmurnik/actions/runs/34284658277 succeeded,
+including 344 tests (five unrelated native/reviewer regressions remain only
+in the development branch) and the nine-lesson content audit.
+
+Public checks confirm all 14 catalog cards and all illustrations load,
+observation hides its name before reveal, the sounding guide action works at
+390px without overflow, and reciprocal sounding/lesson links work. Final
+weather bundle: index-BZVRg1bi.js. Lazy catalog images were scrolled into view
+before checking load completion; none failed.
+
+The production domain HTML before and after is byte-identical, SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No CyberFolks upload or Apple build was performed. The preview awaits owner
+acceptance and is not an independently reviewed operational weather tool.

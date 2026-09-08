@@ -103,7 +103,7 @@ existing navigation, lesson resume, real-photo provenance and concealed answers.
 - [x] Implement the expanded preview, with beginner walkthroughs and sources.
 - [x] Link all nine lessons and relevant tools to the experiments and back.
 - [x] Verify science contracts, concealed answers, keyboard and mobile journeys.
-- [ ] Publish only reviewed code to Pages and verify the public result.
+- [x] Publish only reviewed code to Pages and verify the public result.
 
 Priority: METAR, sounding foundations, wind and three distinct hazard scenes;
 front lifting and photo/name exercises complete the lesson coverage. Do not
@@ -114,6 +114,15 @@ All 38 new guide steps completed in browser. All 11 exploration views fit at
 320/390/844/1365px. METAR chapter-3 round-trip and centered mobile slider focus
 verified. Existing learning data, recognition models and native navigation are
 unchanged. Independent meteorologist/physical-device checks remain unclaimed.
+
+Published 2026-09-09 as 3589747 plus wording fix c414f01 (local efd8af8 and
+be3d4a7). Final Pages run 34284658277 succeeded. The public catalog contains
+14 activities, loads all illustrations and uses index-BZVRg1bi.js. Public
+observation conceals the name, the 390px sounding action updates the level and
+unlocks Next, and the full lesson links to both heights and sounding with a
+working return. Production HTML remains byte-identical, SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+Owner acceptance is still required before CyberFolks or Apple integration.
 
 ### Owner Follow-up: Slider Alignment
 
