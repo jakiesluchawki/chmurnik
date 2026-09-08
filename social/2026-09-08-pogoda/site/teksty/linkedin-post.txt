@@ -1,0 +1,6 @@
+Im dłużej pracuję nad CHMURNIKIEM, tym mniej wystarcza mi sama nazwa chmury. Chcę rozumieć, co ją stworzyło. Przygotowałem więc podgląd pracowni, w której można zmienić warunki i zobaczyć ich skutki: prześledzić bryzę nad zatoką, unieść porcję powietrza i porównać dwie próby. Pierwsze dwa doświadczenia można już sprawdzić w przeglądarce. To jeszcze nie aktualizacja aplikacji w App Store, tylko propozycja jej dalszego rozwoju.
+
+To uproszczone, opisane modele do nauki, nie prognoza pogody. Zależy mi, żeby ilustracje pomagały zrozumieć zależności, a nie tylko ładnie wyglądały.
+
+Wypróbuj i daj znać, co jest czytelne, a co wymaga lepszego wyjaśnienia:
+https://jakiesluchawki.github.io/chmurnik/pogoda-preview/
