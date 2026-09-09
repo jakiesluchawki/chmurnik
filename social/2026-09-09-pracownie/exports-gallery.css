@@ -1,0 +1,10 @@
+.banner>img{object-position:50% 50%;max-height:430px}
+.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.download-card{display:flex;flex-direction:column;gap:6px;padding:18px;background:#fff7f1;border:1px solid #6d643540;border-radius:14px;text-decoration:none;min-width:0}
+.download-card span{font-size:13px;color:#7442d9}.download-card:first-child{background:#7442d9;color:#fff}.download-card:first-child span{color:#fff}
+.slide-previews{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:20px}
+.slide-previews figure{margin:0;min-width:0}.slide-previews img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 4px 18px #292d4810}
+.slide-previews figcaption{font-size:13px;margin:10px 0}.slide-previews .button{margin-right:0;font-size:14px}
+.facebook-preview{display:block;width:min(100%,432px);height:auto;border-radius:12px;margin-bottom:16px}
+.story>p{max-width:760px}.button,.download-card,header a{overflow-wrap:anywhere}
+@media(max-width:600px){.slide-previews{gap:12px}.slide-previews .button{width:100%;padding:12px 8px;text-align:center;font-size:12px}.download-grid{grid-template-columns:1fr}.story{padding:16px}.banner>div{padding:20px}.slide-previews figcaption{font-size:11px}}

@@ -1,0 +1,59 @@
+{
+  "id": "06-sondaz",
+  "pack": "CHMURNIK approved social pack",
+  "date": "2026-09-09",
+  "generation": {
+    "route": "native built-in ImageGen",
+    "tool": "image_gen.imagegen",
+    "intent": "fresh artwork",
+    "attempt_count": 2,
+    "attempts": [
+      {
+        "attempt": 1,
+        "operation": "generate",
+        "prompt": "Use case: stylized-concept.\nAsset type: ONE standalone editorial illustration for the approved CHMURNIK social pack, image only, no social slide layout. Generate a fresh individual landscape artwork in 3:2 aspect ratio, preferably 1536 x 1024 pixels.\nSubject: A single pale ivory weather balloon with delicately tactile fabric/felt skin, a thin real suspension cord and a tiny cream radiosonde underneath, suspended above and among softly layered lilac atmosphere bands. Beside the balloon and across the bands, TWO contrasting slender wool threads, one muted coral and one violet, trace independent gently varying VERTICAL paths from low in the atmosphere to high, like two temperature profile curves without being an actual graph. The threads should be narrow, graceful and clearly distinct, gently changing direction in several places; no circular loops, no arrows, no horizontal tracing, no axes, no markers and no numbers. A very small technically restrained radiosonde, not a gondola or passenger basket.\nScene/backdrop: Deep desaturated night blue at the upper sky graduating gently through dusty lilac to blush pink near the ground; a clean airy miniature atmosphere, calm and sophisticated. Several translucent lilac wool and felt bands read as broad horizontal atmospheric strata with subtly raised edges and realistic soft shadow separation.\nStyle and materials: Polished mature tactile felt/wool/clay diorama photographed under realistic miniature studio lighting; delicate visible fibres, sculptural soft materials, matte cream radiosonde, refined warm edge light. Inspiration from inspected sounding-v1.webp and wind-v1.webp for materials and illumination ONLY; make a NEW composition distinctly featuring the two thin profile threads and layered atmospheric stage. Editorial romance, not childish icon art. Colors warm ivory #fff7ed, blush #ffe2ec, violet #743cdd, pale lilac, restrained coral and deep desaturated blue.\nComposition/framing: Landscape 3:2 with generous breathing room on all sides. Balloon prominent but elegant, positioned slightly left of center in the upper-middle; two slender profile threads form an adjacent airy vertical counterpoint through the horizontal lilac bands. The ENTIRE balloon including top, suspension cord and tiny radiosonde must sit comfortably inside central 70% height and central 75% width. Both threads' endpoints inside central 75% height. Keep important subject fully framed for modest center 16:9 cropping. Soft atmospheric bands may extend toward edges. Avoid crowding.\nConstraints: Absolutely no text, numbers, letters, logos, labels, people, faces, icons, arrows, grid, plotted axes, UI or product screenshots. Not a factual weather photo, not a scientific data claim, not a fake chart. No contact sheet or collage. Artwork only: coordinator will add exact Polish copy separately.",
+        "source_path": "[CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-df6cc3cd-f474-4af8-9784-7a8f21e750e6.png",
+        "selected": false,
+        "reason": "Profile thread endpoints were too near the vertical edges for comfortable 16:9 cropping."
+      },
+      {
+        "attempt": 2,
+        "operation": "edit",
+        "prompt": "Edit this generated illustration with ONE targeted composition correction. Preserve the same mature felt/wool diorama, palette, realistic miniature studio lighting, pale ivory weather balloon and tiny radiosonde, two slender coral and violet vertical threads, and lilac atmospheric bands against deep desaturated blue above and pink below. Preserve the empty, text-free artwork. Change only framing/scale: pull the camera back enough to reduce the balloon with radiosonde and both profile threads by about 20%, keeping them together in the center. The top of the balloon and top endpoints of BOTH threads must be at least 170 pixels below the top of a 1536x1024 image, and the bottom endpoints of BOTH threads at least 170 pixels above its bottom. Keep the entire focal grouping in the central image with visibly generous airy margins, safe for a centered 16:9 crop. Extend the same atmospheric sky and wool strata naturally into the margins, do not add a frame, do not crop a subject. Keep 3:2 landscape, preferably 1536x1024. No people, no basket, no text, no letters, no numbers, no labels, no grid, no axes, no logos, no UI, no collage. This is one separate final illustration, not a social slide.",
+        "referenced_image_paths": [
+          "[CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-df6cc3cd-f474-4af8-9784-7a8f21e750e6.png"
+        ],
+        "source_path": "[CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-5ddd27cd-dc25-41cf-8f0e-81871ce443c4.png",
+        "selected": true
+      }
+    ]
+  },
+  "style_references": [
+    "[workspace]/chmurnik-v4/weather-preview/public/covers/wind-v1.webp",
+    "[workspace]/chmurnik-v4/weather-preview/public/covers/sounding-v1.webp"
+  ],
+  "style_reference_usage": "Both inspected with view_image; used only for material and lighting inspiration. Initial fresh generation was prompted textually without an edit target.",
+  "generated_source": "[CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-5ddd27cd-dc25-41cf-8f0e-81871ce443c4.png",
+  "final_path": "[workspace]/chmurnik-v4/social/2026-09-09-pracownie/art/06-sondaz.png",
+  "format": "png",
+  "width": 1536,
+  "height": 1024,
+  "aspect_ratio": "3:2",
+  "bytes": 2014562,
+  "sha256": "5009c4f6a380f788b49d937b86585aa1f66c50e07d3930517c2523fde4c1f749",
+  "preservation": {
+    "copied_without_resampling": true,
+    "source_and_destination_sha256_match": true,
+    "original_source_retained": true
+  },
+  "verification": {
+    "exists": true,
+    "nonempty": true,
+    "dimensions_checked_with": "sips",
+    "size_checked_with": "stat",
+    "identity_checked_with": "shasum -a 256",
+    "visually_inspected": true,
+    "visual_inspection": "Accepted after a framing correction. Pale ivory balloon with tiny radiosonde, layered lilac wool atmosphere, separate gently varying coral and violet vertical threads, deep blue upper sky and pink low atmosphere. Entire focal group has generous margins and fits a centered 16:9 crop. No visible text, numbers, axes, labels, people, logo or UI."
+  },
+  "tool_output_receipt": "Generated images are saved to [CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292 as [CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-5ddd27cd-dc25-41cf-8f0e-81871ce443c4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

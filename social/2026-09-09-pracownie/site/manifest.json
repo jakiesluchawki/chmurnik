@@ -1,6 +1,6 @@
 {
   "date": "2026-09-09",
-  "copyStatus": "awaiting-owner-approval",
+  "copyStatus": "approved",
   "title": "Niebo ma swoje powody.",
   "availability": "Pracownie działają już na chmurnik.cloud. Aktualizacja 1.2.1 aplikacji na iPhone, iPad i Mac została wysłana do recenzji Apple. Oba zgłoszenia mają status WAITING_FOR_REVIEW; nie oznacza to jeszcze dostępności nowej wersji w sklepie.",
   "stories": [
@@ -53,5 +53,1045 @@
   "webUrl": "https://chmurnik.cloud/",
   "workshopUrl": "https://chmurnik.cloud/pogoda-preview/",
   "storeUrl": "https://apps.apple.com/pl/app/id6782159027",
-  "renderedSocialAssets": false
+  "renderedSocialAssets": true,
+  "copyHash": "18c49f64313a6de09e28eb3ad690010b56204518845d120e34ed53898d40cbec",
+  "artworks": [
+    {
+      "format": "stories",
+      "number": 1,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/01.jpg",
+      "title": "Niebo ma swoje powody.",
+      "text": "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Otwarte okno prowadzi do miniaturowego krajobrazu i chmur w świetle poranka. Niebo ma swoje powody. Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 651,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Zamknąłem ważny etap rozwoju CHMURNIKA.",
+          "Oddaję Wam 14 interaktywnych pracowni",
+          "połączonych z pełnymi lekcjami. Nie tylko po to,",
+          "żeby nazywać chmury. Po to, żeby za pięknym",
+          "widokiem zacząć dostrzegać zależności i samemu",
+          "sprawdzić, skąd bierze się pogoda."
+        ],
+        "headlineLines": [
+          "Niebo ma swoje",
+          "powody."
+        ],
+        "bodyFontSize": 41,
+        "copy": "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+        "headline": "Niebo ma swoje powody.",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-01.png",
+      "bytes": 1306679,
+      "sha256": "58f6721ef293a65bb6da4727f5dbf3670ad5a47a87348cc87835332994989262"
+    },
+    {
+      "format": "karuzela",
+      "number": 1,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/01.jpg",
+      "title": "Niebo ma swoje powody.",
+      "text": "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Otwarte okno prowadzi do miniaturowego krajobrazu i chmur w świetle poranka. Niebo ma swoje powody. Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 255,
+        "artY": 283,
+        "artH": 689,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14",
+          "interaktywnych pracowni połączonych z pełnymi lekcjami. Nie",
+          "tylko po to, żeby nazywać chmury. Po to, żeby za pięknym",
+          "widokiem zacząć dostrzegać zależności i samemu sprawdzić,",
+          "skąd bierze się pogoda."
+        ],
+        "headlineLines": [
+          "Niebo ma swoje powody."
+        ],
+        "bodyFontSize": 32,
+        "copy": "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+        "headline": "Niebo ma swoje powody.",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-01.png",
+      "bytes": 1356747,
+      "sha256": "ecca7e5051172dc2e3c0f8f466002a617a69f9fe1ed0c08849ada2d260aa85c9"
+    },
+    {
+      "format": "facebook",
+      "number": 1,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/facebook.jpg",
+      "title": "Niebo ma swoje powody.",
+      "text": "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Otwarte okno prowadzi do miniaturowego krajobrazu i chmur w świetle poranka. Niebo ma swoje powody. Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 255,
+        "artY": 283,
+        "artH": 689,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14",
+          "interaktywnych pracowni połączonych z pełnymi lekcjami. Nie",
+          "tylko po to, żeby nazywać chmury. Po to, żeby za pięknym",
+          "widokiem zacząć dostrzegać zależności i samemu sprawdzić,",
+          "skąd bierze się pogoda."
+        ],
+        "headlineLines": [
+          "Niebo ma swoje powody."
+        ],
+        "bodyFontSize": 32,
+        "copy": "Zamknąłem ważny etap rozwoju CHMURNIKA. Oddaję Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Nie tylko po to, żeby nazywać chmury. Po to, żeby za pięknym widokiem zacząć dostrzegać zależności i samemu sprawdzić, skąd bierze się pogoda.",
+        "headline": "Niebo ma swoje powody.",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "facebook/chmurnik-pracownie-facebook.png",
+      "bytes": 1356747,
+      "sha256": "ecca7e5051172dc2e3c0f8f466002a617a69f9fe1ed0c08849ada2d260aa85c9"
+    },
+    {
+      "format": "stories",
+      "number": 2,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/02.jpg",
+      "title": "Zobacz, dlaczego powstaje chmura",
+      "text": "Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Unosząca się porcja powietrza nad wzgórzem przechodzi w chmurę. Zobacz, dlaczego powstaje chmura Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 651,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Chmura przestaje być tylko kształtem, gdy",
+          "widzisz, co ją tworzy. Unosisz porcję powietrza,",
+          "obserwujesz spadek temperatury i porównujesz",
+          "próby przy różnej wilgotności. Zamiast",
+          "zapamiętywać definicję, możesz sprawdzić",
+          "zależność, która za nią stoi."
+        ],
+        "headlineLines": [
+          "Zobacz, dlaczego",
+          "powstaje chmura"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+        "headline": "Zobacz, dlaczego powstaje chmura",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-02.png",
+      "bytes": 1010082,
+      "sha256": "7aba3626ce2e9807884fed3dd4f1c1b113f73116edd839a670d4ee50d6a6b5f7"
+    },
+    {
+      "format": "karuzela",
+      "number": 2,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/02.jpg",
+      "title": "Zobacz, dlaczego powstaje chmura",
+      "text": "Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Unosząca się porcja powietrza nad wzgórzem przechodzi w chmurę. Zobacz, dlaczego powstaje chmura Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy.",
+          "Unosisz porcję powietrza, obserwujesz spadek temperatury i",
+          "porównujesz próby przy różnej wilgotności. Zamiast",
+          "zapamiętywać definicję, możesz sprawdzić zależność, która za",
+          "nią stoi."
+        ],
+        "headlineLines": [
+          "Zobacz, dlaczego powstaje",
+          "chmura"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+        "headline": "Zobacz, dlaczego powstaje chmura",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-02.png",
+      "bytes": 922049,
+      "sha256": "db15f7689fa0abd401d28496715c727e066aa71d648ebfef798e246314c21bda"
+    },
+    {
+      "format": "stories",
+      "number": 3,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/03.jpg",
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "text": "Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Zatoka o zmierzchu, księżyc i niska mgła nad brzegiem. Wieczór nad wodą ma swoją fizykę Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 597,
+        "bodyTop": 1192,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Za bryzą znad wody i poranną mgłą stoją procesy,",
+          "które można zrozumieć bez zaczynania od",
+          "podręcznika. Zmieniasz porę dnia, porównujesz",
+          "ląd z wodą, schładzasz wilgotne powietrze.",
+          "Znajome widoki zyskują wyjaśnienie, do którego",
+          "możesz wrócić podczas kolejnego spaceru nad",
+          "brzegiem."
+        ],
+        "headlineLines": [
+          "Wieczór nad wodą ma",
+          "swoją fizykę"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+        "headline": "Wieczór nad wodą ma swoją fizykę",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-03.png",
+      "bytes": 1131468,
+      "sha256": "a19c9eb169eb538e643abcf4be6923e56d162240857212c81c1c6ef78dc78b7d"
+    },
+    {
+      "format": "karuzela",
+      "number": 3,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/03.jpg",
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "text": "Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Zatoka o zmierzchu, księżyc i niska mgła nad brzegiem. Wieczór nad wodą ma swoją fizykę Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Za bryzą znad wody i poranną mgłą stoją procesy, które można",
+          "zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia,",
+          "porównujesz ląd z wodą, schładzasz wilgotne powietrze.",
+          "Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić",
+          "podczas kolejnego spaceru nad brzegiem."
+        ],
+        "headlineLines": [
+          "Wieczór nad wodą ma",
+          "swoją fizykę"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+        "headline": "Wieczór nad wodą ma swoją fizykę",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-03.png",
+      "bytes": 1121373,
+      "sha256": "f0caff34f675a365d7f0f0fa0e47abeb7533e224a683e3d2aacaca984b68c240"
+    },
+    {
+      "format": "stories",
+      "number": 4,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/04.jpg",
+      "title": "Nieruchoma chmura też potrafi zmylić",
+      "text": "Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Chmura falowa nad grzbietem górskim i pasma przepływającego powietrza. Nieruchoma chmura też potrafi zmylić Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 597,
+        "bodyTop": 1192,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Nie każda nieruchoma chmura oznacza brak",
+          "wiatru. W pracowni porównujesz kolejne",
+          "obserwacje i ruch chmur na różnych poziomach, a",
+          "potem przyglądasz się chmurze falowej. Ćwiczysz",
+          "coś przydatniejszego niż zgadywanie kierunku:",
+          "odróżnianie tego, co naprawdę widać, od tego,",
+          "czego nie da się jeszcze stwierdzić."
+        ],
+        "headlineLines": [
+          "Nieruchoma chmura",
+          "też potrafi zmylić"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+        "headline": "Nieruchoma chmura też potrafi zmylić",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-04.png",
+      "bytes": 1163853,
+      "sha256": "32a4cce7b25eb41db8bf6a6f4a77ac30299060ed762d1f521f22b5df82462fbb"
+    },
+    {
+      "format": "karuzela",
+      "number": 4,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/04.jpg",
+      "title": "Nieruchoma chmura też potrafi zmylić",
+      "text": "Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Chmura falowa nad grzbietem górskim i pasma przepływającego powietrza. Nieruchoma chmura też potrafi zmylić Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 569,
+        "bodyTop": 965,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni",
+          "porównujesz kolejne obserwacje i ruch chmur na różnych",
+          "poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz",
+          "coś przydatniejszego niż zgadywanie kierunku: odróżnianie",
+          "tego, co naprawdę widać, od tego, czego nie da się jeszcze",
+          "stwierdzić."
+        ],
+        "headlineLines": [
+          "Nieruchoma chmura też",
+          "potrafi zmylić"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+        "headline": "Nieruchoma chmura też potrafi zmylić",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-04.png",
+      "bytes": 1095356,
+      "sha256": "8c0757659e2309195cf65f9e31339cb3e19efbde7f5ccbe02b1a67cca9325b38"
+    },
+    {
+      "format": "stories",
+      "number": 5,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/05.jpg",
+      "title": "Depesza, którą zaczynasz rozumieć",
+      "text": "METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Papier depeszy, chmury na różnych poziomach i mały rękaw wiatrowy. Depesza, którą zaczynasz rozumieć METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 651,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "METAR opisuje obserwację, a TAF jest prognozą.",
+          "W CHMURNIKU rozczytujesz depeszę po kawałku,",
+          "a w pracowni łączysz szkoleniowy raport z",
+          "obrazem nieba i czasem. Sprawdzasz też,",
+          "dlaczego najniższa chmura nie zawsze wyznacza",
+          "pułap. Skróty zaczynają nabierać znaczenia."
+        ],
+        "headlineLines": [
+          "Depesza, którą",
+          "zaczynasz rozumieć"
+        ],
+        "bodyFontSize": 41,
+        "copy": "METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+        "headline": "Depesza, którą zaczynasz rozumieć",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-05.png",
+      "bytes": 1052407,
+      "sha256": "312dadae1a82831de35e12e474297513f46440640ce43b27bcd8ba98c84a35b3"
+    },
+    {
+      "format": "karuzela",
+      "number": 5,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/05.jpg",
+      "title": "Depesza, którą zaczynasz rozumieć",
+      "text": "METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Papier depeszy, chmury na różnych poziomach i mały rękaw wiatrowy. Depesza, którą zaczynasz rozumieć METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU",
+          "rozczytujesz depeszę po kawałku, a w pracowni łączysz",
+          "szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też,",
+          "dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty",
+          "zaczynają nabierać znaczenia."
+        ],
+        "headlineLines": [
+          "Depesza, którą zaczynasz",
+          "rozumieć"
+        ],
+        "bodyFontSize": 32,
+        "copy": "METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+        "headline": "Depesza, którą zaczynasz rozumieć",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-05.png",
+      "bytes": 965236,
+      "sha256": "5289b91230e82d817a9ae83d5ebb7e80cc09de9e7b12e379480557da925cd6af"
+    },
+    {
+      "format": "stories",
+      "number": 6,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/06.jpg",
+      "title": "Trudny wykres ma teraz początek",
+      "text": "Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Balon meteorologiczny, radiosonda i dwie linie profilu atmosfery. Trudny wykres ma teraz początek Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 651,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Nie musisz od razu rozumieć całego sondażu",
+          "atmosfery. Zaczynasz od jednego poziomu i",
+          "dwóch temperatur: powietrza oraz punktu rosy.",
+          "Potem dochodzą kolejne zależności i pochylone",
+          "osie Skew-T. Przewodnik daje Ci sposób czytania",
+          "wykresu, zamiast zostawiać Cię z samymi liniami."
+        ],
+        "headlineLines": [
+          "Trudny wykres ma",
+          "teraz początek"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+        "headline": "Trudny wykres ma teraz początek",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-06.png",
+      "bytes": 1121689,
+      "sha256": "194d236a50186f36cf76645b9059105917496c53b950c7e849d48990b71fb87b"
+    },
+    {
+      "format": "karuzela",
+      "number": 6,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/06.jpg",
+      "title": "Trudny wykres ma teraz początek",
+      "text": "Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Balon meteorologiczny, radiosonda i dwie linie profilu atmosfery. Trudny wykres ma teraz początek Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Nie musisz od razu rozumieć całego sondażu atmosfery.",
+          "Zaczynasz od jednego poziomu i dwóch temperatur: powietrza",
+          "oraz punktu rosy. Potem dochodzą kolejne zależności i",
+          "pochylone osie Skew-T. Przewodnik daje Ci sposób czytania",
+          "wykresu, zamiast zostawiać Cię z samymi liniami."
+        ],
+        "headlineLines": [
+          "Trudny wykres ma teraz",
+          "początek"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+        "headline": "Trudny wykres ma teraz początek",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-06.png",
+      "bytes": 1036099,
+      "sha256": "b38995fde5bb05d086a0e5ff66d1508314ed81297170ba96df5c7a4ab78e2739"
+    },
+    {
+      "format": "stories",
+      "number": 7,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/07.jpg",
+      "title": "Nie wszystko w pogodzie jest łagodne",
+      "text": "O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej niż to, że bywają groźne. Osobne pracownie pomagają zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się przy froncie. To wiedza o mechanizmach, nie prognoza ani ocena, czy można bezpiecznie lecieć lub wypłynąć.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Chłodne powietrze wsuwa się pod ciepłe i unosi je w stronę rozbudowanej chmury. Nie wszystko w pogodzie jest łagodne O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej niż to, że bywają groźne. Osobne pracownie pomagają zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się przy froncie. To wiedza o mechanizmach, nie prognoza ani ocena, czy można bezpiecznie lecieć lub wypłynąć.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 597,
+        "bodyTop": 1192,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "O oblodzeniu, turbulencjach czy burzach warto",
+          "wiedzieć więcej niż to, że bywają groźne. Osobne",
+          "pracownie pomagają zobaczyć, jakie warunki",
+          "sprzyjają tym zjawiskom i co zmienia się przy",
+          "froncie. To wiedza o mechanizmach, nie prognoza",
+          "ani ocena, czy można bezpiecznie lecieć lub",
+          "wypłynąć."
+        ],
+        "headlineLines": [
+          "Nie wszystko w",
+          "pogodzie jest łagodne"
+        ],
+        "bodyFontSize": 41,
+        "copy": "O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej niż to, że bywają groźne. Osobne pracownie pomagają zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się przy froncie. To wiedza o mechanizmach, nie prognoza ani ocena, czy można bezpiecznie lecieć lub wypłynąć.",
+        "headline": "Nie wszystko w pogodzie jest łagodne",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-07.png",
+      "bytes": 1085889,
+      "sha256": "d9b698b676718355119c483ceaa877bb5f8214dbd76c0ebab6e224f14bfa859e"
+    },
+    {
+      "format": "karuzela",
+      "number": 7,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/07.jpg",
+      "title": "Nie wszystko w pogodzie jest łagodne",
+      "text": "O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej niż to, że bywają groźne. Osobne pracownie pomagają zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się przy froncie. To wiedza o mechanizmach, nie prognoza ani ocena, czy można bezpiecznie lecieć lub wypłynąć.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Chłodne powietrze wsuwa się pod ciepłe i unosi je w stronę rozbudowanej chmury. Nie wszystko w pogodzie jest łagodne O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej niż to, że bywają groźne. Osobne pracownie pomagają zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się przy froncie. To wiedza o mechanizmach, nie prognoza ani ocena, czy można bezpiecznie lecieć lub wypłynąć.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej",
+          "niż to, że bywają groźne. Osobne pracownie pomagają",
+          "zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się",
+          "przy froncie. To wiedza o mechanizmach, nie prognoza ani",
+          "ocena, czy można bezpiecznie lecieć lub wypłynąć."
+        ],
+        "headlineLines": [
+          "Nie wszystko w pogodzie",
+          "jest łagodne"
+        ],
+        "bodyFontSize": 32,
+        "copy": "O oblodzeniu, turbulencjach czy burzach warto wiedzieć więcej niż to, że bywają groźne. Osobne pracownie pomagają zobaczyć, jakie warunki sprzyjają tym zjawiskom i co zmienia się przy froncie. To wiedza o mechanizmach, nie prognoza ani ocena, czy można bezpiecznie lecieć lub wypłynąć.",
+        "headline": "Nie wszystko w pogodzie jest łagodne",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-07.png",
+      "bytes": 1070463,
+      "sha256": "98a5b373ec096cf29af5383195be91f63955591e74cc5932c4312a9c7bfb6181"
+    },
+    {
+      "format": "stories",
+      "number": 8,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/08.jpg",
+      "title": "Sprawdzasz rozumienie, nie pamięć do liczb",
+      "text": "Przewodnik pomaga Ci zauważyć zależność, ale samodzielna próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza próba, pomoc i powtórki są rozróżniane, żeby łatwiej było zobaczyć, do czego warto jeszcze wrócić.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Dwie miniaturowe pracownie z różnymi chmurami zachęcają do porównania przypadków. Sprawdzasz rozumienie, nie pamięć do liczb Przewodnik pomaga Ci zauważyć zależność, ale samodzielna próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza próba, pomoc i powtórki są rozróżniane, żeby łatwiej było zobaczyć, do czego warto jeszcze wrócić.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 609,
+        "artY": 645,
+        "artH": 501,
+        "bodyTop": 1192,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Przewodnik pomaga Ci zauważyć zależność, ale",
+          "samodzielna próba daje już inny przypadek.",
+          "Przewidujesz wynik i uzasadniasz odpowiedź,",
+          "zamiast odtwarzać ruchy z instrukcji. Pierwsza",
+          "próba, pomoc i powtórki są rozróżniane, żeby",
+          "łatwiej było zobaczyć, do czego warto jeszcze",
+          "wrócić."
+        ],
+        "headlineLines": [
+          "Sprawdzasz",
+          "rozumienie, nie",
+          "pamięć do liczb"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Przewodnik pomaga Ci zauważyć zależność, ale samodzielna próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza próba, pomoc i powtórki są rozróżniane, żeby łatwiej było zobaczyć, do czego warto jeszcze wrócić.",
+        "headline": "Sprawdzasz rozumienie, nie pamięć do liczb",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-08.png",
+      "bytes": 1051946,
+      "sha256": "8b631a6111a4a76e88f07c138c566aa61f5e8c3f9ca88f15be34b4d82b290c91"
+    },
+    {
+      "format": "karuzela",
+      "number": 8,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/08.jpg",
+      "title": "Sprawdzasz rozumienie, nie pamięć do liczb",
+      "text": "Przewodnik pomaga Ci zauważyć zależność, ale samodzielna próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza próba, pomoc i powtórki są rozróżniane, żeby łatwiej było zobaczyć, do czego warto jeszcze wrócić.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Dwie miniaturowe pracownie z różnymi chmurami zachęcają do porównania przypadków. Sprawdzasz rozumienie, nie pamięć do liczb Przewodnik pomaga Ci zauważyć zależność, ale samodzielna próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza próba, pomoc i powtórki są rozróżniane, żeby łatwiej było zobaczyć, do czego warto jeszcze wrócić.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Przewodnik pomaga Ci zauważyć zależność, ale samodzielna",
+          "próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz",
+          "odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza",
+          "próba, pomoc i powtórki są rozróżniane, żeby łatwiej było",
+          "zobaczyć, do czego warto jeszcze wrócić."
+        ],
+        "headlineLines": [
+          "Sprawdzasz rozumienie, nie",
+          "pamięć do liczb"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Przewodnik pomaga Ci zauważyć zależność, ale samodzielna próba daje już inny przypadek. Przewidujesz wynik i uzasadniasz odpowiedź, zamiast odtwarzać ruchy z instrukcji. Pierwsza próba, pomoc i powtórki są rozróżniane, żeby łatwiej było zobaczyć, do czego warto jeszcze wrócić.",
+        "headline": "Sprawdzasz rozumienie, nie pamięć do liczb",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-08.png",
+      "bytes": 1185825,
+      "sha256": "5c9cb00a9eb94870f48842dae4423d9f112d1763f0b903a0e176b1a9841e2dd0"
+    },
+    {
+      "format": "stories",
+      "number": 9,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/09.jpg",
+      "title": "Mniej szukania, więcej nieba",
+      "text": "Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez szukania ich w atlasie. Codzienna zagadka daje Ci szansę pomyśleć, zanim odsłonisz nazwę chmury.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Ścieżka łączy otwartą książkę, chmurę, wiatr i warstwy krajobrazu. Mniej szukania, więcej nieba Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez szukania ich w atlasie. Codzienna zagadka daje Ci szansę pomyśleć, zanim odsłonisz nazwę chmury.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 651,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Gdy coś Cię zainteresuje, z lekcji przechodzisz",
+          "prosto do doświadczenia i możesz wrócić po",
+          "wyjaśnienie. W aktualizacji aplikacji Warstwy,",
+          "wiatr, METAR i mapy są łatwiej dostępne, bez",
+          "szukania ich w atlasie. Codzienna zagadka daje Ci",
+          "szansę pomyśleć, zanim odsłonisz nazwę chmury."
+        ],
+        "headlineLines": [
+          "Mniej szukania, więcej",
+          "nieba"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez szukania ich w atlasie. Codzienna zagadka daje Ci szansę pomyśleć, zanim odsłonisz nazwę chmury.",
+        "headline": "Mniej szukania, więcej nieba",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-09.png",
+      "bytes": 1243095,
+      "sha256": "5e2f3d08368ac2160b84a264763ea916c2d9de577acbdfea5361563a1565a7ec"
+    },
+    {
+      "format": "karuzela",
+      "number": 9,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/09.jpg",
+      "title": "Mniej szukania, więcej nieba",
+      "text": "Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez szukania ich w atlasie. Codzienna zagadka daje Ci szansę pomyśleć, zanim odsłonisz nazwę chmury.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Ścieżka łączy otwartą książkę, chmurę, wiatr i warstwy krajobrazu. Mniej szukania, więcej nieba Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez szukania ich w atlasie. Codzienna zagadka daje Ci szansę pomyśleć, zanim odsłonisz nazwę chmury.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do",
+          "doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji",
+          "aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez",
+          "szukania ich w atlasie. Codzienna zagadka daje Ci szansę",
+          "pomyśleć, zanim odsłonisz nazwę chmury."
+        ],
+        "headlineLines": [
+          "Mniej szukania, więcej",
+          "nieba"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Gdy coś Cię zainteresuje, z lekcji przechodzisz prosto do doświadczenia i możesz wrócić po wyjaśnienie. W aktualizacji aplikacji Warstwy, wiatr, METAR i mapy są łatwiej dostępne, bez szukania ich w atlasie. Codzienna zagadka daje Ci szansę pomyśleć, zanim odsłonisz nazwę chmury.",
+        "headline": "Mniej szukania, więcej nieba",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-09.png",
+      "bytes": 1155067,
+      "sha256": "0a40722bc471e04de6782835f3c47167c4adf94ab3a17831774698c74b7db8d2"
+    },
+    {
+      "format": "stories",
+      "number": 10,
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/stories/10.jpg",
+      "title": "Wybierz jedno pytanie o niebo",
+      "text": "Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te same pracownie trafią do aktualizacji na iPhone, iPad i Mac, którą wysłałem już do recenzji Apple.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Otwarte fioletowe drzwi na nadmorskim wzgórzu prowadzą wzrok ku niebu. Wybierz jedno pytanie o niebo Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te same pracownie trafią do aktualizacji na iPhone, iPad i Mac, którą wysłałem już do recenzji Apple.",
+      "layout": {
+        "width": 1080,
+        "height": 1920,
+        "headlineTop": 321,
+        "headlineBottom": 513,
+        "artY": 549,
+        "artH": 651,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "bodyLines": [
+          "Dlaczego pojawia się chmura? Skąd wieje wiatr?",
+          "Co mówi depesza? Otwórz chmurnik.cloud i",
+          "zacznij od tego, co Cię ciekawi. Za darmo, bez",
+          "konta, także na telefonie z Androidem. Te same",
+          "pracownie trafią do aktualizacji na iPhone, iPad i",
+          "Mac, którą wysłałem już do recenzji Apple."
+        ],
+        "headlineLines": [
+          "Wybierz jedno pytanie",
+          "o niebo"
+        ],
+        "bodyFontSize": 41,
+        "copy": "Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te same pracownie trafią do aktualizacji na iPhone, iPad i Mac, którą wysłałem już do recenzji Apple.",
+        "headline": "Wybierz jedno pytanie o niebo",
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "stories/chmurnik-pracownie-10.png",
+      "bytes": 1244834,
+      "sha256": "e121d3a930b018f3a42b4e091cf81c52ff70a9a88ea0a61298c183320723eab1"
+    },
+    {
+      "format": "karuzela",
+      "number": 10,
+      "width": 1080,
+      "height": 1350,
+      "preview": "previews/karuzela/10.jpg",
+      "title": "Wybierz jedno pytanie o niebo",
+      "text": "Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te same pracownie trafią do aktualizacji na iPhone, iPad i Mac, którą wysłałem już do recenzji Apple.",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Otwarte fioletowe drzwi na nadmorskim wzgórzu prowadzą wzrok ku niebu. Wybierz jedno pytanie o niebo Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te same pracownie trafią do aktualizacji na iPhone, iPad i Mac, którą wysłałem już do recenzji Apple.",
+      "layout": {
+        "width": 1080,
+        "height": 1350,
+        "headlineTop": 177,
+        "headlineBottom": 333,
+        "artY": 361,
+        "artH": 611,
+        "bodyTop": 1007,
+        "bodyBottom": 1217,
+        "bodyLines": [
+          "Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi",
+          "depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię",
+          "ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te",
+          "same pracownie trafią do aktualizacji na iPhone, iPad i Mac,",
+          "którą wysłałem już do recenzji Apple."
+        ],
+        "headlineLines": [
+          "Wybierz jedno pytanie o",
+          "niebo"
+        ],
+        "bodyFontSize": 32,
+        "copy": "Dlaczego pojawia się chmura? Skąd wieje wiatr? Co mówi depesza? Otwórz chmurnik.cloud i zacznij od tego, co Cię ciekawi. Za darmo, bez konta, także na telefonie z Androidem. Te same pracownie trafią do aktualizacji na iPhone, iPad i Mac, którą wysłałem już do recenzji Apple.",
+        "headline": "Wybierz jedno pytanie o niebo",
+        "safe": {
+          "top": 60,
+          "bottom": 1310,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "file": "karuzela/chmurnik-pracownie-10.png",
+      "bytes": 1151150,
+      "sha256": "93cf1fdf9ec93019901e99c93019b1d4d667b58b09fd13df9514cb597ae2653e"
+    }
+  ],
+  "documents": [
+    {
+      "pages": 10,
+      "width": 1080,
+      "height": 1350,
+      "title": "Niebo ma swoje powody.",
+      "selectableText": true,
+      "link": "https://chmurnik.cloud/pogoda-preview/",
+      "file": "CHMURNIK-PRACOWNIE-LINKEDIN.pdf",
+      "bytes": 11381014,
+      "sha256": "19898ee41671a8f62792638e1fa719f4ad7934571e436a2117edc70ed487dea5"
+    }
+  ],
+  "archives": [
+    {
+      "file": "CHMURNIK-PRACOWNIE-STORIES.zip",
+      "label": "10 Stories PNG",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "teksty/alt-teksty.txt",
+        "stories/chmurnik-pracownie-01.png",
+        "stories/chmurnik-pracownie-02.png",
+        "stories/chmurnik-pracownie-03.png",
+        "stories/chmurnik-pracownie-04.png",
+        "stories/chmurnik-pracownie-05.png",
+        "stories/chmurnik-pracownie-06.png",
+        "stories/chmurnik-pracownie-07.png",
+        "stories/chmurnik-pracownie-08.png",
+        "stories/chmurnik-pracownie-09.png",
+        "stories/chmurnik-pracownie-10.png"
+      ],
+      "bytes": 11312778,
+      "sha256": "596590b61701940654c6ae178f6a55bf67f3f2f4b1c71581998148733378623b"
+    },
+    {
+      "file": "CHMURNIK-PRACOWNIE-INSTAGRAM.zip",
+      "label": "Karuzela i opis",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "teksty/alt-teksty.txt",
+        "teksty/instagram-post.txt",
+        "karuzela/chmurnik-pracownie-01.png",
+        "karuzela/chmurnik-pracownie-02.png",
+        "karuzela/chmurnik-pracownie-03.png",
+        "karuzela/chmurnik-pracownie-04.png",
+        "karuzela/chmurnik-pracownie-05.png",
+        "karuzela/chmurnik-pracownie-06.png",
+        "karuzela/chmurnik-pracownie-07.png",
+        "karuzela/chmurnik-pracownie-08.png",
+        "karuzela/chmurnik-pracownie-09.png",
+        "karuzela/chmurnik-pracownie-10.png"
+      ],
+      "bytes": 10993696,
+      "sha256": "5c205697dfef053c8afd410c3bc2a6086952572210ba4ab2fb53b8c408e3b8a6"
+    },
+    {
+      "file": "CHMURNIK-PRACOWNIE-FACEBOOK.zip",
+      "label": "Facebook: grafika i post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "teksty/alt-teksty.txt",
+        "teksty/facebook-post.txt",
+        "facebook/chmurnik-pracownie-facebook.png"
+      ],
+      "bytes": 1357795,
+      "sha256": "e74d61264808286f6c3744bda37f5af949684625994e60d788064457f2d91d31"
+    },
+    {
+      "file": "CHMURNIK-PRACOWNIE-LINKEDIN.zip",
+      "label": "LinkedIn: PDF i post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "teksty/alt-teksty.txt",
+        "teksty/linkedin-post.txt",
+        "CHMURNIK-PRACOWNIE-LINKEDIN.pdf"
+      ],
+      "bytes": 11325087,
+      "sha256": "edbb9ce4937be319b129c0ebf56f77b9232a34ee01f861d57e0ef9de35abaf60"
+    },
+    {
+      "file": "CHMURNIK-PRACOWNIE-PELNY-PAKIET.zip",
+      "label": "Cały pakiet",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "teksty/alt-teksty.txt",
+        "teksty/instagram-post.txt",
+        "teksty/facebook-post.txt",
+        "teksty/linkedin-post.txt",
+        "stories/chmurnik-pracownie-01.png",
+        "karuzela/chmurnik-pracownie-01.png",
+        "facebook/chmurnik-pracownie-facebook.png",
+        "stories/chmurnik-pracownie-02.png",
+        "karuzela/chmurnik-pracownie-02.png",
+        "stories/chmurnik-pracownie-03.png",
+        "karuzela/chmurnik-pracownie-03.png",
+        "stories/chmurnik-pracownie-04.png",
+        "karuzela/chmurnik-pracownie-04.png",
+        "stories/chmurnik-pracownie-05.png",
+        "karuzela/chmurnik-pracownie-05.png",
+        "stories/chmurnik-pracownie-06.png",
+        "karuzela/chmurnik-pracownie-06.png",
+        "stories/chmurnik-pracownie-07.png",
+        "karuzela/chmurnik-pracownie-07.png",
+        "stories/chmurnik-pracownie-08.png",
+        "karuzela/chmurnik-pracownie-08.png",
+        "stories/chmurnik-pracownie-09.png",
+        "karuzela/chmurnik-pracownie-09.png",
+        "stories/chmurnik-pracownie-10.png",
+        "karuzela/chmurnik-pracownie-10.png",
+        "CHMURNIK-PRACOWNIE-LINKEDIN.pdf"
+      ],
+      "bytes": 34968080,
+      "sha256": "139ca5034d2a636823c4649a9c28d8897046953651248c892a32bd160350f0d2"
+    }
+  ]
 }

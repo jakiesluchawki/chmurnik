@@ -1,0 +1,48 @@
+{
+  "id": "07-front",
+  "created_date": "2026-09-09",
+  "generator": "built-in image_gen.imagegen",
+  "mode": "native_imagegen",
+  "use_case": "stylized-concept",
+  "intent": "fresh original artwork",
+  "generation_attempts": 2,
+  "style_references": [
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/wind-v1.webp",
+      "role": "style only",
+      "inspected_with": "view_image"
+    },
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/sounding-v1.webp",
+      "role": "style only",
+      "inspected_with": "view_image"
+    }
+  ],
+  "reference_transport": "References inspected visually; style described in original generation prompt. No reference image was an original-generation edit target.",
+  "prompt": "Use case: stylized-concept.\nAsset: one original editorial campaign illustration, artwork only, landscape 3:2, preferably 1536x1024. No graphic layout or slide.\nPrimary request: A dramatic and beautiful miniature weather cross-section. A cold lavender wedge advances horizontally beneath warm rose-colored air, visibly lifting the warm air into a tall sculptural cloud. The interface is a graceful curved ascending slope; the cloud develops upward from its advancing edge. Subtle tiny ice-grain details and curled turbulent wool wisps express the mechanism without arrows or labels. Make the mechanism legible through sculpted material, not a literal scientific diagram.\nScene: a singular elegant felt/wool/clay atmospheric diorama against a deep teal to indigo seamless studio environment. Olive miniature ground strata anchor the section. Main cloud and interlocking cold and warm air masses form one considered sculpture.\nStyle: mature editorial romance, luxurious tactile felt fibers, wool batting, matte clay ground, realistic physical miniature studio photography and dimensional shadows; refined sculptural abstraction, not a children's toy or repeated cloud icons. References already inspected (wind-v1.webp and sounding-v1.webp) guide only tactile material and lighting, do not recreate their compositions, balloon, instruments or ribbons.\nPalette: blush pink #ffe2ec, warm ivory #fff7ed, muted olive #706936, violet #743cdd, cold lavender, deep teal/night blue.\nComposition: landscape 3:2, subject fully in frame with generous negative-space margins on every edge, all essential sculptural forms within central 75% width and central 78% height to survive a modest centered 16:9 crop. Low frontal three-quarter view of the cross-section. Cloud tall relative to sculpture but not nearly touching image edge.\nLighting: realistic miniature studio lighting, soft warm rose rim highlights and cool shaded depth, restrained drama, polished material texture.\nAbsolutely no people, faces, logos, watermarks, text, numbers, letters, UI, arrows, symbols, airplanes, lightning, fire, destruction, photographic representations of factual real clouds, product screenshot or social copy. One individual image, never contact sheet.",
+  "refinement_prompt": "Edit this generated miniature atmospheric illustration with exactly one targeted change: pull the camera back about 20 percent, retaining 3:2 landscape 1536x1024 canvas, so the ENTIRE cloud sculpture and terrain base occupy no more than the central 75 percent width and central 74 percent height. Add generous uninterrupted deep teal/indigo studio background above, left and right and a little floor below, with all important subject matter fully inside the centered 16:9 crop area. Do not crop anything. Preserve the same elegant cloud sculpture, lavender cold wedge lifting rose warm air, tiny ice-grain details, curled wool fibers, miniature olive ground strata, tactile felt wool clay, realistic warm rim light and dimensional shadows. This is a composition/framing refinement only. No people, logos, text, letters, numbers, UI, lightning, fire, airplanes, or extra objects. One image, no contact sheet.",
+  "refinement_edit_source": "[CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-3af899ad-980c-484f-98b4-ae60a875cb4f.png",
+  "refinement_reason": "Increase margins to preserve full cloud sculpture in centered 16:9 crops.",
+  "source_path": "[CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-afbf2552-eae5-4414-83fb-6c2fe884b9f7.png",
+  "final_path": "[workspace]/chmurnik-v4/social/2026-09-09-pracownie/art/07-front.png",
+  "output": {
+    "mime_type": "image/png",
+    "width": 1536,
+    "height": 1024,
+    "aspect_ratio": "3:2",
+    "bytes": 2001651,
+    "resampled": false,
+    "copy_method": "cp -n",
+    "byte_identity_verified": "cmp exit code 0",
+    "dimensions_verified_with": "sips",
+    "existence_nonempty_verified_with": "stat"
+  },
+  "visual_inspection": {
+    "status": "passed",
+    "method": "direct inspection of native image_gen output",
+    "notes": "Lavender cold-air wedge rises into a tall rose wool cloud above olive ground strata. Fine turbulent wool wisps and ice-grain details are visible. Deep teal studio backdrop. Framing refined in attempt 2 for generous margins and centered 16:9 crop.",
+    "no_text_numbers_letters_logos_people_ui_observed": true,
+    "centered_16_9_crop_assessment": "Essential subjects remain in frame; crop not applied."
+  },
+  "tool_output_receipt": "Generated images are saved to [CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef as [CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-afbf2552-eae5-4414-83fb-6c2fe884b9f7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

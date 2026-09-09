@@ -1,4 +1,4 @@
-export const copyStatus = 'awaiting-owner-approval';
+export const copyStatus = 'approved';
 export const webUrl = 'https://chmurnik.cloud/';
 export const workshopUrl = 'https://chmurnik.cloud/pogoda-preview/';
 export const storeUrl = 'https://apps.apple.com/pl/app/id6782159027';

@@ -1,0 +1,32 @@
+CHMURNIK / NIEBO MA SWOJE POWODY / 09.09.2026
+
+STORIES: 10 statycznych PNG 1080 x 1920 w folderze stories, kolejność 01-10.
+Każda plansza zawiera całą zaakceptowaną treść. Bez muzyki i bez filmu.
+Dodaj naklejkę z linkiem https://chmurnik.cloud/pogoda-preview/ w wolnym dolnym polu.
+Adres narysowany na grafice nie jest aktywną naklejką. Nie przycinaj plansz.
+
+INSTAGRAM POST: 10 PNG 1080 x 1350 z folderu karuzela, kolejność 01-10.
+Wklej cały opis z teksty/instagram-post.txt. Odsyła do linku w Stories,
+więc opublikuj także Story z naklejką. Alt-teksty: teksty/alt-teksty.txt.
+
+FACEBOOK: dodaj facebook/chmurnik-pracownie-facebook.png i wklej cały
+tekst z teksty/facebook-post.txt. Możesz też użyć całej karuzeli.
+
+LINKEDIN: dodaj CHMURNIK-PRACOWNIE-LINKEDIN.pdf jako dokument, nie zdjęcie.
+Tytuł dokumentu: Niebo ma swoje powody. CHMURNIK
+Opis: teksty/linkedin-post.txt. PDF ma 10 stron, zaznaczalny tekst i linki.
+Jeśli komputer nie pokazuje opcji Dokument, użyj aplikacji LinkedIn na telefonie,
+w której właściciel potwierdził tę funkcję przy poprzednim pakiecie.
+
+DOSTĘPNOŚĆ: Pracownie działają już na chmurnik.cloud. Aktualizacja 1.2.1 aplikacji na iPhone, iPad i Mac została wysłana do recenzji Apple. Oba zgłoszenia mają status WAITING_FOR_REVIEW; nie oznacza to jeszcze dostępności nowej wersji w sklepie.
+Przed późniejszą publikacją zweryfikuj aktualny status Apple. Ten pakiet
+nie ogłasza nowego modelu rozpoznawania chmur. Materiały są edukacyjne,
+nie zastępują oficjalnej prognozy ani briefingu przed lotem lub żeglugą.
+
+ILUSTRACJE: 10 nowych motywów wygenerowanych przez ImageGen, nie fotografie
+obserwacyjne, nie zrzuty interfejsu i nie dokładne diagramy naukowe.
+Skład, typografia Romie/Roobert i wszystkie teksty wykonane deterministycznie.
+PNG mają docelowe wymiary. Nie wysłano żadnych postów na konta społecznościowe.
+
+Biblioteka: https://jakiesluchawki.github.io/chmurnik/assetySM/
+Pakiet: https://jakiesluchawki.github.io/chmurnik/premiera/pracownie/

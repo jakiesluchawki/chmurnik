@@ -1,0 +1,45 @@
+{
+  "id": "10-pytanie",
+  "created_date": "2026-09-09",
+  "generator": "built-in image_gen.imagegen",
+  "mode": "native_imagegen",
+  "use_case": "stylized-concept",
+  "intent": "fresh original artwork",
+  "generation_attempts": 1,
+  "style_references": [
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/wind-v1.webp",
+      "role": "style only",
+      "inspected_with": "view_image"
+    },
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/sounding-v1.webp",
+      "role": "style only",
+      "inspected_with": "view_image"
+    }
+  ],
+  "reference_transport": "References inspected visually; style described in original generation prompt. No reference image was an original-generation edit target.",
+  "prompt": "Use case: stylized-concept.\nAsset: one original image-only final editorial campaign illustration, landscape 3:2, preferably 1536x1024.\nPrimary request: A warmly sunlit OPEN VIOLET DOORWAY stands on an olive coastal bluff looking into an enormous rose / cream sky and a softly glowing sea. A full freestanding doorway with a violet frame and a visibly swung-open violet door leaf, threshold at ground level; NOT a window, not a wall with a small cutout, not a portal UI icon. Through the full-height opening the same beautiful distant sea horizon continues naturally. ONE elegant small distant cloud made of delicately teased ivory wool hangs in the spacious sky. The door is inviting, the surrounding space serene and poetic.\nStyle: mature editorial romance; physically convincing tactile felt, wool and clay miniature diorama photographed with realistic miniature studio light. Door frame is richly matte violet clay with a subtly tactile finish; bluff has muted olive felt/moss and layered warm ivory clay coastal strata; sea has calm softly glowing fine texture; sky is a sophisticated rose-cream gradient backdrop. Handcrafted material detail, never childish, never cartoon cloud icons. Style references already inspected (wind-v1.webp and sounding-v1.webp) guide texture and lighting only, not the scene or objects to repeat.\nPalette: violet #743cdd doorway, muted olive #706936 bluff, blush pink #ffe2ec sky, warm ivory #fff7ed sunlight and cloud. Restrained distant blue-green undertone is acceptable.\nComposition: low oblique coastal viewpoint, huge quiet sky and sea occupying most of the frame, lots of breathing room. Doorway is a restrained central subject occupying only about 30 percent of image height, entirely visible including door leaf and threshold, surrounded by generous sky and coast. Its top no higher than 28 percent down from image top. One distant elongated cloud also fully in frame, not repeated. Sea horizon calm and broadly visible beyond and through the doorway. Important objects within central 72 percent width and central 70 percent height for safe centered 16:9 crop. Warm sunlight washes the open doorway and spills across the bluff.\nAbsolutely no people, faces, logos, text, numbers, letters, watermarks, UI, literal product screenshots, real factual-cloud photographs, added architecture, furniture, birds, weather instruments or decorative symbols. Artwork only, no social slide, no copy. One individual image, never a contact sheet.",
+  "source_path": "[CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-7608fcb9-9aaf-412c-b55d-10afcc084d43.png",
+  "final_path": "[workspace]/chmurnik-v4/social/2026-09-09-pracownie/art/10-pytanie.png",
+  "output": {
+    "mime_type": "image/png",
+    "width": 1536,
+    "height": 1024,
+    "aspect_ratio": "3:2",
+    "bytes": 2241656,
+    "resampled": false,
+    "copy_method": "cp -n",
+    "byte_identity_verified": "cmp exit code 0",
+    "dimensions_verified_with": "sips",
+    "existence_nonempty_verified_with": "stat"
+  },
+  "visual_inspection": {
+    "status": "passed",
+    "method": "direct inspection of native image_gen output",
+    "notes": "Full freestanding violet doorway with open door leaf on an olive miniature coastal bluff. Warm glowing sea and spacious rose/cream sky with one distinct distant wool cloud. No people or writing; full doorway and cloud remain clear in a centered 16:9 crop.",
+    "no_text_numbers_letters_logos_people_ui_observed": true,
+    "centered_16_9_crop_assessment": "Essential subjects remain in frame; crop not applied."
+  },
+  "tool_output_receipt": "Generated images are saved to [CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef as [CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-7608fcb9-9aaf-412c-b55d-10afcc084d43.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

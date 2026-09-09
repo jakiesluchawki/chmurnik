@@ -1,0 +1,48 @@
+{
+  "id": "05-depesza",
+  "pack": "CHMURNIK approved social pack",
+  "date": "2026-09-09",
+  "generation": {
+    "route": "native built-in ImageGen",
+    "tool": "image_gen.imagegen",
+    "intent": "fresh artwork",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt": 1,
+        "operation": "generate",
+        "prompt": "Use case: stylized-concept.\nAsset type: ONE standalone editorial illustration for the approved CHMURNIK social pack, image only, no social slide layout. Fresh individual landscape artwork, 3:2 aspect ratio, preferably 1536 x 1024 pixels.\nSubject: A tactile ivory rolled sheet of completely blank report paper curves in an elegant broad S through a small, carefully staged weather-observatory miniature. The cream paper is a prominent flowing sculptural subject with a broad smooth empty surface and a softly rolled end; absolutely no printing or markings on the paper. Beside and behind it is a modest matte cream weather-observatory hut with an understated little dome. Two small airy wisps of wool cloud float at TWO clearly separated heights, one distinctly high and one distinctly low, above a minimal cream runway stripe inset into flat muted-olive terrain. A single slender pole carries a small violet windsock. No runway numbers or lettering.\nScene/backdrop: Warm blush pink seamless studio backdrop, restrained flat olive felt terrain slab, beautifully composed ivory objects. Refined, contemporary editorial still life about a weather report, not a fake application or interface and not a chart.\nStyle and materials: Mature tactile felt/wool/clay diorama with realistic miniature studio lighting, fine wool fibres and tiny matte clay irregularities, beautiful heavy paper edge, soft directionally cast shadows. Use the inspected wind-v1.webp and sounding-v1.webp only as material and light inspiration, but make this a genuinely distinct low oblique tabletop still-life composition. Editorial romance, elegant rather than childish. Palette blush #ffe2ec, ivory #fff7ed, muted olive #706936, small violet #743cdd accents.\nComposition/framing: Landscape 3:2. Entire paper, observatory, both clouds and windsock fully visible. Generous empty background edges. Keep all important subjects within central 75% width and central 75% height to allow a modest center 16:9 crop. Strong visual hierarchy and airy spacing, no overcrowding, no border.\nConstraints: No people, no faces, no logos, NO text, numbers, letters, labels, METAR, icons, arrows, plotted axes, UI, screenshots or panel layouts. Blank paper means completely blank. No factual cloud photo. Single artwork only, no collage or contact sheet. Exact Polish copy will be added separately by the coordinator outside this artwork.",
+        "source_path": "[CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-7b3476cc-6a80-45f0-9f2a-a55babf47b74.png",
+        "selected": true
+      }
+    ]
+  },
+  "style_references": [
+    "[workspace]/chmurnik-v4/weather-preview/public/covers/wind-v1.webp",
+    "[workspace]/chmurnik-v4/weather-preview/public/covers/sounding-v1.webp"
+  ],
+  "style_reference_usage": "Both inspected with view_image; used only for material and lighting inspiration. Initial fresh generation was prompted textually without an edit target.",
+  "generated_source": "[CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-7b3476cc-6a80-45f0-9f2a-a55babf47b74.png",
+  "final_path": "[workspace]/chmurnik-v4/social/2026-09-09-pracownie/art/05-depesza.png",
+  "format": "png",
+  "width": 1536,
+  "height": 1024,
+  "aspect_ratio": "3:2",
+  "bytes": 1938947,
+  "sha256": "393d6434da853805ef208fecf2f83f76201922ca3df5b7d95051eaa790af7903",
+  "preservation": {
+    "copied_without_resampling": true,
+    "source_and_destination_sha256_match": true,
+    "original_source_retained": true
+  },
+  "verification": {
+    "exists": true,
+    "nonempty": true,
+    "dimensions_checked_with": "sips",
+    "size_checked_with": "stat",
+    "identity_checked_with": "shasum -a 256",
+    "visually_inspected": true,
+    "visual_inspection": "Accepted. Completely blank curled ivory paper dominates a pink studio still life with a cream observatory, olive felt terrain, a single runway stripe, violet windsock and two distinct wool clouds at clearly separated heights. Objects remain in frame; highest cloud is close to the upper limit of the centered 16:9 crop, so do not tighten further. No visible text, numbers, labels, people, logo or UI."
+  },
+  "tool_output_receipt": "Generated images are saved to [CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292 as [CODEX_HOME]/generated_images/01a087bc-bb0d-7641-a42e-ff5ebe072292/exec-7b3476cc-6a80-45f0-9f2a-a55babf47b74.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}
