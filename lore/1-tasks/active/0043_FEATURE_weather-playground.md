@@ -92,6 +92,19 @@ to native integration or production domain without that acceptance.
 
 ### Latest Goal: Complete And Release Autonomously
 
+Latest app-session checkpoint, 2026-09-09: actual locked iPhone r5 finished
+4/5, with photo/manual context/local inference/save/relaunch PASS plus
+08/10/11 PASS. Test06 remained in chapter 2 after six Previous taps; video
+confirms one unconsumed transition. A stronger harness now uses settled
+screen coordinates and asserts each chapter transition, but targeted r6
+was denied Xcode cache writes before tests (exit 74). Syntax and 14 gate
+fixtures pass; a fresh full r7 is still required. Do not bypass this denial.
+All exec handles from r5/r6 and frame extraction are terminal.
+ASC API still gives ENOTFOUND; browser access works but Apple requires login
+(authResult=FAILED). No security/auth changes or duplicate uploads. No ASC
+connector in current inventory. WWW archive hash unchanged. See the later
+app-session section of verification.md before using older checkpoints below.
+
 Implementation checkpoint 2026-09-09: all fourteen workshops are routed to
 the rebuilt guided/transfer experiences and bundled into root, Pages and
 Capacitor outputs. Final Node run: 925 passed, none skipped; nine lesson
@@ -100,8 +113,12 @@ wind evidence/persistence and general METAR feedback, plus all fourteen
 initial views at 320/390 px. Mac final development-signed QA bundle matches
 all 132 root dist files; Computer Use route round trips passed for all
 fourteen, and cloud prediction/action/evidence/lesson return passed.
-Native iPhone full-catalogue test remains in progress after fixing a test-only
-scroll limit. Mac XCTest automation initialization failed; it is not a pass.
+Native iPhone locked-r3 full-catalogue test passed. Its photo/manual-context
+test failed due to a center tap landing inside a proposal marker; the harness
+now chooses a measured point outside all markers and asserts manual context.
+Locked-r4 was denied Xcode cache/log access before running tests; a fresh r5
+run remains required when permitted. Mac XCTest initialization failed;
+packaged-app CUA is separate evidence, not a passed XCTest.
 No Apple upload and no CyberFolks deployment at this checkpoint. Four agents
 and detailed roles/evidence/limits: design/workshop-expansion-20260909/verification.md.
 
@@ -115,11 +132,27 @@ Keep browser-preview development isolated first; integrate only verified work
 into shared/native assets. Do not change host security settings without the
 required system approval or bypass test failures to manufacture a release.
 
-- [ ] Complete all workshop improvements and full learning journeys.
-- [ ] Verify the built web preview and production integration.
+- [x] Complete all workshop improvements and full learning journeys.
+- [x] Verify the built web preview and production integration.
 - [ ] Integrate and test packaged iPhone/iPad and Mac Catalyst applications.
 - [ ] Submit verified, signed release builds and confirm processing/submission.
-- [ ] Build, verify and provide the CyberFolks download package.
+- [x] Build, verify and provide the CyberFolks download package.
+
+Release checkpoint 2026-09-09: public Pages 86f752f / successful Actions
+34335971558. CyberFolks ZIP is published under release www-pracownie-20260909;
+all 132 entries match root dist, remote download hash matches the verified
+local archive. No production-domain upload performed. Native QA remains open:
+latest locked iPhone r3 4/5 (03 failed; 06/08/10/11 passed), iPad r2 4/4.
+The corrected iPhone harness passed Swift syntax parsing, not native execution.
+Node was repeated after resume: 925/925. No app payloads or model weights changed.
+Mac CUA photo/local inference/save/quit/relaunch persistence is now verified.
+Current CLI permissions deny Xcode cache/log writes; fresh ASC read failed
+ENOTFOUND. Do not route around either restriction or restart another task.
+The private Apple snapshot is stale after harness edits; do not reuse it.
+Five iPhone screenshot receipts are COMPLETE locally; final sets and submission
+are not confirmed. Fresh GET is required before any further Apple upload.
+Owner's last 14:54 report: 1.2.1 PREPARE_FOR_SUBMISSION, build null.
+See verification.md for the full chronology and exact evidence limitations.
 
 ### Owner Authorization: Continue All Workshops
 

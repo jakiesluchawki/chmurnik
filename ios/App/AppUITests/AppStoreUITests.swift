@@ -21,11 +21,14 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
         #endif
         XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 45))
+        // A native WKWebView exists before the bundled React interface is ready.
+        let initialControl = app.buttons.matching(NSPredicate(format: "label IN %@", ["Pomiń", "Dziś"])).firstMatch
+        XCTAssertTrue(initialControl.waitForExistence(timeout: 45), "The bundled interface did not render")
         #if !targetEnvironment(macCatalyst)
         rotateTablet(landscape: false)
         #endif
         let skip = app.buttons["Pomiń"].firstMatch
-        if skip.waitForExistence(timeout: 10) {
+        if skip.exists {
             #if targetEnvironment(macCatalyst)
             tap("Pomiń")
             #else
@@ -56,7 +59,14 @@ final class AppStoreUITests: XCTestCase {
         #if targetEnvironment(macCatalyst)
         let viewport = app.windows["SceneWindow"].frame
         #else
-        let viewport = app.frame
+        var viewport = app.frame
+        // A partially visible lesson card must not be tapped through the fixed bottom navigation.
+        if !["Dziś", "Moje niebo", "Atlas", "Warstwy"].contains(element.label) {
+            let home = app.buttons["Dziś"].firstMatch
+            if home.exists, home.frame.minY > viewport.midY {
+                viewport.size.height = min(viewport.height, home.frame.minY - viewport.minY)
+            }
+        }
         #endif
         return !frame.isEmpty && !frame.isInfinite && viewport.insetBy(dx: 8, dy: 8)
             .contains(CGPoint(x: frame.midX, y: frame.midY))
@@ -78,7 +88,8 @@ final class AppStoreUITests: XCTestCase {
         tapElement(element, label: label)
     }
 
-    private func tapElement(_ element: XCUIElement, label: String, maximumScrolls: Int = 8) {
+    private func tapElement(_ element: XCUIElement, label: String, maximumScrolls: Int = 8,
+                            normalizedOffset: CGVector = CGVector(dx: 0.5, dy: 0.5)) {
         #if targetEnvironment(macCatalyst)
         app.activate()
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
@@ -99,9 +110,34 @@ final class AppStoreUITests: XCTestCase {
         }
         XCTAssertTrue(isActionable(element), label)
         #if targetEnvironment(macCatalyst)
-        element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).click()
+        element.coordinate(withNormalizedOffset: normalizedOffset).click()
         #else
-        element.tap()
+        // WebKit's activation point can sit on a link's edge while scrolling settles.
+        var previousFrame = CGRect.zero
+        var stableSince: Date?
+        let settled = XCTNSPredicateExpectation(predicate: NSPredicate { [self] _, _ in
+            guard element.exists, isActionable(element) else {
+                stableSince = nil
+                return false
+            }
+            let frame = element.frame
+            if frame != previousFrame || stableSince == nil {
+                previousFrame = frame
+                stableSince = Date()
+            }
+            return Date().timeIntervalSince(stableSince!) >= 0.3
+        }, object: nil)
+        guard XCTWaiter.wait(for: [settled], timeout: 5) == .completed else {
+            XCTFail("Unstable tap target: \(label)")
+            return
+        }
+        // Use the settled screen point: resolving a WebKit element coordinate can scroll again.
+        let frame = element.frame
+        let origin = app.frame.origin
+        let point = CGVector(dx: frame.minX + frame.width * normalizedOffset.dx - origin.x,
+                             dy: frame.minY + frame.height * normalizedOffset.dy - origin.y)
+        print("QA tap \(label): frame=\(frame), screenOffset=\(point)")
+        app.coordinate(withNormalizedOffset: .zero).withOffset(point).tap()
         #endif
     }
 
@@ -115,6 +151,27 @@ final class AppStoreUITests: XCTestCase {
             format: "label == %@", "Rozdział \(position) z \(count)"
         )).firstMatch
         XCTAssertTrue(progress.waitForExistence(timeout: 15), app.debugDescription)
+    }
+
+    private func returnToFirstChapter(of count: Int) {
+        for _ in 0..<count {
+            let progress = app.descendants(matching: .any).matching(NSPredicate(
+                format: "label BEGINSWITH %@ AND label ENDSWITH %@", "Rozdział ", " z \(count)"
+            )).firstMatch
+            guard progress.waitForExistence(timeout: 15),
+                  let position = Int(progress.label.split(separator: " ").dropFirst().first ?? ""),
+                  (1...count).contains(position) else {
+                XCTFail("Missing chapter position: \(app.debugDescription)")
+                return
+            }
+            if position == 1 {
+                XCTAssertFalse(button("Poprzedni").isEnabled)
+                return
+            }
+            tap("Poprzedni")
+            assertChapter(position - 1, of: count)
+        }
+        XCTFail("Did not reach the first chapter")
     }
 
     private func capture(_ name: String, fullScreen: Bool = false) {
@@ -220,7 +277,11 @@ final class AppStoreUITests: XCTestCase {
             XCTAssertTrue(done.waitForExistence(timeout: 15), app.debugDescription + springboard.debugDescription)
             capture("qa-gallery-\(attempt)")
             let photos = app.scrollViews.buttons
-            let photo = attempt == 1 ? photos.firstMatch : photos.element(boundBy: photos.count - 1)
+            // Reviewed seeded galleries: iPhone fixtures bracket six stock photos; iPad fixtures follow them.
+            // Photo metadata dates differ, so import order is not a reliable selection rule.
+            XCTAssertEqual(photos.count, 8, "Use the reviewed isolated gallery with six stock photos and two cloud fixtures")
+            let firstFixture = app.frame.width < 641 ? 0 : photos.count - 2
+            let photo = photos.element(boundBy: attempt == 1 ? firstFixture : photos.count - 1)
             XCTAssertTrue(photo.waitForExistence(timeout: 10), app.debugDescription)
             photo.tap()
             XCTAssertTrue(done.isEnabled)
@@ -233,8 +294,30 @@ final class AppStoreUITests: XCTestCase {
             tap("Zaznacz proponowany fragment 1")
             XCTAssertEqual(proposal.value as? String, "1")
             if attempt == 2 {
-                tap("Wskaż miejsce na zdjęciu; strzałki przesuwają wybór")
+                let surface = button("Wskaż miejsce na zdjęciu; strzałki przesuwają wybór")
+                let markers = app.descendants(matching: .any).matching(NSPredicate(
+                    format: "(elementType == %d OR elementType == %d) AND label BEGINSWITH %@",
+                    XCUIElement.ElementType.button.rawValue, XCUIElement.ElementType.switch.rawValue,
+                    "Zaznacz proponowany fragment"
+                )).allElementsBoundByIndex.map { $0.frame.insetBy(dx: -8, dy: -8) }
+                // The center can be covered by a proposal marker: touch the photo itself.
+                let candidates = [0.25, 0.5, 0.75].flatMap { x in
+                    [0.25, 0.5, 0.75].map { y in CGVector(dx: x, dy: y) }
+                }
+                guard let point = candidates.first(where: { offset in
+                    let p = CGPoint(x: surface.frame.minX + surface.frame.width * offset.dx,
+                                    y: surface.frame.minY + surface.frame.height * offset.dy)
+                    return app.frame.insetBy(dx: 8, dy: 8).contains(p) && !markers.contains { $0.contains(p) }
+                }) else {
+                    XCTFail("No unobscured point on the photo for manual selection")
+                    return
+                }
+                tapElement(surface, label: "Manual photo selection outside proposal markers", normalizedOffset: point)
+                XCTAssertTrue(button("Więcej kontekstu").waitForExistence(timeout: 15), app.debugDescription)
+                XCTAssertEqual(proposal.value as? String, "0")
                 tap("Więcej kontekstu")
+                XCTAssertEqual(button("Więcej kontekstu").value as? String, "1")
+                capture("qa-manual-photo-context")
             }
             tap("Sprawdź zaznaczony fragment")
             let details = button("Szczegóły analizy i jej ograniczenia")
@@ -320,23 +403,23 @@ final class AppStoreUITests: XCTestCase {
         guard app.frame.width < 641 else { throw XCTSkip("Compact phone only") }
         tap("Pełne lekcje")
         tap("Chmury w METAR i TAF", contains: true)
-        for _ in 0..<6 {
-            if !button("Poprzedni").isEnabled { break }
-            tap("Poprzedni")
-        }
+        XCTAssertTrue(button("Poprzedni").waitForExistence(timeout: 15), app.debugDescription)
+        returnToFirstChapter(of: 7)
         assertChapter(1, of: 7)
-        for _ in 0..<6 { tap("Następny") }
+        for position in 2...7 {
+            tap("Następny")
+            assertChapter(position, of: 7)
+        }
         XCTAssertTrue(visibleText("Czego kod nie mówi"))
         capture("qa-lesson-last-chapter")
         tap("Ścieżka nauki")
         tap("Czytanie atmosfery w pionie", contains: true)
-        for _ in 0..<5 {
-            if !button("Poprzedni").isEnabled { break }
-            tap("Poprzedni")
-        }
+        XCTAssertTrue(button("Poprzedni").waitForExistence(timeout: 15), app.debugDescription)
+        returnToFirstChapter(of: 6)
         assertChapter(1, of: 6)
         XCTAssertTrue(visibleText("Trzy różne pytania o wysokość"))
         tap("Następny")
+        assertChapter(2, of: 6)
         capture("qa-lesson-shorter-route")
         app.terminate()
         app.launch()
@@ -365,16 +448,20 @@ final class AppStoreUITests: XCTestCase {
     }
 
     func test10BundledWorkshopAndLessonRoundTrip() {
+        let compactLesson = app.frame.width < 641
         tap("Dziś")
         tap("Pełne lekcje")
         tap("Dlaczego chmura powstaje", contains: true)
-        for _ in 0..<5 {
-            if !button("Poprzedni").isEnabled { break }
-            tap("Poprzedni")
+        if compactLesson {
+            XCTAssertTrue(button("Poprzedni").waitForExistence(timeout: 15), app.debugDescription)
+            returnToFirstChapter(of: 5)
+            assertChapter(1, of: 5)
+            tap("Następny")
+            assertChapter(2, of: 5)
+        } else {
+            XCTAssertTrue(visibleText("Unoszenie i chłodzenie adiabatyczne"))
+            XCTAssertFalse(button("Następny").exists)
         }
-        assertChapter(1, of: 5)
-        tap("Następny")
-        assertChapter(2, of: 5)
         let workshop = app.links.matching(NSPredicate(format: "label CONTAINS %@", "Kiedy pojawi się chmura?")).firstMatch
         tapElement(workshop, label: "Pracownia kondensacji w paczce aplikacji")
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
@@ -389,7 +476,7 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertFalse(button("Zwiększ: Uniesienie powietrza").exists)
         capture("native-bundled-workshop-independent-case")
         tapElement(app.links["Lekcja"].firstMatch, label: "Powrót z pracowni do lekcji")
-        assertChapter(2, of: 5)
+        if compactLesson { assertChapter(2, of: 5) }
         XCTAssertTrue(visibleText("Unoszenie i chłodzenie adiabatyczne"))
         capture("native-workshop-restores-lesson-chapter")
         app.terminate()
@@ -397,7 +484,8 @@ final class AppStoreUITests: XCTestCase {
         tap("Dziś")
         tap("Pełne lekcje")
         tap("Dlaczego chmura powstaje", contains: true)
-        assertChapter(2, of: 5)
+        if compactLesson { assertChapter(2, of: 5) }
+        else { XCTAssertTrue(visibleText("Unoszenie i chłodzenie adiabatyczne")) }
     }
 
     func test11EveryBundledWorkshopOpensAndReturnsToCatalog() {
