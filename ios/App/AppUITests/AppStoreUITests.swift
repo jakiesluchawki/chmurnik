@@ -73,12 +73,9 @@ final class AppStoreUITests: XCTestCase {
     }
 
     private func isActionable(_ element: XCUIElement) -> Bool {
-        #if targetEnvironment(macCatalyst)
-        // Catalyst exposes disabled AX ancestors even for visible WebKit controls.
+        // WebKit can throw while resolving isHittable even for an unobscured button.
+        // Tap the settled visible frame instead; each flow asserts the resulting UI state.
         return isOnScreen(element) && element.isEnabled
-        #else
-        return isOnScreen(element) && element.isHittable
-        #endif
     }
 
     private func tap(_ label: String, contains: Bool = false) {

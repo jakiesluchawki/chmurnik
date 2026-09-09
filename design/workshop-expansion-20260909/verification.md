@@ -2,6 +2,61 @@
 
 Date: 2026-09-09. Task: lore-0043. Release status: not yet submitted.
 
+## Photo Automation Correction, 17:00 CEST
+
+- The r8 failure recording at 48 seconds shows an unobscured camera button
+  inside the viewport. The test failed while querying WebKit isHittable,
+  before issuing its tap, not on a photo-analysis or persistence assertion.
+  Evidence: build/workshop-native-20260909/iphone-r8-photo-failure/frame-48.png.
+- Shared test target selection now checks visible bounds and enabled state,
+  retaining frame stability, physical coordinate taps and all resulting-state
+  assertions. It no longer invokes the failing WebKit activation-point query.
+  App source, model, public assets, native permissions and fixtures are unchanged.
+- Targeted locked photo r9 passed: 1/1, zero failures/skips, 193.225 seconds.
+  Both cloud fixtures, native gallery, region selection, manual context size,
+  inference and persistent observations after relaunch are still exercised.
+  Result: build/workshop-native-20260909/iphone-photo-r9.xcresult.
+- Full locked r10 completed at 17:18 CEST: 5/5, zero failures/skips. Tests
+  03/06/08/10/11 all passed, including all fourteen workshop loads/returns.
+  The photo flow therefore passed twice consecutively after the correction.
+  Result: build/workshop-native-20260909/iphone-locked-r10.xcresult;
+  log: /tmp/chmurnik-native-iphone-locked-r10.log.
+- The actual result satisfies assertXCTest for iPhone. The invocation retains
+  both package-lock flags, and actual SourcePackages state verifies camera
+  1.0.4. iphone-r10-final-bundle.json confirms all 132 app public files match
+  root dist. This is the QA 1.2 (1) bundle, not a 1.2.1 distribution archive.
+- Release receipt preparation now expects r10. The previous snapshot remains
+  stale; no receipt, new archive, Apple upload or submission was produced by
+  this test repair. Private release-gate fixtures passed 14/14.
+
+## Access And Owner Upload Check, 16:09 CEST
+
+- An approved escalated read with the existing ASC API key succeeded at
+  14:05:51 UTC. iOS 1.2.1 remains PREPARE_FOR_SUBMISSION with build null;
+  iOS and macOS 1.2 remain READY_FOR_SALE. Browser login is not required for
+  this API access. No account/security change or upload was performed.
+- After the owner's CyberFolks upload, all 131 public files in root dist
+  were fetched from chmurnik.cloud and matched byte for byte at 14:09:49 UTC.
+  The remaining dist file, .htaccess, returned 403; its contents cannot be
+  verified through public HTTP. This is not a missing frontend asset.
+- Fresh screenshot GET confirms the five already uploaded 0043 iPhone files
+  are COMPLETE with the expected checksums. The draft still includes five
+  old iPhone and four old iPad screenshots. Final sets are not ready; no
+  duplicate upload or draft-asset deletion was attempted.
+- Read-only identity enumeration in the approved SecPhone keychain found
+  the expected Apple Distribution identity, but no installer identity.
+  No unlock, key import, keychain search-list or ACL change was made.
+- Locked iPhone r8 finished at 16:25 CEST: 4/5 passed, zero skipped. Tests
+  06/08/10/11 passed, including per-step chapter transitions and all fourteen
+  workshop routes/returns. Test03 failed on XCTest's invalid activation point
+  for the camera button before photo selection. This is not passing release
+  evidence. Log: /tmp/chmurnik-native-iphone-locked-r8.log; authoritative
+  bundle: build/workshop-native-20260909/iphone-locked-r8.xcresult.
+- Apple GET also confirms both existing provisioning profiles ACTIVE and the
+  approved distribution certificate valid until 2027-08-10. Installer
+  certificates exist in Apple, but their presence does not supply a locally
+  usable private key in SecPhone. No signing operation was attempted.
+
 ## Contributors
 
 Four agents participated: the coordinating implementation/QA agent and three
@@ -58,6 +113,16 @@ performed browser and native verification. Reports are in this directory.
 
 ### Later App-Session Verification
 
+- Subsequent goal continuation revalidated the remaining blocker. Full locked
+  r7 exited 74 before tests with the same denied Clang/SwiftPM cache writes;
+  `/tmp/chmurnik-native-iphone-locked-r7.log` and its xcresult are preserved.
+  Exec session 91720 is terminal. Fresh ASC GET again failed ENOTFOUND.
+  The same execution/access blocker recurred across the CLI-resume turn,
+  app-session turn and this continuation (r4, r6, r7; r5's temporary access
+  and its real outcomes remain separately recorded). Goal work is at an
+  external-access impasse; no further identical retry or weaker QA gate.
+  Next full result path, after access actually changes: iphone-locked-r8.
+  Neither the app build nor the corrected lesson harness is release-verified.
 - After the explicit CLI-to-app handoff, simctl could read device state again.
   The CHMURNIK phone was Shutdown; the unrelated ZabHop simulator was left
   untouched. No parallel copy of this task was started.

@@ -15,6 +15,37 @@ history:
 
 # Weather Playground Preview
 
+## Photo-Test Repair, 17:00 CEST
+
+Reviewed r8 video: the camera button is unobscured; XCTest fails while
+querying its WebKit activation point before tapping. Target selection now
+uses visible bounds and enabled state, retaining stable physical taps and
+every resulting-state assertion. No app/model/fixture or permission change.
+Targeted locked photo r9 passed 1/1 (193.225 seconds), including manual context,
+local inference and two observations persisted across relaunch. Full locked
+r10 subsequently passed 5/5 at 17:18 CEST: 03/06/08/10/11, zero failures/skips,
+all fourteen workshop loads/returns. Actual iPhone result and dependency gate
+pass, camera remains 1.0.4, and 132 packaged files match dist. Receipt preparation
+expects r10. No release snapshot/receipt/archive/upload was created here;
+the previous snapshot still needs replacement after the completed QA repair.
+
+## Latest Resume: API And Owner Production Upload
+
+2026-09-09, 16:09 CEST: approved execution access restored the existing ASC
+API-key read. Browser login is unnecessary. Fresh Apple state: iOS 1.2.1
+PREPARE_FOR_SUBMISSION, build null; both public platforms remain 1.2.
+All 131 public dist files match the owner's chmurnik.cloud upload byte for
+byte; .htaccess is HTTP-protected and not content-verified. Five new iPhone
+screenshots are confirmed COMPLETE in Apple, but final draft sets remain
+unfinished. No duplicate upload, deletion or security change was made.
+SecPhone has the approved distribution identity but no installer identity.
+Locked iPhone r8 finished at 16:25 CEST with 4/5: 06/08/10/11 passed;
+test03 failed on an invalid XCTest camera-button activation point before
+photo selection. The run is not passed release evidence. All execution
+handles from this resume are terminal; no archive/upload/submission occurred.
+See design/workshop-expansion-20260909/verification.md for current evidence;
+historical blocked-access notes below are not the current API diagnosis.
+
 ## Scope
 
 Implement the first two approved experiments: coastal differential heating /
@@ -91,6 +122,16 @@ to native integration or production domain without that acceptance.
 ## Future Work
 
 ### Latest Goal: Complete And Release Autonomously
+
+External-access impasse revalidated on the subsequent goal continuation:
+locked r7 exited 74 before tests, with the same Clang/SwiftPM cache write
+denials as r4/r6. Its exec session 91720 is terminal. Fresh ASC GET again
+failed ENOTFOUND. This is the third consecutive goal turn encountering the
+remaining execution/access blocker; do not keep retrying unchanged access.
+The goal is being marked blocked, not complete. No upload or security change.
+After an external access change, use fresh full r8 evidence and revalidate
+Apple state before any upload. The committed candidate is b8244d5; the
+private snapshot is stale and all historical failed results remain intact.
 
 Latest app-session checkpoint, 2026-09-09: actual locked iPhone r5 finished
 4/5, with photo/manual context/local inference/save/relaunch PASS plus
