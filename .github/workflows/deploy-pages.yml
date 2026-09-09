@@ -34,6 +34,7 @@ jobs:
       - name: Update the permanent social media library
         run: |
           node social/2026-09-08-pogoda/build.mjs
+          node social/2026-09-09-pracownie/build.mjs
           node social/library/build.mjs
       - run: npm run build:pages
       - name: Add the separate launch media gallery (not bundled in iOS)
@@ -48,6 +49,8 @@ jobs:
         run: cp -R social/library/site dist/assetySM
       - name: Add weather-preview social copy for owner approval
         run: cp -R social/2026-09-08-pogoda/site dist/premiera/pogoda
+      - name: Add complete workshop release copy for owner approval
+        run: cp -R social/2026-09-09-pracownie/site dist/premiera/pracownie
       - name: Add the new static story pack and original plus 4K wallpapers
         # Full-resolution downloads live in the matching GitHub Release.
         run: rsync -a --exclude=/tapety/ --exclude=/oryginaly/ social/2026-09-07-niebo/site/ dist/premiera/niebo/

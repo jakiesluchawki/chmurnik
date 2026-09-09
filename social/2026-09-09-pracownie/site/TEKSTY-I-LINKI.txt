@@ -1,0 +1,88 @@
+CHMURNIK: Niebo ma swoje powody.
+TEKSTY DO AKCEPTACJI, 09.09.2026
+
+Pracownie działają już na chmurnik.cloud. Aktualizacja 1.2.1 aplikacji na iPhone, iPad i Mac została wysłana do recenzji Apple. Oba zgłoszenia mają status WAITING_FOR_REVIEW; nie oznacza to jeszcze dostępności nowej wersji w sklepie.
+
+WWW: https://chmurnik.cloud/
+Pracownie: https://chmurnik.cloud/pogoda-preview/
+App Store (nie potwierdza dostępności 1.2.1): https://apps.apple.com/pl/app/id6782159027
+Biblioteka: https://jakiesluchawki.github.io/chmurnik/assetySM/
+
+STORY / SLAJD 1: Niebo ma swoje powody.
+Coraz częściej, patrząc na chmury, chciałem rozumieć więcej niż ich nazwy. Dlaczego pojawiają się właśnie tutaj? Co je unosi i dokąd płyną? W CHMURNIKU jest już 14 pracowni, w których można przyjrzeć się tym zależnościom i samemu coś sprawdzić.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 2: Zanim pojawi się chmura
+Unosisz porcję powietrza i obserwujesz, jak spada jej temperatura. Potem zmieniasz wilgotność początkową i porównujesz obie próby. W tym prostym doświadczeniu widać, dlaczego chmura raz pojawia się niżej, a innym razem trzeba unieść powietrze znacznie wyżej.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 3: Wieczór nad wodą ma swoją fizykę
+Ląd i woda nie nagrzewają się ani nie stygną tak samo. W pracowni bryzy przesuwasz porę dnia i śledzisz, co dzieje się z obiegiem powietrza. W osobnym doświadczeniu schładzasz wilgotne powietrze przy ziemi i sprawdzasz, kiedy zaczyna powstawać mgła.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 4: Nieruchoma chmura też potrafi zmylić
+Porównujesz kolejne obrazy nieba i śledzisz ruch chmur na dwóch poziomach. A potem trafiasz na chmurę falową, której zarys pozostaje w miejscu, choć powietrze przez nią przepływa. Nie wystarczy przesunąć strzałki. Trzeba znaleźć ślad, który uzasadnia odpowiedź.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 5: METAR zaczyna coś znaczyć
+Podstawa najniższej chmury nie zawsze jest pułapem. W pracowni zmieniasz szkoleniowy raport i widzisz, co ta różnica oznacza. METAR opisuje obserwację, a TAF jest prognozą. Skróty przestają być ciągiem znaków, kiedy możesz połączyć je z obrazem nieba i czasem.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 6: Atmosferę można czytać od środka
+Sondaż nie zaczyna się już od wykresu, który trzeba rozumieć na wejściu. Najpierw wybierasz jeden poziom i porównujesz temperaturę z punktem rosy. Dopiero potem dochodzą kolejne zależności i pochylone osie Skew-T. Ten sam profil, coraz więcej zrozumienia.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 7: Nie wszystko w pogodzie jest łagodne
+Fronty, oblodzenie, turbulencje i burze mają swoje osobne pracownie. Porównujesz warunki i obserwujesz mechanizmy, zamiast oglądać samą listę zagrożeń. To uproszczone przykłady do nauki, nie prognoza ani odpowiedź na pytanie, czy można bezpiecznie lecieć lub wypłynąć.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 8: Najpierw pomyśl, potem sprawdź
+Przewodnik pomaga zauważyć zależność. W samodzielnej próbie dostajesz inny przypadek i musisz wykorzystać to, co zrozumiałeś. Zapisujesz przewidywanie, oglądasz wynik i uzasadniasz odpowiedź. Powtórka oraz skorzystanie z pomocy są odróżnione od pierwszej próby.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 9: Mniej szukania, więcej nieba
+Pracownie są połączone z pełnymi lekcjami w obie strony. W aktualizacji aplikacji Warstwy mają własne miejsce w nawigacji, a wiatr, METAR i mapy nie chowają się w atlasie. Codzienna zagadka zachowuje nazwę chmury dla siebie, dopóki nie odsłonisz odpowiedzi.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+STORY / SLAJD 10: Zajrzyj przez chmurnik.cloud
+Nowe pracownie możesz już otworzyć w przeglądarce, również na telefonie z Androidem. Te same doświadczenia przygotowaliśmy dla aplikacji na iPhone, iPad i Mac; aktualizacja została wysłana do recenzji Apple. Na stronie możesz zacząć od razu, bez logowania.
+Link do naklejki: https://chmurnik.cloud/pogoda-preview/
+
+INSTAGRAM
+Niebo ma swoje powody. W CHMURNIKU można teraz sprawdzić kilka z nich samodzielnie.
+
+Przygotowaliśmy 14 pracowni połączonych z pełnymi lekcjami. Unosisz powietrze i obserwujesz powstawanie chmury, porównujesz bryzę w dzień i w nocy, śledzisz ruch chmur, czytasz szkoleniowy METAR i krok po kroku poznajesz sondaż atmosfery. Są też doświadczenia o frontach, oblodzeniu, turbulencjach i burzach.
+
+Zależało mi, żeby nie kończyło się na przesuwaniu suwaka. Najpierw przewidujesz efekt, potem go sprawdzasz, a w samodzielnej próbie dostajesz nowy przypadek.
+
+WWW jest już zaktualizowane: chmurnik.cloud. To także droga dla osób z Androidem. Nowa wersja aplikacji na iPhone, iPad i Mac wymaga jeszcze zakończenia recenzji Apple; nie jest to ogłoszenie jej dostępności w sklepie.
+
+Pracownie uczą na uproszczonych przykładach. Nie są prognozą ani oceną bezpieczeństwa lotu lub żeglugi.
+
+#CHMURNIK #meteorologia #chmury #nauka
+
+FACEBOOK
+Niebo ma swoje powody. Im dłużej pracuję nad CHMURNIKIEM, tym bardziej chcę, żeby pomagał je rozumieć, a nie tylko podawał nazwy chmur.
+
+Na chmurnik.cloud działa już 14 pracowni połączonych z pełnymi lekcjami. Można unieść porcję powietrza i zobaczyć, kiedy pojawi się chmura, prześledzić bryzę nad wodą, porównać ruch chmur na różnych poziomach albo rozszyfrować szkoleniowy METAR. Sondaż atmosfery poznajemy stopniowo, bez rzucania się od razu na trudny wykres. Osobne doświadczenia pokazują też mechanizmy oblodzenia, turbulencji i burz.
+
+Przewodnik pomaga zauważyć zależność, a samodzielna próba sprawdza jej zrozumienie na innym przykładzie. Nie chodzi o przepisanie tych samych liczb.
+
+Można wejść bez logowania, z komputera albo telefonu, także z Androidem. Te same pracownie przygotowaliśmy w aktualizacji aplikacji na iPhone, iPad i Mac. Tam poprawiliśmy również dostęp do Warstw i narzędzi oraz ukrywanie odpowiedzi w codziennej zagadce. Na dostępność nowej wersji w App Store trzeba jeszcze poczekać na Apple.
+
+To narzędzia do nauki, nie prognoza ani ocena bezpieczeństwa lotu lub żeglugi.
+
+Zajrzyj: https://chmurnik.cloud/
+
+LINKEDIN
+Niebo ma swoje powody. Dobra aplikacja edukacyjna powinna pomóc je zrozumieć, nie tylko ładnie o nich opowiedzieć.
+
+Po uwagach osób korzystających z CHMURNIKA przebudowaliśmy część poświęconą nauce. Na stronie działa już 14 pracowni: od powstawania chmur i bryzy, przez obserwację ruchu chmur oraz METAR/TAF, po sondaż atmosfery i mechanizmy zagrożeń pogodowych.
+
+Najważniejsza zmiana nie polega na liczbie ilustracji. Przewodnik prowadzi przez obserwację zależności, a samodzielna próba wymaga wykorzystania jej w nowym przypadku. Pierwsze odpowiedzi, pomoc i powtórki są rozróżniane. Lekcje prowadzą do doświadczeń, a doświadczenia pozwalają wrócić do wyjaśnienia.
+
+Zmiany obejmują WWW oraz przygotowaną aktualizację aplikacji na iPhone, iPad i Mac. Strona jest już dostępna, także na telefonach z Androidem. Wersja 1.2.1 aplikacji wymaga jeszcze zakończenia procesu Apple. Nie ogłaszamy nowego modelu rozpoznawania chmur: to aktualizacja nauki i obsługi.
+
+Pracownie są opisanymi uproszczeniami edukacyjnymi, nie prognozą ani oceną bezpieczeństwa. Ich skuteczność dydaktyczną nadal warto sprawdzać z ludźmi, nie utożsamiać jej z przejściem testów oprogramowania.
+
+https://chmurnik.cloud/
