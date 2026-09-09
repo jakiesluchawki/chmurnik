@@ -1,0 +1,11 @@
+Niebo ma swoje powody. Dobra aplikacja edukacyjna powinna pomóc je zrozumieć, nie tylko ładnie o nich opowiedzieć.
+
+Po uwagach osób korzystających z CHMURNIKA przebudowaliśmy część poświęconą nauce. Na stronie działa już 14 pracowni: od powstawania chmur i bryzy, przez obserwację ruchu chmur oraz METAR/TAF, po sondaż atmosfery i mechanizmy zagrożeń pogodowych.
+
+Najważniejsza zmiana nie polega na liczbie ilustracji. Przewodnik prowadzi przez obserwację zależności, a samodzielna próba wymaga wykorzystania jej w nowym przypadku. Pierwsze odpowiedzi, pomoc i powtórki są rozróżniane. Lekcje prowadzą do doświadczeń, a doświadczenia pozwalają wrócić do wyjaśnienia.
+
+Zmiany obejmują WWW oraz przygotowaną aktualizację aplikacji na iPhone, iPad i Mac. Strona jest już dostępna, także na telefonach z Androidem. Wersja 1.2.1 aplikacji wymaga jeszcze zakończenia procesu Apple. Nie ogłaszamy nowego modelu rozpoznawania chmur: to aktualizacja nauki i obsługi.
+
+Pracownie są opisanymi uproszczeniami edukacyjnymi, nie prognozą ani oceną bezpieczeństwa. Ich skuteczność dydaktyczną nadal warto sprawdzać z ludźmi, nie utożsamiać jej z przejściem testów oprogramowania.
+
+https://chmurnik.cloud/

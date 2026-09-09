@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copy);const text=target.value||target.textContent;try{await navigator.clipboard.writeText(text);button.textContent='Skopiowano';}catch{button.textContent='Zaznacz tekst poniżej i skopiuj';}}));

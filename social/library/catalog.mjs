@@ -1,9 +1,18 @@
 export const packs = [
   {
+    id: 'pracownie', source: '2026-09-09-pracownie', date: '2026-09-09',
+    dateLabel: '9 września 2026', status: 'Nowe teksty do akceptacji · WWW i aplikacje',
+    title: 'Niebo ma swoje powody.',
+    description: '14 pracowni, nauka przez obserwację i poprawiona obsługa. Pełne teksty 10 Stories i karuzeli oraz postów na Instagram, Facebook i LinkedIn. WWW działa; dostępność aktualizacji aplikacji zależy od Apple. Finalne PNG i PDF po akceptacji tekstów.',
+    base: '../premiera/pracownie/', preview: 'assets/cover.webp',
+    formats: ['10 Stories · teksty', 'Karuzela · teksty', 'Instagram', 'Facebook', 'LinkedIn'],
+    downloads: [['Wszystkie teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'], ['Pełna paczka tekstów', 'CHMURNIK-PRACOWNIE-TEKSTY.zip', 'zip']],
+  },
+  {
     id: 'pogoda', source: '2026-09-08-pogoda', date: '2026-09-08',
-    dateLabel: '8 września 2026', status: 'Nowa pracownia · teksty do akceptacji',
+    dateLabel: '8 września 2026', status: 'Archiwum · wcześniejsza zapowiedź', archived: true,
     title: 'Jak powstaje pogoda.',
-    description: 'Dwa interaktywne doświadczenia do wypróbowania. Pełne teksty 5 Stories i karuzeli oraz postów na Instagram, Facebook i LinkedIn. Finalne plansze PNG i PDF po akceptacji tekstów; to zapowiedź podglądu, nie aktualizacja App Store.',
+    description: 'Wcześniejsza zapowiedź dwóch doświadczeń, zastąpiona pakietem o 14 pracowniach powyżej. Zachowane pełne teksty 5 Stories i postów; nie jest to aktualny opis wydania.',
     base: '../premiera/pogoda/', preview: 'assets/coast.webp',
     formats: ['Podgląd pracowni', 'Teksty Stories', 'Instagram', 'Facebook', 'LinkedIn'],
     downloads: [['Wszystkie teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'], ['Robocza paczka tekstów', 'CHMURNIK-POGODA-TEKSTY.zip', 'zip']],
