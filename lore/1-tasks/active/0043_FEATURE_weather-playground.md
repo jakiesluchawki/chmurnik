@@ -15,6 +15,35 @@ history:
 
 # Weather Playground Preview
 
+## Release Checkpoint, 20:30 CEST
+
+iOS/iPadOS 1.2.1, build 20260909165644, is actually submitted and
+WAITING_FOR_REVIEW. The single binary upload completed successfully and Apple
+processed the build as VALID. This is not an already published store update.
+Do not repeat the upload or review submission.
+
+The Mac Catalyst package has passed Apple validation after correcting one
+CodeResources file mode from 0600 to 0644 in a separate archive copy. The
+original tested archive and the failed package are preserved; no app bytes,
+model weights, version or build number changed. The actual export passed
+signature, profile, SDK-origin, payload, BOM-permission and frozen-QA checks.
+Mac native store screenshots and actual upload/submission remain unfinished.
+Private release receipts retain full proof; no credentials belong in Git.
+
+Existing QA: iPhone locked-r10 5/5, iPad locked-r2 4/4, Node 925/925, native
+Mac CUA journeys including all fourteen workshops and local photo persistence.
+Mac XCTest initialization did not pass; do not describe CUA as XCTest.
+The owner-uploaded CyberFolks package matched all 131 public files; the
+protected .htaccess was not downloaded. No second production upload is needed.
+
+Owner requested a new social pack about the recent WWW and app changes,
+reachable from the permanent /assetySM/ library. Copy approval still precedes
+visual production, and availability must be explicit for each platform. This
+release does not introduce a more accurate cloud classifier. Preserve the
+Kingston worktree, push reviewed commits and create an independent backup on
+the owner's PROME Synology share. PROME is not the MacBook Pro. Do not overwrite
+migration archives, remove uncommitted files or synchronize other projects.
+
 ## Photo-Test Repair, 17:00 CEST
 
 Reviewed r8 video: the camera button is unobscured; XCTest fails while
