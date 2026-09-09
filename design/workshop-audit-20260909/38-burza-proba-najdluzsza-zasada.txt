@@ -1,0 +1,43 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Burza" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się" [pressed]
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Zadanie na nowych danych":
+    - paragraph: Pytanie 3 z 3 · nowy przypadek
+    - heading "Zestaw warunków początkowych" [level=2]
+    - paragraph: Próba z pomocą
+    - generic "Wróć do danych zadania"
+    - group "Która zasada uzasadnia Twoją decyzję?":
+      - generic: Która zasada uzasadnia Twoją decyzję?
+      - radio "Chwiejność zastępuje każdy brakujący składnik rozwoju burzy."
+      - generic: Chwiejność zastępuje każdy brakujący składnik rozwoju burzy.
+      - radio "Składniki warunkują możliwość inicjacji, a stadium opisuje przepływy już rozwiniętej komórki."
+      - generic: Składniki warunkują możliwość inicjacji, a stadium opisuje przepływy już rozwiniętej komórki.
+      - radio "Komplet składników oznacza dominację unoszenia w każdym stadium."
+      - generic: Komplet składników oznacza dominację unoszenia w każdym stadium.
+    - button "Wstecz":
+      - text: Wstecz
+    - button "Zatwierdź odpowiedzi" [disabled]:
+      - text: Zatwierdź odpowiedzi
+    - button "Przypomnij zasadę":
+      - text: Przypomnij zasadę
+    - button "Nie wiem, pokaż wyjaśnienie"
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Co pozwala rozwinąć się burzy?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Co pozwala rozwinąć się burzy?"
+  - generic "Źródła i granice tego ćwiczenia"

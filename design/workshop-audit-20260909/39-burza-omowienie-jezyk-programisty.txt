@@ -1,0 +1,44 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Burza" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się" [pressed]
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Zadanie na nowych danych":
+    - paragraph: Omówienie odpowiedzi · nowy przypadek
+    - heading "Zestaw warunków początkowych" [level=2]
+    - paragraph: Próba z pomocą
+    - generic "Wróć do danych zadania"
+    - heading "Poprawnie, z pomocą" [level=3]
+    - paragraph: "Dla dry/unstable/lift helper daje possible=false. Po samej zmianie dry na wet daje true: jest komplet trzech umownych składników. True oznacza możliwość w schemacie, nie gwarancję rozwoju, czas wystąpienia ani prognozę burzy."
+    - list:
+      - generic "Czy model ma komplet składników inicjacji? Poprawnie":
+        - text: Czy model ma komplet składników inicjacji?
+        - generic: Poprawnie
+      - generic "Która pojedyncza zmiana uzupełnia zestaw w modelu? Poprawnie":
+        - text: Która pojedyncza zmiana uzupełnia zestaw w modelu?
+        - generic: Poprawnie
+      - generic "Która zasada uzasadnia Twoją decyzję? Poprawnie":
+        - text: Która zasada uzasadnia Twoją decyzję?
+        - generic: Poprawnie
+    - paragraph: To wynik tego przypadku, nie ocena przygotowania do lotu ani potwierdzenie opanowania całego tematu. Pierwsza zatwierdzona odpowiedź pozostaje zapisana.
+    - button "Rozwiąż inny przypadek":
+      - text: Rozwiąż inny przypadek
+    - generic "Źródła i zakres wyjaśnienia"
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Co pozwala rozwinąć się burzy?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Co pozwala rozwinąć się burzy?"
+  - generic "Źródła i granice tego ćwiczenia"

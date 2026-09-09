@@ -90,6 +90,44 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner Follow-up: Workshop Quality Audit
+
+On 2026-09-09 the owner rejected the storm experience and requested an audit
+of every exercise. The current preview does not meet the workshop-quality
+bar. Earlier passing functional checks are not evidence of learning or owner
+acceptance. Preserve the historical verification records below, but do not
+interpret their completed checkboxes as acceptance of the expanded ALL14 UX.
+
+- [x] Inspect all 14 public activities at 390x700 and 1365x900, operate at
+  least one meaningful control in each, and capture 39 fresh screenshots.
+- [x] Complete two independent code audits covering 49 guide steps and
+  28 assessment cases; combine their findings with browser evidence.
+- [x] Save the owner-facing report and explicit limitations in
+  `design/workshop-audit-20260909/AUDYT.md`.
+- [ ] Correct misleading height geometry, hidden task evidence, implementation
+  jargon in learner feedback, and assessment answer-pattern leaks.
+- [ ] Redesign storm initiation, turbulence and sounding around observable
+  evidence and learner decisions; validate one complete pattern before reuse.
+- [ ] Improve remaining activities with topic-appropriate observation, data
+  interpretation or causal interaction; retain working model relationships.
+
+Confirmed: the height line is offset by its label block, reversing the
+1500/1800m relationship on the short mobile scene; Front hides both compared
+temperatures; METAR hides its report; Sounding adds wind only in the readout.
+Storm is a three-condition AND plus a manually selected stage illustration.
+All 28 reason questions have a uniquely longest correct option, and the first
+question in all 14 A cases has the correct option in position two. Storm
+feedback exposes dry/unstable/lift, helper and possible=false to learners.
+
+The audit used 3 agents total: lead (live browser evidence/synthesis), Bernoulli
+(model-to-scene mechanics), Kierkegaard (learning transfer/assessment).
+Both delegates completed their reports and were closed. This audit changes
+documentation only: no application patch, deployment, new artwork or native
+build. Physical-device and learner testing remain unperformed, not passed.
+Keep the Pages-only review gate; do not publish to cloud or Apple, or report
+these findings as fixes. Necessary evidence must remain beside the current
+task, and scientific geometry must not depend on label dimensions.
+
 ### Owner Follow-up: Transfer And Focused Mobile Practice
 
 The owner rejected replaying tutorial values as independent practice and the

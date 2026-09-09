@@ -1,0 +1,45 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Wysokość" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Nad morzem czy nad ziemią?":
+    - paragraph: Krok 3 z 3
+    - heading "Wróć nad nizinę" [level=2]
+    - img "Teren 1800 metrów MSL, poziom 1500 metrów MSL. Poziom pod terenem.":
+      - generic: 0 m MSL · poziom morza
+      - generic: Teren 1800 m
+      - generic: 1500 m MSL
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Wysokość terenu MSL
+    - status: 1800 m MSL
+    - 'button "Zmniejsz: Wysokość terenu MSL"':
+    - slider "Wysokość terenu MSL": "1800"
+    - 'button "Zwiększ: Wysokość terenu MSL"':
+    - generic: "0"
+    - generic: "2000"
+    - button "Ustaw teren na 100 m":
+      - text: Ustaw teren na 100 m
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+    - button "Poprzedni krok":
+      - text: Poprzedni krok
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Nad morzem czy nad ziemią?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/lab
+    - text: "Przejdź do pełnego narzędzia: Nad morzem czy nad ziemią?"
+  - generic "Źródła i granice tego ćwiczenia"

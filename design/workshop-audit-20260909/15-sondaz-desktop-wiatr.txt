@@ -1,0 +1,70 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Sondaż" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+    - generic: Zatrzymaj ruch
+  - region "Sondaż bez zgadywania":
+    - paragraph: Krok 5 z 5
+    - heading "Na końcu dołóż wiatr" [level=2]
+    - text: Na poziomie
+    - strong: 925 hPa
+    - generic: Temperatura otoczenia
+    - strong: 9°C
+    - generic: Punkt rosy
+    - strong: 7°C
+    - generic: Unoszona porcja
+    - strong: 1°C
+    - generic "Pełny profil i osie wykresu"
+    - generic: Uproszczony Skew-T / log-p
+    - img "Wybrany poziom 925 hPa, temperatura 9 stopni. Punkt rosy 7 stopni.":
+      - generic: "1000"
+      - generic: "850"
+      - generic: "700"
+      - generic: "500"
+      - generic: "300"
+      - generic: "200"
+      - generic: "-70°"
+      - generic: "-50°"
+      - generic: "-30°"
+      - generic: "-10°"
+      - generic: 10°
+      - generic: 30°
+      - generic: hPa
+      - generic: Temperatura °C
+    - generic: Temperatura
+    - generic: Punkt rosy
+    - generic: Porcja · linia przerywana
+    - generic "Odczyt i objaśnienie sceny"
+    - group "Co czytasz":
+      - generic: Co czytasz
+      - button "Temperatura"
+      - button "Temperatura i punkt rosy"
+      - button "Dodaj unoszoną porcję"
+      - button "Dodaj wiatr" [pressed]:
+        - text: Dodaj wiatr
+    - button "Porównaj i wyjaśnij" [active]:
+      - text: Porównaj i wyjaśnij
+    - paragraph: Zmiana wykonana. Obejrzyj wynik i spróbuj go wyjaśnić, zanim przejdziesz dalej.
+    - button "Poprzedni krok":
+      - text: Poprzedni krok
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: inne profile i Skew-T"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/sounding
+    - text: "Przejdź do pełnego narzędzia: inne profile i Skew-T"
+  - generic "Źródła i granice tego ćwiczenia"

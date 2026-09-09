@@ -1,0 +1,60 @@
+- banner:
+  - link "Wróć do CHMURNIKA":
+    - /url: https://jakiesluchawki.github.io/chmurnik/
+    - img "CHMURNIK"
+  - heading "Dzień nad zatoką" [level=1]
+  - link "Wróć do pracowni":
+    - /url: "#pracownia"
+    - generic: Pracownia
+- main:
+  - group "Sposób nauki":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - region "Dzień nad zatoką":
+    - region "Przejdź do 02:00":
+      - paragraph: KROK 2 Z 3
+      - heading "Przejdź do 02:00" [level=3]
+    - paragraph: SCHEMAT EDUKACYJNY · NIE PROGNOZA
+    - img "Przekrój zatoki, godzina 02:00. Ląd 13,0 stopnia, woda 19,3 stopnia. Z lądu nad wodę przy powierzchni.":
+      - text: 02:00
+      - generic: Noc nad zatoką
+      - generic: "wyżej: powrót powietrza"
+      - generic: WODA
+      - generic: 19,3°
+      - meter
+      - generic: LĄD
+      - generic: 13,0°
+      - meter
+      - text: Z lądu nad wodę
+      - generic: przy powierzchni
+    - complementary:
+      - generic: Pora dnia
+      - status: 02:00
+      - 'button "Zmniejsz: Pora dnia"':
+      - slider "Pora dnia": "2"
+      - 'button "Zwiększ: Pora dnia"':
+      - generic: 00:00
+      - generic: 23:30
+      - button "Ustawienie gotowe" [disabled]:
+        - text: Ustawienie gotowe
+      - status:
+        - paragraph: "Nocą w naszym cyklu ląd jest chłodniejszy od wody. Obieg się odwrócił: przy powierzchni powietrze płynie z lądu nad wodę. Wyższa strzałka pokazuje gałąź powrotną, nie drugi wiatr przy ziemi."
+      - button "Wstecz":
+        - text: Wstecz
+      - button "Dalej":
+        - text: Dalej
+      - generic "Instrukcja i obserwacja"
+      - button "Przewodnik od początku":
+        - text: Przewodnik od początku
+  - link "Pełna lekcja o wietrze":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/wiatr
+    - text: Pełna lekcja o wietrze
+  - 'generic "O ćwiczeniu: źródła i ograniczenia"'
+  - generic "Inne doświadczenia pogodowe"
+- contentinfo:
+  - generic: CHMURNIK · Pracownia pogody · podgląd 09.09.2026
+  - generic: Bez logowania i przesyłania Twoich danych.
+  - link "Materiały do udostępnienia":
+    - /url: https://jakiesluchawki.github.io/chmurnik/assetySM/
+    - text: Materiały do udostępnienia

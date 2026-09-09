@@ -1,0 +1,39 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Front" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/fronty
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Front i wymuszone unoszenie":
+    - paragraph: Krok 1 z 4
+    - heading "Unieś wilgotną porcję" [level=2]
+    - img "Porcja na 0 metrach. Temperatura 24 stopni, otoczenie 24. Przed kondensacją.":
+      - generic: chłodniejsza masa
+      - generic: Przekrój przez front · schemat
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Wymuszone uniesienie
+    - status: 0 %
+    - 'button "Zmniejsz: Wymuszone uniesienie" [disabled]':
+    - slider "Wymuszone uniesienie": "0"
+    - 'button "Zwiększ: Wymuszone uniesienie"':
+    - generic: "0"
+    - generic: "100"
+    - button "Unieś do 70% drogi":
+      - text: Unieś do 70% drogi
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/fronty
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - generic "Źródła i granice tego ćwiczenia"

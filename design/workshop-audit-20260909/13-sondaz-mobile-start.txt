@@ -1,0 +1,44 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Sondaż" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Sondaż bez zgadywania":
+    - paragraph: Krok 1 z 5
+    - heading "Sprawdź, czy wyżej jest chłodniej" [level=2]
+    - text: Na poziomie
+    - strong: 1000 hPa
+    - generic: Temperatura otoczenia
+    - strong: 7°C
+    - generic "Pełny profil i osie wykresu"
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Kolejny poziom profilu
+    - status: 1000 hPa
+    - 'button "Zmniejsz: Kolejny poziom profilu" [disabled]':
+    - slider "Kolejny poziom profilu": "0"
+    - 'button "Zwiększ: Kolejny poziom profilu"':
+    - generic: 1000 hPa · dół
+    - generic: 200 hPa · góra
+    - button "Odczytaj poziom 925 hPa":
+      - text: Odczytaj poziom 925 hPa
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: inne profile i Skew-T"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/sounding
+    - text: "Przejdź do pełnego narzędzia: inne profile i Skew-T"
+  - generic "Źródła i granice tego ćwiczenia"

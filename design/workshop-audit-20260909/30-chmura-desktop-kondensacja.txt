@@ -1,0 +1,60 @@
+- banner:
+  - link "Wróć do CHMURNIKA":
+    - /url: https://jakiesluchawki.github.io/chmurnik/
+    - img "CHMURNIK"
+  - heading "Powstaje chmura" [level=1]
+  - link "Wróć do pracowni":
+    - /url: "#pracownia"
+    - generic: Pracownia
+- main:
+  - group "Sposób nauki":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - region "Powstaje chmura":
+    - region "Unieś na 1500 m":
+      - paragraph: KROK 2 Z 4
+      - heading "Unieś na 1500 m" [level=3]
+    - paragraph: SCHEMAT EDUKACYJNY · NIE PROGNOZA
+    - img "Unoszone powietrze na 1500 m nad ziemią. Temperatura 10,4 stopnia. Osiągnęło nasycenie.":
+      - generic: 3000 m
+      - generic: 2000 m
+      - generic: 1000 m
+      - generic: 0 m
+      - text: 1500 m
+      - generic: 10,4°C
+      - text: Zaczęła się kondensacja
+      - generic: unoszona porcja powietrza
+    - slider "Uniesienie powietrza na rysunku":
+    - paragraph: "Przerywana linia: kondensacja ≈ 1200 m."
+    - complementary:
+      - generic: Uniesienie nad ziemię
+      - status: 1500 m
+      - 'button "Zmniejsz: Uniesienie nad ziemię"':
+      - slider "Uniesienie nad ziemię": "1500"
+      - 'button "Zwiększ: Uniesienie nad ziemię"':
+      - generic: Poziom ziemi
+      - generic: 3000 m
+      - button "Ustawienie gotowe" [disabled]:
+        - text: Ustawienie gotowe
+      - status:
+        - paragraph: Powietrze ochłodziło się wystarczająco, aby osiągnąć nasycenie. Część pary zaczyna tworzyć kropelki. Linia pokazuje szacowany początek kondensacji, nie szczyt chmury.
+      - button "Wstecz":
+        - text: Wstecz
+      - button "Dalej":
+        - text: Dalej
+      - generic "Instrukcja i obserwacja"
+      - generic "Przeciąganie i kroki po 100 m"
+      - button "Przewodnik od początku":
+        - text: Przewodnik od początku
+  - link "Pełna lekcja o powstawaniu chmur":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/procesy
+    - text: Pełna lekcja o powstawaniu chmur
+  - 'generic "O ćwiczeniu: źródła i ograniczenia"'
+  - generic "Inne doświadczenia pogodowe"
+- contentinfo:
+  - generic: CHMURNIK · Pracownia pogody · podgląd 09.09.2026
+  - generic: Bez logowania i przesyłania Twoich danych.
+  - link "Materiały do udostępnienia":
+    - /url: https://jakiesluchawki.github.io/chmurnik/assetySM/
+    - text: Materiały do udostępnienia

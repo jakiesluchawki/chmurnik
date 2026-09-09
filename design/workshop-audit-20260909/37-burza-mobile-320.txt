@@ -1,0 +1,39 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Burza" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Co pozwala rozwinąć się burzy?":
+    - paragraph: Krok 1 z 4
+    - heading "Zapewnij wilgoć" [level=2]
+    - img "Nie ma kompletu warunków w tym schemacie.":
+      - generic: Schemat pojedynczej komórki
+    - generic "Odczyt i objaśnienie sceny"
+    - group "Wilgotność początkowa":
+      - generic: Wilgotność początkowa
+      - button "Suchsze powietrze" [pressed]:
+        - text: Suchsze powietrze
+      - button "Wilgotne powietrze"
+    - button "Wybierz wilgotne powietrze":
+      - text: Wybierz wilgotne powietrze
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Co pozwala rozwinąć się burzy?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Co pozwala rozwinąć się burzy?"
+  - generic "Źródła i granice tego ćwiczenia"

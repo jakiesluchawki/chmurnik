@@ -1,0 +1,43 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Oblodzenie" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Jak narasta lód?":
+    - paragraph: Krok 2 z 3
+    - heading "Dodaj ciekłą wodę poniżej zera" [level=2]
+    - img "-10 stopni, krople ciekłej wody. Widoczny symbol osadu na krawędzi.":
+      - generic: Przekrój przez skrzydło · napływ z lewej
+      - text: kierunek przepływu
+    - generic "Odczyt i objaśnienie sceny"
+    - group "Co uderza w skrzydło":
+      - generic: Co uderza w skrzydło
+      - button "Bez kropli"
+      - button "Krople ciekłej wody" [pressed]:
+        - text: Krople ciekłej wody
+      - button "Tylko suche kryształki lodu"
+    - button "Porównaj i wyjaśnij" [active]:
+      - text: Porównaj i wyjaśnij
+    - paragraph: Zmiana wykonana. Obejrzyj wynik i spróbuj go wyjaśnić, zanim przejdziesz dalej.
+    - button "Poprzedni krok":
+      - text: Poprzedni krok
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Jak narasta lód?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Jak narasta lód?"
+  - generic "Źródła i granice tego ćwiczenia"

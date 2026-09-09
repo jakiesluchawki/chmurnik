@@ -1,0 +1,57 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "METAR / TAF" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/lotnictwo
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+    - generic: Zatrzymaj ruch
+  - region "Niebo zapisane w METAR":
+    - paragraph: Krok 4 z 4
+    - heading "Sprawdź przejściowe warunki" [level=2]
+    - text: Prognoza szkoleniowa · dzień 8 · UTC
+    - code: TAF EPWA 081100Z 0812/0818 24008KT 9999 SCT020 BKN060 TEMPO 0813/0815 4000 SHRA BKN015 FM081600 28012KT 9999 SCT030
+    - generic "Okres ważności od 12 do 18 UTC":
+      - generic: "12"
+      - generic: "13"
+      - generic: "14"
+      - generic: "15"
+      - generic: "16"
+      - generic: "17"
+      - generic: "18"
+    - generic: 12–16 · stan bazowy
+    - generic: 16–18 · FM
+    - generic: 13–15 · TEMPO
+    - heading "SCT020 BKN060 · warunki bazowe" [level=3]
+    - paragraph: "TEMPO: przejściowo 4000 m, przelotny deszcz i BKN015"
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Godzina prognozy UTC
+    - status: 13:00 UTC
+    - 'button "Zmniejsz: Godzina prognozy UTC"':
+    - slider "Godzina prognozy UTC" [active]: "13"
+    - 'button "Zwiększ: Godzina prognozy UTC"':
+    - generic: "12"
+    - generic: "18"
+    - button "Przejdź do 14:00 UTC":
+      - text: Przejdź do 14:00 UTC
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+    - button "Poprzedni krok":
+      - text: Poprzedni krok
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/lotnictwo
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/metar
+    - text: "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"
+  - generic "Źródła i granice tego ćwiczenia"

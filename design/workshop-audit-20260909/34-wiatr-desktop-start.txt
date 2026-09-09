@@ -1,0 +1,51 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Wiatr" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/wiatr
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+    - generic: Zatrzymaj ruch
+  - region "Chmury w ruchu":
+    - paragraph: Krok 1 z 3
+    - heading "Przenieś chmurę na wschód" [level=2]
+    - heading "Niższa warstwa" [level=3]
+    - img "Dryf do 0 stopni, wiatr z 180 stopni.":
+      - generic: "N"
+      - generic: E
+      - generic: S
+      - generic: W
+    - paragraph:
+      - text: Chmura
+      - strong: do N · 0°
+      - text: Wiatr
+      - strong: z S · 180°
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Ruch dolnej chmury w kierunku
+    - status: 0°
+    - 'button "Zmniejsz: Ruch dolnej chmury w kierunku" [disabled]':
+    - slider "Ruch dolnej chmury w kierunku": "0"
+    - 'button "Zwiększ: Ruch dolnej chmury w kierunku"':
+    - generic: "0"
+    - generic: "315"
+    - button "Ustaw ruch do 90°":
+      - text: Ustaw ruch do 90°
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/wiatr
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Chmury w ruchu"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/wind
+    - text: "Przejdź do pełnego narzędzia: Chmury w ruchu"
+  - generic "Źródła i granice tego ćwiczenia"

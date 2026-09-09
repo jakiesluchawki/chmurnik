@@ -1,0 +1,56 @@
+- banner:
+  - link "Wróć do CHMURNIKA":
+    - /url: https://jakiesluchawki.github.io/chmurnik/
+    - img "CHMURNIK"
+  - heading "Powstaje chmura" [level=1]
+  - link "Wróć do pracowni":
+    - /url: "#pracownia"
+- main:
+  - group "Sposób nauki":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - region "Powstaje chmura":
+    - region "Unieś na 500 m":
+      - paragraph: KROK 1 Z 4
+      - heading "Unieś na 500 m" [level=3]
+    - paragraph: SCHEMAT EDUKACYJNY · NIE PROGNOZA
+    - img "Unoszone powietrze na 0 m nad ziemią. Temperatura 24,0 stopnia. Jeszcze bez kondensacji.":
+      - generic: 3000 m
+      - generic: 2000 m
+      - generic: 1000 m
+      - generic: 0 m
+      - text: 0 m
+      - generic: 24,0°C
+    - slider "Uniesienie powietrza na rysunku":
+    - paragraph: "Przerywana linia: kondensacja ≈ 1200 m."
+    - complementary:
+      - generic: Uniesienie nad ziemię
+      - status: 0 m
+      - 'button "Zmniejsz: Uniesienie nad ziemię" [disabled]':
+      - slider "Uniesienie nad ziemię": "0"
+      - 'button "Zwiększ: Uniesienie nad ziemię"':
+      - generic: Poziom ziemi
+      - generic: 3000 m
+      - button "Unieś na 500 m":
+        - text: Unieś na 500 m
+      - status
+      - button "Wstecz" [disabled]:
+        - text: Wstecz
+      - button "Dalej" [disabled]:
+        - text: Dalej
+      - generic "Instrukcja i obserwacja"
+      - generic "Przeciąganie i kroki po 100 m"
+      - button "Przewodnik od początku":
+        - text: Przewodnik od początku
+  - link "Pełna lekcja o powstawaniu chmur":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/procesy
+    - text: Pełna lekcja o powstawaniu chmur
+  - 'generic "O ćwiczeniu: źródła i ograniczenia"'
+  - generic "Inne doświadczenia pogodowe"
+- contentinfo:
+  - generic: CHMURNIK · Pracownia pogody · podgląd 09.09.2026
+  - generic: Bez logowania i przesyłania Twoich danych.
+  - link "Materiały do udostępnienia":
+    - /url: https://jakiesluchawki.github.io/chmurnik/assetySM/
+    - text: Materiały do udostępnienia

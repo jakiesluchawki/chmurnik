@@ -1,0 +1,44 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "METAR / TAF" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/lotnictwo
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Niebo zapisane w METAR":
+    - paragraph: Krok 1 z 4
+    - heading "Zwiększ pokrycie niższej warstwy" [level=2]
+    - img "SCT020 BKN060. Pułap 6000 stóp nad lotniskiem.":
+      - generic: Poziom lotniska · 0 ft AGL
+      - generic: 6000 ft
+      - generic: 2000 ft
+      - generic: Podstawy warstw · nie grubość chmur
+    - generic "Odczyt i objaśnienie sceny"
+    - group "Pokrycie niższej warstwy":
+      - generic: Pokrycie niższej warstwy
+      - button "FEW · 1–2/8"
+      - button "SCT · 3–4/8" [pressed]:
+        - text: SCT · 3–4/8
+      - button "BKN · 5–7/8"
+      - button "OVC · 8/8"
+    - button "Zmień SCT na BKN":
+      - text: Zmień SCT na BKN
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/lotnictwo
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/metar
+    - text: "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"
+  - generic "Źródła i granice tego ćwiczenia"
