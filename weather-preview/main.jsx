@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { LearningCatalog, LearningStudio } from "./learning/LearningStudio.jsx";
 import { activities } from "./learning/catalog.mjs";
+import { TransferTrial } from "./learning/TransferTrial.jsx";
+import { markTransferHelp } from "./learning/transfer-state.mjs";
 import {
   ArrowLeft,
   ArrowRight,
@@ -91,6 +93,9 @@ function Scene({
   const baseY = scene === "cloud" ? 72 - (result.base / 3000) * 48 : 0;
   return (
     <>
+      {!mini && (
+        <p className="scene-stamp">SCHEMAT EDUKACYJNY · NIE PROGNOZA</p>
+      )}
       <div
         className={`scene scene-${scene} ${night ? "night" : ""} ${playing ? "running" : ""} ${mini ? "mini" : ""}`}
       >
@@ -114,11 +119,6 @@ function Scene({
             className="night-wash"
             style={{ opacity: breezeScene ? appearance.night * 0.74 : 0 }}
           />
-          {!mini && (
-            <span className="scene-stamp">
-              SCHEMAT EDUKACYJNY · NIE PROGNOZA
-            </span>
-          )}
           {breezeScene ? (
             <>
               <div className="celestial" aria-hidden="true">
@@ -305,15 +305,7 @@ function Scene({
       )}
       {!mini && fogScene && (
         <p className="scene-caption fog-caption">
-          <b>
-            {result.saturated
-              ? "Warunki do kondensacji przy ziemi"
-              : "Jeszcze bez kondensacji"}
-          </b>
-          <span>
-            Mgła gęstnieje na rysunku po nasyceniu. To ilustracja, nie pomiar
-            widzialności.
-          </span>
+          Schemat mgły, nie pomiar widzialności.
         </p>
       )}
     </>
@@ -330,6 +322,12 @@ function App() {
   const [playing, setPlaying] = useState(false);
   const [diagram, setDiagram] = useState(true);
   const [mode, setMode] = useState("tutorial");
+  const navigationState = useRef({ scene, mode });
+  navigationState.current = { scene, mode };
+  const modeInputs = useRef({});
+  const [exploreControl, setExploreControl] = useState({
+    breeze: "hour", cloud: "height", fog: "cooling",
+  });
   const [guideIndex, setGuideIndex] = useState(0);
   const [step, setStep] = useState("predict");
   const [prediction, setPrediction] = useState(null);
@@ -347,8 +345,10 @@ function App() {
   const input = inputs[scene];
   const result = calculate(scene, input);
   const data = experiments[scene];
+  const tabId = sceneHashes[scene];
+  const assessment = mode === "assessment";
   const currentTrials = trials.filter((t) => t.scene === scene).slice(-2);
-  const locked = mode === "guided" && step === "predict";
+  const locked = assessment || (mode === "guided" && step === "predict");
   const quiz = quizCases[scene];
   const tested = input[quiz.key] === quiz.target;
   const guide = guides[scene];
@@ -358,7 +358,16 @@ function App() {
   const stepDone = guideStepComplete(scene, guideIndex, input);
   const lesson = returnLesson(location.search, data.lesson);
   const lessonHref = `${mainSite}#/learn/${lesson}`;
-  const showControl = (key) => !tutorial || guideStep?.key === key;
+  const showControl = (key) => !assessment && (tutorial
+    ? guideStep?.key === key
+    : exploreControl[scene] === key);
+  const controlChoices = scene === "breeze"
+    ? [["hour", "Pora dnia", timeLabel(input.hour)], ["heating", "Kontrast nagrzewania", `${input.heating}%`]]
+    : [
+        [scene === "cloud" ? "height" : "cooling", scene === "cloud" ? "Uniesienie" : "Ochłodzenie", scene === "cloud" ? metres(input.height) : `o ${num(input.cooling)}°C`],
+        ["temperature", "Temperatura początkowa", `${num(input.temperature)}°C`],
+        ["humidity", "Wilgotność początkowa", `${input.humidity}%`],
+      ];
   const controlDisabled = (key) =>
     locked || (mode === "guided" && key !== quiz.key);
 
@@ -427,6 +436,10 @@ function App() {
     }));
   }
   function chooseScene(next) {
+    const previous = navigationState.current;
+    if (next === previous.scene) return;
+    if (previous.mode === "assessment") markTransferHelp(sceneHashes[previous.scene]);
+    modeInputs.current = {};
     setScene(next);
     setPlaying(false);
     setMode("tutorial");
@@ -444,26 +457,19 @@ function App() {
     );
   }
   function chooseMode(next) {
+    if (!["tutorial", "assessment", "explore"].includes(next) || next === mode) return;
+    if (mode === "assessment") markTransferHelp(tabId);
+    else modeInputs.current[mode] = { ...input };
     setMode(next);
     setStep("predict");
     setPrediction(null);
     setPlaying(false);
     setNotice("");
-    if (next === "tutorial") {
-      setGuideIndex(0);
-      setDiagram(true);
-      setInputs((old) => ({ ...old, [scene]: guideInputsAt(scene, 0) }));
+    if (next === "tutorial") setDiagram(true);
+    if (next !== "assessment" && modeInputs.current[next]) {
+      const restored = { ...modeInputs.current[next] };
+      setInputs((old) => ({ ...old, [scene]: restored }));
     }
-    if (next === "guided")
-      setInputs((old) => ({
-        ...old,
-        [scene]: { ...quiz.start },
-      }));
-    requestAnimationFrame(() =>
-      document
-        .querySelector(next === "guided" ? ".challenge" : "#workbench")
-        ?.scrollIntoView({ behavior: "instant" }),
-    );
   }
   function storeTrials(next) {
     setTrials(next);
@@ -499,7 +505,9 @@ function App() {
   }
   function reset() {
     if (tutorial) {
-      chooseMode("tutorial");
+      setDiagram(true);
+      setNotice("");
+      guideTo(0);
       return;
     }
     setPlaying(false);
@@ -513,78 +521,28 @@ function App() {
     setPlaying(false);
     setInputs((old) => ({ ...old, [scene]: guideInputsAt(scene, index) }));
     requestAnimationFrame(() => {
-      document
-        .getElementById("workbench")
-        ?.scrollIntoView({ behavior: "instant" });
-      document.getElementById("guide-heading")?.focus({ preventScroll: true });
+      const heading = document.getElementById("guide-heading");
+      heading?.focus({ preventScroll: true });
+      const bounds = heading?.getBoundingClientRect();
+      if (bounds && (bounds.top < 0 || bounds.bottom > window.innerHeight))
+        heading.scrollIntoView({ block: "nearest", behavior: "instant" });
     });
   }
 
   return (
-    <>
+    <div className="legacy-weather-preview">
       <header className="topbar">
         <a href={mainSite} aria-label="Wróć do CHMURNIKA">
           <img src="./wordmark.png" alt="CHMURNIK" />
         </a>
-        <span className="preview-tag">
-          Pracownia pogody <span>· podgląd</span>
-        </span>
-        <a className="back-link" href={`${mainSite}#/layers`}>
-          <ArrowLeft /> Warstwy
+        <h1>{data.short}</h1>
+        <a className="back-link" href="#pracownia" aria-label="Wróć do pracowni">
+          <ArrowLeft /> <span>Pracownia</span>
         </a>
       </header>
       <main>
-        <a className="learning-return" href="#pracownia">Wszystkie doświadczenia i ćwiczenia <ArrowRight /></a>
-        <div className="intro">
-          <div>
-            <p className="eyebrow">JAK POWSTAJE POGODA</p>
-            <h1>Niebo ma swoje powody.</h1>
-          </div>
-          <p>
-            Nie musisz znać meteorologii. Przewodnik pokaże Ci, co zmienić,
-            gdzie spojrzeć i jak odczytać wynik. Potem możesz spróbować
-            samodzielnie.
-            <a
-              className="start-guide"
-              href="#workbench"
-              onClick={(event) => {
-                event.preventDefault();
-                document
-                  .getElementById("workbench")
-                  ?.scrollIntoView({ behavior: "instant" });
-              }}
-            >
-              Zacznij od pierwszego kroku <ArrowRight />
-            </a>
-          </p>
-        </div>
-        <nav className="experiment-nav" aria-label="Wybierz eksperyment">
-          {Object.entries(experiments)
-            .sort((a, b) => a[1].number.localeCompare(b[1].number))
-            .map(([key, exp]) => (
-              <button
-                key={key}
-                aria-pressed={scene === key}
-                onClick={() => chooseScene(key)}
-              >
-                <span>{exp.number}</span>
-                {exp.short}
-                {key === "breeze" ? (
-                  <Wind />
-                ) : key === "fog" ? (
-                  <Moon />
-                ) : (
-                  <Cloud />
-                )}
-              </button>
-            ))}
-        </nav>
         <div className="workshop-title">
-          <div>
-            <p className="eyebrow">EKSPERYMENT {data.number} / 03</p>
-            <h2>{data.title}</h2>
-          </div>
-          <div className="mode-switch" aria-label="Sposób nauki">
+          <div className="mode-switch" role="group" aria-label="Sposób nauki">
             <button
               aria-pressed={tutorial}
               onClick={() => chooseMode("tutorial")}
@@ -592,19 +550,21 @@ function App() {
               Prowadź mnie
             </button>
             <button
-              aria-pressed={mode === "explore"}
-              onClick={() => chooseMode("explore")}
-            >
-              Spróbuj samodzielnie
-            </button>
-            <button
-              aria-pressed={mode === "guided"}
-              onClick={() => chooseMode("guided")}
+              aria-pressed={assessment}
+              onClick={() => chooseMode("assessment")}
             >
               Sprawdź się
             </button>
+            <button
+              aria-pressed={mode === "explore"}
+              onClick={() => chooseMode("explore")}
+            >
+              Eksperymentuj
+            </button>
           </div>
         </div>
+        {assessment ? <TransferTrial key={tabId} activityId={tabId} /> : (
+        <>
         {mode === "guided" && (
           <section className="challenge" aria-labelledby="challenge-heading">
             <div className="challenge-step">
@@ -677,48 +637,35 @@ function App() {
               <div>
                 <p className="eyebrow">
                   {guideDone
-                    ? "PRZEWODNIK UKOŃCZONY"
+                    ? "POKAZ UKOŃCZONY"
                     : `KROK ${guideIndex + 1} Z ${guide.steps.length}`}
                 </p>
-                <div className="guide-progress" aria-hidden="true">
-                  {guide.steps.map((item, i) => (
-                    <span
-                      key={item.title}
-                      className={i <= guideIndex ? "filled" : ""}
-                    />
-                  ))}
-                </div>
                 <h3 id="guide-heading" tabIndex={-1}>
                   {guideDone
-                    ? "Teraz porównaj własne pomysły"
-                    : guideStep.title}
+                    ? "Zastosuj poznaną zasadę"
+                    : guideStep.action}
                 </h3>
               </div>
               {guideDone ? (
                 <div className="guide-finish">
                   <p>
-                    Masz za sobą wszystkie kroki. W trybie samodzielnym możesz
-                    zmieniać każdy warunek i zapisywać dwie próby do porównania.
+                    Pokaz za Tobą. Sprawdź się na innym przypadku albo porównaj
+                    własne ustawienia w trybie „Eksperymentuj”.
                   </p>
                   <button
                     className="primary"
-                    onClick={() => chooseMode("explore")}
+                    onClick={() => chooseMode("assessment")}
                   >
-                    Spróbuj samodzielnie <ArrowRight />
+                    Sprawdź się <ArrowRight />
                   </button>
                   <button
                     className="plain"
-                    onClick={() => chooseMode("guided")}
+                    onClick={() => chooseMode("explore")}
                   >
-                    Sprawdź, co pamiętasz <ArrowRight />
+                    Eksperymentuj <ArrowRight />
                   </button>
-                  <a className="plain" href={lessonHref}>
-                    <BookOpen /> Wróć do pełnej lekcji
-                  </a>
                 </div>
-              ) : (
-                <p>{guideStep.instruction}</p>
-              )}
+              ) : null}
             </section>
           )}
           <div className="scene-area">
@@ -735,94 +682,23 @@ function App() {
                   : undefined
               }
             />
-            {scene === "cloud" &&
-              showControl("height") &&
-              !controlDisabled("height") && (
-                <div className="lift-actions">
-                  <p id="parcel-instructions">
-                    Przeciągnij kółko lub chmurę w górę. Możesz też użyć
-                    przycisków.
-                  </p>
-                  <div>
-                    <button
-                      className="lift-step"
-                      disabled={input.height <= 0}
-                      onClick={() =>
-                        update("height", Math.max(0, input.height - 100))
-                      }
-                    >
-                      <Minus /> Opuść o 100 m
-                    </button>
-                    <button
-                      className="lift-step"
-                      disabled={input.height >= 3000}
-                      onClick={() =>
-                        update("height", Math.min(3000, input.height + 100))
-                      }
-                    >
-                      <Plus /> Unieś o 100 m
-                    </button>
-                  </div>
-                </div>
-              )}
-            {tutorial && !guideDone && (
-              <div className="scene-action">
-                <button
-                  className="primary guide-target"
-                  onClick={() => update(guideStep.key, guideStep.target)}
-                  disabled={stepDone}
-                >
-                  {stepDone ? <Check /> : <ArrowRight />}
-                  {stepDone ? "Ustawienie gotowe" : guideStep.action}
-                </button>
-              </div>
-            )}
-            <div className="scene-toolbar">
-              <button
-                className="plain"
-                disabled={mode !== "explore"}
-                onClick={() => {
-                  if (scene === "cloud" && input.height === 3000)
-                    update("height", 0);
-                  if (scene === "fog" && input.cooling === 10)
-                    update("cooling", 0);
-                  setPlaying((p) => !p);
-                }}
-              >
-                {playing ? <Pause weight="fill" /> : <Play weight="fill" />}
-                {playing
-                  ? "Zatrzymaj"
-                  : scene === "breeze"
-                    ? "Uruchom dobę"
-                    : scene === "cloud"
-                      ? "Unoś powietrze"
-                      : "Ochładzaj powietrze"}
-              </button>
-              <button
-                className="plain"
-                aria-pressed={diagram}
-                disabled={tutorial}
-                onClick={() => setDiagram((d) => !d)}
-              >
-                {diagram ? "Ukryj schemat" : "Pokaż schemat"}
-              </button>
-              <button className="plain" onClick={reset}>
-                <ArrowCounterClockwise /> Od nowa
-              </button>
-            </div>
-            {reduced && (
-              <p className="motion-note">
-                Ograniczony ruch: wartości zmieniają się skokowo, bez płynnej
-                animacji.
-              </p>
-            )}
           </div>
+          <div className="scene-action">
           <aside className="controls">
             {!tutorial && (
-              <>
-                <p className="eyebrow">TWOJE WARUNKI</p>
-                <p className="controls-intro">{data.intro}</p>
-              </>
+              <label className="legacy-control-choice">
+                Zmieniany warunek
+                <select
+                  value={exploreControl[scene]}
+                  onChange={(event) => setExploreControl((old) => ({
+                    ...old, [scene]: event.target.value,
+                  }))}
+                >
+                  {controlChoices.map(([key, label, value]) => (
+                    <option key={key} value={key}>{label}: {value}</option>
+                  ))}
+                </select>
+              </label>
             )}
             {scene === "breeze" ? (
               <>
@@ -874,33 +750,13 @@ function App() {
                     ends={["Brak różnicy", "Duża różnica"]}
                   />
                 )}
-                {!tutorial && (
-                  <div className="instrument">
-                    <span>Różnica: ląd − woda</span>
-                    <strong>
-                      {result.difference > 0 ? "+" : ""}
-                      {num(result.difference)}°C
-                    </strong>
-                    <p>
-                      {result.direction === "calm"
-                        ? "Przy podobnych temperaturach lokalny obieg zanika."
-                        : result.direction === "onshore"
-                          ? "W tym ustawieniu cieplejszy jest ląd."
-                          : "W tym ustawieniu cieplejsza jest woda."}
-                    </p>
-                  </div>
-                )}
               </>
             ) : (
               <>
                 {showControl("temperature") && (
                   <Slider
                     id="temperature"
-                    label={
-                      scene === "fog"
-                        ? "Temperatura początkowa"
-                        : "Temperatura przy ziemi"
-                    }
+                    label={scene === "fog" ? "Temperatura początkowa" : "Temperatura przy ziemi"}
                     value={input.temperature}
                     min={scene === "fog" ? 15 : 5}
                     max={scene === "fog" ? 30 : 35}
@@ -915,11 +771,7 @@ function App() {
                 {showControl("humidity") && (
                   <Slider
                     id="humidity"
-                    label={
-                      scene === "fog"
-                        ? "Wilgotność początkowa"
-                        : "Wilgotność przy ziemi"
-                    }
+                    label={scene === "fog" ? "Wilgotność początkowa" : "Wilgotność przy ziemi"}
                     value={input.humidity}
                     min={scene === "fog" ? 40 : 20}
                     max={scene === "fog" ? 95 : 100}
@@ -961,8 +813,133 @@ function App() {
                     ends={["Bez ochłodzenia", "O 10°C"]}
                   />
                 )}
-                {!tutorial &&
-                  (scene === "fog" ? (
+              </>
+            )}
+            {tutorial && !guideDone && (
+              <div className="guide-action">
+                <button
+                  className="primary guide-target"
+                  onClick={() => update(guideStep.key, guideStep.target)}
+                  disabled={stepDone}
+                >
+                  {stepDone ? <Check /> : <ArrowRight />}
+                  {stepDone ? "Ustawienie gotowe" : guideStep.action}
+                </button>
+                <div className="guide-feedback" role="status">
+                  {stepDone && <p>{guideStep.explanation}</p>}
+                </div>
+                <div className="guide-navigation">
+                  <button
+                    className="plain"
+                    disabled={guideIndex === 0}
+                    onClick={() => guideTo(guideIndex - 1)}
+                  >
+                    <ArrowLeft /> Wstecz
+                  </button>
+                  <button
+                    className="primary"
+                    disabled={!stepDone}
+                    onClick={() => guideTo(guideIndex + 1)}
+                  >
+                    {guideIndex === guide.steps.length - 1 ? "Podsumuj" : "Dalej"} <ArrowRight />
+                  </button>
+                </div>
+                <details className="legacy-details" key={`${scene}:${guideIndex}`}>
+                  <summary>Instrukcja i obserwacja</summary>
+                  <p><b>{guideStep.title}</b></p>
+                  <p>{guideStep.instruction}</p>
+                  <p>{guideStep.expect}</p>
+                </details>
+              </div>
+            )}
+            {scene === "cloud" &&
+              showControl("height") &&
+              !controlDisabled("height") && (
+                <details className="lift-actions legacy-details">
+                  <summary>Przeciąganie i kroki po 100 m</summary>
+                  <p id="parcel-instructions">
+                    Przeciągnij kółko lub chmurę w górę albo zmień uniesienie suwakiem
+                    i przyciskami plus i minus. Tutaj możesz zmieniać je co 100 m.
+                  </p>
+                  <div>
+                    <button
+                      className="lift-step"
+                      disabled={input.height <= 0}
+                      onClick={() =>
+                        update("height", Math.max(0, input.height - 100))
+                      }
+                    >
+                      <Minus /> Opuść o 100 m
+                    </button>
+                    <button
+                      className="lift-step"
+                      disabled={input.height >= 3000}
+                      onClick={() =>
+                        update("height", Math.min(3000, input.height + 100))
+                      }
+                    >
+                      <Plus /> Unieś o 100 m
+                    </button>
+                  </div>
+                </details>
+              )}
+            <div className="scene-toolbar">
+              {!tutorial && <button
+                className="plain"
+                disabled={mode !== "explore"}
+                onClick={() => {
+                  if (scene === "cloud" && input.height === 3000)
+                    update("height", 0);
+                  if (scene === "fog" && input.cooling === 10)
+                    update("cooling", 0);
+                  setPlaying((p) => !p);
+                }}
+              >
+                {playing ? <Pause weight="fill" /> : <Play weight="fill" />}
+                {playing
+                  ? "Zatrzymaj"
+                  : scene === "breeze"
+                    ? "Uruchom dobę"
+                    : scene === "cloud"
+                      ? "Unoś powietrze"
+                      : "Ochładzaj powietrze"}
+              </button>}
+              {!tutorial && <button
+                className="plain"
+                aria-pressed={diagram}
+                disabled={tutorial}
+                onClick={() => setDiagram((d) => !d)}
+              >
+                {diagram ? "Ukryj schemat" : "Pokaż schemat"}
+              </button>}
+              <button className="plain" onClick={reset}>
+                <ArrowCounterClockwise /> {tutorial ? "Przewodnik od początku" : "Od nowa"}
+              </button>
+            </div>
+            {reduced && (
+              <p className="motion-note">
+                Ograniczony ruch: wartości zmieniają się skokowo, bez płynnej
+                animacji.
+              </p>
+            )}
+            {!tutorial && <details className="legacy-details">
+              <summary>Jak czytać wynik?</summary>
+            {scene === "breeze" ? (
+                  <div className="instrument">
+                    <span>Różnica: ląd − woda</span>
+                    <strong>
+                      {result.difference > 0 ? "+" : ""}
+                      {num(result.difference)}°C
+                    </strong>
+                    <p>
+                      {result.direction === "calm"
+                        ? "Przy podobnych temperaturach lokalny obieg zanika."
+                        : result.direction === "onshore"
+                          ? "W tym ustawieniu cieplejszy jest ląd."
+                          : "W tym ustawieniu cieplejsza jest woda."}
+                    </p>
+                  </div>
+            ) : scene === "fog" ? (
                     <div className="instrument">
                       <span>Do rozpoczęcia kondensacji</span>
                       <strong>
@@ -986,51 +963,8 @@ function App() {
                           : `Punkt rosy przy ziemi: ${num(result.dew)}°C. To temperatura, przy której początkowe powietrze osiągnęłoby nasycenie przy niezmienionym ciśnieniu.`}
                       </p>
                     </div>
-                  ))}
-              </>
             )}
-            {tutorial && !guideDone && (
-              <div className="guide-action">
-                <div className="guide-expect">
-                  <b>Na co patrzeć</b>
-                  <p>{guideStep.expect}</p>
-                </div>
-                <div className="guide-feedback" role="status">
-                  {stepDone && (
-                    <>
-                      <b>Co się zmieniło i dlaczego</b>
-                      <p>{guideStep.explanation}</p>
-                    </>
-                  )}
-                </div>
-                <div className="guide-navigation">
-                  <button
-                    className="plain"
-                    disabled={guideIndex === 0}
-                    onClick={() => guideTo(guideIndex - 1)}
-                  >
-                    <ArrowLeft /> Wstecz
-                  </button>
-                  <button
-                    className="primary"
-                    disabled={!stepDone}
-                    onClick={() => guideTo(guideIndex + 1)}
-                  >
-                    {guideIndex === guide.steps.length - 1
-                      ? "Podsumuj"
-                      : "Dalej"}{" "}
-                    <ArrowRight />
-                  </button>
-                </div>
-                {!stepDone && (
-                  <p className="guide-hint">
-                    Najpierw wykonaj wskazaną zmianę. Suwak, przyciski plus i
-                    minus oraz fioletowy przycisk pod rysunkiem zmieniają te
-                    same warunki.
-                  </p>
-                )}
-              </div>
-            )}
+            </details>}
             {!tutorial && (
               <button
                 className="primary save-button"
@@ -1041,6 +975,7 @@ function App() {
               </button>
             )}
           </aside>
+          </div>
         </section>
         <p className="notice" role="status">
           {notice}
@@ -1129,14 +1064,6 @@ function App() {
         {!locked && (
           <>
             <section className="read-on">
-              <div>
-                <p className="eyebrow">DALEJ W CHMURNIKU</p>
-                <h2>Od doświadczenia do wyjaśnienia.</h2>
-                <p>
-                  Ten podgląd uzupełnia pełne lekcje. Nie zastępuje atlasu,
-                  Warstw ani narzędzi METAR i Windy.
-                </p>
-              </div>
               <a className="lesson-link" href={lessonHref}>
                 <BookOpen />
                 {lesson === data.lesson
@@ -1146,7 +1073,9 @@ function App() {
               </a>
             </section>
             <details className="method">
-              <summary>Źródła, założenia i granice tego doświadczenia</summary>
+              <summary>O ćwiczeniu: źródła i ograniczenia</summary>
+              <h2>{data.title}</h2>
+              <p>{data.intro}</p>
               <p>{data.limits}</p>
               <p>
                 Ilustracje są stylizowanymi modelami, nie fotografiami służącymi
@@ -1190,15 +1119,31 @@ function App() {
             ))}
           </section>
         )}
+        </>
+        )}
+        <details className="legacy-details legacy-experiments">
+          <summary>Inne doświadczenia pogodowe</summary>
+          <nav className="experiment-nav" aria-label="Wybierz eksperyment">
+            {Object.entries(experiments)
+              .sort((a, b) => a[1].number.localeCompare(b[1].number))
+              .map(([key, exp]) => (
+                <button key={key} aria-pressed={scene === key} onClick={() => chooseScene(key)}>
+                  <span>{exp.number}</span>{exp.short}
+                  {key === "breeze" ? <Wind /> : key === "fog" ? <Moon /> : <Cloud />}
+                </button>
+              ))}
+          </nav>
+          <a className="plain" href={`${mainSite}#/layers`}>Warstwy <ArrowRight /></a>
+        </details>
       </main>
       <footer>
-        <span>CHMURNIK · Pracownia pogody · podgląd 08.09.2026</span>
+        <span>CHMURNIK · Pracownia pogody · podgląd 09.09.2026</span>
         <span>Bez logowania i przesyłania Twoich danych.</span>
         <a href={`${mainSite}assetySM/`}>
           Materiały do udostępnienia <ArrowRight />
         </a>
       </footer>
-    </>
+    </div>
   );
 }
 function PreviewRouter() {

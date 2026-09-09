@@ -9,7 +9,7 @@ export const observationPhoto = clouds.find(c => c.id === "stratocumulus").image
 export const photoPath = (image) => `./photos/${image.src.split("/").pop()}`;
 const FeltCloud = ({ className = "", style }) => <img className={`lab-cloud ${className}`} src="./cloud.webp" alt="" style={style} />;
 const Metric = ({ label, children, className = "" }) => <div className={`lab-metric ${className}`}><span>{label}</span><strong>{children}</strong></div>;
-const Readout = ({ children }) => <div className="lab-readout" aria-live="polite" aria-atomic="true">{children}</div>;
+const Readout = ({ children }) => <details className="lab-readout"><summary>Odczyt i objaśnienie sceny</summary><div>{children}</div></details>;
 
 function PhotoScene({ id, state }) {
   const hidden = id === "obserwacja" && state.reveal !== "shown";
@@ -36,7 +36,7 @@ function LiftScene({ state }) {
   const x = mountain ? 15 + state.progress * .45 : 36 + state.progress * .21;
   return <>
     <div className={`lab-scene lab-lift ${mountain ? "with-mountain" : ""}`} role="img"
-      aria-label={`Porcja na ${Math.round(result.height)} metrach. Temperatura ${fmt(result.parcel)} stopni, otoczenie ${fmt(result.temperatureEnvironment)}. ${result.opacity > 0 ? "Poziom kondensacji przekroczony." : "Przed kondensacją."}`}>
+      aria-label={`Porcja na ${Math.round(result.height)} metrach. Temperatura ${fmt(result.parcel)} stopni, otoczenie ${fmt(result.temperatureEnvironment)}. ${result.saturated ? "Osiągnięte nasycenie." : "Przed kondensacją."}`}>
       <img className="lab-backdrop" src={mountain ? "./mountain.webp" : "./coast.webp"} alt="" />
       {!mountain && <div className="lab-cold-mass" style={{ "--advance": `${state.progress * .34}%` }}><span>chłodniejsza masa</span></div>}
       <svg className="lab-lift-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1={mountain ? 15 : 36} y1={mountain ? 60 : 78} x2={mountain ? 60 : 57} y2={mountain ? 28 : 25} /></svg>
@@ -47,7 +47,7 @@ function LiftScene({ state }) {
     </div>
     <Readout><div className="lab-metrics"><Metric label="Wymuszone uniesienie">{Math.round(result.height)} m</Metric>
       <Metric label="Temperatura porcji">{fmt(result.parcel)}°C</Metric><Metric label="Otoczenie na tym poziomie">{fmt(result.temperatureEnvironment)}°C</Metric></div>
-      <p>{result.opacity > 0 ? "Porcja osiągnęła nasycenie; wraz z dalszym unoszeniem rośnie widoczność chmury." : "Ta porcja nie osiągnęła jeszcze poziomu kondensacji."} {result.height > 0 && (result.buoyant ? "Jest cieplejsza od otoczenia: ma dodatnią wyporność." : "Nie jest cieplejsza od otoczenia; ruch nadal wymuszamy.")}</p>
+      <p>{result.saturated ? "Porcja osiągnęła nasycenie; wraz z dalszym unoszeniem rośnie widoczność chmury." : "Ta porcja nie osiągnęła jeszcze poziomu kondensacji."} {result.height > 0 && (result.buoyant ? "Jest cieplejsza od otoczenia, co w tym uproszczeniu sprzyja dalszemu unoszeniu." : "Nie jest wyraźnie cieplejsza od otoczenia; ruch nadal wymuszamy.")}</p>
       <p className="lab-small">Wysokość dotyczy uniesienia porcji, nie wysokości frontu. Rysunek nie zachowuje skali poziomej i pionowej.</p></Readout>
   </>;
 }
@@ -109,7 +109,7 @@ function SoundingScene({ state }) {
   const point = (t, p) => soundingCoordinates(t, p, skew);
   const path = (key) => profile.map((row, i) => { const p = point(row[key], row.pressure); return `${i ? "L" : "M"}${p.x},${p.y}`; }).join(" ");
   const y = point(0, level.pressure).y;
-  return <><div className="lab-sounding-chart"><div className="lab-current-level"><span>Na poziomie <strong>{level.pressure} hPa</strong></span><div><Metric label="Temperatura otoczenia">{level.temperature}°C</Metric>{detail > 0 && <Metric label="Punkt rosy">{level.dewpoint}°C</Metric>}{detail > 1 && <Metric label="Unoszona porcja">{level.parcel}°C</Metric>}</div></div><span className="eyebrow">{skew ? "Uproszczony Skew-T / log-p" : "Profil na prostych osiach temperatury"}</span>
+  return <><div className="lab-sounding-chart"><div className="lab-current-level"><span>Na poziomie <strong>{level.pressure} hPa</strong></span><div><Metric label="Temperatura otoczenia">{level.temperature}°C</Metric>{detail > 0 && <Metric label="Punkt rosy">{level.dewpoint}°C</Metric>}{detail > 1 && <Metric label="Unoszona porcja">{level.parcel}°C</Metric>}</div></div><details className="lab-profile-details" open={skew || detail > 2}><summary>Pełny profil i osie wykresu</summary><span className="eyebrow">{skew ? "Uproszczony Skew-T / log-p" : "Profil na prostych osiach temperatury"}</span>
     <svg viewBox="0 0 470 390" role="img" aria-label={`Wybrany poziom ${level.pressure} hPa, temperatura ${level.temperature} stopni.${detail > 0 ? ` Punkt rosy ${level.dewpoint} stopni.` : ""}`}>
       <defs><clipPath id="profile-clip"><rect x="55" y="48" width="355" height="298" /></clipPath></defs>
       {[1000, 850, 700, 500, 300, 200].map(p => <g key={p}><line x1="55" x2="410" y1={point(0, p).y} y2={point(0, p).y} stroke="var(--line)" /><text x="47" y={point(0, p).y + 4} textAnchor="end">{p}</text></g>)}
@@ -118,7 +118,7 @@ function SoundingScene({ state }) {
         {[["temperature", "#a2483c", 0], ["dewpoint", "#377268", 1], ["parcel", "#7442d9", 2]].filter(([, , n]) => detail >= n).map(([key, color]) => <g key={key}><path d={path(key)} stroke={color} strokeWidth="3" fill="none" strokeDasharray={key === "parcel" ? "7 4" : undefined} /><circle cx={point(level[key], level.pressure).x} cy={y} r="5" fill={color} stroke="var(--white)" strokeWidth="2" /></g>)}
       </g>{[-70, -50, -30, -10, 10, 30].map(t => <text key={t} x={point(t, 1000).x} y="365" textAnchor="middle">{t}°</text>)}
       <text x="14" y="28">hPa</text><text x="244" y="387" textAnchor="middle">Temperatura °C</text>
-    </svg><div className="lab-chart-key"><span className="t">Temperatura</span>{detail > 0 && <span className="td">Punkt rosy</span>}{detail > 1 && <span className="parcel">Porcja · linia przerywana</span>}</div>
+    </svg><div className="lab-chart-key"><span className="t">Temperatura</span>{detail > 0 && <span className="td">Punkt rosy</span>}{detail > 1 && <span className="parcel">Porcja · linia przerywana</span>}</div></details>
   </div><Readout><div className="lab-metrics"><Metric label="Wybrany poziom">{level.pressure} hPa</Metric><Metric label="Otoczenie">{level.temperature}°C</Metric>{detail > 0 && <Metric label="Punkt rosy">{level.dewpoint}°C</Metric>}{detail > 1 && <Metric label="Unoszona porcja">{level.parcel}°C</Metric>}</div>
     {detail > 0 && <p>Odstęp temperatury od punktu rosy: <strong>{level.spread}°C</strong>.</p>}
     {detail > 2 && <p><Wind /> Wiatr <strong>z {level.windDirection}° · {level.windSpeed} kt</strong>. kt to węzły, jednostka prędkości.</p>}
@@ -166,10 +166,10 @@ function NameScene({ state }) {
   const valid = state.species !== "calvus";
   return <><div className="lab-name-scene"><span className="eyebrow">Opis szkoleniowy · nie wynik rozpoznawania</span><div className="lab-evidence"><Cloud /><p>Osobne wysokie kłęby zachowują ostre wypukłości. Opad dochodzi do ziemi. Nie obserwowano wcześniejszego rozwoju.</p></div>
     <div className="lab-name-parts"><strong>Cumulus</strong><span>{valid ? state.species || "gatunek?" : "gatunek niezgodny"}</span><span>{state.feature || "cecha opadu?"}</span></div>
-    <p>{!valid ? "Calvus jest gatunkiem Cumulonimbus. Nie tworzymy nazwy Cumulus calvus." : state.species === "humilis" ? "Humilis nie odpowiada opisanemu silnemu rozwojowi pionowemu." : state.species === "congestus" ? "Congestus odpowiada silnemu rozwojowi pionowemu zachowującemu kłębiastą budowę." : "Dopasuj gatunek do obserwowanej budowy."}</p>
+  </div><Readout><p>{!valid ? "Calvus jest gatunkiem Cumulonimbus. Nie tworzymy nazwy Cumulus calvus." : state.species === "humilis" ? "Humilis nie odpowiada opisanemu silnemu rozwojowi pionowemu." : state.species === "congestus" ? "Congestus odpowiada silnemu rozwojowi pionowemu zachowującemu kłębiastą budowę." : "Dopasuj gatunek do obserwowanej budowy."}</p>
     {state.feature && <p>{state.feature === "virga" ? "Virga zanika nad ziemią. W tym opisie opad do niej dochodzi." : "Praecipitatio opisuje opad docierający do powierzchni."}</p>}
     {state.history && <p>{state.history === "invent" ? "Nie znamy pochodzenia: nie ma podstaw, aby je dopisać." : "Pochodzenie pozostaje nieznane. Tego członu nie dopisujemy."}</p>}
-  </div></>;
+  </Readout></>;
 }
 
 export function ActivityScene({ id, state }) {
