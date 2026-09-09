@@ -288,9 +288,10 @@ test("sounding facts are unchanged rows of the existing idealized profile, not n
     assert.notEqual(straight.x, skew.x);
   }
   for (const exercise of [a, b]) {
-    assert.match(exercise.context, /idealizowanego profilu dydaktycznego/);
+    assert.match(exercise.context, /(?:uproszczonego|idealizowanego) profilu (?:szkoleniowego|dydaktycznego)/);
     assert.doesNotMatch(rawText(exercise), /stratus-inversion|inwersja|izotermia|odstęp \d/);
   }
+  assert.match(a.context, /nie radiosondaż z konkretnego dnia/);
 });
 
 test("icing preserves the liquid/surface conditions and never grades an arbitrary intensity", () => {
@@ -326,17 +327,25 @@ test("turbulence has qualitative evidence and no calibrated severity or outcome 
 
 test("storm cases distinguish missing moisture from the stage of an existing cell", () => {
   const [a, b] = transferCases.burza;
-  const inputs = [a, b].map((exercise) => Object.fromEntries([
-    ["moisture", exercise.facts[0].match(/wariant (dry|wet)/)[1]],
-    ["stability", exercise.facts[1].match(/wariant (stable|unstable)/)[1]],
-    ["trigger", exercise.facts[2].match(/wariant (none|lift)/)[1]],
-  ]));
+  // Model fixtures stay internal; learner evidence describes the same conditions in Polish.
+  const inputs = [
+    { moisture: "dry", stability: "unstable", trigger: "lift" },
+    { moisture: "wet", stability: "unstable", trigger: "lift" },
+  ];
+  assert.match(a.facts[0], /Wilgoć:\s*mało/);
+  assert.match(b.facts[0], /Wilgoć:\s*dużo/);
+  for (const exercise of [a, b]) {
+    assert.match(exercise.facts[1], /Równowaga:\s*chwiejna/);
+    assert.match(exercise.facts[2], /Wymuszenie:\s*skuteczne uniesienie/);
+    assert.doesNotMatch(rawText(exercise), /\b(dry|wet|stable|unstable|lift|helper|possible|true|false)\b/i);
+  }
+  assert.match(a.facts[3], /przed rozwojem komórki/);
   assert.equal(stormIngredients(inputs[0]).possible, false);
   assert.equal(a.correct.ingredients, "incomplete");
   assert.equal(stormIngredients({ ...inputs[0], moisture: a.correct.change }).possible, true);
   assert.equal(a.correct.change, "wet");
   assert.equal(stormIngredients(inputs[1]).possible, true);
-  assert.match(b.facts[3], /stadium zaniku \(2\)/);
+  assert.match(b.facts[3], /stadium zaniku/);
   assert.equal(b.correct.flow, "down");
   assert.equal(b.correct.limit, "not-instant");
   differsFromLesson("burza", { ...inputs[0], phase: 0 });

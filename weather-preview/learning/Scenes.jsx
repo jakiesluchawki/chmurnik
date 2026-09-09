@@ -10,6 +10,10 @@ export const photoPath = (image) => `./photos/${image.src.split("/").pop()}`;
 const FeltCloud = ({ className = "", style }) => <img className={`lab-cloud ${className}`} src="./cloud.webp" alt="" style={style} />;
 const Metric = ({ label, children, className = "" }) => <div className={`lab-metric ${className}`}><span>{label}</span><strong>{children}</strong></div>;
 const Readout = ({ children }) => <details className="lab-readout"><summary>Odczyt i objaśnienie sceny</summary><div>{children}</div></details>;
+const CurrentEvidence = ({ label, children }) => <div className="lab-current-evidence" role="group" aria-label={label}>{children}</div>;
+
+// One coordinate for ground, reference line and tests; labels never offset it.
+export const heightScenePosition = (metres) => 8 + metres / 2500 * 74;
 
 function PhotoScene({ id, state }) {
   const hidden = id === "obserwacja" && state.reveal !== "shown";
@@ -31,6 +35,7 @@ function PhotoScene({ id, state }) {
 
 function LiftScene({ state }) {
   const result = forcedLift(state);
+  const difference = Number(result.parcel.toFixed(1)) - Number(result.temperatureEnvironment.toFixed(1));
   const mountain = state.mechanism === "mountain";
   const y = mountain ? 60 - state.progress * .32 : 78 - result.height / 2200 * 53;
   const x = mountain ? 15 + state.progress * .45 : 36 + state.progress * .21;
@@ -45,8 +50,12 @@ function LiftScene({ state }) {
       </div>
       <span className="lab-scene-tag">{mountain ? "Przepływ nad zboczem" : "Przekrój przez front"} · schemat</span>
     </div>
-    <Readout><div className="lab-metrics"><Metric label="Wymuszone uniesienie">{Math.round(result.height)} m</Metric>
-      <Metric label="Temperatura porcji">{fmt(result.parcel)}°C</Metric><Metric label="Otoczenie na tym poziomie">{fmt(result.temperatureEnvironment)}°C</Metric></div>
+    <CurrentEvidence label="Temperatury na tej samej wysokości">
+      <p className="lab-evidence-context">Ta sama wysokość: <strong>{Math.round(result.height)} m uniesienia</strong></p>
+      <div className="lab-metrics"><Metric label="Temperatura porcji">{fmt(result.parcel)}°C</Metric><Metric label="Temperatura otoczenia">{fmt(result.temperatureEnvironment)}°C</Metric></div>
+      <p>{difference === 0 ? "Temperatury są równe w pokazanej dokładności." : `Porcja jest o ${fmt(Math.abs(difference))}°C ${difference > 0 ? "cieplejsza" : "chłodniejsza"} od otoczenia.`} Ruch nadal wymuszamy.</p>
+    </CurrentEvidence>
+    <Readout>
       <p>{result.saturated ? "Porcja osiągnęła nasycenie; wraz z dalszym unoszeniem rośnie widoczność chmury." : "Ta porcja nie osiągnęła jeszcze poziomu kondensacji."} {result.height > 0 && (result.buoyant ? "Jest cieplejsza od otoczenia, co w tym uproszczeniu sprzyja dalszemu unoszeniu." : "Nie jest wyraźnie cieplejsza od otoczenia; ruch nadal wymuszamy.")}</p>
       <p className="lab-small">Wysokość dotyczy uniesienia porcji, nie wysokości frontu. Rysunek nie zachowuje skali poziomej i pionowej.</p></Readout>
   </>;
@@ -80,25 +89,32 @@ function MetarScene({ state }) {
     </div><Readout><p>Przesuwasz godzinę odczytu prognozy, nie obserwowany czas pogody. TEMPO może wystąpić przejściowo w swoim oknie, nie musi trwać przez całe okno.</p></Readout></>;
   }
   const result = skyReport(state);
+  const upperUnknown = result.code === "OVC";
   const layer = (count, height, key) => <div key={key} className="lab-sky-layer" style={{ bottom: `${14 + height / 7000 * 69}%` }}>
     <span>{height} ft</span><div>{Array.from({ length: 8 }, (_, i) => <FeltCloud key={i} style={{ opacity: i < count ? 1 : .1 }} />)}</div></div>;
-  return <><div className="lab-scene lab-metar-sky" role="img" aria-label={`${result.groups}. Pułap ${result.ceiling} stóp nad lotniskiem.`}>
-    <div className="lab-airfield">Poziom lotniska · 0 ft AGL</div>{result.code !== "OVC" && layer(6, 6000, "upper")}{layer(result.oktas, result.base, "lower")}
+  return <><div className="lab-scene lab-metar-sky" role="img" aria-label={`${result.groups}. Pułap ${result.ceiling} stóp nad lotniskiem.${upperUnknown ? " Powyżej OVC: brak danych, nie dowód braku chmur." : ""}`}>
+    <div className="lab-airfield">Poziom lotniska · 0 ft AGL</div>{upperUnknown ? <div className="lab-sky-unknown">Powyżej OVC: brak danych</div> : layer(6, 6000, "upper")}{layer(result.oktas, result.base, "lower")}
     <span className="lab-scene-tag">Podstawy warstw · nie grubość chmur</span></div>
-    <Readout><code className="lab-report">{result.report}</code><div className="lab-metrics"><Metric label="Najniższa podstawa">{result.base} ft AGL</Metric><Metric label="Pułap (ceiling)">{result.ceiling} ft AGL</Metric></div>
+    <CurrentEvidence label="Bieżący METAR i wysokości warstw">
+      <p className="lab-evidence-context">METAR szkoleniowy · AGL: nad lotniskiem</p>
+      <code className="lab-report">{result.report}</code><div className="lab-metrics"><Metric label="Najniższa podstawa">{result.base} ft AGL</Metric><Metric label="Pułap (ceiling)">{result.ceiling} ft AGL</Metric></div>
       <p>{["FEW", "SCT"].includes(result.code) ? "Niższa warstwa nie tworzy pułapu. Robi to BKN060 powyżej niej." : "Najniższa warstwa BKN lub OVC tworzy pułap."}</p>
+      {upperUnknown && <p>Powyżej OVC nie znamy warstw. To nie znaczy, że nie ma tam chmur.</p>}
+    </CurrentEvidence>
+    <Readout>
       <p className="lab-small">AGL: nad poziomem lotniska w tym raporcie. Ikony pokazują umowne pokrycie nieba, nie osiem oddzielnych chmur. Zakończenie na OVC nie oznacza braku chmur wyżej.</p></Readout></>;
 }
 
 function HeightScene({ state }) {
   const result = heightReference(state);
-  return <><div className="lab-scene lab-height-scene" role="img" aria-label={`Teren ${result.terrain} metrów MSL, poziom 1500 metrów MSL. ${result.belowGround ? "Poziom pod terenem." : `${result.agl} metrów nad gruntem.`}`}>
+  const atGround = result.agl === 0;
+  const relation = result.belowGround ? `${result.terrain - result.msl} m pod terenem` : atGround ? "0 m AGL · na powierzchni terenu" : `${result.agl} m AGL · nad gruntem`;
+  return <><div className="lab-scene lab-height-scene" role="img" aria-label={`Teren ${result.terrain} metrów MSL, poziom ${result.msl} metrów MSL. ${relation}.`}>
     <div className="lab-sea-level">0 m MSL · poziom morza</div>
-    <div className="lab-terrain-column" style={{ height: `${8 + result.terrain / 2500 * 74}%` }}><span>Teren {result.terrain} m</span></div>
-    <div className={`lab-reference-line ${result.belowGround ? "buried" : ""}`} style={{ bottom: `${8 + 1500 / 2500 * 74}%` }}>1500 m MSL</div>
-    {!result.belowGround && <FeltCloud style={{ bottom: `${8 + 1500 / 2500 * 74}%`, left: "62%", width: 85, position: "absolute" }} />}
-  </div><Readout><div className="lab-metrics"><Metric label="Nad morzem (MSL)">1500 m</Metric><Metric label="Nad gruntem (AGL)">{result.belowGround ? "Pod terenem" : `${result.agl} m`}</Metric></div>
-    <p>{result.belowGround ? "Tutaj ten poziom nie leży w atmosferze. Nie odczytuj danych pod terenem jak warunków nad gruntem." : `1500 m − ${result.terrain} m = ${result.agl} m. Zmiana terenu nie przesuwa stałego poziomu MSL.`}</p></Readout></>;
+    <div className="lab-terrain-column" style={{ height: `${heightScenePosition(result.terrain)}%` }}><span>Teren {result.terrain} m</span></div>
+    <div className={`lab-reference-line ${result.belowGround ? "buried" : atGround ? "at-ground" : ""}`} style={{ bottom: `${heightScenePosition(result.msl)}%` }}><span className="lab-reference-label">{result.msl} m MSL</span></div>
+  </div><CurrentEvidence label="Położenie poziomu względem terenu"><p><strong>{relation}</strong></p><p>{result.belowGround ? "Ten poziom nie jest tu warstwą powietrza nad gruntem." : atGround ? "Poziom pokrywa się z powierzchnią, nie leży ponad nią." : `${result.msl} − ${result.terrain} = ${result.agl} m.`}</p></CurrentEvidence>
+    <Readout><p>MSL oznacza wysokość nad średnim poziomem morza, AGL nad lokalnym gruntem. Zmiana terenu nie przesuwa stałego poziomu MSL.</p><p>Pokazujemy poziom geometryczny, nie chmurę ani powierzchnię stałego ciśnienia. Nie odczytuj danych pod terenem jak warunków nad gruntem.</p></Readout></>;
 }
 
 function SoundingScene({ state }) {
@@ -109,7 +125,7 @@ function SoundingScene({ state }) {
   const point = (t, p) => soundingCoordinates(t, p, skew);
   const path = (key) => profile.map((row, i) => { const p = point(row[key], row.pressure); return `${i ? "L" : "M"}${p.x},${p.y}`; }).join(" ");
   const y = point(0, level.pressure).y;
-  return <><div className="lab-sounding-chart"><div className="lab-current-level"><span>Na poziomie <strong>{level.pressure} hPa</strong></span><div><Metric label="Temperatura otoczenia">{level.temperature}°C</Metric>{detail > 0 && <Metric label="Punkt rosy">{level.dewpoint}°C</Metric>}{detail > 1 && <Metric label="Unoszona porcja">{level.parcel}°C</Metric>}</div></div><details className="lab-profile-details" open={skew || detail > 2}><summary>Pełny profil i osie wykresu</summary><span className="eyebrow">{skew ? "Uproszczony Skew-T / log-p" : "Profil na prostych osiach temperatury"}</span>
+  return <><div className="lab-sounding-chart"><div className="lab-current-level"><span>Na poziomie <strong>{level.pressure} hPa</strong></span><div><Metric label="Temperatura otoczenia">{level.temperature}°C</Metric>{detail > 0 && <Metric label="Punkt rosy">{level.dewpoint}°C</Metric>}{detail > 1 && <Metric label="Unoszona porcja">{level.parcel}°C</Metric>}{detail > 2 && <Metric label={`Wiatr na ${level.pressure} hPa`} className="lab-wind-metric">z {level.windDirection}° · {level.windSpeed} kt</Metric>}</div>{detail > 2 && <p className="lab-level-wind"><Wind aria-hidden="true" /> Kierunek „z”: skąd wieje. kt: węzły, jednostka prędkości.</p>}</div><details className="lab-profile-details" open={skew || detail > 2}><summary>Pełny profil i osie wykresu</summary><span className="eyebrow">{skew ? "Uproszczony Skew-T / log-p" : "Profil na prostych osiach temperatury"}</span>
     <svg viewBox="0 0 470 390" role="img" aria-label={`Wybrany poziom ${level.pressure} hPa, temperatura ${level.temperature} stopni.${detail > 0 ? ` Punkt rosy ${level.dewpoint} stopni.` : ""}`}>
       <defs><clipPath id="profile-clip"><rect x="55" y="48" width="355" height="298" /></clipPath></defs>
       {[1000, 850, 700, 500, 300, 200].map(p => <g key={p}><line x1="55" x2="410" y1={point(0, p).y} y2={point(0, p).y} stroke="var(--line)" /><text x="47" y={point(0, p).y + 4} textAnchor="end">{p}</text></g>)}
@@ -121,18 +137,23 @@ function SoundingScene({ state }) {
     </svg><div className="lab-chart-key"><span className="t">Temperatura</span>{detail > 0 && <span className="td">Punkt rosy</span>}{detail > 1 && <span className="parcel">Porcja · linia przerywana</span>}</div></details>
   </div><Readout><div className="lab-metrics"><Metric label="Wybrany poziom">{level.pressure} hPa</Metric><Metric label="Otoczenie">{level.temperature}°C</Metric>{detail > 0 && <Metric label="Punkt rosy">{level.dewpoint}°C</Metric>}{detail > 1 && <Metric label="Unoszona porcja">{level.parcel}°C</Metric>}</div>
     {detail > 0 && <p>Odstęp temperatury od punktu rosy: <strong>{level.spread}°C</strong>.</p>}
-    {detail > 2 && <p><Wind /> Wiatr <strong>z {level.windDirection}° · {level.windSpeed} kt</strong>. kt to węzły, jednostka prędkości.</p>}
     <p className="lab-small">Ciśnienie maleje ku górze w skali logarytmicznej. Rysunek nie zawiera jeszcze siatki adiabatycznej ani całkowania energii CAPE. Dane są dydaktyczne, a nie bieżące.</p></Readout></>;
 }
 
 function IcingScene({ state }) {
   const result = icingConditions(state);
+  const phase = state.phase === "liquid" ? result.temperature < 0 ? "Przechłodzone krople ciekłej wody" : "Krople ciekłej wody" : state.phase === "ice" ? "Tylko suche kryształki lodu" : "Bez kropli";
   return <><div className="lab-scene lab-icing-scene" role="img" aria-label={`${result.temperature} stopni, ${state.phase === "liquid" ? "krople ciekłej wody" : state.phase === "ice" ? "suche kryształki" : "brak kropli"}. ${result.amount > 0 ? "Widoczny symbol osadu na krawędzi." : "Brak akrecji z kropli w tej próbie."}`}>
     <span className="lab-scene-tag">Przekrój przez skrzydło · napływ z lewej</span>
     <div className="lab-wing"><img src="./wing.webp" alt="" /><div className="lab-ice-deposit" style={{ opacity: result.amount, transform: `scale(${.8 + result.amount * .35})` }}>{[0, 1, 2, 3].map(i => <Snowflake key={i} weight="fill" />)}</div></div>
     {state.phase !== "dry" && [0, 1, 2, 3, 4].map(i => <span key={i} className="lab-incoming" style={{ top: `${30 + i * 8}%`, animationDelay: `${-i * .7}s` }}>{state.phase === "liquid" ? <Drop weight="fill" /> : <Snowflake />}</span>)}
     <div className="lab-flow-caption"><ArrowRight /> kierunek przepływu</div>
-  </div><Readout><div className="lab-metrics"><Metric label="Powietrze i skrzydło">{result.temperature}°C</Metric><Metric label="Osadzanie z kropli">{result.amount > 0 ? "Pokazane na krawędzi" : "Nie zachodzi w tej próbie"}</Metric></div>
+  </div><CurrentEvidence label="Warunki osobnej próby oblodzenia">
+    <p className="lab-evidence-context">Osobna próba od czystej powierzchni · ekspozycja {state.exposure}%</p>
+    <div className="lab-metrics"><Metric label="Powietrze i skrzydło">{result.temperature}°C</Metric><Metric label="Napływająca woda" className="lab-phase-metric">{phase}</Metric></div>
+    <p>{result.amount > 0 ? "Na krawędzi pokazano umowny osad." : result.accretion ? "Ekspozycja wynosi 0%: jeszcze bez osadu." : "Brak osadu z kropli w tej próbie."}</p>
+    <p>Zmiana ustawień to nowa próba. Zniknięcie osadu nie oznacza topnienia.</p>
+  </CurrentEvidence><Readout>
     <p>{result.liquid && result.temperature < 0 ? "To przechłodzona ciekła woda. Zwiększ ekspozycję, aby zobaczyć umowny osad." : "Ten wariant nie spełnia warunków pokazanego mechanizmu akrecji."}</p>
     <p className="lab-small">Każda zmiana warunków zaczyna nową próbę, nie topi poprzedniego lodu. Pomijamy inne mechanizmy, m.in. szron i oblodzenie silników. Nie obliczamy grubości ani intensywności oblodzenia.</p></Readout></>;
 }
