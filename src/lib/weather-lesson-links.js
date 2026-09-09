@@ -9,7 +9,7 @@ const links = {
   ],
   lotnictwo: [{ id: "metar", title: "Zmień warstwę i odczytaj METAR / TAF" }],
   warstwy: [{ id: "wysokosc", title: "Porównaj wysokość nad morzem i nad gruntem" }, { id: "sondaz", title: "Sondaż: od pojedynczego poziomu do Skew-T" }],
-  zagrozenia: [{ id: "oblodzenie", title: "Sprawdź, kiedy krople osadzają lód" }, { id: "turbulencja", title: "Porównaj trzy źródła turbulencji" }, { id: "burza", title: "Złóż warunki rozwoju burzy" }],
+  zagrozenia: [{ id: "oblodzenie", title: "Sprawdź, kiedy krople osadzają lód" }, { id: "turbulencja", title: "Porównaj trzy źródła turbulencji" }, { id: "burza", title: "Sprawdź, co podtrzymuje unoszenie powietrza" }],
   ekspert: [{ id: "nazwy", title: "Zbuduj nazwę z obserwacji, nie z domysłów" }],
 };
 
