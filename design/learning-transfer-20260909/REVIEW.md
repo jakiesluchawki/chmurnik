@@ -3,6 +3,43 @@
 Task lore-0043, 2026-09-09. Pages preview only; production domain, native
 navigation, recognition models and Apple releases are outside this change.
 
+## Agent Participation
+
+This completed iteration used **9 distinct delegated agents**, plus the main
+coordinator: **10 agents in total**. The count includes the accompanying cover
+illustration work and the transfer/mobile redesign, not the project's entire
+history. It counts participants, not simultaneous workers, messages or tool
+calls. The earlier three-agent summary referred only to research.
+
+| Agent nickname | Responsibility and deliverable |
+| --- | --- |
+| Mill | Learning research: worked examples, transfer, retrieval and feedback; `research-didactics.md`. |
+| Kuhn | Mobile UX/accessibility research: screen anatomy, attention, scrolling, focus and verification; `research-mobile.md`. |
+| Bacon | Scientific/exercise audit of all 14 activities; `research-exercises.md`. Subsequently implemented the 28-case bank, neutral photo packaging and case tests. Counted once across both assignments. |
+| Ampere | Two topic-specific cover illustrations: front and wind, including export and visual checks. |
+| Hegel | Two cover illustrations: METAR and sounding, including export and visual checks. |
+| Locke | Two cover illustrations: height references and icing, including export and visual checks. |
+| Ptolemy | Two cover illustrations: turbulence and storm, including export and visual checks. |
+| Kant | Integrated new modes into the three original breeze/cloud/fog experiences, improved their mobile layout and tested their existing interactions. |
+| Anscombe | Independent implementation review and state/render tests, including answer concealment, assistance, storage, first submissions and stale updates; `implementation-review.md`. |
+| Main coordinator | Combined research findings; implemented the shared assessment UI/storage and newer studio layout; integrated artwork and fixes; performed browser QA, full verification, scoped publication and public checks. |
+
+Reconciled against the successful delegation receipts on 2026-09-09:
+
+- Artwork: `01a08382-bde0-7a41-98de-5bc1a20585a6`,
+  `01a08382-be92-77b3-92f1-862096a32c9a`,
+  `01a08382-c02b-7790-b626-93c512f8be43`,
+  `01a08382-c1d1-70c1-b6b9-d77c87bd04bb`.
+- Research: `01a0838b-1bd7-7ac3-89ff-3a0c58647376`,
+  `01a0838b-2a5c-7833-ba55-fb81112a215c`,
+  `01a0838b-2b3d-7742-bdb1-fabc52ff83c6` (also case implementation).
+- Original-experience implementation: `01a0839b-903a-7790-b6fc-fadb487f289d`.
+- Independent review: `01a083a2-6b31-7503-9fff-7d964f471afc`.
+
+All nine delegated assignments ended before this report. Research is not an
+external meteorologist review; image generation is a tool used by the assigned
+agents, not an additional participant in this count.
+
 ## Decisions From Three Research Reports
 
 - Worked examples teach the mechanism; the new studio adds a committed recap
