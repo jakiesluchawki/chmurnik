@@ -124,6 +124,11 @@ test("assessment presets differ from tutorial presets and require the intended a
 test("lesson links and return targets are explicit, reciprocal and Pages-only", () => {
   assert.equal(weatherLessonLinks("wiatr", "/chmurnik/").length, 2);
   assert.equal(weatherLessonLinks("procesy", "/chmurnik/").length, 2);
+  assert.equal(
+    weatherLessonLinks("zagrozenia", "/chmurnik/").find(link => link.href.endsWith("#burza")).title,
+    "Sprawdź, co podtrzymuje unoszenie powietrza",
+  );
+  assert.deepEqual(weatherLessonLinks("zagrozenia", "/"), []);
   for (const lesson of ["wiatr", "procesy"]) {
     assert.deepEqual(weatherLessonLinks(lesson, "/"), []);
     for (const link of weatherLessonLinks(lesson, "/chmurnik/")) {
