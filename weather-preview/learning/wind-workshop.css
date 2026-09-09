@@ -1,0 +1,52 @@
+.wind-workshop{--wind-paper:var(--paper,#f5edf1);--wind-ink:var(--ink,#514d31);--wind-accent:var(--violet,#7442d9);--wind-line:var(--line,#d1c9bc);--wind-white:var(--white,#fffaf5);background:var(--wind-paper);color:var(--wind-ink);min-height:100vh;font-family:Roobert,system-ui,sans-serif}
+.wind-workshop *{box-sizing:border-box}
+.wind-workshop button,.wind-workshop a,.wind-workshop summary{touch-action:manipulation}
+.wind-workshop button{cursor:pointer}
+.wind-workshop button>svg,.wind-header svg{flex-shrink:0;width:20px;height:20px}
+.wind-header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;padding:12px 24px;background:var(--wind-white);border-bottom:1px solid var(--wind-line)}
+.wind-header a{display:flex;align-items:center;gap:8px;min-height:44px;color:inherit;text-decoration:none}
+.wind-workshop main{max-width:1200px;margin:auto;padding:20px}
+.wind-modes{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.wind-modes button,.wind-reset,.wind-help-toggle{min-height:44px;padding:10px 14px;border:1px solid var(--wind-line);border-radius:22px;background:var(--wind-white);color:var(--wind-ink);font:inherit;line-height:1.4}
+.wind-modes button[aria-pressed=true]{background:var(--wind-accent);color:white;border-color:var(--wind-accent)}
+.wind-intro{max-width:760px;margin:14px 0}
+.wind-intro .eyebrow{font-size:12px;line-height:1.4;margin:0}
+.wind-intro h1{font-family:Romie,Georgia,serif;font-weight:400;font-size:clamp(28px,3.5vw,42px);line-height:1.1;margin:8px 0}
+.wind-intro>p:last-child{font-size:16px;line-height:1.45;margin:8px 0 14px}
+.wind-workbench{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);border:1px solid var(--wind-line);border-radius:22px;overflow:hidden;background:var(--wind-white);align-items:start}
+.wind-workbench>section{min-width:0}
+.wind-scene-key{font-size:14px;line-height:1.45;margin:0;padding:12px 16px;background:#eee0ed}
+.wind-field{display:block;width:100%;height:auto;background:#eee0ed}
+.wind-field text{font:24px Roobert,system-ui,sans-serif;fill:#544e2d}
+.wind-field .wind-marker-number{fill:white;font-weight:700;text-anchor:middle}
+.wind-frames{display:flex;gap:6px;padding:12px}
+.wind-frames button{display:flex;align-items:center;justify-content:center;gap:4px;flex:1;min-width:0;min-height:48px;padding:8px 4px;border:1px solid var(--wind-line);border-radius:12px;background:#f2e8f7;color:var(--wind-ink);font:inherit;font-size:14px}
+.wind-frames button>svg{width:16px;height:16px}
+.wind-frames button[aria-pressed=true]{color:white;background:var(--wind-accent)}
+.wind-decision{padding:22px}
+.wind-decision h2{font-size:21px;line-height:1.3;margin:0 0 14px}
+.wind-decision .wind-step{font-size:12px;font-weight:700;letter-spacing:.03em;margin:0 0 8px}
+.wind-direction-choices,.wind-statement-choices{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:0;padding:0;margin:0 0 16px;gap:8px;min-width:0}
+.wind-statement-choices{grid-template-columns:minmax(0,1fr)}
+.wind-decision legend{font-size:13px;margin-bottom:10px}
+.wind-decision fieldset button{font:inherit;color:var(--wind-ink);background:#fffaf5;min-height:48px;border:1px solid var(--wind-line);border-radius:12px;text-align:left;padding:10px;line-height:1.4;overflow-wrap:anywhere}
+.wind-decision fieldset button[aria-pressed=true]{background:#ece3f6;border-color:var(--wind-accent);box-shadow:inset 3px 0 var(--wind-accent)}
+.wind-workshop button:disabled{opacity:.5;cursor:default}
+.wind-workshop :is(button,a,summary,[tabindex]):focus-visible{outline:3px solid var(--wind-accent);outline-offset:3px}
+.wind-primary{display:flex;align-items:center;justify-content:space-between;gap:10px;font:inherit;line-height:1.4;background:var(--wind-accent);color:white;border:0;border-radius:14px;min-height:50px;width:100%;padding:12px 16px}
+.wind-field-note{font-size:13px;line-height:1.45;padding:0 16px 12px;margin:0}
+.wind-result p,.wind-decision>p,.wind-help p{font-size:15px;line-height:1.5;margin:12px 0}
+.wind-decision .wind-locked{padding:12px;background:#f3edf6;border-radius:12px;font-size:14px}
+.wind-help-toggle{margin-top:12px;border-radius:12px;text-align:left;width:100%;font-size:14px}
+.wind-help{border-left:3px solid var(--wind-accent);padding-left:12px}
+.wind-source-links{display:grid;gap:4px;margin:12px 0}
+.wind-source-links a,.wind-sources>a{display:flex;align-items:center;min-height:44px;line-height:1.4;font-size:14px;color:inherit;text-underline-offset:3px}
+.wind-reset{margin-top:16px;display:flex;align-items:center;gap:10px}
+.wind-replay{display:flex;flex-wrap:wrap;gap:0 8px}
+.wind-history,.wind-footer-note{font-size:13px;line-height:1.5;max-width:800px;margin:12px 0}
+.wind-sources{font-size:14px;line-height:1.6;margin-top:14px;max-width:800px}
+.wind-sources summary{display:flex;align-items:center;min-height:44px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.wind-sources p{margin:12px 0}
+.wind-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(max-width:800px){.wind-workshop main{padding:12px}.wind-workbench{display:block}.wind-header{padding:8px 12px;font-size:14px}.wind-intro h1{font-size:28px}.wind-decision{padding:16px;border-top:1px solid var(--wind-line)}.wind-intro>p:last-child{font-size:15px}.wind-modes{margin-bottom:12px;font-size:14px}.wind-scene-key{padding:10px 12px}.wind-direction-choices button{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.wind-workshop *,.wind-workshop *::before,.wind-workshop *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

@@ -26,6 +26,17 @@ Writing production code without an active Lore task is forbidden.
 
 ## Product Guardrails
 
+- Latest owner authorization (2026-09-09): improve all modules, then integrate
+  and test iOS/iPadOS and macOS; if packaged-app verification passes, submit
+  the signed update to App Store Connect without another acceptance request.
+  Prepare and verify a CyberFolks update archive with a download link. This
+  supersedes the earlier Pages-only and per-workshop approval gates below.
+  Do not skip tests/signing/privacy checks or call a submission a live release.
+  The owner will be away: continue independently, never bypass OS permissions.
+- On 2026-09-09 the owner accepted the improved direction and explicitly
+  authorized continuing all workshops without repeated per-workshop approval.
+  Complete and verify the broader Pages preview autonomously. This supersedes
+  the first-storm-pattern review stop, not the cloud/native publication gate.
 - September 8 weather-learning work is a separate GitHub Pages preview only.
   Do not publish it to chmurnik.cloud or Apple before owner acceptance. Keep
   production navigation and existing learning/photo storage untouched.
@@ -97,6 +108,12 @@ Writing production code without an active Lore task is forbidden.
   observation/classification, causal experiments for weather mechanisms,
   progressive data reading for METAR and soundings. Teach a simple vertical
   profile before introducing Skew-T; explain acronyms before using them.
+- Native compact navigation must expose Warstwy as a separate bottom tab,
+  with direct access to METAR/TAF, wind, Windy and full lessons, not through
+  Atlas. Verify the actual native FieldHome and nativeNavigation paths and
+  the packaged Apple web assets; a passing web-only test is insufficient.
+  The native daily exercise must hide genus, diagnostic text, answer-specific
+  actions and accessible labels until reveal, including after a date change.
 - On 2026-09-03 the owner explicitly requested iPad and macOS applications.
   Keep a shared iPhone/iPad UIKit target and build Mac Catalyst from the same
   sources. Preserve compact phone navigation; wide native windows get a
@@ -148,6 +165,14 @@ Writing production code without an active Lore task is forbidden.
   `design/reference/atlas-swiatla-mobile.png` only as historical context.
 
 ## Verification
+
+For the 2026-09-09 workshop rebuild, a target slider value is not evidence of
+learning. Commit a prediction before showing its outcome, keep the decisive
+current data visible beside the scene, and use different cases for transfer.
+Keep scientific coordinate anchors independent of labels. Record the first
+prediction separately from explanation and later help. A rebuilt workshop is
+not evidence that all other activities pass. Apply the latest full-release
+authorization above, with separate packaged-app verification before Apple.
 
 Before publishing:
 

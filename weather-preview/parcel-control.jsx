@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { ArrowsVertical } from "@phosphor-icons/react";
 import { dragHeight, keyboardHeight, HEIGHT_RANGE } from "./interaction.mjs";
 
-export function ParcelControl({ value, position, onChange }) {
+export function ParcelControl({ value, position, onChange, sceneSelector = ".scene", span, className = "", describedBy = "parcel-instructions" }) {
   const drag = useRef(null);
   const [active, setActive] = useState(false);
 
@@ -13,7 +13,7 @@ export function ParcelControl({ value, position, onChange }) {
     setActive(false);
     if (cancelled) onChange(start.value);
     else
-      onChange(dragHeight(start.value, start.y, event.clientY, start.height));
+      onChange(dragHeight(start.value, start.y, event.clientY, start.height, span));
     if (event.currentTarget.hasPointerCapture(event.pointerId))
       event.currentTarget.releasePointerCapture(event.pointerId);
   }
@@ -21,7 +21,7 @@ export function ParcelControl({ value, position, onChange }) {
   return (
     <button
       type="button"
-      className={`parcel-control ${active ? "dragging" : ""}`}
+      className={`parcel-control ${active ? "dragging" : ""} ${className}`}
       style={{ top: `${position}%` }}
       role="slider"
       aria-label="Uniesienie powietrza na rysunku"
@@ -30,11 +30,11 @@ export function ParcelControl({ value, position, onChange }) {
       aria-valuemax={HEIGHT_RANGE.max}
       aria-valuenow={value}
       aria-valuetext={`${value} metrów nad ziemią`}
-      aria-describedby="parcel-instructions"
+      aria-describedby={describedBy}
       onPointerDown={(event) => {
         if (!event.isPrimary || event.button !== 0 || drag.current) return;
         const height = event.currentTarget
-          .closest(".scene")
+          .closest(sceneSelector)
           .getBoundingClientRect().height;
         drag.current = {
           pointerId: event.pointerId,
@@ -49,7 +49,7 @@ export function ParcelControl({ value, position, onChange }) {
       onPointerMove={(event) => {
         const start = drag.current;
         if (start?.pointerId !== event.pointerId) return;
-        onChange(dragHeight(start.value, start.y, event.clientY, start.height));
+        onChange(dragHeight(start.value, start.y, event.clientY, start.height, span));
       }}
       onPointerUp={(event) => finish(event)}
       onPointerCancel={(event) => finish(event, true)}

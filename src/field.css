@@ -20,7 +20,7 @@
   overflow-wrap: anywhere;
 }
 .field-page :where(button:not(.button):not(.icon-button)),
-.native-atlas-shortcuts > .field-source {
+.native-layer-shortcuts > .field-source {
   appearance: none;
   border: 0;
   background: transparent;
@@ -841,16 +841,35 @@
   flex: 1;
   font-size: 0.9rem;
 }
-.native-atlas-shortcuts {
-  max-width: 1080px;
-  padding: 0 18px;
-  margin: auto;
+.native-layer-shortcuts {
+  margin-bottom: 28px;
 }
-.native-atlas-shortcuts > .field-source {
-  margin-right: 22px;
+.field-daily-caption > .button {
+  margin: 0 8px 10px 0;
+}
+/* The sidebar reduces the workspace width without changing the viewport. */
+.native-field-layout .windy-decoder {
+  container-type: inline-size;
+}
+@container (min-width: 601px) and (max-width: 1050px) {
+  .decoder-protocol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .decoder-protocol__intro { grid-column: 1 / -1; }
+  .decoder-protocol > article { border-top: 1px solid var(--line); }
+  .decoder-protocol > article:nth-of-type(odd) { border-left: 0; }
+  .decoder-workbench { grid-template-columns: 190px minmax(0, 1fr); }
+  .decoder-check { grid-column: 1 / -1; min-height: auto; }
 }
 .native-field-layout .bottom-nav {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+.native-field-layout .segmented-control {
+  margin-right: 0;
+}
+.native-field-layout .workbench-heading.page-heading--inline > .source-button {
+  position: static;
+  grid-column: 1 / -1;
+  justify-self: end;
+  margin-top: 0;
 }
 .native-field-layout .app-footer {
   display: none;

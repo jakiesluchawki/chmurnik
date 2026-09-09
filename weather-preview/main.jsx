@@ -1,7 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { LearningCatalog, LearningStudio } from "./learning/LearningStudio.jsx";
-import { StormWorkshop } from "./learning/StormWorkshop.jsx";
+import { WorkshopBoundary } from "./WorkshopBoundary.jsx";
+const StormWorkshop = lazy(() => import("./learning/StormWorkshop.jsx").then(m => ({ default: m.StormWorkshop })));
+const WindWorkshop = lazy(() => import("./learning/WindWorkshop.jsx").then(m => ({ default: m.WindWorkshop })));
+const SoundingWorkshop = lazy(() => import("./learning/SoundingWorkshop.jsx").then(m => ({ default: m.SoundingWorkshop })));
+const TurbulenceWorkshop = lazy(() => import("./learning/TurbulenceWorkshop.jsx").then(m => ({ default: m.TurbulenceWorkshop })));
+const FoundationWorkshop = lazy(() => import("./learning/FoundationWorkshop.jsx").then(m => ({ default: m.FoundationWorkshop })));
 import { activities } from "./learning/catalog.mjs";
 import { TransferTrial } from "./learning/TransferTrial.jsx";
 import { markTransferHelp } from "./learning/transfer-state.mjs";
@@ -1154,9 +1159,13 @@ function PreviewRouter() {
     window.addEventListener("hashchange", change);
     return () => window.removeEventListener("hashchange", change);
   }, []);
-  if (hash === "pracownia") return <LearningCatalog mainSite={mainSite} />;
+  if (hash === "pracownia" || hash === "") return <LearningCatalog mainSite={mainSite} />;
   if (hash === "burza") return <StormWorkshop mainSite={mainSite} />;
+  if (hash === "wiatr") return <WindWorkshop mainSite={mainSite} />;
+  if (hash === "sondaz") return <SoundingWorkshop mainSite={mainSite} />;
+  if (hash === "turbulencja") return <TurbulenceWorkshop mainSite={mainSite} />;
+  if (["bryza", "chmura", "mgla"].includes(hash)) return <FoundationWorkshop key={hash} id={hash} mainSite={mainSite} />;
   if (Object.hasOwn(activities, hash)) return <LearningStudio key={hash} id={hash} mainSite={mainSite} />;
-  return <App />;
+  return <LearningCatalog mainSite={mainSite} />;
 }
-createRoot(document.getElementById("root")).render(<PreviewRouter />);
+createRoot(document.getElementById("root")).render(<WorkshopBoundary mainSite={mainSite}><Suspense fallback={<p className="learning-loading" role="status">Otwieramy pracownię…</p>}><PreviewRouter /></Suspense></WorkshopBoundary>);

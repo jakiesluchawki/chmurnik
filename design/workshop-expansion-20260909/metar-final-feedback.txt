@@ -1,0 +1,62 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "METAR / TAF" [level=1]
+    - link "Wróć do lekcji":
+      - /url: http://127.0.0.1:4190/#/learn/lotnictwo
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - 'region "Niebo zapisane w METAR: obserwacja i dowód"':
+    - paragraph: Doświadczenie 1 z 4 · odczyt depeszy
+    - heading "W szkoleniowym raporcie zmienimy SCT020 na BKN020, pozostawiając BKN060. Gdzie będzie pułap?" [level=2]
+    - list "Przebieg doświadczenia":
+      - listitem: Przewidź
+      - listitem: Sprawdź
+      - listitem: Wyjaśnij
+    - img "BKN020 BKN060. Pułap 2000 stóp nad lotniskiem.":
+      - generic: Poziom lotniska · 0 ft AGL
+      - generic: 6000 ft
+      - generic: 2000 ft
+      - generic: Podstawy warstw · nie grubość chmur
+    - group "Bieżący METAR i wysokości warstw":
+      - paragraph: "METAR szkoleniowy · AGL: nad lotniskiem"
+      - code: METAR EPWA 081200Z 24008KT 9999 BKN020 BKN060 18/12 Q1015
+      - generic: Najniższa podstawa
+      - strong: 2000 ft AGL
+      - generic: Pułap (ceiling)
+      - strong: 2000 ft AGL
+      - paragraph: Najniższa warstwa BKN lub OVC tworzy pułap.
+    - generic "Odczyt i objaśnienie sceny"
+    - status:
+      - paragraph: Porównanie z Twoją odpowiedzią
+      - heading "Porównaj tę odpowiedź z wynikiem." [level=3]
+      - paragraph:
+        - text: "Wybrano:"
+        - strong: Nadal na 6000 ft nad lotniskiem
+      - paragraph:
+        - text: "W tym przykładzie:"
+        - strong: Na 2000 ft nad lotniskiem
+      - paragraph: Przewidywanie zapisano przed dodatkową pomocą.
+      - paragraph: Uzasadnienie zapisano bez dodatkowej pomocy.
+      - paragraph: Wskazany dowód pasuje.
+      - paragraph: Podstawa nadal wynosi 2000 ft AGL. Zobacz, która warstwa tworzy teraz pułap.
+      - paragraph: BKN tworzy pułap. W SCT020 BKN060 pułap wynosił 6000 ft; po zmianie na BKN020 wynosi 2000 ft.
+      - button "Kolejne doświadczenie":
+        - text: Kolejne doświadczenie
+    - button "Powtórz ten przykład":
+      - text: Powtórz ten przykład
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: http://127.0.0.1:4190/#/learn/lotnictwo
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"':
+    - /url: http://127.0.0.1:4190/#/layers/metar
+    - text: "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"
+  - generic "Źródła i granice tego ćwiczenia"

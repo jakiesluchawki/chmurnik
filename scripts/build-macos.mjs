@@ -79,6 +79,7 @@ for (const object of Object.values(parsed.objects)) {
 writeFileSync(project, JSON.stringify(parsed));
 run("plutil", ["-convert", "xml1", project]);
 run("xcodebuild", ["-quiet", "-project", resolve(staging, "App.xcodeproj"), "-scheme", "App",
+  "-disableAutomaticPackageResolution", "-onlyUsePackageVersionsFromResolvedFile",
   "-configuration", "Debug", "-destination", "generic/platform=macOS,variant=Mac Catalyst",
   "-derivedDataPath", resolve(root, "build/macos"), "CODE_SIGN_IDENTITY=-", "CODE_SIGN_STYLE=Manual",
   "DEVELOPMENT_TEAM=", "PROVISIONING_PROFILE_SPECIFIER=", "build"]);

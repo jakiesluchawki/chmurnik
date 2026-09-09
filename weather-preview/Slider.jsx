@@ -1,11 +1,11 @@
 import React from "react";
-import { Sun, Moon, Drop, Thermometer, Wind, Cloud, Plus, Minus } from "@phosphor-icons/react";
+import { Sun, Moon, Drop, Thermometer, Wind, Cloud, Mountains, Plus, Minus } from "@phosphor-icons/react";
 
 export function Slider({ id, label, value, min, max, step = 1, nudge = step,
   display, onChange, disabled, ends = [String(min), String(max)], icon = id }) {
   const ratio = (value - min) / (max - min);
   const Handle = { cooling: Moon, humidity: Drop, temperature: Thermometer,
-    wind: Wind, cloud: Cloud }[icon] || Sun;
+    wind: Wind, cloud: Cloud, terrain: Mountains }[icon] || Sun;
   return <div className={`control ${disabled ? "disabled" : ""}`}>
     <div className="control-heading"><label htmlFor={id}>{label}</label><output htmlFor={id}>{display}</output></div>
     <div className="range-row">

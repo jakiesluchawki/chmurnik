@@ -10,6 +10,7 @@ import { createServer } from "vite";
 import vm from "node:vm";
 import ts from "typescript";
 import { activities, sources, lessonStateAt, lessonStepComplete } from "../weather-preview/learning/catalog.mjs";
+import { guideProbes } from "../weather-preview/learning/guide-probes.mjs";
 import { returnLesson } from "../weather-preview/tutorial.mjs";
 import { transferCases } from "../weather-preview/learning/transfer-cases.mjs";
 import {
@@ -465,7 +466,7 @@ function componentHarness(code, props) {
   const effects = new Map();
   let cursor = 0, tree, pendingEffects = [], pendingState = [];
   const context = {
-    exports: {}, transferCases, activities, sources, lessonStateAt, lessonStepComplete, returnLesson,
+    exports: {}, transferCases, activities, sources, lessonStateAt, lessonStepComplete, returnLesson, guideProbes,
     loadTransfer, saveTransfer, nextTransfer, updateTransfer, evaluateTransfer, markTransferHelp,
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }), Fragment: "fragment" },
     useState(initial) {
@@ -496,7 +497,7 @@ function componentHarness(code, props) {
     matchMedia: () => ({ matches: false, addEventListener() {}, removeEventListener() {} }),
     location: { search: "?from=procesy" }, requestAnimationFrame: callback => callback(),
   };
-  for (const name of ["TransferTrial", "ActivityScene", "Control", "ArrowLeft", "ArrowRight", "BookOpen", "Check", "Question", "Pause", "Play", "ArrowCounterClockwise", "GridFour"]) context[name] = name;
+  for (const name of ["TransferTrial", "GuidedInvestigation", "ActivityScene", "Control", "ArrowLeft", "ArrowRight", "BookOpen", "Check", "Question", "Pause", "Play", "ArrowCounterClockwise", "GridFour"]) context[name] = name;
   const Component = vm.runInNewContext(code, context);
   function render() {
     let count = 0;
@@ -541,13 +542,29 @@ for (const activityId of Object.keys(activities)) {
     const ui = componentHarness(studioCode, { id: activityId, mainSite: "https://example.test/" });
     t.after(ui.unmount);
     const scene = () => ui.nodes().find(node => node.type === "ActivityScene");
+    if (guideProbes[activityId]) {
+      const guided = ui.nodes().find(node => node.type === "GuidedInvestigation");
+      assert.equal(guided.props.id,activityId);
+      guided.props.resumeRef.current = {index:1,stage:"evidence",prediction:0};
+      ui.click("Swobodnie");
+      assert.deepEqual(clone(scene().props.state),activities[activityId].initial);
+      ui.click("Sprawdź się");
+      assert.equal(scene(),undefined);
+      assert.equal(ui.nodes().some(n=>n.type==="GuidedInvestigation"),false);
+      assert.equal(ui.nodes().find(n=>n.type==="TransferTrial").props.activityId,activityId);
+      ui.click("Prowadź mnie");
+      const resumed = ui.nodes().find(n=>n.type==="GuidedInvestigation");
+      assert.strictEqual(resumed.props.resumeRef,guided.props.resumeRef);
+      assert.deepEqual(clone(resumed.props.resumeRef.current),{index:1,stage:"evidence",prediction:0});
+      return;
+    }
     const first = clone(scene().props.state);
     const control = ui.nodes().find(node => node.type === "Control");
     const target = activities[activityId].steps[0].target;
     control.props.onChange(target); ui.render();
     const guided = clone(scene().props.state);
     assert.equal(guided[control.props.control.key], target);
-    ui.click("Eksperymentuj");
+    ui.click("Swobodnie");
     assert.deepEqual(clone(scene().props.state), first, "guide settings must not seed exploration");
     ui.click("Sprawdź się");
     const trial = ui.nodes().find(node => node.type === "TransferTrial");
@@ -558,7 +575,7 @@ for (const activityId of Object.keys(activities)) {
     assert.equal(ui.nodes().some(node => node.props.className === "learning-feedback"), false);
     ui.click("Prowadź mnie");
     assert.deepEqual(clone(scene().props.state), guided);
-    ui.click("Eksperymentuj");
+    ui.click("Swobodnie");
     assert.deepEqual(clone(scene().props.state), first);
   });
 }

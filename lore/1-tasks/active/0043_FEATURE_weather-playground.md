@@ -90,6 +90,116 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Latest Goal: Complete And Release Autonomously
+
+Implementation checkpoint 2026-09-09: all fourteen workshops are routed to
+the rebuilt guided/transfer experiences and bundled into root, Pages and
+Capacitor outputs. Final Node run: 925 passed, none skipped; nine lesson
+audits and 61 source-link checks passed. Parent browser checks cover new
+wind evidence/persistence and general METAR feedback, plus all fourteen
+initial views at 320/390 px. Mac final development-signed QA bundle matches
+all 132 root dist files; Computer Use route round trips passed for all
+fourteen, and cloud prediction/action/evidence/lesson return passed.
+Native iPhone full-catalogue test remains in progress after fixing a test-only
+scroll limit. Mac XCTest automation initialization failed; it is not a pass.
+No Apple upload and no CyberFolks deployment at this checkpoint. Four agents
+and detailed roles/evidence/limits: design/workshop-expansion-20260909/verification.md.
+
+The owner is leaving for meetings and explicitly approves completing all
+modules, testing iOS and macOS, then submitting to App Store if tests pass,
+and preparing a downloadable CyberFolks archive. No further owner review
+stops. This supersedes the earlier Pages-only gate, but not scientific,
+regression, privacy, signing or packaged-app QA requirements. An active Codex
+goal records this complete objective. Never equate upload with Apple approval.
+Keep browser-preview development isolated first; integrate only verified work
+into shared/native assets. Do not change host security settings without the
+required system approval or bypass test failures to manufacture a release.
+
+- [ ] Complete all workshop improvements and full learning journeys.
+- [ ] Verify the built web preview and production integration.
+- [ ] Integrate and test packaged iPhone/iPad and Mac Catalyst applications.
+- [ ] Submit verified, signed release builds and confirm processing/submission.
+- [ ] Build, verify and provide the CyberFolks download package.
+
+### Owner Authorization: Continue All Workshops
+
+On 2026-09-09 the owner said the new pattern is better and explicitly asked
+to keep building without requesting acceptance of every workshop. Continue
+the entire preview without the previous first-pattern pause. Pages only;
+cloud, native, Apple and recognition model remain outside this authorization.
+Lead owns eight general activities and integration/browser QA; Bernoulli owns
+the new sounding workshop, Kierkegaard turbulence, Maxwell the three foundation
+experiments. Four agents total in this implementation round. Preserve older
+results and scientific API contracts. Evidence belongs to
+`design/workshop-expansion-20260909/`.
+
+### Owner Follow-up: Workshop Quality Audit
+
+Implementation resumed after explicit owner approval on 2026-09-09. Lead
+implements a separate storm workshop; Bernoulli repairs five evidence/geometry
+scenes and independently checks storm mechanics; Kierkegaard repairs assessment
+copy, option patterns and decision locks. Three agents total, no native/cloud
+scope expansion. Reports and fresh browser evidence belong in
+`design/workshop-rebuild-20260909/`. Prior audit screenshots remain historical.
+
+The new storm route uses three synthetic temperature profiles, continuous
+condensation and a bounded illustration of initial thermal response after
+release from rest. Three comparative guide trials lead to two new cases with
+opposite outcomes. It does not calculate a storm, trajectory, CAPE/CIN or speed.
+Predictions, explanations and help are recorded separately, locally only.
+Published as 65b23c1 (local 530a421), with the lesson-entry wording follow-up
+110507b (local 72724ee). Pages runs 34324140302 and 34324534917 succeeded.
+Development tests pass 715/715; the isolated publication tree passes 710/710
+(five unrelated native-home/review-portal tests remain development-only).
+Nine lesson audits and all three builds pass. Public 390x700 QA confirms the
+1500m action, prediction gate, retained wrong prediction, downward response,
+14.2/18.8 degree release evidence, explanation and lesson roundtrip. All 14
+built routes were checked for artwork/overflow; this is not a complete new
+learning-outcome audit of every activity. New public assets are
+index-I8vpNQpc.js / index-B3ltBLlx.css. Production HTML is unchanged, SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No domain, Apple or ML release. The local preview server is stopped and browser
+viewport reset. Full report, screenshots and limitations are in the folder
+above. Owner review of this first complete workshop pattern remains pending;
+do not mark the overall expanded-workshop task complete.
+
+On 2026-09-09 the owner rejected the storm experience and requested an audit
+of every exercise. The current preview does not meet the workshop-quality
+bar. Earlier passing functional checks are not evidence of learning or owner
+acceptance. Preserve the historical verification records below, but do not
+interpret their completed checkboxes as acceptance of the expanded ALL14 UX.
+
+- [x] Inspect all 14 public activities at 390x700 and 1365x900, operate at
+  least one meaningful control in each, and capture 39 fresh screenshots.
+- [x] Complete two independent code audits covering 49 guide steps and
+  28 assessment cases; combine their findings with browser evidence.
+- [x] Save the owner-facing report and explicit limitations in
+  `design/workshop-audit-20260909/AUDYT.md`.
+- [x] Correct misleading height geometry, hidden task evidence, implementation
+  jargon in learner feedback, and assessment answer-pattern leaks.
+- [x] Rebuild storm initiation around observable evidence and learner decisions;
+  verify one complete pattern for owner review before reuse.
+- [ ] Redesign turbulence and sounding around observable evidence and decisions.
+- [ ] Improve remaining activities with topic-appropriate observation, data
+  interpretation or causal interaction; retain working model relationships.
+
+Confirmed: the height line is offset by its label block, reversing the
+1500/1800m relationship on the short mobile scene; Front hides both compared
+temperatures; METAR hides its report; Sounding adds wind only in the readout.
+Storm is a three-condition AND plus a manually selected stage illustration.
+All 28 reason questions have a uniquely longest correct option, and the first
+question in all 14 A cases has the correct option in position two. Storm
+feedback exposes dry/unstable/lift, helper and possible=false to learners.
+
+The audit used 3 agents total: lead (live browser evidence/synthesis), Bernoulli
+(model-to-scene mechanics), Kierkegaard (learning transfer/assessment).
+Both delegates completed their reports and were closed. This audit changes
+documentation only: no application patch, deployment, new artwork or native
+build. Physical-device and learner testing remain unperformed, not passed.
+Keep the Pages-only review gate; do not publish to cloud or Apple, or report
+these findings as fixes. Necessary evidence must remain beside the current
+task, and scientific geometry must not depend on label dimensions.
+
 ### Owner Follow-up: Transfer And Focused Mobile Practice
 
 The owner rejected replaying tutorial values as independent practice and the
@@ -102,7 +212,20 @@ mobile attention/accessibility, and all fourteen activities. Findings are in
 - [x] Add and verify two new cases per activity, with decision and reason committed together.
 - [x] Preserve first submissions, help and repeated-case status in preview-only storage.
 - [x] Verify compact mobile journeys, including legacy experiences and wrong answers.
-- [ ] Publish the reviewed Pages-only changes and inspect the public result.
+- [x] Publish the reviewed Pages-only changes and inspect the public result.
+
+Published 2026-09-09 as 7b47c09 (local 5a2527a), Pages run 34298435964
+succeeded. Public preview loads index-Cnn3f-O5.js / index-DEHk9hO0.css.
+At 390x700 the METAR scene, controls and primary guide action fit the initial
+viewport. Its independent case accepts decisions without revealing correctness,
+then explains a deliberately wrong ceiling while retaining the correct base,
+TAF and principle responses. The committed result survives reload and re-entry
+to Sprawdz sie; another case supplies OVC035 instead of FEW015 BKN060.
+All fourteen catalog covers load after scrolling with no horizontal overflow.
+Production HTML remains SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No CyberFolks, native or Apple deployment. Physical-device and measured learning
+effectiveness checks remain unclaimed. Owner acceptance remains outstanding.
 
 The design is source-informed, not evidence that learning outcomes have already
 improved. Do not call two successful cases mastery or aviation qualification.
@@ -118,7 +241,7 @@ change controls, equations, concealed answers or production deployment gates.
 - [x] Audit repeated sources and define topic-specific compositions.
 - [x] Generate and inspect eight new optimized cover illustrations.
 - [x] Verify all fourteen covers are distinct, mobile crops and lesson entry.
-- [ ] Publish the scoped Pages-only change and verify public images.
+- [x] Publish the scoped Pages-only change and verify public images.
 
 ### Owner-Approved Expansion: All Lessons
 
@@ -133,7 +256,7 @@ existing navigation, lesson resume, real-photo provenance and concealed answers.
 - [x] Implement the expanded preview, with beginner walkthroughs and sources.
 - [x] Link all nine lessons and relevant tools to the experiments and back.
 - [x] Verify science contracts, concealed answers, keyboard and mobile journeys.
-- [ ] Publish only reviewed code to Pages and verify the public result.
+- [x] Publish only reviewed code to Pages and verify the public result.
 
 Priority: METAR, sounding foundations, wind and three distinct hazard scenes;
 front lifting and photo/name exercises complete the lesson coverage. Do not
@@ -144,6 +267,15 @@ All 38 new guide steps completed in browser. All 11 exploration views fit at
 320/390/844/1365px. METAR chapter-3 round-trip and centered mobile slider focus
 verified. Existing learning data, recognition models and native navigation are
 unchanged. Independent meteorologist/physical-device checks remain unclaimed.
+
+Published 2026-09-09 as 3589747 plus wording fix c414f01 (local efd8af8 and
+be3d4a7). Final Pages run 34284658277 succeeded. The public catalog contains
+14 activities, loads all illustrations and uses index-BZVRg1bi.js. Public
+observation conceals the name, the 390px sounding action updates the level and
+unlocks Next, and the full lesson links to both heights and sounding with a
+working return. Production HTML remains byte-identical, SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+Owner acceptance is still required before CyberFolks or Apple integration.
 
 ### Owner Follow-up: Slider Alignment
 
@@ -160,7 +292,17 @@ was unavailable. Do not claim physical-device QA.
 
 - [x] Fix the shared slider geometry and record the clarified design rule.
 - [x] Verify interactions and focus; see `design/weather-preview-20260908/slider-qa.md`.
-- [ ] Verify the Pages-only deployment.
+- [x] Verify the Pages-only deployment.
+
+Published f31e008 (local 64d251e); Pages run 34276764667 succeeded. Public
+browser loads index-BJCXZuug.js / index-wALuUYJK.css. At 390px width the cloud
+and handle centres match on both axes, with no horizontal overflow. The guided
+500m action updates the range and enables the next step; artwork is loaded.
+The sun/time controls were also checked on desktop with zero centre offsets.
+Production HTML hash remains
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No native release or CyberFolks update. Physical Safari verification remains
+unavailable; this is not a claim of testing the owner's specific iPhone.
 
 ### Owner Follow-up: Phone Interaction Failure
 
@@ -168,7 +310,7 @@ was unavailable. Do not claim physical-device QA.
 - [x] Make the parcel directly movable, with equivalent tap/keyboard actions.
 - [x] Keep primary actions beside the scene and remove mobile sticky occlusion.
 - [x] Recheck all guides, assessment locks and small/landscape layouts.
-- [ ] Verify the Pages deployment and unchanged production domain.
+- [x] Verify the Pages deployment and unchanged production domain.
 
 At 360x640 the old scene showed an inert upward arrow, while the height slider
 started at y=683 and the target action at y=767 after opening the workbench.
@@ -180,13 +322,16 @@ conformance or physical-device verification based on resized desktop input.
 steps pass browser checks; direct parcel input does not bypass assessment locks.
 Six viewport sizes checked, including short portrait and landscape. See
 `design/weather-preview-20260908/mobile-qa.md` for evidence and device-test limits.
+Published f15d578, Pages run 34274954913 succeeded. Public target action and
+artwork verified; preview HTML matches local build. Production HTML hash
+remains 4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
 
 ### Owner Follow-up: Continuous Interaction
 
 - [x] Replace fog/cloud switches with continuous post-saturation rendering.
 - [x] Smooth all three scenes and refine touch/keyboard slider feedback.
 - [x] Verify physical boundaries, walkthroughs, reduced motion and responsive UI.
-- [ ] Publish only the Pages preview and confirm the production domain is unchanged.
+- [x] Publish only the Pages preview and confirm the production domain is unchanged.
 
 NWS radiation-fog guidance supports thickening during further cooling after
 saturation. The teaching models do not resolve liquid water content, optical
@@ -194,13 +339,28 @@ depth or visibility: opacity and cloud size remain illustrative mappings.
 Keep model equations and stored input schema unchanged; animate the scene's
 inputs and recalculate its readouts together so labels agree with the image.
 
+Published as 8273d58, Pages run 34270141929 succeeded. Public preview loads
+index-D0vP8fei.js / index-Bol4nwQm.css; browser verified new illustrated handles,
+guide actions and zero fog at 5.5 degrees cooling before saturation. Landscape
+and transparent artwork loaded. Production HTML before/after remains
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+See design/weather-preview-20260908/motion-qa.md. Owner review still pending;
+this is not approval for CyberFolks or native publication.
+
 ### Owner Follow-up: Beginner Walkthroughs
 
 - [x] Default progressive walkthrough for each experiment, with observable
   actions and expected effects rather than an unexplained control panel.
 - [x] Third experiment: nighttime near-surface cooling and condensation.
 - [x] Reciprocal lesson entry / return links, gated to the Pages build only.
-- [ ] Regression tests, phone / desktop checks, and Pages-only publication.
+- [x] Regression tests, phone / desktop checks, and Pages-only publication.
+
+Published as 8f27230, run 34264573836 succeeded. 315 local tests and all nine
+lesson audits passed; public lesson -> experiment -> lesson roundtrip retains
+chapter 2 even after switching experiment. See
+`design/weather-preview-20260908/tutorial-qa.md`. Production domain unchanged.
+Task remains active for owner preview / social-copy acceptance, not for
+unsolicited native or CyberFolks deployment.
 
 The owner explicitly requested additional experiments and lesson-to-experiment
 discovery. Cloud domain and Apple still require separate acceptance. Preserve

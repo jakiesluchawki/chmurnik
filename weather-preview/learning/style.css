@@ -232,7 +232,7 @@
   .learning-focused .learning-breadcrumb svg { width: 18px; }
   .learning-focused .learning-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 4px; }
   .learning-focused .learning-toolbar > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: 16px; }
-  .learning-focused .learning-toolbar > div button { font-size: 13px; padding: 10px 4px; border-radius: 12px; line-height: 1.25; }
+  .learning-focused .learning-toolbar > div button { min-width: 0; font-size: 13px; padding: 10px 4px; border-radius: 12px; line-height: 1.25; overflow-wrap: normal; }
   .learning-focused .learning-motion { justify-content: center; width: 44px; padding: 6px; }
   .learning-focused .learning-motion > span { display: none; }
   .learning-focused .learning-guide-heading { padding: 16px; }

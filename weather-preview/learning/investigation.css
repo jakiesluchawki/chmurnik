@@ -1,0 +1,80 @@
+.investigation {border:1px solid var(--line);background:var(--white);border-radius:24px;overflow:hidden}
+.investigation-heading {padding:24px 28px 16px;background:linear-gradient(110deg,#f8e3ed,#eee8f5)}
+.investigation-heading h2 {font-family:Romie,Georgia,serif;font-size:clamp(24px,3.1vw,38px);font-weight:400;line-height:1.12;margin:10px 0 18px;max-width:28ch}
+.investigation-stages {display:flex;gap:20px;padding:0;list-style-position:inside;font-size:13px;color:var(--olive);margin:0}
+.investigation-stages [aria-current] {color:var(--violet);font-weight:700}
+.investigation-grid {display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);scroll-margin-top:12px;align-items:start}
+.investigation-scene,.investigation-action {min-width:0}
+.investigation-action {padding:24px}
+.investigation-choice {border:0;margin:0 0 18px;padding:0;display:grid;gap:8px}
+.investigation-choice legend {font-weight:700;line-height:1.4;padding:0 0 14px}
+.investigation-choice button {width:100%;min-height:48px;text-align:left;padding:13px 16px;border:1px solid var(--line);border-radius:14px;background:#fffaf4;color:var(--olive);font:inherit;line-height:1.35}
+.investigation-choice button[aria-pressed=true] {border-color:var(--violet);background:#eee5f7;box-shadow:inset 3px 0 var(--violet)}
+.investigation-choice button:focus-visible {outline:3px solid var(--violet);outline-offset:3px}
+.investigation-note,.investigation-direct-hint {font-size:13px;line-height:1.5;margin:14px 0;color:var(--olive)}
+.investigation-direct-hint {padding:0 16px}
+.investigation-committed {font-size:14px;border-left:3px solid var(--violet);padding:8px 14px;background:#f2ebf8}
+.investigation-result h3 {font-size:20px;line-height:1.3;margin:10px 0}
+.investigation-result p {font-size:15px;line-height:1.5}
+.investigation-navigation {display:flex;gap:16px;flex-wrap:wrap;padding:12px 24px;border-top:1px solid var(--line)}
+.investigation .lab-current-evidence {padding:14px 18px}
+.investigation .lab-current-evidence p {font-size:13px;margin:7px 0}
+.investigation .lab-metric strong {font-size:21px}
+.investigation .lab-scene {min-height:280px}
+.lab-manipulator {position:absolute;z-index:5;width:52px;height:52px;border-radius:50%;border:2px solid var(--violet);background:#fff9f1dd;color:var(--violet);transform:translate(-50%,-50%);cursor:grab;touch-action:none;display:grid;place-items:center;box-shadow:0 2px 8px #4e356422}
+.lab-manipulator:active {cursor:grabbing}
+.lab-manipulator svg {width:28px;height:28px}
+.lab-manipulator:focus-visible {outline:3px solid var(--violet);outline-offset:4px}
+.lab-photo-pick {position:relative;padding:0;border:0;background:none;display:block;width:100%;cursor:crosshair}
+.lab-photo-pick:focus-visible {outline:3px solid var(--violet);outline-offset:-4px}
+.lab-photo-pick img {display:block;width:100%;height:auto!important;max-height:360px;object-fit:contain!important;background:#eee3e7}
+.lab-photo-mark {position:absolute;width:34px;height:34px;border:3px solid white;border-radius:50%;background:#7442d977;box-shadow:0 0 0 2px var(--violet);transform:translate(-50%,-50%);pointer-events:none}
+.lab-photo-mark-buttons {display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px}
+.lab-photo-mark-buttons button {min-height:44px;padding:8px;border:1px solid var(--line);border-radius:12px;color:var(--olive);background:var(--white)}
+.lab-photo-comparison {display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px;background:#eee3e7}
+.lab-photo-comparison figure {margin:0;min-width:0}
+.lab-photo-comparison img {width:100%;height:180px;object-fit:contain;background:#f8f2ef;border-radius:12px}
+.lab-photo-comparison figcaption {font-size:11px;line-height:1.4;padding:6px 0;overflow-wrap:anywhere}
+.lab-photo-comparison b {display:block;font-size:14px;margin-bottom:6px}
+.lab-compass-points {position:absolute;inset:-15px;z-index:6;pointer-events:none}
+.lab-compass-points button {pointer-events:auto;position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border:1px solid var(--line);background:#fff9f3ed;border-radius:50%;color:var(--olive)}
+.lab-compass-points button[aria-pressed=true] {background:var(--violet);color:#fff}
+.lab-compass-points button:focus-visible {outline:3px solid var(--violet);outline-offset:2px}
+.lab-time-strip button {border:1px solid var(--line);border-radius:12px;min-height:44px;min-width:36px;color:var(--olive);background:var(--white);font:inherit}
+.lab-time-strip button[aria-pressed=true] {background:var(--violet);color:white}
+.lab-report-token {border:1px solid var(--line);border-radius:8px;background:#eee5f7;color:var(--olive);padding:6px;min-height:44px;font:inherit}
+.lab-name-slots {display:flex;gap:8px;flex-wrap:wrap;padding:12px 0}
+.lab-name-slots span {border-bottom:2px dashed var(--violet);padding:10px;font-size:15px}
+.learning-comparisons {margin:18px 0;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--white)}
+.learning-comparisons>p {font-size:14px;line-height:1.5;margin:12px 0}
+.learning-comparisons>div {display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.learning-comparisons article {padding:16px;border:1px solid var(--line);border-radius:16px;background:#f3eaf5}
+.learning-comparisons h3 {font-size:18px;margin-bottom:12px}
+.learning-comparisons dl {font-size:13px;line-height:1.5}
+.learning-comparisons dt {font-weight:700;margin-top:8px}
+.learning-comparisons dd {margin:0}
+@media(max-width:800px){
+ .investigation-grid {display:block}
+ .investigation-heading {padding:18px 18px 14px}
+ .investigation-heading h2 {font-size:25px;max-width:none;margin:8px 0 14px}
+ .investigation-action {padding:18px;border-top:1px solid var(--line)}
+ .investigation .lab-scene {min-height:210px;height:230px}
+ .investigation .lab-photo-pick img {max-height:280px}
+ .investigation .lab-photo:not(:has(.lab-photo-pick)) img {height:250px}
+ .investigation .lab-current-evidence p {font-size:12px}
+ .investigation .lab-metric strong {font-size:20px}
+ .investigation .lab-readout {margin:10px 16px}
+ .lab-photo-comparison img {height:160px}
+ .investigation .lab-wind-lane {padding:18px 10px}
+ .investigation .lab-compass {width:160px;height:160px}
+ .investigation .lab-wind-scene {display:flex;flex-wrap:wrap;justify-content:center}
+ .investigation .lab-wind-lane:only-child {width:100%}
+ .investigation .lab-wind-lane:not(:only-child) {flex:1 1 150px}
+ .investigation .lab-wind-lane:not(:only-child) .lab-compass {width:125px;height:125px}
+ .investigation .lab-time-strip {gap:3px}
+ .investigation-stages {gap:14px;font-size:12px}
+ .investigation-choice button {min-height:46px}
+}
+@media(prefers-reduced-motion:reduce){.investigation * {scroll-behavior:auto!important}}
+@media(max-width:380px){.investigation-heading h2 {font-size:22px;line-height:1.2}}
+.lab-photo-description { padding: 12px 14px; font-size: 14px; line-height: 1.5; border-top: 1px solid var(--line); background: var(--white); }
