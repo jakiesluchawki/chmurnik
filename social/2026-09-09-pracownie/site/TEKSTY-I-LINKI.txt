@@ -1,5 +1,5 @@
 CHMURNIK: Niebo ma swoje powody.
-TEKSTY DO AKCEPTACJI, 09.09.2026
+ZAAKCEPTOWANE TEKSTY, 09.09.2026
 
 Pracownie działają już na chmurnik.cloud. Aktualizacja 1.2.1 aplikacji na iPhone, iPad i Mac została wysłana do recenzji Apple. Oba zgłoszenia mają status WAITING_FOR_REVIEW; nie oznacza to jeszcze dostępności nowej wersji w sklepie.
 

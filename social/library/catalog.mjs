@@ -1,12 +1,19 @@
 export const packs = [
   {
     id: 'pracownie', source: '2026-09-09-pracownie', date: '2026-09-09',
-    dateLabel: '9 września 2026', status: 'Nowe teksty do akceptacji · WWW i aplikacje',
+    dateLabel: '9 września 2026', status: 'Nowy pełny pakiet · PNG i PDF',
     title: 'Niebo ma swoje powody.',
-    description: 'Zrozumieć pogodę, odczytać depeszę i samodzielnie wyciągnąć wniosek. Wersja 2 pełnych tekstów: 10 Stories i karuzela oraz Instagram, Facebook i LinkedIn. WWW działa; aplikacje czekają na Apple. Finalne PNG i PDF po akceptacji tekstów.',
-    base: '../premiera/pracownie/', preview: 'assets/cover.webp',
-    formats: ['10 Stories · teksty', 'Karuzela · teksty', 'Instagram', 'Facebook', 'LinkedIn'],
-    downloads: [['Wszystkie teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'], ['Pełna paczka tekstów', 'CHMURNIK-PRACOWNIE-TEKSTY.zip', 'zip']],
+    description: '14 pracowni, pełne lekcje i wygodniejsza aplikacja. Dziesięć nowych ilustracji, 10 statycznych Stories PNG, karuzela, grafika Facebooka, PDF na LinkedIn oraz wszystkie zaakceptowane teksty. WWW działa; aktualizacja aplikacji czeka na recenzję Apple.',
+    base: '../premiera/pracownie/', preview: 'previews/stories/01.jpg',
+    formats: ['10 Stories PNG', '10 slajdów karuzeli', 'Facebook', 'LinkedIn PDF', 'Pełne posty'],
+    downloads: [
+      ['Cały pakiet · wszystkie platformy', 'CHMURNIK-PRACOWNIE-PELNY-PAKIET.zip', 'zip'],
+      ['Stories · 10 PNG', 'CHMURNIK-PRACOWNIE-STORIES.zip', 'zip'],
+      ['Instagram · karuzela i opis', 'CHMURNIK-PRACOWNIE-INSTAGRAM.zip', 'zip'],
+      ['Facebook · grafika i post', 'CHMURNIK-PRACOWNIE-FACEBOOK.zip', 'zip'],
+      ['LinkedIn · PDF i post', 'CHMURNIK-PRACOWNIE-LINKEDIN.zip', 'zip'],
+      ['Wszystkie teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'],
+    ],
   },
   {
     id: 'pogoda', source: '2026-09-08-pogoda', date: '2026-09-08',
@@ -19,7 +26,7 @@ export const packs = [
   },
   {
     id: 'niebo', source: '2026-09-07-niebo', date: '2026-09-07',
-    dateLabel: '7 września 2026', status: 'Najnowszy pakiet',
+    dateLabel: '7 września 2026', status: 'Nauka i tapety',
     title: 'Żeby niebo stawało się znajome.',
     description: 'Pełna opowieść i trzy dodatkowe plansze o modelu i Androidzie: 13 Stories, karuzela, Facebook i LinkedIn. Dodatkowo 20 nowych motywów tapet, osobno na telefon i komputer. Oryginały oraz oznaczone powiększone eksporty 4K: 80 PNG.',
     base: '../premiera/niebo/', preview: 'previews/stories/01-geneza.jpg',

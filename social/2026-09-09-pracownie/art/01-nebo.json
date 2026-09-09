@@ -1,0 +1,57 @@
+{
+  "id": "01-nebo",
+  "project": "CHMURNIK",
+  "pack_date": "2026-09-09",
+  "mode": "built-in ImageGen",
+  "tool": "image_gen.imagegen",
+  "intent": "generate",
+  "use_case": "stylized-concept",
+  "worker_scope": "image-only",
+  "attempts_total": 2,
+  "selected_attempt": 2,
+  "source_path": "[CODEX_HOME]/generated_images/01a087bc-ba76-71c0-baf3-8921e164f3d7/exec-b425827b-5f18-4a8e-ae7a-101bd7e8b3ac.png",
+  "final_path": "[workspace]/chmurnik-v4/social/2026-09-09-pracownie/art/01-nebo.png",
+  "format": "png",
+  "width": 1536,
+  "height": 1024,
+  "aspect_ratio": "3:2",
+  "bytes": 2628706,
+  "sha256": "805e05f978139516406bbb614fc2a12c8db972cdf5ef7f929e5ee61e891277f9",
+  "copied_without_resampling": true,
+  "source_destination_sha256_match": true,
+  "style_references": [
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/wind-v1.webp",
+      "role": "style reference only",
+      "inspection": "view_image"
+    },
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/sounding-v1.webp",
+      "role": "style reference only",
+      "inspection": "view_image"
+    }
+  ],
+  "prompt": "Use case: stylized-concept.\nCreate ONE fresh, standalone landscape illustration, 3:2 aspect ratio, intended 1536 x 1024, with no words anywhere. This is illustration art for an adult editorial weather social campaign, not a complete social slide.\nSubject: an open ivory architectural window looking into a tiny atmospheric world above olive land. A beautifully restrained small cream cumulus floats over subtle layered rolling terrain; luminous sunrise glows in a blush pink and pale lilac sky. The window is a tactile portal to understanding weather. An open leaf of the architectural frame gives real sculptural depth and a bold, asymmetrical artistic composition.\nStyle: polished mature tactile felt, fine wool and matte clay miniature diorama, photographed with realistic miniature studio lighting. Use the previously inspected wind-v1 and sounding-v1 images ONLY as broad material and lighting style references, never copy their scenes, devices, objects, or layout. Refined editorial romance, a quiet art-directed gallery object with exquisitely visible textile fibers, realistic shadows and convincing surface roughness. The cloud must look airy and irregular, not a childish icon or repeated cotton ball. Architectural frame is warm ivory matte clay. Terrain is thin organic sculpted olive felt layers.\nPalette: blush pink #ffe2ec, warm ivory #fff7ed, muted olive #706936, restrained violet #743cdd as a small nuanced atmospheric accent.\nComposition: landscape 3:2. Keep the entire open window, its opened leaf and the contained tiny landscape fully inside the frame with generous margins. Compose all important subject matter within the middle 78 percent of image height so a modest centered 16:9 crop preserves it. Window slightly off-center, beautiful asymmetry, uncluttered generous air around the diorama, no large object cut off at edges. Artwork fills the image rather than sitting in a designed card.\nLighting: luminous sunrise from the tiny scene, warm grazing studio light catching fibers, soft contact shadows, mature photographic depth, sophisticated pink-lilac atmosphere.\nConstraints: no people, animals, logos, writing, text, letters, numbers, arrows, labels, UI, watermark, social slide layout, borders, contact sheet, factual meteorological photograph, product screenshot, childish toy aesthetic, eyes or smiling clouds. One individual distinct artwork only.\nFinal framing priority: pull the camera back substantially so the ENTIRE window assembly including its upper arch, sill and open leaf fits inside a compact central area no taller than 72 percent of the image height, with at least 14 percent empty wall ABOVE and BELOW it. This is essential. Make the cloud small in the atmospheric world, about one fifth of the window opening width. There is no vase or potted plant, keep the subject to the open architectural window and its atmospheric miniature landscape. Preserve all remaining art direction.",
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "prompt": "Use case: stylized-concept.\nCreate ONE fresh, standalone landscape illustration, 3:2 aspect ratio, intended 1536 x 1024, with no words anywhere. This is illustration art for an adult editorial weather social campaign, not a complete social slide.\nSubject: an open ivory architectural window looking into a tiny atmospheric world above olive land. A beautifully restrained small cream cumulus floats over subtle layered rolling terrain; luminous sunrise glows in a blush pink and pale lilac sky. The window is a tactile portal to understanding weather. An open leaf of the architectural frame gives real sculptural depth and a bold, asymmetrical artistic composition.\nStyle: polished mature tactile felt, fine wool and matte clay miniature diorama, photographed with realistic miniature studio lighting. Use the previously inspected wind-v1 and sounding-v1 images ONLY as broad material and lighting style references, never copy their scenes, devices, objects, or layout. Refined editorial romance, a quiet art-directed gallery object with exquisitely visible textile fibers, realistic shadows and convincing surface roughness. The cloud must look airy and irregular, not a childish icon or repeated cotton ball. Architectural frame is warm ivory matte clay. Terrain is thin organic sculpted olive felt layers.\nPalette: blush pink #ffe2ec, warm ivory #fff7ed, muted olive #706936, restrained violet #743cdd as a small nuanced atmospheric accent.\nComposition: landscape 3:2. Keep the entire open window, its opened leaf and the contained tiny landscape fully inside the frame with generous margins. Compose all important subject matter within the middle 78 percent of image height so a modest centered 16:9 crop preserves it. Window slightly off-center, beautiful asymmetry, uncluttered generous air around the diorama, no large object cut off at edges. Artwork fills the image rather than sitting in a designed card.\nLighting: luminous sunrise from the tiny scene, warm grazing studio light catching fibers, soft contact shadows, mature photographic depth, sophisticated pink-lilac atmosphere.\nConstraints: no people, animals, logos, writing, text, letters, numbers, arrows, labels, UI, watermark, social slide layout, borders, contact sheet, factual meteorological photograph, product screenshot, childish toy aesthetic, eyes or smiling clouds. One individual distinct artwork only.",
+      "source_path": "[CODEX_HOME]/generated_images/01a087bc-ba76-71c0-baf3-8921e164f3d7/exec-46e0e124-7660-4340-bd53-1b30994d1d08.png",
+      "selected": false
+    },
+    {
+      "attempt": 2,
+      "prompt": "Use case: stylized-concept.\nCreate ONE fresh, standalone landscape illustration, 3:2 aspect ratio, intended 1536 x 1024, with no words anywhere. This is illustration art for an adult editorial weather social campaign, not a complete social slide.\nSubject: an open ivory architectural window looking into a tiny atmospheric world above olive land. A beautifully restrained small cream cumulus floats over subtle layered rolling terrain; luminous sunrise glows in a blush pink and pale lilac sky. The window is a tactile portal to understanding weather. An open leaf of the architectural frame gives real sculptural depth and a bold, asymmetrical artistic composition.\nStyle: polished mature tactile felt, fine wool and matte clay miniature diorama, photographed with realistic miniature studio lighting. Use the previously inspected wind-v1 and sounding-v1 images ONLY as broad material and lighting style references, never copy their scenes, devices, objects, or layout. Refined editorial romance, a quiet art-directed gallery object with exquisitely visible textile fibers, realistic shadows and convincing surface roughness. The cloud must look airy and irregular, not a childish icon or repeated cotton ball. Architectural frame is warm ivory matte clay. Terrain is thin organic sculpted olive felt layers.\nPalette: blush pink #ffe2ec, warm ivory #fff7ed, muted olive #706936, restrained violet #743cdd as a small nuanced atmospheric accent.\nComposition: landscape 3:2. Keep the entire open window, its opened leaf and the contained tiny landscape fully inside the frame with generous margins. Compose all important subject matter within the middle 78 percent of image height so a modest centered 16:9 crop preserves it. Window slightly off-center, beautiful asymmetry, uncluttered generous air around the diorama, no large object cut off at edges. Artwork fills the image rather than sitting in a designed card.\nLighting: luminous sunrise from the tiny scene, warm grazing studio light catching fibers, soft contact shadows, mature photographic depth, sophisticated pink-lilac atmosphere.\nConstraints: no people, animals, logos, writing, text, letters, numbers, arrows, labels, UI, watermark, social slide layout, borders, contact sheet, factual meteorological photograph, product screenshot, childish toy aesthetic, eyes or smiling clouds. One individual distinct artwork only.\nFinal framing priority: pull the camera back substantially so the ENTIRE window assembly including its upper arch, sill and open leaf fits inside a compact central area no taller than 72 percent of the image height, with at least 14 percent empty wall ABOVE and BELOW it. This is essential. Make the cloud small in the atmospheric world, about one fifth of the window opening width. There is no vase or potted plant, keep the subject to the open architectural window and its atmospheric miniature landscape. Preserve all remaining art direction.",
+      "source_path": "[CODEX_HOME]/generated_images/01a087bc-ba76-71c0-baf3-8921e164f3d7/exec-b425827b-5f18-4a8e-ae7a-101bd7e8b3ac.png",
+      "selected": true
+    }
+  ],
+  "tool_output_receipt": "Generated images are saved to [CODEX_HOME]/generated_images/01a087bc-ba76-71c0-baf3-8921e164f3d7 as [CODEX_HOME]/generated_images/01a087bc-ba76-71c0-baf3-8921e164f3d7/exec-b425827b-5f18-4a8e-ae7a-101bd7e8b3ac.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "verification": {
+    "existence_non_empty": true,
+    "dimensions_method": "sips -g pixelWidth -g pixelHeight",
+    "copy_integrity_method": "shasum -a 256 on generated source and destination",
+    "visual_inspection_method": "direct inspection of native ImageGen output",
+    "visual_inspection": "Open warm-ivory arched window and open leaf fully visible, small tactile cream cumulus above layered olive terrain and pink-lilac sunrise. Asymmetrical composition with empty wall at left. Centered 16:9 crop retains main window with limited upper clearance. No visible writing, logos, people, or UI."
+  }
+}

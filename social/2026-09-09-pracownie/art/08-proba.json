@@ -1,0 +1,45 @@
+{
+  "id": "08-proba",
+  "created_date": "2026-09-09",
+  "generator": "built-in image_gen.imagegen",
+  "mode": "native_imagegen",
+  "use_case": "stylized-concept",
+  "intent": "fresh original artwork",
+  "generation_attempts": 1,
+  "style_references": [
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/wind-v1.webp",
+      "role": "style only",
+      "inspected_with": "view_image"
+    },
+    {
+      "path": "[workspace]/chmurnik-v4/weather-preview/public/covers/sounding-v1.webp",
+      "role": "style only",
+      "inspected_with": "view_image"
+    }
+  ],
+  "reference_transport": "References inspected visually; style described in original generation prompt. No reference image was an original-generation edit target.",
+  "prompt": "Use case: stylized-concept.\nAsset: one original image-only editorial campaign illustration, landscape 3:2, 1536x1024 preferred.\nScene: a warm ivory studio table with TWO separate tactile weather experiment trays, a carefully arranged mature still-life, seen from overhead / high three-quarter viewpoint. One shallow matte ivory clay tray holds a tiny muted olive terrain and a LOW compact, gently irregular wool cloud hovering closely over it. A separate shallow matte ivory tray holds another miniature olive terrain and a clearly HIGHER, delicate elongated wispy cloud of fine wool fibers suspended in space above it. Give the two clouds visibly different shapes and heights. A small violet glass magnifying lens with a short tactile clay handle rests ON the table BETWEEN the two trays, suggesting quietly comparing cases. The lens is a refined translucent purple object, not a UI icon.\nStyle and mood: sophisticated editorial romance, handcrafted felt / wool / clay diorama captured with realistic miniature studio photography; rich but delicate visible fibers, matte sculpted tray edges, subtle glass refraction, realistic grounded shadows and believable material dimensions. NOT childish, NOT cartoon toy icons. Style references already inspected (wind-v1.webp and sounding-v1.webp) inform only texture and lighting; make a fresh distinct composition, not their landscapes, balloon or wind apparatus.\nPalette: warm ivory #fff7ed background, muted olive #706936 terrain, blush pink #ffe2ec gentle highlights, violet #743cdd lens and tiny restrained accents. Soft warm directional studio light.\nComposition: two trays in one scene, no dividers or panel layout. All trays, clouds and magnifying lens completely visible with large table margins. Objects occupy central 74 percent of image width and central 72 percent image height. Landscape 3:2, with all important subjects inside a centered 16:9 safe area. High three-quarter still life, intentionally different from a landscape. Every object is well-crafted and convincingly lit.\nAbsolutely no people, faces, logos, watermarks, text, numbers, letters, symbols, checkmarks, arrows, labels, UI, factual real-cloud photographs, screenshots or full social slide. One individual illustration, NEVER contact sheet.",
+  "source_path": "[CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-37bdd356-c77a-4497-80ed-2d9ae45e9018.png",
+  "final_path": "[workspace]/chmurnik-v4/social/2026-09-09-pracownie/art/08-proba.png",
+  "output": {
+    "mime_type": "image/png",
+    "width": 1536,
+    "height": 1024,
+    "aspect_ratio": "3:2",
+    "bytes": 2395583,
+    "resampled": false,
+    "copy_method": "cp -n",
+    "byte_identity_verified": "cmp exit code 0",
+    "dimensions_verified_with": "sips",
+    "existence_nonempty_verified_with": "stat"
+  },
+  "visual_inspection": {
+    "status": "passed",
+    "method": "direct inspection of native image_gen output",
+    "notes": "Two separate ivory trays with olive miniature terrains, a low compact cloud at left and a higher wispy cloud at right. Violet glass magnifier lies between their foreground edges. High three-quarter warm ivory still-life; essential objects survive centered 16:9 crop.",
+    "no_text_numbers_letters_logos_people_ui_observed": true,
+    "centered_16_9_crop_assessment": "Essential subjects remain in frame; crop not applied."
+  },
+  "tool_output_receipt": "Generated images are saved to [CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef as [CODEX_HOME]/generated_images/01a087bc-bbc9-7b51-8904-190cca122cef/exec-37bdd356-c77a-4497-80ed-2d9ae45e9018.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

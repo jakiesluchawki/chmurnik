@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import {stories, posts, previewUrl, copyStatus} from '../social/2026-09-08-pogoda/copy.mjs';
 import {packs} from '../social/library/catalog.mjs';
 import {stories as releaseStories, posts as releasePosts, availability, copyStatus as releaseCopyStatus, workshopUrl} from '../social/2026-09-09-pracownie/copy.mjs';
@@ -35,15 +36,15 @@ test('weather pack extends the permanent library without removing campaigns',()=
   assert.equal(old.archived,true);
   assert.match(old.status,/Archiwum/);
   assert.equal(packs[0].id,'pracownie');
-  assert.match(packs[0].status,/akceptacji/);
+  assert.match(packs[0].status,/PNG i PDF/);
 });
 
 test('workshop release pack preserves all ten texts and all platform posts',async()=>{
   const base=new URL('../social/2026-09-09-pracownie/site/',import.meta.url);
   const manifest=JSON.parse(await readFile(new URL('manifest.json',base)));
   assert.equal(releaseStories.length,10);
-  assert.equal(releaseCopyStatus,'awaiting-owner-approval');
-  assert.equal(manifest.renderedSocialAssets,false);
+  assert.equal(releaseCopyStatus,'approved');
+  assert.equal(manifest.renderedSocialAssets,true);
   assert.deepEqual(manifest.stories,releaseStories);
   assert.deepEqual(manifest.posts,releasePosts);
   const txt=await readFile(new URL('TEKSTY-I-LINKI.txt',base),'utf8');
@@ -60,10 +61,39 @@ test('workshop release copy distinguishes submission, WWW and unchanged classifi
   assert.match(availability,/nie oznacza to jeszcze dostępności/);
   assert.match(releasePosts.linkedin,/Nie ogłaszam nowego modelu rozpoznawania/);
   const html=await readFile(new URL('../social/2026-09-09-pracownie/site/index.html',import.meta.url),'utf8');
-  assert.match(html,/Pełne teksty do akceptacji/);
+  assert.match(html,/Gotowy pakiet/);
   assert.match(html,/href="\.\.\/\.\.\/assetySM\/"/);
   assert.equal((html.match(/class="story"/g)||[]).length,10);
   assert.doesNotMatch(html,/expert-review|drive\.google\.com|R001|PRIVATE-KEY/);
+});
+
+test('final social exports preserve dimensions, exact copy and downloadable files',async()=>{
+  const base=new URL('../social/2026-09-09-pracownie/site/',import.meta.url);
+  const manifest=JSON.parse(await readFile(new URL('manifest.json',base)));
+  const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+  assert.equal(manifest.copyHash,hash(JSON.stringify({stories:releaseStories,posts:releasePosts})));
+  assert.equal(manifest.artworks.filter(a=>a.format==='stories').length,10);
+  assert.equal(manifest.artworks.filter(a=>a.format==='karuzela').length,10);
+  assert.equal(manifest.artworks.filter(a=>a.format==='facebook').length,1);
+  for(const item of manifest.artworks){
+    const bytes=await readFile(new URL(item.file,base));
+    assert.equal(hash(bytes),item.sha256);
+    assert.equal(bytes.readUInt32BE(16),1080);
+    assert.equal(bytes.readUInt32BE(20),item.format==='stories'?1920:1350);
+    const source=releaseStories[item.number-1];
+    assert.equal(item.text,source.text);
+    assert.equal(item.layout.bodyLines.join(' '),source.text);
+    assert.equal(item.layout.headlineLines.join(' '),source.title);
+    assert(item.layout.artY>item.layout.headlineBottom);
+    assert(item.layout.bodyTop>item.layout.artY+item.layout.artH);
+  }
+  assert.equal(manifest.documents.length,1);
+  assert.equal(manifest.documents[0].pages,10);
+  assert.equal(manifest.documents[0].selectableText,true);
+  assert.equal(manifest.archives.length,5);
+  for(const item of [...manifest.documents,...manifest.archives])assert.equal(hash(await readFile(new URL(item.file,base))),item.sha256);
+  const exports=JSON.parse(await readFile(new URL('exports-manifest.json',base)));
+  assert.equal(new Set(exports.sourceArtwork.map(a=>a.sha256)).size,10);
 });
 
 test('owner-authored social copy uses a singular creator voice throughout',()=>{
