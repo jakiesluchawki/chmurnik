@@ -15,6 +15,47 @@ history:
 
 # Weather Playground Preview
 
+## Both Apple Platforms Submitted, 9 September 2026
+
+iOS/iPadOS and Mac Catalyst 1.2.1 (20260909165644) are both actually
+WAITING_FOR_REVIEW. Both builds are VALID. Do not repeat uploads/submissions.
+This completes the app-submission and delivered-WWW portions, not Apple review
+or public store availability. No host attendance is currently required.
+The task stays active for the explicitly requested social pack: complete copy
+is prepared, while final PNG/PDF assets await the owner's copy approval.
+See design/apple-0043-submitted-20260909.md for the consolidated public handoff;
+private receipts include exact build/review IDs and package hashes.
+
+The Mac 90255 fix changed one archive-copy file mode, not app bytes. Five
+2880x1800 native QA-window captures preserve all opaque pixels and are COMPLETE
+at Apple. Preview failed to capture the window; the owner-authorized standard
+window-only system capture succeeded without security changes or document access.
+Published screenshot sets were not modified. No browser image substituted for
+the native application. Original archives and failed attempts remain intact.
+
+GitHub branch codex/weather-preview includes the eefa7f9 release checkpoint.
+PROME / CODEX / repositories holds an independent timestamped backup with
+verified Git restoration and read-back SHA256 checks. Existing migration archives
+are untouched. Include final submission receipts and the mac-screenshots folder
+in the subsequent checkpoint. Credentials and reviewer responses are excluded.
+
+The complete ten-slide social-copy gallery is published at /premiera/pracownie/
+and linked first in /assetySM/. Pages commit 4321fa3 passed run 34394647646;
+the scoped cover-crop follow-up is d5a332f. No app or CyberFolks files changed.
+Live 320/390px checks confirmed full text, images, no horizontal overflow,
+clipboard success and library round-trip. All 927 Node tests pass after replacing
+the obsolete permanent-first-campaign assertion and adding two copy regressions.
+Original native QA/snapshot receipts remain historical immutable evidence.
+Owner was asked once to approve the full text set before PNG/PDF production.
+
+The owner said the copy was acceptable but requested a more value-led version,
+retaining restrained romantic warmth and marking the completed product phase.
+The full second version now emphasizes understanding weather, reading reports,
+interpreting evidence and applying knowledge, with no guaranteed learning outcome
+or false claim of App Store availability. Local commit 15a7814 maps to Pages
+d637138; all ten Stories/carousel texts and three posts were revised together.
+Final visual production still follows acceptance of the revised copy.
+
 ## Release Checkpoint, 20:30 CEST
 
 iOS/iPadOS 1.2.1, build 20260909165644, is actually submitted and
