@@ -15,14 +15,48 @@ history:
 
 # Weather Playground Preview
 
+## Approved Social Graphics, 9 September 2026
+
+The owner approved the singular-voice, value-led full copy and explicitly
+authorized image generation. The final pack contains ten distinct new native
+ImageGen illustrations, ten 1080x1920 Stories, ten 1080x1350 carousel slides,
+one Facebook PNG, a ten-page selectable-text LinkedIn PDF and five complete
+download ZIPs. Every approved story and platform post is retained verbatim.
+Source commit d8be167 maps to Pages d8d19c0; deployment run 34399499694.
+The permanent /assetySM/ library points to /premiera/pracownie/ as before.
+See social/2026-09-09-pracownie/README.md for deliverables and reproduction.
+
+Four agents participated in this social phase: coordinator for exact-copy
+composition, exports, gallery and QA; Kepler for illustrations 01-03; Sartre
+for 04-06; Sagan for 07-10. All three workers completed and were closed.
+Independent PDFium renders and pypdf checks confirm all ten full texts and
+links. All 929 Node tests, six targeted social tests, nine lesson audits and
+the separate Pages-regression build passed. Phone 320/390px and desktop
+gallery checks passed; full-post clipboard action was verified. This is not
+physical-device or measured-learning-effectiveness evidence.
+
+From plan: preserve approved full copy, original creator voice, separate
+platform sizes and the established permanent gallery. Emerged: compose exact
+OTF typography independently from generated artwork, and verify the PDF with
+an independent renderer. Existing review-only tests now require approved copy
+and real downloadable assets rather than an obsolete pending-approval label.
+Export-only tools are isolated under .local, not app dependencies. The initial
+logo compositor resize-order error was fixed before any final publication.
+
+No Apple upload or app/model code change occurred in this graphics phase.
+The fresh public chmurnik.cloud check matched all 131 readable dist files;
+.htaccess remains protected and unverified. The generatywni/chmurnik handoff
+exists but remains the 7 September snapshot; the owner's question was answered
+accurately, without silently replacing that separately owned handoff.
+
 ## Both Apple Platforms Submitted, 9 September 2026
 
 iOS/iPadOS and Mac Catalyst 1.2.1 (20260909165644) are both actually
 WAITING_FOR_REVIEW. Both builds are VALID. Do not repeat uploads/submissions.
 This completes the app-submission and delivered-WWW portions, not Apple review
 or public store availability. No host attendance is currently required.
-The task stays active for the explicitly requested social pack: complete copy
-is prepared, while final PNG/PDF assets await the owner's copy approval.
+The later approved social-graphics checkpoint above supersedes the former
+copy-approval wait; do not ask for the same acceptance again.
 See design/apple-0043-submitted-20260909.md for the consolidated public handoff;
 private receipts include exact build/review IDs and package hashes.
 
