@@ -68,6 +68,17 @@ Writing production code without an active Lore task is forbidden.
   identity. Keep the interface calm, compact, and mature; real cloud imagery
   must lead the atlas while felt objects explain invisible atmospheric ideas.
 - Mobile is a primary surface, not a reduced desktop afterthought.
+- Independent practice must apply a learned rule to a new, validated case,
+  not repeat tutorial slider values. Separate walkthrough, free exploration,
+  and assessment. Commit both a decision and its reason before revealing
+  feedback; preserve first attempts and distinguish help and repeated cases.
+- On short phone screens, keep the current scene and action close together.
+  Remove duplicated introductions before shrinking text. Verify a complete
+  learner journey, not just overflow or a catalog screenshot.
+- Learning-catalog covers must be distinct and topic-specific, not the same
+  cloud or landscape reused for unrelated subjects. Vary composition, scale
+  and dominant color within the approved tactile identity. Keep generated
+  cover art separate from authentic observation evidence and live scene state.
 - Weather preview QA must exercise the actual phone journey, not just check
   horizontal overflow. Keep actions beside their scene, provide tap alternatives
   to dragging, and ensure illustrations never cover controls or keyboard focus.

@@ -90,6 +90,36 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Owner Follow-up: Transfer And Focused Mobile Practice
+
+The owner rejected replaying tutorial values as independent practice and the
+long mobile card stack. Three research agents reviewed learning transfer,
+mobile attention/accessibility, and all fourteen activities. Findings are in
+`design/learning-transfer-20260909/`. Keep the existing Pages-only gate.
+
+- [x] Complete three independent research reports and inspect the reported flow.
+- [x] Separate walkthrough, free exploration and new-case assessment in the new studio.
+- [x] Add and verify two new cases per activity, with decision and reason committed together.
+- [x] Preserve first submissions, help and repeated-case status in preview-only storage.
+- [x] Verify compact mobile journeys, including legacy experiences and wrong answers.
+- [ ] Publish the reviewed Pages-only changes and inspect the public result.
+
+The design is source-informed, not evidence that learning outcomes have already
+improved. Do not call two successful cases mastery or aviation qualification.
+
+### Owner Follow-up: Distinct Catalog Illustrations
+
+The owner identified repeated cloud covers for wind and METAR and requested
+more beautiful, varied artwork across the catalog. Replace the eight newer
+mechanism/tool covers with separate tactile editorial scenes. Preserve three
+authentic photo covers and three distinct original-experiment covers. Do not
+change controls, equations, concealed answers or production deployment gates.
+
+- [x] Audit repeated sources and define topic-specific compositions.
+- [x] Generate and inspect eight new optimized cover illustrations.
+- [x] Verify all fourteen covers are distinct, mobile crops and lesson entry.
+- [ ] Publish the scoped Pages-only change and verify public images.
+
 ### Owner-Approved Expansion: All Lessons
 
 The owner now authorizes a coherent web learning expansion across all nine

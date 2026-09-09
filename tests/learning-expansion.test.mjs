@@ -122,8 +122,9 @@ test("observation hides name, image description and source link until explicit r
 test("new controls reuse the centered native slider, guide gates and reduced motion", async () => {
   const source = await readFile(new URL("../weather-preview/learning/LearningStudio.jsx", import.meta.url), "utf8");
   assert.match(source, /import \{ Slider \} from "\.\.\/Slider.jsx"/);
-  assert.match(source, /disabled=\{!complete\}/);
-  assert.match(source, /answer !== null/);
+  assert.match(source, /if \(!complete\) return/);
+  assert.match(source, /disabled=\{answer === null\}/);
+  assert.match(source, /disabled=\{checked\}/);
   assert.match(source, /prefers-reduced-motion/);
   assert.match(source, /visibilitychange/);
 });
