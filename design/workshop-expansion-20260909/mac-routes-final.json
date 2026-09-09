@@ -1,0 +1,72 @@
+[
+  {
+    "id": "bryza",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "chmura",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "mgla",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "obserwacja",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "rodziny",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "nazwy",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "front",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "wiatr",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "metar",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "wysokosc",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "sondaz",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "oblodzenie",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "turbulencja",
+    "loaded": true,
+    "returned": true
+  },
+  {
+    "id": "burza",
+    "loaded": true,
+    "returned": true
+  }
+]

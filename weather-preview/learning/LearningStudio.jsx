@@ -8,6 +8,8 @@ import { returnLesson } from "../tutorial.mjs";
 import { catalogArtwork } from "./artwork.mjs";
 import { TransferTrial } from "./TransferTrial.jsx";
 import { markTransferHelp } from "./transfer-state.mjs";
+import { GuidedInvestigation } from "./GuidedInvestigation.jsx";
+import { guideProbes } from "./guide-probes.mjs";
 import "./style.css";
 
 const legacy = [
@@ -25,16 +27,22 @@ function CatalogCover({ id }) {
 
 function Header({ mainSite }) {
   return <header className="topbar learning-topbar"><a href={mainSite} aria-label="CHMURNIK"><img src="./wordmark.png" alt="CHMURNIK" /></a>
-    <span className="preview-tag">Pracownia <span>· podgląd do akceptacji</span></span><a className="back-link" href={`${mainSite}#/layers`}><ArrowLeft /> Warstwy</a></header>;
+    <span className="preview-tag">Pracownia pogody</span><a className="back-link" href={`${mainSite}#/layers`}><ArrowLeft /> Warstwy</a></header>;
 }
+const workshopSummaries = {
+  wiatr: "3 obserwacje ruchu · 2 nowe przypadki",
+  sondaz: "6 kroków odczytu · 2 nowe profile",
+  turbulencja: "3 mechanizmy · 2 nowe przypadki",
+  burza: "3 doświadczenia · 2 nowe przypadki",
+};
 export function LearningCatalog({ mainSite }) {
   useEffect(() => { document.title = "Pracownia pogody · CHMURNIK"; }, []);
   return <div className="learning-studio"><Header mainSite={mainSite} /><main className="learning-catalog">
-    <div className="learning-intro"><p className="eyebrow">9 LEKCJI · 14 DOŚWIADCZEŃ I ĆWICZEŃ</p><h1>Sprawdź, dlaczego niebo się zmienia.</h1><p>Każde ćwiczenie prowadzi od pierwszego ruchu do wyjaśnienia wyniku. Oglądaj prawdziwe zdjęcia, zmieniaj warunki lub odczytuj dane. Pełne lekcje pozostają o krok dalej.</p></div>
+    <div className="learning-intro"><p className="eyebrow">9 LEKCJI · 14 DOŚWIADCZEŃ I ĆWICZEŃ</p><h1>Sprawdź, dlaczego niebo się zmienia.</h1><p>Najpierw zapisz swoje przewidywanie, potem sprawdź je w obserwacji. Oglądaj prawdziwe zdjęcia, zmieniaj warunki lub odczytuj dane. Na końcu zastosuj poznaną zasadę w nowym przypadku.</p></div>
     <section className="learning-catalog-group"><h2>Od czego zacząć?</h2><p>Te trzy doświadczenia wprowadzają w powstawanie pogody.</p><div className="learning-tiles">{legacy.map(item => <a className="learning-tile" href={`?from=${item.lesson}#${item.id}`} key={item.id}><CatalogCover id={item.id} /><div><span className="eyebrow">{item.short}</span><h3>{item.title}</h3><span className="learning-tile-action">Otwórz przewodnik <ArrowRight /></span></div></a>)}</div></section>
     {[...new Set(Object.values(activities).map(a => a.group))].map(group => <section className="learning-catalog-group" key={group}><h2>{group}</h2><div className="learning-tiles">
       {Object.entries(activities).filter(([, a]) => a.group === group).map(([id, activity]) => <a className="learning-tile" href={`?from=${activity.lesson}#${id}`} key={id}>
-        <CatalogCover id={id} /><div><span className="eyebrow">{activity.short}</span><h3>{activity.title}</h3><p>{activity.workshop ? "3 doświadczenia · 2 nowe przypadki" : `${activity.steps.length} ${activity.steps.length < 5 ? "kroki" : "kroków"} · przewodnik i samodzielna próba`}</p><span className="learning-tile-action">Wejdź do ćwiczenia <ArrowRight /></span></div></a>)}
+        <CatalogCover id={id} /><div><span className="eyebrow">{activity.short}</span><h3>{activity.title}</h3><p>{workshopSummaries[id] || `${activity.steps.length} kroki obserwacji · 2 nowe przypadki`}</p><span className="learning-tile-action">Wejdź do ćwiczenia <ArrowRight /></span></div></a>)}
     </div></section>)}
     <p className="learning-safety">Filcowe okładki ilustrują temat, nie rzeczywistą pogodę. Schematy w ćwiczeniach służą nauce: nie są prognozą, rozpoznaniem zdjęcia przez model ani oceną bezpieczeństwa lotu. Prawdziwe fotografie mają podpisanych autorów i źródła.</p>
     <a className="learning-return" href={`${mainSite}#/learn`}><BookOpen /> Wszystkie pełne lekcje <ArrowRight /></a>
@@ -78,10 +86,13 @@ export function LearningStudio({ id, mainSite }) {
   const [checked, setChecked] = useState(false);
   const [observe, setObserve] = useState(false);
   const [controlKey, setControlKey] = useState(activity.controls[0].key);
+  const [comparisons, setComparisons] = useState([]);
   const [paused, setPaused] = useState(false);
   const [hidden, setHidden] = useState(document.hidden);
   const [reduced, setReduced] = useState(matchMedia("(prefers-reduced-motion: reduce)").matches);
   const heading = useRef(null);
+  const investigationResume = useRef(null);
+  const [guideHelpSeen, setGuideHelpSeen] = useState(false);
   const step = activity.steps[index];
   const complete = lessonStepComplete(id, index, state);
   const lesson = returnLesson(location.search, activity.lesson);
@@ -94,7 +105,7 @@ export function LearningStudio({ id, mainSite }) {
     return () => { document.removeEventListener("visibilitychange", visibility); motion.removeEventListener("change", preference); };
   }, [activity]);
   function focusGuide() { requestAnimationFrame(() => { heading.current?.scrollIntoView({ behavior: "instant", block: "nearest" }); heading.current?.focus({ preventScroll: true }); }); }
-  function chooseMode(value) { if (mode === "assessment" && value !== mode) markTransferHelp(id); setMode(value); }
+  function chooseMode(value) { if (mode === "assessment" && value !== mode) markTransferHelp(id); if (value === "explore") setGuideHelpSeen(true); setMode(value); }
   function restart() { setGuidedState({ ...activity.initial }); setIndex(0); chooseMode("tutorial"); setDone(false); setAnswer(null); setChecked(false); setObserve(false); focusGuide(); }
   function next() {
     if (!complete) return;
@@ -109,9 +120,9 @@ export function LearningStudio({ id, mainSite }) {
   function leaving() { if (mode === "assessment") markTransferHelp(id); }
   return <div className="learning-studio learning-focused" data-motion={paused || hidden || reduced ? "paused" : "running"} onClickCapture={event => { if (event.target.closest("a") && !event.target.closest(".transfer-trial")) leaving(); }}>
     <main className="learning-activity"><nav className="learning-breadcrumb"><a href="#pracownia"><ArrowLeft /> Pracownia</a><h1>{compactTitle}</h1><a href={`${mainSite}#/learn/${lesson}`} aria-label="Wróć do lekcji"><BookOpen /> Lekcja</a></nav>
-      <div className="learning-toolbar"><div role="group" aria-label="Sposób pracy"><button aria-pressed={guide} onClick={() => chooseMode("tutorial")}>Prowadź mnie</button><button aria-pressed={mode === "assessment"} onClick={() => chooseMode("assessment")}>Sprawdź się</button><button aria-pressed={mode === "explore"} onClick={() => chooseMode("explore")}>Eksperymentuj</button></div>
+      <div className="learning-toolbar"><div role="group" aria-label="Sposób pracy"><button aria-pressed={guide} onClick={() => chooseMode("tutorial")}>Prowadź mnie</button><button aria-pressed={mode === "assessment"} onClick={() => chooseMode("assessment")}>Sprawdź się</button><button aria-pressed={mode === "explore"} onClick={() => chooseMode("explore")}>Swobodnie</button></div>
         <button className="learning-motion" onClick={() => setPaused(!paused)} aria-label={reduced ? "Ograniczony ruch" : paused ? "Wznów ruch" : "Zatrzymaj ruch"} aria-pressed={paused} disabled={reduced}>{paused || reduced ? <Play /> : <Pause />}<span>{reduced ? "Ograniczony ruch" : paused ? "Wznów ruch" : "Zatrzymaj ruch"}</span></button></div>
-      {mode === "assessment" ? <TransferTrial key={id} activityId={id} /> : <section className="learning-workbench" aria-label={activity.short}>
+      {mode === "assessment" ? <TransferTrial key={id} activityId={id} /> : guide && guideProbes[id] ? <GuidedInvestigation key={id} id={id} resumeRef={investigationResume} externalHelp={guideHelpSeen} onAssessment={() => chooseMode("assessment")} renderControl={(control,value,onChange) => <Control control={control} value={value} onChange={onChange} />} /> : <section className="learning-workbench" aria-label={activity.short}>
         <header className="learning-guide-heading" ref={heading} tabIndex={-1}>
           <p className="eyebrow">{guide ? done ? "Dokończ wniosek · bez instrukcji" : `Krok ${index + 1} z ${activity.steps.length}` : "Swobodne eksperymentowanie · bez oceny"}</p>
           <h2>{guide ? done ? "Co wynika z obserwacji?" : step.title : activity.title}</h2>
@@ -120,7 +131,7 @@ export function LearningStudio({ id, mainSite }) {
           {!checked ? <button className="learning-primary" disabled={answer === null} onClick={() => setChecked(true)}>Zatwierdź wniosek <Check /></button> : <><div className="learning-feedback" role="status"><strong>{answer === activity.check.correct ? "To właściwy wniosek z tego przykładu." : "W tym wniosku jest coś do poprawy."}</strong><p>{activity.check.explanation}</p><p>To podsumowanie przewodnika. Kolejne zadanie ma inne dane i wymaga własnego uzasadnienia.</p></div>
           <button className="learning-primary" onClick={() => chooseMode("assessment")}>Zastosuj to w nowym przypadku <ArrowRight /></button></>}
           <button className="learning-reset" onClick={restart}><ArrowCounterClockwise /> Powtórz przewodnik</button>
-        </div> : <div className="learning-lab-grid"><div className="learning-visual"><ActivityScene id={id} state={state} /></div>
+        </div> : <div className="learning-lab-grid"><div className="learning-visual"><ActivityScene id={id} state={state} onStateChange={!guide ? patch => setExploreState(old => ({...old,...patch})) : undefined} controlKey={selectedControl.key} annotate={id === "obserwacja"} /></div>
           <div className="learning-interaction">
             {guide && observe ? <div className="learning-step-result"><p className="eyebrow">Porównaj z własną obserwacją</p><h3>Co się zmieniło?</h3><p>{step.expect}</p><p>{step.explanation}</p><button className="learning-next" onClick={next}>{index === activity.steps.length - 1 ? "Dokończ wniosek" : "Następny krok"}<ArrowRight /></button><button className="learning-reset" onClick={() => setObserve(false)}>Wróć do sterowania</button></div> : <>
               {!guide && <label className="learning-parameter">Który warunek zmieniasz?<select value={selectedControl.key} onChange={event => setControlKey(event.target.value)}>{available.map(control => <option key={control.key} value={control.key}>{control.label}</option>)}</select></label>}
@@ -132,7 +143,8 @@ export function LearningStudio({ id, mainSite }) {
             {guide && index > 0 && <button className="learning-reset" onClick={() => { setIndex(index - 1); setGuidedState(lessonStateAt(id, index - 1)); setObserve(false); focusGuide(); }}><ArrowLeft /> Poprzedni krok</button>}
           </div></div>}
       </section>}
-      {guide && !done && <button className="learning-reset" onClick={restart}><ArrowCounterClockwise /> Zacznij przewodnik od początku</button>}
+      {mode === "explore" && <section className="learning-comparisons" aria-label="Porównanie własnych wariantów"><button className="learning-primary" onClick={() => setComparisons(old => [...old.slice(-1), {...exploreState}])}>Zachowaj wariant do porównania <Check /></button><p>Zachowaj dwa różne ustawienia. Odtworzenie wróci dokładnie do zapisanych warunków; to własna obserwacja, nie ocena.</p><div>{comparisons.map((snapshot,i) => <article key={i}><h3>Wariant {i+1}</h3><dl>{activity.controls.map(c => <React.Fragment key={c.key}><dt>{c.label}</dt><dd>{c.options ? c.options.find(([value]) => value === snapshot[c.key])?.[1] || "Nie wybrano" : `${snapshot[c.key]} ${c.unit}`}</dd></React.Fragment>)}</dl><button className="learning-reset" onClick={() => setExploreState({...snapshot})}>Odtwórz wariant {i+1}</button></article>)}</div></section>}
+      {guide && !done && !guideProbes[id] && <button className="learning-reset" onClick={restart}><ArrowCounterClockwise /> Zacznij przewodnik od początku</button>}
       <details className="learning-about"><summary>O tym ćwiczeniu</summary><p>{activity.lead}</p><p>Najpierw poznaj mechanizm w przewodniku. Potem sprawdź go w innym przypadku, bez gotowego rozwiązania. W eksperymentowaniu możesz swobodnie zmieniać warunki.</p></details>
       <div className="learning-continuation"><a className="learning-return" href={`${mainSite}#/learn/${lesson}`}><BookOpen /><span>Wróć do pełnej lekcji<br /><small>Rozdziały i zapisany postęp pozostają w lekcji.</small></span><ArrowRight /></a>
         {fullTool && <a href={`${mainSite}#/layers/${fullTool}`}>Przejdź do pełnego narzędzia: {id === "sondaz" ? "inne profile i Skew-T" : activity.short} <ArrowRight /></a>}</div>

@@ -26,22 +26,29 @@ for (const [id, activity] of Object.entries(activities)) test(`learning guide ${
   for (const key of activity.sources) assert.match(sources[key][1], /^https:\/\//);
 });
 
-test("all nine full lessons have reciprocal preview activities, no domain/native paths", () => {
+test("all nine full lessons reach all 14 reciprocal workshops on bundled root, Pages and native paths", () => {
   const ids = ["obserwacja", "rodziny", "procesy", "fronty", "wiatr", "lotnictwo", "warstwy", "zagrozenia", "ekspert"];
-  const reached = new Set();
-  for (const lesson of ids) {
-    const links = weatherLessonLinks(lesson, "/chmurnik/");
-    assert.ok(links.length);
-    assert.deepEqual(weatherLessonLinks(lesson, "/"), []);
-    for (const link of links) {
-      const url = new URL(link.href, "https://jakiesluchawki.github.io");
-      const scene = url.hash.slice(1); reached.add(scene);
-      assert.ok(Object.hasOwn(activities, scene) || Object.values(sceneHashes).includes(scene));
-      assert.equal(returnLesson(url.search, "none"), lesson);
+  for (const [base, root] of [["/chmurnik/", "https://jakiesluchawki.github.io/chmurnik/"],
+    ["/", "https://chmurnik.cloud/"], ["/", "capacitor://localhost/"]]) {
+    const reached = new Set();
+    for (const lesson of ids) {
+      const links = weatherLessonLinks(lesson, base);
+      assert.ok(links.length);
+      for (const link of links) {
+        const url = new URL(link.href, root);
+        assert.equal(url.protocol, new URL(root).protocol);
+        assert.equal(url.host, new URL(root).host);
+        assert.equal(url.pathname, `${base}pogoda-preview/index.html`);
+        const scene = url.hash.slice(1); reached.add(scene);
+        assert.ok(Object.hasOwn(activities, scene) || Object.values(sceneHashes).includes(scene));
+        assert.equal(returnLesson(url.search, "none"), lesson);
+        const back = new URL(`#/learn/${returnLesson(url.search, "none")}`, new URL("../", url));
+        assert.equal(back.href, `${root}#/learn/${lesson}`);
+      }
     }
+    assert.equal(reached.size, 14);
+    assert.deepEqual(weatherLessonLinks("constructor", base), []);
   }
-  assert.equal(reached.size, 14);
-  assert.deepEqual(weatherLessonLinks("constructor", "/chmurnik/"), []);
 });
 
 test("METAR lower cover changes ceiling, not height; codes agree with existing decoder", () => {

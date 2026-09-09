@@ -90,6 +90,49 @@ to native integration or production domain without that acceptance.
 
 ## Future Work
 
+### Latest Goal: Complete And Release Autonomously
+
+Implementation checkpoint 2026-09-09: all fourteen workshops are routed to
+the rebuilt guided/transfer experiences and bundled into root, Pages and
+Capacitor outputs. Final Node run: 925 passed, none skipped; nine lesson
+audits and 61 source-link checks passed. Parent browser checks cover new
+wind evidence/persistence and general METAR feedback, plus all fourteen
+initial views at 320/390 px. Mac final development-signed QA bundle matches
+all 132 root dist files; Computer Use route round trips passed for all
+fourteen, and cloud prediction/action/evidence/lesson return passed.
+Native iPhone full-catalogue test remains in progress after fixing a test-only
+scroll limit. Mac XCTest automation initialization failed; it is not a pass.
+No Apple upload and no CyberFolks deployment at this checkpoint. Four agents
+and detailed roles/evidence/limits: design/workshop-expansion-20260909/verification.md.
+
+The owner is leaving for meetings and explicitly approves completing all
+modules, testing iOS and macOS, then submitting to App Store if tests pass,
+and preparing a downloadable CyberFolks archive. No further owner review
+stops. This supersedes the earlier Pages-only gate, but not scientific,
+regression, privacy, signing or packaged-app QA requirements. An active Codex
+goal records this complete objective. Never equate upload with Apple approval.
+Keep browser-preview development isolated first; integrate only verified work
+into shared/native assets. Do not change host security settings without the
+required system approval or bypass test failures to manufacture a release.
+
+- [ ] Complete all workshop improvements and full learning journeys.
+- [ ] Verify the built web preview and production integration.
+- [ ] Integrate and test packaged iPhone/iPad and Mac Catalyst applications.
+- [ ] Submit verified, signed release builds and confirm processing/submission.
+- [ ] Build, verify and provide the CyberFolks download package.
+
+### Owner Authorization: Continue All Workshops
+
+On 2026-09-09 the owner said the new pattern is better and explicitly asked
+to keep building without requesting acceptance of every workshop. Continue
+the entire preview without the previous first-pattern pause. Pages only;
+cloud, native, Apple and recognition model remain outside this authorization.
+Lead owns eight general activities and integration/browser QA; Bernoulli owns
+the new sounding workshop, Kierkegaard turbulence, Maxwell the three foundation
+experiments. Four agents total in this implementation round. Preserve older
+results and scientific API contracts. Evidence belongs to
+`design/workshop-expansion-20260909/`.
+
 ### Owner Follow-up: Workshop Quality Audit
 
 Implementation resumed after explicit owner approval on 2026-09-09. Lead

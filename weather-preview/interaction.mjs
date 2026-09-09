@@ -1,15 +1,15 @@
 export const HEIGHT_RANGE = { min: 0, max: 3000, step: 10 };
 export const HEIGHT_SPAN = 0.48;
 
-export function dragHeight(startHeight, startY, currentY, sceneHeight) {
+export function dragHeight(startHeight, startY, currentY, sceneHeight, span = HEIGHT_SPAN) {
   if (
-    ![startHeight, startY, currentY, sceneHeight].every(Number.isFinite) ||
-    sceneHeight <= 0
+    ![startHeight, startY, currentY, sceneHeight, span].every(Number.isFinite) ||
+    sceneHeight <= 0 || span <= 0
   )
     return startHeight;
   const height =
     startHeight +
-    ((startY - currentY) / (sceneHeight * HEIGHT_SPAN)) * HEIGHT_RANGE.max;
+    ((startY - currentY) / (sceneHeight * span)) * HEIGHT_RANGE.max;
   return Math.max(
     HEIGHT_RANGE.min,
     Math.min(

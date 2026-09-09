@@ -78,13 +78,13 @@ final class AppStoreUITests: XCTestCase {
         tapElement(element, label: label)
     }
 
-    private func tapElement(_ element: XCUIElement, label: String) {
+    private func tapElement(_ element: XCUIElement, label: String, maximumScrolls: Int = 8) {
         #if targetEnvironment(macCatalyst)
         app.activate()
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
         #endif
         XCTAssertTrue(element.waitForExistence(timeout: 15), label)
-        for _ in 0..<8 {
+        for _ in 0..<maximumScrolls {
             // WebKit can fail the test when asked for an off-screen activation point.
             if isActionable(element) { break }
             #if targetEnvironment(macCatalyst)
@@ -362,6 +362,73 @@ final class AppStoreUITests: XCTestCase {
         #else
         throw XCTSkip("Isolated Mac QA only")
         #endif
+    }
+
+    func test10BundledWorkshopAndLessonRoundTrip() {
+        tap("Dziś")
+        tap("Pełne lekcje")
+        tap("Dlaczego chmura powstaje", contains: true)
+        for _ in 0..<5 {
+            if !button("Poprzedni").isEnabled { break }
+            tap("Poprzedni")
+        }
+        assertChapter(1, of: 5)
+        tap("Następny")
+        assertChapter(2, of: 5)
+        let workshop = app.links.matching(NSPredicate(format: "label CONTAINS %@", "Kiedy pojawi się chmura?")).firstMatch
+        tapElement(workshop, label: "Pracownia kondensacji w paczce aplikacji")
+        XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
+        XCTAssertTrue(button("Swobodnie").waitForExistence(timeout: 30), app.debugDescription)
+        tap("Swobodnie")
+        XCTAssertTrue(visibleText("Początkowo 24,0°C"))
+        tap("Zwiększ: Uniesienie powietrza")
+        XCTAssertTrue(visibleText("100 m"))
+        capture("native-bundled-workshop-cloud-action")
+        tap("Sprawdź się")
+        XCTAssertTrue(button("Przypomnij zasadę").waitForExistence(timeout: 15))
+        XCTAssertFalse(button("Zwiększ: Uniesienie powietrza").exists)
+        capture("native-bundled-workshop-independent-case")
+        tapElement(app.links["Lekcja"].firstMatch, label: "Powrót z pracowni do lekcji")
+        assertChapter(2, of: 5)
+        XCTAssertTrue(visibleText("Unoszenie i chłodzenie adiabatyczne"))
+        capture("native-workshop-restores-lesson-chapter")
+        app.terminate()
+        app.launch()
+        tap("Dziś")
+        tap("Pełne lekcje")
+        tap("Dlaczego chmura powstaje", contains: true)
+        assertChapter(2, of: 5)
+    }
+
+    func test11EveryBundledWorkshopOpensAndReturnsToCatalog() {
+        tap("Dziś")
+        tap("Pełne lekcje")
+        tap("Dlaczego chmura powstaje", contains: true)
+        tapElement(app.links.matching(NSPredicate(format: "label CONTAINS %@", "Kiedy pojawi się chmura?")).firstMatch,
+                   label: "Wejście do lokalnej pracowni")
+        tapElement(app.links["Pracownia"].firstMatch, label: "Katalog pracowni")
+        let workshops = [
+            "Dlaczego wiatr zawraca nad wybrzeżem?", "Kiedy unoszona porcja staje się chmurą?",
+            "Jak nocne ochłodzenie prowadzi do mgły?", "Co naprawdę widzisz na zdjęciu?",
+            "Poziom i budowa to dwa różne pytania", "Nie dopisuj tego, czego nie zaobserwowałeś",
+            "Co unosi powietrze przy froncie?", "Chmura płynie dokąd, wiatr wieje skąd?",
+            "Zmień warstwę, odczytaj depeszę", "Ta sama wysokość, inna odległość od gruntu",
+            "Najpierw odczytaj jeden poziom", "Mróz to dopiero część warunków",
+            "Trzy drogi do nieregularnego przepływu", "Puść porcję powietrza. Co stanie się dalej?"
+        ]
+        for (index, title) in workshops.enumerated() {
+            let card = app.links.matching(NSPredicate(format: "label CONTAINS %@", title)).firstMatch
+            // The phone catalogue contains fourteen illustrated cards, beyond eight swipes.
+            tapElement(card, label: title, maximumScrolls: 24)
+            XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
+            XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(
+                format: "(elementType == %d OR elementType == %d) AND label CONTAINS %@",
+                XCUIElement.ElementType.button.rawValue, XCUIElement.ElementType.switch.rawValue,
+                "Sprawdź się")).firstMatch.waitForExistence(timeout: 30), title)
+            capture("native-workshop-\(index + 1)")
+            tapElement(app.links["Pracownia"].firstMatch, label: "Powrót z \(title)")
+            XCTAssertTrue(visibleText("Sprawdź, dlaczego niebo się zmienia."))
+        }
     }
 
     private func verifyNavigationAndDailyReveal(layersLabel: String = "Warstwy") {

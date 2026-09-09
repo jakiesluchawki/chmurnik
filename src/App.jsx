@@ -71,7 +71,7 @@ import {
   quizQuestions,
 } from "./data/learning.js";
 import { lessons } from "./data/lessons.js";
-import { weatherLessonLinks } from "./lib/weather-lesson-links.js";
+import { weatherLessonLinks, weatherWorkshopCatalog } from "./lib/weather-lesson-links.js";
 import {
   aviationBriefingSets,
   metarDecodeSections,
@@ -1028,8 +1028,7 @@ function LearnPage({
     const practice = lessonPractices[selected];
     const check = moduleChecks[selected];
     const isDone = completed.includes(selected);
-    const experimentLinks = import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform()
-      ? weatherLessonLinks(selected, import.meta.env.BASE_URL) : [];
+    const experimentLinks = weatherLessonLinks(selected, import.meta.env.BASE_URL);
     const chooseChapter = (index) => {
       const nextIndex = Math.max(0, Math.min(index, content.chapters.length - 1));
       setActiveChapter(nextIndex);
@@ -1058,7 +1057,7 @@ function LearnPage({
           </div>
         </div>
         {experimentLinks.length > 0 && <section className="lesson-experiments" aria-label="Doświadczenia do tej lekcji">
-          <div><span className="eyebrow">Pracownia pogody · podgląd</span>
+          <div><span className="eyebrow">Pracownia pogody</span>
             <h2>Sprawdź to krok po kroku</h2>
             <p>Przewodnik pokaże, co zmienić i jak odczytać wynik. Po powrocie będziesz w tym samym rozdziale lekcji.</p>
           </div>
@@ -1239,9 +1238,9 @@ function LearnPage({
         <span>Postęp zapisany na tym urządzeniu</span>
       </div>
 
-      {import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform() && import.meta.env.BASE_URL === "/chmurnik/" && <section className="weather-tool-guide" aria-label="Pracownia do pełnych lekcji">
-        <div><span className="eyebrow">Pracownia pogody · podgląd</span><h2>Najpierw zobacz, co się zmienia</h2><p>14 doświadczeń i ćwiczeń do dziewięciu lekcji. Każde ma przewodnik, samodzielną próbę i powrót do pełnego tematu.</p></div>
-        <div><a href={`${import.meta.env.BASE_URL}pogoda-preview/#pracownia`}>Wybierz doświadczenie<ArrowRight /></a></div>
+      {weatherWorkshopCatalog(import.meta.env.BASE_URL) && <section className="weather-tool-guide" aria-label="Pracownia do pełnych lekcji">
+        <div><span className="eyebrow">Pracownia pogody</span><h2>Najpierw zobacz, co się zmienia</h2><p>14 doświadczeń i ćwiczeń do dziewięciu lekcji. Każde ma przewodnik, samodzielną próbę i powrót do pełnego tematu.</p></div>
+        <div><a href={weatherWorkshopCatalog(import.meta.env.BASE_URL)}>Wybierz doświadczenie<ArrowRight /></a></div>
       </section>}
 
       <div className="learning-path">
@@ -3282,8 +3281,8 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
   const [pressure, setPressure] = useState(850);
   const heading = layersHeadings[tab];
   const previewLesson = { wind: "wiatr", metar: "lotnictwo", hazards: "zagrozenia", sounding: "warstwy", lab: "warstwy" }[tab];
-  const previewActivities = import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform()
-    ? weatherLessonLinks(previewLesson, import.meta.env.BASE_URL).filter(item => tab !== "sounding" || item.href.endsWith("#sondaz")) : [];
+  const previewActivities = weatherLessonLinks(previewLesson, import.meta.env.BASE_URL)
+    .filter(item => tab !== "sounding" || item.href.endsWith("#sondaz"));
 
   return (
     <main className="page layers-page">
@@ -3311,9 +3310,9 @@ function LayersPage({ onSources, initialTab = "decoder", navigate }) {
         ))}
       </div>
 
-      {import.meta.env.VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform() && import.meta.env.BASE_URL === "/chmurnik/" && <section className="weather-tool-guide" aria-label="Ćwiczenia z przewodnikiem">
+      {weatherWorkshopCatalog(import.meta.env.BASE_URL) && <section className="weather-tool-guide" aria-label="Ćwiczenia z przewodnikiem">
         <div><span className="eyebrow">Zacznij od doświadczenia</span><h2>{tab === "sounding" ? "Sondaż od początku, bez skrótów" : "Zobacz mechanizm, potem odczytaj dane"}</h2><p>Przewodnik pokaże, co zmienić i gdzie szukać efektu. Pełne narzędzia zostają poniżej.</p></div>
-        <div>{previewActivities.map(item => <a key={item.href} href={item.href}>{item.title}<ArrowRight /></a>)}<a href={`${import.meta.env.BASE_URL}pogoda-preview/#pracownia`}>Wszystkie 14 doświadczeń i ćwiczeń<ArrowRight /></a></div>
+        <div>{previewActivities.map(item => <a key={item.href} href={item.href}>{item.title}<ArrowRight /></a>)}<a href={weatherWorkshopCatalog(import.meta.env.BASE_URL)}>Wszystkie 14 doświadczeń i ćwiczeń<ArrowRight /></a></div>
       </section>}
 
       {nativeLayout && <section className="native-layer-shortcuts" aria-label="Pogoda w praktyce">

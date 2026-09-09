@@ -121,28 +121,36 @@ test("assessment presets differ from tutorial presets and require the intended a
   }
   assert.equal(fog({ ...quizCases.fog.start, cooling: 6 }).saturated, true);
 });
-test("lesson links and return targets are explicit, reciprocal and Pages-only", () => {
+test("lesson links and return targets are explicit and reciprocal in bundled web and native apps", () => {
   assert.equal(weatherLessonLinks("wiatr", "/chmurnik/").length, 2);
   assert.equal(weatherLessonLinks("procesy", "/chmurnik/").length, 2);
   assert.equal(
     weatherLessonLinks("zagrozenia", "/chmurnik/").find(link => link.href.endsWith("#burza")).title,
     "Sprawdź, co podtrzymuje unoszenie powietrza",
   );
-  assert.deepEqual(weatherLessonLinks("zagrozenia", "/"), []);
-  for (const lesson of ["wiatr", "procesy"]) {
-    assert.deepEqual(weatherLessonLinks(lesson, "/"), []);
-    for (const link of weatherLessonLinks(lesson, "/chmurnik/")) {
-      const url = new URL(link.href, "https://jakiesluchawki.github.io");
-      assert.ok(guides[sceneFromHash(url.hash)]);
-      assert.equal(returnLesson(url.search, "other"), lesson);
+  for (const [base, root] of [["/chmurnik/", "https://jakiesluchawki.github.io/chmurnik/"],
+    ["/", "https://chmurnik.cloud/"], ["/", "capacitor://localhost/"]]) {
+    assert.equal(weatherLessonLinks("zagrozenia", base).length, 3);
+    for (const lesson of ["wiatr", "procesy"]) {
+      const links = weatherLessonLinks(lesson, base);
+      assert.equal(links.length, 2);
+      for (const link of links) {
+        const url = new URL(link.href, root);
+        assert.equal(url.protocol, new URL(root).protocol);
+        assert.equal(url.host, new URL(root).host);
+        assert.equal(url.pathname, `${base}pogoda-preview/index.html`);
+        assert.ok(guides[sceneFromHash(url.hash)]);
+        assert.equal(returnLesson(url.search, "other"), lesson);
+      }
     }
+    assert.deepEqual(weatherLessonLinks("__proto__", base), []);
   }
-  assert.deepEqual(weatherLessonLinks("__proto__", "/chmurnik/"), []);
+  for (const base of ["https://evil.test/", "//evil.test/", "/../"]) assert.deepEqual(weatherLessonLinks("wiatr", base), []);
   assert.equal(returnLesson("?from=https://evil.test", "procesy"), "procesy");
   assert.equal(sceneFromHash("#mgla"), "fog");
   assert.equal(sceneFromHash("#unknown"), "breeze");
 });
-test("runtime guards keep tutorial links out of domain and native builds", async () => {
+test("runtime exposes local workshop links and every production build stages their bundle", async () => {
   const source = await readFile(
     new URL("../src/App.jsx", import.meta.url),
     "utf8",
@@ -150,14 +158,16 @@ test("runtime guards keep tutorial links out of domain and native builds", async
   const pkg = JSON.parse(
     await readFile(new URL("../package.json", import.meta.url), "utf8"),
   );
-  assert.match(
-    source,
-    /VITE_WEATHER_PREVIEW === "true" && !Capacitor.isNativePlatform\(\)/,
-  );
+  assert.doesNotMatch(source, /VITE_WEATHER_PREVIEW/);
   assert.match(
     source,
     /weatherLessonLinks\(selected, import.meta.env.BASE_URL\)/,
   );
-  assert.match(pkg.scripts["build:pages"], /VITE_WEATHER_PREVIEW=true/);
-  assert.doesNotMatch(pkg.scripts.build, /VITE_WEATHER_PREVIEW/);
+  assert.match(source, /const experimentLinks = weatherLessonLinks\(selected, import.meta.env.BASE_URL\)/);
+  assert.match(source, /const previewActivities = weatherLessonLinks\(previewLesson, import.meta.env.BASE_URL\)/);
+  assert.match(source, /href=\{weatherWorkshopCatalog\(import.meta.env.BASE_URL\)\}/);
+  assert.equal(pkg.scripts.prebuild, "npm run weather:bundle");
+  assert.equal(pkg.scripts["prebuild:pages"], "npm run weather:bundle");
+  assert.match(pkg.scripts["weather:bundle"], /vite build --config weather-preview\/vite.config.mjs --outDir \.\.\/build\/weather-bundle/);
+  assert.equal(pkg.scripts["ios:sync"], "npm run build && cap sync ios");
 });

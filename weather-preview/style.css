@@ -17,6 +17,8 @@
 :root {
   --paper: #ffe1eb;
   --ink: #6d6435;
+  --pink: var(--paper);
+  --olive: var(--ink);
   --violet: #7442d9;
   --white: #fff7f1;
   --line: #6d64353f;
@@ -28,9 +30,47 @@
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 76px);
+  scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+}
 body {
   margin: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+/* A scrolled WKWebView must not draw controls underneath the native status bar. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--paper);
+  z-index: 100;
+  pointer-events: none;
+}
+.foundation-workshop > .foundation-topbar,
+.wind-workshop > .wind-header,
+.sounding-workshop > .sounding-topbar,
+.turb-workshop > .turb-topbar,
+.storm-workshop > .storm-topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 40;
+  background: var(--white);
+}
+.learning-focused .learning-breadcrumb {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 40;
+  background: var(--paper);
+}
+.learning-loading { margin: 24px; min-height: 44px; }
+.workshop-recovery { max-width: 640px; margin: 24px auto; padding: 24px; }
+.workshop-recovery h1 { font: 32px/1.15 Romie, serif; }
+.workshop-recovery p { line-height: 1.5; }
+.workshop-recovery button { display: block; min-height: 48px; margin-block: 24px; padding: 12px 20px; border-radius: 14px; background: var(--violet); color: var(--white); }
+.workshop-recovery a { display: inline-flex; align-items: center; min-height: 44px; }
 button,
 input,
 a {
