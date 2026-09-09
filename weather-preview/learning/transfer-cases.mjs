@@ -24,81 +24,81 @@ const sources = {
 
 const rules = {
   breeze: reason([
-    option("clock", "Sam kierunek zmienia się według godziny, niezależnie od temperatur.", "Godzina nie zastępuje porównania temperatur lądu i wody."),
-    option("contrast", "Kontrast temperatur organizuje lokalny obieg z gałęzią powrotną wyżej.", "Porównujesz temperatury, a nie samą etykietę dnia lub nocy."),
-    option("same-flow", "Obie gałęzie lokalnego obiegu płyną w tę samą stronę.", "W zamkniętym schemacie górna gałąź stanowi powrót."),
+    option("clock", "O poranku obieg kieruje się na ląd, a wieczorem nad wodę; decyduje pora dnia.", "Godzina nie zastępuje porównania temperatur lądu i wody."),
+    option("contrast", "Różnica temperatur wyznacza kierunek dolnej gałęzi, a wyżej powietrze wraca.", "Porównujesz temperatury, a nie samą etykietę dnia lub nocy."),
+    option("same-flow", "Cieplejsza strona przyciąga powietrze zarówno przy powierzchni, jak i wyżej.", "W zamkniętym schemacie górna gałąź stanowi powrót."),
   ]),
   cloud: reason([
-    option("fixed-height", "Każda unoszona porcja osiąga nasycenie na tej samej wysokości.", "Początkowa różnica temperatury i punktu rosy zmienia wysokość kondensacji."),
-    option("stop-cooling", "Po nasyceniu unoszona porcja przestaje się ochładzać.", "W tym modelu zmienia się tempo chłodzenia, a nie znika jego przyczyna."),
-    option("lcl", "Unoszenie ochładza porcję; początek nasycenia zależy od początkowych T i Td.", "LCL jest początkiem kondensacji tej porcji, nie wierzchołkiem chmury ani prognozą opadu."),
+    option("fixed-height", "Poziom nasycenia zależy od wysokości uniesienia, ale nie od początkowego punktu rosy.", "Początkowa różnica temperatury i punktu rosy zmienia wysokość kondensacji."),
+    option("stop-cooling", "Kondensacja równoważy chłodzenie, dlatego dalsze unoszenie nie zmienia temperatury.", "W tym modelu zmienia się tempo chłodzenia, a nie znika jego przyczyna."),
+    option("lcl", "Unoszenie ochładza porcję, a początek nasycenia zależy od początkowych T i Td.", "LCL jest początkiem kondensacji tej porcji, nie wierzchołkiem chmury ani prognozą opadu."),
   ]),
   fog: reason([
-    option("dewpoint", "Przy chłodzeniu RH może rosnąć bez dopływu pary; liczy się odległość T od punktu rosy.", "Wilgotność względna zależy także od temperatury, nie tylko od zawartości pary."),
-    option("fixed-rh", "Bez dodania pary wilgotność względna pozostaje stała.", "Ochłodzenie może zwiększyć RH nawet bez dopływu pary."),
-    option("final-temperature", "Ta sama końcowa temperatura zawsze oznacza ten sam stan nasycenia.", "Potrzebna jest również informacja o początkowej wilgotności lub punkcie rosy."),
+    option("dewpoint", "Przy chłodzeniu RH może rosnąć bez dodawania pary; o nasyceniu decyduje różnica T i Td.", "Wilgotność względna zależy także od temperatury, nie tylko od zawartości pary. Po nasyceniu w tym modelu pozostaje na 100%."),
+    option("fixed-rh", "Bez dopływu pary RH nie zmienia się, nawet jeśli temperatura spada w stronę punktu rosy.", "Ochłodzenie może zwiększyć RH nawet bez dopływu pary."),
+    option("final-temperature", "O nasyceniu rozstrzyga końcowa temperatura; początkowy punkt rosy nie zmienia wyniku.", "Potrzebna jest również informacja o początkowej wilgotności lub punkcie rosy."),
   ]),
   observation: reason([
-    option("horizon", "Widoczny horyzont wystarcza do pomiaru podstawy chmury w metrach.", "Brakuje pomiaru odległości i geometrii potrzebnych do takiego wyznaczenia wysokości."),
-    option("evidence", "Z kadru opisuję budowę, a wysokość liczbową opieram na dodatkowym pomiarze.", "Opis wyglądu i pomiar wysokości to różne rodzaje informacji."),
-    option("shadow", "Cień podstawy rozstrzyga, czy to chmura burzowa.", "Cieniowanie zależy także od budowy, perspektywy i oświetlenia."),
+    option("horizon", "Horyzont pozwala porównać chmurę z zabudową i wyznaczyć z kadru jej podstawę w metrach.", "Brakuje pomiaru odległości i geometrii potrzebnych do takiego wyznaczenia wysokości."),
+    option("evidence", "Zdjęcie pozwala opisać budowę, lecz liczbową wysokość trzeba poprzeć pomiarem.", "Opis wyglądu i pomiar wysokości to różne rodzaje informacji."),
+    option("shadow", "Cień podstawy odróżnia chmury burzowe od pozostałych, więc zastępuje porównanie budowy.", "Cieniowanie zależy także od budowy, perspektywy i oświetlenia."),
   ]),
   families: reason([
-    option("level", "Wspólne typowe piętro oznacza ten sam rodzaj chmury.", "Na jednym piętrze może występować kilka rodzajów."),
-    option("colour", "Podobny kolor wystarcza do przypisania tego samego rodzaju.", "Kolor nie zastępuje porównania organizacji chmur."),
-    option("structure", "Budowa i organizacja odróżniają rodzaje także na wspólnym typowym piętrze.", "Porównuj zasłonę, włókna lub człony; piętro samo nie rozstrzyga."),
+    option("level", "Piętro rozstrzyga rodzaj; chmury na tym samym piętrze różnią się tylko wyglądem.", "Na jednym piętrze może występować kilka rodzajów."),
+    option("colour", "Kolor rozstrzyga rodzaj; różna budowa może wynikać z oświetlenia tej samej chmury.", "Kolor nie zastępuje porównania organizacji chmur."),
+    option("structure", "Na wspólnym piętrze różne rodzaje odróżnia organizacja: zasłona, włókna lub człony.", "Porównuj zasłonę, włókna lub człony; piętro samo nie rozstrzyga."),
   ]),
   front: reason([
-    option("separate", "Wymuszenie unoszenia, nasycenie i relacja temperatur porcji oraz otoczenia to osobne warunki.", "Porcję można unosić mimo hamującej relacji temperatur, a kondensacja zależy też od wilgotności."),
-    option("stable-clear", "Stabilne otoczenie uniemożliwia powstanie chmury.", "Front lub zbocze mogą wymusić uniesienie do nasycenia."),
-    option("gradient", "Stromy spadek temperatury otoczenia zawsze daje cieplejszą porcję.", "Porównaj rzeczywiste chłodzenie porcji z otoczeniem na tym samym poziomie."),
+    option("separate", "Wymuszenie unosi porcję, wilgoć wpływa na nasycenie, a różnica temperatur na dalszy ruch.", "Porcję można unosić mimo hamującej relacji temperatur, a kondensacja zależy też od wilgotności."),
+    option("stable-clear", "Stabilne otoczenie zatrzymuje kondensację, nawet gdy front lub zbocze wymusza unoszenie.", "Front lub zbocze mogą wymusić uniesienie do nasycenia."),
+    option("gradient", "Stromy spadek temperatury otoczenia sprawia, że uniesiona porcja staje się cieplejsza.", "Porównaj rzeczywiste chłodzenie porcji z otoczeniem na tym samym poziomie."),
   ]),
   wind: reason([
-    option("destination", "Wiatr nazywa się według kierunku podróży chmury.", "Meteorologiczny kierunek wiatru opisuje, skąd wieje, nie dokąd przemieszcza się znacznik."),
-    option("opposite", "Przy prostym dryfie kierunek wiatru jest przeciwny do ruchu chmury, osobno dla każdej warstwy.", "Do kierunku dryfu dodaj 180° i sprowadź wynik do pełnego obrotu."),
-    option("average", "Ruch dwóch warstw należy zawsze sprowadzić do jednego średniego kierunku.", "Uśrednienie usuwa informację o zmianie przepływu między poziomami."),
+    option("destination", "Kierunek dryfu podaje kierunek wiatru; obie wartości opisują ten sam ruch powietrza.", "Meteorologiczny kierunek wiatru opisuje, skąd wieje, nie dokąd przemieszcza się znacznik."),
+    option("opposite", "Przy prostym dryfie kierunek „z” jest przeciwny do „do”; każdą warstwę odczytuję osobno.", "Do kierunku dryfu dodaj 180° i sprowadź wynik do pełnego obrotu."),
+    option("average", "Kierunki obu warstw należy uśrednić, aby uzyskać jeden kierunek wiatru nad obserwatorem.", "Uśrednienie usuwa informację o zmianie przepływu między poziomami."),
   ]),
   metar: reason([
-    option("lowest", "Najniższa podstawa zawsze wyznacza pułap.", "Warstwy FEW i SCT nie tworzą pułapu; w tych raportach szukaj najniższej BKN lub OVC."),
-    option("until-metar", "Grupa TAF pozostaje ważna do nadejścia kolejnego METAR.", "Granice grup i okres ważności TAF nie zależą od nadejścia obserwacji."),
-    option("cover-time", "Pokrycie określa warstwę pułapu, a grupy TAF obowiązują w swoich okresach; FM ustanawia nowy stan bazowy.", "Oddziel podstawę od pułapu oraz obserwację od prognozy i jej okien czasowych."),
+    option("lowest", "Najniższa podstawa wyznacza pułap; pokrycie kolejnych warstw nie zmienia jego wysokości.", "Warstwy FEW i SCT nie tworzą pułapu; w tych raportach szukaj najniższej BKN lub OVC."),
+    option("until-metar", "Okres grupy TAF kończy następny METAR; dopóki go nie ma, utrzymuje się poprzednia prognoza.", "Granice grup i okres ważności TAF nie zależą od nadejścia obserwacji."),
+    option("cover-time", "Pułap zależy od pokrycia; TAF czytam w oknach czasu, a FM rozpoczyna nowy stan bazowy.", "Oddziel podstawę od pułapu oraz obserwację od prognozy i jej okien czasowych."),
   ]),
   height: reason([
-    option("reference", "Odległość od gruntu wynika z MSL minus teren; poziom pod terenem nie jest warstwą powietrza.", "Wspólne odniesienie do poziomu morza pozwala porównać teren i zadany poziom."),
-    option("same", "Stała wysokość MSL oznacza stałą wysokość AGL.", "Odległość od gruntu zmienia się wraz z wysokością terenu."),
-    option("pressure", "Każda powierzchnia ciśnienia ma stałą wysokość nad lokalnym gruntem.", "Poziom ciśnienia nie jest stałą odległością od dowolnego terenu."),
+    option("reference", "AGL to MSL minus wysokość terenu; wynik ujemny oznacza poziom pod powierzchnią.", "Wspólne odniesienie do poziomu morza pozwala porównać teren i zadany poziom. Poziom pod terenem nie jest warstwą powietrza."),
+    option("same", "Poziom o stałym MSL utrzymuje ten sam odstęp od ziemi również nad wyższym terenem.", "Odległość od gruntu zmienia się wraz z wysokością terenu."),
+    option("pressure", "Poziom ciśnienia zachowuje stałe AGL; zmienia się tylko jego wysokość względem morza.", "Poziom ciśnienia nie jest stałą odległością od dowolnego terenu."),
   ]),
   sounding: reason([
-    option("slope", "Temperaturę rozstrzyga samo nachylenie krzywej, niezależnie od osi.", "Do odczytu potrzebujesz skali i wspólnego poziomu ciśnienia."),
-    option("same-pressure", "T, Td i porcję porównuje się na tym samym ciśnieniu; projekcja nie zmienia danych.", "Przechylenie osi zmienia współrzędne rysunku, nie temperatury ani wiatr."),
-    option("thickness", "Różnica T i Td jest pomiarem grubości chmury.", "Odstęp wskazuje bliskość nasycenia, nie grubość chmury."),
+    option("slope", "Temperaturę odczytuję z nachylenia krzywej; pionowa i ukośna oś dają ten sam odczyt.", "Do odczytu potrzebujesz skali i wspólnego poziomu ciśnienia, nie samego nachylenia krzywej."),
+    option("same-pressure", "T, Td i porcję porównuję przy tym samym ciśnieniu; pochylenie osi nie zmienia danych.", "Przechylenie osi zmienia współrzędne rysunku, nie temperatury ani wiatr."),
+    option("thickness", "Odstęp między T i Td podaje grubość chmury, którą porównuję na kolejnych poziomach.", "Odstęp wskazuje bliskość nasycenia, nie grubość chmury."),
   ]),
   icing: reason([
-    option("all-frozen", "Poniżej 0°C cała woda musi już mieć postać kryształków lodu.", "Ciekła woda może pozostawać przechłodzona."),
-    option("time", "Dostatecznie długa ekspozycja zastępuje warunek zimnej powierzchni.", "Czas sam nie wystarcza do pokazanego mechanizmu zamarzania kropli."),
-    option("droplets-surface", "Ten mechanizm wymaga ciekłych kropli i zimnej powierzchni; umowna ekspozycja nie określa tempa akrecji.", "Faza wody i temperatura powierzchni są potrzebne, a intensywność wymaga dodatkowych danych."),
+    option("all-frozen", "Ujemna temperatura oznacza kryształki zamiast kropli; fazę wody rozstrzyga termometr.", "Ciekła woda może pozostawać przechłodzona."),
+    option("time", "Dłuższa ekspozycja pozwala kroplom zamarznąć także na powierzchni cieplejszej od 0°C.", "Czas sam nie wystarcza do pokazanego mechanizmu zamarzania kropli."),
+    option("droplets-surface", "Zamarzanie kropli wymaga ciekłej wody i zimnej powierzchni; procent nie określa tempa.", "Faza wody i temperatura powierzchni są potrzebne, a intensywność wymaga dodatkowych danych."),
   ]),
   turbulence: reason([
-    option("flow", "Przyczyny zaburzeń wynikają z przepływu i otoczenia; nie wymagają chmury, a umowna skala nie wyznacza intensywności.", "Rozpoznajesz przyczynę, nie kategorię zmierzonej turbulencji."),
-    option("cloud", "Zaburzenia przepływu wymagają widocznej chmury.", "Przeszkody, ogrzewanie i różnice przepływu mogą działać bez chmur."),
-    option("percent", "Procent wymuszenia jest kategorią rzeczywistej turbulencji.", "Ta skala nie jest skalibrowana do fizycznej intensywności."),
+    option("flow", "Przeszkody, ogrzewanie i uskok mogą zaburzać przepływ bez chmur; skala nie mierzy siły.", "Rozpoznajesz przyczynę, nie kategorię zmierzonej turbulencji."),
+    option("cloud", "O zaburzeniach przepływu można wnioskować dopiero po pojawieniu się chmury w tej warstwie.", "Przeszkody, ogrzewanie i różnice przepływu mogą działać bez chmur."),
+    option("percent", "Procent wymuszenia pozwala porównać intensywność turbulencji między różnymi mechanizmami.", "Ta skala nie jest skalibrowana do fizycznej intensywności."),
   ]),
   storm: reason([
-    option("instability-only", "Chwiejność zastępuje każdy brakujący składnik rozwoju burzy.", "Sama chwiejność nie dostarcza wilgoci ani skutecznego wymuszenia."),
-    option("ingredients-stage", "Składniki warunkują możliwość inicjacji, a stadium opisuje przepływy już rozwiniętej komórki.", "Potencjał inicjacji i etap życia komórki są różnymi pytaniami."),
-    option("always-up", "Komplet składników oznacza dominację unoszenia w każdym stadium.", "W umownym stadium zaniku dominuje prąd zstępujący."),
+    option("instability-only", "Silna chwiejność może uzupełnić małą wilgotność lub brak wymuszenia przy inicjacji burzy.", "Sama chwiejność nie dostarcza wilgoci ani skutecznego wymuszenia."),
+    option("ingredients-stage", "Składniki opisują możliwość inicjacji, a stadium wskazuje przepływy rozwiniętej komórki.", "Potencjał inicjacji i etap życia komórki są różnymi pytaniami."),
+    option("always-up", "Przy komplecie składników prąd wstępujący pozostaje dominujący także w stadium zaniku.", "W umownym stadium zaniku dominuje prąd zstępujący."),
   ]),
   names: reason([
-    option("complete-name", "Każda poprawna nazwa musi zawierać cechę opadu i człon pochodzenia.", "Nie dopisuj członów, których nie wspierają obserwacje."),
-    option("all-rain", "Wszelkie smugi opadu oznaczają praecipitatio.", "Rozróżnij smugi zanikające nad ziemią od opadu docierającego do powierzchni."),
-    option("observed", "Gatunek i cechę opadu dobiera się do obserwacji, a pochodzenie wymaga dowodów historii.", "Nazwa ma odzwierciedlać dostępne dane, nie wypełniać wszystkie możliwe miejsca."),
+    option("complete-name", "Pełna nazwa wymaga cechy opadu i pochodzenia, nawet gdy zapis obserwacji ich nie obejmuje.", "Nie dopisuj członów, których nie wspierają obserwacje."),
+    option("all-rain", "Obecność smug uzasadnia praecipitatio; ich zanik nad ziemią nie zmienia członu opadu.", "Rozróżnij smugi zanikające nad ziemią od opadu docierającego do powierzchni."),
+    option("observed", "Gatunek i opad wynikają z obserwowanych cech; człon pochodzenia wymaga historii rozwoju.", "Nazwa ma odzwierciedlać dostępne dane, nie wypełniać wszystkie możliwe miejsca."),
   ]),
 };
 
 const surfaceWind = field("surface", "Jaki kierunek przewidujesz przy powierzchni?", [
   option("onshore", "Z wody na ląd", "Ten kierunek odpowiada cieplejszemu lądowi w lokalnym modelu bryzy."),
   option("offshore", "Z lądu nad wodę", "Ten kierunek odpowiada cieplejszej wodzie w lokalnym modelu bryzy."),
-  option("calm", "Brak wyraźnego lokalnego obiegu", "W obu nowych przypadkach kontrast przekracza próg braku wyraźnej bryzy w modelu."),
+  option("calm", "Brak wyraźnego lokalnego obiegu", "Brak wyraźnego lokalnego obiegu odpowiada małemu kontrastowi temperatur. Sprawdź oba odczyty w tej próbie."),
 ]);
 const returnWind = field("return", "W którą stronę popłynie gałąź powrotna wyżej?", [
   option("offshore", "Z lądu nad wodę", "Górna gałąź płynie tak, gdy przy powierzchni napływ jest z wody na ląd."),
@@ -135,7 +135,7 @@ const precipitationLimit = field("limit", "Co sam początek kondensacji mówi o 
 const taf = "TAF EPWA 081100Z 0812/0818 24008KT 9999 SCT020 BKN060 TEMPO 0813/0815 4000 SHRA BKN015 FM081600 28012KT 9999 SCT030";
 const liftMethod = "Dwie niezależne próby wymuszonego uniesienia bez mieszania. Do rachunku użyj LCL ≈ 125 × (T − Td) m; tempo chłodzenia porcji: 9,8°C/km przed LCL i umowne 6°C/km powyżej. Liczby opisują model szkoleniowy, nie prognozę.";
 
-export const transferCases = {
+const caseBank = {
   bryza: [
     {
       id: "bryza-a-v1", title: "Zatoka o poranku",
@@ -332,9 +332,9 @@ export const transferCases = {
         option("315", "Z 315° (NW)", "Po dodaniu 180° do 135° otrzymujesz 315°."),
         option("45", "Z 45° (NE)", "To obrót o 90°, a potrzebny jest kierunek przeciwny."),
       ], [0]), field("speed", "Co można powiedzieć o prędkości?", [
-        option("degrees-speed", "Wynosi 135 węzłów", "Stopnie opisują kierunek, nie prędkość."),
-        option("zero", "Wynosi 0, bo nie podano czasu", "Brak danych nie jest pomiarem zerowej prędkości."),
-        option("unknown", "Nie można jej obliczyć z tych danych", "Potrzebujesz również odległości i czasu oraz założeń dotyczących dryfu."),
+        option("degrees-speed", "Można ją oszacować z kierunku i rozmiaru chmury w kadrze", "Kierunek nie podaje prędkości, a rozmiar w kadrze nie zastępuje pomiaru odległości i czasu."),
+        option("zero", "Można przyjąć zerową prędkość, skoro nie zmierzono odległości", "Brak danych nie jest pomiarem zerowej prędkości."),
+        option("unknown", "Nie można jej obliczyć bez odległości przebytej w danym czasie", "Potrzebujesz również odległości i czasu oraz założeń dotyczących dryfu."),
       ])], reason: rules.wind,
       correct: { from: "315", speed: "unknown", reason: "opposite" },
       explanation: "135°+180°=315°, czyli wiatr z NW w założeniu prostego dryfu tej warstwy. Sam kierunek nie podaje prędkości. Ruch lub bezruch dowolnej chmury nie zawsze wiernie odwzorowuje przepływ powietrza.",
@@ -439,11 +439,11 @@ export const transferCases = {
         option("above-1500", "1500 m nad terenem", "To pomylenie MSL z AGL."),
       ]), field("air", "Jak opisać warstwę powietrza na tym poziomie w tym miejscu?", [
         option("zero", "Jako warstwę na 0 m AGL", "Nie przesuwamy zadanego poziomu na grunt ani nie obcinamy wyniku do zera."),
-        option("not-air", "Poziom nie wyznacza tu warstwy powietrza nad gruntem", "Model oznacza AGL jako niedostępne, zamiast rysować powietrze wewnątrz terenu."),
+        option("not-air", "Poziom nie wyznacza tu warstwy powietrza nad gruntem", "Zadany poziom leży pod terenem, więc nie opisuje tam powietrza nad gruntem."),
         option("negative-air", "Jako dostępną warstwę atmosfery na −200 m AGL", "Ujemna różnica opisuje położenie pod terenem, nie warstwę powietrza."),
       ])], reason: rules.height,
       correct: { position: "below-200", air: "not-air", reason: "reference" },
-      explanation: "Poziom 1500 m MSL leży 200 m poniżej terenu 1700 m MSL. Helper zwraca belowGround=true i agl=null, nie 0 ani użyteczną warstwę o ujemnym AGL. Nie jest to ocena warunków lotu.",
+      explanation: "Poziom 1500 m MSL leży 200 m poniżej terenu 1700 m MSL. Nie ma tam warstwy powietrza nad gruntem. Nie zastępuj tego wyniku zerowym AGL ani nie traktuj ujemnej różnicy jako dostępnej warstwy atmosfery. Nie jest to ocena warunków lotu.",
       hint: "Zachowaj znak różnicy. Sprawdź, czy zadany poziom w ogóle znajduje się nad powierzchnią.",
       sourceUrls: [sources.height],
     },
@@ -451,7 +451,7 @@ export const transferCases = {
   sondaz: [
     {
       id: "sondaz-a-v1", title: "Dwa poziomy profilu",
-      context: "To dwa wiersze istniejącego idealizowanego profilu dydaktycznego, nie radiosondaż z konkretnego dnia. T to temperatura otoczenia, Td to punkt rosy. Porównaj dane na wskazanych ciśnieniach.",
+      context: "To dwa poziomy uproszczonego profilu szkoleniowego, nie radiosondaż z konkretnego dnia. T to temperatura otoczenia, Td to punkt rosy. Porównaj dane na wskazanych ciśnieniach.",
       facts: ["Poziom A: 950 hPa; T = 8°C; Td = 7°C", "Poziom B: 900 hPa; T = 9°C; Td = 6°C"],
       fields: [field("warmer", "Na którym z tych poziomów otoczenie jest cieplejsze?", [
         option("950", "Na 950 hPa", "8°C jest niższe od 9°C; nie wnioskuj wyłącznie z wysokości."),
@@ -463,13 +463,13 @@ export const transferCases = {
         option("950", "950 hPa", "Mniejszy odstęp T−Td wskazuje większą bliskość nasycenia."),
       ])], reason: rules.sounding,
       correct: { warmer: "900", saturation: "950", reason: "same-pressure" },
-      explanation: "Na 900 hPa jest o 1°C cieplej; bliżej nasycenia jest 950 hPa (odstęp 1°C zamiast 3°C). Porównanie końców nie dowodzi jednostajnego wzrostu T w całej warstwie: istniejące wiersze 925 i 900 hPa mają oba 9°C. Nie wyznaczamy grubości chmury z odstępu T−Td.",
+      explanation: "Na 900 hPa jest o 1°C cieplej; bliżej nasycenia jest 950 hPa (odstęp 1°C zamiast 3°C). Porównanie końców nie dowodzi jednostajnego wzrostu T w całej warstwie: w profilu szkoleniowym na 925 i 900 hPa temperatura wynosi 9°C. Nie wyznaczamy grubości chmury z odstępu T−Td.",
       hint: "Porównaj najpierw same T, a potem policz osobno T−Td w każdym wierszu.",
       sourceUrls: [sources.sounding],
     },
     {
       id: "sondaz-b-v1", title: "Temperatura porcji i wiatr",
-      context: "Kolejne dwa wiersze tego samego istniejącego idealizowanego profilu dydaktycznego. Temperatura porcji jest gotową daną tego profilu, nie wynikiem przeliczenia innego modelu. Kierunek wiatru oznacza, skąd wieje.",
+      context: "Kolejne dwa poziomy tego samego uproszczonego profilu szkoleniowego. Korzystaj z podanej temperatury porcji; nie musisz jej obliczać. Kierunek wiatru oznacza, skąd wieje.",
       facts: ["Poziom A: 850 hPa; T = 6°C; Td = 0°C; T porcji = −5°C; wiatr z 210° przy 16 kt", "Poziom B: 700 hPa; T = −4°C; Td = −15°C; T porcji = −16°C; wiatr z 230° przy 23 kt", "Rozważ te same dane na osi temperatury pionowej i pochylonej (Skew-T)."],
       fields: [field("parcel", "Jak temperatura porcji wypada wobec otoczenia?", [
         option("both-colder", "Porcja jest chłodniejsza na obu poziomach", "−5°C < 6°C oraz −16°C < −4°C; porównujemy na tym samym ciśnieniu."),
@@ -480,9 +480,9 @@ export const transferCases = {
         option("stronger-turning", "Przyspiesza i zmienia kierunek z 210° na 230°", "Odczyt wskazuje wzrost o 7 kt i zmianę kierunku o 20°; nie jest miarą turbulencji."),
         option("same-speed", "Zmienia tylko kierunek, bez zmiany prędkości", "Nie pomijaj wzrostu prędkości o 7 kt."),
       ]), field("projection", "Co zmieni pochylenie osi temperatury?", [
-        option("warms", "Podniesie temperaturę porcji", "Zmiana sposobu rysowania nie ogrzewa porcji."),
-        option("changes-wind", "Zmieni kierunek odczytanego wiatru", "Dane wiatru nie zależą od pochylenia osi temperatury."),
-        option("same-data", "Zmieni położenie punktów na rysunku, ale nie wartości danych", "Ciśnienie, temperatury i wiatr pozostają tymi samymi liczbami."),
+        option("warms", "Przesunięcie krzywej w prawo odczytam jako wyższą temperaturę porcji", "Na pochylonych osiach trzeba odczytać nową siatkę temperatury, nie sam kierunek przesunięcia krzywej."),
+        option("changes-wind", "Obrót osi temperatury uwzględnię również przy odczycie kierunku wiatru", "Dane wiatru nie zależą od pochylenia osi temperatury."),
+        option("same-data", "Odczytam te same dane, uwzględniając inne położenie punktów i osi", "Ciśnienie, temperatury i wiatr pozostają tymi samymi liczbami."),
       ])], reason: rules.sounding,
       correct: { parcel: "both-colder", wind: "stronger-turning", projection: "same-data", reason: "same-pressure" },
       explanation: "Porcja jest chłodniejsza o 11°C na 850 hPa i o 12°C na 700 hPa. Wiatr wzrasta z 16 do 23 kt i zmienia kierunek z 210° na 230°. Projekcja nie zmienia danych. Same dwa wiersze nie określają intensywności turbulencji ani pełnej wyporności porcji.",
@@ -500,12 +500,12 @@ export const transferCases = {
         option("supported", "Tak, krople trafiają na powierzchnię poniżej 0°C", "Zadane ciekłe krople i zimna powierzchnia wspierają ten mechanizm."),
         option("too-short", "Nie, ekspozycja musi przekroczyć 50%", "Model nie definiuje takiego progu; procent nie jest czasem w minutach."),
       ]), field("rate", "Jakie tempo narastania lodu w mm/min można podać?", [
-        option("thirty", "30 mm/min", "Procent ekspozycji nie ma jednostki mm/min."),
-        option("point-three", "0,3 mm/min", "Umowna ilość 0,3 nie jest skalibrowanym tempem akrecji."),
-        option("unknown", "Nie da się go wyznaczyć z tych danych", "Brakuje m.in. kalibracji, czasu i ilości oraz rozmiarów kropli."),
+        option("thirty", "Tempo można oszacować z procentu ekspozycji i temperatury powierzchni", "Umowna ekspozycja i temperatura nie zastępują pomiaru czasu ani ilości osadzającego się lodu."),
+        option("point-three", "Tempo można odczytać z grubości osadu na schemacie po danej ekspozycji", "Rysunek nie ma skali grubości lodu ani czasu potrzebnych do obliczenia mm/min."),
+        option("unknown", "Tempo wymaga dodatkowych danych o czasie, ilości wody i wielkości kropli", "Brakuje m.in. kalibracji, czasu i ilości oraz rozmiarów kropli."),
       ])], reason: rules.icing,
       correct: { mechanism: "supported", rate: "unknown", reason: "droplets-surface" },
-      explanation: "W uproszczeniu helper uruchamia akrecję i zwraca umowną ilość 0,3. Ciekłe krople przy −6°C są przechłodzone. Ani ta liczba, ani 30% nie wyznaczają mm/min lub kategorii rzeczywistego oblodzenia. Nie oceniamy bezpieczeństwa lotu.",
+      explanation: "Ciekłe krople przy −6°C są przechłodzone. Uderzając w zimną powierzchnię, mogą na niej zamarzać. W tym schemacie występuje osadzanie lodu, ale 30% ekspozycji nie wyznacza tempa w mm/min ani kategorii rzeczywistego oblodzenia. Nie oceniamy bezpieczeństwa lotu.",
       hint: "Oddziel warunki mechanizmu od wielkości, do których nie podano jednostek i kalibracji.",
       sourceUrls: [sources.icing],
     },
@@ -523,7 +523,7 @@ export const transferCases = {
         option("safe-flight", "Na ogólną ocenę bezpieczeństwa lotu", "Ten prosty model nie dostarcza danych do takiej oceny."),
       ])], reason: rules.icing,
       correct: { mechanism: "inactive", scope: "limited", reason: "droplets-surface" },
-      explanation: "Przy +3°C także na powierzchni helper daje accretion=false i amount=0 mimo 80% ekspozycji. To brak pokazanego mechanizmu, nie uniwersalne wykluczenie oblodzenia przy dodatniej temperaturze powietrza ani ocena bezpieczeństwa.",
+      explanation: "Przy +3°C także na powierzchni krople nie zamarzają w opisanym mechanizmie, mimo 80% ekspozycji. To wynik tej próby, nie wykluczenie wszelkiego oblodzenia przy dodatniej temperaturze powietrza ani ocena bezpieczeństwa.",
       hint: "Sprawdź temperaturę samej powierzchni i zakres zjawisk, które przyjęto w zadaniu.",
       sourceUrls: [sources.icing],
     },
@@ -570,36 +570,36 @@ export const transferCases = {
     {
       id: "burza-a-v1", title: "Zestaw warunków początkowych",
       context: "Użyj uproszczonego modelu trzech składników: dostępna wilgoć, chwiejność i skuteczne uniesienie. Wymuszenie w tym zadaniu pokonuje hamowanie. Oceniasz kompletność składników, nie prawdopodobieństwo rzeczywistej burzy.",
-      facts: ["Wilgoć: mało (wariant dry)", "Równowaga: chwiejna (wariant unstable)", "Wymuszenie: skuteczne uniesienie (wariant lift)", "Etap modelu: przed rozwojem komórki (0)"],
+      facts: ["Wilgoć: mało", "Równowaga: chwiejna", "Wymuszenie: skuteczne uniesienie", "Etap: przed rozwojem komórki"],
       fields: [field("ingredients", "Czy model ma komplet składników inicjacji?", [
-        option("complete", "Tak, chwiejność i uniesienie wystarczą", "Nie zastępują dostępnej wilgoci."),
-        option("incomplete", "Nie, zestaw jest niekompletny", "W tym wariancie brakuje wilgoci wymaganej przez model."),
-        option("dissipating", "Tak, ale komórka już jest w stadium zaniku", "Nie podano rozwiniętej komórki; to ocena inicjacji."),
+        option("complete", "Tak, chwiejność i wymuszenie zapewniają potrzebne warunki", "Nie zastępują dostępnej wilgoci."),
+        option("incomplete", "Nie, jeden z potrzebnych warunków pozostaje niespełniony", "W tym wariancie brakuje wilgoci wymaganej przez model."),
+        option("dissipating", "Tak, mała wilgoć wskazuje jedynie późniejszy etap życia komórki", "Nie podano rozwiniętej komórki; to ocena inicjacji, a nie jej późniejszego zaniku."),
       ], [0, 1, 2]), field("change", "Która pojedyncza zmiana uzupełnia zestaw w modelu?", [
         option("stable", "Zmiana równowagi na stabilną", "Usunęłaby jeden z wymaganych składników zamiast dostarczyć wilgoć."),
         option("no-lift", "Usunięcie wymuszenia", "Usunęłoby uniesienie, nie naprawiając braku wilgoci."),
-        option("wet", "Zmiana na wariant dużej wilgoci (wet)", "Pozostałe dwa wymagane składniki są już obecne."),
+        option("wet", "Zwiększenie dostępnej wilgoci", "Pozostałe dwa wymagane składniki są już obecne."),
       ], [0, 1, 2])], reason: rules.storm,
       correct: { ingredients: "incomplete", change: "wet", reason: "ingredients-stage" },
-      explanation: "Dla dry/unstable/lift helper daje possible=false. Po samej zmianie dry na wet daje true: jest komplet trzech umownych składników. True oznacza możliwość w schemacie, nie gwarancję rozwoju, czas wystąpienia ani prognozę burzy.",
+      explanation: "Przy małej wilgotności brakuje jednego ze składników wymaganych w tym schemacie, mimo chwiejności i skutecznego uniesienia. Samo zwiększenie dostępnej wilgoci uzupełnia zestaw. Oznacza to możliwość rozwoju w uproszczonym modelu, nie gwarancję, godzinę wystąpienia ani prognozę burzy.",
       hint: "Sprawdź każdy składnik osobno. Nie zamieniaj oceny inicjacji w odczyt stadium życia.",
       sourceUrls: [sources.storm, sources.lifting],
     },
     {
       id: "burza-b-v1", title: "Etap życia komórki",
       context: "Załóż, że pojedyncza komórka już się rozwinęła i przechodzi do umownego stadium zaniku. Przewidź dominujący przepływ na tym etapie, a nie ponowną inicjację.",
-      facts: ["Wilgoć: dużo (wariant wet)", "Równowaga: chwiejna (wariant unstable)", "Wymuszenie: skuteczne uniesienie (wariant lift)", "Etap modelu: stadium zaniku (2)"],
+      facts: ["Wilgoć: dużo", "Równowaga: chwiejna", "Wymuszenie: skuteczne uniesienie", "Etap: stadium zaniku"],
       fields: [field("flow", "Który przepływ dominuje w tym stadium modelowej komórki?", [
-        option("only-up", "Wyłącznie prąd wstępujący", "To nie jest opis stadium zaniku w modelu pojedynczej komórki."),
-        option("none", "Wszystkie ruchy ustają natychmiast", "Zanik nie oznacza natychmiastowego zatrzymania powietrza."),
-        option("down", "Prąd zstępujący", "W idealizowanym stadium zaniku dominuje ruch w dół."),
+        option("only-up", "Prąd wstępujący nadal przeważa nad zstępującym", "To nie jest opis stadium zaniku w modelu pojedynczej komórki."),
+        option("none", "Prądy równoważą się i znika przewaga ruchu pionowego", "W tym stadium nie zakładamy równowagi prądów; dominuje ruch zstępujący."),
+        option("down", "Prąd zstępujący przeważa nad wstępującym", "W idealizowanym stadium zaniku dominuje ruch w dół."),
       ], [3]), field("limit", "Co wolno wnioskować o ustaniu pozostałych zjawisk?", [
         option("not-instant", "Nazwa stadium nie dowodzi ich natychmiastowego ustania", "Nie określiliśmy dokładnego czasu zaniku opadu, wyładowań lub innych zjawisk."),
         option("no-rain", "Cały opad znika w chwili rozpoczęcia stadium", "Opad może nadal występować podczas zaniku."),
         option("no-effects", "Wszystkie skutki komórki już ustały", "Schemat przepływu nie jest takim dowodem ani oceną bezpieczeństwa."),
       ], [3])], reason: rules.storm,
       correct: { flow: "down", limit: "not-instant", reason: "ingredients-stage" },
-      explanation: "Komplet wet/unstable/lift nie oznacza ciągłej dominacji unoszenia. W zadanym stadium zaniku dominuje prąd zstępujący. To idealizacja pojedynczej komórki, nie opis każdej burzy; nie wyznacza chwili ustania opadu lub wyładowań.",
+      explanation: "Dostępna wilgoć, chwiejność i skuteczne uniesienie nie oznaczają ciągłej przewagi ruchu w górę. W zadanym stadium zaniku dominuje prąd zstępujący. To uproszczony cykl pojedynczej komórki, nie opis każdej burzy; nie wyznacza chwili ustania opadu lub wyładowań.",
       hint: "Oddziel składniki umożliwiające rozwój od etapu życia już istniejącej komórki.",
       sourceUrls: [sources.storm, sources.life],
     },
@@ -651,3 +651,22 @@ export const transferCases = {
     },
   ],
 };
+
+// Order depends only on stable IDs, never on correctness, wording or the saved answer.
+export function orderedOptions(caseId, fieldId, options) {
+  const score = id => {
+    let hash = 2166136261;
+    for (const character of `assessment-v2:${caseId}:${fieldId}:${id}`) {
+      hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
+    }
+    return hash >>> 0;
+  };
+  return [...options].sort((a, b) => score(a.id) - score(b.id) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+}
+
+export const transferCases = Object.fromEntries(Object.entries(caseBank).map(([activityId, cases]) => [activityId,
+  cases.map(task => ({ ...task,
+    fields: task.fields.map(field => ({ ...field, options: orderedOptions(task.id, field.id, field.options) })),
+    reason: { ...task.reason, options: orderedOptions(task.id, "reason", task.reason.options) },
+  })),
+]));

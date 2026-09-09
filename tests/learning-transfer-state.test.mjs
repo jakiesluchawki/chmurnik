@@ -592,17 +592,28 @@ test("source click in LearningStudio and following answer retain assistance in m
   assert.equal(loadTransfer("metar").attempt.assisted, true);
 });
 
-test("Trial cleanup marks the current unsubmitted case, never commits or overwrites the first answer", t => {
+test("Trial cleanup preserves drafts and actual help without inventing assistance or committing an answer", t => {
   const { data, writes } = storageFixture(t);
   saveTransfer(nextTransfer(initialTransfer("metar")));
   let ui = componentHarness(trialCode, { activityId: "metar" });
   ui.nodes().find(node => node.type === "input").props.onChange(); ui.render();
   const draft = clone(loadTransfer("metar"));
+  const beforeCleanup = writes.length;
   ui.unmount();
   const left = loadTransfer("metar");
-  assert.equal(left.attempt.assisted, true);
+  assert.equal(writes.length, beforeCleanup, "unmount alone is not an exposure to help");
+  assert.equal(left.attempt.assisted, false);
   assert.equal(left.attempt.submitted, false);
-  assert.deepEqual(left.attempt.response, draft.attempt.response);
+  assert.deepEqual(left, draft);
+  ui = componentHarness(trialCode, { activityId: "metar" });
+  markTransferHelp("metar"); ui.render();
+  const helped = clone(loadTransfer("metar"));
+  const afterHelp = writes.length;
+  ui.unmount();
+  assert.equal(writes.length, afterHelp);
+  assert.equal(helped.attempt.assisted, true);
+  assert.equal(helped.attempt.submitted, false);
+  assert.deepEqual(loadTransfer("metar"), helped, "actual guide/source help remains recorded after unmount");
   const committed = submit(complete(nextTransfer(initialTransfer("metar")), transferCases.metar[0].correct));
   data.set(keyFor("metar"), JSON.stringify(committed));
   ui = componentHarness(trialCode, { activityId: "metar" });
@@ -615,7 +626,9 @@ test("Trial cleanup marks the current unsubmitted case, never commits or overwri
   const current = clone(loadTransfer("metar"));
   ui.unmount();
   assert.equal(loadTransfer("metar").attempt.caseId, current.attempt.caseId);
-  assert.equal(loadTransfer("metar").attempt.assisted, true);
+  assert.equal(loadTransfer("metar").attempt.assisted, false);
+  assert.equal(loadTransfer("metar").attempt.submitted, false);
+  assert.deepEqual(loadTransfer("metar").attempt, current.attempt);
   assert.deepEqual(loadTransfer("metar").history, committed.history.concat([committed.attempt]));
 });
 

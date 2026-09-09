@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { LearningCatalog, LearningStudio } from "./learning/LearningStudio.jsx";
+import { StormWorkshop } from "./learning/StormWorkshop.jsx";
 import { activities } from "./learning/catalog.mjs";
 import { TransferTrial } from "./learning/TransferTrial.jsx";
 import { markTransferHelp } from "./learning/transfer-state.mjs";
@@ -1154,6 +1155,7 @@ function PreviewRouter() {
     return () => window.removeEventListener("hashchange", change);
   }, []);
   if (hash === "pracownia") return <LearningCatalog mainSite={mainSite} />;
+  if (hash === "burza") return <StormWorkshop mainSite={mainSite} />;
   if (Object.hasOwn(activities, hash)) return <LearningStudio key={hash} id={hash} mainSite={mainSite} />;
   return <App />;
 }

@@ -126,8 +126,8 @@ export const activities = {
     check: { question: "Czy bezchmurne niebo wyklucza turbulencję?", options: ["Tak, bo nie ma kropli", "Tak, jeśli nie ma deszczu", "Nie, zaburzenia mogą wynikać z przeszkód lub uskoku", "Tak, poza godziną południową"], correct: 2, explanation: "Chmury nie są koniecznym warunkiem turbulencji. Potrzebne są dane o przepływie i jego otoczeniu." }, sources: ["turbulence"],
   },
   burza: {
-    lesson: "zagrozenia", group: "Rozpoznaj mechanizm", short: "Co pozwala rozwinąć się burzy?", title: "Sam potencjał to nie początek burzy",
-    lead: "Złóż trzy warunki sprzyjające głębokiej konwekcji, a potem zobacz umowny cykl komórki. Nie wyliczamy prawdopodobieństwa burzy.",
+    lesson: "zagrozenia", group: "Rozpoznaj mechanizm", short: "Burza · co podtrzymuje unoszenie?", title: "Puść porcję powietrza. Co stanie się dalej?", workshop: true,
+    lead: "Unieś porcję powietrza, przewidź jej reakcję i porównaj temperatury. Trzy doświadczenia i dwa nowe przypadki pokazują, dlaczego sama kondensacja nie wystarcza do dalszego rozwoju.",
     initial: { moisture: "dry", stability: "stable", trigger: "none", phase: 0 },
     controls: [moisture, stability, choice("trigger", "Początek unoszenia", [["none", "Brak wymuszenia"], ["lift", "Wymuszenie pokonuje hamowanie"]]),
       range("phase", "Etap przykładowej komórki", 0, 2, 1, "", "height")],
