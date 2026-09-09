@@ -126,6 +126,9 @@ Writing production code without an active Lore task is forbidden.
 - Social copy revisions must always present the complete set, including
   unchanged items. The owner approves copy before visual production. Preserve
   the approved warm, restrained romantic tone and practical technical detail.
+  Owner-authored promotional copy uses the first-person singular: "I completed",
+  "I prepared", "I shared", never an invented collective "we". Communicate
+  concrete learner value while retaining the restrained romantic voice.
   Feature demos should show genuine mobile taps, swipes, lesson questions and
   explanations, not just isolated panels with changing numbers.
 - On 2026-09-04 the owner expanded the recognition-first release to include
