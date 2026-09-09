@@ -44,3 +44,8 @@ are distinct. The WebP files total 547,098 bytes. Regression tests require
 fourteen unique sources, eight different image hashes, authentic-photo covers,
 a bounded download size and separation from live experiment scenes. Publication
 is tracked with the accompanying transfer/mobile change in Lore0043.
+
+Public verification passed after Pages run 34298435964 deployed commit 7b47c09.
+All fourteen covers loaded after a complete catalog scroll at 390px, including
+the eight new topic-specific WebPs. No horizontal page overflow. The root
+production domain and native bundles were not updated.

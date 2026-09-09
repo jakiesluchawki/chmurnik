@@ -102,7 +102,20 @@ mobile attention/accessibility, and all fourteen activities. Findings are in
 - [x] Add and verify two new cases per activity, with decision and reason committed together.
 - [x] Preserve first submissions, help and repeated-case status in preview-only storage.
 - [x] Verify compact mobile journeys, including legacy experiences and wrong answers.
-- [ ] Publish the reviewed Pages-only changes and inspect the public result.
+- [x] Publish the reviewed Pages-only changes and inspect the public result.
+
+Published 2026-09-09 as 7b47c09 (local 5a2527a), Pages run 34298435964
+succeeded. Public preview loads index-Cnn3f-O5.js / index-DEHk9hO0.css.
+At 390x700 the METAR scene, controls and primary guide action fit the initial
+viewport. Its independent case accepts decisions without revealing correctness,
+then explains a deliberately wrong ceiling while retaining the correct base,
+TAF and principle responses. The committed result survives reload and re-entry
+to Sprawdz sie; another case supplies OVC035 instead of FEW015 BKN060.
+All fourteen catalog covers load after scrolling with no horizontal overflow.
+Production HTML remains SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No CyberFolks, native or Apple deployment. Physical-device and measured learning
+effectiveness checks remain unclaimed. Owner acceptance remains outstanding.
 
 The design is source-informed, not evidence that learning outcomes have already
 improved. Do not call two successful cases mastery or aviation qualification.
@@ -118,7 +131,7 @@ change controls, equations, concealed answers or production deployment gates.
 - [x] Audit repeated sources and define topic-specific compositions.
 - [x] Generate and inspect eight new optimized cover illustrations.
 - [x] Verify all fourteen covers are distinct, mobile crops and lesson entry.
-- [ ] Publish the scoped Pages-only change and verify public images.
+- [x] Publish the scoped Pages-only change and verify public images.
 
 ### Owner-Approved Expansion: All Lessons
 

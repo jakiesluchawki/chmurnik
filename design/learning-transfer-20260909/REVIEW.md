@@ -64,4 +64,11 @@ normal vertical scrolling; they are not cropped or clipped to force a fit.
   submissions, stale photo help and a removed/corrupt open storage record.
 
 See `implementation-review.md` for detailed coverage and remaining limits.
-Public deployment verification is recorded in Lore0043 after CI completes.
+Public deployment verification is recorded in Lore0043. Pages commit 7b47c09
+(local implementation 5a2527a), run 34298435964, completed successfully. The
+public browser loads index-Cnn3f-O5.js and index-DEHk9hO0.css. A 390x700 METAR
+journey verifies the compact guide, no correctness feedback before submission,
+specific ceiling-misconception feedback, retained first submission after reload
+and re-entry, and different evidence in the next case. Reload starts in guide
+mode; the trial record itself is preserved. All fourteen public catalog images
+load after scrolling, without horizontal overflow. No production/native deploy.
