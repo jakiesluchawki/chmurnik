@@ -1,10 +1,10 @@
-Zamknęliśmy ważny etap rozwoju CHMURNIKA. Na stronie udostępniliśmy 14 interaktywnych pracowni połączonych z pełnymi lekcjami o chmurach i atmosferze.
+Zamknąłem ważny etap rozwoju CHMURNIKA. Na stronie udostępniłem 14 interaktywnych pracowni połączonych z pełnymi lekcjami o chmurach i atmosferze.
 
 Chodzi o bardzo konkretną wartość: przejście od przeczytania definicji do samodzielnego wyciągnięcia wniosku. Użytkownik nie dostaje tylko opisu kondensacji, depeszy METAR czy wykresu Skew-T. Może prześledzić proces, porównać przypadki i zobaczyć, co wynika z obserwacji.
 
 Przewodnik pomaga rozpocząć naukę bez wcześniejszej znajomości całego tematu. Samodzielna próba wymaga zastosowania poznanej zależności w innym przypadku. Pierwsze odpowiedzi, pomoc i powtórki są rozróżniane, a z doświadczenia można wrócić do pełnego wyjaśnienia. To najważniejsza zmiana po uwagach osób korzystających z aplikacji.
 
-Rozwijamy zarówno WWW, jak i aplikacje. Nowe pracownie działają już na chmurnik.cloud, za darmo i bez logowania, także na Androidzie. Aktualizacja 1.2.1 na iPhone, iPad i Mac, z tymi samymi doświadczeniami i poprawioną nawigacją, została wysłana do recenzji Apple. Nie ogłaszamy nowego modelu rozpoznawania chmur: ten etap dotyczy nauki i wygody korzystania.
+Rozwijam zarówno WWW, jak i aplikacje. Nowe pracownie działają już na chmurnik.cloud, za darmo i bez logowania, także na Androidzie. Aktualizację 1.2.1 na iPhone, iPad i Mac, z tymi samymi doświadczeniami i poprawioną nawigacją, wysłałem do recenzji Apple. Nie ogłaszam nowego modelu rozpoznawania chmur: ten etap dotyczy nauki i wygody korzystania.
 
 Chciałem zachować w tej aplikacji przyjemność patrzenia w niebo, ale dać jej solidne, użytkowe oparcie. Zajrzyj i wybierz pytanie, na które chciałbyś umieć odpowiedzieć.
 

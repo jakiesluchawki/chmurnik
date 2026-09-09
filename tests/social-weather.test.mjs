@@ -58,10 +58,18 @@ test('workshop release pack preserves all ten texts and all platform posts',asyn
 test('workshop release copy distinguishes submission, WWW and unchanged classifier',async()=>{
   assert.match(availability,/WAITING_FOR_REVIEW/);
   assert.match(availability,/nie oznacza to jeszcze dostępności/);
-  assert.match(releasePosts.linkedin,/Nie ogłaszamy nowego modelu rozpoznawania/);
+  assert.match(releasePosts.linkedin,/Nie ogłaszam nowego modelu rozpoznawania/);
   const html=await readFile(new URL('../social/2026-09-09-pracownie/site/index.html',import.meta.url),'utf8');
   assert.match(html,/Pełne teksty do akceptacji/);
   assert.match(html,/href="\.\.\/\.\.\/assetySM\/"/);
   assert.equal((html.match(/class="story"/g)||[]).length,10);
   assert.doesNotMatch(html,/expert-review|drive\.google\.com|R001|PRIVATE-KEY/);
+});
+
+test('owner-authored social copy uses a singular creator voice throughout',()=>{
+  assert.match(releaseStories[0].text,/^Zamknąłem/);
+  const text=[...releaseStories.map(s=>s.text),...Object.values(releasePosts)].join('\n');
+  assert.doesNotMatch(text,/zamknęliśmy|oddajemy|przygotowaliśmy|wysłaliśmy|udostępniliśmy|rozwijamy|ogłaszamy|czekamy|nie wiemy/i);
+  assert.match(releasePosts.facebook,/przygotowałem/);
+  assert.match(releasePosts.linkedin,/udostępniłem/);
 });
