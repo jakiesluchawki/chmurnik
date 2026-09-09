@@ -3,7 +3,7 @@ export const packs = [
     id: 'pracownie', source: '2026-09-09-pracownie', date: '2026-09-09',
     dateLabel: '9 września 2026', status: 'Nowe teksty do akceptacji · WWW i aplikacje',
     title: 'Niebo ma swoje powody.',
-    description: '14 pracowni, nauka przez obserwację i poprawiona obsługa. Pełne teksty 10 Stories i karuzeli oraz postów na Instagram, Facebook i LinkedIn. WWW działa; dostępność aktualizacji aplikacji zależy od Apple. Finalne PNG i PDF po akceptacji tekstów.',
+    description: 'Zrozumieć pogodę, odczytać depeszę i samodzielnie wyciągnąć wniosek. Wersja 2 pełnych tekstów: 10 Stories i karuzela oraz Instagram, Facebook i LinkedIn. WWW działa; aplikacje czekają na Apple. Finalne PNG i PDF po akceptacji tekstów.',
     base: '../premiera/pracownie/', preview: 'assets/cover.webp',
     formats: ['10 Stories · teksty', 'Karuzela · teksty', 'Instagram', 'Facebook', 'LinkedIn'],
     downloads: [['Wszystkie teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'], ['Pełna paczka tekstów', 'CHMURNIK-PRACOWNIE-TEKSTY.zip', 'zip']],
