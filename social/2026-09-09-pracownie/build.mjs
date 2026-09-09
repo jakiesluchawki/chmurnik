@@ -17,7 +17,9 @@ for (const font of ['Roobert-Regular.woff2', 'Roobert-Bold.woff2', 'Romie-Regula
 await copyFile(resolve(root, 'public/brand/chmurnik-wordmark.png'), resolve(site, 'assets/wordmark.png'));
 await copyFile(resolve(root, 'weather-preview/public/covers/wind-v1.webp'), resolve(site, 'assets/cover.webp'));
 // Retain the owner's established mobile download-gallery presentation.
-for (const file of ['style.css', 'copy.js']) await copyFile(resolve(here, '../2026-09-08-pogoda/site', file), resolve(site, file));
+await copyFile(resolve(here, '../2026-09-08-pogoda/site/copy.js'), resolve(site, 'copy.js'));
+const galleryCss = await readFile(resolve(here, '../2026-09-08-pogoda/site/style.css'), 'utf8');
+await writeFile(resolve(site, 'style.css'), galleryCss + '\n.banner>img{object-position:50% 25%}\n');
 const copy = `CHMURNIK: ${title}\nTEKSTY DO AKCEPTACJI, 09.09.2026\n\n${availability}\n\nWWW: ${webUrl}\nPracownie: ${workshopUrl}\nApp Store (nie potwierdza dostępności 1.2.1): ${storeUrl}\nBiblioteka: https://jakiesluchawki.github.io/chmurnik/assetySM/\n\n` + stories.map((s, i) => `STORY / SLAJD ${i + 1}: ${s.title}\n${s.text}\nLink do naklejki: ${workshopUrl}`).join('\n\n') + '\n\n' + Object.entries(posts).map(([p, text]) => `${p.toUpperCase()}\n${text}`).join('\n\n');
 await writeFile(resolve(site, 'TEKSTY-I-LINKI.txt'), copy + '\n');
 for (const [p, text] of Object.entries(posts)) await writeFile(resolve(site, 'teksty', `${p}-post.txt`), text + '\n');
