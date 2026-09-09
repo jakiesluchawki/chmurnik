@@ -1,0 +1,41 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Turbulencja" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Skąd biorą się nierówne podmuchy?":
+    - paragraph: Krok 1 z 3
+    - heading "Zwiększ zaburzenie za przeszkodą" [level=2]
+    - 'img "Schemat zaburzenia: przeszkoda, umowne wymuszenie 0 procent."':
+      - generic: Tory symboliczne · nie pomiar turbulencji
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Natężenie pokazanego wymuszenia
+    - status: 0 %
+    - 'button "Zmniejsz: Natężenie pokazanego wymuszenia" [disabled]':
+    - slider "Natężenie pokazanego wymuszenia": "0"
+    - 'button "Zwiększ: Natężenie pokazanego wymuszenia"':
+    - generic: "0"
+    - generic: "100"
+    - button "Ustaw wymuszenie na 70%":
+      - text: Ustaw wymuszenie na 70%
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Skąd biorą się nierówne podmuchy?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Skąd biorą się nierówne podmuchy?"
+  - generic "Źródła i granice tego ćwiczenia"

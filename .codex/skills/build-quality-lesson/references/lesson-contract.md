@@ -54,6 +54,24 @@ duration.
   beside the observation, and never cover them with sticky illustrations.
   Zero horizontal overflow alone is not a mobile usability check.
 
+## Interactive Workshop Gate
+
+- A guide target is setup, not proof of understanding. Ask for a prediction,
+  expose the observable outcome, then ask the learner to identify evidence.
+- Keep data required for the current decision visible. Collapse supplementary
+  explanation, never the report, compared temperatures, units or selected wind.
+- Lock primary answers before exposing reason options. Balance plausible
+  distractors and option lengths; avoid a fixed correct position.
+- New cases change conditions or representation, not just button wording.
+- Preserve first predictions and explanations separately. Help after a
+  prediction must not retrospectively invalidate that prediction, but must be
+  recorded for the later explanation. Reload/retry must not erase first results.
+- Place scientific lines using model coordinates, independent of label height.
+- Test the actual mobile action/outcome journey, including where the viewport
+  lands after an action. Do not infer quality from zero overflow or passing tests.
+- Label synthetic conditions and the precise limits of illustrative motion.
+  A parcel-response exercise is not a numerical storm or flight-safety model.
+
 ## Review Questions
 
 1. Could a learner finish this lesson in one tenth of the advertised time?

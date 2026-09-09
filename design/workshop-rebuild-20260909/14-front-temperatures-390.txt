@@ -1,0 +1,48 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Front" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/fronty
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Front i wymuszone unoszenie":
+    - paragraph: Krok 1 z 4
+    - heading "Unieś wilgotną porcję" [level=2]
+    - img "Porcja na 1540 metrach. Temperatura 13 stopni, otoczenie 17,8. Osiągnięte nasycenie.":
+      - generic: chłodniejsza masa
+      - generic: Przekrój przez front · schemat
+    - group "Temperatury na tej samej wysokości":
+      - paragraph:
+        - text: "Ta sama wysokość:"
+        - strong: 1540 m uniesienia
+      - generic: Temperatura porcji
+      - strong: 13°C
+      - generic: Temperatura otoczenia
+      - strong: 17,8°C
+      - paragraph: Porcja jest o 4,8°C chłodniejsza od otoczenia. Ruch nadal wymuszamy.
+    - generic "Odczyt i objaśnienie sceny"
+    - generic: Wymuszone uniesienie
+    - status: 70 %
+    - 'button "Zmniejsz: Wymuszone uniesienie"':
+    - slider "Wymuszone uniesienie": "70"
+    - 'button "Zwiększ: Wymuszone uniesienie"':
+    - generic: "0"
+    - generic: "100"
+    - button "Porównaj i wyjaśnij" [active]:
+      - text: Porównaj i wyjaśnij
+    - paragraph: Zmiana wykonana. Obejrzyj wynik i spróbuj go wyjaśnić, zanim przejdziesz dalej.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/fronty
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - generic "Źródła i granice tego ćwiczenia"

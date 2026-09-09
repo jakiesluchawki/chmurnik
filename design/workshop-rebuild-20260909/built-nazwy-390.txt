@@ -1,0 +1,39 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Nazwy chmur" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/ekspert
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Nazwa z uzasadnieniem":
+    - paragraph: Krok 1 z 3
+    - heading "Wybierz gatunek zgodny z opisem" [level=2]
+    - text: Opis szkoleniowy · nie wynik rozpoznawania
+    - paragraph: Osobne wysokie kłęby zachowują ostre wypukłości. Opad dochodzi do ziemi. Nie obserwowano wcześniejszego rozwoju.
+    - strong: Cumulus
+    - generic: gatunek?
+    - generic: cecha opadu?
+    - generic "Odczyt i objaśnienie sceny"
+    - group "Gatunek dla opisanego Cumulus":
+      - generic: Gatunek dla opisanego Cumulus
+      - button "humilis · mała rozciągłość pionowa"
+      - button "congestus · silny rozwój pionowy"
+      - button "calvus · inny rodzaj"
+    - button "Wybierz congestus":
+      - text: Wybierz congestus
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/ekspert
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - generic "Źródła i granice tego ćwiczenia"

@@ -1,0 +1,98 @@
+- link "Przejdź do treści":
+  - /url: "#main-content"
+- status:
+  - generic: Nowa wersja Chmurnika jest gotowa.
+  - button "Odśwież":
+    - text: Odśwież
+- banner:
+  - button "Chmurnik, strona główna":
+    - generic: Chmurnik
+    - generic: atlas chmur i atmosfery
+- main:
+  - button "Ścieżka nauki":
+    - text: Ścieżka nauki
+  - generic: "08"
+  - generic: Operacyjne · 32 min
+  - heading "Oblodzenie, turbulencja i burze" [level=1]
+  - paragraph: Niebezpieczeństwo wynika z połączenia fazy wody, temperatury, ruchu pionowego, uskoku wiatru i czasu ekspozycji. Sama nazwa chmury nie daje pełnej odpowiedzi.
+  - region "Doświadczenia do tej lekcji":
+    - generic: Pracownia pogody · podgląd
+    - heading "Sprawdź to krok po kroku" [level=2]
+    - paragraph: Przewodnik pokaże, co zmienić i jak odczytać wynik. Po powrocie będziesz w tym samym rozdziale lekcji.
+    - link "Sprawdź, kiedy krople osadzają lód":
+      - /url: /chmurnik/pogoda-preview/?from=zagrozenia#oblodzenie
+      - text: Sprawdź, kiedy krople osadzają lód
+    - link "Porównaj trzy źródła turbulencji":
+      - /url: /chmurnik/pogoda-preview/?from=zagrozenia#turbulencja
+      - text: Porównaj trzy źródła turbulencji
+    - link "Sprawdź, co podtrzymuje unoszenie powietrza":
+      - /url: /chmurnik/pogoda-preview/?from=zagrozenia#burza
+      - text: Sprawdź, co podtrzymuje unoszenie powietrza
+  - generic "Plan i cele lekcji":
+    - text: Plan i cele lekcji
+  - generic "Rozdział 1 z 7":
+    - generic: Rozdział 1 z 7
+    - strong: Do oceny zagrożenia potrzeba kilku rodzajów danych
+  - navigation "Spis rozdziałów lekcji":
+    - generic: W tej lekcji
+    - button "01 Do oceny zagrożenia potrzeba kilku rodzajów danych":
+      - generic: "01"
+      - text: Do oceny zagrożenia potrzeba kilku rodzajów danych
+    - button "02 Oblodzenie wymaga wody ciekłej i ujemnej temperatury":
+      - generic: "02"
+      - text: Oblodzenie wymaga wody ciekłej i ujemnej temperatury
+    - button "03 Turbulencja ma kilka różnych źródeł":
+      - generic: "03"
+      - text: Turbulencja ma kilka różnych źródeł
+    - button "04 CAPE nie jest prognozą burzy":
+      - generic: "04"
+      - text: CAPE nie jest prognozą burzy
+    - button "05 Cumulonimbus to układ wielu zagrożeń":
+      - generic: "05"
+      - text: Cumulonimbus to układ wielu zagrożeń
+    - button "06 Uskok, szkwał i przepływ zstępujący":
+      - generic: "06"
+      - text: Uskok, szkwał i przepływ zstępujący
+    - button "07 Co już wiesz i jakich danych jeszcze brakuje":
+      - generic: "07"
+      - text: Co już wiesz i jakich danych jeszcze brakuje
+  - article:
+    - generic: "01"
+    - generic: 1 min lektury i przypomnienia
+    - heading "Do oceny zagrożenia potrzeba kilku rodzajów danych" [level=2]
+    - paragraph: Chmura mówi coś o nasyceniu i ruchu atmosfery, ale nie podaje bezpośrednio zawartości wody ciekłej, rozkładu temperatury, prędkości prądów pionowych ani czasu ekspozycji. Te wielkości decydują o tym, czy ta sama wizualna klasa jest łagodna czy niebezpieczna.
+    - paragraph: Dobra analiza nie pyta tylko „jaka to chmura?”, lecz „jaki proces w niej zachodzi, w jakiej temperaturze, na jakiej trasie i przez jak długo?”.
+    - button "2 źr.":
+      - text: 2 źr.
+    - complementary:
+      - generic: Spróbuj odpowiedzieć z pamięci
+      - heading "Dlaczego sama nazwa chmury nie określa poziomu zagrożenia?" [level=3]
+      - button "Sprawdź odpowiedź":
+        - text: Sprawdź odpowiedź
+    - navigation "Nawigacja między rozdziałami":
+      - button "Poprzedni" [disabled]:
+        - text: Poprzedni
+      - generic: 1 / 7
+      - button "Następny":
+        - text: Następny
+- contentinfo:
+  - generic: Chmurnik
+  - generic: atlas chmur i atmosfery
+  - paragraph: Polski, bezpłatny atlas i pracownia obserwacji chmur. Bez kont, reklam, śledzenia i dźwięku.
+  - button "Źródła"
+  - button "Pomoc"
+  - button "Prywatność"
+  - link "GitHub":
+    - /url: https://github.com/jakiesluchawki/chmurnik
+    - text: GitHub
+- navigation "Nawigacja mobilna":
+  - button "Start":
+    - generic: Start
+  - button "Nauka":
+    - generic: Nauka
+  - button "Atlas":
+    - generic: Atlas
+  - button "Warstwy":
+    - generic: Warstwy
+  - button "Dziennik":
+    - generic: Dziennik

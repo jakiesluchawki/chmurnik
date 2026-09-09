@@ -1,5 +1,20 @@
 # CHMURNIK Field Companion QA
 
+## 2026-09-09: First Workshop Rebuild After Owner Audit
+
+- Pages-only storm workshop: direct parcel manipulation, prediction before
+  release, visible same-height temperatures, explicit evidence and new cases.
+  Existing felt assets and pink/olive/violet, Romie/Roobert identity retained.
+- Fresh 320/390/1365 viewport checks include the actual action/outcome sequence,
+  wrong prediction, A/B/C comparison, transfer, keyboard and direct dragging.
+  Essential readings are not hidden by a long explanation or sticky illustration.
+- Five shared scenes repair geometry or visible evidence. All 14 built preview
+  routes load at 390x700 without missing images or horizontal overflow. This
+  does not mean all 14 activities were redesigned or passed learner evaluation.
+- See `design/workshop-rebuild-20260909/RAPORT.md` and adjacent screenshots.
+  No physical Android/iPhone or formal WCAG certification is claimed. Native
+  and production-domain gates remain closed pending owner acceptance.
+
 ## 2026-09-08: Native Navigation And Daily Answer Hotfix
 
 - The previous WWW-only fix missed `FieldHome` and native navigation. Add a

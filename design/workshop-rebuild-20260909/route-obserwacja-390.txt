@@ -1,0 +1,37 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Obserwacja" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/obserwacja
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Opis przed nazwą":
+    - paragraph: Krok 1 z 3
+    - heading "Zacznij od budowy" [level=2]
+    - figure "Fot. Marcin Konsek · CC BY-SA 4.0 · prawdziwa fotografia, pełny kadr":
+      - img "Pełny kadr nieba nad polem i drzewami. Obejrzyj budowę chmur przed odsłonięciem porównania."
+      - generic: Fot. Marcin Konsek · CC BY-SA 4.0 · prawdziwa fotografia, pełny kadr
+    - generic "Odczyt i objaśnienie sceny"
+    - group "Budowa widocznych chmur":
+      - generic: Budowa widocznych chmur
+      - button "Cienkie włókna"
+      - button "Szerokie, połączone wały"
+      - button "Osobna wysoka wieża"
+    - button "Wskaż połączone wały":
+      - text: Wskaż połączone wały
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/obserwacja
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - generic "Źródła i granice tego ćwiczenia"

@@ -92,6 +92,34 @@ to native integration or production domain without that acceptance.
 
 ### Owner Follow-up: Workshop Quality Audit
 
+Implementation resumed after explicit owner approval on 2026-09-09. Lead
+implements a separate storm workshop; Bernoulli repairs five evidence/geometry
+scenes and independently checks storm mechanics; Kierkegaard repairs assessment
+copy, option patterns and decision locks. Three agents total, no native/cloud
+scope expansion. Reports and fresh browser evidence belong in
+`design/workshop-rebuild-20260909/`. Prior audit screenshots remain historical.
+
+The new storm route uses three synthetic temperature profiles, continuous
+condensation and a bounded illustration of initial thermal response after
+release from rest. Three comparative guide trials lead to two new cases with
+opposite outcomes. It does not calculate a storm, trajectory, CAPE/CIN or speed.
+Predictions, explanations and help are recorded separately, locally only.
+Published as 65b23c1 (local 530a421), with the lesson-entry wording follow-up
+110507b (local 72724ee). Pages runs 34324140302 and 34324534917 succeeded.
+Development tests pass 715/715; the isolated publication tree passes 710/710
+(five unrelated native-home/review-portal tests remain development-only).
+Nine lesson audits and all three builds pass. Public 390x700 QA confirms the
+1500m action, prediction gate, retained wrong prediction, downward response,
+14.2/18.8 degree release evidence, explanation and lesson roundtrip. All 14
+built routes were checked for artwork/overflow; this is not a complete new
+learning-outcome audit of every activity. New public assets are
+index-I8vpNQpc.js / index-B3ltBLlx.css. Production HTML is unchanged, SHA256
+4c44955a6c159492fb67de3bbaeef204242000aecd8dcd430877c0d3511bfd57.
+No domain, Apple or ML release. The local preview server is stopped and browser
+viewport reset. Full report, screenshots and limitations are in the folder
+above. Owner review of this first complete workshop pattern remains pending;
+do not mark the overall expanded-workshop task complete.
+
 On 2026-09-09 the owner rejected the storm experience and requested an audit
 of every exercise. The current preview does not meet the workshop-quality
 bar. Earlier passing functional checks are not evidence of learning or owner
@@ -104,10 +132,11 @@ interpret their completed checkboxes as acceptance of the expanded ALL14 UX.
   28 assessment cases; combine their findings with browser evidence.
 - [x] Save the owner-facing report and explicit limitations in
   `design/workshop-audit-20260909/AUDYT.md`.
-- [ ] Correct misleading height geometry, hidden task evidence, implementation
+- [x] Correct misleading height geometry, hidden task evidence, implementation
   jargon in learner feedback, and assessment answer-pattern leaks.
-- [ ] Redesign storm initiation, turbulence and sounding around observable
-  evidence and learner decisions; validate one complete pattern before reuse.
+- [x] Rebuild storm initiation around observable evidence and learner decisions;
+  verify one complete pattern for owner review before reuse.
+- [ ] Redesign turbulence and sounding around observable evidence and decisions.
 - [ ] Improve remaining activities with topic-appropriate observation, data
   interpretation or causal interaction; retain working model relationships.
 

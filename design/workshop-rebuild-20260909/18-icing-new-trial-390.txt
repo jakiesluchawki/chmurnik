@@ -1,0 +1,49 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Oblodzenie" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się"
+    - button "Eksperymentuj" [pressed]
+  - button "Zatrzymaj ruch":
+  - region "Jak narasta lód?":
+    - paragraph: Swobodne eksperymentowanie · bez oceny
+    - heading "Mróz to dopiero część warunków" [level=2]
+    - img "-10 stopni, suche kryształki. Brak akrecji z kropli w tej próbie.":
+      - generic: Przekrój przez skrzydło · napływ z lewej
+      - text: kierunek przepływu
+    - group "Warunki osobnej próby oblodzenia":
+      - paragraph: Osobna próba od czystej powierzchni · ekspozycja 100%
+      - generic: Powietrze i skrzydło
+      - strong: "-10°C"
+      - generic: Napływająca woda
+      - strong: Tylko suche kryształki lodu
+      - paragraph: Brak osadu z kropli w tej próbie.
+      - paragraph: Zmiana ustawień to nowa próba. Zniknięcie osadu nie oznacza topnienia.
+    - generic "Odczyt i objaśnienie sceny"
+    - text: Który warunek zmieniasz?
+    - combobox "Który warunek zmieniasz?":
+      - option "Temperatura powietrza i skrzydła"
+      - option "Co uderza w skrzydło" [selected]
+      - option "Umowny czas ekspozycji"
+    - group "Co uderza w skrzydło":
+      - generic: Co uderza w skrzydło
+      - button "Bez kropli"
+      - button "Krople ciekłej wody"
+      - button "Tylko suche kryształki lodu" [active] [pressed]:
+        - text: Tylko suche kryształki lodu
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Jak narasta lód?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Jak narasta lód?"
+  - generic "Źródła i granice tego ćwiczenia"

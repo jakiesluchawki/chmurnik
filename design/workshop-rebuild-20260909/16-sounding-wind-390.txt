@@ -1,0 +1,71 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Sondaż" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się"
+    - button "Eksperymentuj" [pressed]
+  - button "Zatrzymaj ruch":
+  - region "Sondaż bez zgadywania":
+    - paragraph: Swobodne eksperymentowanie · bez oceny
+    - heading "Najpierw odczytaj jeden poziom" [level=2]
+    - text: Na poziomie
+    - strong: 1000 hPa
+    - generic: Temperatura otoczenia
+    - strong: 7°C
+    - generic: Punkt rosy
+    - strong: 6°C
+    - generic: Unoszona porcja
+    - strong: 7°C
+    - generic: Wiatr na 1000 hPa
+    - strong: z 160° · 4 kt
+    - paragraph:
+      - text: "Kierunek „z”: skąd wieje. kt: węzły, jednostka prędkości."
+    - generic "Pełny profil i osie wykresu"
+    - generic: Profil na prostych osiach temperatury
+    - img "Wybrany poziom 1000 hPa, temperatura 7 stopni. Punkt rosy 6 stopni.":
+      - generic: "1000"
+      - generic: "850"
+      - generic: "700"
+      - generic: "500"
+      - generic: "300"
+      - generic: "200"
+      - generic: "-70°"
+      - generic: "-50°"
+      - generic: "-30°"
+      - generic: "-10°"
+      - generic: 10°
+      - generic: 30°
+      - generic: hPa
+      - generic: Temperatura °C
+    - generic: Temperatura
+    - generic: Punkt rosy
+    - generic: Porcja · linia przerywana
+    - generic "Odczyt i objaśnienie sceny"
+    - text: Który warunek zmieniasz?
+    - combobox "Który warunek zmieniasz?":
+      - option "Kolejny poziom profilu"
+      - option "Co czytasz" [selected]
+      - option "Sposób rysowania temperatury"
+    - group "Co czytasz":
+      - generic: Co czytasz
+      - button "Temperatura"
+      - button "Temperatura i punkt rosy"
+      - button "Dodaj unoszoną porcję"
+      - button "Dodaj wiatr" [active] [pressed]:
+        - text: Dodaj wiatr
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/warstwy
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: inne profile i Skew-T"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/sounding
+    - text: "Przejdź do pełnego narzędzia: inne profile i Skew-T"
+  - generic "Źródła i granice tego ćwiczenia"

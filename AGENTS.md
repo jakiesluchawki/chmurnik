@@ -155,6 +155,13 @@ Writing production code without an active Lore task is forbidden.
 
 ## Verification
 
+For the 2026-09-09 workshop rebuild, a target slider value is not evidence of
+learning. Commit a prediction before showing its outcome, keep the decisive
+current data visible beside the scene, and use different cases for transfer.
+Keep scientific coordinate anchors independent of labels. Record the first
+prediction separately from explanation and later help. A rebuilt workshop is
+not approval of all other activities; retain the Pages-only owner review gate.
+
 Before publishing:
 
 1. Run the complete automated test and production build.

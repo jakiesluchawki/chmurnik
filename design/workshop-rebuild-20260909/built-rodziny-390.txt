@@ -1,0 +1,46 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Rodzaje" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/rodziny
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie" [pressed]
+    - button "Sprawdź się"
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Mapa rodzajów":
+    - paragraph: Krok 1 z 3
+    - heading "Poszukaj włókien" [level=2]
+    - figure "Fot. PiccoloNamek · CC BY-SA 3.0 · prawdziwa fotografia, pełny kadr · Oryginał i licencja":
+      - 'img "Cumulus: Oddzielne białe kopuły wyrastają ze zbliżonego poziomu płaskich podstaw."'
+      - text: Fot. PiccoloNamek · CC BY-SA 3.0 · prawdziwa fotografia, pełny kadr ·
+      - link "Oryginał i licencja":
+        - /url: https://commons.wikimedia.org/wiki/File:GoldenMedows.jpg
+    - generic "Odczyt i objaśnienie sceny"
+    - text: Rodzaj chmury
+    - combobox "Rodzaj chmury":
+      - option "Cirrus"
+      - option "Cirrocumulus"
+      - option "Cirrostratus"
+      - option "Altocumulus"
+      - option "Altostratus"
+      - option "Nimbostratus"
+      - option "Stratocumulus"
+      - option "Stratus"
+      - option "Cumulus" [selected]
+      - option "Cumulonimbus"
+    - button "Pokaż Cirrus":
+      - text: Pokaż Cirrus
+    - paragraph: Zmień ustawienie ręcznie lub użyj przycisku. Potem porównasz wynik z wyjaśnieniem.
+  - button "Zacznij przewodnik od początku":
+    - text: Zacznij przewodnik od początku
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/rodziny
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - generic "Źródła i granice tego ćwiczenia"

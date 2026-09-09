@@ -1,0 +1,53 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "METAR / TAF" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/lotnictwo
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się"
+    - button "Eksperymentuj" [pressed]
+  - button "Zatrzymaj ruch":
+  - region "Niebo zapisane w METAR":
+    - paragraph: Swobodne eksperymentowanie · bez oceny
+    - heading "Zmień warstwę, odczytaj depeszę" [level=2]
+    - 'img "OVC020. Pułap 2000 stóp nad lotniskiem. Powyżej OVC: brak danych, nie dowód braku chmur."':
+      - generic: Poziom lotniska · 0 ft AGL
+      - generic: "Powyżej OVC: brak danych"
+      - generic: 2000 ft
+      - generic: Podstawy warstw · nie grubość chmur
+    - group "Bieżący METAR i wysokości warstw":
+      - paragraph: "METAR szkoleniowy · AGL: nad lotniskiem"
+      - code: METAR EPWA 081200Z 24008KT 9999 OVC020 18/12 Q1015
+      - generic: Najniższa podstawa
+      - strong: 2000 ft AGL
+      - generic: Pułap (ceiling)
+      - strong: 2000 ft AGL
+      - paragraph: Najniższa warstwa BKN lub OVC tworzy pułap.
+      - paragraph: Powyżej OVC nie znamy warstw. To nie znaczy, że nie ma tam chmur.
+    - generic "Odczyt i objaśnienie sceny"
+    - text: Który warunek zmieniasz?
+    - combobox "Który warunek zmieniasz?":
+      - option "Pokrycie niższej warstwy" [selected]
+      - option "Podstawa niższej warstwy"
+      - option "Rodzaj depeszy"
+    - group "Pokrycie niższej warstwy":
+      - generic: Pokrycie niższej warstwy
+      - button "FEW · 1–2/8"
+      - button "SCT · 3–4/8"
+      - button "BKN · 5–7/8"
+      - button "OVC · 8/8" [active] [pressed]:
+        - text: OVC · 8/8
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/lotnictwo
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/metar
+    - text: "Przejdź do pełnego narzędzia: Niebo zapisane w METAR"
+  - generic "Źródła i granice tego ćwiczenia"

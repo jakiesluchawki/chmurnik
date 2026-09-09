@@ -1,0 +1,45 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Oblodzenie" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się" [pressed]
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Zadanie na nowych danych":
+    - paragraph: Pytanie 3 z 3 · nowy przypadek
+    - heading "Krople i powierzchnia 1" [level=2]
+    - paragraph: Najpierw zapisz decyzje, potem wybierz zasadę
+    - generic "Wróć do danych zadania"
+    - status: Decyzje zapisane. Możesz wrócić do ich podglądu, ale nie zmienić ich po odsłonięciu zasad.
+    - group "Która zasada uzasadnia Twoją decyzję?":
+      - generic: Która zasada uzasadnia Twoją decyzję?
+      - radio "Ujemna temperatura oznacza kryształki zamiast kropli; fazę wody rozstrzyga termometr."
+      - generic: Ujemna temperatura oznacza kryształki zamiast kropli; fazę wody rozstrzyga termometr.
+      - radio "Zamarzanie kropli wymaga ciekłej wody i zimnej powierzchni; procent nie określa tempa."
+      - generic: Zamarzanie kropli wymaga ciekłej wody i zimnej powierzchni; procent nie określa tempa.
+      - radio "Dłuższa ekspozycja pozwala kroplom zamarznąć także na powierzchni cieplejszej od 0°C."
+      - generic: Dłuższa ekspozycja pozwala kroplom zamarznąć także na powierzchni cieplejszej od 0°C.
+    - button "Wstecz":
+      - text: Wstecz
+    - button "Zatwierdź odpowiedzi" [disabled]:
+      - text: Zatwierdź odpowiedzi
+    - button "Przypomnij zasadę":
+      - text: Przypomnij zasadę
+    - button "Nie wiem, pokaż wyjaśnienie"
+    - button "Zmień decyzje w powtórce z pomocą"
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Jak narasta lód?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Jak narasta lód?"
+  - generic "Źródła i granice tego ćwiczenia"

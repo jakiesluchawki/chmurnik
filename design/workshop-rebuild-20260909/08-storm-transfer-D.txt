@@ -1,0 +1,69 @@
+- banner:
+  - link "Pracownia":
+    - /url: "#pracownia"
+    - text: Pracownia
+  - link "Lekcja":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Lekcja
+- main:
+  - navigation "Etapy pracowni":
+    - button "1 Porównaj trzy próby":
+      - text: "1"
+      - generic: Porównaj trzy próby
+    - button "2 Sprawdź się":
+      - text: "2"
+      - generic: Sprawdź się
+    - button "3 Wnioski":
+      - text: "3"
+      - generic: Wnioski
+  - generic: Nowy przypadek 1 · samodzielnie
+  - heading "Zdecyduj na podstawie nowych danych" [level=1]
+  - paragraph: "Masz inny profil temperatury i wilgotność 55%. Unieś porcję w okolice 2200 m. Sama obecność chmury nie rozstrzyga odpowiedzi: sprawdź dane i postaw własną hipotezę."
+  - region "Stanowisko do unoszenia powietrza":
+    - generic: "Przy ziemi: 26°C · wilgotność 55%"
+    - generic: Profil C
+    - generic "Porównanie porcji powietrza i temperatury otoczenia na tej samej wysokości":
+      - generic: Wysokość nad ziemią
+      - text: Temperatura
+      - text: otoczenia
+      - generic: 0 m
+      - generic: 1 km
+      - generic: 2 km
+      - generic: 3 km
+      - generic: 4 km
+      - generic: 5 km
+      - slider "Wysokość porcji powietrza" [disabled]:
+        - generic: 2000 m
+      - generic: Porcja powietrza, nie cała chmura
+    - generic "Bieżące temperatury na tej samej wysokości":
+      - generic: Porcja
+      - strong: 9,4°C
+      - generic: na 2000 m
+      - generic: Otoczenie
+      - strong: 14,1°C
+    - paragraph: "Przerywana linia: kondensacja około 1220 m. Oliwkowa linia łączy temperatury otoczenia."
+    - paragraph: Strzałka pokazuje początkową tendencję. Przesunięcie jest umowne. Nie wyliczamy prędkości ani dalszego toru porcji.
+  - region "Przewidywanie i wyjaśnienie":
+    - generic: 2. Sprawdź dowód
+    - heading "Zacznie opadać" [level=2]
+    - paragraph:
+      - text: "W chwili puszczenia na 2200 m: porcja"
+      - strong: 8,2°C
+      - text: ", otoczenie"
+      - strong: 13,0°C
+      - text: .
+    - paragraph: "Twoje przewidywanie: zacznie opadać. Zgadza się z wynikiem."
+    - group "Jaka była porcja względem otoczenia przy puszczeniu?":
+      - generic: Jaka była porcja względem otoczenia przy puszczeniu?
+      - button "Była chłodniejsza" [disabled] [pressed]
+      - button "Była cieplejsza" [disabled]
+      - button "Temperatury były zbliżone" [disabled]
+    - strong: To właśnie ta różnica wyjaśnia wynik.
+    - paragraph: Była chłodniejsza od otoczenia. W tym uproszczeniu chłodniejsza porcja ma większą gęstość i tendencję do opadania. Widoczne kropelki mówią o kondensacji, nie o tym, czy porcja będzie nadal się unosić.
+    - button "Następne doświadczenie":
+      - text: Następne doświadczenie
+  - button "Powtórz od początku tej próby":
+    - text: Powtórz od początku tej próby
+  - generic: 5 zapisanych prób w tej przeglądarce.
+  - generic "Jak działa schemat i czego nie wyliczamy?"
+  - paragraph: Pracownia edukacyjna. Nie używaj jej do oceny bezpieczeństwa lotu ani aktualnego zagrożenia burzą.

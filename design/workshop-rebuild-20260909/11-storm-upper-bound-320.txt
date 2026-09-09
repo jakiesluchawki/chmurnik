@@ -1,0 +1,73 @@
+- banner:
+  - link "Pracownia":
+    - /url: "#pracownia"
+    - text: Pracownia
+  - link "Lekcja":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Lekcja
+- main:
+  - navigation "Etapy pracowni":
+    - button "1 Porównaj trzy próby":
+      - text: "1"
+      - generic: Porównaj trzy próby
+    - button "2 Sprawdź się":
+      - text: "2"
+      - generic: Sprawdź się
+    - button "3 Wnioski":
+      - text: "3"
+      - generic: Wnioski
+  - generic: Próba A · z przewodnikiem
+  - heading "Czy sama chmura wystarczy?" [level=1]
+  - paragraph: Unieś porcję w okolice 1500 m. Zanim ją puścisz, porównaj obie temperatury na tej wysokości i przewidź kierunek ruchu.
+  - region "Stanowisko do unoszenia powietrza":
+    - generic: "Przy ziemi: 26°C · wilgotność 70%"
+    - generic: Profil A
+    - generic "Porównanie porcji powietrza i temperatury otoczenia na tej samej wysokości":
+      - generic: Wysokość nad ziemią
+      - text: Temperatura
+      - text: otoczenia
+      - generic: 0 m
+      - generic: 1 km
+      - generic: 2 km
+      - generic: 3 km
+      - generic: 4 km
+      - generic: 5 km
+      - slider "Wysokość porcji powietrza" [active]:
+        - generic: 5000 m
+      - generic: Porcja powietrza, nie cała chmura
+    - generic "Bieżące temperatury na tej samej wysokości":
+      - generic: Porcja
+      - strong: "-6,8°C"
+      - generic: na 5000 m
+      - generic: Otoczenie
+      - strong: "-14,0°C"
+    - paragraph: "Przerywana linia: kondensacja około 740 m. Różowy pas: cieplejsza warstwa (inwersja)."
+    - button "Opuść porcję o 100 metrów":
+      - text: 100 m
+    - button "Unieś na 1500 m"
+    - button "Unieś porcję o 100 metrów" [disabled]:
+      - text: 100 m
+  - region "Przewidywanie i wyjaśnienie":
+    - generic: 1. Przewidź
+    - heading "Co się stanie, gdy przestaniesz podnosić?" [level=2]
+    - paragraph: Trzymasz porcję w spoczynku. Teraz puścisz ją na wybranej wysokości.
+    - group "Moje przewidywanie":
+      - generic: Moje przewidywanie
+      - button "Zacznie się unosić":
+        - text: Zacznie się unosić
+      - button "Bez tendencji w którąś stronę":
+        - text: Bez tendencji w którąś stronę
+      - button "Zacznie opadać":
+        - text: Zacznie opadać
+    - button "Puść porcję" [disabled]:
+      - text: Puść porcję
+    - paragraph: "Najpierw wybierz wysokość 1400–1600 m: przeciągnij kółko, użyj strzałek klawiatury lub przycisków pod sceną."
+  - button "Powtórz od początku tej próby":
+    - text: Powtórz od początku tej próby
+  - generic: 6 zapisanych prób w tej przeglądarce.
+  - generic "Jak działa schemat i czego nie wyliczamy?"
+  - paragraph: To fikcyjne profile do nauki. Przyjmujemy 26°C przy ziemi, ochładzanie unoszonej porcji o 9,8°C/km przed kondensacją i umowne 6°C/km po kondensacji. Poziom kondensacji szacujemy z temperatury i punktu rosy. Porównujemy temperatury na tej samej wysokości i przy tym samym ciśnieniu, pomijając poprawkę na wilgotność, obciążenie wodą, mieszanie i bezwładność. Dlatego strzałka oznacza tylko uproszczoną tendencję termiczną po puszczeniu w spoczynku. Nie obliczamy CAPE, CIN, prędkości, czasu, wierzchołka chmury ani prawdopodobieństwa burzy. Różnicę do 0,2°C traktujemy jako nierozstrzygającą.
+  - paragraph: Jeżeli otworzysz to wyjaśnienie podczas samodzielnej próby, oznaczymy ją jako wykonaną z pomocą.
+  - 'link "NWS: wilgotność, unoszenie, chwiejność i hamowanie"':
+    - /url: https://www.weather.gov/spotterguide/ingredients
+  - paragraph: Pracownia edukacyjna. Nie używaj jej do oceny bezpieczeństwa lotu ani aktualnego zagrożenia burzą.

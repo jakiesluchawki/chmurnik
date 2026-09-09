@@ -1,0 +1,77 @@
+- banner:
+  - link "Pracownia":
+    - /url: "#pracownia"
+    - text: Pracownia
+  - generic: BURZA · UNOSZENIE POWIETRZA
+  - link "Lekcja":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Lekcja
+- main:
+  - navigation "Etapy pracowni":
+    - button "1 Porównaj trzy próby":
+      - text: "1"
+      - generic: Porównaj trzy próby
+    - button "2 Sprawdź się":
+      - text: "2"
+      - generic: Sprawdź się
+    - button "3 Wnioski":
+      - text: "3"
+      - generic: Wnioski
+  - generic: Próba B · z przewodnikiem
+  - heading "Daj tej samej porcji mocniejszy impuls" [level=1]
+  - paragraph: "Warunki są takie same jak w próbie A. Zmieniasz tylko wysokość wymuszonego uniesienia: tym razem około 3000 m. Czy po puszczeniu wynik będzie taki sam?"
+  - region "Stanowisko do unoszenia powietrza":
+    - generic: "Przy ziemi: 26°C · wilgotność 70%"
+    - generic: Profil A
+    - generic "Porównanie porcji powietrza i temperatury otoczenia na tej samej wysokości":
+      - generic: Wysokość nad ziemią
+      - text: Temperatura
+      - text: otoczenia
+      - generic: 0 m
+      - generic: 1 km
+      - generic: 2 km
+      - generic: 3 km
+      - generic: 4 km
+      - generic: 5 km
+      - slider "Wysokość porcji powietrza":
+        - generic: 3000 m
+      - generic: Porcja powietrza, nie cała chmura
+    - generic "Bieżące temperatury na tej samej wysokości":
+      - generic: Porcja
+      - strong: 5,2°C
+      - generic: na 3000 m
+      - generic: Otoczenie
+      - strong: 3,0°C
+    - paragraph: "Przerywana linia: kondensacja około 740 m. Różowy pas: cieplejsza warstwa (inwersja)."
+    - button "Opuść porcję o 100 metrów":
+      - text: 100 m
+    - button "Unieś na 3000 m" [active]
+    - button "Unieś porcję o 100 metrów":
+      - text: 100 m
+  - region "Przewidywanie i wyjaśnienie":
+    - generic: 1. Przewidź
+    - heading "Co się stanie, gdy przestaniesz podnosić?" [level=2]
+    - paragraph: Trzymasz porcję w spoczynku. Teraz puścisz ją na wybranej wysokości.
+    - group "Moje przewidywanie":
+      - generic: Moje przewidywanie
+      - button "Zacznie się unosić":
+        - text: Zacznie się unosić
+      - button "Bez tendencji w którąś stronę":
+        - text: Bez tendencji w którąś stronę
+      - button "Zacznie opadać":
+        - text: Zacznie opadać
+    - button "Puść porcję" [disabled]:
+      - text: Puść porcję
+    - paragraph: Wybierz przewidywanie. Wysokość jest gotowa.
+  - region "Porównanie zapisanych prób":
+    - heading "Porównaj ze swoją wcześniejszą próbą" [level=2]
+    - article:
+      - generic: Próba A · 1500 m
+      - strong: 14,2°C porcja / 18,8°C otoczenie
+      - paragraph: Zacznie opadać
+    - paragraph: "A i B: to samo powietrze i otoczenie, inna wysokość puszczenia."
+  - button "Powtórz od początku tej próby":
+    - text: Powtórz od początku tej próby
+  - generic: 2 zapisanych prób w tej przeglądarce.
+  - generic "Jak działa schemat i czego nie wyliczamy?"
+  - paragraph: Pracownia edukacyjna. Nie używaj jej do oceny bezpieczeństwa lotu ani aktualnego zagrożenia burzą.

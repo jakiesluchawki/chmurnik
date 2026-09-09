@@ -1,0 +1,40 @@
+- banner:
+  - link "Pracownia":
+    - /url: "#pracownia"
+    - text: Pracownia
+  - link "Lekcja":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Lekcja
+- main [active]:
+  - navigation "Etapy pracowni":
+    - button "1 Porównaj trzy próby":
+      - text: "1"
+      - generic: Porównaj trzy próby
+    - button "2 Sprawdź się":
+      - text: "2"
+      - generic: Sprawdź się
+    - button "3 Wnioski":
+      - text: "3"
+      - generic: Wnioski
+  - img "Ilustracja rozwiniętej chmury burzowej z rozbudowanym wierzchołkiem i opadem"
+  - paragraph: Od porcji powietrza do głębokiej konwekcji
+  - heading "Chmura może powstać i nie rosnąć dalej." [level=1]
+  - paragraph: W próbie A wilgotna porcja utworzyła kropelki, ale przy puszczeniu była chłodniejsza od otoczenia. Silniejsze uniesienie w próbie B doprowadziło ją do poziomu, na którym była cieplejsza. Próba C pokazała, że wynik zależy również od profilu temperatury.
+  - paragraph: To jeden z mechanizmów istotnych dla rozwoju burz, nie pełny model burzy. Do głębokiej konwekcji potrzebne są odpowiednia wilgotność, chwiejność i inicjacja. Znaczenie mają też hamowanie, mieszanie i przepływ w całej warstwie atmosfery.
+  - strong: Twoje pierwsze przewidywania w nowych przypadkach
+  - paragraph: "Nowy przypadek 1: trafne · bez pomocy przewodnika. Relacja temperatur odczytana poprawnie. Kolejne próby nie zmieniają tego zapisu."
+  - paragraph: "Nowy przypadek 2: trafne · bez pomocy przewodnika. Relacja temperatur odczytana poprawnie. Przy uzasadnieniu skorzystano z pomocy. Kolejne próby nie zmieniają tego zapisu."
+  - button "Sprawdź się na nowych danych":
+    - text: Sprawdź się na nowych danych
+  - 'link "Dalej w lekcji: rozwój i zagrożenia burz"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: "Dalej w lekcji: rozwój i zagrożenia burz"
+  - button "Powtórz od początku tej próby":
+    - text: Powtórz od początku tej próby
+  - generic: 6 zapisanych prób w tej przeglądarce.
+  - generic "Jak działa schemat i czego nie wyliczamy?"
+  - paragraph: To fikcyjne profile do nauki. Przyjmujemy 26°C przy ziemi, ochładzanie unoszonej porcji o 9,8°C/km przed kondensacją i umowne 6°C/km po kondensacji. Poziom kondensacji szacujemy z temperatury i punktu rosy. Porównujemy temperatury na tej samej wysokości i przy tym samym ciśnieniu, pomijając poprawkę na wilgotność, obciążenie wodą, mieszanie i bezwładność. Dlatego strzałka oznacza tylko uproszczoną tendencję termiczną po puszczeniu w spoczynku. Nie obliczamy CAPE, CIN, prędkości, czasu, wierzchołka chmury ani prawdopodobieństwa burzy. Różnicę do 0,2°C traktujemy jako nierozstrzygającą.
+  - paragraph: Jeżeli otworzysz to wyjaśnienie podczas samodzielnej próby, oznaczymy ją jako wykonaną z pomocą.
+  - 'link "NWS: wilgotność, unoszenie, chwiejność i hamowanie"':
+    - /url: https://www.weather.gov/spotterguide/ingredients
+  - paragraph: Pracownia edukacyjna. Nie używaj jej do oceny bezpieczeństwa lotu ani aktualnego zagrożenia burzą.

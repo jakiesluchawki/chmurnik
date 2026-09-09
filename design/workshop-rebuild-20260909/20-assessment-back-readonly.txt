@@ -1,0 +1,48 @@
+- main:
+  - navigation:
+    - link "Pracownia":
+      - /url: "#pracownia"
+      - text: Pracownia
+    - heading "Oblodzenie" [level=1]
+    - link "Wróć do lekcji":
+      - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+      - text: Lekcja
+  - group "Sposób pracy":
+    - button "Prowadź mnie"
+    - button "Sprawdź się" [pressed]
+    - button "Eksperymentuj"
+  - button "Zatrzymaj ruch":
+  - region "Zadanie na nowych danych":
+    - paragraph: Pytanie 2 z 3 · nowy przypadek
+    - heading "Krople i powierzchnia 1" [level=2]
+    - paragraph: Najpierw zapisz decyzje, potem wybierz zasadę
+    - list:
+      - listitem: "Temperatura powietrza i powierzchni: −6°C"
+      - listitem: "Faza wody: krople ciekłej wody"
+      - listitem: "Ekspozycja w modelu: 30%"
+    - status: Decyzje zapisane. Możesz wrócić do ich podglądu, ale nie zmienić ich po odsłonięciu zasad.
+    - group "Jakie tempo narastania lodu w mm/min można podać?":
+      - generic: Jakie tempo narastania lodu w mm/min można podać?
+      - radio "Tempo wymaga dodatkowych danych o czasie, ilości wody i wielkości kropli" [checked] [disabled]
+      - generic: Tempo wymaga dodatkowych danych o czasie, ilości wody i wielkości kropli
+      - radio "Tempo można odczytać z grubości osadu na schemacie po danej ekspozycji" [disabled]
+      - generic: Tempo można odczytać z grubości osadu na schemacie po danej ekspozycji
+      - radio "Tempo można oszacować z procentu ekspozycji i temperatury powierzchni" [disabled]
+      - generic: Tempo można oszacować z procentu ekspozycji i temperatury powierzchni
+    - button "Wstecz":
+      - text: Wstecz
+    - button "Dalej":
+      - text: Dalej
+    - button "Przypomnij zasadę":
+      - text: Przypomnij zasadę
+    - button "Nie wiem, pokaż wyjaśnienie"
+    - button "Zmień decyzje w powtórce z pomocą"
+  - generic "O tym ćwiczeniu"
+  - link "Wróć do pełnej lekcji Rozdziały i zapisany postęp pozostają w lekcji.":
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/learn/zagrozenia
+    - text: Wróć do pełnej lekcji
+    - generic: Rozdziały i zapisany postęp pozostają w lekcji.
+  - 'link "Przejdź do pełnego narzędzia: Jak narasta lód?"':
+    - /url: https://jakiesluchawki.github.io/chmurnik/#/layers/hazards
+    - text: "Przejdź do pełnego narzędzia: Jak narasta lód?"
+  - generic "Źródła i granice tego ćwiczenia"
