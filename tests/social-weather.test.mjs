@@ -62,6 +62,7 @@ test('workshop release copy distinguishes submission, WWW and unchanged classifi
   assert.match(releasePosts.linkedin,/Nie ogłaszam nowego modelu rozpoznawania/);
   const html=await readFile(new URL('../social/2026-09-09-pracownie/site/index.html',import.meta.url),'utf8');
   assert.match(html,/Gotowy pakiet/);
+  assert.match(html,/src="assets\/art\/01-nebo\.webp"/);
   assert.match(html,/href="\.\.\/\.\.\/assetySM\/"/);
   assert.equal((html.match(/class="story"/g)||[]).length,10);
   assert.doesNotMatch(html,/expert-review|drive\.google\.com|R001|PRIVATE-KEY/);
