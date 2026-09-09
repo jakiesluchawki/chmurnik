@@ -1,11 +1,13 @@
-Niebo ma swoje powody. Im dłużej pracuję nad CHMURNIKIEM, tym bardziej chcę, żeby pomagał je rozumieć, a nie tylko podawał nazwy chmur.
+Niebo ma swoje powody. Chciałem, żeby CHMURNIK pomagał je odkrywać, a nie tylko podawał nazwy chmur. Dziś oddajemy Wam coś znacznie pełniejszego: 14 interaktywnych pracowni połączonych z lekcjami o pogodzie.
 
-Na chmurnik.cloud działa już 14 pracowni połączonych z pełnymi lekcjami. Można unieść porcję powietrza i zobaczyć, kiedy pojawi się chmura, prześledzić bryzę nad wodą, porównać ruch chmur na różnych poziomach albo rozszyfrować szkoleniowy METAR. Sondaż atmosfery poznajemy stopniowo, bez rzucania się od razu na trudny wykres. Osobne doświadczenia pokazują też mechanizmy oblodzenia, turbulencji i burz.
+Ich wartość jest prosta: nie zostajesz sam z definicją, skrótem czy trudnym wykresem. Możesz sprawdzić, co się zmieni, kiedy uniesiesz wilgotne powietrze, nadejdzie noc nad zatoką albo w raporcie zmieni się zachmurzenie. Zaczynasz łączyć liczby i opisy z czymś, co potrafisz sobie wyobrazić.
 
-Przewodnik pomaga zauważyć zależność, a samodzielna próba sprawdza jej zrozumienie na innym przykładzie. Nie chodzi o przepisanie tych samych liczb.
+Jest przewodnik na początek, miejsce na eksperyment i nowy przypadek do samodzielnego rozwiązania. Są chmury i wiatr, METAR/TAF, czytanie sondażu, fronty i mechanizmy zagrożeń pogodowych. Wszystko połączone z pełnymi lekcjami, żeby po doświadczeniu można było wrócić po wyjaśnienie.
 
-Można wejść bez logowania, z komputera albo telefonu, także z Androidem. Te same pracownie przygotowaliśmy w aktualizacji aplikacji na iPhone, iPad i Mac. Tam poprawiliśmy również dostęp do Warstw i narzędzi oraz ukrywanie odpowiedzi w codziennej zagadce. Na dostępność nowej wersji w App Store trzeba jeszcze poczekać na Apple.
+Strona jest już zaktualizowana. Działa bez konta i za darmo, także na telefonach z Androidem. Te same pracownie i wygodniejszy dostęp do narzędzi przygotowaliśmy w aktualizacji aplikacji na iPhone, iPad i Mac. Wysłaliśmy ją do recenzji Apple; nowej wersji nie ma jeszcze w sklepie.
 
-To narzędzia do nauki, nie prognoza ani ocena bezpieczeństwa lotu lub żeglugi.
+Wybierz temat, który Cię ciekawi. Może przy następnym spacerze nad wodą albo spojrzeniu przez okno znajomy widok opowie Ci trochę więcej.
 
-Zajrzyj: https://chmurnik.cloud/
+https://chmurnik.cloud/
+
+Pracownie są uproszczonymi modelami do nauki, nie prognozą ani oceną bezpieczeństwa lotu lub żeglugi.

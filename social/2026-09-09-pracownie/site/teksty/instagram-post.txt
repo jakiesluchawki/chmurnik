@@ -1,11 +1,13 @@
-Niebo ma swoje powody. W CHMURNIKU można teraz sprawdzić kilka z nich samodzielnie.
+Niebo ma swoje powody. Teraz łatwiej je odkrywać w CHMURNIKU.
 
-Przygotowaliśmy 14 pracowni połączonych z pełnymi lekcjami. Unosisz powietrze i obserwujesz powstawanie chmury, porównujesz bryzę w dzień i w nocy, śledzisz ruch chmur, czytasz szkoleniowy METAR i krok po kroku poznajesz sondaż atmosfery. Są też doświadczenia o frontach, oblodzeniu, turbulencjach i burzach.
+Zamknęliśmy ważny etap: oddajemy Wam 14 interaktywnych pracowni połączonych z pełnymi lekcjami. Możesz sprawdzić, dlaczego powstaje chmura, co wprawia powietrze w ruch i jak przeczytać pogodę zapisaną w depeszy albo na wykresie.
 
-Zależało mi, żeby nie kończyło się na przesuwaniu suwaka. Najpierw przewidujesz efekt, potem go sprawdzasz, a w samodzielnej próbie dostajesz nowy przypadek.
+Nie trzeba zaczynać od rozumienia wszystkich skrótów. Przewodnik pomaga zauważyć zależność, a samodzielna próba pozwala wykorzystać ją w nowym przypadku. To ma być wiedza, do której możesz wrócić, gdy znów spojrzysz w niebo.
 
-WWW jest już zaktualizowane: chmurnik.cloud. To także droga dla osób z Androidem. Nowa wersja aplikacji na iPhone, iPad i Mac wymaga jeszcze zakończenia recenzji Apple; nie jest to ogłoszenie jej dostępności w sklepie.
+Na chmurnik.cloud możesz zacząć już teraz: za darmo, bez konta, także z Androida. Te same pracownie oraz poprawiona nawigacja są w aktualizacji na iPhone, iPad i Mac wysłanej do recenzji Apple. Na nową wersję w sklepie jeszcze czekamy.
 
-Pracownie uczą na uproszczonych przykładach. Nie są prognozą ani oceną bezpieczeństwa lotu lub żeglugi.
+Wybierz jedno pytanie o niebo i daj sobie chwilę, żeby sprawdzić odpowiedź. Link do pracowni w Stories.
+
+Pracownie wykorzystują uproszczone przykłady do nauki. Nie są prognozą ani oceną bezpieczeństwa lotu lub żeglugi.
 
 #CHMURNIK #meteorologia #chmury #nauka

@@ -29,7 +29,7 @@ await writeFile(resolve(site, 'index.html'), `<!doctype html><html lang="pl"><he
 <header><img src="assets/wordmark.png" alt="CHMURNIK"><a href="../../assetySM/">Wszystkie materiały SM</a></header>
 <main><p class="eyebrow">PRACOWNIE POGODY · WWW I APLIKACJE</p><h1>${escape(title)}</h1>
 <div class="banner"><img src="assets/cover.webp" alt="Stylizowana ilustracja obserwacji wiatru z pracowni CHMURNIKA"><div>
-<p class="status">Pełne teksty do akceptacji · 9 września 2026</p><p>${escape(availability)}</p>
+<p class="status">Pełne teksty do akceptacji · wersja 2 · 9 września 2026</p><p>${escape(availability)}</p>
 <p>Wszystkie 10 Stories i slajdów karuzeli oraz posty na trzy platformy są poniżej, w całości. To nowy zestaw, zastępujący zapowiedź dwóch doświadczeń z 8 września.</p>
 <a class="button" href="TEKSTY-I-LINKI.txt" download>Pobierz pełny tekst</a><a class="button" href="CHMURNIK-PRACOWNIE-TEKSTY.zip" download>Pobierz paczkę tekstów</a>
 <p class="note">Finalne 10 statycznych Stories PNG, karuzela PNG, grafika Facebooka i dokument LinkedIn PDF powstaną po akceptacji treści. Nie publikowano postów na kontach. Ilustracja powyżej pochodzi z pracowni, nie jest gotową planszą społecznościową.</p></div></div>

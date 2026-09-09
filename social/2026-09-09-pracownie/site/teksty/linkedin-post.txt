@@ -1,11 +1,13 @@
-Niebo ma swoje powody. Dobra aplikacja edukacyjna powinna pomóc je zrozumieć, nie tylko ładnie o nich opowiedzieć.
+Zamknęliśmy ważny etap rozwoju CHMURNIKA. Na stronie udostępniliśmy 14 interaktywnych pracowni połączonych z pełnymi lekcjami o chmurach i atmosferze.
 
-Po uwagach osób korzystających z CHMURNIKA przebudowaliśmy część poświęconą nauce. Na stronie działa już 14 pracowni: od powstawania chmur i bryzy, przez obserwację ruchu chmur oraz METAR/TAF, po sondaż atmosfery i mechanizmy zagrożeń pogodowych.
+Chodzi o bardzo konkretną wartość: przejście od przeczytania definicji do samodzielnego wyciągnięcia wniosku. Użytkownik nie dostaje tylko opisu kondensacji, depeszy METAR czy wykresu Skew-T. Może prześledzić proces, porównać przypadki i zobaczyć, co wynika z obserwacji.
 
-Najważniejsza zmiana nie polega na liczbie ilustracji. Przewodnik prowadzi przez obserwację zależności, a samodzielna próba wymaga wykorzystania jej w nowym przypadku. Pierwsze odpowiedzi, pomoc i powtórki są rozróżniane. Lekcje prowadzą do doświadczeń, a doświadczenia pozwalają wrócić do wyjaśnienia.
+Przewodnik pomaga rozpocząć naukę bez wcześniejszej znajomości całego tematu. Samodzielna próba wymaga zastosowania poznanej zależności w innym przypadku. Pierwsze odpowiedzi, pomoc i powtórki są rozróżniane, a z doświadczenia można wrócić do pełnego wyjaśnienia. To najważniejsza zmiana po uwagach osób korzystających z aplikacji.
 
-Zmiany obejmują WWW oraz przygotowaną aktualizację aplikacji na iPhone, iPad i Mac. Strona jest już dostępna, także na telefonach z Androidem. Wersja 1.2.1 aplikacji wymaga jeszcze zakończenia procesu Apple. Nie ogłaszamy nowego modelu rozpoznawania chmur: to aktualizacja nauki i obsługi.
+Rozwijamy zarówno WWW, jak i aplikacje. Nowe pracownie działają już na chmurnik.cloud, za darmo i bez logowania, także na Androidzie. Aktualizacja 1.2.1 na iPhone, iPad i Mac, z tymi samymi doświadczeniami i poprawioną nawigacją, została wysłana do recenzji Apple. Nie ogłaszamy nowego modelu rozpoznawania chmur: ten etap dotyczy nauki i wygody korzystania.
 
-Pracownie są opisanymi uproszczeniami edukacyjnymi, nie prognozą ani oceną bezpieczeństwa. Ich skuteczność dydaktyczną nadal warto sprawdzać z ludźmi, nie utożsamiać jej z przejściem testów oprogramowania.
+Chciałem zachować w tej aplikacji przyjemność patrzenia w niebo, ale dać jej solidne, użytkowe oparcie. Zajrzyj i wybierz pytanie, na które chciałbyś umieć odpowiedzieć.
 
 https://chmurnik.cloud/
+
+Pracownie wykorzystują opisane uproszczenia edukacyjne. Nie są prognozą ani oceną bezpieczeństwa lotu lub żeglugi.
