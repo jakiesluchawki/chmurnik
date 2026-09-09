@@ -93,7 +93,7 @@ const revision = createHash('sha256').update(await readFile(resolve(site, 'style
 await writeFile(resolve(site, 'index.html'), `<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${escape(title)} · Materiały SM · CHMURNIK</title><link rel="stylesheet" href="style.css?v=${revision}"></head><body>
 <header><img src="assets/wordmark.png" alt="CHMURNIK"><a href="../../assetySM/">Wszystkie materiały SM</a></header>
 <main><p class="eyebrow">PRACOWNIE POGODY · WWW I APLIKACJE</p><h1>${escape(title)}</h1>
-<div class="banner"><img src="assets/cover.webp" alt="Stylizowane otwarte okno, za którym widać krajobraz i chmurę w świetle poranka"><div>
+<div class="banner"><img src="assets/art/01-nebo.webp" alt="Stylizowane otwarte okno, za którym widać krajobraz i chmurę w świetle poranka"><div>
 <p class="status">Gotowy pakiet · zaakceptowane teksty · 9 września 2026</p><p>${escape(availability)}</p>
 <p>10 nowych ilustracji, 10 statycznych Stories, 10 slajdów karuzeli, grafika Facebooka i 10-stronicowy PDF na LinkedIn. Każda plansza zawiera całą zatwierdzoną treść. Wszystkie posty znajdziesz poniżej.</p>
 ${download('CHMURNIK-PRACOWNIE-PELNY-PAKIET.zip', 'Pobierz cały pakiet')}${download('TEKSTY-I-LINKI.txt', 'Pełne teksty i linki')}
