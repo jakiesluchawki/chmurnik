@@ -1,0 +1,84 @@
+CHMURNIK / POSTY DO GRUP / 14.09.2026
+
+Pięć pełnych postów i pięć wcześniej zaakceptowanych plansz PNG. Cztery konkretne grupy zweryfikowano w zakresie opisanym poniżej. Wariant pogodowy nie ma jeszcze zweryfikowanej grupy docelowej. Nie opublikowano żadnego posta na Facebooku.
+
+KURSANCI PPL I SPL
+Do zweryfikowanej grupy PPL/SPL. Dwie plansze, w kolejności METAR i powstawanie chmury.
+
+Cześć, mam w rodzinie szybownika i od chęci pomocy mu w rozpoznawaniu chmur zaczął się CHMURNIK. Później doszedł trening METAR/TAF. Pomyślałem, że może przydać się również komuś, kto właśnie porządkuje sobie meteorologię podczas szkolenia.
+
+Jestem autorem aplikacji. Przygotowałem atlas z prawdziwymi zdjęciami, lekcje oraz interaktywne ćwiczenia: można rozczytywać depesze po kawałku, porównać podstawę najniższej chmury z pułapem albo sprawdzić, co dzieje się z temperaturą unoszonego powietrza. Zależało mi na połączeniu skrótów i definicji z czymś, co da się zobaczyć i zrozumieć.
+
+Wersja WWW jest bezpłatna i działa bez zakładania konta, także na telefonie z Androidem: https://chmurnik.cloud/
+
+To pomoc do nauki, nie zamiennik instruktora, oficjalnych materiałów ani briefingu przed lotem. Jeśli zajrzycie, chętnie przeczytam, co podczas nauki meteorologii było dla Was najmniej zrozumiałe. Takie uwagi bardzo pomagają mi rozwijać ten projekt.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
+
+================================
+
+SZYBOWNICY
+Po zgodzie administratora. Zacznij od planszy o chmurze falowej; dwie kolejne są opcjonalne.
+
+Cześć, CHMURNIK zaczął się od szybownika w mojej rodzinie. Chciałem przygotować dla niego wygodną pomoc w rozpoznawaniu chmur. Z czasem sam coraz bardziej wciągałem się w pytanie, dlaczego niebo wygląda właśnie tak, a nie inaczej.
+
+Dziś jest tam atlas z prawdziwymi fotografiami, pełne lekcje i pracownie, w których można sprawdzić zależności: jak wilgotność wpływa na pojawienie się chmury przy unoszeniu powietrza, dlaczego chmura falowa może pozostawać w miejscu mimo przepływu oraz co pokazuje pionowy profil atmosfery.
+
+Udostępniłem wersję przeglądarkową bezpłatnie, bez rejestracji: https://chmurnik.cloud/
+
+Nie traktuję tego jako narzędzia do wyboru warunków do lotu. To materiał do nauki i uważniejszej obserwacji. Będę wdzięczny za spojrzenie osób, dla których czytanie nieba jest częścią latania: co warto wytłumaczyć lepiej, a gdzie uproszczenie może wprowadzać w błąd? Mam nadzieję, że przyda się też komuś na początku tej drogi.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
+
+================================
+
+ŻEGLARZE
+Po sprawdzeniu regulaminu grupy Żeglarze. Dwie plansze: wybrzeże i ruch powietrza.
+
+Cześć, podczas wyjazdu na żagle z kolegami przydał mi się moduł o wietrze, który wcześniej dobudowałem do własnej aplikacji. Tak CHMURNIK, początkowo pomyślany jako pomoc w rozpoznawaniu chmur dla szybownika w rodzinie, znalazł też swoje miejsce nad wodą.
+
+Rozwijam go jako narzędzie do zrozumienia pogody. Można prześledzić powstawanie bryzy, zobaczyć związek między chłodzeniem wilgotnego powietrza a mgłą, poćwiczyć czytanie warstw map Windy i zajrzeć do atlasu prawdziwych chmur. W ćwiczeniach zmieniasz warunki i obserwujesz skutek, zamiast tylko czytać definicję.
+
+Można korzystać bezpłatnie, bez konta i bez instalowania aplikacji: https://chmurnik.cloud/
+
+To nie serwis z prognozą ani podpowiedź, czy bezpiecznie wypływać. Chciałem zrobić coś, co pomaga lepiej rozumieć to, co widzimy nad wodą. Jeśli macie chwilę, zapraszam do zajrzenia. Ciekawi mnie też, które zjawiska najtrudniej było Wam połączyć z tym, czego uczyliście się o pogodzie.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
+
+================================
+
+PASJONACI LOTNICTWA
+Wariant rezerwowy dla lotnictwo.net.pl, po sprawdzeniu regulaminu. Nie publikuj jednocześnie we wszystkich grupach lotniczych.
+
+Cześć, chciałbym pokazać Wam mój poboczny projekt, który wyrósł z lotniczej historii w rodzinie. Mam bliską osobę latającą na szybowcach i chciałem pomóc jej w nauce rozpoznawania chmur. Tak powstał CHMURNIK.
+
+Od atlasu doszedłem do lekcji i interaktywnych pracowni. Można w nich unosić porcję powietrza i obserwować, kiedy zaczyna tworzyć się chmura, porównywać wiatr na różnych wysokościach albo połączyć lotniczy raport pogodowy z obrazem nieba. Jest też pomoc w czytaniu METAR i TAF, czyli obserwacji pogody na lotnisku i prognozy lotniskowej.
+
+Zależało mi, żeby pogoda przestała być tylko zestawem nazw i skrótów, a zaczęła układać się w zrozumiałą całość. Wersję WWW udostępniłem bezpłatnie i bez rejestracji: https://chmurnik.cloud/
+
+Zapraszam, jeśli macie ochotę sprawdzić. Nie jest to narzędzie do planowania lotu; to miejsce do nauki. Chętnie przyjmę uwagi, szczególnie o tym, co nadal jest niejasne dla osoby, która dopiero wchodzi w temat.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
+
+================================
+
+OBSERWATORZY POGODY I CHMUR
+Wariant do grupy pogodowej, do której już należysz lub którą wskażesz. Nie przypisuję go do niezweryfikowanej grupy ani fanpage’a.
+
+Cześć, od pewnego czasu rozwijam CHMURNIK, autorską aplikację do poznawania chmur i procesów, które kształtują pogodę. Zaczęło się od chęci pomocy szybownikowi w rodzinie. Potem okazało się, że samo pytanie „co to za chmura?” otwiera sporo kolejnych: skąd się wzięła, co mówi o powietrzu i czego nie da się wywnioskować z jednego zdjęcia.
+
+Przygotowałem atlas z prawdziwymi fotografiami, lekcje oraz interaktywne pracownie dotyczące między innymi kondensacji, mgły, bryzy, frontów i pionowego profilu atmosfery. Można zmieniać warunki, porównywać wyniki i sprawdzać własne rozumowanie. Przy ćwiczeniach są źródła i opis ich ograniczeń.
+
+Całość w przeglądarce jest dostępna bezpłatnie, bez zakładania konta: https://chmurnik.cloud/
+
+Nie chcę udawać serwisu prognostycznego ani zastępować wiedzy obserwatorów. Chciałem ułatwić wejście w temat i zachęcić do uważniejszego patrzenia. Jeśli znajdziecie coś przydatnego, będzie mi miło; jeśli coś jest nieprecyzyjne, chętnie się temu przyjrzę.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
+
+WIADOMOŚĆ DO ADMINISTRATORA
+
+Dzień dobry, jestem autorem CHMURNIKA, aplikacji do nauki o chmurach i pogodzie. Projekt zaczął się od chęci pomocy szybownikowi w rodzinie; wersja WWW jest bezpłatna i nie wymaga konta: https://chmurnik.cloud/
+
+Czy mogę zamieścić w grupie jeden krótki post z dwiema planszami, opisem przydatnych dla jej członków funkcji i zaproszeniem do korzystania? Na końcu chciałbym dodać PS z prośbą o kontakt do osób doświadczonych w rozpoznawaniu chmur, które mogłyby ocenić 33 zdjęcia w gotowym panelu.
+
+Nie planuję ponawiania wpisu ani zbierania kontaktów do newslettera. Jeśli taki post nie pasuje do zasad grupy, uszanuję to.

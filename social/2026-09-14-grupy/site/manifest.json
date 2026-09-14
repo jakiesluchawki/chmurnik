@@ -1,0 +1,267 @@
+{
+  "date": "2026-09-14",
+  "title": "Zaproszenie do wspólnego patrzenia w niebo.",
+  "webUrl": "https://chmurnik.cloud/",
+  "groups": [
+    {
+      "id": "ppl",
+      "name": "PPL, SPL - licencja pilota (private pilot license worldwide).",
+      "url": "https://www.facebook.com/groups/323986091578028/",
+      "visibility": "Prywatna, widoczna",
+      "members": "około 12,5 tys.",
+      "activity": "79 postów w ostatnim miesiącu, według sekcji Informacje.",
+      "status": "Pierwszy wybór",
+      "post": "ppl",
+      "fit": "Kursanci i osoby zainteresowane licencją pilota. Najlepiej pasuje konkretny opis nauki METAR/TAF i rozpoznawania chmur.",
+      "rules": "Regulamin dopuszcza ogłoszenia, ale ponawianie ich częściej niż raz w miesiącu traktuje jako spam. Nie wolno wyłączać komentarzy. Przed publikacją sprawdź, czy zasady się nie zmieniły.",
+      "evidence": "Odczytano publicznie dostępne Informacje i regulamin grupy. Nie czytano prywatnej dyskusji ani nie dołączano do grupy."
+    },
+    {
+      "id": "szybownicy",
+      "name": "SZYBOWNICY",
+      "url": "https://www.facebook.com/groups/szybownicy/",
+      "visibility": "Prywatna, widoczna",
+      "members": "około 9 tys.",
+      "activity": "62 posty w ostatnim miesiącu, według sekcji Informacje.",
+      "status": "Bardzo dobry temat; najpierw administrator",
+      "post": "szybownicy",
+      "fit": "Najbliższa genezie CHMURNIKA. Opis grupy mówi o termice i chmurach; tutaj ważniejsza będzie nauka obserwacji niż ogólna prezentacja aplikacji.",
+      "rules": "Opis grupy wskazuje osobny kontakt do współpracy i reklamy. To nie jest potwierdzenie zgody na post autora aplikacji. Najpierw wyślij administratorowi krótki opis i zapytaj o zgodę.",
+      "evidence": "Odczytano opis, widoczność, aktywność i dostępne zasady uprzejmej dyskusji. Zgoda na publikację nie została uzyskana."
+    },
+    {
+      "id": "zeglarze",
+      "name": "Żeglarze",
+      "url": "https://www.facebook.com/groups/287558007940267/",
+      "visibility": "Publiczna",
+      "members": "około 5,5 tys.",
+      "activity": "Widoczne bieżące wpisy szkół żeglarstwa, materiały edukacyjne i oferty czarterów. Nie ustalono aktywności miesięcznej.",
+      "status": "Druga grupa odbiorców; sprawdź regulamin",
+      "post": "zeglarze",
+      "fit": "Wiatr, bryza, mgła i czytanie map. W widocznym fragmencie dyskusji jest dużo ofert, więc post powinien zaczynać się od osobistego doświadczenia i konkretnej wartości edukacyjnej.",
+      "rules": "Nie udało się dokończyć odczytu regulaminu. Obecność cudzych ofert nie daje automatycznie zgody na własną publikację. Sprawdź zasady po wejściu do grupy lub zapytaj administratora.",
+      "evidence": "Potwierdzono nazwę, adres, publiczny status i liczbę członków na stronie grupy. Dalszy odczyt został zatrzymany przez kontrolę uprawnień narzędzia."
+    },
+    {
+      "id": "lotnictwo",
+      "name": "lotnictwo.net.pl - dyskusyjna grupa miłośników lotnictwa",
+      "url": "https://www.facebook.com/groups/512893772443109/",
+      "visibility": "Publiczna według widocznego posta",
+      "members": "niezweryfikowana",
+      "activity": "Niezweryfikowana. Dostępny publiczny wpis nie wystarcza do oceny obecnej aktywności.",
+      "status": "Rezerwa, po sprawdzeniu zasad",
+      "post": "lotnictwo",
+      "fit": "Szersze grono pasjonatów lotnictwa, nie tylko osoby w trakcie szkolenia. Mniej skrótów na początku, więcej o tym, co można samemu sprawdzić.",
+      "rules": "Strona główna wymagała logowania; nie potwierdzono aktualnego regulaminu. Nie publikuj na podstawie samego dopasowania tematycznego.",
+      "evidence": "Nazwa i odsyłacz do grupy oraz publiczny status były widoczne w jej poście: https://www.facebook.com/groups/lnetpl/posts/2574477656284700/ . Nie ustalono zasad ani aktualnej wielkości grupy."
+    }
+  ],
+  "posts": [
+    {
+      "id": "ppl",
+      "audience": "Kursanci PPL i SPL",
+      "images": [
+        "05",
+        "02"
+      ],
+      "use": "Do zweryfikowanej grupy PPL/SPL. Dwie plansze, w kolejności METAR i powstawanie chmury.",
+      "text": "Cześć, mam w rodzinie szybownika i od chęci pomocy mu w rozpoznawaniu chmur zaczął się CHMURNIK. Później doszedł trening METAR/TAF. Pomyślałem, że może przydać się również komuś, kto właśnie porządkuje sobie meteorologię podczas szkolenia.\n\nJestem autorem aplikacji. Przygotowałem atlas z prawdziwymi zdjęciami, lekcje oraz interaktywne ćwiczenia: można rozczytywać depesze po kawałku, porównać podstawę najniższej chmury z pułapem albo sprawdzić, co dzieje się z temperaturą unoszonego powietrza. Zależało mi na połączeniu skrótów i definicji z czymś, co da się zobaczyć i zrozumieć.\n\nWersja WWW jest bezpłatna i działa bez zakładania konta, także na telefonie z Androidem: https://chmurnik.cloud/\n\nTo pomoc do nauki, nie zamiennik instruktora, oficjalnych materiałów ani briefingu przed lotem. Jeśli zajrzycie, chętnie przeczytam, co podczas nauki meteorologii było dla Was najmniej zrozumiałe. Takie uwagi bardzo pomagają mi rozwijać ten projekt.\n\nPS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu."
+    },
+    {
+      "id": "szybownicy",
+      "audience": "Szybownicy",
+      "images": [
+        "04",
+        "02",
+        "06"
+      ],
+      "use": "Po zgodzie administratora. Zacznij od planszy o chmurze falowej; dwie kolejne są opcjonalne.",
+      "text": "Cześć, CHMURNIK zaczął się od szybownika w mojej rodzinie. Chciałem przygotować dla niego wygodną pomoc w rozpoznawaniu chmur. Z czasem sam coraz bardziej wciągałem się w pytanie, dlaczego niebo wygląda właśnie tak, a nie inaczej.\n\nDziś jest tam atlas z prawdziwymi fotografiami, pełne lekcje i pracownie, w których można sprawdzić zależności: jak wilgotność wpływa na pojawienie się chmury przy unoszeniu powietrza, dlaczego chmura falowa może pozostawać w miejscu mimo przepływu oraz co pokazuje pionowy profil atmosfery.\n\nUdostępniłem wersję przeglądarkową bezpłatnie, bez rejestracji: https://chmurnik.cloud/\n\nNie traktuję tego jako narzędzia do wyboru warunków do lotu. To materiał do nauki i uważniejszej obserwacji. Będę wdzięczny za spojrzenie osób, dla których czytanie nieba jest częścią latania: co warto wytłumaczyć lepiej, a gdzie uproszczenie może wprowadzać w błąd? Mam nadzieję, że przyda się też komuś na początku tej drogi.\n\nPS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu."
+    },
+    {
+      "id": "zeglarze",
+      "audience": "Żeglarze",
+      "images": [
+        "03",
+        "04"
+      ],
+      "use": "Po sprawdzeniu regulaminu grupy Żeglarze. Dwie plansze: wybrzeże i ruch powietrza.",
+      "text": "Cześć, podczas wyjazdu na żagle z kolegami przydał mi się moduł o wietrze, który wcześniej dobudowałem do własnej aplikacji. Tak CHMURNIK, początkowo pomyślany jako pomoc w rozpoznawaniu chmur dla szybownika w rodzinie, znalazł też swoje miejsce nad wodą.\n\nRozwijam go jako narzędzie do zrozumienia pogody. Można prześledzić powstawanie bryzy, zobaczyć związek między chłodzeniem wilgotnego powietrza a mgłą, poćwiczyć czytanie warstw map Windy i zajrzeć do atlasu prawdziwych chmur. W ćwiczeniach zmieniasz warunki i obserwujesz skutek, zamiast tylko czytać definicję.\n\nMożna korzystać bezpłatnie, bez konta i bez instalowania aplikacji: https://chmurnik.cloud/\n\nTo nie serwis z prognozą ani podpowiedź, czy bezpiecznie wypływać. Chciałem zrobić coś, co pomaga lepiej rozumieć to, co widzimy nad wodą. Jeśli macie chwilę, zapraszam do zajrzenia. Ciekawi mnie też, które zjawiska najtrudniej było Wam połączyć z tym, czego uczyliście się o pogodzie.\n\nPS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu."
+    },
+    {
+      "id": "lotnictwo",
+      "audience": "Pasjonaci lotnictwa",
+      "images": [
+        "02",
+        "05"
+      ],
+      "use": "Wariant rezerwowy dla lotnictwo.net.pl, po sprawdzeniu regulaminu. Nie publikuj jednocześnie we wszystkich grupach lotniczych.",
+      "text": "Cześć, chciałbym pokazać Wam mój poboczny projekt, który wyrósł z lotniczej historii w rodzinie. Mam bliską osobę latającą na szybowcach i chciałem pomóc jej w nauce rozpoznawania chmur. Tak powstał CHMURNIK.\n\nOd atlasu doszedłem do lekcji i interaktywnych pracowni. Można w nich unosić porcję powietrza i obserwować, kiedy zaczyna tworzyć się chmura, porównywać wiatr na różnych wysokościach albo połączyć lotniczy raport pogodowy z obrazem nieba. Jest też pomoc w czytaniu METAR i TAF, czyli obserwacji pogody na lotnisku i prognozy lotniskowej.\n\nZależało mi, żeby pogoda przestała być tylko zestawem nazw i skrótów, a zaczęła układać się w zrozumiałą całość. Wersję WWW udostępniłem bezpłatnie i bez rejestracji: https://chmurnik.cloud/\n\nZapraszam, jeśli macie ochotę sprawdzić. Nie jest to narzędzie do planowania lotu; to miejsce do nauki. Chętnie przyjmę uwagi, szczególnie o tym, co nadal jest niejasne dla osoby, która dopiero wchodzi w temat.\n\nPS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu."
+    },
+    {
+      "id": "pogoda",
+      "audience": "Obserwatorzy pogody i chmur",
+      "images": [
+        "02",
+        "06"
+      ],
+      "use": "Wariant do grupy pogodowej, do której już należysz lub którą wskażesz. Nie przypisuję go do niezweryfikowanej grupy ani fanpage’a.",
+      "text": "Cześć, od pewnego czasu rozwijam CHMURNIK, autorską aplikację do poznawania chmur i procesów, które kształtują pogodę. Zaczęło się od chęci pomocy szybownikowi w rodzinie. Potem okazało się, że samo pytanie „co to za chmura?” otwiera sporo kolejnych: skąd się wzięła, co mówi o powietrzu i czego nie da się wywnioskować z jednego zdjęcia.\n\nPrzygotowałem atlas z prawdziwymi fotografiami, lekcje oraz interaktywne pracownie dotyczące między innymi kondensacji, mgły, bryzy, frontów i pionowego profilu atmosfery. Można zmieniać warunki, porównywać wyniki i sprawdzać własne rozumowanie. Przy ćwiczeniach są źródła i opis ich ograniczeń.\n\nCałość w przeglądarce jest dostępna bezpłatnie, bez zakładania konta: https://chmurnik.cloud/\n\nNie chcę udawać serwisu prognostycznego ani zastępować wiedzy obserwatorów. Chciałem ułatwić wejście w temat i zachęcić do uważniejszego patrzenia. Jeśli znajdziecie coś przydatnego, będzie mi miło; jeśli coś jest nieprecyzyjne, chętnie się temu przyjrzę.\n\nPS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu."
+    }
+  ],
+  "images": [
+    {
+      "number": "02",
+      "file": "obrazy/02-chmura.png",
+      "preview": "podglady/02.jpg",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Unosząca się porcja powietrza nad wzgórzem przechodzi w chmurę. Zobacz, dlaczego powstaje chmura Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.",
+      "sha256": "db15f7689fa0abd401d28496715c727e066aa71d648ebfef798e246314c21bda",
+      "source": "../pracownie/karuzela/chmurnik-pracownie-02.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "number": "03",
+      "file": "obrazy/03-nad-woda.png",
+      "preview": "podglady/03.jpg",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Zatoka o zmierzchu, księżyc i niska mgła nad brzegiem. Wieczór nad wodą ma swoją fizykę Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.",
+      "sha256": "f0caff34f675a365d7f0f0fa0e47abeb7533e224a683e3d2aacaca984b68c240",
+      "source": "../pracownie/karuzela/chmurnik-pracownie-03.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "number": "04",
+      "file": "obrazy/04-wiatr.png",
+      "preview": "podglady/04.jpg",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Chmura falowa nad grzbietem górskim i pasma przepływającego powietrza. Nieruchoma chmura też potrafi zmylić Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.",
+      "sha256": "8c0757659e2309195cf65f9e31339cb3e19efbde7f5ccbe02b1a67cca9325b38",
+      "source": "../pracownie/karuzela/chmurnik-pracownie-04.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "number": "05",
+      "file": "obrazy/05-metar.png",
+      "preview": "podglady/05.jpg",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Papier depeszy, chmury na różnych poziomach i mały rękaw wiatrowy. Depesza, którą zaczynasz rozumieć METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.",
+      "sha256": "5289b91230e82d817a9ae83d5ebb7e80cc09de9e7b12e379480557da925cd6af",
+      "source": "../pracownie/karuzela/chmurnik-pracownie-05.png",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "number": "06",
+      "file": "obrazy/06-sondaz.png",
+      "preview": "podglady/06.jpg",
+      "alt": "Stylizowana ilustracja, nie fotografia obserwacyjna. Balon meteorologiczny, radiosonda i dwie linie profilu atmosfery. Trudny wykres ma teraz początek Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.",
+      "sha256": "b38995fde5bb05d086a0e5ff66d1508314ed81297170ba96df5c7a4ab78e2739",
+      "source": "../pracownie/karuzela/chmurnik-pracownie-06.png",
+      "width": 1080,
+      "height": 1350
+    }
+  ],
+  "archives": [
+    {
+      "id": "calosc",
+      "file": "CHMURNIK-GRUPY-CALOSC.zip",
+      "entries": [
+        "PELNE-POSTY.txt",
+        "GRUPY-I-PUBLIKACJA.txt",
+        "teksty/alt-teksty.txt",
+        "teksty/administrator.txt",
+        "teksty/ppl.txt",
+        "teksty/szybownicy.txt",
+        "teksty/zeglarze.txt",
+        "teksty/lotnictwo.txt",
+        "teksty/pogoda.txt",
+        "obrazy/02-chmura.png",
+        "obrazy/03-nad-woda.png",
+        "obrazy/04-wiatr.png",
+        "obrazy/05-metar.png",
+        "obrazy/06-sondaz.png"
+      ],
+      "bytes": 5114754,
+      "sha256": "d2c685d6024863280080492a85b8c777851a04cc5aacaf5da950dee3871c6c0e"
+    },
+    {
+      "id": "ppl",
+      "file": "CHMURNIK-GRUPY-PPL.zip",
+      "entries": [
+        "teksty/ppl.txt",
+        "GRUPY-I-PUBLIKACJA.txt",
+        "teksty/alt-teksty.txt",
+        "obrazy/05-metar.png",
+        "obrazy/02-chmura.png"
+      ],
+      "bytes": 1877876,
+      "sha256": "4ca3f1b081b4906f42684c9bcfe5910b242b6f377ca90b068e0e40af6b80648b"
+    },
+    {
+      "id": "szybownicy",
+      "file": "CHMURNIK-GRUPY-SZYBOWNICY.zip",
+      "entries": [
+        "teksty/szybownicy.txt",
+        "GRUPY-I-PUBLIKACJA.txt",
+        "teksty/alt-teksty.txt",
+        "obrazy/04-wiatr.png",
+        "obrazy/02-chmura.png",
+        "obrazy/06-sondaz.png"
+      ],
+      "bytes": 3034477,
+      "sha256": "1b37d45a63342576540170d48fc159ba233984b28234449ced2d8a2cdfbfc30c"
+    },
+    {
+      "id": "zeglarze",
+      "file": "CHMURNIK-GRUPY-ZEGLARZE.zip",
+      "entries": [
+        "teksty/zeglarze.txt",
+        "GRUPY-I-PUBLIKACJA.txt",
+        "teksty/alt-teksty.txt",
+        "obrazy/03-nad-woda.png",
+        "obrazy/04-wiatr.png"
+      ],
+      "bytes": 2206058,
+      "sha256": "2016e18a5ce1b338472a16e5a860b5317e09eb97ac49b173bbdab50b6c7cb7c1"
+    },
+    {
+      "id": "lotnictwo",
+      "file": "CHMURNIK-GRUPY-LOTNICTWO.zip",
+      "entries": [
+        "teksty/lotnictwo.txt",
+        "GRUPY-I-PUBLIKACJA.txt",
+        "teksty/alt-teksty.txt",
+        "obrazy/02-chmura.png",
+        "obrazy/05-metar.png"
+      ],
+      "bytes": 1877878,
+      "sha256": "36c1ea82d9e8fb228ab5794e2957d936072ff15f0e34354049a9dc29243373d8"
+    },
+    {
+      "id": "pogoda",
+      "file": "CHMURNIK-GRUPY-POGODA.zip",
+      "entries": [
+        "teksty/pogoda.txt",
+        "GRUPY-I-PUBLIKACJA.txt",
+        "teksty/alt-teksty.txt",
+        "obrazy/02-chmura.png",
+        "obrazy/06-sondaz.png"
+      ],
+      "bytes": 1947453,
+      "sha256": "af3ee21dc60a9d79cc6525836e53b0f6189d096a31f393cc886a6995cb23bd14"
+    }
+  ],
+  "adminMessage": "Dzień dobry, jestem autorem CHMURNIKA, aplikacji do nauki o chmurach i pogodzie. Projekt zaczął się od chęci pomocy szybownikowi w rodzinie; wersja WWW jest bezpłatna i nie wymaga konta: https://chmurnik.cloud/\n\nCzy mogę zamieścić w grupie jeden krótki post z dwiema planszami, opisem przydatnych dla jej członków funkcji i zaproszeniem do korzystania? Na końcu chciałbym dodać PS z prośbą o kontakt do osób doświadczonych w rozpoznawaniu chmur, które mogłyby ocenić 33 zdjęcia w gotowym panelu.\n\nNie planuję ponawiania wpisu ani zbierania kontaktów do newslettera. Jeśli taki post nie pasuje do zasad grupy, uszanuję to.",
+  "guidance": [
+    "Zacznij od jednej grupy lotniczej: PPL/SPL. SZYBOWNICY i lotnictwo.net.pl to alternatywy lub późniejszy etap, nie trzy publikacje tego samego dnia do podobnych osób.",
+    "Po kilku dniach, kiedy będziesz mieć czas na rozmowę w komentarzach, spróbuj grupy Żeglarze. Najpierw potwierdź regulamin. Terminy są propozycją, nie obietnicą większego zasięgu.",
+    "Dołącz dwie plansze dobrane do tematu. Wariant dla szybowników ma trzecią opcjonalną. To ilustracje z istniejącej, zaakceptowanej serii, nie zdjęcia obserwacyjne ani zrzuty działającego interfejsu.",
+    "Pisz z własnego profilu i ujawniaj autorstwo. Bez stwierdzenia „to nie reklama”, sztucznych rekomendacji, hashtagów w każdym zdaniu i prośby „admin usuń, jeśli nie wolno”. Bezpłatny projekt nadal może podlegać zasadom autopromocji.",
+    "Wklej jeden link do chmurnik.cloud. Nie ukrywaj go w komentarzu, żeby obejść regulamin. Nie wysyłaj nieproszonych wiadomości do członków grupy.",
+    "Odpowiadaj na konkretne pytania i uwagi. Jeżeli ktoś prosi o diagnozę chmury lub decyzję o locie, nie przedstawiaj wyniku aplikacji jako pewnej oceny ani zgody na lot.",
+    "Nie ponawiaj tego samego wpisu tylko dlatego, że nie zebrał reakcji. Zapisz link do własnego posta i rzeczowe uwagi. Porównuj jakość rozmów; bez osobnego pomiaru nie przypisuj pobrań aplikacji konkretnej grupie.",
+    "PS jest zaproszeniem do dobrowolnej oceny 33 zdjęć. Dostęp do panelu udostępniaj prywatnie osobom, które same się zgłoszą. Nigdy nie wklejaj kont ani haseł w poście."
+  ],
+  "newGeneratedImages": 0,
+  "facebookPostsPublished": 0
+}

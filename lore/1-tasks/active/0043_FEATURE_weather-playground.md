@@ -15,6 +15,22 @@ history:
 
 # Weather Playground Preview
 
+## Group Outreach, 14 September 2026
+
+Owner requested respectful first-person posts for aviation and other Facebook
+groups, with a PS seeking experienced cloud identifiers for the existing
+33-photo review panel. Work is scoped to social materials and the permanent
+Pages gallery. No app/model change, Apple upload, CyberFolks update or Facebook
+publication is authorized by this request. See social/2026-09-14-grupy/README.md.
+
+Four group URLs have direct public-page evidence with explicit uncertainty
+about incomplete rules; the weather variant has no falsely verified recipient.
+Later browser access to Google/Facebook was denied by automatic review and was
+not bypassed. From plan: tailored copy, origin and opt-in expert PS. Emerged:
+reuse five byte-identical approved PNGs rather than generate before copy review.
+The gallery and ZIPs preserve every full post, instruction and source note.
+Verification and publication receipts follow in the campaign README.
+
 ## Scope
 
 Implement the first two approved experiments: coastal differential heating /

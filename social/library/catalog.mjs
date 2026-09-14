@@ -1,5 +1,18 @@
 export const packs = [
   {
+    id: 'grupy', source: '2026-09-14-grupy', date: '2026-09-14',
+    dateLabel: '14 września 2026', status: 'Posty do grup · teksty i dobrane PNG',
+    title: 'Zaproszenie do wspólnego patrzenia w niebo.',
+    description: 'Pięć pełnych postów: PPL/SPL, szybownictwo, lotnictwo, żeglarstwo i obserwacja pogody. Cztery sprawdzone adresy grup z opisem zasad, wiadomość do administratora i PS o ocenie 33 zdjęć. Pięć plansz wybranych z zaakceptowanej serii Pracownie.',
+    base: '../premiera/grupy/', preview: 'podglady/03.jpg',
+    formats: ['5 pełnych postów', '4 grupy FB', '5 PNG', 'Instrukcja', 'PS: 33 zdjęcia'],
+    downloads: [
+      ['Wszystkie posty i dobrane obrazy', 'CHMURNIK-GRUPY-CALOSC.zip', 'zip'],
+      ['Pełne teksty', 'PELNE-POSTY.txt', 'txt'],
+      ['Grupy, zasady i publikacja', 'GRUPY-I-PUBLIKACJA.txt', 'txt'],
+    ],
+  },
+  {
     id: 'pracownie', source: '2026-09-09-pracownie', date: '2026-09-09',
     dateLabel: '9 września 2026', status: 'Nowy pełny pakiet · PNG i PDF',
     title: 'Niebo ma swoje powody.',

@@ -1,0 +1,9 @@
+Cześć, chciałbym pokazać Wam mój poboczny projekt, który wyrósł z lotniczej historii w rodzinie. Mam bliską osobę latającą na szybowcach i chciałem pomóc jej w nauce rozpoznawania chmur. Tak powstał CHMURNIK.
+
+Od atlasu doszedłem do lekcji i interaktywnych pracowni. Można w nich unosić porcję powietrza i obserwować, kiedy zaczyna tworzyć się chmura, porównywać wiatr na różnych wysokościach albo połączyć lotniczy raport pogodowy z obrazem nieba. Jest też pomoc w czytaniu METAR i TAF, czyli obserwacji pogody na lotnisku i prognozy lotniskowej.
+
+Zależało mi, żeby pogoda przestała być tylko zestawem nazw i skrótów, a zaczęła układać się w zrozumiałą całość. Wersję WWW udostępniłem bezpłatnie i bez rejestracji: https://chmurnik.cloud/
+
+Zapraszam, jeśli macie ochotę sprawdzić. Nie jest to narzędzie do planowania lotu; to miejsce do nauki. Chętnie przyjmę uwagi, szczególnie o tym, co nadal jest niejasne dla osoby, która dopiero wchodzi w temat.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.

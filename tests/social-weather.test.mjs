@@ -35,8 +35,9 @@ test('weather pack extends the permanent library without removing campaigns',()=
   const old = packs.find(pack=>pack.id==='pogoda');
   assert.equal(old.archived,true);
   assert.match(old.status,/Archiwum/);
-  assert.equal(packs[0].id,'pracownie');
-  assert.match(packs[0].status,/PNG i PDF/);
+  const workshops = packs.find(pack=>pack.id==='pracownie');
+  assert(workshops);
+  assert.match(workshops.status,/PNG i PDF/);
 });
 
 test('workshop release pack preserves all ten texts and all platform posts',async()=>{

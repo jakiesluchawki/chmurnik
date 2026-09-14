@@ -1,0 +1,9 @@
+Cześć, podczas wyjazdu na żagle z kolegami przydał mi się moduł o wietrze, który wcześniej dobudowałem do własnej aplikacji. Tak CHMURNIK, początkowo pomyślany jako pomoc w rozpoznawaniu chmur dla szybownika w rodzinie, znalazł też swoje miejsce nad wodą.
+
+Rozwijam go jako narzędzie do zrozumienia pogody. Można prześledzić powstawanie bryzy, zobaczyć związek między chłodzeniem wilgotnego powietrza a mgłą, poćwiczyć czytanie warstw map Windy i zajrzeć do atlasu prawdziwych chmur. W ćwiczeniach zmieniasz warunki i obserwujesz skutek, zamiast tylko czytać definicję.
+
+Można korzystać bezpłatnie, bez konta i bez instalowania aplikacji: https://chmurnik.cloud/
+
+To nie serwis z prognozą ani podpowiedź, czy bezpiecznie wypływać. Chciałem zrobić coś, co pomaga lepiej rozumieć to, co widzimy nad wodą. Jeśli macie chwilę, zapraszam do zajrzenia. Ciekawi mnie też, które zjawiska najtrudniej było Wam połączyć z tym, czego uczyliście się o pogodzie.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
