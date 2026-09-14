@@ -1,0 +1,14 @@
+obrazy/02-chmura.png
+Stylizowana ilustracja, nie fotografia obserwacyjna. Unosząca się porcja powietrza nad wzgórzem przechodzi w chmurę. Zobacz, dlaczego powstaje chmura Chmura przestaje być tylko kształtem, gdy widzisz, co ją tworzy. Unosisz porcję powietrza, obserwujesz spadek temperatury i porównujesz próby przy różnej wilgotności. Zamiast zapamiętywać definicję, możesz sprawdzić zależność, która za nią stoi.
+
+obrazy/03-nad-woda.png
+Stylizowana ilustracja, nie fotografia obserwacyjna. Zatoka o zmierzchu, księżyc i niska mgła nad brzegiem. Wieczór nad wodą ma swoją fizykę Za bryzą znad wody i poranną mgłą stoją procesy, które można zrozumieć bez zaczynania od podręcznika. Zmieniasz porę dnia, porównujesz ląd z wodą, schładzasz wilgotne powietrze. Znajome widoki zyskują wyjaśnienie, do którego możesz wrócić podczas kolejnego spaceru nad brzegiem.
+
+obrazy/04-wiatr.png
+Stylizowana ilustracja, nie fotografia obserwacyjna. Chmura falowa nad grzbietem górskim i pasma przepływającego powietrza. Nieruchoma chmura też potrafi zmylić Nie każda nieruchoma chmura oznacza brak wiatru. W pracowni porównujesz kolejne obserwacje i ruch chmur na różnych poziomach, a potem przyglądasz się chmurze falowej. Ćwiczysz coś przydatniejszego niż zgadywanie kierunku: odróżnianie tego, co naprawdę widać, od tego, czego nie da się jeszcze stwierdzić.
+
+obrazy/05-metar.png
+Stylizowana ilustracja, nie fotografia obserwacyjna. Papier depeszy, chmury na różnych poziomach i mały rękaw wiatrowy. Depesza, którą zaczynasz rozumieć METAR opisuje obserwację, a TAF jest prognozą. W CHMURNIKU rozczytujesz depeszę po kawałku, a w pracowni łączysz szkoleniowy raport z obrazem nieba i czasem. Sprawdzasz też, dlaczego najniższa chmura nie zawsze wyznacza pułap. Skróty zaczynają nabierać znaczenia.
+
+obrazy/06-sondaz.png
+Stylizowana ilustracja, nie fotografia obserwacyjna. Balon meteorologiczny, radiosonda i dwie linie profilu atmosfery. Trudny wykres ma teraz początek Nie musisz od razu rozumieć całego sondażu atmosfery. Zaczynasz od jednego poziomu i dwóch temperatur: powietrza oraz punktu rosy. Potem dochodzą kolejne zależności i pochylone osie Skew-T. Przewodnik daje Ci sposób czytania wykresu, zamiast zostawiać Cię z samymi liniami.

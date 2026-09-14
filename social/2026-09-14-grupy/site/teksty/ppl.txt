@@ -1,0 +1,9 @@
+Cześć, mam w rodzinie szybownika i od chęci pomocy mu w rozpoznawaniu chmur zaczął się CHMURNIK. Później doszedł trening METAR/TAF. Pomyślałem, że może przydać się również komuś, kto właśnie porządkuje sobie meteorologię podczas szkolenia.
+
+Jestem autorem aplikacji. Przygotowałem atlas z prawdziwymi zdjęciami, lekcje oraz interaktywne ćwiczenia: można rozczytywać depesze po kawałku, porównać podstawę najniższej chmury z pułapem albo sprawdzić, co dzieje się z temperaturą unoszonego powietrza. Zależało mi na połączeniu skrótów i definicji z czymś, co da się zobaczyć i zrozumieć.
+
+Wersja WWW jest bezpłatna i działa bez zakładania konta, także na telefonie z Androidem: https://chmurnik.cloud/
+
+To pomoc do nauki, nie zamiennik instruktora, oficjalnych materiałów ani briefingu przed lotem. Jeśli zajrzycie, chętnie przeczytam, co podczas nauki meteorologii było dla Was najmniej zrozumiałe. Takie uwagi bardzo pomagają mi rozwijać ten projekt.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.

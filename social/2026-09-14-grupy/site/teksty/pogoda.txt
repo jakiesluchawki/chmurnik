@@ -1,0 +1,9 @@
+Cześć, od pewnego czasu rozwijam CHMURNIK, autorską aplikację do poznawania chmur i procesów, które kształtują pogodę. Zaczęło się od chęci pomocy szybownikowi w rodzinie. Potem okazało się, że samo pytanie „co to za chmura?” otwiera sporo kolejnych: skąd się wzięła, co mówi o powietrzu i czego nie da się wywnioskować z jednego zdjęcia.
+
+Przygotowałem atlas z prawdziwymi fotografiami, lekcje oraz interaktywne pracownie dotyczące między innymi kondensacji, mgły, bryzy, frontów i pionowego profilu atmosfery. Można zmieniać warunki, porównywać wyniki i sprawdzać własne rozumowanie. Przy ćwiczeniach są źródła i opis ich ograniczeń.
+
+Całość w przeglądarce jest dostępna bezpłatnie, bez zakładania konta: https://chmurnik.cloud/
+
+Nie chcę udawać serwisu prognostycznego ani zastępować wiedzy obserwatorów. Chciałem ułatwić wejście w temat i zachęcić do uważniejszego patrzenia. Jeśli znajdziecie coś przydatnego, będzie mi miło; jeśli coś jest nieprecyzyjne, chętnie się temu przyjrzę.
+
+PS. Chcę też poprawić model rozpoznawania chmur. Mam gotowy panel z 33 zdjęciami do niezależnej oceny. Jeśli masz doświadczenie w rozpoznawaniu chmur i zechcesz pomóc, napisz do mnie prywatnie. Udostępnię Ci dostęp do panelu.
