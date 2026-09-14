@@ -67,3 +67,14 @@ now locates Pracownie by id, preserving it without requiring it forever first.
   behavior have not been visually or interactively verified in this session.
 - No product source, classifier, native bundle, reviewer panel or deployment
   to chmurnik.cloud changed. Facebook publication remains the owner's action.
+
+## Publication Receipt
+
+Source commit 8b746ef maps to Pages 7a204a9. GitHub Actions run 34876575938
+completed successfully. Public HTTP checks confirmed identical gallery HTML,
+all five PNG hashes, all six ZIP hashes against the deployed manifest, and
+the new campaign as the first entry in /assetySM/catalog.json. This is an
+artifact/download check without browser cookies, not a bypass of the denied
+browser-render/clipboard check. The temporary local preview server was stopped.
+The Pages cherry-pick kept that branch's existing review-portal deployment
+and release-history differences intact; it only added this social package.

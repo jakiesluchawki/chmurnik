@@ -31,6 +31,13 @@ reuse five byte-identical approved PNGs rather than generate before copy review.
 The gallery and ZIPs preserve every full post, instruction and source note.
 Verification and publication receipts follow in the campaign README.
 
+Published as Pages 7a204a9, run 34876575938 succeeded. All 932 Node tests,
+the nine-lesson audit and isolated Pages build passed. Public gallery HTML,
+five PNGs, six ZIPs and the library's first entry were checked over HTTP.
+Browser rendering/clipboard QA remains unperformed after an access denial;
+specific read-only permission was requested, without bypassing the refusal.
+The owner can retrieve the full pack at /premiera/grupy/ via /assetySM/.
+
 ## Approved Social Graphics, 9 September 2026
 
 The owner approved the singular-voice, value-led full copy and explicitly
