@@ -1,0 +1,130 @@
+[
+  {
+    "worker": "cloudAWorker",
+    "result": [
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-panorama.png",
+        "dimensions": "1881 × 836",
+        "generator_mode": "builtin image_gen; NEW generation; 1 attempt",
+        "final_prompt": "Use case: ads-marketing.\nAsset type: CHMURNIK campaign cloud panorama, one clean image, NEW artwork.\nCreate a 9:4 wide single continuous panoramic sky above an olive miniature landscape. Sweeping ivory cumulus has three distinct sculptural lobes across the width. Include wispy high cloud at upper left, a huge sunlit billow in the center, and a violet distant rain curtain at the far right. The upper 30 percent is calm, clean open sky. This one coherent continuous landscape will later be split into THREE contiguous vertical cover tiles: give all three thirds interesting large elements without any hard tile boundaries, panels, triptych treatment, seams, dividers or borders. This is not a scientific cloud-genus identification plate.\nStyle/medium: sophisticated adult editorial art direction, tactile wool-felt clouds and cut-paper miniature olive terrain; refined sculptural forms, visibly delicate natural wool fibers and paper edges, not childish. Take the inspected coastal reference only as inspiration for restrained luminous light, tactile landscape depth and subtle natural textures, not its photographic nighttime subject.\nColor palette: cream ivory, warm blush-pink sky, olive terrain, restrained violet atmospheric accents.\nLighting/mood: soft warm afternoon side light, luminous and restrained, calm atmospheric depth, strong graphic composition.\nConstraints: exactly one seamless panoramic image in 9:4 aspect ratio, preferably 2304 x 1024 pixels. No faces, no characters, no people, no text, no labels, no numbers, no logo, no watermark, no fake UI, no contact sheet.",
+        "receipt_id": "exec-5f09bd78-f183-4a6f-b6a1-38be47283ab5",
+        "provenance_path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-panorama.json"
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-powietrze.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen; NEW generation; 1 attempt",
+        "final_prompt": "Use case: ads-marketing.\nAsset type: CHMURNIK campaign sculptural educational metaphor, one clean image, NEW artwork.\nCreate a landscape 3:2 image of a cutaway olive hill on the left. A warm translucent ivory ribbon of rising air curves gently upward from beside the hill, becoming small soft white droplets, which gather into one ivory cumulus overhead. The lower dry invisible-air region stays mostly clear, with no droplets; the upper cloud region contains the small suspended white droplets and the cumulus. This is a poetic educational metaphor, not a scientific measurement or identification plate. No numerical claims or text. Clean warm blush background. Objects must be large, balanced and legible with negative space, arranged for flexible cropping.\nStyle/medium: sophisticated adult editorial tactile miniature, art-directed wool-felt cumulus with delicate natural fibers, cut-paper olive terrain with layered paper edges. The rising ribbon is a restrained translucent sculptural material, not an arrow or infographic UI. Refined gallery-like composition, not a children's craft illustration.\nColor palette: cream ivory, warm blush pink, olive terrain, subtle violet atmospheric shadow accents.\nLighting/mood: luminous restrained warm light, delicate natural material textures, strong graphic composition, calm atmosphere.\nConstraints: one single image in landscape 3:2 aspect ratio, preferably 1536 x 1024 pixels. No faces, no characters, no people, no text, no labels, no numbers, no logo, no watermark, no fake UI, no borders, no contact sheet.",
+        "receipt_id": "exec-c78f1e24-5099-4560-8da1-772bba2a6c3d",
+        "provenance_path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-powietrze.json"
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-swiatlo.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen; NEW generation; 1 attempt",
+        "final_prompt": "Use case: ads-marketing.\nAsset type: CHMURNIK campaign poetic cloud close-up, one clean image, NEW artwork.\nCreate a landscape 3:2 poetic close-up of the side of one richly textured ivory cumulus. Strong warm side light reveals its distinct sculptural lobes, luminous outer contours and a darker violet-tinted base. The cloud fills much of the frame but leaves generous warm blush atmospheric negative space; only a tiny olive horizon appears along the lower edge. Emphasize vivid readable shape and material texture. Calm luminous afternoon, no sinister storm.\nStyle/medium: sophisticated adult editorial tactile wool-felt cloud sculpture above a cut-paper miniature olive landscape, art-directed not childish. Delicate irregular natural wool fibers, subtle paper textures and refined dimensional forms; strong graphic composition.\nColor palette: cream ivory, warm blush pink, olive terrain, restrained violet atmospheric accents and cloud-base shadows.\nLighting/mood: warm directional side light with soft restrained glow, beautifully modeled lobes and darker base, luminous not harsh or ominous.\nConstraints: one single landscape image in 3:2 aspect ratio, preferably 1536 x 1024 pixels. No faces, no characters, no people, no text, no labels, no numbers, no logo, no watermark, no fake UI, no borders, no panels, no contact sheet.",
+        "receipt_id": "exec-33cc0f4f-c065-435a-bfd9-2f4c60398577",
+        "provenance_path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-swiatlo.json"
+      }
+    ]
+  },
+  {
+    "worker": "cloudBWorker",
+    "result": [
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-atlas.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen, generate, attempt 1",
+        "prompt": "Create exactly one NEW original image. Use case: ads-marketing. Asset: CHMURNIK campaign illustration, landscape 3:2, 1536 x 1024 pixels. Scene: an open ivory atlas book floating slightly above a warm blush-pink table. Every paper page is completely BLANK, with no marks, diagrams, maps, letters or numbers; this is a tactile conceptual illustration, not a photographed atlas or an app. Above the paper rise two distinct sculptural cloud forms: fine airy wispy wool filaments and one compact rounded cumulus form. An elegant narrow violet bookmark provides the only book accent. Style: sophisticated adult editorial art direction, handcrafted wool-felt and cut-paper miniature, premium restrained material realism, subtle natural fibers and paper grain, not childish. Strong asymmetrical graphic composition with deliberate negative space, coherent depth and believable soft suspension shadow. Palette: cream ivory, warm blush pink, restrained olive tonal accents and violet atmospheric accents. Light: luminous restrained natural light, soft nuanced shadows, quiet editorial mood. One clean full-frame artwork, not a collage or contact sheet. No faces, characters, people, text, letters, numbers, logo, watermark, labels, fake UI, app panels, extra props, glossy plastic, cartoon expressions or toy styling.",
+        "generation_receipt": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-atlas.json"
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-horyzont.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen, generate, attempt 1",
+        "prompt": "Create exactly one NEW original image. Use case: ads-marketing. Asset: CHMURNIK campaign illustration, landscape 3:2, 1536 x 1024 pixels. Scene: broad olive and sand countryside observed from a small hill at eye level, with a crisp clearly visible distant horizon and a far violet ridgeline. Spacious sky holds high wispy clouds and a lower soft cloud bank, naturally observed at differing positions, without any precise altitude implication or scientific classification. Large tactile foreground grasses occupy one side only; fields and hills recede gently to the horizon. Style: sophisticated adult editorial miniature landscape made from wool-felt and cut-paper, art-directed not childish, premium subtle natural fibers, finely layered paper edges and restrained material realism. Strong graphic composition, expansive negative space in the sky, clear separation of foreground, countryside, ridgeline and atmosphere. Palette: cream ivory and warm blush-pink sky, olive and sand terrain, violet atmospheric accents. Serene afternoon with luminous restrained natural light and nuanced soft shadows. One clean full-frame image, not a collage or contact sheet. No faces, characters, people, text, letters, numbers, logo, watermark, labels, cloud genus labels, height measurements, diagrams, fake UI, app panels, glossy plastic, cartoon expressions or toy styling.",
+        "generation_receipt": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-horyzont.json"
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-porownanie.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen, generate, attempt 1",
+        "prompt": "Create exactly one NEW original image. Use case: ads-marketing. Asset: CHMURNIK campaign illustration, landscape 3:2, 1536 x 1024 pixels. Scene: two separate small sculptural cloud forms hovering over one continuous olive ground. On the left, one compact rounded sunlit cloud lobe; on the right, one softer cloud bank spreading horizontally. At the center, a physical violet lens-like circular frame leans on the ground, an elegant sculptural object, not a screen or UI icon. The circular frame must remain clearly visible between the separated cloud forms. Premium adult editorial comparison metaphor, no split screen, no dividing line, no diagram. Style: art-directed handcrafted wool-felt and cut-paper miniature landscape, sophisticated not childish, natural fine wool fibers, matte paper grain, subtle restrained material realism. Strong graphic composition with airy spacing, distinct contrasting cloud silhouettes, coherent grounded shadows and no extra clouds. Palette: cream ivory clouds, warm blush-pink atmosphere, continuous olive terrain and violet accent frame. Luminous restrained natural light, soft nuanced shadows, quiet tactile mood. One clean full-frame artwork, not a collage or contact sheet. No faces, characters, people, text, letters, numbers, labels, logo, watermark, fake UI, app panels, graphs, arrows, glossy plastic, cartoon expressions or toy styling.",
+        "generation_receipt": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-porownanie.json"
+      }
+    ]
+  },
+  {
+    "worker": "coastAWorker",
+    "result": [
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-panorama.png",
+        "dimensions": "1881 × 836",
+        "generator_mode": "builtin image_gen, generate, 1 attempt",
+        "final_prompt_and_receipt": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-panorama.json",
+        "generation_receipt": "exec-32eb3b61-b3fa-4248-ba8e-ed06e07c0869"
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-bryza.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen, generate, 1 attempt",
+        "final_prompt_and_receipt": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-bryza.json",
+        "generation_receipt": "exec-c2ec1141-8398-427d-befd-6ae3114e7126"
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-mgla.png",
+        "dimensions": "1536 × 1024",
+        "generator_mode": "builtin image_gen, generate, 1 attempt",
+        "final_prompt_and_receipt": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-mgla.json",
+        "generation_receipt": "exec-04aacaf0-feb6-4682-8423-56faeb90eee6"
+      }
+    ]
+  },
+  {
+    "worker": "coastBWorker",
+    "result": [
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-temperatura.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "generator_mode": "builtin image_gen; new generation; 1 attempt",
+        "receipt": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-365c-7130-8ad5-95f8a7ebe3d0/exec-318d6135-3974-4c33-b4f9-1f90dd0fc54c.png",
+        "prompt": "Use case: ads-marketing. Generate exactly one NEW clean campaign image for CHMURNIK, landscape 3:2, requested 1536 x 1024. Art-directed macro of olive coastal grass with luminous tiny translucent dew droplets made of clear glass beads, a violet sea dissolving into bokeh behind it, and the first early moon visible softly out of focus. Shallow depth of field in a sophisticated tactile wool-felt and cut-paper miniature coastal landscape. Prioritize finely observed glass droplets and subtle wool fibers in the foreground, a strong graphic composition and quiet coastal depth. Adult editorial art direction, not childish, not anthropomorphic. Palette: cream ivory highlights, warm blush pink atmosphere, olive terrain, violet atmospheric water. Luminous restrained natural light, subtle natural textures. Coastal mood informed by the inspected moonlit bay reference, but construct a completely new felt-and-paper scene. No faces, no characters, no text, no lettering, no logo, no watermark, no fake UI, no border, no collage or contact sheet."
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-wiatr.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "generator_mode": "builtin image_gen; new generation; 1 attempt",
+        "receipt": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-365c-7130-8ad5-95f8a7ebe3d0/exec-43f287ba-7a08-470a-bccc-3797a2e1f248.png",
+        "prompt": "Use case: ads-marketing. Generate exactly one NEW clean CHMURNIK campaign image, landscape 3:2, requested 1536 x 1024. An ivory sailboat on violet coastal water, an elegant curved sail gently filled by the breeze, airy thin unmarked ribbons moving toward shore, distant olive cliffs and a warm blush late-afternoon sky. Realistic coherent sail orientation: gentle onshore breeze, sail filled to leeward and ribbons flowing toward the shore in the same direction; no crew or people. Sophisticated adult editorial tactile wool-felt and cut-paper miniature landscape, sculptural and art-directed, not childish. Refined ivory paper or fine woven sail, subtle olive wool fibers and layered violet paper water, luminous restrained natural light and strong graphic composition. Palette: cream ivory, warm blush pink, olive terrain, violet atmospheric accents. Use the inspected coastal reference only as mood guidance; create a completely new composition. No faces, characters, anthropomorphism, compass, text, numbers, logo, watermark, fake UI, border, collage or contact sheet. No safety or prediction claims. One image only."
+      },
+      {
+        "status": "success",
+        "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-pracownia.png",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "generator_mode": "builtin image_gen; new generation; 1 attempt",
+        "receipt": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-365c-7130-8ad5-95f8a7ebe3d0/exec-9c42228b-e81e-4285-b0c0-73bfcc7b8c93.png",
+        "prompt": "Use case: ads-marketing. Generate exactly one NEW clean CHMURNIK campaign image, landscape 3:2, requested 1536 x 1024. An open cream book resting on an olive coastal rock, a violet fabric bookmark, and a miniature coastline cutaway rising sculpturally from its blank pages. Clearly contrast layered violet coastal water and olive land. A tiny sun and a tiny moon are two separate tangible crafted objects placed beside the rising coastline on the book, not drawings, not sky icons, not faces. A beautiful sculptural end card and a quiet invitation to learning, entirely without lettering. Sophisticated adult editorial tactile wool-felt and cut-paper miniature landscape; refined sculptural book and coast construction with subtle paper grain and natural wool fibers, art-directed and not childish. Strong graphic composition, luminous restrained natural light, cream ivory, warm blush pink, olive terrain and violet atmospheric accents. Quiet coastal backdrop with selective depth of field, informed only in mood by the inspected bay reference; create a completely new scene. All visible book pages blank. No faces, characters, anthropomorphism, text, letters, numbers, logo, watermark, fake screen, fake UI, border, collage or contact sheet. One image only."
+      }
+    ]
+  }
+]

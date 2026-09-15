@@ -1,0 +1,71 @@
+woda/stories/01.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wieczór nad wodą ma swoją fizykę Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.
+
+woda/karuzela/01.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wieczór nad wodą ma swoją fizykę Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.
+
+woda/facebook/01.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wieczór nad wodą ma swoją fizykę Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.
+
+woda/stories/02.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Ląd i woda nie reagują tak samo W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu.
+
+woda/karuzela/02.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Ląd i woda nie reagują tak samo W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu.
+
+woda/stories/03.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Za dnia powietrze może przyjść od wody Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg.
+
+woda/karuzela/03.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Za dnia powietrze może przyjść od wody Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg.
+
+woda/stories/04.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Noc zmienia różnicę temperatur Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo.
+
+woda/karuzela/04.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Noc zmienia różnicę temperatur Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo.
+
+woda/stories/05.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Bryza nie jest całym wiatrem Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy.
+
+woda/karuzela/05.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Bryza nie jest całym wiatrem Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy.
+
+woda/stories/06.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Punkt rosy to konkretna temperatura To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają.
+
+woda/karuzela/06.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Punkt rosy to konkretna temperatura To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają.
+
+woda/stories/07.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mgła potrzebuje warunków W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność.
+
+woda/karuzela/07.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mgła potrzebuje warunków W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność.
+
+woda/stories/08.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Chmura płynie dokąd, wiatr wieje skąd? Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja.
+
+woda/karuzela/08.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Chmura płynie dokąd, wiatr wieje skąd? Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja.
+
+woda/stories/09.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mapa staje się czytelniejsza W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa.
+
+woda/karuzela/09.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mapa staje się czytelniejsza W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa.
+
+woda/stories/10.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zabierz nad wodę trochę rozumienia Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz.
+
+woda/karuzela/10.png
+Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zabierz nad wodę trochę rozumienia Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz.
+
+woda/instagram/03-post/00-okladka.png
+Fragment 1 jednej ciągłej panoramy. Wieczór nad wodą
+
+woda/instagram/02-post/00-okladka.png
+Fragment 2 jednej ciągłej panoramy. ma swoją fizykę.
+
+woda/instagram/01-post/00-okladka.png
+Fragment 3 jednej ciągłej panoramy. Bryza, wiatr i mgła.

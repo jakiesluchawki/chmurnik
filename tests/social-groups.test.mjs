@@ -33,7 +33,7 @@ test('group evidence does not invent permission, members or a verified weather a
   assert.match(groups.find(g=>g.id==='zeglarze').rules,/Nie udało/);
   assert.match(groups.find(g=>g.id==='lotnictwo').members,/niezweryfikowana/);
   assert.match(posts.find(p=>p.id==='pogoda').use,/niezweryfikowanej/);
-  assert.equal(packs[0].id,'grupy');
+  assert(packs.some(p=>p.id==='grupy'));
   for(const id of ['pracownie','astra','historia','premiera']) assert(packs.some(p=>p.id===id));
 });
 test('group downloads contain exact existing approved PNG and complete captions',async()=>{

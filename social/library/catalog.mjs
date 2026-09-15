@@ -1,5 +1,21 @@
 export const packs = [
   {
+    id: 'niebo-i-woda', source: '2026-09-15-dwie-opowiesci', date: '2026-09-15',
+    dateLabel: '15 września 2026', status: 'Dwa tematy · Stories i mozaiki profilu',
+    title: 'Niebo i woda mają swoje opowieści.',
+    description: 'Co chmura mówi o powietrzu? Wieczór nad wodą ma swoją fizykę. Dwie serie po 10 Stories, sześć pełnych karuzel z okładkami składającymi się w dwa krajobrazy, Facebook i dwa dokumenty LinkedIn. Pełne teksty, podgląd siatki i kolejność publikacji.',
+    base: '../premiera/niebo-i-woda/', preview: 'previews/chmury/stories/01.jpg',
+    formats: ['2 tematy', '20 Stories PNG', '6 karuzel', '2 panoramy', 'Facebook', 'LinkedIn PDF'],
+    downloads: [
+      ['Oba tematy · cały pakiet', 'https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-NIEBO-I-WODA-CALOSC.zip', 'zip'],
+      ['Chmury · cały temat', 'https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-CALOSC.zip', 'zip'],
+      ['Woda · cały temat', 'https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-CALOSC.zip', 'zip'],
+      ['Instagram · chmury i pierwsza panorama', 'https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-INSTAGRAM.zip', 'zip'],
+      ['Instagram · woda i druga panorama', 'https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-INSTAGRAM.zip', 'zip'],
+      ['Pełne teksty i linki', 'TEKSTY-I-LINKI.txt', 'txt'],
+    ],
+  },
+  {
     id: 'grupy', source: '2026-09-14-grupy', date: '2026-09-14',
     dateLabel: '14 września 2026', status: 'Posty do grup · teksty i dobrane PNG',
     title: 'Zaproszenie do wspólnego patrzenia w niebo.',

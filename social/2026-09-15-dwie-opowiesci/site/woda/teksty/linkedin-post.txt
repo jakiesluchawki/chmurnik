@@ -1,0 +1,12 @@
+Wieczór nad wodą ma swoją fizykę.
+
+Jedną z rzeczy, które chciałem osiągnąć w CHMURNIKU, było połączenie wiedzy z czymś, co użytkownik naprawdę odczuwa: podmuchem przy brzegu, różnicą temperatur czy mgłą pojawiającą się po zmroku.
+
+Dlatego przygotowałem interaktywne pracownie bryzy i mgły. Można w nich zmienić warunek, przewidzieć wynik i porównać przypadki. Pełne lekcje pomagają osadzić doświadczenie w szerszym kontekście, a nauka obserwacji wiatru i czytania warstw Windy prowadzi dalej, do interpretacji danych.
+
+Chciałbym, żeby estetyka zapraszała do nauki, ale nie zastępowała jej. Za każdym ładnym obrazem musi być zrozumiały mechanizm i uczciwie zaznaczona granica modelu.
+
+Ta część CHMURNIKA działa także w przeglądarce na telefonie i komputerze:
+https://chmurnik.cloud/
+
+To narzędzie edukacyjne, nie prognoza ani zamiennik oficjalnych komunikatów dla żeglarzy.

@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "worker": "cloud-a",
+  "image_path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-panorama.png",
+  "dimensions": {
+    "width": 1881,
+    "height": 836
+  },
+  "aspect_ratio": "9:4",
+  "generator_mode": "builtin image_gen; new image generation",
+  "generator_tool": "image_gen.imagegen",
+  "attempts": 1,
+  "style_reference_inspected": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+  "final_prompt": "Use case: ads-marketing.\nAsset type: CHMURNIK campaign cloud panorama, one clean image, NEW artwork.\nCreate a 9:4 wide single continuous panoramic sky above an olive miniature landscape. Sweeping ivory cumulus has three distinct sculptural lobes across the width. Include wispy high cloud at upper left, a huge sunlit billow in the center, and a violet distant rain curtain at the far right. The upper 30 percent is calm, clean open sky. This one coherent continuous landscape will later be split into THREE contiguous vertical cover tiles: give all three thirds interesting large elements without any hard tile boundaries, panels, triptych treatment, seams, dividers or borders. This is not a scientific cloud-genus identification plate.\nStyle/medium: sophisticated adult editorial art direction, tactile wool-felt clouds and cut-paper miniature olive terrain; refined sculptural forms, visibly delicate natural wool fibers and paper edges, not childish. Take the inspected coastal reference only as inspiration for restrained luminous light, tactile landscape depth and subtle natural textures, not its photographic nighttime subject.\nColor palette: cream ivory, warm blush-pink sky, olive terrain, restrained violet atmospheric accents.\nLighting/mood: soft warm afternoon side light, luminous and restrained, calm atmospheric depth, strong graphic composition.\nConstraints: exactly one seamless panoramic image in 9:4 aspect ratio, preferably 2304 x 1024 pixels. No faces, no characters, no people, no text, no labels, no numbers, no logo, no watermark, no fake UI, no contact sheet.",
+  "generation_receipt": {
+    "source_path": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644/exec-5f09bd78-f183-4a6f-b6a1-38be47283ab5.png",
+    "receipt_id": "exec-5f09bd78-f183-4a6f-b6a1-38be47283ab5",
+    "output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644 as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644/exec-5f09bd78-f183-4a6f-b6a1-38be47283ab5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  "sha256": "7d05886f1457a2a8c58dfe5a7dc4fa3884af60f2817345c38eea267926d5ae14",
+  "copy_method": "cp; source and destination SHA-256 match; no resizing or rendering",
+  "visual_validation": "One clean image, requested subject and palette present, no faces, characters, text, logo or UI."
+}

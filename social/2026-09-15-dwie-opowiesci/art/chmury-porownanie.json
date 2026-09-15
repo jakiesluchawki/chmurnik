@@ -1,0 +1,35 @@
+{
+  "asset": "chmury-porownanie",
+  "status": "success",
+  "worker": "cloud-b",
+  "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-porownanie.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect_ratio": "3:2",
+  "format": "png",
+  "generator_mode": "builtin image_gen",
+  "intent": "generate",
+  "tool": "image_gen.imagegen",
+  "attempts": 1,
+  "prompt": "Create exactly one NEW original image. Use case: ads-marketing. Asset: CHMURNIK campaign illustration, landscape 3:2, 1536 x 1024 pixels. Scene: two separate small sculptural cloud forms hovering over one continuous olive ground. On the left, one compact rounded sunlit cloud lobe; on the right, one softer cloud bank spreading horizontally. At the center, a physical violet lens-like circular frame leans on the ground, an elegant sculptural object, not a screen or UI icon. The circular frame must remain clearly visible between the separated cloud forms. Premium adult editorial comparison metaphor, no split screen, no dividing line, no diagram. Style: art-directed handcrafted wool-felt and cut-paper miniature landscape, sophisticated not childish, natural fine wool fibers, matte paper grain, subtle restrained material realism. Strong graphic composition with airy spacing, distinct contrasting cloud silhouettes, coherent grounded shadows and no extra clouds. Palette: cream ivory clouds, warm blush-pink atmosphere, continuous olive terrain and violet accent frame. Luminous restrained natural light, soft nuanced shadows, quiet tactile mood. One clean full-frame artwork, not a collage or contact sheet. No faces, characters, people, text, letters, numbers, labels, logo, watermark, fake UI, app panels, graphs, arrows, glossy plastic, cartoon expressions or toy styling.",
+  "style_reference": {
+    "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+    "inspected_with": "view_image",
+    "supplied_as_generator_input": false
+  },
+  "generation_receipt": {
+    "returned_output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff/exec-6ae4608d-1031-434b-808b-78e08cb7d89e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returned_image_media_type": "image/png",
+    "source_image_path": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff/exec-6ae4608d-1031-434b-808b-78e08cb7d89e.png",
+    "source_sha256": "73a1dde24fb853482f4145816ed952369d0c93af9b23f7df0702cb59fbd46843"
+  },
+  "verification": {
+    "dimensions_tool": "sips",
+    "mechanical_copy": true,
+    "destination_sha256": "73a1dde24fb853482f4145816ed952369d0c93af9b23f7df0702cb59fbd46843",
+    "byte_identical_to_generator_file": true,
+    "visually_inspected": true
+  }
+}

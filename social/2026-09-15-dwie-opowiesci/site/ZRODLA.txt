@@ -1,0 +1,7 @@
+WMO: obserwacja chmur i wpływ warunków: https://cloudatlas.wmo.int/en/observing-clouds.html
+WMO: piętra, wysokość i zasięg pionowy: https://cloudatlas.wmo.int/clouds-definitions.html
+WMO: wygląd i perspektywa: https://cloudatlas.wmo.int/en/clouds-appearance.html
+NWS: powstawanie chmur: https://www.weather.gov/source/zhu/ZHU_Training_Page/clouds/cloud_development/clouds.htm
+NWS: bryza morska i wiatr: https://www.weather.gov/source/zhu/ZHU_Training_Page/winds/Wx_Terms/Flight_Environment.htm
+NWS: punkt rosy i kondensacja: https://www.weather.gov/jkl/education
+NWS: mgła radiacyjna: https://www.weather.gov/safety/fog-radiation

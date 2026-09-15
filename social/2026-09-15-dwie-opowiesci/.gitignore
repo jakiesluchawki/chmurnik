@@ -1,0 +1,3 @@
+# Rebuilt from committed final assets before CI verification and Pages deploy.
+site/*.zip
+site/*/instagram/??-post/*-slajd-*.png

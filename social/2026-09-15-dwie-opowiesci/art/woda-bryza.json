@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "asset": "woda-bryza",
+  "worker": "coast-a",
+  "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-bryza.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024,
+    "aspect_ratio": "3:2"
+  },
+  "generator": {
+    "tool": "image_gen.imagegen",
+    "mode": "builtin generate",
+    "attempt": 1
+  },
+  "prompt": "Use case: ads-marketing.\nAsset: CHMURNIK campaign, woda-bryza. Generate exactly ONE NEW clean image.\nCanvas: landscape 3:2 aspect ratio.\nScene: a daylight miniature cutaway coastline. Cool violet sea occupies the LEFT side, sun-warmed olive land occupies the RIGHT side, with a slender warm ivory shoreline between them. One elegant translucent ivory ribbon suggests a sea-breeze circulation: its lower surface-level segment begins over the sea on the left and sweeps toward the land on the right; it rises above the warmed land, then curves back toward the sea high aloft. The surface circulation must be sea-to-land, never land-to-sea. Make this one coherent delicate ribbon, not multiple ribbons, not a map arrow. A tiny peach sun floats above the scene.\nStyle: sophisticated adult editorial tactile sculpture, clearly handcrafted wool-felt and layered cut-paper miniature landscape. Strong simplified graphic forms, visible thin paper edges and subtle natural wool fibers; not a photographed real coastline, not a childish toy. Educational schematic atmosphere with sculptural depth, not a weather forecast.\nComposition: clean spacious 3:2 landscape, cool sea left and warm terrain right clearly legible, refined cutaway volume, calm cream-ivory and warm-blush backdrop. Airy flowing ribbon visually travels from the left sea at low altitude over the right land before returning aloft.\nLighting and palette: luminous restrained daylight, cream ivory, warm blush pink, olive terrain, cool violet water and atmospheric accents; subtle natural material textures.\nConstraints: no map arrows, no arrowheads, no labels, no text, no typography, no logo, no watermark, no fake UI, no forecast icons, no faces, no characters, no people, no animals, no panels, no border. One clean full-bleed image.",
+  "style_reference": {
+    "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+    "inspected_with": "view_image",
+    "passed_as_generator_input": false
+  },
+  "generation_receipt": {
+    "id": "exec-c2ec1141-8398-427d-befd-6ae3114e7126",
+    "original_file": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35fa-76e0-915f-eedb2b81f6c8/exec-c2ec1141-8398-427d-befd-6ae3114e7126.png",
+    "output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35fa-76e0-915f-eedb2b81f6c8 as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35fa-76e0-915f-eedb2b81f6c8/exec-c2ec1141-8398-427d-befd-6ae3114e7126.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  "verification": {
+    "sha256": "3e35fa4af189b7f2a22225dfeec34d2c97197d935a0518c93d633dda6462dfd3",
+    "copy_method": "cp -n",
+    "byte_identical_to_generator_output": true,
+    "dimensions_read_with": "sips"
+  }
+}
