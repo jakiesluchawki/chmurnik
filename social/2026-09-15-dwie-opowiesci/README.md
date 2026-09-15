@@ -91,6 +91,9 @@ node --test tests/social-two-themes.test.mjs tests/social-groups.test.mjs
 python social/2026-09-15-dwie-opowiesci/verify-pdf.py
 ```
 
+After public deployment, run `node social/2026-09-15-dwie-opowiesci/verify-public.mjs`
+to check complete public copy, every export link, archives and the mother page.
+
 PDF verification requires pypdf, pypdfium2 and Pillow in an isolated QA environment.
 All generation outputs are already preserved; rebuilding downloads does not
 regenerate artwork or require the private export toolchain in CI.
@@ -104,7 +107,8 @@ the author. Story contact sheets, full-size samples, both panorama rows and
 both PDF contact sheets were visually reviewed. All eleven ZIPs passed exact
 entry, full-copy and SHA-256 checks; both panorama rows rejoin pixel-identically.
 
-Release, deployment and public-browser receipts are recorded separately once
-publication has completed; no public deployment is implied by local tests.
+Publication completed successfully. See PUBLICATION-RECEIPT.md for actual source
+and Pages commits, release digests, Linux CI counts/skips, 121 public HTTP checks,
+mobile/desktop inspection and the remaining account-access/clipboard limits.
 Stable library: https://jakiesluchawki.github.io/chmurnik/assetySM/
 Pack route: https://jakiesluchawki.github.io/chmurnik/premiera/niebo-i-woda/

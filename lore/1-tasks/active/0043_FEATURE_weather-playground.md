@@ -37,7 +37,13 @@ indirect account access was used. Grid previews are projects for 3:4, not
 screenshots or confirmed account-specific cropping. Each theme has three
 self-contained carousels, published right/middle/left to complete one row.
 All twenty story texts and every platform caption remain available together.
-Further QA and actual deployment receipts belong in the campaign README.
+Publication completed: source fe92e3b, Pages 704ce30, run 34913478364 succeeded.
+All eleven public release archives have matching remote SHA-256 digests; 121
+public HTTP checks and mobile/desktop gallery inspection passed. Local Node:
+937/937; Linux CI: 929 passed, zero failures, five existing platform/package
+skips. Pages publication is 952,229,280 bytes. Full receipts and the unresolved
+Instagram-origin access limit are in the campaign PUBLICATION-RECEIPT.md.
+No app/model or production-domain change, and no social account posts were sent.
 
 ## Group Outreach, 14 September 2026
 
