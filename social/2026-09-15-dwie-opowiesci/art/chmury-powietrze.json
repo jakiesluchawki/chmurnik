@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "worker": "cloud-a",
+  "image_path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-powietrze.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect_ratio": "3:2",
+  "generator_mode": "builtin image_gen; new image generation",
+  "generator_tool": "image_gen.imagegen",
+  "attempts": 1,
+  "style_reference_inspected": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+  "final_prompt": "Use case: ads-marketing.\nAsset type: CHMURNIK campaign sculptural educational metaphor, one clean image, NEW artwork.\nCreate a landscape 3:2 image of a cutaway olive hill on the left. A warm translucent ivory ribbon of rising air curves gently upward from beside the hill, becoming small soft white droplets, which gather into one ivory cumulus overhead. The lower dry invisible-air region stays mostly clear, with no droplets; the upper cloud region contains the small suspended white droplets and the cumulus. This is a poetic educational metaphor, not a scientific measurement or identification plate. No numerical claims or text. Clean warm blush background. Objects must be large, balanced and legible with negative space, arranged for flexible cropping.\nStyle/medium: sophisticated adult editorial tactile miniature, art-directed wool-felt cumulus with delicate natural fibers, cut-paper olive terrain with layered paper edges. The rising ribbon is a restrained translucent sculptural material, not an arrow or infographic UI. Refined gallery-like composition, not a children's craft illustration.\nColor palette: cream ivory, warm blush pink, olive terrain, subtle violet atmospheric shadow accents.\nLighting/mood: luminous restrained warm light, delicate natural material textures, strong graphic composition, calm atmosphere.\nConstraints: one single image in landscape 3:2 aspect ratio, preferably 1536 x 1024 pixels. No faces, no characters, no people, no text, no labels, no numbers, no logo, no watermark, no fake UI, no borders, no contact sheet.",
+  "generation_receipt": {
+    "source_path": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644/exec-c78f1e24-5099-4560-8da1-772bba2a6c3d.png",
+    "receipt_id": "exec-c78f1e24-5099-4560-8da1-772bba2a6c3d",
+    "output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644 as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644/exec-c78f1e24-5099-4560-8da1-772bba2a6c3d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  "sha256": "e18c51d65a1dd2f1b27db4dcaddf4e191f45830903afe04dd49a932f2d1d6fb7",
+  "copy_method": "cp; source and destination SHA-256 match; no resizing or rendering",
+  "visual_validation": "One clean image, requested subject and palette present, no faces, characters, text, logo or UI."
+}

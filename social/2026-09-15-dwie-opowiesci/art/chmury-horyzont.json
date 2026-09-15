@@ -1,0 +1,35 @@
+{
+  "asset": "chmury-horyzont",
+  "status": "success",
+  "worker": "cloud-b",
+  "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-horyzont.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect_ratio": "3:2",
+  "format": "png",
+  "generator_mode": "builtin image_gen",
+  "intent": "generate",
+  "tool": "image_gen.imagegen",
+  "attempts": 1,
+  "prompt": "Create exactly one NEW original image. Use case: ads-marketing. Asset: CHMURNIK campaign illustration, landscape 3:2, 1536 x 1024 pixels. Scene: broad olive and sand countryside observed from a small hill at eye level, with a crisp clearly visible distant horizon and a far violet ridgeline. Spacious sky holds high wispy clouds and a lower soft cloud bank, naturally observed at differing positions, without any precise altitude implication or scientific classification. Large tactile foreground grasses occupy one side only; fields and hills recede gently to the horizon. Style: sophisticated adult editorial miniature landscape made from wool-felt and cut-paper, art-directed not childish, premium subtle natural fibers, finely layered paper edges and restrained material realism. Strong graphic composition, expansive negative space in the sky, clear separation of foreground, countryside, ridgeline and atmosphere. Palette: cream ivory and warm blush-pink sky, olive and sand terrain, violet atmospheric accents. Serene afternoon with luminous restrained natural light and nuanced soft shadows. One clean full-frame image, not a collage or contact sheet. No faces, characters, people, text, letters, numbers, logo, watermark, labels, cloud genus labels, height measurements, diagrams, fake UI, app panels, glossy plastic, cartoon expressions or toy styling.",
+  "style_reference": {
+    "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+    "inspected_with": "view_image",
+    "supplied_as_generator_input": false
+  },
+  "generation_receipt": {
+    "returned_output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff/exec-ec959603-2dbe-4777-b6e5-ac4f43146def.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returned_image_media_type": "image/png",
+    "source_image_path": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff/exec-ec959603-2dbe-4777-b6e5-ac4f43146def.png",
+    "source_sha256": "14f6df0a524c52b89e9812869d15bb308757662855be697b8ac2e69a9a226c8c"
+  },
+  "verification": {
+    "dimensions_tool": "sips",
+    "mechanical_copy": true,
+    "destination_sha256": "14f6df0a524c52b89e9812869d15bb308757662855be697b8ac2e69a9a226c8c",
+    "byte_identical_to_generator_file": true,
+    "visually_inspected": true
+  }
+}

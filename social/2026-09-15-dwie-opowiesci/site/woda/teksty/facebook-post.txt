@@ -1,0 +1,12 @@
+Wieczór nad wodą ma swoją fizykę.
+
+Lubię ten moment, kiedy brzeg zaczyna stygnąć, światło robi się miękkie, a wiatr nagle staje się bardziej zauważalny. CHMURNIK pozwala sprawdzić, co może kryć się za częścią tych zjawisk.
+
+W pracowni bryzy porównujesz ogrzewanie lądu i wody oraz lokalny obieg powietrza. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zrozumieć nasycenie i początek kondensacji. Są też pełne lekcje, obserwacja ruchu chmur oraz nauka czytania warstw i czasu w Windy.
+
+Nie chodzi o obietnicę, że po kilku kliknięciach przewidzisz pogodę. Chodzi o lepsze rozumienie tego, co obserwujesz, i o wiedzę, z którą łatwiej czytać aktualne dane.
+
+Przygotowałem te doświadczenia tak, żeby można było zajrzeć do nich także z telefonu w przeglądarce, bez instalowania aplikacji:
+https://chmurnik.cloud/pogoda-preview/#bryza
+
+To materiały edukacyjne. Przy planowaniu żeglugi korzystaj z oficjalnych komunikatów i aktualnych prognoz.

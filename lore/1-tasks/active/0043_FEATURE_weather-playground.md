@@ -15,6 +15,30 @@ history:
 
 # Weather Playground Preview
 
+## Two Social Themes, 15 September 2026
+
+Owner delegated theme selection and complete production while away: exactly
+two themes, ten static Stories each, Instagram covers forming a larger image,
+and the established full platform pack. This pack-specific delegation replaces
+the earlier repeated copy-approval stop. Themes: what clouds reveal about air,
+and coastal breeze/wind/fog. No app/model change or social-account publication.
+
+Four native ImageGen workers each produced three disjoint artworks and were
+closed immediately after completion: Gibbs (cloud panorama/process/light),
+Mill (atlas/horizon/comparison), Carver (coast panorama/breeze/fog), Lagrange
+(dew/sailboat/learning). Coordinator owns full copy, exact fonts, two shared
+panorama canvases, exports, gallery, archive verification and publication.
+Total agents including coordinator: five. Twelve distinct new source images,
+not twenty different motifs. Source art and generation receipts are preserved.
+
+Instagram profile inspection was denied by automatic review because broad
+origin access could expose private signed-in data. No alternate surface or
+indirect account access was used. Grid previews are projects for 3:4, not
+screenshots or confirmed account-specific cropping. Each theme has three
+self-contained carousels, published right/middle/left to complete one row.
+All twenty story texts and every platform caption remain available together.
+Further QA and actual deployment receipts belong in the campaign README.
+
 ## Group Outreach, 14 September 2026
 
 Owner requested respectful first-person posts for aviation and other Facebook

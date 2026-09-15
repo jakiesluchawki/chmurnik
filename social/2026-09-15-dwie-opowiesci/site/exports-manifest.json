@@ -1,0 +1,1832 @@
+{
+  "date": "2026-09-15",
+  "title": "Dwie opowieści o niebie i wodzie",
+  "copyStatus": "owner-delegated-production",
+  "copyHash": "432ccc543ad1b14bb133f53f21780a27361ad6541d0df2a37e507f105f563828",
+  "sourceArtwork": [
+    {
+      "id": "chmury-panorama",
+      "file": "art/chmury-panorama.png",
+      "width": 1881,
+      "height": 836,
+      "sha256": "7d05886f1457a2a8c58dfe5a7dc4fa3884af60f2817345c38eea267926d5ae14",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "chmury-horyzont",
+      "file": "art/chmury-horyzont.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "14f6df0a524c52b89e9812869d15bb308757662855be697b8ac2e69a9a226c8c",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "chmury-swiatlo",
+      "file": "art/chmury-swiatlo.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "5f91a33e21cfced2d3b951ffcdbe6d9276478fbf0e3f053e94f2d6aceb2fff26",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "chmury-powietrze",
+      "file": "art/chmury-powietrze.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "e18c51d65a1dd2f1b27db4dcaddf4e191f45830903afe04dd49a932f2d1d6fb7",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "chmury-atlas",
+      "file": "art/chmury-atlas.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6eb4f49bbf29d07d481f630144a97cc33eaa35aa633186cff7252f1a9fb575ec",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "chmury-porownanie",
+      "file": "art/chmury-porownanie.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "73a1dde24fb853482f4145816ed952369d0c93af9b23f7df0702cb59fbd46843",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "woda-panorama",
+      "file": "art/woda-panorama.png",
+      "width": 1881,
+      "height": 836,
+      "sha256": "9a3959ebd9133c0cb5038c8a1594083ddf7ba5656bc482a58c3558e163ea608b",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "woda-bryza",
+      "file": "art/woda-bryza.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "3e35fa4af189b7f2a22225dfeec34d2c97197d935a0518c93d633dda6462dfd3",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "woda-wiatr",
+      "file": "art/woda-wiatr.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "87a46e1d7cb0378ce1cf05b4b9aaa6256e1e8ea5b33b845783c980fb0852c7e4",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "woda-temperatura",
+      "file": "art/woda-temperatura.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0d134146fbb064a9c4ea94146c99752f3f4268d72d981d74afd82eb7ffe2a544",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "woda-mgla",
+      "file": "art/woda-mgla.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "fb467d8b50ec003b93f6518f26838e24fd90217371f56fc46d727f5bee1ec5f7",
+      "type": "generated-editorial-illustration"
+    },
+    {
+      "id": "woda-pracownia",
+      "file": "art/woda-pracownia.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ad5411a0217e3e241788b8e88366ae50fe89420009af5e7b73d390352165494a",
+      "type": "generated-editorial-illustration"
+    }
+  ],
+  "artworks": [
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 1,
+      "title": "Co chmura mówi o powietrzu?",
+      "text": "Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Co chmura mówi o powietrzu? Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować.",
+      "layout": {
+        "headlineLines": [
+          "Co chmura mówi o",
+          "powietrzu?"
+        ],
+        "bodyLines": [
+          "Chmura bywa piękna, zanim dowiesz się, jak się",
+          "nazywa. W CHMURNIKU możesz pójść krok dalej:",
+          "przyjrzeć się jej cechom i zrozumieć, jakie procesy",
+          "mogły ją ukształtować."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 782,
+        "bodyTop": 1354,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/01.jpg",
+      "file": "chmury/stories/01.png",
+      "bytes": 1408365,
+      "sha256": "c5d979d46249855a725a2e11824190705996a90887cff626533afb3cbf16cdad"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 1,
+      "title": "Co chmura mówi o powietrzu?",
+      "text": "Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Co chmura mówi o powietrzu? Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować.",
+      "layout": {
+        "headlineLines": [
+          "Co chmura mówi o",
+          "powietrzu?"
+        ],
+        "bodyLines": [
+          "Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W",
+          "CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom",
+          "i zrozumieć, jakie procesy mogły ją ukształtować."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 762,
+        "bodyTop": 1163,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/01.jpg",
+      "file": "chmury/karuzela/01.png",
+      "bytes": 1362844,
+      "sha256": "2518534787942494be07009e4b18e6c13793d8e8734c8e6af6f5dde5eff0ce39"
+    },
+    {
+      "theme": "chmury",
+      "format": "facebook",
+      "number": 1,
+      "title": "Co chmura mówi o powietrzu?",
+      "text": "Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Co chmura mówi o powietrzu? Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować.",
+      "layout": {
+        "headlineLines": [
+          "Co chmura mówi o",
+          "powietrzu?"
+        ],
+        "bodyLines": [
+          "Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W",
+          "CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom",
+          "i zrozumieć, jakie procesy mogły ją ukształtować."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 762,
+        "bodyTop": 1163,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/facebook/01.jpg",
+      "file": "chmury/facebook/01.png",
+      "bytes": 1362844,
+      "sha256": "2518534787942494be07009e4b18e6c13793d8e8734c8e6af6f5dde5eff0ce39"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 2,
+      "title": "Zanim poznasz nazwę",
+      "text": "Popatrz, czy chmura tworzy kopuły, włókna czy rozległą warstwę. Zwróć uwagę na jej podstawę, prześwity i cienie. W atlasie porównasz te cechy z prawdziwymi zdjęciami, nie tylko z jednym wzorcowym obrazkiem.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zanim poznasz nazwę Popatrz, czy chmura tworzy kopuły, włókna czy rozległą warstwę. Zwróć uwagę na jej podstawę, prześwity i cienie. W atlasie porównasz te cechy z prawdziwymi zdjęciami, nie tylko z jednym wzorcowym obrazkiem.",
+      "layout": {
+        "headlineLines": [
+          "Zanim poznasz nazwę"
+        ],
+        "bodyLines": [
+          "Popatrz, czy chmura tworzy kopuły, włókna czy",
+          "rozległą warstwę. Zwróć uwagę na jej podstawę,",
+          "prześwity i cienie. W atlasie porównasz te cechy z",
+          "prawdziwymi zdjęciami, nie tylko z jednym",
+          "wzorcowym obrazkiem."
+        ],
+        "bodyFontSize": 41,
+        "artY": 440,
+        "artH": 820,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/02.jpg",
+      "file": "chmury/stories/02.png",
+      "bytes": 1639944,
+      "sha256": "8d82bdf71e658a5c7dec9bea706fecfc1912faeea58eaa4e42ce46e9b557c271"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 2,
+      "title": "Zanim poznasz nazwę",
+      "text": "Popatrz, czy chmura tworzy kopuły, włókna czy rozległą warstwę. Zwróć uwagę na jej podstawę, prześwity i cienie. W atlasie porównasz te cechy z prawdziwymi zdjęciami, nie tylko z jednym wzorcowym obrazkiem.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zanim poznasz nazwę Popatrz, czy chmura tworzy kopuły, włókna czy rozległą warstwę. Zwróć uwagę na jej podstawę, prześwity i cienie. W atlasie porównasz te cechy z prawdziwymi zdjęciami, nie tylko z jednym wzorcowym obrazkiem.",
+      "layout": {
+        "headlineLines": [
+          "Zanim poznasz nazwę"
+        ],
+        "bodyLines": [
+          "Popatrz, czy chmura tworzy kopuły, włókna czy rozległą",
+          "warstwę. Zwróć uwagę na jej podstawę, prześwity i cienie. W",
+          "atlasie porównasz te cechy z prawdziwymi zdjęciami, nie tylko",
+          "z jednym wzorcowym obrazkiem."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 796,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/02.jpg",
+      "file": "chmury/karuzela/02.png",
+      "bytes": 1578217,
+      "sha256": "74115acc62395ba382f1772438e99f87452bcc936b99069435421bfa26dffde9"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 3,
+      "title": "Światło zmienia to, co widzisz",
+      "text": "Ta sama chmura może wyglądać inaczej w południe i pod wieczór. Ciemna podstawa nie wystarcza, żeby ogłosić deszcz. Warto zestawić światło z kształtem i strukturą, zamiast ufać jednemu wrażeniu.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Światło zmienia to, co widzisz Ta sama chmura może wyglądać inaczej w południe i pod wieczór. Ciemna podstawa nie wystarcza, żeby ogłosić deszcz. Warto zestawić światło z kształtem i strukturą, zamiast ufać jednemu wrażeniu.",
+      "layout": {
+        "headlineLines": [
+          "Światło zmienia to, co",
+          "widzisz"
+        ],
+        "bodyLines": [
+          "Ta sama chmura może wyglądać inaczej w",
+          "południe i pod wieczór. Ciemna podstawa nie",
+          "wystarcza, żeby ogłosić deszcz. Warto zestawić",
+          "światło z kształtem i strukturą, zamiast ufać",
+          "jednemu wrażeniu."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/03.jpg",
+      "file": "chmury/stories/03.png",
+      "bytes": 1339471,
+      "sha256": "0600f3171a51bc41f3990c2f4d1a74455be355f89707f584b66a535cd1b5ecee"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 3,
+      "title": "Światło zmienia to, co widzisz",
+      "text": "Ta sama chmura może wyglądać inaczej w południe i pod wieczór. Ciemna podstawa nie wystarcza, żeby ogłosić deszcz. Warto zestawić światło z kształtem i strukturą, zamiast ufać jednemu wrażeniu.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Światło zmienia to, co widzisz Ta sama chmura może wyglądać inaczej w południe i pod wieczór. Ciemna podstawa nie wystarcza, żeby ogłosić deszcz. Warto zestawić światło z kształtem i strukturą, zamiast ufać jednemu wrażeniu.",
+      "layout": {
+        "headlineLines": [
+          "Światło zmienia to, co",
+          "widzisz"
+        ],
+        "bodyLines": [
+          "Ta sama chmura może wyglądać inaczej w południe i pod",
+          "wieczór. Ciemna podstawa nie wystarcza, żeby ogłosić deszcz.",
+          "Warto zestawić światło z kształtem i strukturą, zamiast ufać",
+          "jednemu wrażeniu."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/03.jpg",
+      "file": "chmury/karuzela/03.png",
+      "bytes": 1303498,
+      "sha256": "95f4758a54516b17e295a312eff3b2f8089fb75276c2c747dc99e5dd029555e2"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 4,
+      "title": "Zostaw w kadrze trochę świata",
+      "text": "Szerszy widok pomaga zrozumieć układ chmur i miejsce obserwacji. Horyzont daje kontekst, ale nie jest miarką wysokości. Z pojedynczego zdjęcia nie zawsze da się wiarygodnie określić piętro chmury.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zostaw w kadrze trochę świata Szerszy widok pomaga zrozumieć układ chmur i miejsce obserwacji. Horyzont daje kontekst, ale nie jest miarką wysokości. Z pojedynczego zdjęcia nie zawsze da się wiarygodnie określić piętro chmury.",
+      "layout": {
+        "headlineLines": [
+          "Zostaw w kadrze trochę",
+          "świata"
+        ],
+        "bodyLines": [
+          "Szerszy widok pomaga zrozumieć układ chmur i",
+          "miejsce obserwacji. Horyzont daje kontekst, ale",
+          "nie jest miarką wysokości. Z pojedynczego zdjęcia",
+          "nie zawsze da się wiarygodnie określić piętro",
+          "chmury."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/04.jpg",
+      "file": "chmury/stories/04.png",
+      "bytes": 1394495,
+      "sha256": "f08fc6f89d2e90d38d35db583bf7f040b3a752e53193bcd8ae01f296a0ffb682"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 4,
+      "title": "Zostaw w kadrze trochę świata",
+      "text": "Szerszy widok pomaga zrozumieć układ chmur i miejsce obserwacji. Horyzont daje kontekst, ale nie jest miarką wysokości. Z pojedynczego zdjęcia nie zawsze da się wiarygodnie określić piętro chmury.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zostaw w kadrze trochę świata Szerszy widok pomaga zrozumieć układ chmur i miejsce obserwacji. Horyzont daje kontekst, ale nie jest miarką wysokości. Z pojedynczego zdjęcia nie zawsze da się wiarygodnie określić piętro chmury.",
+      "layout": {
+        "headlineLines": [
+          "Zostaw w kadrze trochę",
+          "świata"
+        ],
+        "bodyLines": [
+          "Szerszy widok pomaga zrozumieć układ chmur i miejsce",
+          "obserwacji. Horyzont daje kontekst, ale nie jest miarką",
+          "wysokości. Z pojedynczego zdjęcia nie zawsze da się",
+          "wiarygodnie określić piętro chmury."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/04.jpg",
+      "file": "chmury/karuzela/04.png",
+      "bytes": 1328421,
+      "sha256": "979bb401470fa9b917bd2255d40708c60fde75fc3f93da426085cdb0107cc01b"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 5,
+      "title": "Powietrze też ma swoją drogę",
+      "text": "Gdy porcja powietrza wznosi się, spadek ciśnienia pozwala jej się rozprężać i ochładzać. W pracowni unosisz ją nad ziemię i obserwujesz zmianę temperatury, aż pojawią się warunki do kondensacji.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Powietrze też ma swoją drogę Gdy porcja powietrza wznosi się, spadek ciśnienia pozwala jej się rozprężać i ochładzać. W pracowni unosisz ją nad ziemię i obserwujesz zmianę temperatury, aż pojawią się warunki do kondensacji.",
+      "layout": {
+        "headlineLines": [
+          "Powietrze też ma swoją",
+          "drogę"
+        ],
+        "bodyLines": [
+          "Gdy porcja powietrza wznosi się, spadek ciśnienia",
+          "pozwala jej się rozprężać i ochładzać. W pracowni",
+          "unosisz ją nad ziemię i obserwujesz zmianę",
+          "temperatury, aż pojawią się warunki do",
+          "kondensacji."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/05.jpg",
+      "file": "chmury/stories/05.png",
+      "bytes": 1306808,
+      "sha256": "37e4b086b0d8fcf63963e26006c377c95e638bcb95acbb9cbbeca1324cdf20cf"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 5,
+      "title": "Powietrze też ma swoją drogę",
+      "text": "Gdy porcja powietrza wznosi się, spadek ciśnienia pozwala jej się rozprężać i ochładzać. W pracowni unosisz ją nad ziemię i obserwujesz zmianę temperatury, aż pojawią się warunki do kondensacji.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Powietrze też ma swoją drogę Gdy porcja powietrza wznosi się, spadek ciśnienia pozwala jej się rozprężać i ochładzać. W pracowni unosisz ją nad ziemię i obserwujesz zmianę temperatury, aż pojawią się warunki do kondensacji.",
+      "layout": {
+        "headlineLines": [
+          "Powietrze też ma swoją",
+          "drogę"
+        ],
+        "bodyLines": [
+          "Gdy porcja powietrza wznosi się, spadek ciśnienia pozwala jej",
+          "się rozprężać i ochładzać. W pracowni unosisz ją nad ziemię i",
+          "obserwujesz zmianę temperatury, aż pojawią się warunki do",
+          "kondensacji."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/05.jpg",
+      "file": "chmury/karuzela/05.png",
+      "bytes": 1269825,
+      "sha256": "be10b04729728443becbf45953727d3ee6f4b9b26936d2ed4d1bebb339ef9360"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 6,
+      "title": "Wilgotność robi różnicę",
+      "text": "Powtórz doświadczenie z wilgotniejszym powietrzem, zachowując tę samą temperaturę początkową. W tym uproszczonym modelu kondensacja zacznie się niżej. Zamiast zapamiętywać wysokość, sprawdzasz, od czego ona zależy.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wilgotność robi różnicę Powtórz doświadczenie z wilgotniejszym powietrzem, zachowując tę samą temperaturę początkową. W tym uproszczonym modelu kondensacja zacznie się niżej. Zamiast zapamiętywać wysokość, sprawdzasz, od czego ona zależy.",
+      "layout": {
+        "headlineLines": [
+          "Wilgotność robi różnicę"
+        ],
+        "bodyLines": [
+          "Powtórz doświadczenie z wilgotniejszym",
+          "powietrzem, zachowując tę samą temperaturę",
+          "początkową. W tym uproszczonym modelu",
+          "kondensacja zacznie się niżej. Zamiast",
+          "zapamiętywać wysokość, sprawdzasz, od czego",
+          "ona zależy."
+        ],
+        "bodyFontSize": 41,
+        "artY": 440,
+        "artH": 766,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/06.jpg",
+      "file": "chmury/stories/06.png",
+      "bytes": 1069201,
+      "sha256": "c04ffb735baf733328d4fc6d0619dea6da4909e03b7013085a4800890d5aea8a"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 6,
+      "title": "Wilgotność robi różnicę",
+      "text": "Powtórz doświadczenie z wilgotniejszym powietrzem, zachowując tę samą temperaturę początkową. W tym uproszczonym modelu kondensacja zacznie się niżej. Zamiast zapamiętywać wysokość, sprawdzasz, od czego ona zależy.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wilgotność robi różnicę Powtórz doświadczenie z wilgotniejszym powietrzem, zachowując tę samą temperaturę początkową. W tym uproszczonym modelu kondensacja zacznie się niżej. Zamiast zapamiętywać wysokość, sprawdzasz, od czego ona zależy.",
+      "layout": {
+        "headlineLines": [
+          "Wilgotność robi różnicę"
+        ],
+        "bodyLines": [
+          "Powtórz doświadczenie z wilgotniejszym powietrzem,",
+          "zachowując tę samą temperaturę początkową. W tym",
+          "uproszczonym modelu kondensacja zacznie się niżej. Zamiast",
+          "zapamiętywać wysokość, sprawdzasz, od czego ona zależy."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 796,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/06.jpg",
+      "file": "chmury/karuzela/06.png",
+      "bytes": 1082464,
+      "sha256": "bc4d986cdb46551072fc7acdfee2e027246a974f9e4b4593c01176e3260dbf1e"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 7,
+      "title": "Atlas nie kończy się na nazwie",
+      "text": "Otwórz chmurę, która Cię zainteresowała. Zdjęcia są prawdziwe, mają autorów i źródła. Opis podpowiada, na co patrzeć, a pełna lekcja pomaga połączyć wygląd chmury z tym, co dzieje się w powietrzu.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Atlas nie kończy się na nazwie Otwórz chmurę, która Cię zainteresowała. Zdjęcia są prawdziwe, mają autorów i źródła. Opis podpowiada, na co patrzeć, a pełna lekcja pomaga połączyć wygląd chmury z tym, co dzieje się w powietrzu.",
+      "layout": {
+        "headlineLines": [
+          "Atlas nie kończy się na",
+          "nazwie"
+        ],
+        "bodyLines": [
+          "Otwórz chmurę, która Cię zainteresowała. Zdjęcia",
+          "są prawdziwe, mają autorów i źródła. Opis",
+          "podpowiada, na co patrzeć, a pełna lekcja",
+          "pomaga połączyć wygląd chmury z tym, co dzieje",
+          "się w powietrzu."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/07.jpg",
+      "file": "chmury/stories/07.png",
+      "bytes": 1295468,
+      "sha256": "8a36ed2e24ad164663f9bd593937667d086d4044131832a2f60d1ddde5e02f49"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 7,
+      "title": "Atlas nie kończy się na nazwie",
+      "text": "Otwórz chmurę, która Cię zainteresowała. Zdjęcia są prawdziwe, mają autorów i źródła. Opis podpowiada, na co patrzeć, a pełna lekcja pomaga połączyć wygląd chmury z tym, co dzieje się w powietrzu.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Atlas nie kończy się na nazwie Otwórz chmurę, która Cię zainteresowała. Zdjęcia są prawdziwe, mają autorów i źródła. Opis podpowiada, na co patrzeć, a pełna lekcja pomaga połączyć wygląd chmury z tym, co dzieje się w powietrzu.",
+      "layout": {
+        "headlineLines": [
+          "Atlas nie kończy się na",
+          "nazwie"
+        ],
+        "bodyLines": [
+          "Otwórz chmurę, która Cię zainteresowała. Zdjęcia są",
+          "prawdziwe, mają autorów i źródła. Opis podpowiada, na co",
+          "patrzeć, a pełna lekcja pomaga połączyć wygląd chmury z",
+          "tym, co dzieje się w powietrzu."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/07.jpg",
+      "file": "chmury/karuzela/07.png",
+      "bytes": 1257094,
+      "sha256": "d7d61c0175aceb36be072825aa08d44900d3528f1dbae3508a3b76924234cc84"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 8,
+      "title": "Niebo rzadko mieści się w jednej szufladce",
+      "text": "Na jednym niebie mogą spotkać się różne rodzaje i warstwy chmur. Porównuj je osobno i zostaw miejsce na niepewność. Dobra obserwacja nie musi kończyć się jedną stanowczą odpowiedzią.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Niebo rzadko mieści się w jednej szufladce Na jednym niebie mogą spotkać się różne rodzaje i warstwy chmur. Porównuj je osobno i zostaw miejsce na niepewność. Dobra obserwacja nie musi kończyć się jedną stanowczą odpowiedzią.",
+      "layout": {
+        "headlineLines": [
+          "Niebo rzadko mieści się",
+          "w jednej szufladce"
+        ],
+        "bodyLines": [
+          "Na jednym niebie mogą spotkać się różne rodzaje",
+          "i warstwy chmur. Porównuj je osobno i zostaw",
+          "miejsce na niepewność. Dobra obserwacja nie",
+          "musi kończyć się jedną stanowczą odpowiedzią."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 782,
+        "bodyTop": 1354,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/08.jpg",
+      "file": "chmury/stories/08.png",
+      "bytes": 1363499,
+      "sha256": "d8e3f669bb755cd077536157b2f740775a5dfe804263e20e216162e077afae9c"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 8,
+      "title": "Niebo rzadko mieści się w jednej szufladce",
+      "text": "Na jednym niebie mogą spotkać się różne rodzaje i warstwy chmur. Porównuj je osobno i zostaw miejsce na niepewność. Dobra obserwacja nie musi kończyć się jedną stanowczą odpowiedzią.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Niebo rzadko mieści się w jednej szufladce Na jednym niebie mogą spotkać się różne rodzaje i warstwy chmur. Porównuj je osobno i zostaw miejsce na niepewność. Dobra obserwacja nie musi kończyć się jedną stanowczą odpowiedzią.",
+      "layout": {
+        "headlineLines": [
+          "Niebo rzadko mieści się w",
+          "jednej szufladce"
+        ],
+        "bodyLines": [
+          "Na jednym niebie mogą spotkać się różne rodzaje i warstwy",
+          "chmur. Porównuj je osobno i zostaw miejsce na niepewność.",
+          "Dobra obserwacja nie musi kończyć się jedną stanowczą",
+          "odpowiedzią."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/08.jpg",
+      "file": "chmury/karuzela/08.png",
+      "bytes": 1240231,
+      "sha256": "e0529f9fb135a678db8879b3081fc8631af0537ba228369f5165d2e6a1c84859"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 9,
+      "title": "Sprawdź, czy rozumiesz",
+      "text": "Po przewodniku czeka nowy przypadek, a nie powtórka tych samych ustawień. Najpierw przewidujesz wynik i wybierasz uzasadnienie, potem sprawdzasz, co się wydarzyło. W ten sposób poznana zasada staje się Twoim narzędziem.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Sprawdź, czy rozumiesz Po przewodniku czeka nowy przypadek, a nie powtórka tych samych ustawień. Najpierw przewidujesz wynik i wybierasz uzasadnienie, potem sprawdzasz, co się wydarzyło. W ten sposób poznana zasada staje się Twoim narzędziem.",
+      "layout": {
+        "headlineLines": [
+          "Sprawdź, czy rozumiesz"
+        ],
+        "bodyLines": [
+          "Po przewodniku czeka nowy przypadek, a nie",
+          "powtórka tych samych ustawień. Najpierw",
+          "przewidujesz wynik i wybierasz uzasadnienie,",
+          "potem sprawdzasz, co się wydarzyło. W ten",
+          "sposób poznana zasada staje się Twoim",
+          "narzędziem."
+        ],
+        "bodyFontSize": 41,
+        "artY": 440,
+        "artH": 766,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/09.jpg",
+      "file": "chmury/stories/09.png",
+      "bytes": 1340165,
+      "sha256": "e794da545e9c361097c47e2df44680b8d87a9722363ae34955262ac0df3c1678"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 9,
+      "title": "Sprawdź, czy rozumiesz",
+      "text": "Po przewodniku czeka nowy przypadek, a nie powtórka tych samych ustawień. Najpierw przewidujesz wynik i wybierasz uzasadnienie, potem sprawdzasz, co się wydarzyło. W ten sposób poznana zasada staje się Twoim narzędziem.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Sprawdź, czy rozumiesz Po przewodniku czeka nowy przypadek, a nie powtórka tych samych ustawień. Najpierw przewidujesz wynik i wybierasz uzasadnienie, potem sprawdzasz, co się wydarzyło. W ten sposób poznana zasada staje się Twoim narzędziem.",
+      "layout": {
+        "headlineLines": [
+          "Sprawdź, czy rozumiesz"
+        ],
+        "bodyLines": [
+          "Po przewodniku czeka nowy przypadek, a nie powtórka tych",
+          "samych ustawień. Najpierw przewidujesz wynik i wybierasz",
+          "uzasadnienie, potem sprawdzasz, co się wydarzyło. W ten",
+          "sposób poznana zasada staje się Twoim narzędziem."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 796,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/09.jpg",
+      "file": "chmury/karuzela/09.png",
+      "bytes": 1363646,
+      "sha256": "b2317c75ea217a889278858470d35c2db1de7497385459bf7e1faceed22e35ce"
+    },
+    {
+      "theme": "chmury",
+      "format": "stories",
+      "number": 10,
+      "title": "Niebo staje się znajome",
+      "text": "Przygotowałem CHMURNIK, żeby ciekawość miała gdzie pójść dalej. Są prawdziwe zdjęcia, pełne lekcje i pracownie, w których sprawdzasz mechanizmy. Zacznij od jednej chmury, którą naprawdę chcesz zrozumieć.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Niebo staje się znajome Przygotowałem CHMURNIK, żeby ciekawość miała gdzie pójść dalej. Są prawdziwe zdjęcia, pełne lekcje i pracownie, w których sprawdzasz mechanizmy. Zacznij od jednej chmury, którą naprawdę chcesz zrozumieć.",
+      "layout": {
+        "headlineLines": [
+          "Niebo staje się znajome"
+        ],
+        "bodyLines": [
+          "Przygotowałem CHMURNIK, żeby ciekawość miała",
+          "gdzie pójść dalej. Są prawdziwe zdjęcia, pełne",
+          "lekcje i pracownie, w których sprawdzasz",
+          "mechanizmy. Zacznij od jednej chmury, którą",
+          "naprawdę chcesz zrozumieć."
+        ],
+        "bodyFontSize": 41,
+        "artY": 440,
+        "artH": 820,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/chmury/stories/10.jpg",
+      "file": "chmury/stories/10.png",
+      "bytes": 1437219,
+      "sha256": "9974f06a88403a1e52a1ea10cbdb86e613b06a0beab0258d5c7e8bb5179727d8"
+    },
+    {
+      "theme": "chmury",
+      "format": "karuzela",
+      "number": 10,
+      "title": "Niebo staje się znajome",
+      "text": "Przygotowałem CHMURNIK, żeby ciekawość miała gdzie pójść dalej. Są prawdziwe zdjęcia, pełne lekcje i pracownie, w których sprawdzasz mechanizmy. Zacznij od jednej chmury, którą naprawdę chcesz zrozumieć.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Niebo staje się znajome Przygotowałem CHMURNIK, żeby ciekawość miała gdzie pójść dalej. Są prawdziwe zdjęcia, pełne lekcje i pracownie, w których sprawdzasz mechanizmy. Zacznij od jednej chmury, którą naprawdę chcesz zrozumieć.",
+      "layout": {
+        "headlineLines": [
+          "Niebo staje się znajome"
+        ],
+        "bodyLines": [
+          "Przygotowałem CHMURNIK, żeby ciekawość miała gdzie pójść",
+          "dalej. Są prawdziwe zdjęcia, pełne lekcje i pracownie, w",
+          "których sprawdzasz mechanizmy. Zacznij od jednej chmury,",
+          "którą naprawdę chcesz zrozumieć."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 796,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/karuzela/10.jpg",
+      "file": "chmury/karuzela/10.png",
+      "bytes": 1422448,
+      "sha256": "d59a9749b6127221ca31beeb53b10b1b5561f971741336cf3c45c6ca6e6a7b6b"
+    },
+    {
+      "theme": "chmury",
+      "format": "okladka",
+      "part": 1,
+      "publicationOrder": 3,
+      "gridColumn": 1,
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/okladka-3.jpg",
+      "title": "Zanim poznasz nazwę",
+      "alt": "Fragment 1 jednej ciągłej panoramy. Co chmura mówi",
+      "file": "chmury/instagram/03-post/00-okladka.png",
+      "bytes": 2624645,
+      "sha256": "854e3d2ac05de72cbcdb77efe45f1267d067004a36288ec9eef074d75569fef3"
+    },
+    {
+      "theme": "chmury",
+      "format": "okladka",
+      "part": 2,
+      "publicationOrder": 2,
+      "gridColumn": 2,
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/okladka-2.jpg",
+      "title": "Skąd bierze się chmura",
+      "alt": "Fragment 2 jednej ciągłej panoramy. o powietrzu?",
+      "file": "chmury/instagram/02-post/00-okladka.png",
+      "bytes": 2594004,
+      "sha256": "e2b8a691e724218ec8915890d4d487dbdb202cfdded1d703882782613955b6cd"
+    },
+    {
+      "theme": "chmury",
+      "format": "okladka",
+      "part": 3,
+      "publicationOrder": 1,
+      "gridColumn": 3,
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/chmury/okladka-1.jpg",
+      "title": "Rozpoznawanie to rozumienie",
+      "alt": "Fragment 3 jednej ciągłej panoramy. Zacznij od obserwacji.",
+      "file": "chmury/instagram/01-post/00-okladka.png",
+      "bytes": 2628770,
+      "sha256": "06222fa9008e4a78a3f54a3d1a2af6fcc035c393a9ebeb18ffbf4f587d09280e"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 1,
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "text": "Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wieczór nad wodą ma swoją fizykę Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.",
+      "layout": {
+        "headlineLines": [
+          "Wieczór nad wodą ma",
+          "swoją fizykę"
+        ],
+        "bodyLines": [
+          "Ciepły piasek, chłodniejszy podmuch i mgła, która",
+          "czasem przychodzi po zmroku. W CHMURNIKU",
+          "możesz sprawdzić, skąd biorą się te zjawiska.",
+          "Widok zostaje piękny, a Ty zaczynasz rozumieć go",
+          "trochę lepiej."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/01.jpg",
+      "file": "woda/stories/01.png",
+      "bytes": 1299444,
+      "sha256": "b8b32ccf9afe8f0b260f2974ae53fabdf48424b728827ec571468753568e8404"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 1,
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "text": "Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wieczór nad wodą ma swoją fizykę Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.",
+      "layout": {
+        "headlineLines": [
+          "Wieczór nad wodą ma swoją",
+          "fizykę"
+        ],
+        "bodyLines": [
+          "Ciepły piasek, chłodniejszy podmuch i mgła, która czasem",
+          "przychodzi po zmroku. W CHMURNIKU możesz sprawdzić,",
+          "skąd biorą się te zjawiska. Widok zostaje piękny, a Ty",
+          "zaczynasz rozumieć go trochę lepiej."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/01.jpg",
+      "file": "woda/karuzela/01.png",
+      "bytes": 1265246,
+      "sha256": "e1d4c6a901e5a616def75b71f82b91c67d77321041dae89a2a34e4fd467cc68c"
+    },
+    {
+      "theme": "woda",
+      "format": "facebook",
+      "number": 1,
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "text": "Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Wieczór nad wodą ma swoją fizykę Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej.",
+      "layout": {
+        "headlineLines": [
+          "Wieczór nad wodą ma swoją",
+          "fizykę"
+        ],
+        "bodyLines": [
+          "Ciepły piasek, chłodniejszy podmuch i mgła, która czasem",
+          "przychodzi po zmroku. W CHMURNIKU możesz sprawdzić,",
+          "skąd biorą się te zjawiska. Widok zostaje piękny, a Ty",
+          "zaczynasz rozumieć go trochę lepiej."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/facebook/01.jpg",
+      "file": "woda/facebook/01.png",
+      "bytes": 1265246,
+      "sha256": "e1d4c6a901e5a616def75b71f82b91c67d77321041dae89a2a34e4fd467cc68c"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 2,
+      "title": "Ląd i woda nie reagują tak samo",
+      "text": "W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Ląd i woda nie reagują tak samo W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu.",
+      "layout": {
+        "headlineLines": [
+          "Ląd i woda nie reagują",
+          "tak samo"
+        ],
+        "bodyLines": [
+          "W uproszczonym doświadczeniu ląd szybciej się",
+          "ogrzewa i ochładza niż woda. Zmień ogrzewanie i",
+          "porównaj obie temperatury. Ta różnica pomaga",
+          "wyjaśnić lokalny obieg powietrza przy brzegu."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 782,
+        "bodyTop": 1354,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/02.jpg",
+      "file": "woda/stories/02.png",
+      "bytes": 1523594,
+      "sha256": "d2e721e5ad04eda6b2a9368ec954fe14bfc441d9dcda2197bce8a300b9d136b4"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 2,
+      "title": "Ląd i woda nie reagują tak samo",
+      "text": "W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Ląd i woda nie reagują tak samo W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu.",
+      "layout": {
+        "headlineLines": [
+          "Ląd i woda nie reagują tak",
+          "samo"
+        ],
+        "bodyLines": [
+          "W uproszczonym doświadczeniu ląd szybciej się ogrzewa i",
+          "ochładza niż woda. Zmień ogrzewanie i porównaj obie",
+          "temperatury. Ta różnica pomaga wyjaśnić lokalny obieg",
+          "powietrza przy brzegu."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/02.jpg",
+      "file": "woda/karuzela/02.png",
+      "bytes": 1407184,
+      "sha256": "bad839ff90cb1b94de4ed51564ae17b2f6976ade65dbc06d70704cac64a502f8"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 3,
+      "title": "Za dnia powietrze może przyjść od wody",
+      "text": "Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Za dnia powietrze może przyjść od wody Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg.",
+      "layout": {
+        "headlineLines": [
+          "Za dnia powietrze może",
+          "przyjść od wody"
+        ],
+        "bodyLines": [
+          "Przy słabym wietrze ogólnym i silniejszym",
+          "ogrzaniu lądu może rozwinąć się bryza morska.",
+          "Przy powierzchni powietrze płynie od wody ku",
+          "lądowi, unosi się nad nim i wraca wyżej. W",
+          "pracowni widzisz cały obieg."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/03.jpg",
+      "file": "woda/stories/03.png",
+      "bytes": 1433094,
+      "sha256": "f5d721d55a115ec7be5b82939ba2f719a991ca7bf659f5e657824c2e20952e79"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 3,
+      "title": "Za dnia powietrze może przyjść od wody",
+      "text": "Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Za dnia powietrze może przyjść od wody Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg.",
+      "layout": {
+        "headlineLines": [
+          "Za dnia powietrze może",
+          "przyjść od wody"
+        ],
+        "bodyLines": [
+          "Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może",
+          "rozwinąć się bryza morska. Przy powierzchni powietrze płynie",
+          "od wody ku lądowi, unosi się nad nim i wraca wyżej. W",
+          "pracowni widzisz cały obieg."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/03.jpg",
+      "file": "woda/karuzela/03.png",
+      "bytes": 1396095,
+      "sha256": "12dac7fd28de73afb7ff64d75ce2a5d8491c7628262140015bf1d08bea4b99fd"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 4,
+      "title": "Noc zmienia różnicę temperatur",
+      "text": "Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Noc zmienia różnicę temperatur Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo.",
+      "layout": {
+        "headlineLines": [
+          "Noc zmienia różnicę",
+          "temperatur"
+        ],
+        "bodyLines": [
+          "Gdy ląd ochłodzi się bardziej niż woda, lokalny",
+          "obieg może się odwrócić: przy powierzchni",
+          "powietrze popłynie ku wodzie. Przełącz porę dnia i",
+          "sprawdź warunki, zamiast zakładać, że każdy",
+          "wieczór musi wyglądać tak samo."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/04.jpg",
+      "file": "woda/stories/04.png",
+      "bytes": 1391845,
+      "sha256": "fb8238505d8a006e657ed69c72112aec014a9fede22c7825e953c91e4f390290"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 4,
+      "title": "Noc zmienia różnicę temperatur",
+      "text": "Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Noc zmienia różnicę temperatur Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo.",
+      "layout": {
+        "headlineLines": [
+          "Noc zmienia różnicę",
+          "temperatur"
+        ],
+        "bodyLines": [
+          "Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się",
+          "odwrócić: przy powierzchni powietrze popłynie ku wodzie.",
+          "Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że",
+          "każdy wieczór musi wyglądać tak samo."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/04.jpg",
+      "file": "woda/karuzela/04.png",
+      "bytes": 1356137,
+      "sha256": "2a78fcc8922062a4d1315af4cfb9d56f2a0084ea6729e14ab6d35d21213d1448"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 5,
+      "title": "Bryza nie jest całym wiatrem",
+      "text": "Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Bryza nie jest całym wiatrem Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy.",
+      "layout": {
+        "headlineLines": [
+          "Bryza nie jest całym",
+          "wiatrem"
+        ],
+        "bodyLines": [
+          "Silniejszy wiatr związany z większym układem",
+          "pogody może zaburzyć albo zdominować bryzę.",
+          "Dlatego doświadczenie tłumaczy mechanizm, a",
+          "nie przepowiada jutrzejszy podmuch. Do",
+          "planowania potrzebujesz aktualnych danych i",
+          "prognozy."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 674,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/05.jpg",
+      "file": "woda/stories/05.png",
+      "bytes": 1418635,
+      "sha256": "c18e556fa64ce6083eeec70dd2a2a267ed3fa610e0ee2a050f85c1171aaca5bf"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 5,
+      "title": "Bryza nie jest całym wiatrem",
+      "text": "Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Bryza nie jest całym wiatrem Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy.",
+      "layout": {
+        "headlineLines": [
+          "Bryza nie jest całym wiatrem"
+        ],
+        "bodyLines": [
+          "Silniejszy wiatr związany z większym układem pogody może",
+          "zaburzyć albo zdominować bryzę. Dlatego doświadczenie",
+          "tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch.",
+          "Do planowania potrzebujesz aktualnych danych i prognozy."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 796,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/05.jpg",
+      "file": "woda/karuzela/05.png",
+      "bytes": 1602519,
+      "sha256": "83e3cd0514f57cde447330dc55a5536c3f13e7c3ebebad176c105c2e23fa929d"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 6,
+      "title": "Punkt rosy to konkretna temperatura",
+      "text": "To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Punkt rosy to konkretna temperatura To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają.",
+      "layout": {
+        "headlineLines": [
+          "Punkt rosy to konkretna",
+          "temperatura"
+        ],
+        "bodyLines": [
+          "To temperatura, do której trzeba ochłodzić",
+          "powietrze, aby osiągnęło nasycenie przy",
+          "niezmienionej zawartości pary wodnej i ciśnieniu.",
+          "W pracowni mgły zmieniasz wilgotność i",
+          "ochładzanie, żeby zobaczyć, kiedy te warunki się",
+          "spotkają."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 674,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/06.jpg",
+      "file": "woda/stories/06.png",
+      "bytes": 1238131,
+      "sha256": "c121f72cfdb827bbb22d096c86e78dbde1c9bdb84db3371f901015b0b3feb51a"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 6,
+      "title": "Punkt rosy to konkretna temperatura",
+      "text": "To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Punkt rosy to konkretna temperatura To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają.",
+      "layout": {
+        "headlineLines": [
+          "Punkt rosy to konkretna",
+          "temperatura"
+        ],
+        "bodyLines": [
+          "To temperatura, do której trzeba ochłodzić powietrze, aby",
+          "osiągnęło nasycenie przy niezmienionej zawartości pary",
+          "wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i",
+          "ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/06.jpg",
+      "file": "woda/karuzela/06.png",
+      "bytes": 1268847,
+      "sha256": "bacd84b9270aa9e57e330f9a4113916133c32a9712caf5c5ff4feaa63f399bf8"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 7,
+      "title": "Mgła potrzebuje warunków",
+      "text": "W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mgła potrzebuje warunków W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność.",
+      "layout": {
+        "headlineLines": [
+          "Mgła potrzebuje",
+          "warunków"
+        ],
+        "bodyLines": [
+          "W wilgotną, pogodną noc słabe mieszanie i",
+          "chłodzenie przy ziemi mogą sprzyjać mgle",
+          "radiacyjnej. W ćwiczeniu najpierw przewidujesz,",
+          "czy pojawi się kondensacja, potem sprawdzasz",
+          "wynik. Rysunek pokazuje mechanizm, nie",
+          "zmierzoną widzialność."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 674,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/07.jpg",
+      "file": "woda/stories/07.png",
+      "bytes": 1404771,
+      "sha256": "48d444633e50a9ef827ed379b564fb6d32351d8723fd038027deb35edf379161"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 7,
+      "title": "Mgła potrzebuje warunków",
+      "text": "W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mgła potrzebuje warunków W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność.",
+      "layout": {
+        "headlineLines": [
+          "Mgła potrzebuje warunków"
+        ],
+        "bodyLines": [
+          "W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy",
+          "ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw",
+          "przewidujesz, czy pojawi się kondensacja, potem sprawdzasz",
+          "wynik. Rysunek pokazuje mechanizm, nie zmierzoną",
+          "widzialność."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 752,
+        "bodyTop": 1075,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/07.jpg",
+      "file": "woda/karuzela/07.png",
+      "bytes": 1522789,
+      "sha256": "cd626755141e8f34254f56475278b12e91b3b4689b9eeba9ab9bbf56e4c4b163"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 8,
+      "title": "Chmura płynie dokąd, wiatr wieje skąd?",
+      "text": "Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Chmura płynie dokąd, wiatr wieje skąd? Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja.",
+      "layout": {
+        "headlineLines": [
+          "Chmura płynie dokąd,",
+          "wiatr wieje skąd?"
+        ],
+        "bodyLines": [
+          "Jeśli chmura przesuwa się na wschód, wiatr na jej",
+          "wysokości wieje z zachodu. Przy brzegu może być",
+          "inny. Pracownia pomaga rozdzielić kierunek",
+          "ruchu, kierunek wiatru i warstwę, której dotyczy",
+          "obserwacja."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/08.jpg",
+      "file": "woda/stories/08.png",
+      "bytes": 1529349,
+      "sha256": "d66bb09b9356dcdb6b9ce0fc145b27e4b7001b3f61ba10f99d6efda4de70902a"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 8,
+      "title": "Chmura płynie dokąd, wiatr wieje skąd?",
+      "text": "Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Chmura płynie dokąd, wiatr wieje skąd? Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja.",
+      "layout": {
+        "headlineLines": [
+          "Chmura płynie dokąd, wiatr",
+          "wieje skąd?"
+        ],
+        "bodyLines": [
+          "Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości",
+          "wieje z zachodu. Przy brzegu może być inny. Pracownia",
+          "pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę,",
+          "której dotyczy obserwacja."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/08.jpg",
+      "file": "woda/karuzela/08.png",
+      "bytes": 1485680,
+      "sha256": "5789b9c08ba2aecf488e77a3cd421b33992345bb3e52e9a4c6a5ecab1b81c5df"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 9,
+      "title": "Mapa staje się czytelniejsza",
+      "text": "W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mapa staje się czytelniejsza W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa.",
+      "layout": {
+        "headlineLines": [
+          "Mapa staje się",
+          "czytelniejsza"
+        ],
+        "bodyLines": [
+          "W części poświęconej Windy uczysz się wybierać",
+          "warstwę i czas oraz odróżniać dane od własnych",
+          "wniosków. Bryza i mgła przestają być osobnymi",
+          "ciekawostkami: masz mechanizm, z którym",
+          "możesz zestawić to, co pokazuje mapa."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 728,
+        "bodyTop": 1300,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/09.jpg",
+      "file": "woda/stories/09.png",
+      "bytes": 1506923,
+      "sha256": "321ccc86ae6ebd7c2ce226bd88f91096af6ba93c0d060921a08fdc42e53cffa7"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 9,
+      "title": "Mapa staje się czytelniejsza",
+      "text": "W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Mapa staje się czytelniejsza W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa.",
+      "layout": {
+        "headlineLines": [
+          "Mapa staje się czytelniejsza"
+        ],
+        "bodyLines": [
+          "W części poświęconej Windy uczysz się wybierać warstwę i",
+          "czas oraz odróżniać dane od własnych wniosków. Bryza i mgła",
+          "przestają być osobnymi ciekawostkami: masz mechanizm, z",
+          "którym możesz zestawić to, co pokazuje mapa."
+        ],
+        "bodyFontSize": 33,
+        "artY": 283,
+        "artH": 796,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/09.jpg",
+      "file": "woda/karuzela/09.png",
+      "bytes": 1594879,
+      "sha256": "8c1c6f3b63df1b729fead8ad5d4434ec3e59a3392b3de7371a2b5a6a0d8d00cc"
+    },
+    {
+      "theme": "woda",
+      "format": "stories",
+      "number": 10,
+      "title": "Zabierz nad wodę trochę rozumienia",
+      "text": "Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zabierz nad wodę trochę rozumienia Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz.",
+      "layout": {
+        "headlineLines": [
+          "Zabierz nad wodę",
+          "trochę rozumienia"
+        ],
+        "bodyLines": [
+          "Przygotowałem CHMURNIK także z myślą o",
+          "wietrze, który naprawdę czuć na twarzy. Bryza,",
+          "mgła, wiatr i pełne lekcje są dostępne w",
+          "przeglądarce. Zajrzyj z telefonu; do planowania",
+          "żeglugi nadal używaj oficjalnych komunikatów i",
+          "prognoz."
+        ],
+        "bodyFontSize": 41,
+        "artY": 532,
+        "artH": 674,
+        "bodyTop": 1246,
+        "bodyBottom": 1570,
+        "safe": {
+          "top": 180,
+          "bottom": 1680,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1920,
+      "preview": "previews/woda/stories/10.jpg",
+      "file": "woda/stories/10.png",
+      "bytes": 1497885,
+      "sha256": "9245264b2fa607cc70ded97499feda8b451d10330fc91aafcea0157f960c50ec"
+    },
+    {
+      "theme": "woda",
+      "format": "karuzela",
+      "number": 10,
+      "title": "Zabierz nad wodę trochę rozumienia",
+      "text": "Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz.",
+      "alt": "Stylizowana ilustracja edukacyjna, nie fotografia obserwacyjna. Zabierz nad wodę trochę rozumienia Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz.",
+      "layout": {
+        "headlineLines": [
+          "Zabierz nad wodę trochę",
+          "rozumienia"
+        ],
+        "bodyLines": [
+          "Przygotowałem CHMURNIK także z myślą o wietrze, który",
+          "naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są",
+          "dostępne w przeglądarce. Zajrzyj z telefonu; do planowania",
+          "żeglugi nadal używaj oficjalnych komunikatów i prognoz."
+        ],
+        "bodyFontSize": 33,
+        "artY": 361,
+        "artH": 718,
+        "bodyTop": 1119,
+        "bodyBottom": 1295,
+        "safe": {
+          "top": 60,
+          "bottom": 1390,
+          "left": 72,
+          "right": 1008
+        }
+      },
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/karuzela/10.jpg",
+      "file": "woda/karuzela/10.png",
+      "bytes": 1560063,
+      "sha256": "acc958eff429ff3deb9e14d6c7e854be972571d3896e8eeedce0db10ac061138"
+    },
+    {
+      "theme": "woda",
+      "format": "okladka",
+      "part": 1,
+      "publicationOrder": 3,
+      "gridColumn": 1,
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/okladka-3.jpg",
+      "title": "Dlaczego od wody wieje",
+      "alt": "Fragment 1 jednej ciągłej panoramy. Wieczór nad wodą",
+      "file": "woda/instagram/03-post/00-okladka.png",
+      "bytes": 2580244,
+      "sha256": "5d02056244514c64b556da5b811a9588d8b809d08876133e17c4633e84017e00"
+    },
+    {
+      "theme": "woda",
+      "format": "okladka",
+      "part": 2,
+      "publicationOrder": 2,
+      "gridColumn": 2,
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/okladka-2.jpg",
+      "title": "Skąd bierze się wieczorna mgła",
+      "alt": "Fragment 2 jednej ciągłej panoramy. ma swoją fizykę.",
+      "file": "woda/instagram/02-post/00-okladka.png",
+      "bytes": 2314146,
+      "sha256": "85cd0779f9580405f7150db615252e28fcaf8bb7d2d98afe7a318e0f55cb58a4"
+    },
+    {
+      "theme": "woda",
+      "format": "okladka",
+      "part": 3,
+      "publicationOrder": 1,
+      "gridColumn": 3,
+      "width": 1080,
+      "height": 1440,
+      "preview": "previews/woda/okladka-1.jpg",
+      "title": "Zrozumieć wiatr, nie tylko go poczuć",
+      "alt": "Fragment 3 jednej ciągłej panoramy. Bryza, wiatr i mgła.",
+      "file": "woda/instagram/01-post/00-okladka.png",
+      "bytes": 2990105,
+      "sha256": "311a298dc920dfd30c522535d30b3a9869f6125f4def6e5f5880597090b4c6b4"
+    }
+  ],
+  "documents": [
+    {
+      "theme": "chmury",
+      "pages": 10,
+      "width": 1080,
+      "height": 1440,
+      "title": "Co chmura mówi o powietrzu?",
+      "selectableText": true,
+      "link": "https://chmurnik.cloud/pogoda-preview/#chmura",
+      "file": "chmury/CHMURNIK-CHMURY-LINKEDIN.pdf",
+      "bytes": 13774026,
+      "sha256": "0ea12916819250dfef1551fa4c5f1971cf03b302ab4de8a65c0d02e1a4239dc9"
+    },
+    {
+      "theme": "woda",
+      "pages": 10,
+      "width": 1080,
+      "height": 1440,
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "selectableText": true,
+      "link": "https://chmurnik.cloud/pogoda-preview/#bryza",
+      "file": "woda/CHMURNIK-WODA-LINKEDIN.pdf",
+      "bytes": 15812311,
+      "sha256": "5e66b17dcc204d3240a0c49286bff9ebf624a24fd5ad594a42dde705c815cb81"
+    }
+  ],
+  "mosaics": [
+    {
+      "theme": "chmury",
+      "width": 3240,
+      "height": 1440,
+      "preview": "chmury/siatka/podglad.jpg",
+      "gridRatio": "3:4",
+      "pieces": 3,
+      "pixelIdenticalReconstruction": true,
+      "nativeArtworkDimensions": {
+        "id": "chmury-panorama",
+        "file": "art/chmury-panorama.png",
+        "width": 1881,
+        "height": 836,
+        "sha256": "7d05886f1457a2a8c58dfe5a7dc4fa3884af60f2817345c38eea267926d5ae14",
+        "type": "generated-editorial-illustration"
+      },
+      "note": "Composed panorama export is enlarged from the native artwork; Instagram account cropping remains unverified.",
+      "file": "chmury/siatka/panorama-3240x1440.png",
+      "bytes": 6642389,
+      "sha256": "454695bd72beb8f34325841a7f56f869d88f1341c947b26fdcbe6f1d03f03d81"
+    },
+    {
+      "theme": "woda",
+      "width": 3240,
+      "height": 1440,
+      "preview": "woda/siatka/podglad.jpg",
+      "gridRatio": "3:4",
+      "pieces": 3,
+      "pixelIdenticalReconstruction": true,
+      "nativeArtworkDimensions": {
+        "id": "woda-panorama",
+        "file": "art/woda-panorama.png",
+        "width": 1881,
+        "height": 836,
+        "sha256": "9a3959ebd9133c0cb5038c8a1594083ddf7ba5656bc482a58c3558e163ea608b",
+        "type": "generated-editorial-illustration"
+      },
+      "note": "Composed panorama export is enlarged from the native artwork; Instagram account cropping remains unverified.",
+      "file": "woda/siatka/panorama-3240x1440.png",
+      "bytes": 6622410,
+      "sha256": "812546b28a38236f4002355fffdd516b7031828ab33c17da83034b22724fb060"
+    }
+  ],
+  "method": "Built-in ImageGen art; deterministic Romie/Roobert glyph paths; two triptychs cut from single shared canvases; selectable PDF text."
+}

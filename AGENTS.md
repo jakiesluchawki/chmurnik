@@ -131,6 +131,14 @@ Writing production code without an active Lore task is forbidden.
   concrete learner value while retaining the restrained romantic voice.
   Feature demos should show genuine mobile taps, swipes, lesson questions and
   explanations, not just isolated panels with changing numbers.
+- On 2026-09-15 the owner delegated selection and complete production of
+  exactly two social themes while away, with ten static Stories per theme.
+  This specific pack does not require another copy-approval stop. Instagram
+  covers should form one beautiful shared panorama per theme, split into
+  three actual post covers; three posts must not be confused with three
+  themes. Preserve full readable copy inside the carousels, provide exact
+  publication order, and never claim to have inspected the account if access
+  is blocked. Keep all packs reachable from the permanent /assetySM/ library.
 - On 2026-09-04 the owner expanded the recognition-first release to include
   a full interface-copy edit on Apple platforms and applicable web pages.
   Explain what a feature does, what the user can do next, and what a result

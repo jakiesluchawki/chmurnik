@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "asset": "woda-panorama",
+  "worker": "coast-a",
+  "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/woda-panorama.png",
+  "dimensions": {
+    "width": 1881,
+    "height": 836,
+    "aspect_ratio": "9:4"
+  },
+  "generator": {
+    "tool": "image_gen.imagegen",
+    "mode": "builtin generate",
+    "attempt": 1
+  },
+  "prompt": "Use case: ads-marketing.\nAsset: CHMURNIK campaign, woda-panorama. Generate exactly ONE NEW clean image.\nCanvas: exactly 9:4 wide landscape, preferably 2304 x 1024 pixels. One continuous scene intended to be split into three contiguous vertical tiles later, not a triptych, no panels, no borders, no visible seams.\nScene: a single coherent coastal landscape at twilight seen at eye level. Uninterrupted violet water and a warm ivory shoreline flow naturally from left to right. Left third: a low setting peach sun with a restrained reflection across the water. Center third: one tiny elegant ivory sailboat on purple water, no occupants. Right third: an olive hill with slender cypress and delicate very low ivory mist hugging the shore. The coastline, water plane, horizon and lighting remain coherent across the whole canvas.\nComposition: upper 35 percent is calm cream-to-warm-blush-pink sky, uncluttered negative space reserved for later title overlays, but render absolutely no text. Strong graphic composition, beautiful depth, spacious and quiet.\nStyle: sophisticated adult editorial art direction; tactile wool-felt and cut-paper miniature landscape, sculptural handmade layered forms with subtle natural fibers and paper texture, elegant rather than childish or toy-like. Luminous restrained twilight light. Cream ivory, warm blush pink, olive terrain, violet atmospheric accents. Preserve the reference mood of coastal stillness, soft light and low mist, not its photographic medium.\nConstraints: no faces, no characters, no people, no animals, no text, no typography, no logo, no watermark, no fake UI, no map symbols, no panels or borders. One clean full-bleed image.",
+  "style_reference": {
+    "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+    "inspected_with": "view_image",
+    "passed_as_generator_input": false
+  },
+  "generation_receipt": {
+    "id": "exec-32eb3b61-b3fa-4248-ba8e-ed06e07c0869",
+    "original_file": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35fa-76e0-915f-eedb2b81f6c8/exec-32eb3b61-b3fa-4248-ba8e-ed06e07c0869.png",
+    "output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35fa-76e0-915f-eedb2b81f6c8 as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35fa-76e0-915f-eedb2b81f6c8/exec-32eb3b61-b3fa-4248-ba8e-ed06e07c0869.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  "verification": {
+    "sha256": "9a3959ebd9133c0cb5038c8a1594083ddf7ba5656bc482a58c3558e163ea608b",
+    "copy_method": "cp -n",
+    "byte_identical_to_generator_output": true,
+    "dimensions_read_with": "sips"
+  }
+}

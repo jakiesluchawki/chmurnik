@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "worker": "cloud-a",
+  "image_path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-swiatlo.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect_ratio": "3:2",
+  "generator_mode": "builtin image_gen; new image generation",
+  "generator_tool": "image_gen.imagegen",
+  "attempts": 1,
+  "style_reference_inspected": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+  "final_prompt": "Use case: ads-marketing.\nAsset type: CHMURNIK campaign poetic cloud close-up, one clean image, NEW artwork.\nCreate a landscape 3:2 poetic close-up of the side of one richly textured ivory cumulus. Strong warm side light reveals its distinct sculptural lobes, luminous outer contours and a darker violet-tinted base. The cloud fills much of the frame but leaves generous warm blush atmospheric negative space; only a tiny olive horizon appears along the lower edge. Emphasize vivid readable shape and material texture. Calm luminous afternoon, no sinister storm.\nStyle/medium: sophisticated adult editorial tactile wool-felt cloud sculpture above a cut-paper miniature olive landscape, art-directed not childish. Delicate irregular natural wool fibers, subtle paper textures and refined dimensional forms; strong graphic composition.\nColor palette: cream ivory, warm blush pink, olive terrain, restrained violet atmospheric accents and cloud-base shadows.\nLighting/mood: warm directional side light with soft restrained glow, beautifully modeled lobes and darker base, luminous not harsh or ominous.\nConstraints: one single landscape image in 3:2 aspect ratio, preferably 1536 x 1024 pixels. No faces, no characters, no people, no text, no labels, no numbers, no logo, no watermark, no fake UI, no borders, no panels, no contact sheet.",
+  "generation_receipt": {
+    "source_path": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644/exec-33cc0f4f-c065-435a-bfd9-2f4c60398577.png",
+    "receipt_id": "exec-33cc0f4f-c065-435a-bfd9-2f4c60398577",
+    "output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644 as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-3536-7033-9b69-d9bf3e012644/exec-33cc0f4f-c065-435a-bfd9-2f4c60398577.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  "sha256": "5f91a33e21cfced2d3b951ffcdbe6d9276478fbf0e3f053e94f2d6aceb2fff26",
+  "copy_method": "cp; source and destination SHA-256 match; no resizing or rendering",
+  "visual_validation": "One clean image, requested subject and palette present, no faces, characters, text, logo or UI."
+}

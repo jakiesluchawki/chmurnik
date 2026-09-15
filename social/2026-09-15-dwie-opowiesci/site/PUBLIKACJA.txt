@@ -1,0 +1,64 @@
+CHMURNIK / DWIE OPOWIEŚCI / 15.09.2026
+
+DOKŁADNIE DWA TEMATY, po 10 Stories. Razem 20 statycznych PNG.
+Temat CHMURY: Co chmura mówi o powietrzu?
+Temat WODA: Wieczór nad wodą ma swoją fizykę.
+
+STORIES: w każdym temacie stories/01.png do 10.png, 1080 x 1920.
+Nie przycinaj. Dodaj aktywną naklejkę z linkiem; dolne pole jest na nią wolne.
+Chmury: https://chmurnik.cloud/pogoda-preview/#chmura
+Bryza: https://chmurnik.cloud/pogoda-preview/#bryza
+Mgła: https://chmurnik.cloud/pogoda-preview/#mgla
+Wiatr: https://chmurnik.cloud/pogoda-preview/#wiatr
+Sam adres narysowany na PNG nie jest aktywnym linkiem.
+
+INSTAGRAM: trzy POSTY/KARUZELE NA TEMAT, nie trzy tematy.
+Każdy post ma własną okładkę i pełne plansze opowieści wewnątrz.
+W każdym temacie publikuj foldery instagram/ w tej kolejności:
+1. 01-post: PRAWA okładka, część 3, slajdy 8-10.
+2. 02-post: ŚRODKOWA okładka, część 2, slajdy 5-7.
+3. 03-post: LEWA okładka, część 1, slajdy 1-4.
+W poście wybierz najpierw 00-okladka.png, potem ponumerowane slajdy.
+Wklej CAŁY opis z opis-instagram.txt w tym samym folderze.
+
+Taki odwrócony porządek sprawia, że po zakończeniu rząd profilu układa się
+od lewej do prawej w pełną panoramę. Części są samodzielne; możesz opublikować
+je jedna po drugiej. Przed zakończeniem trójki siatka będzie niepełna.
+Publikuj najpierw komplet CHMURY, potem komplet WODA (np. następnego dnia).
+Wtedy WODA będzie górnym rzędem, CHMURY dolnym: patrz siatka-6-postow.jpg.
+Nie wstawiaj pomiędzy tymi postami innej publikacji. Nowe pojedyncze posty
+przesuwają siatkę; rząd wróci do wyrównania po kolejnej pełnej trójce.
+
+FORMAT: 1080 x 1440, 3:4, także wszystkie plansze wewnątrz karuzeli.
+Nie zmieniaj kadru, nie dodawaj ramek ani nie skaluj okładek osobno.
+Podgląd pokazuje projekt dla siatki 3:4, NIE zrzut konta mieszko.wav.
+Prawdziwy profil był niedostępny po odmowie automatycznej kontroli dostępu.
+Sprawdź podgląd kadru przed publikacją. Przypięte posty lub ręcznie zmieniona
+kolejność profilu mogą przesunąć skład; nie zmieniałem Twojego konta.
+Panoramy są jednym wspólnym płótnem, nie trzema podobnymi obrazkami.
+Rekonstrukcja trzech okładek jest dokładna piksel w piksel.
+Istniejące odstępy Instagrama między kafelkami pozostaną widoczne.
+
+Klasyczna alternatywa: karuzela/01.png do 10.png jako jeden post na temat,
+z opisem teksty/instagram-post.txt. NIE tworzy rzędu trzech okładek.
+Nie publikuj jednocześnie obu wariantów, chyba że świadomie chcesz powtórzyć treść.
+
+FACEBOOK: facebook/01.png i pełny tekst teksty/facebook-post.txt na temat.
+Można zamiast jednej grafiki użyć 10 plansz z karuzela/.
+LINKEDIN: PDF w folderze tematu dodaj jako dokument. Ma 10 stron i pełne
+zaznaczalne teksty, aktywny link do pracowni i tytuł identyczny z tematem.
+Opis: teksty/linkedin-post.txt. Opcja Dokument była wcześniej dostępna
+w Twojej aplikacji LinkedIn na iPhonie; nie zakładam jej obecności na WWW.
+
+PRAWDA O MATERIAŁACH: 12 nowych ilustracji ImageGen, nie zdjęcia obserwacyjne
+i nie zrzuty interfejsu. Atlas w CHMURNIKU używa prawdziwych fotografii;
+te ilustracje są tylko oprawą opowieści. Źródła naukowe są w ZRODLA.txt.
+Panoramy źródłowe: 1881 x 836. Eksport 3240 x 1440 jest powiększony.
+Pozostałe źródła: 1536 x 1024. PNG sociali są składami w docelowych wymiarach.
+Nie jest to ogłoszenie nowego modelu ML ani obietnica trafności rozpoznawania.
+Nie ogłaszam nowych buildów Apple ani ich bieżącego statusu. Pakiet kieruje
+do WWW; nie podmieniałem chmurnik.cloud. To nauka, nie prognoza ani briefing.
+Nie opublikowałem żadnego posta w Twoim imieniu.
+
+Stała biblioteka: https://jakiesluchawki.github.io/chmurnik/assetySM/
+Ten pakiet: https://jakiesluchawki.github.io/chmurnik/premiera/niebo-i-woda/

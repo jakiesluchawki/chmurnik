@@ -1,0 +1,35 @@
+{
+  "asset": "chmury-atlas",
+  "status": "success",
+  "worker": "cloud-b",
+  "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-15-dwie-opowiesci/art/chmury-atlas.png",
+  "dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "aspect_ratio": "3:2",
+  "format": "png",
+  "generator_mode": "builtin image_gen",
+  "intent": "generate",
+  "tool": "image_gen.imagegen",
+  "attempts": 1,
+  "prompt": "Create exactly one NEW original image. Use case: ads-marketing. Asset: CHMURNIK campaign illustration, landscape 3:2, 1536 x 1024 pixels. Scene: an open ivory atlas book floating slightly above a warm blush-pink table. Every paper page is completely BLANK, with no marks, diagrams, maps, letters or numbers; this is a tactile conceptual illustration, not a photographed atlas or an app. Above the paper rise two distinct sculptural cloud forms: fine airy wispy wool filaments and one compact rounded cumulus form. An elegant narrow violet bookmark provides the only book accent. Style: sophisticated adult editorial art direction, handcrafted wool-felt and cut-paper miniature, premium restrained material realism, subtle natural fibers and paper grain, not childish. Strong asymmetrical graphic composition with deliberate negative space, coherent depth and believable soft suspension shadow. Palette: cream ivory, warm blush pink, restrained olive tonal accents and violet atmospheric accents. Light: luminous restrained natural light, soft nuanced shadows, quiet editorial mood. One clean full-frame artwork, not a collage or contact sheet. No faces, characters, people, text, letters, numbers, logo, watermark, labels, fake UI, app panels, extra props, glossy plastic, cartoon expressions or toy styling.",
+  "style_reference": {
+    "path": "/Volumes/Kingston-Codex/repos/Documents/Codex/2026-06-16/widzisz-jak-pracuj-niedawno-zrobili-my/chmurnik-v4/social/2026-09-09-pracownie/art/03-zatoka.png",
+    "inspected_with": "view_image",
+    "supplied_as_generator_input": false
+  },
+  "generation_receipt": {
+    "returned_output_hint": "Generated images are saved to /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff as /Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff/exec-8ddc4d4e-c0b1-4f2c-84cf-6276578a3910.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "returned_image_media_type": "image/png",
+    "source_image_path": "/Volumes/Kingston-Codex/host-data/Mac-Studio/.codex/generated_images/01a0a25b-35a4-7da1-9212-bb573ba306ff/exec-8ddc4d4e-c0b1-4f2c-84cf-6276578a3910.png",
+    "source_sha256": "6eb4f49bbf29d07d481f630144a97cc33eaa35aa633186cff7252f1a9fb575ec"
+  },
+  "verification": {
+    "dimensions_tool": "sips",
+    "mechanical_copy": true,
+    "destination_sha256": "6eb4f49bbf29d07d481f630144a97cc33eaa35aa633186cff7252f1a9fb575ec",
+    "byte_identical_to_generator_file": true,
+    "visually_inspected": true
+  }
+}

@@ -1,0 +1,592 @@
+{
+  "date": "2026-09-15",
+  "title": "Dwie opowieści o niebie i wodzie",
+  "copyStatus": "owner-delegated-production",
+  "themes": [
+    {
+      "id": "chmury",
+      "label": "CHMURY I POWIETRZE",
+      "title": "Co chmura mówi o powietrzu?",
+      "link": "https://chmurnik.cloud/pogoda-preview/#chmura",
+      "palette": [
+        "#ffe2ec",
+        "#665f30",
+        "#743cdd"
+      ],
+      "art": [
+        "chmury-panorama",
+        "chmury-horyzont",
+        "chmury-swiatlo",
+        "chmury-panorama",
+        "chmury-powietrze",
+        "chmury-powietrze",
+        "chmury-atlas",
+        "chmury-porownanie",
+        "chmury-porownanie",
+        "chmury-atlas"
+      ],
+      "coverTitles": [
+        "Co chmura mówi",
+        "o powietrzu?",
+        "Zacznij od obserwacji."
+      ],
+      "parts": [
+        {
+          "title": "Zanim poznasz nazwę",
+          "numbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "caption": "Łatwo zapamiętać nazwę chmury. Ciekawiej jest zrozumieć, po czym naprawdę ją poznajemy.\n\nW CHMURNIKU zaczynam od kształtu, światła i tego, co widać w całym niebie. Prawdziwe zdjęcia w atlasie pomagają porównywać cechy, zamiast dopasowywać każdą chmurę do jednego idealnego obrazka.\n\nTo pierwsza część opowieści o chmurach. Następne prowadzą od wyglądu do powstawania i własnej próby.\n\nZajrzyj na chmurnik.cloud. Link znajdziesz w Stories."
+        },
+        {
+          "title": "Skąd bierze się chmura",
+          "numbers": [
+            5,
+            6,
+            7
+          ],
+          "caption": "Chmura nie zaczyna się od białego kształtu. Zaczyna się od powietrza, które zmienia swoje warunki.\n\nPrzygotowałem w CHMURNIKU pracownię, w której unosisz porcję powietrza i obserwujesz jej ochładzanie. Zmieniasz wilgotność, porównujesz przypadki i sprawdzasz, dlaczego kondensacja zaczyna się na innej wysokości. Potem możesz wrócić do atlasu i zobaczyć prawdziwe niebo.\n\nTa druga część łączy to, co widzisz, z mechanizmem, którego nie widać.\n\nCHMURNIK działa także w przeglądarce: chmurnik.cloud. Link do pracowni jest w Stories."
+        },
+        {
+          "title": "Rozpoznawanie to rozumienie",
+          "numbers": [
+            8,
+            9,
+            10
+          ],
+          "caption": "Nie każde zdjęcie pozwala uczciwie nazwać jedną chmurę. Czasem widać kilka warstw, czasem brakuje światła albo kontekstu.\n\nW CHMURNIKU możesz porównywać prawdziwe fotografie, wrócić do pełnej lekcji i zastosować poznaną zasadę w nowym przypadku. Zależało mi, żeby po ćwiczeniu zostawało coś więcej niż dobrze ustawiony suwak.\n\nChciałbym, żeby niebo było nie tylko ładnym widokiem, ale także czymś coraz bardziej zrozumiałym.\n\nSprawdź chmurnik.cloud. Link znajdziesz w Stories."
+        }
+      ],
+      "stories": [
+        {
+          "title": "Co chmura mówi o powietrzu?",
+          "text": "Chmura bywa piękna, zanim dowiesz się, jak się nazywa. W CHMURNIKU możesz pójść krok dalej: przyjrzeć się jej cechom i zrozumieć, jakie procesy mogły ją ukształtować."
+        },
+        {
+          "title": "Zanim poznasz nazwę",
+          "text": "Popatrz, czy chmura tworzy kopuły, włókna czy rozległą warstwę. Zwróć uwagę na jej podstawę, prześwity i cienie. W atlasie porównasz te cechy z prawdziwymi zdjęciami, nie tylko z jednym wzorcowym obrazkiem."
+        },
+        {
+          "title": "Światło zmienia to, co widzisz",
+          "text": "Ta sama chmura może wyglądać inaczej w południe i pod wieczór. Ciemna podstawa nie wystarcza, żeby ogłosić deszcz. Warto zestawić światło z kształtem i strukturą, zamiast ufać jednemu wrażeniu."
+        },
+        {
+          "title": "Zostaw w kadrze trochę świata",
+          "text": "Szerszy widok pomaga zrozumieć układ chmur i miejsce obserwacji. Horyzont daje kontekst, ale nie jest miarką wysokości. Z pojedynczego zdjęcia nie zawsze da się wiarygodnie określić piętro chmury."
+        },
+        {
+          "title": "Powietrze też ma swoją drogę",
+          "text": "Gdy porcja powietrza wznosi się, spadek ciśnienia pozwala jej się rozprężać i ochładzać. W pracowni unosisz ją nad ziemię i obserwujesz zmianę temperatury, aż pojawią się warunki do kondensacji."
+        },
+        {
+          "title": "Wilgotność robi różnicę",
+          "text": "Powtórz doświadczenie z wilgotniejszym powietrzem, zachowując tę samą temperaturę początkową. W tym uproszczonym modelu kondensacja zacznie się niżej. Zamiast zapamiętywać wysokość, sprawdzasz, od czego ona zależy."
+        },
+        {
+          "title": "Atlas nie kończy się na nazwie",
+          "text": "Otwórz chmurę, która Cię zainteresowała. Zdjęcia są prawdziwe, mają autorów i źródła. Opis podpowiada, na co patrzeć, a pełna lekcja pomaga połączyć wygląd chmury z tym, co dzieje się w powietrzu."
+        },
+        {
+          "title": "Niebo rzadko mieści się w jednej szufladce",
+          "text": "Na jednym niebie mogą spotkać się różne rodzaje i warstwy chmur. Porównuj je osobno i zostaw miejsce na niepewność. Dobra obserwacja nie musi kończyć się jedną stanowczą odpowiedzią."
+        },
+        {
+          "title": "Sprawdź, czy rozumiesz",
+          "text": "Po przewodniku czeka nowy przypadek, a nie powtórka tych samych ustawień. Najpierw przewidujesz wynik i wybierasz uzasadnienie, potem sprawdzasz, co się wydarzyło. W ten sposób poznana zasada staje się Twoim narzędziem."
+        },
+        {
+          "title": "Niebo staje się znajome",
+          "text": "Przygotowałem CHMURNIK, żeby ciekawość miała gdzie pójść dalej. Są prawdziwe zdjęcia, pełne lekcje i pracownie, w których sprawdzasz mechanizmy. Zacznij od jednej chmury, którą naprawdę chcesz zrozumieć."
+        }
+      ],
+      "posts": {
+        "instagram": "Co chmura mówi o powietrzu?\n\nZwykle widzimy najpierw kolor i kształt. Dopiero potem pojawiają się pytania: dlaczego chmura ma taką podstawę, skąd bierze się jej wysokość i czy samo zdjęcie wystarczy, żeby ją nazwać?\n\nW CHMURNIKU połączyłem prawdziwe fotografie w atlasie z pełnymi lekcjami i interaktywnymi pracowniami. Możesz porównać cechy chmur, unieść porcję powietrza, zmienić wilgotność i sprawdzić, jak zmienia się początek kondensacji.\n\nChciałbym, żeby po obejrzeniu nieba zostawało nie tylko zdjęcie, ale też trochę lepsze rozumienie tego, co widać.\n\nTa opowieść ma trzy części na profilu. Każda karuzela jest samodzielna; ich okładki razem tworzą jedno niebo.\n\nZajrzyj na chmurnik.cloud. Link do pracowni znajdziesz w Stories.",
+        "facebook": "Co chmura mówi o powietrzu?\n\nNie każdą chmurę da się uczciwie rozpoznać z jednego zdjęcia. Zmieniają się światło, perspektywa i układ warstw. Warto najpierw nauczyć się patrzeć na cechy, a dopiero potem szukać nazwy.\n\nW CHMURNIKU przygotowałem atlas prawdziwych fotografii z autorami i źródłami, pełne lekcje oraz pracownie, które pozwalają sprawdzić mechanizmy. Możesz unieść porcję powietrza i zobaczyć jej ochładzanie, a potem zmienić wilgotność i porównać początek kondensacji. Przewodnik pomaga zrozumieć zasadę; samodzielna próba sprawdza ją w innym przypadku.\n\nLubię myśleć, że po takim doświadczeniu niebo staje się bardziej znajome. Nadal piękne, ale już nie całkiem obce.\n\nNie trzeba instalować aplikacji, żeby zajrzeć do tej części CHMURNIKA. Działa w przeglądarce na telefonie i komputerze:\nhttps://chmurnik.cloud/pogoda-preview/#chmura\n\nTo narzędzie do nauki, nie prognoza ani zamiennik oficjalnego briefingu.",
+        "linkedin": "Co chmura mówi o powietrzu?\n\nPrzy pracy nad CHMURNIKIEM zależało mi na czymś więcej niż katalogu nazw. Rozpoznawanie zaczyna się od obserwacji: kształtu, struktury, światła i kontekstu. Dopiero wtedy warto zestawić to, co widać, z procesami w atmosferze.\n\nDlatego połączyłem atlas prawdziwych, opisanych i przypisanych autorom fotografii z pełnymi lekcjami oraz interaktywnymi pracowniami. Użytkownik zmienia warunek, przewiduje wynik i porównuje przypadki. Samodzielna próba nie sprowadza się do odtworzenia tutoriala.\n\nTa opowieść pokazuje, co można zyskać: nie obietnicę bezbłędnej diagnozy, tylko lepszy sposób zadawania pytań i sprawdzania własnego rozumowania.\n\nCHMURNIK jest dostępny także w przeglądarce:\nhttps://chmurnik.cloud/\n\nMateriały są edukacyjne i nie zastępują oficjalnej prognozy ani briefingu."
+      }
+    },
+    {
+      "id": "woda",
+      "label": "BRYZA, WIATR I MGŁA",
+      "title": "Wieczór nad wodą ma swoją fizykę",
+      "link": "https://chmurnik.cloud/pogoda-preview/#bryza",
+      "palette": [
+        "#173e48",
+        "#fff7ed",
+        "#d4c5fa"
+      ],
+      "art": [
+        "woda-panorama",
+        "woda-bryza",
+        "woda-bryza",
+        "woda-panorama",
+        "woda-wiatr",
+        "woda-temperatura",
+        "woda-mgla",
+        "woda-wiatr",
+        "woda-pracownia",
+        "woda-pracownia"
+      ],
+      "coverTitles": [
+        "Wieczór nad wodą",
+        "ma swoją fizykę.",
+        "Bryza, wiatr i mgła."
+      ],
+      "parts": [
+        {
+          "title": "Dlaczego od wody wieje",
+          "numbers": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "caption": "Nad wodą łatwo poczuć pogodę. Ciepły piasek, chłodniejszy podmuch, zmieniające się światło. W CHMURNIKU możesz sprawdzić, skąd bierze się część tych różnic.\n\nW pracowni bryzy zmieniasz ogrzewanie lądu i wody, a potem obserwujesz obieg powietrza. Dzień i noc stają się dwoma przypadkami do porównania, nie dwoma hasłami do zapamiętania.\n\nTo pierwsza z trzech części opowieści o wodzie, wietrze i wieczornej mgle.\n\nZajrzyj na chmurnik.cloud. Link do pracowni jest w Stories."
+        },
+        {
+          "title": "Skąd bierze się wieczorna mgła",
+          "numbers": [
+            5,
+            6,
+            7
+          ],
+          "caption": "Wieczorna mgła nie pojawia się dlatego, że zrobiło się romantycznie. Potrzebuje odpowiednich warunków.\n\nW CHMURNIKU możesz zmieniać wilgotność i ochładzanie powietrza. Pracownia pokazuje, kiedy osiąga ono nasycenie i dlaczego mgła może zacząć gęstnieć. Osobno sprawdzasz bryzę: lokalny obieg nie musi wygrać z silniejszym wiatrem.\n\nTa druga część jest o tym, co kryje się za widokiem nad wodą. Nadal można się nim po prostu zachwycać.\n\nCHMURNIK działa także w przeglądarce: chmurnik.cloud. Linki są w Stories."
+        },
+        {
+          "title": "Zrozumieć wiatr, nie tylko go poczuć",
+          "numbers": [
+            8,
+            9,
+            10
+          ],
+          "caption": "Chmura płynie dokądś, ale kierunek wiatru podajemy według tego, skąd wieje. Taka drobna różnica potrafi zmienić sposób czytania mapy.\n\nW CHMURNIKU połączyłem pracownie bryzy i mgły z nauką obserwacji wiatru oraz czytania warstw Windy. Możesz przejść od doświadczenia do pełnej lekcji i sprawdzić, czy naprawdę rozumiesz wynik.\n\nPrzygotowałem to również z myślą o chwilach nad wodą. Żeby za odczuwanym podmuchem było coś więcej niż strzałka na ekranie.\n\nZajrzyj na chmurnik.cloud. To nauka, nie prognoza ani zgoda na wyjście w morze. Link do strony jest w Stories."
+        }
+      ],
+      "stories": [
+        {
+          "title": "Wieczór nad wodą ma swoją fizykę",
+          "text": "Ciepły piasek, chłodniejszy podmuch i mgła, która czasem przychodzi po zmroku. W CHMURNIKU możesz sprawdzić, skąd biorą się te zjawiska. Widok zostaje piękny, a Ty zaczynasz rozumieć go trochę lepiej."
+        },
+        {
+          "title": "Ląd i woda nie reagują tak samo",
+          "text": "W uproszczonym doświadczeniu ląd szybciej się ogrzewa i ochładza niż woda. Zmień ogrzewanie i porównaj obie temperatury. Ta różnica pomaga wyjaśnić lokalny obieg powietrza przy brzegu."
+        },
+        {
+          "title": "Za dnia powietrze może przyjść od wody",
+          "text": "Przy słabym wietrze ogólnym i silniejszym ogrzaniu lądu może rozwinąć się bryza morska. Przy powierzchni powietrze płynie od wody ku lądowi, unosi się nad nim i wraca wyżej. W pracowni widzisz cały obieg."
+        },
+        {
+          "title": "Noc zmienia różnicę temperatur",
+          "text": "Gdy ląd ochłodzi się bardziej niż woda, lokalny obieg może się odwrócić: przy powierzchni powietrze popłynie ku wodzie. Przełącz porę dnia i sprawdź warunki, zamiast zakładać, że każdy wieczór musi wyglądać tak samo."
+        },
+        {
+          "title": "Bryza nie jest całym wiatrem",
+          "text": "Silniejszy wiatr związany z większym układem pogody może zaburzyć albo zdominować bryzę. Dlatego doświadczenie tłumaczy mechanizm, a nie przepowiada jutrzejszy podmuch. Do planowania potrzebujesz aktualnych danych i prognozy."
+        },
+        {
+          "title": "Punkt rosy to konkretna temperatura",
+          "text": "To temperatura, do której trzeba ochłodzić powietrze, aby osiągnęło nasycenie przy niezmienionej zawartości pary wodnej i ciśnieniu. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zobaczyć, kiedy te warunki się spotkają."
+        },
+        {
+          "title": "Mgła potrzebuje warunków",
+          "text": "W wilgotną, pogodną noc słabe mieszanie i chłodzenie przy ziemi mogą sprzyjać mgle radiacyjnej. W ćwiczeniu najpierw przewidujesz, czy pojawi się kondensacja, potem sprawdzasz wynik. Rysunek pokazuje mechanizm, nie zmierzoną widzialność."
+        },
+        {
+          "title": "Chmura płynie dokąd, wiatr wieje skąd?",
+          "text": "Jeśli chmura przesuwa się na wschód, wiatr na jej wysokości wieje z zachodu. Przy brzegu może być inny. Pracownia pomaga rozdzielić kierunek ruchu, kierunek wiatru i warstwę, której dotyczy obserwacja."
+        },
+        {
+          "title": "Mapa staje się czytelniejsza",
+          "text": "W części poświęconej Windy uczysz się wybierać warstwę i czas oraz odróżniać dane od własnych wniosków. Bryza i mgła przestają być osobnymi ciekawostkami: masz mechanizm, z którym możesz zestawić to, co pokazuje mapa."
+        },
+        {
+          "title": "Zabierz nad wodę trochę rozumienia",
+          "text": "Przygotowałem CHMURNIK także z myślą o wietrze, który naprawdę czuć na twarzy. Bryza, mgła, wiatr i pełne lekcje są dostępne w przeglądarce. Zajrzyj z telefonu; do planowania żeglugi nadal używaj oficjalnych komunikatów i prognoz."
+        }
+      ],
+      "posts": {
+        "instagram": "Wieczór nad wodą ma swoją fizykę.\n\nJest w nim ciepły piasek, chłodniejszy podmuch i czasem mgła, która powoli przykrywa brzeg. W CHMURNIKU możesz zajrzeć pod ten widok.\n\nPrzygotowałem pracownie, w których porównujesz ogrzewanie lądu i wody, sprawdzasz obieg bryzy oraz zmieniasz wilgotność i ochładzanie powietrza. Dalej czekają pełne lekcje, obserwacja ruchu chmur i nauka czytania warstw Windy.\n\nZależało mi na czymś, co zostaje z człowiekiem poza ekranem. Żeby odczuwany wiatr łączył się z rozumieniem, a nie tylko ze strzałką na mapie.\n\nTa opowieść ma trzy części na profilu. Ich okładki tworzą jeden wieczorny krajobraz, ale każdą karuzelę można przeczytać osobno.\n\nZajrzyj na chmurnik.cloud. Link znajdziesz w Stories. To nauka, nie prognoza ani zamiennik komunikatów dla żeglarzy.",
+        "facebook": "Wieczór nad wodą ma swoją fizykę.\n\nLubię ten moment, kiedy brzeg zaczyna stygnąć, światło robi się miękkie, a wiatr nagle staje się bardziej zauważalny. CHMURNIK pozwala sprawdzić, co może kryć się za częścią tych zjawisk.\n\nW pracowni bryzy porównujesz ogrzewanie lądu i wody oraz lokalny obieg powietrza. W pracowni mgły zmieniasz wilgotność i ochładzanie, żeby zrozumieć nasycenie i początek kondensacji. Są też pełne lekcje, obserwacja ruchu chmur oraz nauka czytania warstw i czasu w Windy.\n\nNie chodzi o obietnicę, że po kilku kliknięciach przewidzisz pogodę. Chodzi o lepsze rozumienie tego, co obserwujesz, i o wiedzę, z którą łatwiej czytać aktualne dane.\n\nPrzygotowałem te doświadczenia tak, żeby można było zajrzeć do nich także z telefonu w przeglądarce, bez instalowania aplikacji:\nhttps://chmurnik.cloud/pogoda-preview/#bryza\n\nTo materiały edukacyjne. Przy planowaniu żeglugi korzystaj z oficjalnych komunikatów i aktualnych prognoz.",
+        "linkedin": "Wieczór nad wodą ma swoją fizykę.\n\nJedną z rzeczy, które chciałem osiągnąć w CHMURNIKU, było połączenie wiedzy z czymś, co użytkownik naprawdę odczuwa: podmuchem przy brzegu, różnicą temperatur czy mgłą pojawiającą się po zmroku.\n\nDlatego przygotowałem interaktywne pracownie bryzy i mgły. Można w nich zmienić warunek, przewidzieć wynik i porównać przypadki. Pełne lekcje pomagają osadzić doświadczenie w szerszym kontekście, a nauka obserwacji wiatru i czytania warstw Windy prowadzi dalej, do interpretacji danych.\n\nChciałbym, żeby estetyka zapraszała do nauki, ale nie zastępowała jej. Za każdym ładnym obrazem musi być zrozumiały mechanizm i uczciwie zaznaczona granica modelu.\n\nTa część CHMURNIKA działa także w przeglądarce na telefonie i komputerze:\nhttps://chmurnik.cloud/\n\nTo narzędzie edukacyjne, nie prognoza ani zamiennik oficjalnych komunikatów dla żeglarzy."
+      }
+    }
+  ],
+  "sourceNotes": "WMO: obserwacja chmur i wpływ warunków: https://cloudatlas.wmo.int/en/observing-clouds.html\nWMO: piętra, wysokość i zasięg pionowy: https://cloudatlas.wmo.int/clouds-definitions.html\nWMO: wygląd i perspektywa: https://cloudatlas.wmo.int/en/clouds-appearance.html\nNWS: powstawanie chmur: https://www.weather.gov/source/zhu/ZHU_Training_Page/clouds/cloud_development/clouds.htm\nNWS: bryza morska i wiatr: https://www.weather.gov/source/zhu/ZHU_Training_Page/winds/Wx_Terms/Flight_Environment.htm\nNWS: punkt rosy i kondensacja: https://www.weather.gov/jkl/education\nNWS: mgła radiacyjna: https://www.weather.gov/safety/fog-radiation",
+  "archives": [
+    {
+      "theme": "chmury",
+      "kind": "STORIES",
+      "file": "CHMURNIK-CHMURY-STORIES.zip",
+      "label": "10 Stories PNG",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "chmury/teksty/alt-teksty.txt",
+        "chmury/stories/01.png",
+        "chmury/stories/02.png",
+        "chmury/stories/03.png",
+        "chmury/stories/04.png",
+        "chmury/stories/05.png",
+        "chmury/stories/06.png",
+        "chmury/stories/07.png",
+        "chmury/stories/08.png",
+        "chmury/stories/09.png",
+        "chmury/stories/10.png"
+      ],
+      "bytes": 13624035,
+      "sha256": "5f6740506a7225b1f93c4b0344dc8ef563afea730f2548427d779e0c3a970558",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-STORIES.zip"
+    },
+    {
+      "theme": "chmury",
+      "kind": "INSTAGRAM",
+      "file": "CHMURNIK-CHMURY-INSTAGRAM.zip",
+      "label": "3 karuzele + panorama profilu",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "chmury/teksty/alt-teksty.txt",
+        "chmury/instagram/03-post/00-okladka.png",
+        "chmury/instagram/03-post/opis-instagram.txt",
+        "chmury/instagram/03-post/01-slajd-01.png",
+        "chmury/instagram/03-post/02-slajd-02.png",
+        "chmury/instagram/03-post/03-slajd-03.png",
+        "chmury/instagram/03-post/04-slajd-04.png",
+        "chmury/instagram/02-post/00-okladka.png",
+        "chmury/instagram/02-post/opis-instagram.txt",
+        "chmury/instagram/02-post/01-slajd-05.png",
+        "chmury/instagram/02-post/02-slajd-06.png",
+        "chmury/instagram/02-post/03-slajd-07.png",
+        "chmury/instagram/01-post/00-okladka.png",
+        "chmury/instagram/01-post/opis-instagram.txt",
+        "chmury/instagram/01-post/01-slajd-08.png",
+        "chmury/instagram/01-post/02-slajd-09.png",
+        "chmury/instagram/01-post/03-slajd-10.png",
+        "chmury/teksty/instagram-post.txt",
+        "chmury/siatka/podglad.jpg"
+      ],
+      "bytes": 21279364,
+      "sha256": "4f3305aead60fa1e00cb8406cb8c6a5c90e52d907fde195efab596c8ee224100",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-INSTAGRAM.zip"
+    },
+    {
+      "theme": "chmury",
+      "kind": "FACEBOOK",
+      "file": "CHMURNIK-CHMURY-FACEBOOK.zip",
+      "label": "Facebook: grafika i pełny post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "chmury/teksty/alt-teksty.txt",
+        "chmury/facebook/01.png",
+        "chmury/teksty/facebook-post.txt"
+      ],
+      "bytes": 1392302,
+      "sha256": "7fbdf470dd9f6bbf5f7099ce57a1f9eff79bb234ff31c2851a5f419057af5dad",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-FACEBOOK.zip"
+    },
+    {
+      "theme": "chmury",
+      "kind": "LINKEDIN",
+      "file": "CHMURNIK-CHMURY-LINKEDIN.zip",
+      "label": "LinkedIn: 10-stronicowy PDF i post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "chmury/teksty/alt-teksty.txt",
+        "chmury/CHMURNIK-CHMURY-LINKEDIN.pdf",
+        "chmury/teksty/linkedin-post.txt"
+      ],
+      "bytes": 13803380,
+      "sha256": "afff6da5018575d4db8890f6025eeafc0eec1945c6322de29ad9413a635282fd",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-LINKEDIN.zip"
+    },
+    {
+      "theme": "chmury",
+      "kind": "CALOSC",
+      "file": "CHMURNIK-CHMURY-CALOSC.zip",
+      "label": "Cały temat",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "chmury/teksty/alt-teksty.txt",
+        "chmury/stories/01.png",
+        "chmury/stories/02.png",
+        "chmury/stories/03.png",
+        "chmury/stories/04.png",
+        "chmury/stories/05.png",
+        "chmury/stories/06.png",
+        "chmury/stories/07.png",
+        "chmury/stories/08.png",
+        "chmury/stories/09.png",
+        "chmury/stories/10.png",
+        "chmury/instagram/03-post/00-okladka.png",
+        "chmury/instagram/03-post/opis-instagram.txt",
+        "chmury/instagram/03-post/01-slajd-01.png",
+        "chmury/instagram/03-post/02-slajd-02.png",
+        "chmury/instagram/03-post/03-slajd-03.png",
+        "chmury/instagram/03-post/04-slajd-04.png",
+        "chmury/instagram/02-post/00-okladka.png",
+        "chmury/instagram/02-post/opis-instagram.txt",
+        "chmury/instagram/02-post/01-slajd-05.png",
+        "chmury/instagram/02-post/02-slajd-06.png",
+        "chmury/instagram/02-post/03-slajd-07.png",
+        "chmury/instagram/01-post/00-okladka.png",
+        "chmury/instagram/01-post/opis-instagram.txt",
+        "chmury/instagram/01-post/01-slajd-08.png",
+        "chmury/instagram/01-post/02-slajd-09.png",
+        "chmury/instagram/01-post/03-slajd-10.png",
+        "chmury/facebook/01.png",
+        "chmury/CHMURNIK-CHMURY-LINKEDIN.pdf",
+        "chmury/teksty/instagram-post.txt",
+        "chmury/teksty/facebook-post.txt",
+        "chmury/teksty/linkedin-post.txt",
+        "chmury/siatka/podglad.jpg"
+      ],
+      "bytes": 50014421,
+      "sha256": "ba1b587da52bfceccaa084a0d7dd318bfc14e51d393ccb3926be7bb47276566c",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-CHMURY-CALOSC.zip"
+    },
+    {
+      "theme": "woda",
+      "kind": "STORIES",
+      "file": "CHMURNIK-WODA-STORIES.zip",
+      "label": "10 Stories PNG",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "woda/teksty/alt-teksty.txt",
+        "woda/stories/01.png",
+        "woda/stories/02.png",
+        "woda/stories/03.png",
+        "woda/stories/04.png",
+        "woda/stories/05.png",
+        "woda/stories/06.png",
+        "woda/stories/07.png",
+        "woda/stories/08.png",
+        "woda/stories/09.png",
+        "woda/stories/10.png"
+      ],
+      "bytes": 14273463,
+      "sha256": "d3a3cb5d4c09fc7dcb68126a1214e2f387c4f5b441a0a444f5fc614eeb728aba",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-STORIES.zip"
+    },
+    {
+      "theme": "woda",
+      "kind": "INSTAGRAM",
+      "file": "CHMURNIK-WODA-INSTAGRAM.zip",
+      "label": "3 karuzele + panorama profilu",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "woda/teksty/alt-teksty.txt",
+        "woda/instagram/03-post/00-okladka.png",
+        "woda/instagram/03-post/opis-instagram.txt",
+        "woda/instagram/03-post/01-slajd-01.png",
+        "woda/instagram/03-post/02-slajd-02.png",
+        "woda/instagram/03-post/03-slajd-03.png",
+        "woda/instagram/03-post/04-slajd-04.png",
+        "woda/instagram/02-post/00-okladka.png",
+        "woda/instagram/02-post/opis-instagram.txt",
+        "woda/instagram/02-post/01-slajd-05.png",
+        "woda/instagram/02-post/02-slajd-06.png",
+        "woda/instagram/02-post/03-slajd-07.png",
+        "woda/instagram/01-post/00-okladka.png",
+        "woda/instagram/01-post/opis-instagram.txt",
+        "woda/instagram/01-post/01-slajd-08.png",
+        "woda/instagram/01-post/02-slajd-09.png",
+        "woda/instagram/01-post/03-slajd-10.png",
+        "woda/teksty/instagram-post.txt",
+        "woda/siatka/podglad.jpg"
+      ],
+      "bytes": 22565226,
+      "sha256": "d2efbe79dbbf214cd41cfdd2472a42cbb568c2e4c965a974acbb262e36f9defa",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-INSTAGRAM.zip"
+    },
+    {
+      "theme": "woda",
+      "kind": "FACEBOOK",
+      "file": "CHMURNIK-WODA-FACEBOOK.zip",
+      "label": "Facebook: grafika i pełny post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "woda/teksty/alt-teksty.txt",
+        "woda/facebook/01.png",
+        "woda/teksty/facebook-post.txt"
+      ],
+      "bytes": 1295147,
+      "sha256": "7ab4fa0dfca96943d7ab1740d792db9afbe0b4fe5b81cb3f3b900e624a7d3f1b",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-FACEBOOK.zip"
+    },
+    {
+      "theme": "woda",
+      "kind": "LINKEDIN",
+      "file": "CHMURNIK-WODA-LINKEDIN.zip",
+      "label": "LinkedIn: 10-stronicowy PDF i post",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "woda/teksty/alt-teksty.txt",
+        "woda/CHMURNIK-WODA-LINKEDIN.pdf",
+        "woda/teksty/linkedin-post.txt"
+      ],
+      "bytes": 15842162,
+      "sha256": "a9a9379100fdd459777f73a07d10fc599697815f40bc141bdb9443111781bece",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-LINKEDIN.zip"
+    },
+    {
+      "theme": "woda",
+      "kind": "CALOSC",
+      "file": "CHMURNIK-WODA-CALOSC.zip",
+      "label": "Cały temat",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "woda/teksty/alt-teksty.txt",
+        "woda/stories/01.png",
+        "woda/stories/02.png",
+        "woda/stories/03.png",
+        "woda/stories/04.png",
+        "woda/stories/05.png",
+        "woda/stories/06.png",
+        "woda/stories/07.png",
+        "woda/stories/08.png",
+        "woda/stories/09.png",
+        "woda/stories/10.png",
+        "woda/instagram/03-post/00-okladka.png",
+        "woda/instagram/03-post/opis-instagram.txt",
+        "woda/instagram/03-post/01-slajd-01.png",
+        "woda/instagram/03-post/02-slajd-02.png",
+        "woda/instagram/03-post/03-slajd-03.png",
+        "woda/instagram/03-post/04-slajd-04.png",
+        "woda/instagram/02-post/00-okladka.png",
+        "woda/instagram/02-post/opis-instagram.txt",
+        "woda/instagram/02-post/01-slajd-05.png",
+        "woda/instagram/02-post/02-slajd-06.png",
+        "woda/instagram/02-post/03-slajd-07.png",
+        "woda/instagram/01-post/00-okladka.png",
+        "woda/instagram/01-post/opis-instagram.txt",
+        "woda/instagram/01-post/01-slajd-08.png",
+        "woda/instagram/01-post/02-slajd-09.png",
+        "woda/instagram/01-post/03-slajd-10.png",
+        "woda/facebook/01.png",
+        "woda/CHMURNIK-WODA-LINKEDIN.pdf",
+        "woda/teksty/instagram-post.txt",
+        "woda/teksty/facebook-post.txt",
+        "woda/teksty/linkedin-post.txt",
+        "woda/siatka/podglad.jpg"
+      ],
+      "bytes": 53890042,
+      "sha256": "2791d16dd4424c6e64fbe7637319bbf9cb10c434c8ea6c7d6adc1e0aacf886f3",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-WODA-CALOSC.zip"
+    },
+    {
+      "theme": "both",
+      "kind": "CALOSC",
+      "file": "CHMURNIK-NIEBO-I-WODA-CALOSC.zip",
+      "label": "Oba tematy: cały pakiet",
+      "entries": [
+        "PUBLIKACJA.txt",
+        "TEKSTY-I-LINKI.txt",
+        "ZRODLA.txt",
+        "chmury/teksty/alt-teksty.txt",
+        "chmury/stories/01.png",
+        "chmury/stories/02.png",
+        "chmury/stories/03.png",
+        "chmury/stories/04.png",
+        "chmury/stories/05.png",
+        "chmury/stories/06.png",
+        "chmury/stories/07.png",
+        "chmury/stories/08.png",
+        "chmury/stories/09.png",
+        "chmury/stories/10.png",
+        "chmury/instagram/03-post/00-okladka.png",
+        "chmury/instagram/03-post/opis-instagram.txt",
+        "chmury/instagram/03-post/01-slajd-01.png",
+        "chmury/instagram/03-post/02-slajd-02.png",
+        "chmury/instagram/03-post/03-slajd-03.png",
+        "chmury/instagram/03-post/04-slajd-04.png",
+        "chmury/instagram/02-post/00-okladka.png",
+        "chmury/instagram/02-post/opis-instagram.txt",
+        "chmury/instagram/02-post/01-slajd-05.png",
+        "chmury/instagram/02-post/02-slajd-06.png",
+        "chmury/instagram/02-post/03-slajd-07.png",
+        "chmury/instagram/01-post/00-okladka.png",
+        "chmury/instagram/01-post/opis-instagram.txt",
+        "chmury/instagram/01-post/01-slajd-08.png",
+        "chmury/instagram/01-post/02-slajd-09.png",
+        "chmury/instagram/01-post/03-slajd-10.png",
+        "chmury/facebook/01.png",
+        "chmury/CHMURNIK-CHMURY-LINKEDIN.pdf",
+        "chmury/teksty/instagram-post.txt",
+        "chmury/teksty/facebook-post.txt",
+        "chmury/teksty/linkedin-post.txt",
+        "chmury/siatka/podglad.jpg",
+        "woda/teksty/alt-teksty.txt",
+        "woda/stories/01.png",
+        "woda/stories/02.png",
+        "woda/stories/03.png",
+        "woda/stories/04.png",
+        "woda/stories/05.png",
+        "woda/stories/06.png",
+        "woda/stories/07.png",
+        "woda/stories/08.png",
+        "woda/stories/09.png",
+        "woda/stories/10.png",
+        "woda/instagram/03-post/00-okladka.png",
+        "woda/instagram/03-post/opis-instagram.txt",
+        "woda/instagram/03-post/01-slajd-01.png",
+        "woda/instagram/03-post/02-slajd-02.png",
+        "woda/instagram/03-post/03-slajd-03.png",
+        "woda/instagram/03-post/04-slajd-04.png",
+        "woda/instagram/02-post/00-okladka.png",
+        "woda/instagram/02-post/opis-instagram.txt",
+        "woda/instagram/02-post/01-slajd-05.png",
+        "woda/instagram/02-post/02-slajd-06.png",
+        "woda/instagram/02-post/03-slajd-07.png",
+        "woda/instagram/01-post/00-okladka.png",
+        "woda/instagram/01-post/opis-instagram.txt",
+        "woda/instagram/01-post/01-slajd-08.png",
+        "woda/instagram/01-post/02-slajd-09.png",
+        "woda/instagram/01-post/03-slajd-10.png",
+        "woda/facebook/01.png",
+        "woda/CHMURNIK-WODA-LINKEDIN.pdf",
+        "woda/teksty/instagram-post.txt",
+        "woda/teksty/facebook-post.txt",
+        "woda/teksty/linkedin-post.txt",
+        "woda/siatka/podglad.jpg",
+        "siatka-6-postow.jpg"
+      ],
+      "bytes": 104267340,
+      "sha256": "88ddd2831f430856dc93a93f794621a05194a8f0a6b1cf661b0ed994479052b4",
+      "url": "https://github.com/jakiesluchawki/chmurnik/releases/download/sm-niebo-woda-20260915/CHMURNIK-NIEBO-I-WODA-CALOSC.zip"
+    }
+  ],
+  "copyHash": "432ccc543ad1b14bb133f53f21780a27361ad6541d0df2a37e507f105f563828",
+  "counts": {
+    "themes": 2,
+    "stories": 20,
+    "mosaicCovers": 6,
+    "instagramPosts": 6,
+    "facebookPosts": 2,
+    "linkedinDocuments": 2
+  },
+  "profileInspected": false,
+  "profileBlock": "Auto-review denied broad Instagram-origin access",
+  "libraryUrl": "https://jakiesluchawki.github.io/chmurnik/assetySM/",
+  "packUrl": "https://jakiesluchawki.github.io/chmurnik/premiera/niebo-i-woda/"
+}

@@ -29,6 +29,8 @@ jobs:
       - run: npm ci
       - name: Rebuild complete social downloads from final assets
         run: node social/2026-09-04-astra/rebuild-downloads.mjs
+      - name: Rebuild two-theme Stories and mosaic download archives
+        run: node social/2026-09-15-dwie-opowiesci/build.mjs
       - run: npm test
       - run: npm run check:lessons
       - name: Update the permanent social media library
@@ -54,11 +56,32 @@ jobs:
         run: cp -R social/2026-09-09-pracownie/site dist/premiera/pracownie
       - name: Add group outreach copy and selected approved illustrations
         run: cp -R social/2026-09-14-grupy/site dist/premiera/grupy
+      - name: Add two social themes and six mosaic-covered Instagram posts
+        # Download ZIPs live in the edition's GitHub Release. Interior duplicates
+        # and working panoramas are preserved in source, not duplicated on Pages.
+        run: rsync -a --exclude='*.zip' --exclude='*-slajd-*.png' --exclude='panorama-3240x1440.png' social/2026-09-15-dwie-opowiesci/site/ dist/premiera/niebo-i-woda/
       - name: Add the public consultation introduction (never the private PHP portal)
         run: cp -R review-portal/entry dist/ocena
       - name: Add the new static story pack and original plus 4K wallpapers
         # Full-resolution downloads live in the matching GitHub Release.
         run: rsync -a --exclude=/tapety/ --exclude=/oryginaly/ social/2026-09-07-niebo/site/ dist/premiera/niebo/
+      - name: Verify the complete Pages publication stays below 1 GB
+        run: |
+          node --input-type=module <<'NODE'
+          import { readdir, stat } from 'node:fs/promises';
+          import assert from 'node:assert/strict';
+          async function bytes(path) {
+            let total = 0;
+            for (const entry of await readdir(path, { withFileTypes: true })) {
+              const child = `${path}/${entry.name}`;
+              total += entry.isDirectory() ? await bytes(child) : (await stat(child)).size;
+            }
+            return total;
+          }
+          const total = await bytes('dist');
+          console.log(`Complete Pages publication: ${total} bytes`);
+          assert(total < 1_000_000_000, 'Pages publication must remain below 1 GB');
+          NODE
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
