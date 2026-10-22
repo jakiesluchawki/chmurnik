@@ -991,6 +991,7 @@ function LearnPage({
   const [orientationOpen, setOrientationOpen] = useState(
     () => !window.matchMedia("(max-width: 640px)").matches,
   );
+  const lastReadingChapter = useRef(null);
   const mastery = recognitionMastery(clouds.map((cloud) => cloud.id), recognitionStats);
   const masteryAttempts = mastery.reduce((sum, item) => sum + item.attempts, 0);
   const steadyCount = mastery.filter((item) => item.state === "steady").length;
@@ -1008,6 +1009,49 @@ function LearnPage({
     if (!selected) return;
     const chapterCount = lessons[selected]?.chapters.length || 1;
     setActiveChapter(Math.min(loadLessonPosition(selected), chapterCount - 1));
+  }, [selected]);
+
+  useEffect(() => {
+    const compactPlan = window.matchMedia("(max-width: 720px)");
+    const handlePlanWidth = (event) => {
+      if (!event.matches) setOrientationOpen(true);
+    };
+    compactPlan.addEventListener("change", handlePlanWidth);
+    return () => compactPlan.removeEventListener("change", handlePlanWidth);
+  }, []);
+
+  useEffect(() => {
+    if (!selected) return;
+    const compactLesson = window.matchMedia("(max-width: 640px)");
+    const chapters = [...document.querySelectorAll(".lesson-chapters .lesson-chapter")];
+    let frame;
+    lastReadingChapter.current = null;
+    const rememberReadingChapter = () => {
+      if (window.innerWidth <= 640 || compactLesson.matches) return;
+      const readingLine = Math.min(window.innerHeight * 0.4, 240);
+      const index = chapters.findIndex((chapter) => {
+        const rect = chapter.getBoundingClientRect();
+        return rect.top <= readingLine && rect.bottom > readingLine;
+      });
+      if (index !== -1) lastReadingChapter.current = index;
+    };
+    const handleLessonWidth = (event) => {
+      if (event.matches && lastReadingChapter.current !== null) {
+        setActiveChapter(lastReadingChapter.current);
+        saveLessonPosition(selected, lastReadingChapter.current);
+      } else if (!event.matches) {
+        lastReadingChapter.current = null;
+        frame = window.requestAnimationFrame(rememberReadingChapter);
+      }
+    };
+    window.addEventListener("scroll", rememberReadingChapter, { passive: true });
+    compactLesson.addEventListener("change", handleLessonWidth);
+    rememberReadingChapter();
+    return () => {
+      window.removeEventListener("scroll", rememberReadingChapter);
+      compactLesson.removeEventListener("change", handleLessonWidth);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, [selected]);
 
   useEffect(() => {

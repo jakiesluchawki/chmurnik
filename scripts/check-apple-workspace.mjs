@@ -68,6 +68,56 @@ try {
     }
     assert.equal(await page.locator(".native-workspace-sidebar").isVisible(), width >= 1100);
   }
+  const phone = await browser.newPage({ viewport: { width: 390, height: 678 } });
+  await phone.addInitScript(() => { window.__CHMURNIK_NATIVE_DEVICE__ = "iphone"; });
+  await phone.goto(`${base}/#/home`);
+  await phone.locator("h1").first().waitFor();
+  for (const width of [640, 641, 669, 720, 721, 900, 901, 951]) {
+    await phone.setViewportSize({ width, height: 678 });
+    const bottomVisible = await phone.locator(".bottom-nav").isVisible();
+    const topVisible = await phone.locator(".desktop-nav").isVisible();
+    assert.equal(bottomVisible, width <= 900, `${width}: bottom navigation`);
+    assert.equal(topVisible, width > 900, `${width}: top navigation`);
+    const navigation = phone.locator(bottomVisible ? ".bottom-nav" : ".desktop-nav");
+    assert.deepEqual(await navigation.locator("button").allTextContents(), ["Dziś", "Moje niebo", "Atlas", "Warstwy"]);
+  }
+  for (const [width, label, route] of [[390, "Warstwy", "layers"], [669, "Atlas", "atlas"], [951, "Moje niebo", "journal"], [450, "Dziś", "home"]]) {
+    await phone.setViewportSize({ width, height: 678 });
+    const navigation = phone.locator(width <= 900 ? ".bottom-nav" : ".desktop-nav");
+    await navigation.getByRole("button", { name: label, exact: true }).click();
+    await phone.waitForURL(`**/#/${route}`);
+    await navigation.locator('button[aria-current="page"]').filter({ hasText: label }).waitFor();
+    assert.equal(await navigation.getByRole("button", { name: label, exact: true }).getAttribute("aria-current"), "page");
+  }
+  await phone.setViewportSize({ width: 390, height: 678 });
+  await phone.goto(`${base}/#/learn/wiatr`);
+  const plan = phone.locator(".lesson-orientation-disclosure");
+  await plan.waitFor();
+  assert.equal(await plan.getAttribute("open"), null, "compact lesson starts with a collapsed plan");
+  await phone.setViewportSize({ width: 721, height: 678 });
+  await phone.waitForFunction(() => document.querySelector(".lesson-orientation-disclosure")?.open);
+  assert(await plan.locator(".lesson-objectives").isVisible(), "lesson objectives remain accessible after expanding");
+  await phone.setViewportSize({ width: 850, height: 678 });
+  const thirdChapter = phone.locator(".lesson-chapters .lesson-chapter").nth(2);
+  await thirdChapter.waitFor();
+  await thirdChapter.evaluate((node) => window.scrollTo({ top: window.scrollY + node.getBoundingClientRect().top - 150, behavior: "instant" }));
+  await phone.waitForTimeout(200);
+  await phone.setViewportSize({ width: 390, height: 678 });
+  await phone.locator('.lesson-contents [data-chapter-index="2"][aria-current="step"]').waitFor();
+  assert(await thirdChapter.isVisible(), "the chapter being read remains visible after narrowing");
+  await phone.goto(`${base}/#/atlas`);
+  await phone.evaluate(() => {
+    document.documentElement.style.setProperty("--native-safe-left", "36px");
+    document.documentElement.style.setProperty("--native-safe-right", "60px");
+  });
+  const shellPadding = await phone.locator(".native-field-layout").evaluate((node) => ({ left: getComputedStyle(node).paddingLeft, right: getComputedStyle(node).paddingRight }));
+  assert.deepEqual(shellPadding, { left: "36px", right: "60px" }, "native content respects asymmetric safe areas");
+  const navBounds = await phone.locator(".bottom-nav button").evaluateAll((nodes) => nodes.map((node) => ({ left: node.getBoundingClientRect().left, right: node.getBoundingClientRect().right })));
+  assert(navBounds.every((rect) => rect.left >= 36 && rect.right <= 330), "navigation remains inside safe areas");
+  await phone.locator(".cloud-card").first().click();
+  const closeBounds = await phone.locator(".cloud-detail .detail-close").boundingBox();
+  assert(closeBounds.x + closeBounds.width <= 330, "detail close button remains inside the safe area");
+  await phone.close();
   await page.setViewportSize({ width: 390, height: 844 });
   await navigate("home");
   const bottom = page.locator(".bottom-nav");
@@ -121,7 +171,7 @@ try {
   await page.locator(".native-workspace-sidebar").getByRole("button", { name: "Lekcje", exact: true }).click();
   await page.waitForURL("**/#/learn");
   assert.deepEqual(errors, []);
-  console.log(`PASS (${values.browser}): 64 native-layout viewport/route combinations, four mobile tabs, direct tools, daily conceal/reveal/date reset, sidebar and Mac shortcuts.`);
+  console.log(`PASS (${values.browser}): 64 native-layout viewport/route combinations, iPhone resize navigation and lesson continuity, asymmetric safe areas, four mobile tabs, direct tools, daily conceal/reveal/date reset, sidebar and Mac shortcuts.`);
 } finally {
   await browser?.close();
   await server.close();
