@@ -14,7 +14,9 @@ const config: CapacitorConfig = {
   },
   plugins: {
     SplashScreen: {
-      launchAutoHide: false,
+      // The overlay disables interaction with WKWebView until it is removed.
+      launchAutoHide: true,
+      launchShowDuration: 1500,
       launchFadeOutDuration: 320,
       backgroundColor: "#f6dfe8",
       showSpinner: false,

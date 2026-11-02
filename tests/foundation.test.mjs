@@ -568,7 +568,10 @@ test("the iOS package embeds the complete production app", async () => {
   assert.ok(packageJson.dependencies["@capacitor/ios"]);
   assert.match(capacitor, /appId: "cloud\.chmurnik\.app"/);
   assert.match(capacitor, /webDir: "dist"/);
-  assert.match(capacitor, /launchAutoHide: false/);
+  assert.match(capacitor, /launchAutoHide: true/);
+  const splashTimeout = Number(capacitor.match(/launchShowDuration:\s*(\d+)/)?.[1]);
+  assert.ok(splashTimeout > 0 && splashTimeout <= 3000, "Native startup must release touch input even if the web load event stalls");
+  assert.match(entry, /SplashScreen\.hide\(/);
   assert.match(entry, /Capacitor\.isNativePlatform\(\)/);
   assert.match(entry, /document\.documentElement\.classList\.add\("native-ios"\)/);
   assert.match(entry, /else if \("serviceWorker" in navigator/);
