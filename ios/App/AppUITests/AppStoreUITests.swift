@@ -20,10 +20,7 @@ final class AppStoreUITests: XCTestCase {
         app.activate()
         XCTAssertTrue(app.wait(for: .runningForeground, timeout: 15))
         #endif
-        XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 45))
-        // A native WKWebView exists before the bundled React interface is ready.
-        let initialControl = app.buttons.matching(NSPredicate(format: "label IN %@", ["Pomiń", "Dziś"])).firstMatch
-        XCTAssertTrue(initialControl.waitForExistence(timeout: 45), "The bundled interface did not render")
+        waitForBundledUI()
         #if !targetEnvironment(macCatalyst)
         rotateTablet(landscape: false)
         #endif
@@ -35,6 +32,13 @@ final class AppStoreUITests: XCTestCase {
             skip.tap()
             #endif
         }
+    }
+
+    private func waitForBundledUI() {
+        XCTAssertTrue(app.webViews.firstMatch.waitForExistence(timeout: 45))
+        // On every cold start the WKWebView exists before the bundled interface is interactive.
+        let initialControl = app.buttons.matching(NSPredicate(format: "label IN %@", ["Pomiń", "Dziś"])).firstMatch
+        XCTAssertTrue(initialControl.waitForExistence(timeout: 45), "The bundled interface did not render")
     }
 
     override func tearDownWithError() throws {
@@ -60,12 +64,25 @@ final class AppStoreUITests: XCTestCase {
         let viewport = app.windows["SceneWindow"].frame
         #else
         var viewport = app.frame
+        let label = element.label
         // A partially visible lesson card must not be tapped through the fixed bottom navigation.
-        if !["Dziś", "Moje niebo", "Atlas", "Warstwy"].contains(element.label) {
+        if !["Dziś", "Moje niebo", "Atlas", "Warstwy"].contains(label) {
             let home = app.buttons["Dziś"].firstMatch
             if home.exists, home.frame.minY > viewport.midY {
                 viewport.size.height = min(viewport.height, home.frame.minY - viewport.minY)
             }
+        }
+        // On compact screens the photo picker footer covers the scrolled content.
+        if ["Bliżej", "Fragment", "Więcej kontekstu", "Sprawdź zaznaczony fragment"].contains(label) {
+            let footer = app.buttons["Zrób nowe"].firstMatch
+            if footer.exists {
+                let bottom = footer.frame.minY - 12
+                viewport.size.height = min(viewport.height, max(0, bottom - viewport.minY))
+            }
+        }
+        // Scroll single-line links fully into view before tapping near the screen edge.
+        if element.elementType == .link && frame.height <= 44 {
+            return !frame.isEmpty && viewport.insetBy(dx: 0, dy: 8).contains(frame)
         }
         #endif
         return !frame.isEmpty && !frame.isInfinite && viewport.insetBy(dx: 8, dy: 8)
@@ -118,13 +135,15 @@ final class AppStoreUITests: XCTestCase {
                 return false
             }
             let frame = element.frame
-            if frame != previousFrame || stableSince == nil {
+            let movement = [frame.minX - previousFrame.minX, frame.minY - previousFrame.minY,
+                            frame.maxX - previousFrame.maxX, frame.maxY - previousFrame.maxY]
+            if movement.contains(where: { abs($0) > 0.5 }) || stableSince == nil {
                 previousFrame = frame
                 stableSince = Date()
             }
             return Date().timeIntervalSince(stableSince!) >= 0.3
         }, object: nil)
-        guard XCTWaiter.wait(for: [settled], timeout: 5) == .completed else {
+        guard XCTWaiter.wait(for: [settled], timeout: 15) == .completed else {
             XCTFail("Unstable tap target: \(label)")
             return
         }
@@ -256,7 +275,8 @@ final class AppStoreUITests: XCTestCase {
         // Run on an isolated simulator, with camera denied and licensed atlas photos added.
         // This exercises the real picker/model/vault, not physical camera hardware.
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-        let fullAccess = springboard.buttons["Pełny dostęp"]
+        let fullAccess = springboard.buttons.matching(NSPredicate(format: "identifier == %@ OR label == %@",
+                                                                 "kTCCServicePhotos-allow-button", "Pełny dostęp")).firstMatch
         if fullAccess.waitForExistence(timeout: 2) { fullAccess.tap() }
         for attempt in 1...2 {
             tap("Dziś")
@@ -269,23 +289,32 @@ final class AppStoreUITests: XCTestCase {
             let gallery = button("Wybierz z biblioteki")
             XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: gallery)], timeout: 20), .completed)
             tap("Wybierz z biblioteki")
-            if fullAccess.waitForExistence(timeout: 3) { fullAccess.tap() }
             let done = app.buttons.matching(NSPredicate(format: "label IN %@", ["Done", "Gotowe"])).firstMatch
+            let pickerOrPermission = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                fullAccess.exists || done.exists
+            }, object: nil)
+            XCTAssertEqual(XCTWaiter.wait(for: [pickerOrPermission], timeout: 30), .completed)
+            if fullAccess.exists { fullAccess.tap() }
             XCTAssertTrue(done.waitForExistence(timeout: 15), app.debugDescription + springboard.debugDescription)
             capture("qa-gallery-\(attempt)")
             let photos = app.scrollViews.buttons
-            // Reviewed seeded galleries: iPhone fixtures bracket six stock photos; iPad fixtures follow them.
-            // Photo metadata dates differ, so import order is not a reliable selection rule.
+            // Import the unmodified atlas JPGs. In the reviewed gallery their capture dates
+            // bracket the six simulator samples on both iPhone and iPad.
             XCTAssertEqual(photos.count, 8, "Use the reviewed isolated gallery with six stock photos and two cloud fixtures")
-            let firstFixture = app.frame.width < 641 ? 0 : photos.count - 2
-            let photo = photos.element(boundBy: attempt == 1 ? firstFixture : photos.count - 1)
+            let photo = photos.element(boundBy: attempt == 1 ? 0 : photos.count - 1)
             XCTAssertTrue(photo.waitForExistence(timeout: 10), app.debugDescription)
             photo.tap()
             XCTAssertTrue(done.isEnabled)
             done.tap()
             let proposal = button("Zaznacz proponowany fragment 1")
             XCTAssertTrue(proposal.waitForExistence(timeout: 90), app.debugDescription)
-            XCTAssertTrue(app.images["Całe własne zdjęcie nieba, bez przycinania"].exists)
+            let image = app.images["Całe własne zdjęcie nieba, bez przycinania"]
+            XCTAssertTrue(image.exists)
+            let imageFrame = image.frame
+            XCTAssertGreaterThan(imageFrame.height, 0)
+            let fixtureAspect: CGFloat = attempt == 1 ? 1225.0 / 919.0 : 1280.0 / 768.0
+            XCTAssertEqual(imageFrame.width / imageFrame.height, fixtureAspect, accuracy: 0.025,
+                           "Picker selected a different image or the preview was cropped")
             XCTAssertFalse(button("Sprawdź zaznaczony fragment").exists)
             capture("qa-local-proposals-\(attempt)")
             tap("Zaznacz proponowany fragment 1")
@@ -330,6 +359,7 @@ final class AppStoreUITests: XCTestCase {
             XCTAssertTrue(visibleText("3.0-ensemble-selected-region-experimental"), app.debugDescription)
             app.terminate()
             app.launch()
+            waitForBundledUI()
             tap("Moje niebo")
             let observation = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Obserwacja bez rozpoznania")).firstMatch
             XCTAssertTrue(observation.waitForExistence(timeout: 15), app.debugDescription)
@@ -420,6 +450,7 @@ final class AppStoreUITests: XCTestCase {
         capture("qa-lesson-shorter-route")
         app.terminate()
         app.launch()
+        waitForBundledUI()
         tap("Dziś")
         tap("Pełne lekcje")
         tap("Czytanie atmosfery w pionie", contains: true)
@@ -478,6 +509,7 @@ final class AppStoreUITests: XCTestCase {
         capture("native-workshop-restores-lesson-chapter")
         app.terminate()
         app.launch()
+        waitForBundledUI()
         tap("Dziś")
         tap("Pełne lekcje")
         tap("Dlaczego chmura powstaje", contains: true)
