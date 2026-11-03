@@ -63,10 +63,16 @@ node scripts/check-photo-model.mjs /ścieżka/do/App.app /prywatny/katalog/wynik
 - **Kompilacja kontrolna iOS/iPadOS:** 1.2.3 (202611031202), niewysłana do sklepu.
   Wszystkie 941 testów Node przeszło. W paczkach iOS/iPadOS i macOS
   sprawdzono zgodność 132 plików interfejsu z tym samym buildem WWW.
-- **Zdjęcia na urządzeniach testowych:** na symulatorach iPhone’a Duo i iPada
-  Pro 13″ oraz na Macu sprawdzono wybór zdjęcia, analizę prawdziwym modelem
-  i zachowanie obserwacji po ponownym uruchomieniu. Na iPadzie włączono
-  systemową redukcję ruchu; na Duo animacje były włączone.
+- **Zdjęcia na iOS i iPadOS:** `test03PhotoLibraryAndPersistentObservation`
+  przeszedł na symulatorach iPhone’a Duo i iPada Pro 13″ (M5), oba z systemem
+  27.2. Na każdym wybrano dwa różne zdjęcia z biblioteki, wykonano analizę
+  lokalnym modelem i odczytano zapisane obserwacje po restarcie aplikacji.
+  Na iPadzie włączono systemową redukcję ruchu; na Duo animacje były włączone.
+- **Mac Catalyst:** test importu, analizy i zapisu przeszedł na wcześniejszej
+  kompilacji. W dwóch próbach na ostatniej kompilacji XCTest nie odnalazł
+  systemowego okna wyboru pliku (`open-panel`). Nie potwierdzono na niej
+  importu zdjęcia ani dalszych kroków. Sam wynik nie rozstrzyga, czy przyczyna
+  leży w aplikacji, czy w sposobie odnajdywania okna przez test.
 - **Klawiatura po zamknięciu systemowego wybieraka zdjęć:** na iPadOS 27.2
   WebKit po dotknięciu rogu przenosił fokus na całe okno. Samo przywrócenie
   fokusu w HTML nie wystarczało. Aplikacja przywraca teraz fokus zaznaczonego
