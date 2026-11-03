@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { movePhotoRegion, photoFrame, squarePhotoRegion, squareRegionForProposal, prepareRecognitionRegion, validatePhotoRegion } from "../src/lib/photo-frame.js";
+import { isNearBlackCrop, movePhotoRegion, resizePhotoCorner, photoFrame, squarePhotoRegion, squareRegionForProposal, prepareRecognitionRegion, validatePhotoRegion } from "../src/lib/photo-frame.js";
 
 test("unzoomed framing preserves all original evidence", () => {
   assert.deepEqual(photoFrame(4032, 3024), {
@@ -93,6 +93,36 @@ test("native proposals become visible square inputs within the original photo", 
   assert.throws(() => squareRegionForProposal(100, 100, original, { x: 1, y: 1 }));
 });
 
+test("an off-center cloud anchor cannot cut off a proposal that fits in the square", () => {
+  const b = { x: .15, y: .25, width: .5, height: .2 };
+  for (const anchor of [{ x: .16, y: .26 }, { x: .64, y: .44 }]) {
+    const crop = squareRegionForProposal(1200, 900, b, anchor);
+    assert.ok(crop.x <= b.x + 1e-9 && crop.x + crop.width >= b.x + b.width - 1e-9);
+    assert.ok(crop.y <= b.y + 1e-9 && crop.y + crop.height >= b.y + b.height - 1e-9);
+  }
+});
+
+test("near-black input veto does not reject gray skies, a blue channel or visible contrast", () => {
+  assert.ok(isNearBlackCrop([0, 0, 0, 255, 12, 12, 12, 255]));
+  for (const pixels of [[], [120, 120, 120, 255], [0, 5, 75, 255], [0, 0, 0, 255, 90, 90, 90, 255]]) {
+    assert.equal(isNearBlackCrop(pixels), false);
+  }
+});
+
+test("corner drag fixes the opposite corner, stays square in pixels and never escapes the photo", () => {
+  for (const [w, h] of [[1600, 900], [900, 1600]]) {
+    const start = squarePhotoRegion(w, h, {x: .6, y: .6}, .4);
+    const bigger = resizePhotoCorner(start, w, h, .03, .03);
+    assert.ok(bigger.width > start.width);
+    for (const delta of [-5, -.01, 0, .01, 5]) {
+      const crop = resizePhotoCorner(start, w, h, delta, delta);
+      validatePhotoRegion(crop);
+      assert.equal(crop.x, start.x); assert.equal(crop.y, start.y);
+      assert.ok(Math.abs(crop.width*w - crop.height*h) < 1e-8);
+    }
+  }
+});
+
 test("selected-region JPEG preserves every visible crop edge and flags native no-recrop mode", async (t) => {
   const descriptors = Object.fromEntries(["Image", "document"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
   t.after(() => { for (const key of ["Image", "document"]) {
@@ -100,11 +130,12 @@ test("selected-region JPEG preserves every visible crop edge and flags native no
   } });
   const draws = [];
   const canvas = { getContext: () => ({ drawImage: (...args) => draws.push(args) }), toDataURL: () => "data:image/jpeg;base64,fixture" };
+  const sample = { getContext: () => ({ drawImage() {}, getImageData: () => ({ data: [100, 130, 150, 255] }) }) };
   globalThis.Image = class {
     naturalWidth = 1600; naturalHeight = 1200;
     set src(_) { queueMicrotask(() => this.onload()); }
   };
-  globalThis.document = { createElement: () => canvas };
+  globalThis.document = { createElement: () => draws.length ? sample : canvas };
   const result = await prepareRecognitionRegion("local-photo", { x: .25, y: .25, width: .375, height: .5 });
   assert.deepEqual(draws[0].slice(1), [400, 300, 600, 600, 0, 0, 600, 600]);
   assert.equal(canvas.width, canvas.height);
@@ -130,4 +161,19 @@ test("keyboard movement keeps the selected proposal size and position, including
     }
   }
   assert.throws(() => movePhotoRegion({ x: 0, y: 0, width: 1, height: 1 }, NaN, 0));
+});
+
+test("a near-black selected crop is rejected before JPEG encoding or inference", async (t) => {
+  const previous = Object.fromEntries(["Image", "document"].map(key => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  t.after(() => {
+    for (const [key, descriptor] of Object.entries(previous)) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor); else delete globalThis[key];
+    }
+  });
+  globalThis.Image = class { naturalWidth = 100; naturalHeight = 80; set src(_) { this.onload(); } };
+  globalThis.document = { createElement: () => ({
+    getContext: () => ({ drawImage() {}, getImageData: () => ({ data: new Uint8ClampedArray(16*16*4) }) }),
+    toDataURL: () => assert.fail("A rejected crop should not be encoded"),
+  }) };
+  assert.deepEqual(await prepareRecognitionRegion("dark", { x: .2, y: 0, width: .8, height: 1 }), { quality: "near-black" });
 });

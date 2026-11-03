@@ -17,6 +17,7 @@ const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 export function FieldHome({
   navigate,
   onCapture,
+  onLibrary,
   onRecognition,
   onSources,
   day,
@@ -50,6 +51,9 @@ export function FieldHome({
           <button className="button button--primary" onClick={onCapture}>
             {desktop ? <ImageSquare size={21} /> : <Camera size={21} />} {desktop ? "Wybierz zdjęcie nieba" : "Zrób zdjęcie"}
           </button>
+          {!desktop && <button className="button button--ghost" onClick={onLibrary}>
+            <ImageSquare size={20} /> Zdjęcie z biblioteki
+          </button>}
         </div>
         <img src={asset("assets/observer-guide-still-life-720.webp")} alt="" />
       </section>

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { recognitionMessage } from "../lib/recognition-message.js";
 import { getSources } from "../data/sources.js";
+import { clouds } from "../data/clouds.js";
 
 export function PhotoRecognitionResult({ result, candidates, ownPhoto, isRegion, assetUrl, onExplore, onObserve }) {
   const [selected, setSelected] = useState(null);
+  const [manualId, setManualId] = useState("");
   const message = recognitionMessage(result, candidates[0]?.cloud);
-  const candidate = candidates.find((item) => item.id === selected) || candidates[0];
-  const reference = candidate?.cloud.images[0];
+  const manualCloud = clouds.find(cloud => cloud.id === manualId);
+  const modelCandidate = candidates.find((item) => item.id === selected) || candidates[0];
+  const candidate = manualCloud ? { id: manualCloud.id, cloud: manualCloud } : modelCandidate;
+  const reference = (manualCloud || message.showComparison) && candidate?.cloud.images[0];
   return (
     <>
       <section className={`photo-answer photo-answer--${message.kind}`} aria-live="polite">
@@ -15,23 +19,34 @@ export function PhotoRecognitionResult({ result, candidates, ownPhoto, isRegion,
         <p>{message.text}</p>
       </section>
 
-      {message.showComparison && reference && (
+      <details className="photo-manual-compare">
+        <summary>Porównaj z inną chmurą</summary>
+        <label>Rodzaj z atlasu
+          <select value={manualId} onChange={event => setManualId(event.target.value)}>
+            <option value="">{message.showComparison ? "Wróć do propozycji modelu" : "Wybierz rodzaj"}</option>
+            {clouds.map(cloud => <option key={cloud.id} value={cloud.id}>{cloud.name} · {cloud.polish}</option>)}
+          </select>
+        </label>
+        <small>Ten wybór służy tylko do porównania. Nie zmienia wyniku ani zapisu obserwacji.</small>
+      </details>
+      {reference && (
         <section className="photo-evidence" aria-label="Porównanie własnego zdjęcia z atlasem">
           <h4>Sprawdź podobieństwa</h4>
-          <div className="photo-evidence-options" aria-label="Wybierz fotografię atlasową do porównania">
+          {message.showComparison && <div className="photo-evidence-options" aria-label="Wybierz fotografię atlasową do porównania">
             {candidates.slice(0, 2).map((item) => (
-              <button key={item.id} type="button" aria-pressed={candidate.id === item.id} onClick={() => setSelected(item.id)}>
+              <button key={item.id} type="button" aria-pressed={!manualCloud && candidate.id === item.id}
+                onClick={() => { setManualId(""); setSelected(item.id); }}>
                 <strong>{item.cloud.name}</strong><span>{item.cloud.polish}</span>
               </button>
             ))}
-          </div>
+          </div>}
           <div className="photo-evidence-images">
             <figure>
               <figcaption>{isRegion ? "Twój wybrany fragment" : "Twoje zdjęcie"}</figcaption>
               <img src={ownPhoto} alt={isRegion ? "Wybrany fragment własnego zdjęcia" : "Własne zdjęcie nieba"} />
             </figure>
             <figure>
-              <figcaption>Atlas · {candidate.cloud.name}</figcaption>
+              <figcaption>{manualCloud ? "Twój wybór z atlasu" : "Atlas"} · {candidate.cloud.name}</figcaption>
               <img src={assetUrl(reference.src)} alt={`Fotografia porównawcza z atlasu: ${candidate.cloud.name}`} />
             </figure>
           </div>
@@ -39,13 +54,13 @@ export function PhotoRecognitionResult({ result, candidates, ownPhoto, isRegion,
           <small>Fotografia atlasowa: {reference.author} · {reference.license}. <a href={reference.page} target="_blank" rel="noreferrer">Źródło i licencja</a></small>
           <small>Podstawa opisu: {getSources(candidate.cloud.sourceIds).map((source, index) => <span key={source.id}>{index > 0 ? "; " : ""}<a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></span>)}</small>
           <div className="photo-result-actions">
-            <button className="button button--secondary" onClick={() => onExplore(candidates.map((item) => item.id))}>Otwórz opisy w atlasie</button>
+            {!manualCloud && <button className="button button--secondary" onClick={() => onExplore(candidates.map((item) => item.id))}>Otwórz opisy w atlasie</button>}
             <button className="button button--ghost" onClick={onObserve}>Sprawdź cechy krok po kroku</button>
           </div>
         </section>
       )}
 
-      {!message.showComparison && <div className="photo-result-actions">
+      {!reference && <div className="photo-result-actions">
         <button className="button button--secondary" onClick={onObserve}>Rozpoznaj po cechach chmury</button>
       </div>}
 

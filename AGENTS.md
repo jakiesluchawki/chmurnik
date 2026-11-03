@@ -53,6 +53,10 @@ Writing production code without an active Lore task is forbidden.
   Use meaningful illustrated slider handles (cloud, sun, moon, water) while
   preserving labelled native range semantics, numerical values and a clear track.
 - The product interface and educational content are in Polish.
+- Photo framing should work like a viewfinder: touch the cloud, move the frame,
+  resize its corner, and preview the exact input. Motion may explain a new
+  selection, never lag behind the finger or be required to understand the crop.
+  Keep a reduced-motion and keyboard path, and invalidate any result from an older frame.
 - Version 1 teaches people to recognize clouds. Its experimental iOS photo
   assistant runs entirely on-device and presents uncertain, evidence-led
   hypotheses instead of authoritative diagnoses.

@@ -4941,6 +4941,11 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
   const [feedbackCount, setFeedbackCount] = useState(() => loadPhotoFeedback().length);
   const dialogRef = useDialogFocus(() => { if (!saving) onClose(); }, false);
 
+  const selectionChanged = () => {
+    setResult(null); setAnalyzedPhotoUrl(null); setFrameNote(""); setFeedback(null); setError(null);
+    setPhase("selecting");
+  };
+
   useEffect(() => {
     if (phase !== "result") return;
     resultRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
@@ -4980,7 +4985,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
       }
       console.error("[CHMURNIK camera]", failure?.code || "unknown", failure?.message || failure);
       setError(photoCaptureErrorMessage(failure));
-      setPhase("idle");
+      setPhase(result ? "result" : captured ? "selecting" : "idle");
     } finally {
       operation.finish();
     }
@@ -5026,6 +5031,11 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     try {
       const photo = await prepareRecognitionRegion(captured.previewUrl, bounds);
       if (!operation.isCurrent()) return;
+      if (photo.quality === "near-black") {
+        setPhase("selecting");
+        setError("Wybrany fragment jest niemal czarny. Wskaż jaśniejszą część zdjęcia albo zapisz obserwację bez rozpoznania.");
+        return;
+      }
       const value = await recognizeCloudPhoto(photo);
       if (!operation.isCurrent()) return;
       setResult(value);
@@ -5100,7 +5110,7 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
     .filter((item) => item.cloud);
 
   return (
-    <div className="modal-backdrop modal-backdrop--center" onMouseDown={() => { if (!saving) onClose(); }}>
+    <div className="modal-backdrop modal-backdrop--center" onMouseDown={() => { if (!saving && !captured) onClose(); }}>
       <section
         ref={dialogRef}
         className="photo-recognition-modal"
@@ -5124,7 +5134,8 @@ function PhotoRecognitionModal({ onClose, onCompare, onObserve, onSaved, initial
         </div>
 
         {captured ? <PhotoFrame key={captured.observationId} source={captured.previewUrl} onAnalyze={analyzeFrame}
-          regions={regions} proposalStatus={proposalStatus} analyzing={phase === "analyzing"} disabled={saving || working} /> : previewUrl ? (
+          onSelectionChange={selectionChanged} regions={regions} proposalStatus={proposalStatus}
+          analyzing={phase === "analyzing"} disabled={saving || working} /> : previewUrl ? (
           <figure className="photo-recognition-preview">
             <img src={previewUrl} alt="Zdjęcie nieba wybrane do analizy" />
             {phase === "analyzing" && <figcaption>Analizuję zdjęcie na urządzeniu…</figcaption>}
@@ -5470,7 +5481,10 @@ export function App() {
 
   return (
     <div className={`app-shell${nativeLayout ? " native-field-layout" : ""}`}>
-      <a className="skip-link" href="#main-content">Przejdź do treści</a>
+      <a className="skip-link" href="#main-content" onClick={(event) => {
+        event.preventDefault();
+        document.getElementById("main-content")?.focus();
+      }}>Przejdź do treści</a>
       {availableUpdate && (
         <aside className="app-update-notice" role="status">
           <span>Nowa wersja Chmurnika jest gotowa.</span>
@@ -5493,8 +5507,8 @@ export function App() {
         <p>Wybierz atlas, lekcję lub narzędzie z menu powyżej.</p>
         <button className="field-source" onClick={() => navigate("support")}><Info size={17} /> Pomoc i prywatność</button>
       </aside>}
-      <div id="main-content">
-        {validRoute === "home" && nativeLayout && <FieldHome {...pageProps} desktop={macWorkspace} day={localDay} onCapture={() => openPhoto(macWorkspace ? "photos" : "camera")} onRecognition={openRecognition} />}
+      <div id="main-content" tabIndex={-1}>
+        {validRoute === "home" && nativeLayout && <FieldHome {...pageProps} desktop={macWorkspace} day={localDay} onLibrary={() => openPhoto("photos")} onCapture={() => openPhoto(macWorkspace ? "photos" : "camera")} onRecognition={openRecognition} />}
         {validRoute === "home" && !nativeLayout && (
           <HomePage
             {...pageProps}

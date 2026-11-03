@@ -98,8 +98,16 @@ export function squareRegionForProposal(width, height, bounds, anchor) {
     || point.x > bounds.x + bounds.width || point.y > bounds.y + bounds.height) {
     throw new RangeError("Invalid cloud area anchor");
   }
-  return { x: Math.max(0, Math.min(1 - w, point.x - w / 2)),
-    y: Math.max(0, Math.min(1 - h, point.y - h / 2)), width: w, height: h };
+  // Keep the whole proposed area when it fits. If it doesn't, retain the mask
+  // anchor and choose the square with maximum overlap along that axis.
+  function origin(start, length, span, focus) {
+    const far = start + length - span;
+    const low = Math.max(0, focus - span, Math.min(start, far));
+    const high = Math.min(1 - span, focus, Math.max(start, far));
+    return Math.max(0, Math.min(1 - span, Math.max(low, Math.min(high, focus - span / 2))));
+  }
+  return { x: origin(bounds.x, bounds.width, w, point.x),
+    y: origin(bounds.y, bounds.height, h, point.y), width: w, height: h };
 }
 
 export function movePhotoRegion(bounds, dx, dy) {
@@ -107,6 +115,26 @@ export function movePhotoRegion(bounds, dx, dy) {
   if (![dx, dy].every(Number.isFinite)) throw new RangeError("Invalid photo selection movement");
   return { ...bounds, x: Math.max(0, Math.min(1 - bounds.width, bounds.x + dx)),
     y: Math.max(0, Math.min(1 - bounds.height, bounds.y + dy)) };
+}
+
+export function resizePhotoCorner(bounds, width, height, dx, dy) {
+  validatePhotoRegion(bounds);
+  if (![width, height, dx, dy].every(Number.isFinite) || width <= 0 || height <= 0)
+    throw new RangeError("Invalid corner displacement");
+  const side = bounds.width * width;
+  const limit = Math.min((1 - bounds.x) * width, (1 - bounds.y) * height);
+  const minimum = Math.min(side, .15 * Math.min(width, height));
+  const next = Math.min(limit, Math.max(minimum, side + (dx * width + dy * height) / 2));
+  return { ...bounds, width: next / width, height: next / height };
+}
+
+// Reject only near-black samples, not dark cloud bases, gray layers or blue sky.
+export function isNearBlackCrop(rgba) {
+  if (!rgba.length || rgba.length % 4 !== 0) return false;
+  for (let i = 0; i < rgba.length; i += 4) {
+    if (Math.max(rgba[i], rgba[i + 1], rgba[i + 2]) > 12) return false;
+  }
+  return true;
 }
 
 export async function prepareRecognitionRegion(source, bounds) {
@@ -128,6 +156,13 @@ export async function prepareRecognitionRegion(source, bounds) {
   if (!context) throw new Error("Nie udało się przygotować fragmentu.");
   context.drawImage(image, image.naturalWidth * bounds.x, image.naturalHeight * bounds.y,
     width, height, 0, 0, canvas.width, canvas.height);
+  const sample = document.createElement("canvas");
+  sample.width = sample.height = 16;
+  const sampler = sample.getContext("2d", { willReadFrequently: true });
+  if (sampler) {
+    sampler.drawImage(canvas, 0, 0, 16, 16);
+    if (isNearBlackCrop(sampler.getImageData(0, 0, 16, 16).data)) return { quality: "near-black" };
+  }
   const previewUrl = canvas.toDataURL("image/jpeg", .9);
   return { previewUrl, base64: previewUrl.split(",")[1], selectedRegion: true };
 }

@@ -151,13 +151,19 @@ try {
       const marker = picker.getByRole("button", { name: `Zaznacz proponowany fragment ${attempt + 1}`, exact: true });
       await marker.click();
       assert.equal(await marker.getAttribute("aria-pressed"), "true");
-      assert.equal(await picker.getByRole("slider").count(), 0, "No mandatory crop sliders");
+      assert.equal(await picker.getByRole("slider").count(), 1, "Only the resize corner is adjustable");
       const bounds = async () => picker.locator(".photo-region-selection").evaluate((element) => ({
         x: parseFloat(element.style.left), y: parseFloat(element.style.top),
         width: parseFloat(element.style.width), height: parseFloat(element.style.height),
       }));
       const proposed = await bounds();
       assert.ok(proposed.width > 0 && proposed.height > 0);
+      const selection = picker.locator(".photo-region-selection");
+      for (const reducedMotion of ["no-preference", "reduce"]) {
+        await page.emulateMedia({ reducedMotion });
+        const duration = await selection.evaluate(e => getComputedStyle(e).transitionDuration);
+        assert.equal(duration.split(",").some(d => parseFloat(d) > 0), reducedMotion === "no-preference");
+      }
       if (attempt === 1) {
         const surface = picker.getByRole("button", { name: "Wskaż miejsce na zdjęciu; strzałki przesuwają wybór", exact: true });
         await surface.focus();
@@ -168,11 +174,54 @@ try {
         assert.ok(moved.x < proposed.x, "Keyboard moves the existing selection");
         await picker.getByRole("button", { name: "Więcej kontekstu", exact: true }).click();
         assert.ok((await bounds()).width > moved.width);
+        const grip = picker.getByRole("button", { name: /^Przesuń ramkę:/ });
+        await grip.scrollIntoViewIfNeeded();
+        await page.emulateMedia({ reducedMotion: "no-preference" });
+        const box = await grip.boundingBox();
+        const start = await bounds();
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(box.x + box.width / 2 - 35, box.y + box.height / 2, { steps: 8 });
+        assert.equal(await picker.getAttribute("data-dragging"), "true");
+        assert.equal(await selection.evaluate(e => getComputedStyle(e).transitionDuration), "0s");
+        await page.mouse.up();
+        await page.emulateMedia({ reducedMotion: "reduce" });
+        const dragged = await bounds();
+        assert.ok(dragged.x < start.x && dragged.width === start.width, "Drag moves the same crop");
+        const corner = picker.getByRole("slider", { name: /^Zmień rozmiar ramki:/ });
+        await corner.scrollIntoViewIfNeeded();
+        const cb = await corner.boundingBox();
+        await page.mouse.move(cb.x+cb.width*.8, cb.y+cb.height*.8);
+        await page.mouse.down();
+        await page.mouse.move(cb.x+cb.width*.8-24, cb.y+cb.height*.8-24, {steps: 6});
+        await page.mouse.up();
+        const smaller = await bounds();
+        assert.ok(smaller.width < dragged.width && smaller.x === dragged.x && smaller.y === dragged.y);
+        await corner.press("ArrowRight");
+        assert.ok((await bounds()).width > smaller.width, "Keyboard can also resize the exact crop");
       }
       await screenshot(`capture-${attempt + 1}-selection`);
+      const preview = await picker.locator(".photo-crop-loupe img").evaluate(img => {
+        const lens = img.parentElement.getBoundingClientRect(), original = img.getBoundingClientRect();
+        return { x: (lens.x-original.x)/original.width*100, y: (lens.y-original.y)/original.height*100,
+          width: lens.width/original.width*100, height: lens.height/original.height*100 };
+      });
+      const shown = await bounds();
+      for (const axis of Object.keys(preview)) assert.ok(Math.abs(preview[axis]-shown[axis]) < .25,
+        "Live preview must show the selected photo coordinates on axis "+axis);
       await picker.getByRole("button", { name: "Sprawdź zaznaczony fragment", exact: true }).click();
       await page.getByText("Wynik dotyczy zaznaczonego fragmentu. Całe zdjęcie pozostaje w obserwacji.", { exact: true }).waitFor();
       await page.getByRole("region", { name: "Porównanie własnego zdjęcia z atlasem" }).waitFor();
+      if (attempt === 0) {
+        const result = page.locator(".photo-recognition-result");
+        await page.locator(".modal-backdrop--center").click({ position: { x: 1, y: 1 } });
+        assert.ok(await result.isVisible(), "A stray tap outside must not discard an open photo");
+        await picker.getByRole("button", { name: "Zaznacz proponowany fragment 2", exact: true }).click();
+        assert.equal(await result.count(), 0, "The previous comparison must not survive a new selection");
+        assert.equal(await page.locator(".photo-frame-note").count(), 0, "Do not retain previous crop coordinates");
+        await picker.getByRole("button", { name: "Sprawdź zaznaczony fragment", exact: true }).click();
+        await result.waitFor();
+      }
       const imageSizes = await page.locator(".photo-region-image img, .photo-evidence-images img").evaluateAll((images) =>
         Promise.all(images.map(async (image) => {
           await image.decode();
@@ -219,6 +268,10 @@ try {
         await page.setViewportSize({ width: 390, height: 844 });
       }
       await screenshot(`capture-${attempt + 1}-frame`);
+      await page.getByText("Porównaj z inną chmurą", { exact: true }).click();
+      await page.getByLabel("Rodzaj z atlasu").selectOption("stratocumulus");
+      await page.getByText("Twój wybór z atlasu · Stratocumulus", { exact: true }).waitFor();
+      await screenshot(`capture-${attempt + 1}-manual-comparison`);
       await page.getByRole("button", { name: "Zapisz w Moim niebie" }).click();
       await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).waitFor();
       assert.equal(
@@ -232,6 +285,8 @@ try {
         /qa-fixture/,
       );
       observationRoutes.add(new URL(page.url()).hash);
+      assert.doesNotMatch(await page.locator(".sky-hypothesis").textContent(), /Stratocumulus/i,
+        "A manual atlas comparison is not a model suggestion");
       await page.reload();
       await page.getByRole("button", { name: "Zamknij rozpoznawanie" }).click();
       await page.waitForFunction(
@@ -262,6 +317,17 @@ try {
         .waitFor();
     }
     assert.equal(observationRoutes.size, 2);
+    await navigate("home");
+    const autoOpened = page.getByRole("button", { name: "Zamknij rozpoznawanie" });
+    if (await autoOpened.isVisible()) await autoOpened.click();
+    await page.getByRole("button", { name: "Zdjęcie z biblioteki", exact: true }).click();
+    await page.getByRole("button", { name: "Zaznacz proponowany fragment 1", exact: true }).click();
+    await page.getByRole("button", { name: "Sprawdź zaznaczony fragment", exact: true }).click();
+    await page.locator(".photo-recognition-result").waitFor();
+    await page.getByRole("button", { name: "Zaznacz proponowany fragment 2", exact: true }).click();
+    await page.getByRole("button", { name: "Zapisz w Moim niebie", exact: true }).click();
+    await page.getByRole("combobox", { name: /Moje rozpoznanie/ }).waitFor();
+    assert.equal(await page.locator(".sky-hypothesis").count(), 0, "An unanalysed replacement crop must save without the old hypothesis");
     console.log(
       "PASS: repeated fixture-photo framing, save, persistence, unconfirmed model hypothesis, and delete. This does not test physical camera hardware or model accuracy.",
     );
@@ -277,6 +343,12 @@ try {
     } else {
       assert.equal(await page.locator(".web-app-note").count(), 0);
     }
+    await navigate("atlas");
+    await page.locator(".skip-link").focus();
+    await page.keyboard.press("Enter");
+    assert.ok(new URL(page.url()).hash.includes("/atlas"), "Skip to content must preserve the current route");
+    assert.equal(await page.evaluate(() => document.activeElement?.id), "main-content");
+    await navigate("home");
     await screenshot("01-home-mobile");
 
     const dailyExercise = page.locator(".daily-sky");

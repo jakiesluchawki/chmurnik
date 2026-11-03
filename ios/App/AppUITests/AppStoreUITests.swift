@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 final class AppStoreUITests: XCTestCase {
     private let app = ProcessInfo.processInfo.environment["CHMURNIK_QA_APP_ID"] == "cloud.chmurnik.qa.v4.development"
@@ -72,12 +73,16 @@ final class AppStoreUITests: XCTestCase {
                 viewport.size.height = min(viewport.height, home.frame.minY - viewport.minY)
             }
         }
-        // On compact screens the photo picker footer covers the scrolled content.
-        if ["Bliżej", "Fragment", "Więcej kontekstu", "Sprawdź zaznaczony fragment"].contains(label) {
-            let footer = app.buttons["Zrób nowe"].firstMatch
-            if footer.exists {
-                let bottom = footer.frame.minY - 12
-                viewport.size.height = min(viewport.height, max(0, bottom - viewport.minY))
+        if ["Bliżej", "Fragment", "Więcej kontekstu", "Sprawdź zaznaczony fragment",
+            "Zmień rozmiar ramki: przeciągnij róg lub użyj strzałek"].contains(label) {
+            // A WebKit control may have an AX frame beyond the clipped scrolling dialog.
+            // Bring the whole control clear of the sticky heading and the bottom safe area.
+            let close = app.buttons["Zamknij rozpoznawanie"].firstMatch
+            if close.exists {
+                let content = viewport.insetBy(dx: 0, dy: 44)
+                    .intersection(CGRect(x: viewport.minX, y: close.frame.maxY + 8,
+                                         width: viewport.width, height: viewport.height))
+                return !frame.isEmpty && content.contains(frame)
             }
         }
         // Scroll single-line links fully into view before tapping near the screen edge.
@@ -113,12 +118,28 @@ final class AppStoreUITests: XCTestCase {
             // WebKit can fail the test when asked for an off-screen activation point.
             if isActionable(element) { break }
             #if targetEnvironment(macCatalyst)
-            let above = element.frame.midY < app.windows["SceneWindow"].frame.minY
-            // Scroll inside the modal without relying on keyboard focus after inference.
-            app.windows["SceneWindow"].coordinate(withNormalizedOffset: CGVector(dx: 0.84, dy: 0.65))
+            let window = app.windows["SceneWindow"]
+            let bounds = window.frame
+            let above = element.frame.midY < bounds.minY
+            // A wide desktop window can put 84% of its width outside the centered modal.
+            let x = (element.frame.midX - bounds.minX) / max(1, bounds.width)
+            window.coordinate(withNormalizedOffset: CGVector(dx: x.isFinite ? min(0.9, max(0.1, x)) : 0.5, dy: 0.65))
                 .scroll(byDeltaX: 0, deltaY: above ? 380 : -380)
             #else
-            if element.frame.minY < 100 { app.webViews.firstMatch.swipeDown() }
+            let close = app.buttons["Zamknij rozpoznawanie"].firstMatch
+            if close.exists {
+                // Avoid both the draggable crop and WebKit's right-hand scrollbar.
+                let screen = app.frame
+                let top = close.frame.maxY + 12, bottom = screen.maxY - 48
+                let height = bottom - top
+                let distance = min(height * 0.42, max(-height * 0.42, element.frame.midY - (top + bottom) / 2))
+                let surface = app.buttons["Wskaż miejsce na zdjęciu; strzałki przesuwają wybór"].firstMatch
+                let x = surface.exists ? max(screen.minX + 24, surface.frame.minX - 8) : close.frame.midX
+                let y = top + height * (distance > 0 ? 0.75 : 0.25)
+                let start = app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: x - screen.minX, dy: y - screen.minY))
+                start.press(forDuration: 0.08, thenDragTo: start.withOffset(CGVector(dx: 0, dy: -distance)),
+                            withVelocity: .slow, thenHoldForDuration: 0.15)
+            } else if element.frame.minY < 100 { app.webViews.firstMatch.swipeDown() }
             else { app.webViews.firstMatch.swipeUp() }
             #endif
         }
@@ -274,6 +295,7 @@ final class AppStoreUITests: XCTestCase {
         #else
         // Run on an isolated simulator, with camera denied and licensed atlas photos added.
         // This exercises the real picker/model/vault, not physical camera hardware.
+        print("QA UIKit Reduce Motion: \(UIAccessibility.isReduceMotionEnabled)")
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let fullAccess = springboard.buttons.matching(NSPredicate(format: "identifier == %@ OR label == %@",
                                                                  "kTCCServicePhotos-allow-button", "Pełny dostęp")).firstMatch
@@ -340,7 +362,27 @@ final class AppStoreUITests: XCTestCase {
                 }
                 tapElement(surface, label: "Manual photo selection outside proposal markers", normalizedOffset: point)
                 XCTAssertTrue(button("Więcej kontekstu").waitForExistence(timeout: 15), app.debugDescription)
-                XCTAssertEqual(proposal.value as? String, "0")
+                XCTAssertEqual(button("Fragment 1").value as? String, "0")
+                let grip = button("Przesuń ramkę: przeciągnij lub użyj strzałek")
+                let initial = grip.frame
+                let visible = initial.intersection(surface.frame).intersection(app.frame.insetBy(dx: 40, dy: 90))
+                XCTAssertFalse(visible.isEmpty, "Crop must be draggable on the image")
+                let from = app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(
+                    dx: visible.midX - app.frame.minX, dy: visible.midY - app.frame.minY))
+                let dx: CGFloat = initial.midX <= surface.frame.midX ? 32 : -32
+                from.press(forDuration: 0.2, thenDragTo: from.withOffset(CGVector(dx: dx, dy: 0)))
+                XCTAssertGreaterThan((grip.frame.midX - initial.midX) * (dx > 0 ? 1 : -1), 6)
+                XCTAssertEqual(grip.frame.width, initial.width, accuracy: 1.5)
+                let corner = app.sliders["Zmień rozmiar ramki: przeciągnij róg lub użyj strzałek"]
+                tapElement(corner, label: "Focus the resize corner")
+                let beforeResize = grip.frame.width
+                let handle = corner.frame
+                let cornerPoint = app.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(
+                    dx: handle.minX + 0.8 * handle.width - app.frame.minX,
+                    dy: handle.minY + 0.8 * handle.height - app.frame.minY))
+                cornerPoint.press(forDuration: 0.15, thenDragTo: cornerPoint.withOffset(CGVector(dx: -40, dy: -40)),
+                                  withVelocity: .slow, thenHoldForDuration: 0.15)
+                XCTAssertLessThan(grip.frame.width, beforeResize - 6)
                 tap("Więcej kontekstu")
                 XCTAssertEqual(button("Więcej kontekstu").value as? String, "1")
                 capture("qa-manual-photo-context")
@@ -349,6 +391,12 @@ final class AppStoreUITests: XCTestCase {
             let details = button("Szczegóły analizy i jej ograniczenia")
             XCTAssertTrue(details.waitForExistence(timeout: 90), app.debugDescription)
             XCTAssertTrue(visibleText("Wynik analizy"))
+            if attempt == 1 {
+                tap("Bliżej")
+                XCTAssertFalse(details.exists, "Changing the crop must clear the old model result before saving")
+                tap("Sprawdź zaznaczony fragment")
+                XCTAssertTrue(details.waitForExistence(timeout: 90), app.debugDescription)
+            }
             tap("Szczegóły analizy i jej ograniczenia")
             XCTAssertTrue(visibleText("3.0-ensemble-selected-region-experimental"), app.debugDescription)
             tap("Szczegóły analizy i jej ograniczenia")
@@ -382,6 +430,52 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertGreaterThan(date.frame.width, 0)
         XCTAssertLessThanOrEqual(date.frame.maxX, app.frame.maxX - 10, app.debugDescription)
         capture("06-kolekcja")
+        #endif
+    }
+
+    func test12PhotoKeyboard() throws {
+        #if targetEnvironment(macCatalyst)
+        throw XCTSkip("Mac keyboard coverage uses the isolated file picker in test07")
+        #else
+        tap("Atlas")
+        let input = app.searchFields.firstMatch.exists ? app.searchFields.firstMatch : app.textFields.firstMatch
+        if app.buttons["Wyczyść wyszukiwanie"].firstMatch.exists { tap("Wyczyść wyszukiwanie") }
+        tapElement(input, label: "Check external keyboard input independently of the crop")
+        input.typeKey("c", modifierFlags: [])
+        input.typeKey("i", modifierFlags: [])
+        let typed = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            (input.value as? String)?.lowercased() == "ci"
+        }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [typed], timeout: 5), .completed,
+                       "Device Hub must deliver hardware keys to a standard field; observed \(String(describing: input.value))")
+        tap("Wyczyść wyszukiwanie")
+        tap("Dziś")
+        tap("Zdjęcie z biblioteki")
+        let done = app.buttons.matching(NSPredicate(format: "label IN %@", ["Done", "Gotowe"])).firstMatch
+        XCTAssertTrue(done.waitForExistence(timeout: 20), "Use the authorised isolated test gallery")
+        let photos = app.scrollViews.buttons
+        XCTAssertEqual(photos.count, 8)
+        photos.element(boundBy: 0).tap()
+        done.tap()
+        XCTAssertTrue(button("Zaznacz proponowany fragment 1").waitForExistence(timeout: 90))
+        let surface = button("Wskaż miejsce na zdjęciu; strzałki przesuwają wybór")
+        // Clear sky between the reviewed first fixture's markers; leave room on both sides.
+        tapElement(surface, label: "Set a manual crop", normalizedOffset: CGVector(dx: 0.44, dy: 0.33))
+        let grip = button("Przesuń ramkę: przeciągnij lub użyj strzałek")
+        let corner = app.sliders["Zmień rozmiar ramki: przeciągnij róg lub użyj strzałek"]
+        tapElement(corner, label: "Focus the visible diagonal resize glyph",
+                   normalizedOffset: CGVector(dx: 0.8, dy: 0.8))
+        let initial = grip.frame
+        app.typeKey("=", modifierFlags: [])
+        let grew = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in grip.frame.width > initial.width + 1 }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [grew], timeout: 5), .completed, "The external key must enlarge the selected crop")
+        XCTAssertEqual(grip.frame.minX, initial.minX, accuracy: 1.5)
+        XCTAssertEqual(grip.frame.minY, initial.minY, accuracy: 1.5)
+        capture("qa-keyboard-enlarged")
+        app.typeKey(.leftArrow, modifierFlags: [])
+        let returned = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in abs(grip.frame.width - initial.width) < 1.5 }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [returned], timeout: 5), .completed, "Left arrow must reverse the adjustment")
+        capture("qa-keyboard-crop")
         #endif
     }
 
@@ -619,6 +713,14 @@ final class AppStoreUITests: XCTestCase {
         XCTAssertTrue(proposal.waitForExistence(timeout: 90), app.debugDescription)
         capture("mac-qa-proposals")
         tap("Zaznacz proponowany fragment 1")
+        tap("Bliżej")
+        let grip = button("Przesuń ramkę: przeciągnij lub użyj strzałek")
+        let corner = app.sliders["Zmień rozmiar ramki: przeciągnij róg lub użyj strzałek"]
+        tapElement(corner, label: "Focus crop corner")
+        let before = grip.frame.width
+        app.typeKey(.rightArrow, modifierFlags: [])
+        let larger = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in grip.frame.width > before + 1 }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [larger], timeout: 5), .completed)
         tap("Sprawdź zaznaczony fragment")
         XCTAssertTrue(button("Szczegóły analizy i jej ograniczenia").waitForExistence(timeout: 90), app.debugDescription)
         tap("Szczegóły analizy i jej ograniczenia")
