@@ -469,6 +469,8 @@ final class AppStoreUITests: XCTestCase {
         app.typeKey("=", modifierFlags: [])
         let grew = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in grip.frame.width > initial.width + 1 }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [grew], timeout: 5), .completed, "The external key must enlarge the selected crop")
+        let step = min(surface.frame.width, surface.frame.height) * 0.04
+        XCTAssertEqual(grip.frame.width - initial.width, step, accuracy: 1.5, "One key must produce exactly one resize")
         XCTAssertEqual(grip.frame.minX, initial.minX, accuracy: 1.5)
         XCTAssertEqual(grip.frame.minY, initial.minY, accuracy: 1.5)
         capture("qa-keyboard-enlarged")
@@ -476,6 +478,19 @@ final class AppStoreUITests: XCTestCase {
         let returned = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in abs(grip.frame.width - initial.width) < 1.5 }, object: nil)
         XCTAssertEqual(XCTWaiter.wait(for: [returned], timeout: 5), .completed, "Left arrow must reverse the adjustment")
         capture("qa-keyboard-crop")
+        tapElement(grip, label: "Focus the inside of the frame for keyboard movement")
+        let beforeMove = grip.frame
+        app.typeKey(.rightArrow, modifierFlags: [])
+        let moved = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in grip.frame.minX > beforeMove.minX + 1 }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 5), .completed)
+        XCTAssertEqual(grip.frame.minX - beforeMove.minX, surface.frame.width * 0.05, accuracy: 1.5)
+        XCTAssertEqual(grip.frame.width, beforeMove.width, accuracy: 1.5)
+        tap("Zamknij rozpoznawanie")
+        tap("Atlas")
+        tapElement(input, label: "Restore normal typing outside the editor")
+        input.typeKey("=", modifierFlags: [])
+        let restored = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in (input.value as? String) == "=" }, object: nil)
+        XCTAssertEqual(XCTWaiter.wait(for: [restored], timeout: 5), .completed, "The crop must not intercept keys after closing")
         #endif
     }
 

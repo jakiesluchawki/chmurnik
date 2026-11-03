@@ -12,13 +12,18 @@ Poniższe zmiany nie należą do tej wysłanej kompilacji.
 2. **Wybór chmury.** Dotknięcie zdjęcia ustawia kwadrat; numer wybiera
    propozycję detektora. Wnętrze ramki można chwycić i przesunąć, a prawym
    dolnym rogiem zmienić rozmiar. Zachowano zwykłe dotknięcie, przyciski
-   rozmiaru i klawiaturę. Przeciąganie korzysta z układu współrzędnych
+   rozmiaru i klawiaturę. Dotknięcie innej chmury wewnątrz obecnej ramki
+   zmienia środek kadru bez zmiany skali. Dotknięcie środkowego uchwytu
+   tylko nadaje mu fokus. Przeciąganie korzysta z układu współrzędnych
    obrazu, nie z położenia okna ani orientacji urządzenia.
 3. **Co dostaje model.** Miniatura pokazuje ten sam znormalizowany wycinek
    oryginału, z którego powstaje JPEG. Przejścia między propozycjami
    trwają 150 ms. Podczas gestu geometria podąża bez przejścia; przy
    ograniczeniu ruchu selektor nie stosuje animacji. Przy niemal czarnym
    wycinku można zmienić kadr lub zapisać zdjęcie bez przypisywania nazwy.
+   Test przeglądarkowy odtwarza kadr z położenia widocznej ramki i porównuje
+   piksele z gotowym JPEG-em w jego rzeczywistej rozdzielczości. Dla
+   obu prób średnia bezwzględna różnica kanałów RGB była poniżej 4/255.
 4. **Wynik i powrót.** W wersji wyjściowej zaznaczenie drugiego fragmentu
    nie usuwało wyniku pierwszego. Po poprawce zmiana usuwa wynik, jego
    współrzędne i ocenę wskazówki. Bez nowej analizy zapisuje się zdjęcie
@@ -62,19 +67,19 @@ node scripts/check-photo-model.mjs /ścieżka/do/App.app /prywatny/katalog/wynik
   Pro 13″ oraz na Macu sprawdzono wybór zdjęcia, analizę prawdziwym modelem
   i zachowanie obserwacji po ponownym uruchomieniu. Na iPadzie włączono
   systemową redukcję ruchu; na Duo animacje były włączone.
-- **Próba ręczna klawiatury iPada:** podczas iteracji nad uchwytem,
-  po otwarciu zdjęcia z systemowej biblioteki,
-  zaznaczono chmurę i wskazano róg ramki. Dwa naciśnięcia strzałki
-  w lewo, bez dalszego dotykania zdjęcia, zmniejszyły szerokość ramki
-  z 649 do 561 pikseli na natywnych zrzutach 2064 × 2752. Lewa
-  krawędź pozostała na x = 651. Zmienił się też podgląd wycinka.
-  Test regresji `test12PhotoKeyboard` najpierw sprawdza klawiaturę w zwykłym
-  polu wyszukiwarki, a następnie mierzy, czy zmienia ona rozmiar wycinka,
-  nie przesuwając jego lewego górnego rogu. **Otwarta usterka:** na końcowej
-  kompilacji iPadOS 27.2 wyszukiwarka odebrała klawisze, ale po powrocie
-  z systemowej biblioteki klawisz zwiększenia nie powiększył ramki w XCTest.
-  Wynik ręczny nie zastępuje tego testu. Przed wysyłką 1.2.3 należy
-  potwierdzić powtarzalne działanie na iPadzie z zewnętrzną klawiaturą.
+- **Klawiatura po zamknięciu systemowego wybieraka zdjęć:** na iPadOS 27.2
+  WebKit po dotknięciu rogu przenosił fokus na całe okno. Samo przywrócenie
+  fokusu w HTML nie wystarczało. Aplikacja przywraca teraz fokus zaznaczonego
+  uchwytu i obsługuje klawisze przez UIKit tylko, gdy aktywny jest ten uchwyt.
+  W teście `test12PhotoKeyboard` jedno naciśnięcie zwiększa bok dokładnie
+  o 4% krótszego boku zdjęcia, bez przesunięcia zakotwiczonego narożnika;
+  strzałka cofa zmianę. Po dotknięciu środka strzałka przesuwa ramkę
+  o 5% szerokości zdjęcia bez skalowania. Po zamknięciu zdjęcia znak
+  `=` trafia ponownie do wyszukiwarki atlasu. Na końcowej kompilacji
+  ten sam test przeszedł po dwóch uruchomieniach aplikacji: z redukcją
+  ruchu i bez niej. To próba w symulatorze
+  z rzeczywistym wybierakiem i syntetyzowanymi klawiszami, nie test
+  fizycznej klawiatury Bluetooth.
 - **Atlas:** 177 sprawdzeń kart, terminów, podpisów, źródeł i rozmiarów ekranu.
 - **Nauka:** 9 lekcji, 156 sprawdzeń rozdziałów i szerokości oraz otwieranie
   i opuszczanie wszystkich 14 pracowni na Duo.

@@ -197,8 +197,28 @@ try {
         await page.mouse.up();
         const smaller = await bounds();
         assert.ok(smaller.width < dragged.width && smaller.x === dragged.x && smaller.y === dragged.y);
-        await corner.press("ArrowRight");
+        // Reproduce iPadOS's compatibility click after it gives focus back to the dialog.
+        // locator.press() would refocus the range itself and hide a broken touch handoff.
+        await corner.evaluate(el => document.addEventListener("click", () => {
+          el.closest('[role="dialog"]').focus({ preventScroll: true });
+        }, { once: true, capture: true }));
+        await corner.click();
+        assert.equal(await corner.evaluate(el => el === document.activeElement), true);
+        await page.keyboard.press("ArrowRight");
         assert.ok((await bounds()).width > smaller.width, "Keyboard can also resize the exact crop");
+        const afterResize = await bounds();
+        await page.keyboard.press("Tab");
+        assert.equal(await corner.evaluate(el => el === document.activeElement), false);
+        await page.keyboard.press("ArrowRight");
+        assert.deepEqual(await bounds(), afterResize, "Leaving the corner must release keyboard control");
+        await grip.click();
+        assert.deepEqual(await bounds(), afterResize, "Touching the center handle only focuses the crop");
+        const touched = await grip.boundingBox();
+        const towardCenter = afterResize.x + afterResize.width / 2 < 50 ? .75 : .25;
+        await grip.click({ position: { x: touched.width * towardCenter, y: touched.height * .5 } });
+        const centered = await bounds();
+        assert.notEqual(centered.x, afterResize.x, "A cloud inside the existing frame can still be selected");
+        assert.equal(centered.width, afterResize.width, "Touch selection inside the frame retains its size");
       }
       await screenshot(`capture-${attempt + 1}-selection`);
       const preview = await picker.locator(".photo-crop-loupe img").evaluate(img => {
@@ -212,6 +232,29 @@ try {
       await picker.getByRole("button", { name: "Sprawdź zaznaczony fragment", exact: true }).click();
       await page.getByText("Wynik dotyczy zaznaczonego fragmentu. Całe zdjęcie pozostaje w obserwacji.", { exact: true }).waitFor();
       await page.getByRole("region", { name: "Porównanie własnego zdjęcia z atlasem" }).waitFor();
+      const pixelError = await page.evaluate(async () => {
+        const full = document.querySelector(".photo-region-image img");
+        const result = document.querySelector(".photo-evidence-images img");
+        await Promise.all([full.decode(), result.decode()]);
+        const image = full.getBoundingClientRect();
+        const frame = document.querySelector(".photo-region-selection").getBoundingClientRect();
+        const sample = (img, x, y, w, h) => {
+          const canvas = document.createElement("canvas");
+          canvas.width = result.naturalWidth;
+          canvas.height = result.naturalHeight;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, x, y, w, h, 0, 0, canvas.width, canvas.height);
+          return ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        };
+        const a = sample(full, (frame.x-image.x)*full.naturalWidth/image.width,
+          (frame.y-image.y)*full.naturalHeight/image.height, frame.width*full.naturalWidth/image.width,
+          frame.height*full.naturalHeight/image.height);
+        const b = sample(result, 0, 0, result.naturalWidth, result.naturalHeight);
+        let error = 0;
+        for (let i = 0; i < a.length; i++) if (i % 4 !== 3) error += Math.abs(a[i]-b[i]);
+        return error / (a.length * .75);
+      });
+      assert.ok(pixelError < 4, `JPEG does not match the visible crop: mean channel error ${pixelError}/255`);
       if (attempt === 0) {
         const result = page.locator(".photo-recognition-result");
         await page.locator(".modal-backdrop--center").click({ position: { x: 1, y: 1 } });

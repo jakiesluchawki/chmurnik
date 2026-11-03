@@ -4,6 +4,7 @@ import { createPhotoOperationScope } from "../lib/photo-operation.js";
 
 const regionStyle = (bounds) => ({ left: `${bounds.x * 100}%`, top: `${bounds.y * 100}%`,
   width: `${bounds.width * 100}%`, height: `${bounds.height * 100}%` });
+const notifyFrameFocus = mode => window.webkit?.messageHandlers?.chmurnikFrameFocus?.postMessage(mode);
 
 export function PhotoFrame({ source, onAnalyze, onSelectionChange, regions = [], proposalStatus = "ready", disabled, analyzing }) {
   const id = useId();
@@ -33,6 +34,8 @@ export function PhotoFrame({ source, onAnalyze, onSelectionChange, regions = [],
   const selected = proposals.find((region) => region.id === selectedId);
   const frame = size && selected ? squareRegionForProposal(size.width, size.height, selected.bounds, selected.anchor)
     : manualFrame;
+  const canEditFrame = Boolean(frame) && !disabled && !busy;
+  useEffect(() => () => notifyFrameFocus(""), [source, canEditFrame]);
   const side = frame && size ? frame.width * size.width : 0;
   const shortSide = size ? Math.min(size.width, size.height) : 0;
   const selectProposal = (region) => {
@@ -85,8 +88,10 @@ export function PhotoFrame({ source, onAnalyze, onSelectionChange, regions = [],
       { x: frame.x + frame.width / 2, y: frame.y + frame.height / 2 }, value));
   };
   const startDrag = (event) => {
+    if (!event.isPrimary) return;
     ignoreClick.current = false;
-    if (disabled || busy || !frame || !event.isPrimary || event.button !== 0) return;
+    lastHandle.current = null;
+    if (disabled || busy || !frame || event.button !== 0) return;
     // WebKit can retarget a finger to the larger move button under the corner.
     // Resolve the corner in photo coordinates before dispatching either gesture.
     const hit = rect => rect && event.clientX >= rect.left && event.clientX <= rect.right &&
@@ -115,16 +120,20 @@ export function PhotoFrame({ source, onAnalyze, onSelectionChange, regions = [],
         : movePhotoRegion(start.frame, dx, dy));
     }
   };
-  const restoreHandleFocus = () => {
-    const handle = lastHandle.current;
-    requestAnimationFrame(() => {
-      const active = document.activeElement;
-      if (handle?.isConnected && (active === document.body || active === handle.closest('[role="dialog"]'))) {
-        handle.focus({ preventScroll: true });
-      }
-    });
+  const restoreHandleFocus = (handle = lastHandle.current) => {
+    const active = document.activeElement;
+    if (handle?.isConnected && !handle.disabled && (active === document.body || active === handle.closest('[role="dialog"]'))) {
+      handle.focus({ preventScroll: true });
+    }
   };
-  const endDrag = () => { lastPointerEnd.current = performance.now(); drag.current = null; setDragging(false); restoreHandleFocus(); };
+  const endDrag = event => {
+    if (drag.current?.id !== event.pointerId) return;
+    const handle = lastHandle.current;
+    lastPointerEnd.current = performance.now();
+    drag.current = null;
+    setDragging(false);
+    requestAnimationFrame(() => { if (lastHandle.current === handle) restoreHandleFocus(handle); });
+  };
   const resizeBy = delta => {
     if (!frame || disabled || busy) return;
     manual(resizePhotoCorner(frame, size.width, size.height, delta / size.width, delta / size.height));
@@ -142,15 +151,18 @@ export function PhotoFrame({ source, onAnalyze, onSelectionChange, regions = [],
       aria-label="Wybór obszaru nieba" aria-busy={busy || analyzing || proposalStatus === "searching"}>
       <p className="photo-region-guide"><strong>Wskaż chmurę</strong> Dotknij miejsca na zdjęciu albo wybierz propozycję.</p>
       <div ref={imageBox} className="photo-region-image" style={size ? { maxWidth: `calc(40svh * ${size.width / size.height})` } : undefined}
-        onPointerDownCapture={startDrag} onPointerMove={moveDrag} onLostPointerCapture={endDrag}
+        onPointerDownCapture={startDrag} onPointerMove={moveDrag} onPointerUp={endDrag}
+        onPointerCancel={endDrag} onLostPointerCapture={endDrag}
         onMouseDownCapture={event => {
           // The corner is adjusted in two dimensions, never by clicking a horizontal track.
           if (ignoreClick.current && !resizeHandle.current?.contains(event.target)) event.preventDefault();
         }}
         onClickCapture={event => {
+          // iPadOS may focus the dialog between pointerup and its compatibility click.
+          if (lastHandle.current?.contains(event.target) || ignoreClick.current) restoreHandleFocus();
           // The compatibility click after a drag must not select a fresh crop.
           if (ignoreClick.current && event.detail !== 0 && !resizeHandle.current?.contains(event.target)) {
-            event.preventDefault(); event.stopPropagation(); restoreHandleFocus();
+            event.preventDefault(); event.stopPropagation();
           }
         }}>
         <img src={source} alt="Całe własne zdjęcie nieba, bez przycinania"
@@ -168,16 +180,25 @@ export function PhotoFrame({ source, onAnalyze, onSelectionChange, regions = [],
         {frame && <span className="photo-region-selection" style={regionStyle(frame)} aria-hidden="true">
           <span className="photo-frame-corners" key={selectedId || "manual"} />
         </span>}
-        {frame && <button ref={moveHandle} type="button" className="photo-frame-grip" style={regionStyle(frame)}
+        {frame && <button ref={moveHandle} type="button" className="photo-frame-grip" data-frame-keys="move" style={regionStyle(frame)}
           aria-label="Przesuń ramkę: przeciągnij lub użyj strzałek" disabled={disabled || busy}
-          onClick={selectPoint}
+          onFocus={() => notifyFrameFocus("move")} onBlur={() => notifyFrameFocus("")}
+          onClick={event => {
+            if (event.detail === 0 || event.target.closest(".photo-frame-handle")) return;
+            const box = event.currentTarget.getBoundingClientRect();
+            const dx = event.clientX - box.left - box.width / 2;
+            const dy = event.clientY - box.top - box.height / 2;
+            const photo = imageBox.current.getBoundingClientRect();
+            if (Math.hypot(dx, dy) > 4) manual(movePhotoRegion(frame, dx / photo.width, dy / photo.height));
+          }}
           onKeyDown={keyPoint}>
           <span className="photo-frame-handle" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2v20M2 12h20M8 6l4-4 4 4M8 18l4 4 4-4M6 8l-4 4 4 4M18 8l4 4-4 4" /></svg>
           </span>
         </button>}
         {frame && <span className="photo-resize-target" style={regionStyle(frame)}>
-          <input ref={resizeHandle} type="range" className="photo-resize-grip" disabled={disabled || busy}
+          <input ref={resizeHandle} type="range" className="photo-resize-grip" data-frame-keys="resize" disabled={disabled || busy}
+            onFocus={() => notifyFrameFocus("resize")} onBlur={() => notifyFrameFocus("")}
             min={Math.round(Math.min(side, shortSide * .15))}
             max={Math.round(Math.min((1-frame.x)*size.width, (1-frame.y)*size.height))}
             value={Math.round(side)} step="1" aria-valuetext={`${Math.round(100 * side / shortSide)}% krótszego boku zdjęcia`}
